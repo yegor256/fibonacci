@@ -3,19 +3,22 @@
 
 class Bool {
 public:
-    Bool() : value(false) {};
-    virtual bool get() {
-        return this->value;
-    }
-private:
-    bool value;
+    virtual ~Bool() {};
+    virtual bool get() = 0;
 };
 
 class Int {
 public:
-    Int() : value(0) {};
-    explicit Int(int v) : value(v) {};
-    virtual int get() {
+    virtual ~Int() {};
+    virtual int get() = 0;
+};
+
+class DefaultInt : public Int {
+public:
+    explicit DefaultInt(int v) : value(v) {};
+    explicit DefaultInt(Int* i) : value(i->get()) {};
+    ~DefaultInt() override {};
+    int get() override {
         return this->value;
     }
 private:
@@ -25,6 +28,10 @@ private:
 class Less : public Bool {
 public:
     Less(Int* l, Int* r) : left(l), right(r) {};
+    ~Less() override {
+        delete this->left;
+        delete this->right;
+    }
     bool get() override {
         return this->left->get() < this->right->get();
     }
@@ -36,6 +43,10 @@ private:
 class Add : public Int {
 public:
     Add(Int* l, Int* r) : left(l), right(r) {};
+    ~Add() override {
+        delete this->left;
+        delete this->right;
+    }
     int get() override {
         return this->left->get() + this->right->get();
     }
@@ -47,6 +58,10 @@ private:
 class Sub : public Int {
 public:
     Sub(Int* l, Int* r) : left(l), right(r) {};
+    ~Sub() override {
+        delete this->left;
+        delete this->right;
+    }
     int get() override {
         return this->left->get() - this->right->get();
     }
@@ -58,6 +73,11 @@ private:
 class If : public Int {
 public:
     If(Bool* t, Int* l, Int* r) : term(t), left(l), right(r) {};
+    ~If() override {
+        delete this->term;
+        delete this->left;
+        delete this->right;
+    }
     int get() override {
         if (this->term->get()) {
             return this->left->get();
@@ -74,24 +94,25 @@ class Fibo : public Int {
 public:
     explicit Fibo(Int* v) : value(v) {};
     int get() override {
-        Int* int1 = new Int(1);
-        Int* int2 = new Int(2);
-        Int* sub1 = new Sub(this->value, int1);
-        Int* sub2 = new Sub(this->value, int2);
-        Int* fibo1 = new Fibo(sub1);
-        Int* fibo2 = new Fibo(sub2);
-        Int* add = new Add(fibo1, fibo2);
-        Bool* less = new Less(this->value, int2);
-        Int* iff = new If(less, int1, add);
+        Int* iff = new If(
+            new Less(new DefaultInt(this->value), new DefaultInt(2)),
+            new DefaultInt(1),
+            new Add(
+                new Fibo(
+                    new Sub(
+                        new DefaultInt(this->value),
+                        new DefaultInt(1)
+                    )
+                ),
+                new Fibo(
+                    new Sub(
+                        new DefaultInt(this->value),
+                        new DefaultInt(2)
+                    )
+                )
+            )
+        );
         int result = iff->get();
-        delete int1;
-        delete int2;
-        delete sub1;
-        delete sub2;
-        delete fibo1;
-        delete fibo2;
-        delete add;
-        delete less;
         delete iff;
         return result;
     }
@@ -100,7 +121,7 @@ private:
 };
 
 int main() {
-    Int* x = new Int(INPUT);
+    Int* x = new DefaultInt(INPUT);
     for (int i = 0; i < CYCLES; ++i) {
         Int* fibo = new Fibo(x);
         fibo->get();
