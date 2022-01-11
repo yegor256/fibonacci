@@ -92,5 +92,5 @@ int main() {
     for (int i = 0; i < CYCLES; ++i) {
         Fibo(Int(INPUT)).get();
     }
-    printf("%d-th Fibonacci number is %d", INPUT, Fibo(Int(INPUT)).get());
+    printf("%d-th Fibonacci number is %d\n", INPUT, Fibo(Int(INPUT)).get());
 }

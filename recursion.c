@@ -12,6 +12,6 @@ int main() {
     for (int i = 0; i < CYCLES; ++i) {
         fibo(INPUT);
     }
-    printf("%d-th Fibonacci number is %d", INPUT, fibo(INPUT));
+    printf("%d-th Fibonacci number is %d\n", INPUT, fibo(INPUT));
 }
 

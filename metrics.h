@@ -1,3 +1,5 @@
-#define INPUT 17
+// The Fibonacci number we are trying to calculate
+#define INPUT 32
 
-#define CYCLES 100000
+// The number of loop cycles that calculate Fibonacci number
+#define CYCLES 1000
