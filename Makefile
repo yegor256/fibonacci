@@ -1,3 +1,4 @@
+SHELL=/bin/bash
 .ONESHELL:
 .SHELLFLAGS = -e -x -c
 
