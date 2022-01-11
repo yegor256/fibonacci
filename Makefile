@@ -1,6 +1,6 @@
 SHELL=/bin/bash
 .ONESHELL:
-.SHELLFLAGS = -e -c
+.SHELLFLAGS = -e -c -o pipefail
 
 DIRS=asm bin reports
 C_SOURCES = $(wildcard *.c)
