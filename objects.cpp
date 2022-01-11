@@ -4,7 +4,6 @@
 class Bool {
 public:
     Bool() : value(false) {};
-    Bool(bool v) : value(v) {};
     virtual bool get() {
         return this->value;
     }
