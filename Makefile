@@ -16,7 +16,7 @@ summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) Makefile
 
 env:
 	clang++ --version | head -1
-	make -version | head -1
+	#make -version | head -1
 
 asm/%.c.asm: %.c metrics.h
 	clang -S -mllvm --x86-asm-syntax=intel -o "$@" "$<"
