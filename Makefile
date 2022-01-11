@@ -1,11 +1,20 @@
-asm: asm/objects.cpp.asm asm/functions.c.asm
+DIRS=asm bin
+C_SOURCES = $(wildcard *.c)
+CPP_SOURCES = $(wildcard *.cpp)
+ASMS = $(addprefix asm/,${C_SOURCES:.c=.c.asm} ${CPP_SOURCES:.cpp=.cpp.asm})
 
-asm/objects.cpp.asm: objects.cpp
-	g++ -Wall -std=c++11 -c -o "$@" "$<"
+all: $(DIRS) $(ASMS)
 
-bin/objects.cpp.bin: asm/objects.cpp.asm
-	echo "$@" "$<"
+asm/%.c.asm: %.c
+	clang -S -mllvm --x86-asm-syntax=intel -o "$@" "$<"
+
+asm/%.cpp.asm: %.cpp
+	clang++ -S -mllvm --x86-asm-syntax=intel -o "$@" "$<"
 
 .PHONY: clean
 clean:
 	rm -rf asm
+
+$(DIRS):
+	mkdir "$@"
+
