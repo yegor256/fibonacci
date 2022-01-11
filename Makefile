@@ -1,4 +1,5 @@
 .ONESHELL:
+.SHELLFLAGS = -e -x -c
 
 DIRS=asm bin reports
 C_SOURCES = $(wildcard *.c)
@@ -10,6 +11,7 @@ REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 summary.txt: $(DIRS) $(ASMS) $(BINS) $(REPORTS) Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
 	for r in $(REPORTS); do cat $${r}; done > summary.txt
+	cat "$@"
 
 asm/%.c.asm: %.c metrics.h
 	clang -S -mllvm --x86-asm-syntax=intel -o "$@" "$<"
