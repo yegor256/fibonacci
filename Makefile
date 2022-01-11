@@ -14,7 +14,7 @@ asm/%.cpp.asm: %.cpp metrics.h
 	clang++ -S -mllvm --x86-asm-syntax=intel -o "$@" "$<"
 
 bin/%.bin: asm/%.asm
-	gcc -o "$@" "$<"
+	clang++ -o "$@" "$<"
 	#chmod a+x "$@"
 
 reports/%.txt: bin/%.bin
