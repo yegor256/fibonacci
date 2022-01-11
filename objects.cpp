@@ -93,6 +93,9 @@ private:
 class Fibo : public Int {
 public:
     explicit Fibo(Int* v) : value(v) {};
+    ~Fibo() override {
+        delete value;
+    }
     int get() override {
         Int* iff = new If(
             new Less(new DefaultInt(value), new DefaultInt(2)),
@@ -123,7 +126,7 @@ private:
 int main() {
     Int* x = new DefaultInt(INPUT);
     for (int i = 0; i < CYCLES; ++i) {
-        Int* fibo = new Fibo(x);
+        Int* fibo = new Fibo(new DefaultInt(x));
         fibo->get();
         delete fibo;
     }
