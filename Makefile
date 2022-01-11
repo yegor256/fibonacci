@@ -29,12 +29,10 @@ bin/%.bin: asm/%.asm
 
 reports/%.txt: bin/%.bin
 	{ time -p "$<" > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ' > "${@:.txt=.time}"
-	{
-	  echo "$<:"
-	  echo "Instructions: $$(grep -e '^\t[a-z]\+\t' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)"
-	  echo "Time: $$(cat "${@:.txt=.time}")"
-	  echo ""
-	} > "$@"
+	echo "$<:" > "$@"
+	echo "Instructions: $$(grep -e '^\t[a-z]\+\t' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)" >> "$@"
+	echo "Time: $$(cat "${@:.txt=.time}")" >> "$@"
+	echo "" >> "$@"
 
 .PHONY: clean
 clean:
