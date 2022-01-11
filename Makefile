@@ -1,6 +1,6 @@
 SHELL=/bin/bash
 .ONESHELL:
-.SHELLFLAGS = -e -x -c
+.SHELLFLAGS = -e -c
 
 DIRS=asm bin reports
 C_SOURCES = $(wildcard *.c)
@@ -9,10 +9,14 @@ ASMS = $(addprefix asm/,${C_SOURCES:.c=.c.asm} ${CPP_SOURCES:.cpp=.cpp.asm})
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
-summary.txt: $(DIRS) $(ASMS) $(BINS) $(REPORTS) Makefile
+summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
 	for r in $(REPORTS); do cat $${r}; done > summary.txt
 	cat "$@"
+
+env:
+	clang++ --version | head -1
+	make --version | head -1
 
 asm/%.c.asm: %.c metrics.h
 	clang -S -mllvm --x86-asm-syntax=intel -o "$@" "$<"
