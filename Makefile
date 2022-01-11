@@ -9,11 +9,7 @@ REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
 summary.txt: $(DIRS) $(ASMS) $(BINS) $(REPORTS) Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
-	for r in $(REPORTS); do
-	  echo "$${r}:"
-	  cat $${r}
-	  echo ""
-	done > summary.txt
+	for r in $(REPORTS); do cat $${r}; done > summary.txt
 
 asm/%.c.asm: %.c metrics.h
 	clang -S -mllvm --x86-asm-syntax=intel -o "$@" "$<"
@@ -25,7 +21,13 @@ bin/%.bin: asm/%.asm
 	clang++ -o "$@" "$<"
 
 reports/%.txt: bin/%.bin
-	{ time -p "$<" > ${@:.txt=.stdout} ; } 2> "$@"
+	{ time -p "$<" > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ' > "${@:.txt=.time}"
+	{
+	  echo "$<:"
+	  echo "Instructions: $$(grep -e '^\t[a-z]\+\t' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)"
+	  echo "Time: $$(cat "${@:.txt=.time}")"
+	  echo ""
+	} > "$@"
 
 .PHONY: clean
 clean:
