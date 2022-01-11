@@ -19,7 +19,7 @@ public:
     explicit DefaultInt(Int* i) : value(i->get()) {};
     ~DefaultInt() override {};
     int get() override {
-        return this->value;
+        return value;
     }
 private:
     int value;
@@ -29,11 +29,11 @@ class Less : public Bool {
 public:
     Less(Int* l, Int* r) : left(l), right(r) {};
     ~Less() override {
-        delete this->left;
-        delete this->right;
+        delete left;
+        delete right;
     }
     bool get() override {
-        return this->left->get() < this->right->get();
+        return left->get() < right->get();
     }
 private:
     Int* left;
@@ -44,11 +44,11 @@ class Add : public Int {
 public:
     Add(Int* l, Int* r) : left(l), right(r) {};
     ~Add() override {
-        delete this->left;
-        delete this->right;
+        delete left;
+        delete right;
     }
     int get() override {
-        return this->left->get() + this->right->get();
+        return left->get() + right->get();
     }
 private:
     Int* left;
@@ -59,11 +59,11 @@ class Sub : public Int {
 public:
     Sub(Int* l, Int* r) : left(l), right(r) {};
     ~Sub() override {
-        delete this->left;
-        delete this->right;
+        delete left;
+        delete right;
     }
     int get() override {
-        return this->left->get() - this->right->get();
+        return left->get() - right->get();
     }
 private:
     Int* left;
@@ -74,15 +74,15 @@ class If : public Int {
 public:
     If(Bool* t, Int* l, Int* r) : term(t), left(l), right(r) {};
     ~If() override {
-        delete this->term;
-        delete this->left;
-        delete this->right;
+        delete term;
+        delete left;
+        delete right;
     }
     int get() override {
-        if (this->term->get()) {
-            return this->left->get();
+        if (term->get()) {
+            return left->get();
         }
-        return this->right->get();
+        return right->get();
     }
 private:
     Bool* term;
@@ -95,18 +95,18 @@ public:
     explicit Fibo(Int* v) : value(v) {};
     int get() override {
         Int* iff = new If(
-            new Less(new DefaultInt(this->value), new DefaultInt(2)),
+            new Less(new DefaultInt(value), new DefaultInt(2)),
             new DefaultInt(1),
             new Add(
                 new Fibo(
                     new Sub(
-                        new DefaultInt(this->value),
+                        new DefaultInt(value),
                         new DefaultInt(1)
                     )
                 ),
                 new Fibo(
                     new Sub(
-                        new DefaultInt(this->value),
+                        new DefaultInt(value),
                         new DefaultInt(2)
                     )
                 )
