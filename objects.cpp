@@ -83,8 +83,8 @@ public:
         Int* fibo2 = new Fibo(sub2);
         Int* add = new Add(fibo1, fibo2);
         Bool* less = new Less(this->value, int2);
-        Int* _if = new If(less, int1, add);
-        int result = _if->get();
+        Int* iff = new If(less, int1, add);
+        int result = iff->get();
         delete int1;
         delete int2;
         delete sub1;
@@ -93,7 +93,7 @@ public:
         delete fibo2;
         delete add;
         delete less;
-        delete _if;
+        delete iff;
         return result;
     }
 private:
