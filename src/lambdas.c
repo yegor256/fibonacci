@@ -42,7 +42,7 @@ int call(const struct lambda* l) {
     return ret;
 }
 
-Lambda* make(func body, struct lambda* a, struct lambda* b, struct lambda* c) {
+Lambda* new(func body, struct lambda* a, struct lambda* b, struct lambda* c) {
     Lambda* l = malloc(sizeof(Lambda));
     l->body = body;
     l->first = a;
@@ -74,18 +74,18 @@ int add(const struct lambda* arg) {
 int fibo(const struct lambda* arg) {
     int x = call(arg->first);
     return call(
-        make(
+        new(
             iff,
-            make(less, integer(x), integer(2), NULL),
+            new(less, integer(x), integer(2), NULL),
             integer(1),
-            make(
+            new(
                 add,
-                make(fibo, make(sub, integer(x), integer(1), NULL), NULL, NULL),
-                make(fibo, make(sub, integer(x), integer(2), NULL), NULL, NULL),
+                new(fibo, new(sub, integer(x), integer(1), NULL), NULL, NULL),
+                new(fibo, new(sub, integer(x), integer(2), NULL), NULL, NULL),
                 NULL)));
 }
 
 int calc() {
-    return call(make(fibo, integer(INPUT), NULL, NULL));
+    return call(new(fibo, integer(INPUT), NULL, NULL));
 }
 
