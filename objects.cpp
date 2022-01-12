@@ -13,11 +13,11 @@ public:
     virtual int get() = 0;
 };
 
-class DefaultInt : public Int {
+class Integer : public Int {
 public:
-    explicit DefaultInt(int v) : value(v) {};
-    explicit DefaultInt(Int* i) : value(i->get()) {};
-    ~DefaultInt() override {};
+    explicit Integer(int v) : value(v) {};
+    explicit Integer(Int* i) : value(i->get()) {};
+    ~Integer() override {};
     int get() override {
         return value;
     }
@@ -98,19 +98,19 @@ public:
     }
     int get() override {
         Int* iff = new If(
-            new Less(new DefaultInt(value), new DefaultInt(2)),
-            new DefaultInt(1),
+            new Less(new Integer(value), new Integer(2)),
+            new Integer(1),
             new Add(
                 new Fibo(
                     new Sub(
-                        new DefaultInt(value),
-                        new DefaultInt(1)
+                        new Integer(value),
+                        new Integer(1)
                     )
                 ),
                 new Fibo(
                     new Sub(
-                        new DefaultInt(value),
-                        new DefaultInt(2)
+                        new Integer(value),
+                        new Integer(2)
                     )
                 )
             )
@@ -124,11 +124,13 @@ private:
 };
 
 int main() {
-    Int* x = new DefaultInt(INPUT);
+    Int* x = new Integer(INPUT);
     for (int i = 0; i < CYCLES; ++i) {
-        Int* fibo = new Fibo(new DefaultInt(x));
+        Int* fibo = new Fibo(new Integer(x));
         fibo->get();
         delete fibo;
     }
-    printf("%d-th Fibonacci number is %d\n", INPUT, (new Fibo(x))->get());
+    Int* fibo = new Fibo(x);
+    printf("%d-th Fibonacci number is %d\n", INPUT, fibo->get());
+    delete fibo;
 }
