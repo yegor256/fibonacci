@@ -3,14 +3,14 @@
 
 class Bool {
 public:
-    virtual ~Bool() = default;;
-    virtual bool get() = 0;
+    virtual ~Bool() = default;
+    virtual auto get() -> bool = 0;
 };
 
 class Int {
 public:
-    virtual ~Int() = default;;
-    virtual int get() = 0;
+    virtual ~Int() = default;
+    virtual auto get() -> int = 0;
 };
 
 class Integer : public Int {
@@ -18,7 +18,7 @@ public:
     explicit Integer(int v) : value(v) {};
     explicit Integer(Int* i) : value(i->get()) {};
     ~Integer() override = default;
-    int get() override {
+    auto get() -> int override {
         return value;
     }
 private:
@@ -32,7 +32,7 @@ public:
         delete left;
         delete right;
     }
-    bool get() override {
+    auto get() -> bool override {
         return left->get() < right->get();
     }
 private:
@@ -47,7 +47,7 @@ public:
         delete left;
         delete right;
     }
-    int get() override {
+    auto get() -> int override {
         return left->get() + right->get();
     }
 private:
@@ -62,7 +62,7 @@ public:
         delete left;
         delete right;
     }
-    int get() override {
+    auto get() -> int override {
         return left->get() - right->get();
     }
 private:
@@ -78,7 +78,7 @@ public:
         delete left;
         delete right;
     }
-    int get() override {
+    auto get() -> int override {
         if (term->get()) {
             return left->get();
         }
@@ -96,7 +96,7 @@ public:
     ~Fibo() override {
         delete value;
     }
-    int get() override {
+    auto get() -> int override {
         Int* iff = new If(
             new Less(new Integer(value), new Integer(2)),
             new Integer(1),
