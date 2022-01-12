@@ -1,15 +1,15 @@
-#include <cstdio>
 #include "metrics.h"
+#include <cstdio>
 
 class Bool {
 public:
-    virtual ~Bool() {};
+    virtual ~Bool() = default;;
     virtual bool get() = 0;
 };
 
 class Int {
 public:
-    virtual ~Int() {};
+    virtual ~Int() = default;;
     virtual int get() = 0;
 };
 
@@ -17,7 +17,7 @@ class Integer : public Int {
 public:
     explicit Integer(int v) : value(v) {};
     explicit Integer(Int* i) : value(i->get()) {};
-    ~Integer() override {};
+    ~Integer() override = default;
     int get() override {
         return value;
     }

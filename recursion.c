@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include "metrics.h"
+#include <stdio.h>
 
 int fibo(int x) {
     if (x < 2) {

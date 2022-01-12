@@ -9,7 +9,7 @@ ASMS = $(addprefix asm/,${C_SOURCES:.c=.c.asm} ${CPP_SOURCES:.cpp=.cpp.asm})
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
-summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) Makefile
+summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) sa Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
 	for r in $(REPORTS); do cat $${r}; done > summary.txt
 	cat "$@"
@@ -17,6 +17,9 @@ summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) Makefile
 env:
 	clang++ --version | head -1
 	 $(MAKE) -version | cat | head -1
+
+sa:
+	clang-tidy '-checks=*,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' '-warnings-as-errors=*' $(C_SOURCES) $(CPP_SOURCES)
 
 asm/%.c.asm: %.c metrics.h
 	clang -S -mllvm --x86-asm-syntax=intel -o "$@" "$<"
