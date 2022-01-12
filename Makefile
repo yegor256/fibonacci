@@ -28,7 +28,8 @@ ASMS = $(subst src/,asm/,${CPPS:.cpp=.cpp.asm})
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
-CYCLES := $(shell expr 1000 / $$(( time -p for ((i = 0; i < 100; ++i)); do cat Makefile | sha1sum > /dev/null; done ) 2>&1 | head -1 | cut -f2 -d' ' | tr -d .))
+FACTOR = 1
+CYCLES := $(shell expr $(FACTOR) \* 1000 / $$(( time -p for ((i = 0; i < 100; ++i)); do cat Makefile | sha1sum > /dev/null; done ) 2>&1 | head -1 | cut -f2 -d' ' | tr -d .))
 INPUT = 27
 
 summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) sa Makefile
