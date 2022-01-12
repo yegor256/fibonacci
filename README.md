@@ -14,5 +14,11 @@ $ make
 
 The result will be in `summary.txt` file.
 
+To make test more intensive and run five times more cycles, do this:
+
+```bash
+$ make FACTOR=5
+```
+
 You will need to have [Clang](https://clang.llvm.org) 
 and [cpplint](https://github.com/cpplint/cpplint) installed.
