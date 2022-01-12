@@ -18,8 +18,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef __MAIN_H__
-#define __MAIN_H__
+#ifndef SRC_MAIN_H__
+#define SRC_MAIN_H__
 
 #include <stdio.h>
 #include "./metrics.h"
@@ -38,4 +38,4 @@ int main() {
         INPUT, fibo, total);
 }
 
-#endif
+#endif  // SRC_MAIN_H__

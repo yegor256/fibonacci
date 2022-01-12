@@ -23,9 +23,9 @@ SHELL=/bin/bash
 .SHELLFLAGS = -e -o pipefail -c
 
 DIRS=asm bin reports
-C_SOURCES = $(wildcard *.c)
-CPP_SOURCES = $(wildcard *.cpp)
-ASMS = $(addprefix asm/,${C_SOURCES:.c=.c.asm} ${CPP_SOURCES:.cpp=.cpp.asm})
+C_SOURCES = $(wildcard src/*.c)
+CPP_SOURCES = $(wildcard src/*.cpp)
+ASMS = $(subst src/,asm/,${C_SOURCES:.c=.c.asm} ${CPP_SOURCES:.cpp=.cpp.asm})
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -39,16 +39,16 @@ env:
 	 $(MAKE) -version
 
 sa: Makefile
-	cpplint --filter=-whitespace/indent $(C_SOURCES) $(CPP_SOURCES)
+	cpplint --filter=-whitespace/indent src/*
 	# '-warnings-as-errors=*'
 	clang-tidy -quiet -header-filter=none \
-		'-checks=*,-misc-no-recursion,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
-		$(C_SOURCES) $(CPP_SOURCES)
+		'-checks=*,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
+		src/*
 
-asm/%.c.asm: %.c metrics.h
+asm/%.c.asm: src/%.c src/metrics.h
 	clang -S -O3 -mllvm --x86-asm-syntax=intel -o "$@" "$<"
 
-asm/%.cpp.asm: %.cpp metrics.h
+asm/%.cpp.asm: src/%.cpp src/metrics.h
 	clang++ -S -O3 -mllvm --x86-asm-syntax=intel -o "$@" "$<"
 
 bin/%.bin: asm/%.asm
