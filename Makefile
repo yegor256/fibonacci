@@ -31,7 +31,7 @@ REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 FACTOR = 1
 INPUT = 27
 
-summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) cycles.txt sa Makefile
+summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) cycles.txt Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
 	date > summary.txt
 	echo "CYCLES=$$(cat cycles.txt)" >> summary.txt
@@ -64,7 +64,7 @@ bin/%.bin: asm/%.asm
 reports/%.txt: bin/%.bin Makefile
 	{ time -p "$<" > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ' > "${@:.txt=.time}"
 	echo "$<:" > "$@"
-	echo "Instructions: $$(grep -e '^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)" >> "$@"
+	echo "Instructions: $$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)" >> "$@"
 	echo "Time: $$(cat "${@:.txt=.time}")" >> "$@"
 	echo "" >> "$@"
 
