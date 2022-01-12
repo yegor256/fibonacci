@@ -52,7 +52,7 @@ sa: Makefile
 		src/*
 
 cycles.txt:
-	expr $(FACTOR) \* 1000 / $$(( time -p for ((i = 0; i < 100; ++i)); do cat Makefile | sha1sum > /dev/null; done ) 2>&1 | head -1 | cut -f2 -d' ' | tr -d .) > cycles.txt
+	expr 1 + $(FACTOR) \* 1000 / $$(( time -p for ((i = 0; i < 100; ++i)); do cat Makefile | sha1sum > /dev/null; done ) 2>&1 | head -1 | cut -f2 -d' ' | tr -d .) > cycles.txt
 
 asm/%.cpp.asm: src/%.cpp src/*.h cycles.txt
 	clang++ -S -O3 -DINPUT=$(INPUT) -DCYCLES=$$(cat cycles.txt) -mllvm --x86-asm-syntax=intel -o "$@" "$<"

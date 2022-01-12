@@ -23,13 +23,13 @@
 
 struct lambda;
 typedef int (*func) (const struct lambda*);
-typedef struct lambda {
+struct lambda {
     func body;
     int data;
     struct lambda* first;
     struct lambda* second;
     struct lambda* third;
-} Lambda;
+};
 
 int call(const struct lambda* l) {
     int ret;
@@ -42,8 +42,8 @@ int call(const struct lambda* l) {
     return ret;
 }
 
-Lambda* make(func body, struct lambda* a, struct lambda* b, struct lambda* c) {
-    auto* l = static_cast<Lambda*>(malloc(sizeof(Lambda)));
+struct lambda* make(func body, struct lambda* a, struct lambda* b, struct lambda* c) {
+    auto* l = static_cast<lambda*>(malloc(sizeof(lambda)));
     l->body = body;
     l->first = a;
     l->second = b;
@@ -51,8 +51,8 @@ Lambda* make(func body, struct lambda* a, struct lambda* b, struct lambda* c) {
     return l;
 }
 
-Lambda* integer(int x) {
-    auto* l = static_cast<Lambda*>(malloc(sizeof(Lambda)));
+struct lambda* integer(int x) {
+    auto* l = static_cast<lambda*>(malloc(sizeof(lambda)));
     l->data = x;
     l->body = nullptr;
     return l;
