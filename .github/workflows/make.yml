@@ -10,3 +10,4 @@ jobs:
       - run: sudo apt-get install -y clang-tidy
       - run: pip install cpplint
       - run: make FACTOR=50
+      - run: cat asm/recursion.asm
