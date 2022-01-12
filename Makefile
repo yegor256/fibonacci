@@ -35,8 +35,8 @@ summary.txt: env sa $(DIRS) $(ASMS) $(BINS) $(REPORTS) Makefile
 	cat "$@"
 
 env:
-	clang++ --version | head -1
-	 $(MAKE) -version | cat | head -1
+	clang++ --version
+	 $(MAKE) -version
 
 sa:
 	clang-tidy -format-style=google '-checks=*,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' '-warnings-as-errors=*' $(C_SOURCES) $(CPP_SOURCES)
