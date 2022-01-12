@@ -25,6 +25,6 @@
 #define INPUT 25
 
 // The number of loop cycles that calculate Fibonacci number
-#define CYCLES 20
+#define CYCLES 50
 
 #endif  // SRC_METRICS_H__
