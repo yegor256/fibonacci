@@ -38,7 +38,7 @@ env:
 	clang++ --version
 	 $(MAKE) -version
 
-sa:
+sa: Makefile
 	clang-tidy -format-style=google '-checks=*,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' '-warnings-as-errors=*' $(C_SOURCES) $(CPP_SOURCES)
 	cpplint --filter=-whitespace/indent $(C_SOURCES) $(CPP_SOURCES)
 
@@ -51,10 +51,10 @@ asm/%.cpp.asm: %.cpp metrics.h
 bin/%.bin: asm/%.asm
 	clang++ -o "$@" "$<"
 
-reports/%.txt: bin/%.bin
+reports/%.txt: bin/%.bin Makefile
 	{ time -p "$<" > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ' > "${@:.txt=.time}"
 	echo "$<:" > "$@"
-	echo "Instructions: $$(grep -e '^\t[a-z]\+\t' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)" >> "$@"
+	echo "Instructions: $$(grep -e '^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)" >> "$@"
 	echo "Time: $$(cat "${@:.txt=.time}")" >> "$@"
 	echo "" >> "$@"
 

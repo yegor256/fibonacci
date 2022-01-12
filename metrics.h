@@ -19,7 +19,7 @@
 // SOFTWARE.
 
 // The Fibonacci number we are trying to calculate
-#define INPUT 32
+#define INPUT 25
 
 // The number of loop cycles that calculate Fibonacci number
 #define CYCLES 10
