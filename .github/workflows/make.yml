@@ -9,4 +9,4 @@ jobs:
       - uses: actions/checkout@v2
       - run: sudo apt-get install -y clang-tidy
       - run: pip install cpplint
-      - run: make FACTOR=10
+      - run: make FACTOR=50
