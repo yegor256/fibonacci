@@ -12,5 +12,7 @@ To build it just run:
 $ make
 ```
 
+The result will be in `summary.txt` file.
+
 You will need to have [Clang](https://clang.llvm.org) 
 and [cpplint](https://github.com/cpplint/cpplint) installed.
