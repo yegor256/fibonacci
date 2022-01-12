@@ -29,9 +29,12 @@ int fibo(int x) {
 }
 
 int main() {
+    int total = 0;
     for (int i = 0; i < CYCLES; ++i) {
-        fibo(INPUT);
+        total += fibo(INPUT);
     }
-    printf("%d-th Fibonacci number is %d\n", INPUT, fibo(INPUT));
+    printf(
+        "%d-th Fibonacci number is %d; total is %d\n",
+        INPUT, fibo(INPUT), total);
 }
 

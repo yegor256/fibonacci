@@ -142,12 +142,15 @@ private:
 
 int main() {
     Int* x = new Integer(INPUT);
+    int total = 0;
     for (int i = 0; i < CYCLES; ++i) {
         Int* fibo = new Fibo(new Integer(x));
-        fibo->get();
+        total += fibo->get();
         delete fibo;
     }
     Int* fibo = new Fibo(x);
-    printf("%d-th Fibonacci number is %d\n", INPUT, fibo->get());
+    printf(
+        "%d-th Fibonacci number is %d; total is %d\n",
+        INPUT, fibo->get(), total);
     delete fibo;
 }
