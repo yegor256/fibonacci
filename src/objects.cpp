@@ -137,8 +137,8 @@ private:
     Int* value;
 };
 
-int calc() {
-    Int* fibo = new Fibo(new Integer(INPUT));
+int calc(int x) {
+    Int* fibo = new Fibo(new Integer(x));
     int f = fibo->get();
     delete fibo;
     return f;

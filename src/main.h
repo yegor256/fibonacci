@@ -24,13 +24,13 @@
 #include <stdio.h>
 #include "./metrics.h"
 
-int calc();
+int calc(int);
 
 int main() {
     int total = 0;
     int fibo = 0;
     for (int i = 0; i < CYCLES; ++i) {
-        fibo = calc();
+        fibo = calc(INPUT);
         total += fibo;
     }
     printf(

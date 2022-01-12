@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include <stdlib.h>
+#include <cstdlib>
 #include "./main.h"
 
 struct lambda;
@@ -33,17 +33,17 @@ typedef struct lambda {
 
 int call(const struct lambda* l) {
     int ret;
-    if (l->body == NULL) {
+    if (l->body == nullptr) {
         ret = l->data;
     } else {
         ret = l->body(l);
     }
-    free(l);
+    free((void*) l);
     return ret;
 }
 
-Lambda* new(func body, struct lambda* a, struct lambda* b, struct lambda* c) {
-    Lambda* l = malloc(sizeof(Lambda));
+Lambda* make(func body, struct lambda* a, struct lambda* b, struct lambda* c) {
+    auto* l = static_cast<Lambda*>(malloc(sizeof(Lambda)));
     l->body = body;
     l->first = a;
     l->second = b;
@@ -52,9 +52,9 @@ Lambda* new(func body, struct lambda* a, struct lambda* b, struct lambda* c) {
 }
 
 Lambda* integer(int x) {
-    Lambda* l = malloc(sizeof(Lambda));
+    auto* l = static_cast<Lambda*>(malloc(sizeof(Lambda)));
     l->data = x;
-    l->body = NULL;
+    l->body = nullptr;
     return l;
 }
 
@@ -62,7 +62,7 @@ int iff(const struct lambda* arg) {
     return call(arg->first) ? call(arg->second) : call(arg->third);
 }
 int less(const struct lambda* arg) {
-    return call(arg->first) < call(arg->second);
+    return static_cast<int>(call(arg->first) < call(arg->second));
 }
 int sub(const struct lambda* arg) {
     return call(arg->first) - call(arg->second);
@@ -74,18 +74,18 @@ int add(const struct lambda* arg) {
 int fibo(const struct lambda* arg) {
     int x = call(arg->first);
     return call(
-        new(
+        make(
             iff,
-            new(less, integer(x), integer(2), NULL),
+            make(less, integer(x), integer(2), nullptr),
             integer(1),
-            new(
+            make(
                 add,
-                new(fibo, new(sub, integer(x), integer(1), NULL), NULL, NULL),
-                new(fibo, new(sub, integer(x), integer(2), NULL), NULL, NULL),
-                NULL)));
+                make(fibo, make(sub, integer(x), integer(1), nullptr), nullptr, nullptr),
+                make(fibo, make(sub, integer(x), integer(2), nullptr), nullptr, nullptr),
+                nullptr)));
 }
 
-int calc() {
-    return call(new(fibo, integer(INPUT), NULL, NULL));
+int calc(int x) {
+    return call(make(fibo, integer(x), nullptr, nullptr));
 }
 

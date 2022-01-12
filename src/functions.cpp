@@ -20,26 +20,26 @@
 
 #include "./main.h"
 
-inline int less(int a, int b) {
-    return a < b;
+int less(int a, int b) {
+    return static_cast<int>(a < b);
 }
 
-inline int sub(int a, int b) {
+int sub(int a, int b) {
     return a - b;
 }
 
-inline int add(int a, int b) {
+int add(int a, int b) {
     return a + b;
 }
 
 int fibo(int x) {
-    if (less(x, 2)) {
+    if (less(x, 2) != 0) {
         return 1;
     }
     return add(fibo(sub(x, 1)), fibo(sub(x, 2)));
 }
 
-inline int calc() {
-    return fibo(INPUT);
+int calc(int x) {
+    return fibo(x);
 }
 
