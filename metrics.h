@@ -18,8 +18,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#ifndef __METRICS_H__
+#define __METRICS_H__
+
 // The Fibonacci number we are trying to calculate
 #define INPUT 25
 
 // The number of loop cycles that calculate Fibonacci number
-#define CYCLES 10
+#define CYCLES 20
+
+#endif

@@ -20,11 +20,23 @@
 
 #include "./main.h"
 
+int less(int a, int b) {
+    return a < b;
+}
+
+int sub(int a, int b) {
+    return a - b;
+}
+
+int add(int a, int b) {
+    return a + b;
+}
+
 int fibo(int x) {
-    if (x < 2) {
+    if (less(x, 2)) {
         return 1;
     }
-    return fibo(x - 1) + fibo(x - 2);
+    return add(fibo(sub(x, 1)), fibo(sub(x, 2)));
 }
 
 int calc() {

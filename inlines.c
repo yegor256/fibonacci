@@ -20,14 +20,26 @@
 
 #include "./main.h"
 
-int fibo(int x) {
-    if (x < 2) {
-        return 1;
-    }
-    return fibo(x - 1) + fibo(x - 2);
+inline int less(int a, int b) {
+    return a < b;
 }
 
-int calc() {
+inline int sub(int a, int b) {
+    return a - b;
+}
+
+inline int add(int a, int b) {
+    return a + b;
+}
+
+int fibo(int x) {
+    if (less(x, 2)) {
+        return 1;
+    }
+    return add(fibo(sub(x, 1)), fibo(sub(x, 2)));
+}
+
+inline int calc() {
     return fibo(INPUT);
 }
 

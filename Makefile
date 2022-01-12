@@ -29,7 +29,7 @@ ASMS = $(addprefix asm/,${C_SOURCES:.c=.c.asm} ${CPP_SOURCES:.cpp=.cpp.asm})
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
-summary.txt: env sa $(DIRS) $(ASMS) $(BINS) $(REPORTS) Makefile
+summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) sa Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
 	for r in $(REPORTS); do cat $${r}; done > summary.txt
 	cat "$@"
