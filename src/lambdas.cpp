@@ -22,7 +22,7 @@
 #include "./main.h"
 
 struct lambda;
-using func = int (*) (const struct lambda*);
+using func = int (*) (struct lambda*);
 struct lambda {
     func body;
     int data;
@@ -31,19 +31,7 @@ struct lambda {
     struct lambda* third;
 };
 
-void free(const struct lambda* l) {
-    if (l->first != nullptr) {
-        free(l->first);
-    }
-    if (l->second != nullptr) {
-        free(l->first);
-    }
-    if (l->third != nullptr) {
-        free(l->third);
-    }
-}
-
-int call(const struct lambda* l) {
+int call(struct lambda* l) {
     int ret;
     if (l->body == nullptr) {
         ret = l->data;
@@ -70,28 +58,38 @@ struct lambda* integer(int x) {
     return l;
 }
 
-int iff(const struct lambda* arg) {
+void release(struct lambda* l) {
+    if (l == nullptr) {
+        return;
+    }
+    release(l->first);
+    release(l->second);
+    release(l->third);
+    free(l);
+}
+
+int iff(struct lambda* arg) {
     int ret;
     if (call(arg->first) == 1) {
         ret = call(arg->second);
-        free(arg->third);
+        release(arg->third);
     } else {
         ret = call(arg->third);
-        free(arg->second);
+        release(arg->second);
     }
     return ret;
 }
-int less(const struct lambda* arg) {
+int less(struct lambda* arg) {
     return static_cast<int>(call(arg->first) < call(arg->second));
 }
-int sub(const struct lambda* arg) {
+int sub(struct lambda* arg) {
     return call(arg->first) - call(arg->second);
 }
-int add(const struct lambda* arg) {
+int add(struct lambda* arg) {
     return call(arg->first) + call(arg->second);
 }
 
-int fibo(const struct lambda* arg) {
+int fibo(struct lambda* arg) {
     int x = call(arg->first);
     return call(
         make(
