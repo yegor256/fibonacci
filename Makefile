@@ -24,7 +24,7 @@ SHELL=/bin/bash
 
 DIRS=asm bin reports
 CPPS = $(wildcard src/*.cpp)
-ASMS = $(subst src/,asm/,${CPPS:.cpp=.cpp.asm})
+ASMS = $(subst src/,asm/,${CPPS:.cpp=.asm})
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -55,7 +55,7 @@ cycles.txt:
 	expr 1 + $(FACTOR) \* 1000 / $$(( time -p for ((i = 0; i < 100; ++i)); do cat Makefile | sha1sum > /dev/null; done ) 2>&1 | head -1 | cut -f2 -d' ' | tr -d .) > cycles.txt
 	cat cycles.txt
 
-asm/%.cpp.asm: src/%.cpp src/*.h cycles.txt
+asm/%.asm: src/%.cpp src/*.h cycles.txt
 	clang++ -S -O3 -DINPUT=$(INPUT) -DCYCLES=$$(cat cycles.txt) -mllvm --x86-asm-syntax=intel -o "$@" "$<"
 
 bin/%.bin: asm/%.asm
@@ -71,8 +71,8 @@ reports/%.txt: bin/%.bin Makefile
 .PHONY: clean
 clean:
 	rm -rf $(DIRS)
-	rm summary.txt
-	rm cycles.txt
+	rm -f summary.txt
+	rm -f cycles.txt
 
 $(DIRS):
 	mkdir "$@"
