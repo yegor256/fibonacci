@@ -43,10 +43,10 @@ sa: Makefile
 	cpplint --filter=-whitespace/indent $(C_SOURCES) $(CPP_SOURCES)
 
 asm/%.c.asm: %.c metrics.h
-	clang -S -mllvm --x86-asm-syntax=intel -o "$@" "$<"
+	clang -S -O3 -mllvm --x86-asm-syntax=intel -o "$@" "$<"
 
 asm/%.cpp.asm: %.cpp metrics.h
-	clang++ -S -mllvm --x86-asm-syntax=intel -o "$@" "$<"
+	clang++ -S -O3 -mllvm --x86-asm-syntax=intel -o "$@" "$<"
 
 bin/%.bin: asm/%.asm
 	clang++ -o "$@" "$<"
