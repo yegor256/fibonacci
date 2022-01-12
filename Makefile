@@ -29,13 +29,12 @@ BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
 FACTOR = 1
-CYCLES := $(shell expr $(FACTOR) \* 1000 / $$(( time -p for ((i = 0; i < 100; ++i)); do cat Makefile | sha1sum > /dev/null; done ) 2>&1 | head -1 | cut -f2 -d' ' | tr -d .))
 INPUT = 27
 
-summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) sa Makefile
+summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) cycles.txt sa Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
 	date > summary.txt
-	echo "CYCLES=$(CYCLES)" >> summary.txt
+	echo "CYCLES=$$(cat cycles.txt)" >> summary.txt
 	echo "INPUT=$(INPUT)" >> summary.txt
 	echo >> summary.txt
 	for r in $(REPORTS); do cat $${r}; done >> summary.txt
@@ -44,8 +43,6 @@ summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) sa Makefile
 env:
 	clang++ --version
 	$(MAKE) -version
-	echo "CYCLES=$(CYCLES)"
-	echo "INPUT=$(INPUT)"
 
 sa: Makefile
 	# cpplint --quiet --filter=-whitespace/indent src/*
@@ -54,8 +51,11 @@ sa: Makefile
 		'-checks=*,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
 		src/*
 
-asm/%.cpp.asm: src/%.cpp src/*.h
-	clang++ -S -O3 -DINPUT=$(INPUT) -DCYCLES=$(CYCLES) -mllvm --x86-asm-syntax=intel -o "$@" "$<"
+cycles.txt:
+	expr $(FACTOR) \* 1000 / $$(( time -p for ((i = 0; i < 100; ++i)); do cat Makefile | sha1sum > /dev/null; done ) 2>&1 | head -1 | cut -f2 -d' ' | tr -d .) > cycles.txt
+
+asm/%.cpp.asm: src/%.cpp src/*.h cycles.txt
+	clang++ -S -O3 -DINPUT=$(INPUT) -DCYCLES=$$(cat cycles.txt) -mllvm --x86-asm-syntax=intel -o "$@" "$<"
 
 bin/%.bin: asm/%.asm
 	clang++ -o "$@" "$<"
@@ -70,6 +70,8 @@ reports/%.txt: bin/%.bin Makefile
 .PHONY: clean
 clean:
 	rm -rf $(DIRS)
+	rm summary.txt
+	rm cycles.txt
 
 $(DIRS):
 	mkdir "$@"

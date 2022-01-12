@@ -59,7 +59,15 @@ Lambda* integer(int x) {
 }
 
 int iff(const struct lambda* arg) {
-    return call(arg->first) ? call(arg->second) : call(arg->third);
+    int ret;
+    if (call(arg->first) == 1) {
+        ret = call(arg->second);
+        free(arg->third);
+    } else {
+        ret = call(arg->third);
+        free(arg->second);
+    }
+    return ret;
 }
 int less(const struct lambda* arg) {
     return static_cast<int>(call(arg->first) < call(arg->second));
