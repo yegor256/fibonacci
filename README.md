@@ -1,4 +1,4 @@
-[![new](https://github.com/yegor256/fibonacci/actions/workflows/new.yml/badge.svg)](https://github.com/yegor256/fibonacci/actions/workflows/new.yml)
+[![new](https://github.com/yegor256/fibonacci/actions/workflows/make.yml/badge.svg)](https://github.com/yegor256/fibonacci/actions/workflows/make.yml)
 
 Here we compare Fibonacci algorithm implemented in
 different programming languages in order to understand
