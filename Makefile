@@ -56,7 +56,7 @@ cycles.txt:
 	cat cycles.txt
 
 asm/%.asm: src/%.cpp src/*.h cycles.txt
-	clang++ -S -O3 -DINPUT=$(INPUT) -DCYCLES=$$(cat cycles.txt) -mllvm --x86-asm-syntax=intel -o "$@" "$<"
+	clang++ -S -DINPUT=$(INPUT) -DCYCLES=$$(cat cycles.txt) -mllvm --x86-asm-syntax=intel -o "$@" "$<"
 
 bin/%.bin: asm/%.asm
 	clang++ -o "$@" "$<"
