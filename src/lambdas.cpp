@@ -22,7 +22,7 @@
 #include "./main.h"
 
 struct lambda;
-typedef int (*func) (const struct lambda*);
+using func = int (*) (const struct lambda*);
 struct lambda {
     func body;
     int data;
@@ -42,7 +42,8 @@ int call(const struct lambda* l) {
     return ret;
 }
 
-struct lambda* make(func body, struct lambda* a, struct lambda* b, struct lambda* c) {
+struct lambda* make(func body, struct lambda* a,
+    struct lambda* b, struct lambda* c) {
     auto* l = static_cast<lambda*>(malloc(sizeof(lambda)));
     l->body = body;
     l->first = a;
@@ -88,8 +89,12 @@ int fibo(const struct lambda* arg) {
             integer(1),
             make(
                 add,
-                make(fibo, make(sub, integer(x), integer(1), nullptr), nullptr, nullptr),
-                make(fibo, make(sub, integer(x), integer(2), nullptr), nullptr, nullptr),
+                make(fibo,
+                    make(sub, integer(x), integer(1), nullptr),
+                    nullptr, nullptr),
+                make(fibo,
+                    make(sub, integer(x), integer(2), nullptr),
+                    nullptr, nullptr),
                 nullptr)));
 }
 
