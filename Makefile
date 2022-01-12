@@ -19,7 +19,7 @@ env:
 	 $(MAKE) -version | cat | head -1
 
 sa:
-	clang-tidy '-checks=*,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' '-warnings-as-errors=*' $(C_SOURCES) $(CPP_SOURCES)
+	clang-tidy -format-style=google '-checks=*,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' '-warnings-as-errors=*' $(C_SOURCES) $(CPP_SOURCES)
 
 asm/%.c.asm: %.c metrics.h
 	clang -S -mllvm --x86-asm-syntax=intel -o "$@" "$<"
