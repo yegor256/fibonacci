@@ -39,8 +39,11 @@ env:
 	 $(MAKE) -version
 
 sa: Makefile
-	clang-tidy -quiet -header-filter=none '-checks=*,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' '-warnings-as-errors=*' $(C_SOURCES) $(CPP_SOURCES)
 	cpplint --filter=-whitespace/indent $(C_SOURCES) $(CPP_SOURCES)
+	# '-warnings-as-errors=*'
+	clang-tidy -quiet -header-filter=none \
+		'-checks=*,-misc-no-recursion,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
+		$(C_SOURCES) $(CPP_SOURCES)
 
 asm/%.c.asm: %.c metrics.h
 	clang -S -O3 -mllvm --x86-asm-syntax=intel -o "$@" "$<"
