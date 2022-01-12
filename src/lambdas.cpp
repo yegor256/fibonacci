@@ -31,6 +31,18 @@ struct lambda {
     struct lambda* third;
 };
 
+void free(const struct lambda* l) {
+    if (l->first != nullptr) {
+        free(l->first);
+    }
+    if (l->second != nullptr) {
+        free(l->first);
+    }
+    if (l->third != nullptr) {
+        free(l->third);
+    }
+}
+
 int call(const struct lambda* l) {
     int ret;
     if (l->body == nullptr) {
@@ -38,7 +50,7 @@ int call(const struct lambda* l) {
     } else {
         ret = l->body(l);
     }
-    free((void*) l);
+    free(l);
     return ret;
 }
 
@@ -53,9 +65,8 @@ struct lambda* make(func body, struct lambda* a,
 }
 
 struct lambda* integer(int x) {
-    auto* l = static_cast<lambda*>(malloc(sizeof(lambda)));
+    auto* l = make(nullptr, nullptr, nullptr, nullptr);
     l->data = x;
-    l->body = nullptr;
     return l;
 }
 
