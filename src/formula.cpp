@@ -20,45 +20,46 @@
 
 #include "../include/main.h"
 
-// This class represents numbers x + y * sqrt(5) with absolute accuracy, were
-// x and y are integers both
-class Sqrt5Ring {
+// This class represents numbers x + y * sqrt(modulo) with absolute accuracy,
+// were x and y are integers both
+class SqrtRing {
 private:
-  int x_;
-  int y_;
+    int x_;
+    int y_;
+    static const int modulo = 5;
 
 public:
-  Sqrt5Ring(int x, int y) : x_(x), y_(y) {}
+    SqrtRing(int x, int y) : x_(x), y_(y) {}
 
-  Sqrt5Ring operator+(const Sqrt5Ring &other) const {
-    return Sqrt5Ring(x_ + other.x_, y_ + other.y_);
-  }
+    unsigned GetY() const { return static_cast<unsigned>(y_); }
 
-  Sqrt5Ring operator*(int num) const { return Sqrt5Ring(x_ * num, y_ * num); }
-
-  int GetY() const { return y_; }
-
-  Sqrt5Ring operator*(const Sqrt5Ring &other) const {
-    return Sqrt5Ring(x_ * other.x_ + y_ * other.y_ * 5,
-                     x_ * other.y_ + y_ * other.x_);
-  }
+    friend SqrtRing Sum(const SqrtRing &first, const SqrtRing &second);
+    friend SqrtRing Mul(const SqrtRing &first, const SqrtRing &second);
 };
 
-Sqrt5Ring BinPow(const Sqrt5Ring &number, int degree) {
-  if (degree == 0) {
-    return Sqrt5Ring(1, 0);
-  }
-  if (degree % 2 == 0) {
-    auto tmp = BinPow(number, degree >> 1);
-    return tmp * tmp;
-  } else {
-    return number * BinPow(number, degree - 1);
-  }
+SqrtRing Sum(const SqrtRing &first, const SqrtRing &second) {
+    return {first.x_ + second.x_, first.y_ + second.y_};
+}
+
+SqrtRing Mul(const SqrtRing &first, const SqrtRing &second) {
+    return {first.x_ * second.x_ + first.y_ * second.y_ * SqrtRing::modulo,
+            first.x_ * second.y_ + first.y_ * second.x_};
+}
+
+SqrtRing BinPow(const SqrtRing &number, unsigned degree) {
+    if (degree == 0) {
+        return {1, 0};
+    }
+    if (degree % 2 == 0) {
+        auto tmp = BinPow(number, degree >> static_cast<unsigned>(1));
+        return Mul(tmp, tmp);
+    }
+    return Mul(number, BinPow(number, degree - 1));
 }
 
 int calc(int x) {
-  auto first = BinPow(Sqrt5Ring(1, 1), x);
-  auto second = BinPow(Sqrt5Ring(1, -1), x);
-  auto numerator = first + (second * -1);
-  return numerator.GetY() >> x;
+    auto first = BinPow(SqrtRing(1, 1), x);
+    auto second = BinPow(SqrtRing(1, -1), x);
+    auto numerator = Sum(first, Mul(second, {-1, 0}));
+    return static_cast<int>(numerator.GetY() >> static_cast<unsigned>(x));
 }
