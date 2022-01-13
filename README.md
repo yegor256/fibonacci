@@ -1,9 +1,8 @@
 [![new](https://github.com/yegor256/fibonacci/actions/workflows/make.yml/badge.svg)](https://github.com/yegor256/fibonacci/actions/workflows/make.yml)
 
 Here we compare [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_number) 
-algorithm implemented in
-different programming languages in order to understand
-which language compiles to shorter binary code and 
+algorithm implemented in C++ but in different programming styles,
+in order to understand which style compiles to shorter binary code and 
 works faster. If you can imagine some other way how this algorithm
 could be implemented in C++, don't hesitate to submit a pull request.
 
