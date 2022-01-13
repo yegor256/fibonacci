@@ -2,5 +2,5 @@
 asm/
 bin/
 reports/
+tmp/
 summary.txt
-cycles.txt
