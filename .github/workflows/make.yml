@@ -9,4 +9,4 @@ jobs:
       - run: sudo apt-get install -y clang-tidy
       - run: pip install cpplint
       - run: make sa
-      - run: make FACTOR=20
+      - run: make FACTOR=40
