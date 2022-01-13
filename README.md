@@ -4,7 +4,8 @@ Here we compare [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_number)
 algorithm implemented in
 different programming languages in order to understand
 which language compiles to shorter binary code and 
-works faster.
+works faster. If you can imagine some other way how this algorithm
+could be implemented in C++, don't hesitate to submit a pull request.
 
 To build it just run:
 
