@@ -18,24 +18,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef SRC_MAIN_H__
-#define SRC_MAIN_H__
+#ifndef INCLUDE_METRICS_H__
+#define INCLUDE_METRICS_H__
 
-#include <stdio.h>
-#include "./metrics.h"
+// The Fibonacci number we are trying to calculate
+#ifndef INPUT
+#define INPUT 25
+#endif  // INPUT
 
-int calc(int);
+// The number of loop cycles that calculate Fibonacci number
+#ifndef CYCLES
+#define CYCLES 50
+#endif  // CYCLES
 
-int main() {
-    int total = 0;
-    int fibo = 0;
-    for (int i = 0; i < CYCLES; ++i) {
-        fibo = calc(INPUT);
-        total += fibo;
-    }
-    printf(
-        "%d-th Fibonacci number is %d; total is %d\n",
-        INPUT, fibo, total);
-}
-
-#endif  // SRC_MAIN_H__
+#endif  // INCLUDE_METRICS_H__

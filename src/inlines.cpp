@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "./main.h"
+#include "../include/main.h"
 
 inline int less(int a, int b) {
     return static_cast<int>(a < b);

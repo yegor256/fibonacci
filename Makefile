@@ -53,17 +53,17 @@ env:
 	$(MAKE) -version
 
 sa: Makefile
-	cpplint --quiet --filter=-whitespace/indent src/*
+	cpplint --quiet --filter=-whitespace/indent src/*.cpp include/*.h
 	clang-tidy -quiet -header-filter=none \
 		'-warnings-as-errors=*' \
 		'-checks=*,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
-		src/*
+		src/*.cpp include/*.h
 
 $(CYCLES):
 	expr 1 + $(FACTOR) \* 1000 / $$(( time -p for ((i = 0; i < 100; ++i)); do cat Makefile | sha1sum > /dev/null; done ) 2>&1 | head -1 | cut -f2 -d' ' | tr -d .) > $(CYCLES)
 	cat $(CYCLES)
 
-asm/%.asm: src/%.cpp src/*.h $(CYCLES)
+asm/%.asm: src/%.cpp include/*.h $(CYCLES)
 	$(CC) $(CCFLAGS) -S -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES)) -o "$@" "$<"
 
 bin/%.bin: asm/%.asm

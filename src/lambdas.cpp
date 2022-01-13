@@ -19,7 +19,7 @@
 // SOFTWARE.
 
 #include <cstdlib>
-#include "./main.h"
+#include "../include/main.h"
 
 struct lambda;
 using func = int (*) (struct lambda*);
