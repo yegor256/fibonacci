@@ -18,25 +18,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#include <array>
 #include "../include/main.h"
-struct matrix2on2 {
-  matrix2on2 operator*(const matrix2on2 &m) const {
-    return matrix2on2({a * m.a + b * m.c, a * m.b + b * m.d, c * m.a + d * m.c,
-                       c * m.b + d * m.d});
-  }
-  int a, b, c, d;
-};
+using matrix2on2 = std::array<int, 4>;
+matrix2on2 mul(const matrix2on2 &first, const matrix2on2 &second) {
+  matrix2on2 res;
+  res[0] = first[0] * second[0] + first[1] * second[2];
+  res[1] = first[0] * second[1] + first[1] * second[3];
+  res[2] = first[2] * second[0] + first[3] * second[2];
+  res[3] = first[2] * second[1] + first[3] * second[3];
+  return res;
+}
 const matrix2on2 IDENTITY_MATRIX = {1, 0, 0, 1};
 // See https://e-maxx.ru/algo/binary_pow
 matrix2on2 binpow(matrix2on2 a, int n) {
+  matrix2on2 result {};
   if (n == 0) {
-    return IDENTITY_MATRIX;
+    result = IDENTITY_MATRIX;
   } else if (n % 2 == 1) {
-    return binpow(a, n - 1) * a;
+    result = mul(binpow(a, n - 1), a);
   } else {
     matrix2on2 b = binpow(a, n / 2);
-    return b * b;
+    result = mul(b, b);
   }
+  return result;
 }
 // See https://e-maxx.ru/algo/fibonacci_numbers#8
 int calc(int n) {
@@ -44,6 +49,6 @@ int calc(int n) {
   matrix2on2 factor = {0, 1, 1, 1};
   matrix2on2 multiplier = binpow(factor, n);
   matrix2on2 base = {0, 1, 0, 0};
-  int result = (base * multiplier).a;
+  int result = mul(base, multiplier)[0];
   return result;
 }

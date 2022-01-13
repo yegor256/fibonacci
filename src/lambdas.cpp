@@ -20,10 +20,10 @@
 
 #include <cstdlib>
 #include "../include/main.h"
-
+constexpr size_t PROPER_ALIGMENT = 64;
 struct lambda;
 using func = int (*) (struct lambda*);
-struct lambda {
+struct __attribute__((aligned(PROPER_ALIGMENT))) lambda {
     func body;
     int data;
     struct lambda* first;
