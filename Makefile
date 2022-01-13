@@ -22,6 +22,9 @@ SHELL=/bin/bash
 .ONESHELL:
 .SHELLFLAGS = -e -o pipefail -c
 
+FACTOR = 1
+INPUT = 27
+
 CC=clang++
 CCFLAGS=-mllvm --x86-asm-syntax=intel -O3
 
@@ -31,9 +34,6 @@ ASMS = $(subst src/,asm/,${CPPS:.cpp=.asm})
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 CYCLES=tmp/cycles.txt
-
-FACTOR = 1
-INPUT = 27
 
 summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) $(CYCLES) Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
