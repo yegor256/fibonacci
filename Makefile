@@ -22,6 +22,8 @@ SHELL=/bin/bash
 .ONESHELL:
 .SHELLFLAGS = -e -o pipefail -c
 
+CC=clang++
+
 DIRS=asm bin reports tmp
 CPPS = $(wildcard src/*.cpp)
 ASMS = $(subst src/,asm/,${CPPS:.cpp=.asm})
@@ -57,10 +59,10 @@ $(CYCLES):
 	cat $(CYCLES)
 
 asm/%.asm: src/%.cpp src/*.h $(CYCLES)
-	clang++ -S -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES)) -mllvm --x86-asm-syntax=intel -o "$@" "$<"
+	$(CC) -S -mllvm --x86-asm-syntax=intel -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES)) -o "$@" "$<"
 
 bin/%.bin: asm/%.asm
-	clang++ -o "$@" "$<"
+	$(CC) -o "$@" "$<"
 
 reports/%.txt: bin/%.bin Makefile
 	{ time -p "$<" > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ' > "${@:.txt=.time}"
