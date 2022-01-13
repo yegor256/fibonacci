@@ -20,49 +20,45 @@
 
 #include "../include/main.h"
 
-
 // This class represents numbers x + y * sqrt(5) with absolute accuracy, were
 // x and y are integers both
 class Sqrt5Ring {
 private:
-    int x_;
-    int y_;
+  int x_;
+  int y_;
 
 public:
-    Sqrt5Ring(int x, int y) : x_(x) , y_(y) { }
+  Sqrt5Ring(int x, int y) : x_(x), y_(y) {}
 
-    Sqrt5Ring operator + (const Sqrt5Ring& other) const {
-        return Sqrt5Ring(x_ + other.x_, y_ + other.y_);
-    }
+  Sqrt5Ring operator+(const Sqrt5Ring &other) const {
+    return Sqrt5Ring(x_ + other.x_, y_ + other.y_);
+  }
 
-    Sqrt5Ring operator * (int num) const {
-        return Sqrt5Ring(x_ * num, y_ * num); 
-    }
+  Sqrt5Ring operator*(int num) const { return Sqrt5Ring(x_ * num, y_ * num); }
 
-    int GetY() const {
-        return y_;
-    }
+  int GetY() const { return y_; }
 
-    Sqrt5Ring operator * (const Sqrt5Ring& other) const {
-        return Sqrt5Ring(x_ * other.x_ + y_ * other.y_ * 5, x_ * other.y_ + y_ * other.x_);
-    }
+  Sqrt5Ring operator*(const Sqrt5Ring &other) const {
+    return Sqrt5Ring(x_ * other.x_ + y_ * other.y_ * 5,
+                     x_ * other.y_ + y_ * other.x_);
+  }
 };
 
-Sqrt5Ring BinPow(const Sqrt5Ring& number, int degree) {
-    if (degree == 0) {
-        return Sqrt5Ring(1, 0);
-    }
-    if (degree % 2 == 0) {
-        auto tmp = BinPow(number, degree >> 1);
-        return tmp * tmp;
-    } else {
-        return number * BinPow(number, degree - 1);
-    }
+Sqrt5Ring BinPow(const Sqrt5Ring &number, int degree) {
+  if (degree == 0) {
+    return Sqrt5Ring(1, 0);
+  }
+  if (degree % 2 == 0) {
+    auto tmp = BinPow(number, degree >> 1);
+    return tmp * tmp;
+  } else {
+    return number * BinPow(number, degree - 1);
+  }
 }
 
 int calc(int x) {
-    auto first = BinPow(Sqrt5Ring(1, 1), x);
-    auto second = BinPow(Sqrt5Ring(1, -1), x);
-    auto numerator = first + (second * -1);
-    return numerator.GetY() >> x;
+  auto first = BinPow(Sqrt5Ring(1, 1), x);
+  auto second = BinPow(Sqrt5Ring(1, -1), x);
+  auto numerator = first + (second * -1);
+  return numerator.GetY() >> x;
 }
