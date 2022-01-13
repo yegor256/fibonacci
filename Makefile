@@ -21,6 +21,7 @@
 SHELL=/bin/bash
 .ONESHELL:
 .SHELLFLAGS = -e -o pipefail -c
+.PHONY: clean
 
 FACTOR = 1
 INPUT = 27
@@ -77,7 +78,6 @@ reports/%.txt: bin/%.bin Makefile
 		echo ""
 	} >> "$@"
 
-.PHONY: clean
 clean:
 	rm -rf $(DIRS)
 	rm -f summary.txt
