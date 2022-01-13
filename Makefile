@@ -27,7 +27,7 @@ FACTOR = 1
 INPUT = 27
 
 CC=clang++
-CCFLAGS=-mllvm --x86-asm-syntax=intel -O3
+CCFLAGS=-mllvm --x86-asm-syntax=intel
 
 DIRS=asm bin reports tmp
 CPPS = $(wildcard src/*.cpp)
