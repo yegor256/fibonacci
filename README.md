@@ -20,5 +20,14 @@ To make test more intensive and run five times more cycles, do this:
 $ make FACTOR=5
 ```
 
-You will need to have [Clang](https://clang.llvm.org) 
+To analyze the quality of the code in this repo and make sure
+there are no hidden defects, run all static analyzers and style checkers:
+
+```bash
+$ make sa
+```
+
+You need to have [Clang](https://clang.llvm.org),
+[Make](https://www.gnu.org/software/make/),
+[Clang-Tidy](https://clang.llvm.org/extra/clang-tidy/),
 and [cpplint](https://github.com/cpplint/cpplint) installed.
