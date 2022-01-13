@@ -23,6 +23,7 @@ SHELL=/bin/bash
 .SHELLFLAGS = -e -o pipefail -c
 
 CC=clang++
+CCFLAGS=-mllvm --x86-asm-syntax=intel -O3
 
 DIRS=asm bin reports tmp
 CPPS = $(wildcard src/*.cpp)
@@ -38,6 +39,7 @@ summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) $(CYCLES) Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
 	{
 		date
+		clang++ --version | head -1
 		echo "CYCLES=$$(cat $(CYCLES))"
 		echo "INPUT=$(INPUT)"
 		echo
@@ -61,10 +63,10 @@ $(CYCLES):
 	cat $(CYCLES)
 
 asm/%.asm: src/%.cpp src/*.h $(CYCLES)
-	$(CC) -S -mllvm --x86-asm-syntax=intel -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES)) -o "$@" "$<"
+	$(CC) $(CCFLAGS) -S -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES)) -o "$@" "$<"
 
 bin/%.bin: asm/%.asm
-	$(CC) -o "$@" "$<"
+	$(CC) $(CCFLAGS) -o "$@" "$<"
 
 reports/%.txt: bin/%.bin Makefile
 	{ time -p "$<" > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ' > "${@:.txt=.time}"
