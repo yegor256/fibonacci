@@ -39,7 +39,7 @@ summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) $(CYCLES) Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
 	{
 		date
-		clang++ --version | head -1
+		$(CC) --version | head -1
 		echo "CYCLES=$$(cat $(CYCLES))"
 		echo "INPUT=$(INPUT)"
 		echo
@@ -48,7 +48,7 @@ summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) $(CYCLES) Makefile
 	cat "$@"
 
 env:
-	clang++ --version
+	$(CC) --version
 	$(MAKE) -version
 
 sa: Makefile
