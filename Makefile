@@ -39,7 +39,7 @@ summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) $(CYCLES) Makefile
 	{
 		date
 		echo "CYCLES=$$(cat $(CYCLES))"
-		echo "INPUT=$(INPUT)" >> summary.txt
+		echo "INPUT=$(INPUT)"
 		echo
 		for r in $(REPORTS); do cat $${r}; done
 	} > summary.txt
