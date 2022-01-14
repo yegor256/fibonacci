@@ -67,7 +67,7 @@ $(CYCLES): $(DIRS) Makefile
 asm/%.asm: src/%.cpp include/*.h $(CYCLES)
 	$(CC) $(CCFLAGS) -S -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES)) -o "$@" "$<"
 
-bin/%.bin: asm/%.asm
+bin/%.bin: src/%.cpp include/*.h $(CYCLES)
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
 reports/%.txt: bin/%.bin Makefile
