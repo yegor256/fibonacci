@@ -8,4 +8,5 @@ jobs:
       - uses: actions/checkout@v2
       - run: sudo apt-get update -y
       - run: sudo apt-get install -y clang
-      - run: make INPUT=256 FACTOR=128
+      - run: make clean
+      - run: make INPUT=64 FACTOR=64
