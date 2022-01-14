@@ -76,7 +76,7 @@ reports/%.txt: bin/%.bin Makefile
 	  	echo "Instructions: $$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)"
 		echo "Time: $$(cat "${@:.txt=.time}")"
 		echo ""
-	} >> "$@"
+	} > "$@"
 
 clean:
 	rm -rf $(DIRS)
