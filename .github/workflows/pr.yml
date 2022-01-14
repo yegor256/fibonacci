@@ -1,0 +1,12 @@
+name: quick make
+on:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt-get install -y clang-tidy
+      - run: pip install cpplint
+      - run: make sa
+      - run: make FACTOR=0
