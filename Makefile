@@ -68,7 +68,7 @@ asm/%.asm: src/%.cpp include/*.h $(CYCLES)
 	$(CC) $(CCFLAGS) -S -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES)) -o "$@" "$<"
 
 bin/%.bin: src/%.cpp include/*.h $(CYCLES)
-	$(CC) $(CCFLAGS) -o -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES)) "$@" "$<"
+	$(CC) $(CCFLAGS) -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES)) -o "$@" "$<"
 
 reports/%.txt: bin/%.bin Makefile
 	{ time -p "$<" > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ' > "${@:.txt=.time}"
