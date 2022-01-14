@@ -27,7 +27,7 @@ FACTOR = 1
 INPUT = 27
 
 CC=clang++
-CCFLAGS=-mllvm --x86-asm-syntax=intel
+CCFLAGS=-mllvm --x86-asm-syntax=intel -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES))
 
 DIRS=asm bin reports tmp
 CPPS = $(wildcard src/*.cpp)
@@ -65,10 +65,10 @@ $(CYCLES): $(DIRS) Makefile
 	cat $(CYCLES)
 
 asm/%.asm: src/%.cpp include/*.h $(CYCLES)
-	$(CC) $(CCFLAGS) -S -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES)) -o "$@" "$<"
+	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
 bin/%.bin: src/%.cpp include/*.h $(CYCLES)
-	$(CC) $(CCFLAGS) -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES)) -o "$@" "$<"
+	$(CC) $(CCFLAGS) -o "$@" "$<"
 
 reports/%.txt: bin/%.bin Makefile
 	{ time -p "$<" > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ' > "${@:.txt=.time}"
