@@ -9,4 +9,4 @@ jobs:
       - run: sudo apt-get install -y clang-tidy clang-format cppcheck
       - run: pip install cpplint
       - run: make sa
-      - run: make FACTOR=0
+      - run: make
