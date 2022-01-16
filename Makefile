@@ -69,7 +69,7 @@ asm/%.asm: src/%.cpp include/*.h $(DIRS)
 bin/%.bin: src/%.cpp include/*.h $(DIRS)
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
-reports/%.txt: bin/%.bin Makefile $(DIRS)
+reports/%.txt: bin/%.bin $(ASMS) Makefile $(DIRS)
 	cycles=1
 	while true; do
 		time=$$({ time -p "$<" $(INPUT) $${cycles} | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
@@ -92,7 +92,7 @@ reports/%.txt: bin/%.bin Makefile $(DIRS)
 
 clean:
 	rm -rf $(DIRS)
-	rm -f summary.txt
+	rm -f summary.txt summary.csv
 
 $(DIRS):
 	mkdir "$@"
