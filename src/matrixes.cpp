@@ -29,6 +29,7 @@ int fibonacci(int n) {
     while (n != 0) {
         if ((n & 1) != 0) { // NOLINT
             tmp.at(0).fill(0);
+            // cppcheck-suppress containerOutOfBounds
             tmp.at(1).fill(0);
             for (size_t i = 0; i < size; i++) {
                 for (size_t j = 0; j < size; j++) {
@@ -45,6 +46,7 @@ int fibonacci(int n) {
             }
         }
         tmp.at(0).fill(0);
+        // cppcheck-suppress containerOutOfBounds
         tmp.at(1).fill(0);
         for (size_t i = 0; i < size; i++) {
             for (size_t j = 0; j < size; j++) {

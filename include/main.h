@@ -28,14 +28,14 @@ int calc(int);
 
 int main() {
     int total = 0;
-    int fibo = 0;
+    int f = 0;
     for (int i = 0; i < CYCLES; ++i) {
-        fibo = calc(INPUT);
-        total += fibo;
+        f = calc(INPUT);
+        total += f;
     }
     printf(
         "%d-th Fibonacci number is %d; total is %d\n",
-        INPUT, fibo, total);
+        INPUT, f, total);
 }
 
 #endif  // INCLUDE_MAIN_H__

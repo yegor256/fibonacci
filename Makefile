@@ -53,11 +53,13 @@ env:
 	$(MAKE) -version
 
 sa: Makefile
-	cpplint --filter=-whitespace/indent src/*.cpp include/*.h
+	targets="include/*.h src/*.cpp"
+	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 $${targets}
+	cpplint --filter=-whitespace/indent $${targets}
 	clang-tidy -header-filter=none \
 		'-warnings-as-errors=*' \
 		'-checks=*,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
-		src/*.cpp include/*.h
+		$${targets}
 
 $(CYCLES): $(DIRS) Makefile
 	x=$$(( time -p for ((i = 0; i < 100; ++i)); do cat Makefile | sha1sum > /dev/null; done ) 2>&1 | head -1 | cut -f2 -d' ' | tr -d .)
