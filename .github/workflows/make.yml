@@ -1,6 +1,9 @@
 name: make
 on:
   push:
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: self-hosted
