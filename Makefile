@@ -54,8 +54,9 @@ env:
 
 sa: Makefile
 	targets="include/*.h src/*.cpp"
+	diff -u <(cat $${targets}) <(clang-format $${targets})
 	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 $${targets}
-	cpplint --filter=-whitespace/indent $${targets}
+	cpplint --extensions=cpp --filter=-whitespace/indent $${targets}
 	clang-tidy -header-filter=none \
 		'-warnings-as-errors=*' \
 		'-checks=*,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
