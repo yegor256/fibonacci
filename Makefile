@@ -70,15 +70,16 @@ reports/%.txt: bin/%.bin Makefile
 	while true; do
 		time=$$({ time -p "$<" $(INPUT) $${cycles} | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
 		echo $${time} > "${@:.txt=.time}"
-		if [ "$$(echo $${time} | cut -f1 -d.)" != "0" ]; then break; fi
 		echo "cycles=$${cycles}; time=$${time}"
+		if [ "$$(echo $${time} | cut -f1 -d.)" != "0" ]; then break; fi
 		cycles=$$(expr $${cycles} \* 2)
 	done
 	{
 	  	echo "$<:"
 	  	echo "Instructions: $$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)"
 		echo "Cycles: $${cycles}"
-		echo "Time: $$(cat "${@:.txt=.time}")"
+		echo "Time: $${time}"
+		echo "Per cycle: $$(echo "scale = 16 ; $${time} / $${cycles}" | bc)"
 		echo ""
 	} > "$@"
 
