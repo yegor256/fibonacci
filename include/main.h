@@ -27,11 +27,14 @@
 
 int calc(int);
 
+// see https://stackoverflow.com/questions/70686140
+volatile int dummy = 0;
+
 int main() {
   int total = 0;
   int f = 0;
   for (int i = 0; i < CYCLES; ++i) {
-    f = calc(INPUT);
+    f = calc(INPUT + dummy);
     total += f;
   }
   printf("%d-th Fibonacci number is %d; total is %d\n", INPUT, f, total);

@@ -27,7 +27,7 @@ FACTOR = 1
 INPUT = 27
 
 CC=clang++
-CCFLAGS=-mllvm --x86-asm-syntax=intel -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES))
+CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES))
 
 DIRS=asm bin reports tmp
 CPPS = $(wildcard src/*.cpp)
