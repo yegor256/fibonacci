@@ -14,12 +14,6 @@ $ make
 
 The result will be in `summary.txt` file.
 
-To make test more intensive and run five times more cycles, do this:
-
-```bash
-$ make FACTOR=5
-```
-
 To analyze the quality of the code in this repo and make sure
 there are no hidden defects, run all static analyzers and style checkers:
 
