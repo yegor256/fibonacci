@@ -84,9 +84,15 @@ private:
 
 
 template <class T>
-typename Computation<T>::ptr forceP(Computation<T>* c) {
-    return cptr(new Value<T>(Interpret<T>(cptr(c)).get()));
-}
+class Force : public Interpret <T> {
+public:
+        explicit Force(typename Computation<T>::ptr c) : Interpret<T>(c) {}
+        explicit Force(Computation<T>* c) : Interpret<T>(cptr(c)) {}
+
+        typename Computation<T>::ptr ptr() {
+            return cptr(new Value<T>(this->get()));
+        }
+};
 
 
 class Bool : public Value<bool> {
@@ -112,9 +118,8 @@ public:
             m_els(std::move(els)),
             Computation<T>() {}
     typename Computation<T>::ptr eval() override {
-        Interpret<bool> pred_result = Interpret<bool>(m_pred);
         typename Computation<T>::ptr res;
-        if (pred_result.get()) {
+        if (Force<bool>(m_pred).get()) {
             res = m_thn;
         } else {
             res = m_els;
@@ -195,11 +200,11 @@ public:
             cptr(new LT<int>(m_n, cptr(new Int(1)))),
             m_a,
             cptr(new FiboDyn(
-                       forceP<int>(new Add<int>(
-                                     m_n,
-                                     cptr(new Int(-1)))),
+                       Force<int>(new Add<int>(
+                                    m_n,
+                                    cptr(new Int(-1)))).ptr(),
                        m_b,
-                       forceP<int>(new Add<int>(m_a, m_b))))));
+                       Force<int>(new Add<int>(m_a, m_b)).ptr()))));
     }
     ~FiboDyn() override = default;
 
