@@ -63,7 +63,6 @@ private:
 
 class First : public Fibo {
 public:
-    explicit First() {}
     int get() override {
         return 1;
     }
