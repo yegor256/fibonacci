@@ -139,9 +139,7 @@ class BinaryOp : public Computation<B> {
 public:
     ~BinaryOp() override =  default;
     typename Computation<B>::ptr eval() override {
-        Interpret<A> l_r = Interpret<A>(m_left);
-        Interpret<A> r_r = Interpret<A>(m_right);
-        return cptr<B>(op(&l_r, &r_r));
+        return cptr<B>(op(Force<A>(m_left).get(), Force<A>(m_right).get()));
     }
 protected:
     BinaryOp(typename Computation<A>::ptr left,
@@ -149,8 +147,7 @@ protected:
         m_left(std::move(left)),
         m_right(std::move(right)),
         Computation<B>() {}
-    virtual Computation<B>* op(__attribute__((unused)) Interpret<A>* l,
-                               __attribute__((unused)) Interpret<A>* r) {
+    virtual Computation<B>* op(A /* l */, A /* r */) {
             return nullptr;
     }
 private:
@@ -166,23 +163,21 @@ public:
        typename Computation<T>::ptr right) :
         BinaryOp<T, bool>(left, right) {}
 protected:
-    Bool* op(Interpret<T>* l, Interpret<T>* r) override {
-        T lt = l->get();
-        T rt = r->get();
-        return new Bool(lt < rt);
+    Bool* op(T l, T r) override {
+        return new Bool(l < r);
     }
 };
 
 
 template <class T>
-class Add : public BinaryOp<T, T> {
+class Sum : public BinaryOp<T, T> {
 public:
-    Add(typename Computation<T>::ptr left,
+    Sum(typename Computation<T>::ptr left,
         typename Computation<T>::ptr right) :
             BinaryOp<T, T>(left, right) {}
 protected:
-    Value<T>* op(Interpret<T>* l, Interpret<T>* r) override {
-            return new Value<T>(l->get() + r->get());
+    Value<T>* op(T l, T r) override {
+            return new Value<T>(l + r);
     };
 };
 
@@ -200,11 +195,11 @@ public:
             cptr(new LT<int>(m_n, cptr(new Int(1)))),
             m_a,
             cptr(new FiboDyn(
-                       Force<int>(new Add<int>(
+                       Force<int>(new Sum<int>(
                                     m_n,
                                     cptr(new Int(-1)))).ptr(),
                        m_b,
-                       Force<int>(new Add<int>(m_a, m_b)).ptr()))));
+                       Force<int>(new Sum<int>(m_a, m_b)).ptr()))));
     }
     ~FiboDyn() override = default;
 
