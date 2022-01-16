@@ -27,7 +27,7 @@ FACTOR = 1
 INPUT = 27
 
 CC=clang++
-CCFLAGS=-mllvm --x86-asm-syntax=intel -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES))
+CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES))
 
 DIRS=asm bin reports tmp
 CPPS = $(wildcard src/*.cpp)
@@ -53,11 +53,14 @@ env:
 	$(MAKE) -version
 
 sa: Makefile
-	cpplint --quiet --filter=-whitespace/indent src/*.cpp include/*.h
-	clang-tidy -quiet -header-filter=none \
+	targets="include/*.h src/*.cpp"
+	diff -u <(cat $${targets}) <(clang-format --style=Google $${targets})
+	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 $${targets}
+	cpplint --extensions=cpp --filter=-whitespace/indent $${targets}
+	clang-tidy -header-filter=none \
 		'-warnings-as-errors=*' \
-		'-checks=*,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
-		src/*.cpp include/*.h
+		'-checks=*,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
+		$${targets}
 
 $(CYCLES): $(DIRS) Makefile
 	x=$$(( time -p for ((i = 0; i < 100; ++i)); do cat Makefile | sha1sum > /dev/null; done ) 2>&1 | head -1 | cut -f2 -d' ' | tr -d .)

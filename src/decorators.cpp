@@ -1,4 +1,4 @@
-// Copyright (c) 2022 yistarostin
+// Copyright (c) 2022 Yegor Bugayenko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -18,38 +18,50 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include <array>
-
 #include "../include/main.h"
-using matrix2on2 = std::array<int, 4>;
-matrix2on2 mul(const matrix2on2 &first, const matrix2on2 &second) {
-  matrix2on2 res;
-  res[0] = first[0] * second[0] + first[1] * second[2];
-  res[1] = first[0] * second[1] + first[1] * second[3];
-  res[2] = first[2] * second[0] + first[3] * second[2];
-  res[3] = first[2] * second[1] + first[3] * second[3];
-  return res;
-}
-const matrix2on2 IDENTITY_MATRIX = {1, 0, 0, 1};
-// See https://e-maxx.ru/algo/binary_pow
-matrix2on2 binpow(matrix2on2 a, int n) {
-  matrix2on2 result{};
-  if (n == 0) {
-    result = IDENTITY_MATRIX;
-  } else if (n % 2 == 1) {
-    result = mul(binpow(a, n - 1), a);
-  } else {
-    matrix2on2 b = binpow(a, n / 2);
-    result = mul(b, b);
+
+class Fibo {
+ public:
+  virtual ~Fibo() = default;
+  virtual int get() = 0;
+  virtual Fibo* next() = 0;
+};
+
+class Other : public Fibo {
+ public:
+  explicit Other(Fibo* a, Fibo* b) : first(a), second(b) {}
+  ~Other() override { delete first; }
+  int get() override { return first->get() + second->get(); }
+  Fibo* next() override { return new Other(second, this); }
+
+ private:
+  Fibo* first;
+  Fibo* second;
+};
+
+class Second : public Fibo {
+ public:
+  explicit Second(Fibo* f) : first(f) {}
+  ~Second() override { delete first; }
+  int get() override { return 1; }
+  Fibo* next() override { return new Other(first, this); }
+
+ private:
+  Fibo* first;
+};
+
+class First : public Fibo {
+ public:
+  int get() override { return 1; }
+  Fibo* next() override { return new Second(this); }
+};
+
+int calc(int x) {
+  Fibo* f = new First();
+  for (int i = 0; i < x; ++i) {
+    f = f->next();
   }
-  return result;
-}
-// See https://e-maxx.ru/algo/fibonacci_numbers#8
-int calc(int n) {
-  n += 1;
-  matrix2on2 factor = {0, 1, 1, 1};
-  matrix2on2 multiplier = binpow(factor, n);
-  matrix2on2 base = {0, 1, 0, 0};
-  int result = mul(base, multiplier)[0];
-  return result;
+  int r = f->get();
+  delete f;
+  return r;
 }

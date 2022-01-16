@@ -22,20 +22,22 @@
 #define INCLUDE_MAIN_H__
 
 #include <stdio.h>
+
 #include "./metrics.h"
 
 int calc(int);
 
+// see https://stackoverflow.com/questions/70686140
+volatile int dummy = 0;
+
 int main() {
-    int total = 0;
-    int fibo = 0;
-    for (int i = 0; i < CYCLES; ++i) {
-        fibo = calc(INPUT);
-        total += fibo;
-    }
-    printf(
-        "%d-th Fibonacci number is %d; total is %d\n",
-        INPUT, fibo, total);
+  int total = 0;
+  int f = 0;
+  for (int i = 0; i < CYCLES; ++i) {
+    f = calc(INPUT + dummy);
+    total += f;
+  }
+  printf("%d-th Fibonacci number is %d; total is %d\n", INPUT, f, total);
 }
 
 #endif  // INCLUDE_MAIN_H__

@@ -9,4 +9,5 @@ jobs:
       - run: sudo apt-get update -y
       - run: sudo apt-get install -y clang
       - run: make clean
+      - run: make sa
       - run: make INPUT=27 FACTOR=50
