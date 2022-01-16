@@ -32,7 +32,6 @@ public:
     explicit Other(Fibo* a, Fibo* b) : first(a), second(b) {}
     ~Other() override {
         delete first;
-        delete second;
     }
     int get() override {
         return first->get() + second->get();
@@ -76,5 +75,7 @@ int calc(int x) {
     for (int i = 0; i < x; ++i) {
         f = f->next();
     }
-    return f->get();
+    int r = f->get();
+    delete f;
+    return r;
 }
