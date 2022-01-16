@@ -23,25 +23,22 @@ SHELL=/bin/bash
 .SHELLFLAGS = -e -o pipefail -c
 .PHONY: clean
 
-FACTOR = 1
-INPUT = 27
+INPUT = 32
 
 CC=clang++
 CCFLAGS=-mllvm --x86-asm-syntax=intel -O3
 
-DIRS=asm bin reports tmp
+DIRS=asm bin reports
 CPPS = $(wildcard src/*.cpp)
 ASMS = $(subst src/,asm/,${CPPS:.cpp=.asm})
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
-CYCLES=tmp/cycles.txt
 
 summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) $(CYCLES) Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
 	{
 		date
 		$(CC) --version | head -1
-		echo "CYCLES=$$(cat $(CYCLES))"
 		echo "INPUT=$(INPUT)"
 		echo
 		for r in $(REPORTS); do cat $${r}; done
@@ -62,11 +59,6 @@ sa: Makefile
 		'-checks=*,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
 		$${targets}
 
-$(CYCLES): $(DIRS) Makefile
-	x=$$(( time -p for ((i = 0; i < 100; ++i)); do cat Makefile | sha1sum > /dev/null; done ) 2>&1 | head -1 | cut -f2 -d' ' | tr -d .)
-	expr 1 + $(FACTOR) \* 1000 / $${x} > $(CYCLES)
-	cat $(CYCLES)
-
 asm/%.asm: src/%.cpp include/*.h
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
@@ -74,10 +66,18 @@ bin/%.bin: src/%.cpp include/*.h
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
 reports/%.txt: bin/%.bin Makefile
-	{ time -p "$<" $(INPUT) $(CYCLES) > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ' > "${@:.txt=.time}"
+	cycles=1
+	while true; do
+		time=$$({ time -p "$<" $(INPUT) $${cycles} | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
+		echo $${time} > "${@:.txt=.time}"
+		if [ "$$(echo $${time} | cut -f1 -d.)" != "0" ]; then break; fi
+		echo "cycles=$${cycles}; time=$${time}"
+		cycles=$$(expr $${cycles} \* 2)
+	done
 	{
 	  	echo "$<:"
 	  	echo "Instructions: $$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)"
+		echo "Cycles: $${cycles}"
 		echo "Time: $$(cat "${@:.txt=.time}")"
 		echo ""
 	} > "$@"

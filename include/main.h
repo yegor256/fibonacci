@@ -42,8 +42,7 @@ int main(int argc, char* argv[]) {
     f = calc(input + dummy);
     total += f;
   }
-  printf("%d-th Fibonacci number is %d (%d cycles); total is %d\n", input, f,
-         cycles, total);
+  printf("%d-th Fibonacci number is %d\nTotal is %d", input, f, total);
 }
 
 #endif  // INCLUDE_MAIN_H__

@@ -29,6 +29,7 @@ $ make sa
 
 You need to have [Clang](https://clang.llvm.org),
 [Make](https://www.gnu.org/software/make/),
-[coreutils](https://www.gnu.org/software/coreutils/),
 [Clang-Tidy](https://clang.llvm.org/extra/clang-tidy/),
+[Clang-Format](https://clang.llvm.org/docs/ClangFormat.html),
+[cppcheck](https://github.com/danmar/cppcheck),
 and [cpplint](https://github.com/cpplint/cpplint) installed.
