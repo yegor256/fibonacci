@@ -27,7 +27,7 @@ FACTOR = 1
 INPUT = 27
 
 CC=clang++
-CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES))
+CCFLAGS=-mllvm --x86-asm-syntax=intel -O3
 
 DIRS=asm bin reports tmp
 CPPS = $(wildcard src/*.cpp)
@@ -59,7 +59,7 @@ sa: Makefile
 	cpplint --extensions=cpp --filter=-whitespace/indent $${targets}
 	clang-tidy -header-filter=none \
 		'-warnings-as-errors=*' \
-		'-checks=*,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
+		'-checks=*,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
 		$${targets}
 
 $(CYCLES): $(DIRS) Makefile
@@ -67,14 +67,14 @@ $(CYCLES): $(DIRS) Makefile
 	expr 1 + $(FACTOR) \* 1000 / $${x} > $(CYCLES)
 	cat $(CYCLES)
 
-asm/%.asm: src/%.cpp include/*.h $(CYCLES)
+asm/%.asm: src/%.cpp include/*.h
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
-bin/%.bin: src/%.cpp include/*.h $(CYCLES)
+bin/%.bin: src/%.cpp include/*.h
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
 reports/%.txt: bin/%.bin Makefile
-	{ time -p "$<" > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ' > "${@:.txt=.time}"
+	{ time -p "$<" $(INPUT) $(CYCLES) > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ' > "${@:.txt=.time}"
 	{
 	  	echo "$<:"
 	  	echo "Instructions: $$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)"

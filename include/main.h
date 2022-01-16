@@ -22,22 +22,28 @@
 #define INCLUDE_MAIN_H__
 
 #include <stdio.h>
-
-#include "./metrics.h"
+#include <stdlib.h>
 
 int calc(int);
 
 // see https://stackoverflow.com/questions/70686140
 volatile int dummy = 0;
 
-int main() {
+int main(int argc, char* argv[]) {
+  if (argc != 3) {
+    printf("Two args required: INPUT and CYCLES\n");
+    return 1;
+  }
   int total = 0;
   int f = 0;
-  for (int i = 0; i < CYCLES; ++i) {
-    f = calc(INPUT + dummy);
+  int input = atoi(argv[1]);
+  int cycles = atoi(argv[2]);
+  for (int i = 0; i < cycles; ++i) {
+    f = calc(input + dummy);
     total += f;
   }
-  printf("%d-th Fibonacci number is %d; total is %d\n", INPUT, f, total);
+  printf("%d-th Fibonacci number is %d (%d cycles); total is %d\n", input, f,
+         cycles, total);
 }
 
 #endif  // INCLUDE_MAIN_H__
