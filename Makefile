@@ -45,6 +45,10 @@ summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) $(CYCLES) Makefile
 	} > summary.txt
 	cat "$@"
 
+summary.csv: $(REPORTS)
+	{ for r in $(REPORTS:.txt=.csv); do cat $${r}; done } > summary.csv
+	cat summary.csv
+
 env:
 	$(CC) --version
 	$(MAKE) -version
@@ -59,29 +63,32 @@ sa: Makefile
 		'-checks=*,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
 		$${targets}
 
-asm/%.asm: src/%.cpp include/*.h
+asm/%.asm: src/%.cpp include/*.h $(DIRS)
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
-bin/%.bin: src/%.cpp include/*.h
+bin/%.bin: src/%.cpp include/*.h $(DIRS)
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
-reports/%.txt: bin/%.bin Makefile
+reports/%.txt: bin/%.bin Makefile $(DIRS)
 	cycles=1
 	while true; do
 		time=$$({ time -p "$<" $(INPUT) $${cycles} | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
 		echo $${time} > "${@:.txt=.time}"
 		echo "cycles=$${cycles}; time=$${time}"
-		if [ "$$(echo $${time} | cut -f1 -d.)" != "0" ]; then break; fi
+		if [ "$$(echo $${time} | cut -f1 -d.)" -gt "0" -a "$${cycles}" -gt "7" ]; then break; fi
 		cycles=$$(expr $${cycles} \* 2)
 	done
+	instructions=$$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)
+	per=$$(echo "scale = 16 ; $${time} / $${cycles}" | bc)
 	{
 	  	echo "$<:"
-	  	echo "Instructions: $$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)"
+	  	echo "Instructions: $${instructions}"
 		echo "Cycles: $${cycles}"
 		echo "Time: $${time}"
-		echo "Per cycle: $$(echo "scale = 16 ; $${time} / $${cycles}" | bc)"
+		echo "Per cycle: $${per}"
 		echo ""
 	} > "$@"
+	echo "$<,$${instructions},$${cycles},$${time},$${per}" > "${@:.txt=.csv}"
 
 clean:
 	rm -rf $(DIRS)
