@@ -20,11 +20,9 @@
 
 #include "../include/main.h"
 
-int fibo(int x) {
+int calc(int x) {
   if (x < 2) {
     return 1;
   }
-  return fibo(x - 1) + fibo(x - 2);
+  return calc(x - 1) + calc(x - 2);
 }
-
-int calc(int x) { return fibo(x); }
