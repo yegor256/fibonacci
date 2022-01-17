@@ -75,6 +75,7 @@ reports/%.txt: bin/%.bin $(ASMS) Makefile $(DIRS)
 		time=$$({ time -p "$<" $(INPUT) $${cycles} | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
 		echo $${time} > "${@:.txt=.time}"
 		echo "cycles=$${cycles}; time=$${time}"
+		if [ "$(FAST)" != "" ]; then break; fi
 		if [ "$$(echo $${time} | cut -f1 -d.)" -gt "0" -a "$${cycles}" -gt "7" ]; then break; fi
 		cycles=$$(expr $${cycles} \* 2)
 	done
