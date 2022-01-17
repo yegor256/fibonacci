@@ -80,6 +80,7 @@ bin/%.bin: rs/%.rs
 	$(RUSTC) $(RUSTFLAGS) -o "$@" "$<"
 
 reports/%.txt: bin/%.bin $(ASMS) Makefile $(DIRS)
+	"$<" 7 1
 	cycles=1
 	while true; do
 		time=$$({ time -p "$<" $(INPUT) $${cycles} | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
