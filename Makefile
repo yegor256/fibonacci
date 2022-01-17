@@ -30,7 +30,8 @@ CCFLAGS=-mllvm --x86-asm-syntax=intel -O3
 
 DIRS=asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
-ASMS = $(subst cpp/,asm/,${CPPS:.cpp=.asm})
+RUSTS = $(wildcard rs/*.rs)
+ASMS = $(subst rs/,asm/,$(subst cpp/,asm/,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm}))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -66,8 +67,14 @@ sa: Makefile
 asm/%.asm: cpp/%.cpp include/*.h $(DIRS)
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
+asm/%.asm: rs/%.rs $(DIRS)
+	rustc --emit=asm -o "$@" "$<"
+
 bin/%.bin: cpp/%.cpp include/*.h $(DIRS)
 	$(CC) $(CCFLAGS) -o "$@" "$<"
+
+bin/%.bin: rs/%.rs $(DIRS)
+	rustc -o "$@" "$<"
 
 reports/%.txt: bin/%.bin $(ASMS) Makefile $(DIRS)
 	cycles=1
@@ -89,7 +96,7 @@ reports/%.txt: bin/%.bin $(ASMS) Makefile $(DIRS)
 		echo "Per cycle: $${per}"
 		echo ""
 	} > "$@"
-	echo "$<,$${instructions},$${cycles},$${time},$${per}" > "${@:.txt=.csv}"
+	echo "${subst bin/,,$<},$${instructions},$${cycles},$${time},$${per}" > "${@:.txt=.csv}"
 
 clean:
 	rm -rf $(DIRS)
