@@ -26,7 +26,7 @@ SHELL=/bin/bash
 INPUT = 32
 
 CC=clang++
-CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 -fsanitize=leak
+CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
 RUSTC=rustc
 RUSTFLAGS=-C opt-level=3
 
