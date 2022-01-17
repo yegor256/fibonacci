@@ -20,7 +20,7 @@
 
 #include <array>
 
-#include "../include/main.h"
+#include "main.h"
 using matrix2on2 = std::array<int, 4>;
 matrix2on2 mul(const matrix2on2 &first, const matrix2on2 &second) {
   matrix2on2 res;

@@ -20,7 +20,7 @@
 
 #include <memory>
 
-#include "../include/main.h"
+#include "main.h"
 
 template <class T>
 class Computation {

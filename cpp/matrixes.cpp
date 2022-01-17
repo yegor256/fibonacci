@@ -20,7 +20,7 @@
 
 #include <array>
 
-#include "../include/main.h"
+#include "main.h"
 
 int fibonacci(int n) {
   const size_t size = 2;

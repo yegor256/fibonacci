@@ -60,16 +60,15 @@ env:
 	$(MAKE) -version
 
 sa: Makefile
-	targets="include/*.h cpp/*.cpp"
-	diff -u <(cat $${targets}) <(clang-format --style=file $${targets})
-	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 $${targets}
-	cpplint --extensions=cpp --filter=-whitespace/indent $${targets}
+	diff -u <(cat $${targets}) <(clang-format --style=file $(CPPS))
+	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 $(CPPS)
+	cpplint --extensions=cpp --filter=-whitespace/indent $(CPPS)
 	clang-tidy -header-filter=none \
 		'-warnings-as-errors=*' \
 		'-checks=*,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
-		$${targets}
+		$(CPPS)
 
-asm/%.asm: cpp/%.cpp include/*.h
+asm/%.asm: cpp/%.cpp
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
 asm/%.asm: rust/%.rs
@@ -78,7 +77,7 @@ asm/%.asm: rust/%.rs
 asm/%.asm: lisp/%.lisp
 	echo " no asm here" > "$@"
 
-bin/%.bin: cpp/%.cpp include/*.h
+bin/%.bin: cpp/%.cpp
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
 bin/%.bin: rust/%.rs
