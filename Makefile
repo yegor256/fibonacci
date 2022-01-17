@@ -33,9 +33,9 @@ RUSTFLAGS=-C opt-level=3
 
 DIRS=asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
-RUSTS = $(wildcard rs/*.rs)
+RUSTS = $(wildcard rust/*.rs)
 LISPS = $(wildcard lisp/*.lisp)
-ASMS = $(subst lisp/,asm/,$(subst rs/,asm/,$(subst cpp/,asm/,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm})))
+ASMS = $(subst lisp/,asm/,$(subst rust/,asm/,$(subst cpp/,asm/,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm})))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -72,22 +72,22 @@ sa: Makefile
 asm/%.asm: cpp/%.cpp include/*.h
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
-asm/%.asm: rs/%.rs
+asm/%.asm: rust
 	$(RUSTC) $(RUSTFLAGS) --emit=asm -o "$@" "$<"
 
 asm/%.asm: lisp/%.lisp
-	echo "No ASM here" > "$@"
+	echo " no asm here" > "$@"
 
 bin/%.bin: cpp/%.cpp include/*.h
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
-bin/%.bin: rs/%.rs
+bin/%.bin: rust
 	$(RUSTC) $(RUSTFLAGS) -o "$@" "$<"
 
 bin/%.bin: lisp/%.lisp
 	sbcl --load "$<"
 
-reports/%.txt: bin/%.bin $(ASMS) Makefile $(DIRS)
+reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
 	"$<" 7 1
 	cycles=1
 	while true; do

@@ -6,10 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
+      - uses: actions-rust/toolchain@v1
         with:
           toolchain: stable
-      - run: sudo apt-get install -y clang-tidy clang-format cppcheck bc
+      - run: sudo apt-get install -y clang-tidy clang-format cppcheck bc sbcl
       - run: pip install cpplint
       - run: make sa
       - run: make FAST=1

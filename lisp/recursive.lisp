@@ -26,8 +26,9 @@
       (fibo (- x 1))
       (fibo (- x 2)))))
 
-; (defvar x (nth 1 sb-ext:*posix-argv*))
-(defvar x 17)
+(defvar x)
+
+(defvar cycles)
 
 (defvar f 0)
 
@@ -35,7 +36,9 @@
 
 (defun main ()
   (progn
-    (loop for i from 1 to 5 do
+    (setq x (parse-integer (nth 1 sb-ext:*posix-argv*)))
+    (setq cycles (parse-integer (nth 2 sb-ext:*posix-argv*)))
+    (loop for c from 1 to cycles do
       (progn
         (setq f (fibo x)))
         (setq total (+ total f)))
@@ -46,7 +49,7 @@
       total)))
 
 (sb-ext:save-lisp-and-die
-  "bin/recursive"
+  "bin/recursive.bin"
   :toplevel
   #'main
   :executable

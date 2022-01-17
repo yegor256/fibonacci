@@ -9,10 +9,10 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
+      - uses: actions-rust/toolchain@v1
         with:
           toolchain: stable
       - run: sudo apt-get update -y
-      - run: sudo apt-get install -y clang bc
+      - run: sudo apt-get install -y clang bc sbcl
       - run: make clean
       - run: make WANTED=1024 summary.csv
