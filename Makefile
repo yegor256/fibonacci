@@ -34,7 +34,8 @@ RUSTFLAGS=-C opt-level=3
 DIRS=asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
 RUSTS = $(wildcard rs/*.rs)
-ASMS = $(subst rs/,asm/,$(subst cpp/,asm/,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm}))
+LISPS = $(wildcard lisp/*.lisp)
+ASMS = $(subst lisp/,asm/,$(subst rs/,asm/,$(subst cpp/,asm/,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm})))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -74,11 +75,17 @@ asm/%.asm: cpp/%.cpp include/*.h
 asm/%.asm: rs/%.rs
 	$(RUSTC) $(RUSTFLAGS) --emit=asm -o "$@" "$<"
 
+asm/%.asm: lisp/%.lisp
+	echo "No ASM here" > "$@"
+
 bin/%.bin: cpp/%.cpp include/*.h
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
 bin/%.bin: rs/%.rs
 	$(RUSTC) $(RUSTFLAGS) -o "$@" "$<"
+
+bin/%.bin: lisp/%.lisp
+	sbcl --load "$<"
 
 reports/%.txt: bin/%.bin $(ASMS) Makefile $(DIRS)
 	"$<" 7 1
