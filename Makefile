@@ -48,7 +48,7 @@ summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) $(CYCLES) Makefile
 	} > summary.txt
 	cat "$@"
 
-summary.csv: $(REPORTS)
+summary.csv: $(DIRS) $(REPORTS)
 	{ for r in $(REPORTS:.txt=.csv); do cat $${r}; done } > summary.csv
 	cat summary.csv
 
