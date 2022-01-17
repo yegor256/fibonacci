@@ -72,7 +72,7 @@ sa: Makefile
 asm/%.asm: cpp/%.cpp include/*.h
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
-asm/%.asm: rust
+asm/%.asm: rust/%.rs
 	$(RUSTC) $(RUSTFLAGS) --emit=asm -o "$@" "$<"
 
 asm/%.asm: lisp/%.lisp
