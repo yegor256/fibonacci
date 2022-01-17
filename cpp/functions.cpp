@@ -20,17 +20,17 @@
 
 #include "../include/main.h"
 
-bool less(int a, int b) { return a < b; }
+bool __attribute__((noinline)) less(int a, int b) { return a < b; }
 
-int sub(int a, int b) { return a - b; }
+int __attribute__((noinline)) sub(int a, int b) { return a - b; }
 
-int add(int a, int b) { return a + b; }
+int __attribute__((noinline)) add(int a, int b) { return a + b; }
 
-int fibo(int x) {
+int __attribute__((noinline)) fibo(int x) {
   if (less(x, 2)) {
     return 1;
   }
   return add(fibo(sub(x, 1)), fibo(sub(x, 2)));
 }
 
-int calc(int x) { return fibo(x); }
+int __attribute__((noinline)) calc(int x) { return fibo(x); }
