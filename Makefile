@@ -26,7 +26,7 @@ SHELL=/bin/bash
 INPUT = 32
 
 CC=clang++
-CCFLAGS=-mllvm --x86-asm-syntax=intel -O3
+CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 -fsanitize=leak
 RUSTC=rustc
 RUSTFLAGS=-O
 
@@ -54,6 +54,7 @@ summary.csv: $(DIRS) $(REPORTS)
 
 env:
 	$(CC) --version
+	$(RUSTC) --version
 	$(MAKE) -version
 
 sa: Makefile

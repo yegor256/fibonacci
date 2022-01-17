@@ -30,7 +30,7 @@ public:
 class Other : public Fibo {
 public:
   explicit Other(Fibo* a, Fibo* b) : first(a), second(b) {}
-  ~Other() override { delete first; }
+  ~Other() override { delete second; }
   int get() override { return first->get() + second->get(); }
   Fibo* next() override { return new Other(second, this); }
 private:
