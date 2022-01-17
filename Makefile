@@ -28,7 +28,7 @@ INPUT = 32
 CC=clang++
 CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 -fsanitize=leak
 RUSTC=rustc
-RUSTFLAGS=-O
+RUSTFLAGS=-C opt-level=3
 
 DIRS=asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
@@ -85,7 +85,7 @@ reports/%.txt: bin/%.bin $(ASMS) Makefile $(DIRS)
 	while true; do
 		time=$$({ time -p "$<" $(INPUT) $${cycles} | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
 		echo $${time} > "${@:.txt=.time}"
-		echo "cycles=$${cycles}; time=$${time} -> too fast, we will try again..."
+		echo "cycles=$${cycles}; time=$${time} -> too fast, need more cycles..."
 		if [ "$(FAST)" != "" ]; then break; fi
 		if [ "$$(echo $${time} | cut -f1 -d.)" -gt "0" -a "$${cycles}" -gt "7" ]; then break; fi
 		cycles=$$(expr $${cycles} \* 2)

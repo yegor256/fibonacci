@@ -15,4 +15,5 @@ jobs:
       - run: sudo apt-get update -y
       - run: sudo apt-get install -y clang bc
       - run: make clean
+      - run: export ASAN_OPTIONS=detect_leaks=0
       - run: make summary.csv
