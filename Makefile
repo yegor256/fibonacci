@@ -81,7 +81,7 @@ asm/%.asm: lisp/%.lisp
 bin/%.bin: cpp/%.cpp include/*.h
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
-bin/%.bin: rust
+bin/%.bin: rust/%.rs
 	$(RUSTC) $(RUSTFLAGS) -o "$@" "$<"
 
 bin/%.bin: lisp/%.lisp
