@@ -24,6 +24,7 @@ SHELL=/bin/bash
 .PHONY: clean
 
 INPUT = 32
+WANTED=7
 
 CC=clang++
 CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
@@ -87,9 +88,9 @@ reports/%.txt: bin/%.bin $(ASMS) Makefile $(DIRS)
 		echo $${time} > "${@:.txt=.time}"
 		echo "cycles=$${cycles}; time=$${time} -> too fast, need more cycles..."
 		if [ "$(FAST)" != "" ]; then break; fi
-		if [ "$$(echo $${time} | cut -f1 -d.)" -gt "0" -a "$${cycles}" -gt "7" ]; then break; fi
+		if [ "$$(echo $${time} | cut -f1 -d.)" -gt "0" -a "$${cycles}" -gt "$(WANTED)" ]; then break; fi
 		cycles=$$(expr $${cycles} \* 2)
-		if [ "$${cycles}" -lt "7" ]; then cycles=8; fi
+		if [ "$${cycles}" -lt "$(WANTED)" ]; then cycles=$$(expr $(WANTED) + 1); fi
 	done
 	instructions=$$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)
 	per=$$(echo "scale = 16 ; $${time} / $${cycles}" | bc)
