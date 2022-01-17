@@ -20,14 +20,14 @@
 
 #include "../include/main.h"
 
-int less(int a, int b) { return static_cast<int>(a < b); }
+bool less(int a, int b) { return a < b; }
 
 int sub(int a, int b) { return a - b; }
 
 int add(int a, int b) { return a + b; }
 
 int fibo(int x) {
-  if (less(x, 2) != 0) {
+  if (less(x, 2)) {
     return 1;
   }
   return add(fibo(sub(x, 1)), fibo(sub(x, 2)));
