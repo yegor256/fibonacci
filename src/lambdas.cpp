@@ -43,8 +43,8 @@ int call(struct lambda* l) {
   return ret;
 }
 
-struct lambda* make(func body, struct lambda* a, struct lambda* b,
-                    struct lambda* c) {
+struct lambda* make(
+  func body, struct lambda* a, struct lambda* b, struct lambda* c) {
   auto* l = static_cast<lambda*>(malloc(sizeof(lambda)));
   l->body = body;
   l->first = a;
@@ -89,12 +89,10 @@ int add(struct lambda* arg) { return call(arg->first) + call(arg->second); }
 int fibo(struct lambda* arg) {
   int x = call(arg->first);
   return call(make(iff, make(less, integer(x), integer(2), nullptr), integer(1),
-                   make(add,
-                        make(fibo, make(sub, integer(x), integer(1), nullptr),
-                             nullptr, nullptr),
-                        make(fibo, make(sub, integer(x), integer(2), nullptr),
-                             nullptr, nullptr),
-                        nullptr)));
+    make(add,
+      make(fibo, make(sub, integer(x), integer(1), nullptr), nullptr, nullptr),
+      make(fibo, make(sub, integer(x), integer(2), nullptr), nullptr, nullptr),
+      nullptr)));
 }
 
 int calc(int x) { return call(make(fibo, integer(x), nullptr, nullptr)); }

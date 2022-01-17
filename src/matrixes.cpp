@@ -36,7 +36,7 @@ int fibonacci(int n) {
         for (size_t j = 0; j < size; j++) {
           for (int k = 0; k < size; k++) {
             tmp.at(i).at(j) =
-                tmp.at(i).at(j) + ret.at(i).at(k) * fib.at(k).at(j);
+              tmp.at(i).at(j) + ret.at(i).at(k) * fib.at(k).at(j);
           }
         }
       }

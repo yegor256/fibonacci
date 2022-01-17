@@ -55,7 +55,7 @@ env:
 
 sa: Makefile
 	targets="include/*.h src/*.cpp"
-	diff -u <(cat $${targets}) <(clang-format --style=Google $${targets})
+	diff -u <(cat $${targets}) <(clang-format --style=file $${targets})
 	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 $${targets}
 	cpplint --extensions=cpp --filter=-whitespace/indent $${targets}
 	clang-tidy -header-filter=none \
