@@ -18,6 +18,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+use std::env;
+
 pub trait Int {
 	fn get(&self) -> i32;
 }
@@ -128,8 +130,16 @@ impl<'a> Int for Fibo<'a> {
 }
 
 pub fn main() {
-	let input = 32;
-	let x = Integer::new(input);
-  	let fibo = Fibo::new(&x);
-  	println!("{}-th Fibonacci number is {}", input, fibo.get());
+	let args: Vec<String> = env::args().collect();
+	let input: i32 = args[1].parse().unwrap();
+	let cycles: i32 = args[2].parse().unwrap();
+	let mut total = 0;
+	let mut f = 0;
+	for _ in 0..cycles {
+		let x = Integer::new(input);
+		let fibo = Fibo::new(&x);
+		f = fibo.get();
+		total += f;
+	}
+  	println!("{}-th Fibonacci number is {}\nTotal is {}\n", input, f, total);
 }

@@ -27,6 +27,8 @@ INPUT = 32
 
 CC=clang++
 CCFLAGS=-mllvm --x86-asm-syntax=intel -O3
+RUSTC=rustc
+RUSTFLAGS=-O
 
 DIRS=asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
@@ -64,27 +66,28 @@ sa: Makefile
 		'-checks=*,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
 		$${targets}
 
-asm/%.asm: cpp/%.cpp include/*.h $(DIRS)
+asm/%.asm: cpp/%.cpp include/*.h
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
-asm/%.asm: rs/%.rs $(DIRS)
-	rustc --emit=asm -o "$@" "$<"
+asm/%.asm: rs/%.rs
+	$(RUSTC) $(RUSTFLAGS) --emit=asm -o "$@" "$<"
 
-bin/%.bin: cpp/%.cpp include/*.h $(DIRS)
+bin/%.bin: cpp/%.cpp include/*.h
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
-bin/%.bin: rs/%.rs $(DIRS)
-	rustc -o "$@" "$<"
+bin/%.bin: rs/%.rs
+	$(RUSTC) $(RUSTFLAGS) -o "$@" "$<"
 
 reports/%.txt: bin/%.bin $(ASMS) Makefile $(DIRS)
 	cycles=1
 	while true; do
 		time=$$({ time -p "$<" $(INPUT) $${cycles} | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
 		echo $${time} > "${@:.txt=.time}"
-		echo "cycles=$${cycles}; time=$${time}"
+		echo "cycles=$${cycles}; time=$${time} -> too fast, we will try again..."
 		if [ "$(FAST)" != "" ]; then break; fi
 		if [ "$$(echo $${time} | cut -f1 -d.)" -gt "0" -a "$${cycles}" -gt "7" ]; then break; fi
 		cycles=$$(expr $${cycles} \* 2)
+		if [ "$${cycles}" -lt "7" ]; then cycles=8; fi
 	done
 	instructions=$$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)
 	per=$$(echo "scale = 16 ; $${time} / $${cycles}" | bc)
