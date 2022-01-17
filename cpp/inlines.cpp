@@ -26,11 +26,9 @@ inline int sub(int a, int b) { return a - b; }
 
 inline int add(int a, int b) { return a + b; }
 
-int fibo(int x) {
+int calc(int x) {
   if (less(x, 2) != 0) {
     return 1;
   }
-  return add(fibo(sub(x, 1)), fibo(sub(x, 2)));
+  return add(calc(sub(x, 1)), calc(sub(x, 2)));
 }
-
-inline int calc(int x) { return fibo(x); }
