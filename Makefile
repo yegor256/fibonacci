@@ -30,12 +30,18 @@ CC=clang++
 CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
 RUSTC=rustc
 RUSTFLAGS=-C opt-level=3
+HC=ghc
+HCFLAGS=-Wall -Werror
+HCLIBDIR=haskell/Mainlib
+HCLIBS=$(HCLIBDIR)/report.hs
+HASKELLPREFIX=haskell_
 
 DIRS=asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
 RUSTS = $(wildcard rust/*.rs)
 LISPS = $(wildcard lisp/*.lisp)
-ASMS = $(subst lisp/,asm/,$(subst rust/,asm/,$(subst cpp/,asm/,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm})))
+HASKELLS = $(wildcard haskell/*.hs)
+ASMS = $(subst haskell/,asm/$(HASKELLPREFIX),$(subst lisp/,asm/,$(subst rust/,asm/,$(subst cpp/,asm/,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm}))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -77,6 +83,13 @@ asm/%.asm: rust/%.rs
 asm/%.asm: lisp/%.lisp
 	echo " no asm here" > "$@"
 
+asm/$(HASKELLPREFIX)%.asm: haskell/%.hs $(HCLIBS)
+	source=$$( echo "$<" | sed 's/\.hs$$//' )
+	$(HC) $(HCFLAGS) -S $(HCLIBS) "$<"
+	mv $${source}.s "$@"
+	cat $(HCLIBDIR)/*.s >> "$@"
+	rm $(HCLIBDIR)/*.s
+
 bin/%.bin: cpp/%.cpp
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
@@ -85,6 +98,15 @@ bin/%.bin: rust/%.rs
 
 bin/%.bin: lisp/%.lisp
 	sbcl --load "$<"
+
+bin/$(HASKELLPREFIX)%.bin: haskell/%.hs $(HCLIBS)
+	source=$$( echo "$<" | sed 's/\.hs$$//' )
+	$(HC) $(HCFLAGS) $(HCLIBS) "$<"
+	mv $${source} "$@"
+	rm $${source}.o
+	rm $${source}.hi
+	rm $(HCLIBDIR)/*.o
+	rm $(HCLIBDIR)/*.hi
 
 reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
 	"$<" 7 1
