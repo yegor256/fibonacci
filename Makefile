@@ -31,7 +31,7 @@ CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo 
 RUSTC=rustc
 RUSTFLAGS=-C opt-level=3
 HC=ghc
-HCFLAGS=-Wall -Werror
+HCFLAGS=-dynamic -Wall -Werror
 HCLIBDIR=haskell/Mainlib
 HCLIBS=$(HCLIBDIR)/report.hs
 HASKELLPREFIX=haskell_
