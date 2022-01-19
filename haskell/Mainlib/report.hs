@@ -22,7 +22,6 @@
 module Mainlib.Report (run) where
 
 import System.Environment (getArgs, getProgName)
-import Data.Maybe (maybe)
 
 readNat :: String -> Maybe Int
 readNat s = case reads s of
