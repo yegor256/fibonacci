@@ -27,8 +27,8 @@ You need to have [Clang](https://clang.llvm.org),
 [Make](https://www.gnu.org/software/make/),
 [Rust](https://www.rust-lang.org/tools/install),
 [Common Lisp](https://lisp-lang.org/learn/getting-started/),
+[Haskell](https://www.haskell.org/),
 [Clang-Tidy](https://clang.llvm.org/extra/clang-tidy/),
 [Clang-Format](https://clang.llvm.org/docs/ClangFormat.html),
 [cppcheck](https://github.com/danmar/cppcheck),
-[cpplint](https://github.com/cpplint/cpplint),
-and [Haskell](https://www.haskell.org/) installed.
+and [cpplint](https://github.com/cpplint/cpplint) installed.
