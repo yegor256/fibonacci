@@ -35,7 +35,8 @@ DIRS=asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
 RUSTS = $(wildcard rust/*.rs)
 LISPS = $(wildcard lisp/*.lisp)
-ASMS = $(subst lisp/,asm/,$(subst rust/,asm/,$(subst cpp/,asm/,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm})))
+JAVAS = $(wildcard java/*.java)
+ASMS = $(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm}))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -68,23 +69,33 @@ sa: Makefile
 		'-checks=*,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
 		$(CPPS)
 
-asm/%.asm: cpp/%.cpp
+asm/cpp-%.asm: cpp/%.cpp
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
-asm/%.asm: rust/%.rs
+asm/rust-%.asm: rust/%.rs
 	$(RUSTC) $(RUSTFLAGS) --emit=asm -o "$@" "$<"
 
-asm/%.asm: lisp/%.lisp
+asm/lisp-%.asm: lisp/%.lisp
 	echo " no asm here" > "$@"
 
-bin/%.bin: cpp/%.cpp
+asm/java-%.asm: java/%.java
+	echo " no asm here" > "$@"
+
+bin/cpp-%.bin: cpp/%.cpp
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
-bin/%.bin: rust/%.rs
+bin/rust-%.bin: rust/%.rs
 	$(RUSTC) $(RUSTFLAGS) -o "$@" "$<"
 
-bin/%.bin: lisp/%.lisp
+bin/lisp-%.bin: lisp/%.lisp
 	sbcl --load "$<"
+
+bin/java-%.bin: java/%.java
+	name=$(subst java/,,$(<:.java=))
+	mkdir -p "tmp/$${name}"
+	javac -d "tmp/$${name}" "$<"
+	jar --create --main-class=$${name} --file="tmp/$${name}.jar" -C "tmp/$${name}" .
+	native-image -jar "tmp/$${name}.jar" --verbose "$@"
 
 reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
 	"$<" 7 1
