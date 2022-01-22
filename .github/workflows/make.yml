@@ -13,7 +13,8 @@ jobs:
         with:
           toolchain: stable
       - run: sudo apt-get update -y
-      - run: sudo apt-get install -y clang clang-tidy clang-format cppcheck bc sbcl
+      - run: sudo apt-get install -y clang-13 cppcheck bc sbcl
       - run: make clean
+      - run: make env
       - run: make WANTED=1024 summary.csv
       - run: make sa
