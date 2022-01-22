@@ -49,7 +49,7 @@
       total)))
 
 (sb-ext:save-lisp-and-die
-  "bin/recursive.bin"
+  "bin/lisp-recursion.bin"
   :toplevel
   #'main
   :executable
