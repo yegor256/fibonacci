@@ -34,7 +34,6 @@ HC=ghc
 HCFLAGS=-dynamic -Wall -Werror
 HCLIBDIR=haskell/Mainlib
 HCLIBS=$(HCLIBDIR)/report.hs
-HASKELLPREFIX=haskell_
 
 DIRS=asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
@@ -42,7 +41,7 @@ RUSTS = $(wildcard rust/*.rs)
 LISPS = $(wildcard lisp/*.lisp)
 HASKELLS = $(wildcard haskell/*.hs)
 JAVAS = $(wildcard java/*.java)
-ASMS = $(subst haskell/,asm/$(HASKELLPREFIX),$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm})))))
+ASMS = $(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm})))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -84,7 +83,7 @@ asm/rust-%.asm: rust/%.rs
 asm/lisp-%.asm: lisp/%.lisp
 	echo " no asm here" > "$@"
 
-asm/haskell-$(HASKELLPREFIX)%.asm: haskell/%.hs $(HCLIBS)
+asm/haskell-%.asm: haskell/%.hs $(HCLIBS)
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
 	$(HC) $(HCFLAGS) -S $(HCLIBS) "$<"
 	mv $${source}.s "$@"
@@ -103,7 +102,7 @@ bin/rust-%.bin: rust/%.rs
 bin/lisp-%.bin: lisp/%.lisp
 	sbcl --load "$<"
 
-bin/haskell-$(HASKELLPREFIX)%.bin: haskell/%.hs $(HCLIBS)
+bin/haskell-%.bin: haskell/%.hs $(HCLIBS)
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
 	$(HC) $(HCFLAGS) $(HCLIBS) "$<"
 	mv $${source} "$@"
