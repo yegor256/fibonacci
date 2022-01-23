@@ -131,6 +131,7 @@ reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
 		if [ "$${seconds}" -gt "10" ]; then break; fi
 		if [ "$${seconds}" -gt "0" -a "$${cycles}" -ge "$(WANTED)" ]; then break; fi
 		cycles=$$(expr $${cycles} \* 2)
+		if [ "$${cycles}" -gt "2147483647" ]; then break; fi
 		if [ "$${cycles}" -lt "$(WANTED)" -a "$${seconds}" -lt "1" ]; then cycles=$(WANTED); fi
 	done
 	instructions=$$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)

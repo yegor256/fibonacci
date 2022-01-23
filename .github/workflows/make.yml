@@ -12,7 +12,12 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+      - uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "13"
       - run: sudo apt-get update -y
-      - run: sudo apt-get install -y clang bc sbcl
+      - run: sudo apt-get install -y cppcheck bc sbcl
       - run: make clean
+      - run: make env
       - run: make WANTED=1024 summary.csv
+      - run: make sa

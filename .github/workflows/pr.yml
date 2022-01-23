@@ -9,7 +9,9 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-      - run: sudo apt-get install -y clang-tidy clang-format cppcheck bc sbcl
+      - run: sudo apt-get update -y
+      - run: sudo apt-get install -y clang-13 cppcheck bc sbcl
       - run: pip install cpplint
-      - run: make sa
+      - run: make env
       - run: make FAST=1
+      - run: make sa
