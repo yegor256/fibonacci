@@ -66,7 +66,7 @@ env:
 	$(MAKE) -version
 
 sa: Makefile
-	diff -u <(cat $${targets}) <(clang-format --style=file $(CPPS))
+	diff -u <(cat $(CPPS)) <(clang-format --style=file $(CPPS))
 	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 $(CPPS)
 	cpplint --extensions=cpp --filter=-whitespace/indent $(CPPS)
 	clang-tidy -header-filter=none \
