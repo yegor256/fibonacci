@@ -15,6 +15,9 @@ jobs:
       - run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" 
       - run: sudo apt-get install -y clang-13 clang-tidy-13 clang-format-13
       - run: sudo apt-get install -y cppcheck bc sbcl rustc ghc
+      - run: sudo apt-get purge -y python3-pip
+      - run: sudo apt-get autoremove -y
+      - run: sudo apt-get install -y python3-pip
       - run: pip install cpplint
       - run: ln -s /usr/bin/clang++-13 /usr/bin/clang++
       - run: ln -s /usr/bin/clang-tidy-13 /usr/bin/clang-tidy;
