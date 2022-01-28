@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "main.h"
+#include "./main.h"
 
 inline bool less(int a, int b) { return a < b; }
 

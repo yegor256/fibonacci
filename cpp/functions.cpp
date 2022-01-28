@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "main.h"
+#include "./main.h"
 
 bool __attribute__((noinline)) less(int a, int b) { return a < b; }
 
