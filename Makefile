@@ -67,7 +67,7 @@ env:
 
 sa: Makefile
 	diff -u <(cat $(CPPS)) <(clang-format --style=file $(CPPS))
-	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 $(CPPS)
+	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 --suppress=missingIncludeSystem $(CPPS)
 	cpplint --extensions=cpp --filter=-whitespace/indent $(CPPS)
 	clang-tidy -header-filter=none \
 		'-warnings-as-errors=*' \
