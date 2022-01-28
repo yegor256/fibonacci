@@ -64,6 +64,10 @@ env:
 	$(CC) --version
 	$(RUSTC) --version
 	$(MAKE) -version
+	$(HC) --version
+	cppcheck --version
+	cpplint --version
+	sbcl --version
 
 sa: Makefile
 	diff -u <(cat $(CPPS)) <(clang-format --style=file $(CPPS))
