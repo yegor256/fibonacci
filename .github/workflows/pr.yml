@@ -14,6 +14,12 @@ jobs:
       - run: sudo apt-get install -y python python3-pip make software-properties-common lsb-release wget
       - run: sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" 
       - run: sudo apt-get install -y clang-13 clang-tidy-13 clang-format-13
+      - run: unlink /usr/bin/clang++
+      - run: unlink /usr/bin/clang-tidy
+      - run: unlink /usr/bin/clang-format
+      - run: ln -s /usr/bin/clang++-13 /usr/bin/clang++
+      - run: ln -s /usr/bin/clang-tidy-13 /usr/bin/clang-tidy
+      - run: ln -s /usr/bin/clang-format-13 /usr/bin/clang-format
       - run: sudo apt-get install -y cppcheck bc sbcl rustc ghc
       - run: pip3 install cpplint
       - run: make env
