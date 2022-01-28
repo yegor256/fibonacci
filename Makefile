@@ -30,13 +30,18 @@ CC=clang++
 CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
 RUSTC=rustc
 RUSTFLAGS=-C opt-level=3
+HC=ghc
+HCFLAGS=-dynamic -Wall -Werror
+HCLIBDIR=haskell/Mainlib
+HCLIBS=$(HCLIBDIR)/report.hs
 
 DIRS=asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
 RUSTS = $(wildcard rust/*.rs)
 LISPS = $(wildcard lisp/*.lisp)
+HASKELLS = $(wildcard haskell/*.hs)
 JAVAS = $(wildcard java/*.java)
-ASMS = $(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm}))))
+ASMS = $(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm})))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -61,8 +66,8 @@ env:
 	$(MAKE) -version
 
 sa: Makefile
-	diff -u <(cat $${targets}) <(clang-format --style=file $(CPPS))
-	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 $(CPPS)
+	diff -u <(cat $(CPPS)) <(clang-format --style=file $(CPPS))
+	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 --suppress=missingIncludeSystem $(CPPS)
 	cpplint --extensions=cpp --filter=-whitespace/indent $(CPPS)
 	clang-tidy -header-filter=none \
 		'-warnings-as-errors=*' \
@@ -78,6 +83,13 @@ asm/rust-%.asm: rust/%.rs
 asm/lisp-%.asm: lisp/%.lisp
 	echo " no asm here" > "$@"
 
+asm/haskell-%.asm: haskell/%.hs $(HCLIBS)
+	source=$$( echo "$<" | sed 's/\.hs$$//' )
+	$(HC) $(HCFLAGS) -S $(HCLIBS) "$<"
+	mv $${source}.s "$@"
+	cat $(HCLIBDIR)/*.s >> "$@"
+	rm $(HCLIBDIR)/*.s
+
 asm/java-%.asm: java/%.java
 	echo " no asm here" > "$@"
 
@@ -89,6 +101,15 @@ bin/rust-%.bin: rust/%.rs
 
 bin/lisp-%.bin: lisp/%.lisp
 	sbcl --load "$<"
+
+bin/haskell-%.bin: haskell/%.hs $(HCLIBS)
+	source=$$( echo "$<" | sed 's/\.hs$$//' )
+	$(HC) $(HCFLAGS) $(HCLIBS) "$<"
+	mv $${source} "$@"
+	rm $${source}.o
+	rm $${source}.hi
+	rm $(HCLIBDIR)/*.o
+	rm $(HCLIBDIR)/*.hi
 
 bin/java-%.bin: java/%.java
 	name=$(subst java/,,$(<:.java=))
