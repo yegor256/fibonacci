@@ -22,15 +22,14 @@
 
 #include "./main.h"
 
-int fibonacci(int n) {
+int fibonacci(unsigned int n) {
   const size_t size = 2;
   std::array<std::array<int, size>, size> fib = {{{{1, 1}}, {{1, 0}}}};
   std::array<std::array<int, size>, size> ret = {{{{1, 0}}, {{0, 1}}}};
   std::array<std::array<int, size>, size> tmp = {{{{0, 0}}, {{0, 0}}}};
   while (n != 0) {
-    if ((n & 1) != 0) {  // NOLINT
+    if ((n & 1U) != 0) {
       tmp.at(0).fill(0);
-      // cppcheck-suppress containerOutOfBounds
       tmp.at(1).fill(0);
       for (size_t i = 0; i < size; i++) {
         for (size_t j = 0; j < size; j++) {
@@ -47,7 +46,6 @@ int fibonacci(int n) {
       }
     }
     tmp.at(0).fill(0);
-    // cppcheck-suppress containerOutOfBounds
     tmp.at(1).fill(0);
     for (size_t i = 0; i < size; i++) {
       for (size_t j = 0; j < size; j++) {
