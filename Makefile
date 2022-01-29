@@ -58,7 +58,7 @@ summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) $(CYCLES) Makefile
 
 summary.csv: $(DIRS) $(REPORTS)
 	{ for r in $(REPORTS:.txt=.csv); do cat $${r}; done } > summary.csv
-	cat summary.csv
+	cat summary.csv | sort -k5 -g -t,
 
 env:
 	$(CC) --version
