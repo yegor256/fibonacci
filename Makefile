@@ -113,8 +113,7 @@ bin/lisp-%.bin: lisp/%.lisp
 
 bin/go-%.bin: go/cmd/%/main.go
 	cd go
-	go build "$(subst go/,./,${<:/main.go=})"
-	mv "$(subst go/cmd/,,${<:/main.go=})" "../$@"
+	go build -o "../$@" "$(subst go/,./,${<:/main.go=})"
 
 bin/haskell-%.bin: haskell/%.hs $(HCLIBS)
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
