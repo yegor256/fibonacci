@@ -33,7 +33,7 @@ RUSTFLAGS=-C opt-level=3
 HC=ghc
 HCFLAGS=-dynamic -Wall -Werror
 HCLIBDIR=haskell/Mainlib
-HCLIBS=$(HCLIBDIR)/report.hs
+HCLIBS=$(wildcard $(HCLIBDIR)/*.hs)
 
 DIRS=asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
