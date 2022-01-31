@@ -41,7 +41,8 @@ RUSTS = $(wildcard rust/*.rs)
 LISPS = $(wildcard lisp/*.lisp)
 HASKELLS = $(wildcard haskell/*.hs)
 JAVAS = $(wildcard java/*.java)
-ASMS = $(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm})))))
+GOS = $(wildcard go/cmd/*/main.go)
+ASMS = $(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm}))))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -68,6 +69,7 @@ env:
 	cppcheck --version
 	cpplint --version
 	sbcl --version
+	go version
 
 sa: Makefile
 	diff -u <(cat $(CPPS)) <(clang-format --style=file $(CPPS))
@@ -85,6 +87,9 @@ asm/rust-%.asm: rust/%.rs
 	$(RUSTC) $(RUSTFLAGS) --emit=asm -o "$@" "$<"
 
 asm/lisp-%.asm: lisp/%.lisp
+	echo " no asm here" > "$@"
+
+asm/go-%.asm: go/cmd/%/main.go
 	echo " no asm here" > "$@"
 
 asm/haskell-%.asm: haskell/%.hs $(HCLIBS)
@@ -105,6 +110,11 @@ bin/rust-%.bin: rust/%.rs
 
 bin/lisp-%.bin: lisp/%.lisp
 	sbcl --load "$<"
+
+bin/go-%.bin: go/cmd/%/main.go
+	cd go
+	go build "$(subst go/,./,${<:/main.go=})"
+	mv "$(subst go/cmd/,,${<:/main.go=})" "../$@"
 
 bin/haskell-%.bin: haskell/%.hs $(HCLIBS)
 	source=$$( echo "$<" | sed 's/\.hs$$//' )

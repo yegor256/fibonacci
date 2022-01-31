@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/yegor256/fibonacci/go-fibo"
+	"github.com/yegor256/fibonacci/go"
 )
 
 func main() {
@@ -21,5 +21,5 @@ func main() {
 	for i := 0; i < cycles; i++ {
 		sum += fibo.Fast(int32(inp))
 	}
-	fmt.Printf("fibo(%d)*%d = %d\n", inp, cycles, sum)
+	fmt.Printf("%d-th Fibonacci number is %d", inp, sum)
 }
