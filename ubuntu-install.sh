@@ -23,8 +23,10 @@
 set -e
 set -x
 
+export DEBIAN_FRONTEND=noninteractive
+
 sudo apt-get update -y
-export DEBIAN_FRONTEND=noninteractive; sudo -E apt-get install -y --no-install-recommends tzdata
+sudo -E apt-get install -y --no-install-recommends tzdata
 
 sudo apt-get install -y python python3-pip make software-properties-common lsb-release wget
 
