@@ -30,16 +30,15 @@ sudo apt-get install -y python python3-pip make software-properties-common lsb-r
 
 sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 sudo apt-get install -y clang-13 clang-tidy-13 clang-format-13
-unlink /usr/bin/clang++
-unlink /usr/bin/clang-tidy
-unlink /usr/bin/clang-format
-ln -s /usr/bin/clang++-13 /usr/bin/clang++
-ln -s /usr/bin/clang-tidy-13 /usr/bin/clang-tidy
-ln -s /usr/bin/clang-format-13 /usr/bin/clang-format
+
+unlink /usr/bin/clang++ && ln -s /usr/bin/clang++-13 /usr/bin/clang++
+unlink /usr/bin/clang-tidy && ln -s /usr/bin/clang-tidy-13 /usr/bin/clang-tidy
+unlink /usr/bin/clang-format && ln -s /usr/bin/clang-format-13 /usr/bin/clang-format
 
 sudo apt-get install -y cppcheck bc sbcl rustc ghc
 
 pip3 install cpplint
 
 wget --no-verbose -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | tar -xz -C /usr/local
+unlink /usr/bin/go
 ln -s /usr/local/go/bin/go /usr/bin/go
