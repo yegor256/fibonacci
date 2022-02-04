@@ -40,5 +40,4 @@ sudo apt-get install -y cppcheck bc sbcl rustc ghc
 pip3 install cpplint
 
 wget --no-verbose -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | tar -xz -C /usr/local
-unlink /usr/bin/go
-ln -s /usr/local/go/bin/go /usr/bin/go
+unlink /usr/bin/go && ln -s /usr/local/go/bin/go /usr/bin/go
