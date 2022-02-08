@@ -18,28 +18,48 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "../include/main.h"
+#include "main.h"
 
-int less(int a, int b) {
-    return static_cast<int>(a < b);
-}
+class Fibo {
+public:
+  virtual ~Fibo() = default;
+  virtual int get() = 0;
+  virtual Fibo* next() = 0;
+};
 
-int sub(int a, int b) {
-    return a - b;
-}
+class Other : public Fibo {
+public:
+  explicit Other(Fibo* a, Fibo* b) : first(a), second(b) {}
+  ~Other() override { delete second; }
+  int get() override { return first->get() + second->get(); }
+  Fibo* next() override { return new Other(second, this); }
+private:
+  Fibo* first;
+  Fibo* second;
+};
 
-int add(int a, int b) {
-    return a + b;
-}
+class Second : public Fibo {
+public:
+  explicit Second(Fibo* f) : first(f) {}
+  ~Second() override { delete first; }
+  int get() override { return 1; }
+  Fibo* next() override { return new Other(first, this); }
+private:
+  Fibo* first;
+};
 
-int fibo(int x) {
-    if (less(x, 2) != 0) {
-        return 1;
-    }
-    return add(fibo(sub(x, 1)), fibo(sub(x, 2)));
-}
+class First : public Fibo {
+public:
+  int get() override { return 1; }
+  Fibo* next() override { return new Second(this); }
+};
 
 int calc(int x) {
-    return fibo(x);
+  Fibo* f = new First();
+  for (int i = 0; i < x; ++i) {
+    f = f->next();
+  }
+  int r = f->get();
+  delete f;
+  return r;
 }
-

@@ -23,64 +23,98 @@ SHELL=/bin/bash
 .SHELLFLAGS = -e -o pipefail -c
 .PHONY: clean
 
-FACTOR = 1
-INPUT = 27
+INPUT = 32
+WANTED = 8
 
 CC=clang++
-CCFLAGS=-mllvm --x86-asm-syntax=intel -O3
+CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
+RUSTC=rustc
+RUSTFLAGS=-C opt-level=3
 
-DIRS=asm bin reports tmp
-CPPS = $(wildcard src/*.cpp)
-ASMS = $(subst src/,asm/,${CPPS:.cpp=.asm})
+DIRS=asm bin reports
+CPPS = $(wildcard cpp/*.cpp)
+RUSTS = $(wildcard rust/*.rs)
+LISPS = $(wildcard lisp/*.lisp)
+ASMS = $(subst lisp/,asm/,$(subst rust/,asm/,$(subst cpp/,asm/,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm})))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
-CYCLES=tmp/cycles.txt
 
 summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) $(CYCLES) Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
 	{
 		date
 		$(CC) --version | head -1
-		echo "CYCLES=$$(cat $(CYCLES))"
 		echo "INPUT=$(INPUT)"
 		echo
 		for r in $(REPORTS); do cat $${r}; done
 	} > summary.txt
 	cat "$@"
 
+summary.csv: $(DIRS) $(REPORTS)
+	{ for r in $(REPORTS:.txt=.csv); do cat $${r}; done } > summary.csv
+	cat summary.csv
+
 env:
 	$(CC) --version
+	$(RUSTC) --version
 	$(MAKE) -version
 
 sa: Makefile
-	cpplint --quiet --filter=-whitespace/indent src/*.cpp include/*.h
-	clang-tidy -quiet -header-filter=none \
+	diff -u <(cat $${targets}) <(clang-format --style=file $(CPPS))
+	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 $(CPPS)
+	cpplint --extensions=cpp --filter=-whitespace/indent $(CPPS)
+	clang-tidy -header-filter=none \
 		'-warnings-as-errors=*' \
-		'-checks=*,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
-		src/*.cpp include/*.h
+		'-checks=*,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
+		$(CPPS)
 
-$(CYCLES):
-	expr 1 + $(FACTOR) \* 1000 / $$(( time -p for ((i = 0; i < 100; ++i)); do cat Makefile | sha1sum > /dev/null; done ) 2>&1 | head -1 | cut -f2 -d' ' | tr -d .) > $(CYCLES)
-	cat $(CYCLES)
+asm/%.asm: cpp/%.cpp
+	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
-asm/%.asm: src/%.cpp include/*.h $(CYCLES)
-	$(CC) $(CCFLAGS) -S -DINPUT=$(INPUT) -DCYCLES=$$(cat $(CYCLES)) -o "$@" "$<"
+asm/%.asm: rust/%.rs
+	$(RUSTC) $(RUSTFLAGS) --emit=asm -o "$@" "$<"
 
-bin/%.bin: asm/%.asm
+asm/%.asm: lisp/%.lisp
+	echo " no asm here" > "$@"
+
+bin/%.bin: cpp/%.cpp
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
-reports/%.txt: bin/%.bin Makefile
-	{ time -p "$<" > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ' > "${@:.txt=.time}"
+bin/%.bin: rust/%.rs
+	$(RUSTC) $(RUSTFLAGS) -o "$@" "$<"
+
+bin/%.bin: lisp/%.lisp
+	sbcl --load "$<"
+
+reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
+	"$<" 7 1
+	cycles=1
+	while true; do
+		time=$$({ time -p "$<" $(INPUT) $${cycles} | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
+		echo $${time} > "${@:.txt=.time}"
+		echo "cycles=$${cycles}; time=$${time} -> too fast, need more cycles..."
+		if [ "$(FAST)" != "" ]; then break; fi
+		seconds=$$(echo $${time} | cut -f1 -d.)
+		if [ "$${seconds}" -gt "10" ]; then break; fi
+		if [ "$${seconds}" -gt "0" -a "$${cycles}" -ge "$(WANTED)" ]; then break; fi
+		cycles=$$(expr $${cycles} \* 2)
+		if [ "$${cycles}" -lt "$(WANTED)" -a "$${seconds}" -lt "1" ]; then cycles=$(WANTED); fi
+	done
+	instructions=$$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)
+	per=$$(echo "scale = 16 ; $${time} / $${cycles}" | bc)
 	{
 	  	echo "$<:"
-	  	echo "Instructions: $$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)"
-		echo "Time: $$(cat "${@:.txt=.time}")"
+	  	echo "Instructions: $${instructions}"
+		echo "Cycles: $${cycles}"
+		echo "Time: $${time}"
+		echo "Per cycle: $${per}"
 		echo ""
-	} >> "$@"
+	} > "$@"
+	echo "${subst bin/,,$<},$${instructions},$${cycles},$${time},$${per}" > "${@:.txt=.csv}"
 
 clean:
 	rm -rf $(DIRS)
-	rm -f summary.txt
+	rm -f summary.txt summary.csv
 
 $(DIRS):
 	mkdir "$@"

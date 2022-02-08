@@ -18,17 +18,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef INCLUDE_METRICS_H__
-#define INCLUDE_METRICS_H__
+#include "main.h"
 
-// The Fibonacci number we are trying to calculate
-#ifndef INPUT
-#define INPUT 25
-#endif  // INPUT
-
-// The number of loop cycles that calculate Fibonacci number
-#ifndef CYCLES
-#define CYCLES 50
-#endif  // CYCLES
-
-#endif  // INCLUDE_METRICS_H__
+int calc(int x) {
+  if (x < 2) {
+    return 1;
+  }
+  return calc(x - 1) + calc(x - 2);
+}
