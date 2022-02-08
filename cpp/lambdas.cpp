@@ -20,7 +20,7 @@
 
 #include <cstdlib>
 
-#include "main.h"
+#include "./main.h"
 constexpr size_t PROPER_ALIGMENT = 64;
 struct lambda;
 using func = int (*)(struct lambda*);

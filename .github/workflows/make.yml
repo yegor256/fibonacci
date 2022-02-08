@@ -12,7 +12,8 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-      - run: sudo apt-get update -y
-      - run: sudo apt-get install -y clang bc sbcl
+      - run: ./ubuntu-install.sh
       - run: make clean
+      - run: make env
       - run: make WANTED=1024 summary.csv
+      - run: make sa

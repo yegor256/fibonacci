@@ -20,7 +20,7 @@
 
 #include <memory>
 
-#include "main.h"
+#include "./main.h"
 
 template <class T>
 class Computation {
@@ -53,12 +53,10 @@ public:
   ~Interpret() = default;
   T get() {
     typename Computation<T>::ptr cur = entrypoint;
-    typename Computation<T>::ptr prev;
     while (true) {
       if ((*cur).finished()) {
         break;
       }
-      prev = cur;
       cur = (*cur).eval();
     }
     return (*cur).result();

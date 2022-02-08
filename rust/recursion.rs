@@ -18,15 +18,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "./main.h"
+use std::env;
 
-int calc(int x) {
-  int p1 = 0;
-  int p2 = 1;
-  for (int i = 1; i < x; ++i) {
-    int t = p2;
-    p2 = p1 + p2;
-    p1 = t;
-  }
-  return p1 + p2;
+pub fn fibonacci(input: u32) -> u32 {
+	match input {
+		0 => 1,
+		1 => 1,
+		n => fibonacci(n - 2) + fibonacci(n - 1)
+	}
+}
+
+pub fn main() {
+	let args: Vec<String> = env::args().collect();
+	let input: u32 = args[1].parse().unwrap();
+	let cycles: u32 = args[2].parse().unwrap();
+	let mut total = 0;
+	let mut f = 0;
+	for _ in 0..cycles {
+		f = fibonacci(input);
+		total += f;
+	}
+  	println!("{}-th Fibonacci number is {}\nTotal is {}\n", input, f, total);
 }

@@ -30,12 +30,19 @@ CC=clang++
 CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
 RUSTC=rustc
 RUSTFLAGS=-C opt-level=3
+HC=ghc
+HCFLAGS=-dynamic -Wall -Werror
+HCLIBDIR=haskell/Mainlib
+HCLIBS=$(wildcard $(HCLIBDIR)/*.hs)
 
 DIRS=asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
 RUSTS = $(wildcard rust/*.rs)
 LISPS = $(wildcard lisp/*.lisp)
-ASMS = $(subst lisp/,asm/,$(subst rust/,asm/,$(subst cpp/,asm/,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm})))
+HASKELLS = $(wildcard haskell/*.hs)
+JAVAS = $(wildcard java/*.java)
+GOS = $(wildcard go/cmd/*/main.go)
+ASMS = $(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm}))))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -52,39 +59,77 @@ summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) $(CYCLES) Makefile
 
 summary.csv: $(DIRS) $(REPORTS)
 	{ for r in $(REPORTS:.txt=.csv); do cat $${r}; done } > summary.csv
-	cat summary.csv
+	cat summary.csv | sort -k5 -g -t,
 
 env:
 	$(CC) --version
 	$(RUSTC) --version
 	$(MAKE) -version
+	$(HC) --version
+	cppcheck --version
+	cpplint --version
+	sbcl --version
+	go version
 
 sa: Makefile
-	diff -u <(cat $${targets}) <(clang-format --style=file $(CPPS))
-	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 $(CPPS)
+	diff -u <(cat $(CPPS)) <(clang-format --style=file $(CPPS))
+	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 --suppress=missingIncludeSystem $(CPPS)
 	cpplint --extensions=cpp --filter=-whitespace/indent $(CPPS)
 	clang-tidy -header-filter=none \
 		'-warnings-as-errors=*' \
 		'-checks=*,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
 		$(CPPS)
 
-asm/%.asm: cpp/%.cpp
+asm/cpp-%.asm: cpp/%.cpp
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
-asm/%.asm: rust/%.rs
+asm/rust-%.asm: rust/%.rs
 	$(RUSTC) $(RUSTFLAGS) --emit=asm -o "$@" "$<"
 
-asm/%.asm: lisp/%.lisp
+asm/lisp-%.asm: lisp/%.lisp
 	echo " no asm here" > "$@"
 
-bin/%.bin: cpp/%.cpp
+asm/go-%.asm: go/cmd/%/main.go
+	echo " no asm here" > "$@"
+
+asm/haskell-%.asm: haskell/%.hs $(HCLIBS)
+	source=$$( echo "$<" | sed 's/\.hs$$//' )
+	$(HC) $(HCFLAGS) -S $(HCLIBS) "$<"
+	mv $${source}.s "$@"
+	cat $(HCLIBDIR)/*.s >> "$@"
+	rm $(HCLIBDIR)/*.s
+
+asm/java-%.asm: java/%.java
+	echo " no asm here" > "$@"
+
+bin/cpp-%.bin: cpp/%.cpp
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
-bin/%.bin: rust/%.rs
+bin/rust-%.bin: rust/%.rs
 	$(RUSTC) $(RUSTFLAGS) -o "$@" "$<"
 
-bin/%.bin: lisp/%.lisp
+bin/lisp-%.bin: lisp/%.lisp
 	sbcl --load "$<"
+
+bin/go-%.bin: go/cmd/%/main.go
+	cd go
+	go build -o "../$@" "$(subst go/,./,${<:/main.go=})"
+
+bin/haskell-%.bin: haskell/%.hs $(HCLIBS)
+	source=$$( echo "$<" | sed 's/\.hs$$//' )
+	$(HC) $(HCFLAGS) $(HCLIBS) "$<"
+	mv $${source} "$@"
+	rm $${source}.o
+	rm $${source}.hi
+	rm $(HCLIBDIR)/*.o
+	rm $(HCLIBDIR)/*.hi
+
+bin/java-%.bin: java/%.java
+	name=$(subst java/,,$(<:.java=))
+	mkdir -p "tmp/$${name}"
+	javac -d "tmp/$${name}" "$<"
+	jar --create --main-class=$${name} --file="tmp/$${name}.jar" -C "tmp/$${name}" .
+	native-image -jar "tmp/$${name}.jar" --verbose "$@"
 
 reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
 	"$<" 7 1
@@ -98,6 +143,7 @@ reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
 		if [ "$${seconds}" -gt "10" ]; then break; fi
 		if [ "$${seconds}" -gt "0" -a "$${cycles}" -ge "$(WANTED)" ]; then break; fi
 		cycles=$$(expr $${cycles} \* 2)
+		if [ "$${cycles}" -gt "2147483647" ]; then break; fi
 		if [ "$${cycles}" -lt "$(WANTED)" -a "$${seconds}" -lt "1" ]; then cycles=$(WANTED); fi
 	done
 	instructions=$$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)

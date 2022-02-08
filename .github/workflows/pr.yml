@@ -3,13 +3,14 @@ on:
   pull_request:
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-      - run: sudo apt-get install -y clang-tidy clang-format cppcheck bc sbcl
-      - run: pip install cpplint
-      - run: make sa
+      - run: ./ubuntu-install.sh
+      - run: make clean
+      - run: make env
       - run: make FAST=1
+      - run: make sa

@@ -20,7 +20,7 @@
 
 #include <array>
 
-#include "main.h"
+#include "./main.h"
 using matrix2on2 = std::array<int, 4>;
 matrix2on2 mul(const matrix2on2 &first, const matrix2on2 &second) {
   matrix2on2 res;
@@ -32,7 +32,7 @@ matrix2on2 mul(const matrix2on2 &first, const matrix2on2 &second) {
 }
 const matrix2on2 IDENTITY_MATRIX = {1, 0, 0, 1};
 // See https://e-maxx.ru/algo/binary_pow
-matrix2on2 binpow(matrix2on2 a, int n) {
+matrix2on2 binpow(const matrix2on2 &a, int n) {
   matrix2on2 result{};
   if (n == 0) {
     result = IDENTITY_MATRIX;
