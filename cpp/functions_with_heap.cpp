@@ -30,7 +30,6 @@ int __attribute__((noinline)) fibo_impl(int *x) {
   int* p2 = new int(2);
 
   if (less_impl(x, p2)) {
-    delete x;
     delete p2;
     return 1;
   }
