@@ -18,24 +18,25 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-SHELL=/bin/bash
 .ONESHELL:
-.SHELLFLAGS = -e -o pipefail -c
+.SHELLFLAGS: -e -o pipefail -c
 .PHONY: clean
+
+SHELL = /bin/bash
 
 INPUT = 32
 WANTED = 8
 
-CC=clang++
-CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
-RUSTC=rustc
-RUSTFLAGS=-C opt-level=3
-HC=ghc
-HCFLAGS=-dynamic -Wall -Werror
-HCLIBDIR=haskell/Mainlib
-HCLIBS=$(wildcard $(HCLIBDIR)/*.hs)
+CC = clang++
+CCFLAGS = -mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
+RUSTC = rustc
+RUSTFLAGS = -C opt-level=3
+HC = ghc
+HCFLAGS = -dynamic -Wall -Werror
+HCLIBDIR = haskell/Mainlib
+HCLIBS = $(wildcard $(HCLIBDIR)/*.hs)
 
-DIRS=asm bin reports
+DIRS = asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
 RUSTS = $(wildcard rust/*.rs)
 LISPS = $(wildcard lisp/*.lisp)
