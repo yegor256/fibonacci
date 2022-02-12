@@ -38,8 +38,8 @@ sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 #unlink /usr/bin/clang-format && ln -s /usr/bin/clang-format-13 /usr/bin/clang-format
 
 graalvm_version=22.0.0.2
-wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${graalvm_version}/graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz
-tar -xvzf graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz
+wget --no-verbose https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${graalvm_version}/graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz
+tar -xvzf graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz > /dev/null
 mv graalvm-ce-java11-${graalvm_version}/ /usr/lib/jvm/
 cd /usr/lib/jvm
 ln -s graalvm-ce-java11-${graalvm_version} graalvm
