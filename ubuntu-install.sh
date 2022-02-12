@@ -31,11 +31,21 @@ sudo -E apt-get install -y --no-install-recommends tzdata
 sudo apt-get install -y python python3-pip make software-properties-common lsb-release wget
 
 sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-sudo apt-get install -y clang-13 clang-tidy-13 clang-format-13
+#sudo apt-get install -y clang-13 clang-tidy-13 clang-format-13
+#
+#unlink /usr/bin/clang++ && ln -s /usr/bin/clang++-13 /usr/bin/clang++
+#unlink /usr/bin/clang-tidy && ln -s /usr/bin/clang-tidy-13 /usr/bin/clang-tidy
+#unlink /usr/bin/clang-format && ln -s /usr/bin/clang-format-13 /usr/bin/clang-format
 
-unlink /usr/bin/clang++ && ln -s /usr/bin/clang++-13 /usr/bin/clang++
-unlink /usr/bin/clang-tidy && ln -s /usr/bin/clang-tidy-13 /usr/bin/clang-tidy
-unlink /usr/bin/clang-format && ln -s /usr/bin/clang-format-13 /usr/bin/clang-format
+graalvm_version=22.0.0.2
+wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${graalvm_version}/graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz
+tar -xvzf graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz
+mv graalvm-ce-java11-${graalvm_version}/ /usr/lib/jvm/
+cd /usr/lib/jvm
+ln -s graalvm-ce-java11-${graalvm_version} graalvm
+update-alternatives --install /usr/bin/java java /usr/lib/jvm/graalvm/bin/java 2
+export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/installer/bin/
+export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/svm/bin
 
 sudo apt-get install -y cppcheck bc sbcl rustc ghc
 

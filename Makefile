@@ -43,7 +43,7 @@ LISPS = $(wildcard lisp/*.lisp)
 HASKELLS = $(wildcard haskell/*.hs)
 JAVAS = $(wildcard java/*.java)
 GOS = $(wildcard go/cmd/*/main.go)
-ASMS = $(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm}))))))
+ASMS = $(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm} ${JAVAS:.java=.asm}))))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -69,6 +69,7 @@ env:
 	$(HC) --version
 	cppcheck --version
 	cpplint --version
+	javac --version
 	sbcl --version
 	go version
 
@@ -129,7 +130,11 @@ bin/java-%.bin: java/%.java
 	name=$(subst java/,,$(<:.java=))
 	mkdir -p "tmp/$${name}"
 	javac -d "tmp/$${name}" "$<"
-	jar --create --main-class=$${name} --file="tmp/$${name}.jar" -C "tmp/$${name}" .
+	if [ "$(uname)" == "Darwin" ]; then
+		jar -c -e "$${name}" -f "tmp/$${name}.jar" -C "tmp/$${name}" .
+	else
+		jar cfe "tmp/Objects.jar" Objects -C "tmp/Objects" .
+	fi
 	native-image -jar "tmp/$${name}.jar" --verbose "$@"
 
 reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
