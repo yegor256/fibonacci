@@ -23,6 +23,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "alloc_count.h"
 
 int calc(int);
 
@@ -43,6 +44,7 @@ int main(int argc, char* argv[]) {
     total += f;
   }
   printf("%d-th Fibonacci number is %d\nTotal is %d\n", input, f, total);
+  printf("%d heap allocations was in this solution\n", ALLOC_COUNT);
 }
 
 #endif  // INCLUDE_MAIN_H__
