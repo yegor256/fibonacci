@@ -34,9 +34,10 @@ bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 clang_version=14
 apt-get install -y clang-${clang_version} clang-tidy-${clang_version} clang-format-${clang_version}
 
-unlink /usr/bin/clang++ && ln -s /usr/bin/clang++-${clang_version} /usr/bin/clang++
-unlink /usr/bin/clang-tidy && ln -s /usr/bin/clang-tidy-${clang_version} /usr/bin/clang-tidy
-unlink /usr/bin/clang-format && ln -s /usr/bin/clang-format-${clang_version} /usr/bin/clang-format
+for f in clang++ clang-tidy clang-format; do
+  if [ -e /usr/bin/${f} ]; then unlink /usr/bin/${f}; fi
+  ln -s /usr/bin/${f}-${clang_version} /usr/bin/${f}
+done
 
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 E1DF1F24 3DD9F856 \
   && apt-get update -y --fix-missing \
@@ -57,5 +58,8 @@ apt-get install -y cppcheck bc sbcl rustc ghc
 
 pip3 install cpplint
 
-wget --no-verbose -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | tar -xz -C /usr/local
-unlink /usr/bin/go && ln -s /usr/local/go/bin/go /usr/bin/go
+if [ ! -e /usr/bin/go ]; then
+  unlink /usr/bin/go
+  wget --no-verbose -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | tar -xz -C /usr/local
+  ln -s /usr/local/go/bin/go /usr/bin/go
+fi
