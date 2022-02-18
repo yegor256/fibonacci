@@ -25,14 +25,14 @@ set -x
 
 export DEBIAN_FRONTEND=noninteractive
 
-sudo apt-get update -y
-sudo apt-get install -y --no-install-recommends tzdata
+apt-get update -y
+apt-get install -y --no-install-recommends tzdata
 
-sudo apt-get install -y python python3-pip make software-properties-common lsb-release wget
+apt-get install -y python python3-pip make software-properties-common lsb-release wget
 
-sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 clang_version=14
-sudo apt-get install -y clang-${clang_version} clang-tidy-${clang_version} clang-format-${clang_version}
+apt-get install -y clang-${clang_version} clang-tidy-${clang_version} clang-format-${clang_version}
 
 unlink /usr/bin/clang++ && ln -s /usr/bin/clang++-${clang_version} /usr/bin/clang++
 unlink /usr/bin/clang-tidy && ln -s /usr/bin/clang-tidy-${clang_version} /usr/bin/clang-tidy
@@ -53,7 +53,7 @@ update-alternatives --install /usr/bin/java java /usr/lib/jvm/graalvm/bin/java 2
 export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/installer/bin/
 export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/svm/bin
 
-sudo apt-get install -y cppcheck bc sbcl rustc ghc
+apt-get install -y cppcheck bc sbcl rustc ghc
 
 pip3 install cpplint
 

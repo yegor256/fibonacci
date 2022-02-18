@@ -9,7 +9,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-      - run: ./ubuntu-install.sh
+      - run: sudo ./ubuntu-install.sh
       - run: make clean
       - run: make env
       - run: make FAST=1
