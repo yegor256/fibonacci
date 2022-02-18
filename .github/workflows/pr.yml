@@ -25,10 +25,10 @@ jobs:
         with:
           version: 13
       - run: pip install cpplint
-      - run: apt-get install -y cppcheck
-      - run: apt-get install -y bc
-      - run: apt-get install -y ghc
-      - run: apt-get install -y sbcl
+      - run: sudo apt-get install -y cppcheck
+      - run: sudo apt-get install -y bc
+      - run: sudo apt-get install -y ghc
+      - run: sudo apt-get install -y sbcl
       - uses: actions/checkout@v2
       - run: sudo ./ubuntu-install.sh
       - run: make clean
