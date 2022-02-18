@@ -10,10 +10,10 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+      - uses: actions/checkout@v2
       - run: sudo ./ubuntu-install.sh
       - run: make clean
       - run: make env

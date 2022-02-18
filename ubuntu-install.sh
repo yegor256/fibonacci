@@ -28,7 +28,7 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update -y
 apt-get install -y --no-install-recommends tzdata
 
-apt-get install -y python python3-pip make software-properties-common lsb-release wget
+apt-get install -y make software-properties-common lsb-release wget
 
 if [ ! -e /usr/bin/clang-tidy ]; then
   bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
@@ -40,31 +40,31 @@ if [ ! -e /usr/bin/clang-tidy ]; then
   done
 fi
 
-if [ ! -e /usr/lib/jvm/default-java ]; then
-  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 E1DF1F24 3DD9F856 \
-    && apt-get update -y --fix-missing \
-    && apt-get install -y default-jdk ca-certificates maven
-fi
-export JAVA_HOME=/usr/lib/jvm/default-java
+#if [ ! -e /usr/lib/jvm/default-java ]; then
+#  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 E1DF1F24 3DD9F856 \
+#    && apt-get update -y --fix-missing \
+#    && apt-get install -y default-jdk ca-certificates maven
+#fi
+#export JAVA_HOME=/usr/lib/jvm/default-java
 
-if [ ! -e /usr/lib/jvm/graalvm ]; then
-  graalvm_version=22.0.0.2
-  wget --no-verbose https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${graalvm_version}/graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz
-  tar -xvzf graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz > /dev/null
-  mv graalvm-ce-java11-${graalvm_version}/ /usr/lib/jvm/
-  cd /usr/lib/jvm
-  ln -s graalvm-ce-java11-${graalvm_version} graalvm
-  update-alternatives --install /usr/bin/java java /usr/lib/jvm/graalvm/bin/java 2
-fi
-export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/installer/bin/
-export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/svm/bin
+#if [ ! -e /usr/lib/jvm/graalvm ]; then
+#  graalvm_version=22.0.0.2
+#  wget --no-verbose https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${graalvm_version}/graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz
+#  tar -xvzf graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz > /dev/null
+#  mv graalvm-ce-java11-${graalvm_version}/ /usr/lib/jvm/
+#  cd /usr/lib/jvm
+#  ln -s graalvm-ce-java11-${graalvm_version} graalvm
+#  update-alternatives --install /usr/bin/java java /usr/lib/jvm/graalvm/bin/java 2
+#fi
+#export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/installer/bin/
+#export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/svm/bin
 
 apt-get install -y cppcheck bc sbcl rustc ghc
 
 pip3 install cpplint
 
-if [ ! -e /usr/bin/go ]; then
-  unlink /usr/bin/go
-  wget --no-verbose -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | tar -xz -C /usr/local
-  ln -s /usr/local/go/bin/go /usr/bin/go
-fi
+#if [ ! -e /usr/bin/go ]; then
+#  unlink /usr/bin/go
+#  wget --no-verbose -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | tar -xz -C /usr/local
+#  ln -s /usr/local/go/bin/go /usr/bin/go
+#fi
