@@ -82,42 +82,42 @@ sa: Makefile
 		'-checks=*,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
 		$(CPPS)
 
-asm/cpp-%.asm: cpp/%.cpp
+asm/cpp-%.asm: cpp/%.cpp asm
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
-asm/rust-%.asm: rust/%.rs
+asm/rust-%.asm: rust/%.rs asm
 	$(RUSTC) $(RUSTFLAGS) --emit=asm -o "$@" "$<"
 
-asm/lisp-%.asm: lisp/%.lisp
+asm/lisp-%.asm: lisp/%.lisp asm
 	echo " no asm here" > "$@"
 
-asm/go-%.asm: go/cmd/%/main.go
+asm/go-%.asm: go/cmd/%/main.go asm
 	echo " no asm here" > "$@"
 
-asm/haskell-%.asm: haskell/%.hs $(HCLIBS)
+asm/haskell-%.asm: haskell/%.hs $(HCLIBS) asm
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
 	$(HC) $(HCFLAGS) -S $(HCLIBS) "$<"
 	mv $${source}.s "$@"
 	cat $(HCLIBDIR)/*.s >> "$@"
 	rm $(HCLIBDIR)/*.s
 
-asm/java-%.asm: java/%.java
+asm/java-%.asm: java/%.java asm
 	echo " no asm here" > "$@"
 
-bin/cpp-%.bin: cpp/%.cpp
+bin/cpp-%.bin: cpp/%.cpp bin
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
-bin/rust-%.bin: rust/%.rs
+bin/rust-%.bin: rust/%.rs bin
 	$(RUSTC) $(RUSTFLAGS) -o "$@" "$<"
 
-bin/lisp-%.bin: lisp/%.lisp
+bin/lisp-%.bin: lisp/%.lisp bin
 	sbcl --load "$<"
 
-bin/go-%.bin: go/cmd/%/main.go
+bin/go-%.bin: go/cmd/%/main.go bin
 	cd go
 	go build -o "../$@" "$(subst go/,./,${<:/main.go=})"
 
-bin/haskell-%.bin: haskell/%.hs $(HCLIBS)
+bin/haskell-%.bin: haskell/%.hs $(HCLIBS) bin
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
 	$(HC) $(HCFLAGS) $(HCLIBS) "$<"
 	mv $${source} "$@"
@@ -126,7 +126,7 @@ bin/haskell-%.bin: haskell/%.hs $(HCLIBS)
 	rm $(HCLIBDIR)/*.o
 	rm $(HCLIBDIR)/*.hi
 
-bin/java-%.bin: java/%.java
+bin/java-%.bin: java/%.java bin
 	name=$(subst java/,,$(<:.java=))
 	mkdir -p "tmp/$${name}"
 	javac -d "tmp/$${name}" "$<"
