@@ -15,6 +15,9 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+      - uses: 40ants/setup-lisp@v2
+        with:
+          asdf-system: cl-info
       - uses: actions/setup-go@v2
       - uses: DeLaGuardo/setup-graalvm@5.0
         with:

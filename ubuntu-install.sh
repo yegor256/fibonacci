@@ -59,7 +59,7 @@ fi
 #export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/installer/bin/
 #export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/svm/bin
 
-apt-get install -y cppcheck bc sbcl rustc ghc
+apt-get install -y cppcheck bc ghc
 
 pip3 install cpplint
 
