@@ -31,11 +31,12 @@ sudo apt-get install -y --no-install-recommends tzdata
 sudo apt-get install -y python python3-pip make software-properties-common lsb-release wget
 
 sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-sudo apt-get install -y clang-13 clang-tidy-13 clang-format-13
+clang_version=14
+sudo apt-get install -y clang-${clang_version} clang-tidy-${clang_version} clang-format-${clang_version}
 
-unlink /usr/bin/clang++ && ln -s /usr/bin/clang++-13 /usr/bin/clang++
-unlink /usr/bin/clang-tidy && ln -s /usr/bin/clang-tidy-13 /usr/bin/clang-tidy
-unlink /usr/bin/clang-format && ln -s /usr/bin/clang-format-13 /usr/bin/clang-format
+unlink /usr/bin/clang++ && ln -s /usr/bin/clang++-${clang_version} /usr/bin/clang++
+unlink /usr/bin/clang-tidy && ln -s /usr/bin/clang-tidy-${clang_version} /usr/bin/clang-tidy
+unlink /usr/bin/clang-format && ln -s /usr/bin/clang-format-${clang_version} /usr/bin/clang-format
 
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 E1DF1F24 3DD9F856 \
   && apt-get update -y --fix-missing \
