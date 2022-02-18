@@ -24,6 +24,9 @@ jobs:
           graalvm: '22.0.0.2'
           java: 'java11'
       - run: gu install native-image
+      - uses: egor-tensin/setup-clang@v1
+        with:
+          version: 13
       - run: pip install cpplint
       - run: apt-get install -y cppcheck
       - run: apt-get install -y bc

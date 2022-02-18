@@ -30,15 +30,15 @@ apt-get install -y --no-install-recommends tzdata
 
 apt-get install -y make software-properties-common lsb-release wget
 
-if [ ! -e /usr/bin/clang-tidy ]; then
-  bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-  clang_version=14
-  apt-get install -y clang-${clang_version} clang-tidy-${clang_version} clang-format-${clang_version}
-  for f in clang++ clang-tidy clang-format; do
-    if [ -e /usr/bin/${f} ]; then unlink /usr/bin/${f}; fi
-    ln -s /usr/bin/${f}-${clang_version} /usr/bin/${f}
-  done
-fi
+#if [ ! -e /usr/bin/clang-tidy ]; then
+#  bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+#  clang_version=14
+#  apt-get install -y clang-${clang_version} clang-tidy-${clang_version} clang-format-${clang_version}
+#  for f in clang++ clang-tidy clang-format; do
+#    if [ -e /usr/bin/${f} ]; then unlink /usr/bin/${f}; fi
+#    ln -s /usr/bin/${f}-${clang_version} /usr/bin/${f}
+#  done
+#fi
 
 #if [ ! -e /usr/lib/jvm/default-java ]; then
 #  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 E1DF1F24 3DD9F856 \
