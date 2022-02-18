@@ -59,10 +59,6 @@ fi
 #export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/installer/bin/
 #export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/svm/bin
 
-apt-get install -y cppcheck bc ghc
-
-pip3 install cpplint
-
 #if [ ! -e /usr/bin/go ]; then
 #  unlink /usr/bin/go
 #  wget --no-verbose -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | tar -xz -C /usr/local
