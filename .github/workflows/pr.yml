@@ -7,6 +7,7 @@ jobs:
     steps:
       - uses: actions/setup-java@v2
         with:
+          distribution: 'zulu'
           java-version: '11'
       - uses: actions/setup-python@v2
         with:
