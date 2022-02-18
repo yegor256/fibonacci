@@ -30,27 +30,32 @@ apt-get install -y --no-install-recommends tzdata
 
 apt-get install -y python python3-pip make software-properties-common lsb-release wget
 
-bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-clang_version=14
-apt-get install -y clang-${clang_version} clang-tidy-${clang_version} clang-format-${clang_version}
+if [ ! -e /usr/bin/clang-tidy ]; then
+  bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+  clang_version=14
+  apt-get install -y clang-${clang_version} clang-tidy-${clang_version} clang-format-${clang_version}
+  for f in clang++ clang-tidy clang-format; do
+    if [ -e /usr/bin/${f} ]; then unlink /usr/bin/${f}; fi
+    ln -s /usr/bin/${f}-${clang_version} /usr/bin/${f}
+  done
+fi
 
-for f in clang++ clang-tidy clang-format; do
-  if [ -e /usr/bin/${f} ]; then unlink /usr/bin/${f}; fi
-  ln -s /usr/bin/${f}-${clang_version} /usr/bin/${f}
-done
-
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 E1DF1F24 3DD9F856 \
-  && apt-get update -y --fix-missing \
-  && apt-get install -y default-jdk ca-certificates maven
+if [ ! -e /usr/lib/jvm/default-java ]; then
+  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 E1DF1F24 3DD9F856 \
+    && apt-get update -y --fix-missing \
+    && apt-get install -y default-jdk ca-certificates maven
+fi
 export JAVA_HOME=/usr/lib/jvm/default-java
 
-graalvm_version=22.0.0.2
-wget --no-verbose https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${graalvm_version}/graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz
-tar -xvzf graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz > /dev/null
-mv graalvm-ce-java11-${graalvm_version}/ /usr/lib/jvm/
-cd /usr/lib/jvm
-ln -s graalvm-ce-java11-${graalvm_version} graalvm
-update-alternatives --install /usr/bin/java java /usr/lib/jvm/graalvm/bin/java 2
+if [ ! -e /usr/lib/jvm/graalvm ]; then
+  graalvm_version=22.0.0.2
+  wget --no-verbose https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${graalvm_version}/graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz
+  tar -xvzf graalvm-ce-java11-linux-amd64-${graalvm_version}.tar.gz > /dev/null
+  mv graalvm-ce-java11-${graalvm_version}/ /usr/lib/jvm/
+  cd /usr/lib/jvm
+  ln -s graalvm-ce-java11-${graalvm_version} graalvm
+  update-alternatives --install /usr/bin/java java /usr/lib/jvm/graalvm/bin/java 2
+fi
 export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/installer/bin/
 export PATH=$PATH:/usr/lib/jvm/graalvm-ce-java11-${graalvm_version}/lib/svm/bin
 
