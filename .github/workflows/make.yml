@@ -23,6 +23,8 @@ jobs:
         with:
           toolchain: stable
       - uses: actions/setup-go@v2
+        with:
+          go-version: '1.16.1'
       - uses: DeLaGuardo/setup-graalvm@5.0
         with:
           graalvm: '22.0.0.2'
