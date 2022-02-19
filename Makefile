@@ -144,12 +144,12 @@ reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
 	while true; do
 		time=$$({ time -p "$<" $(INPUT) $${cycles} | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
 		if [[ ! "$${time}" =~ ^[0-9.]+$$ ]]; then
-			echo "Failed to calculate time:"
 			time -p "$<" $(INPUT) $${cycles}
+			echo "For some reason, $$$$time is not an integer: $${time}"
 			exit 1
 		fi
 		echo $${time} > "${@:.txt=.time}"
-		echo "cycles=$${cycles}; time=$${time} -> too fast, need more cycles (attempt $${attempt})..."
+		echo "cycles=$${cycles}; time=$${time} -> too fast, need more cycles (attempt #$${attempt})..."
 		if [ "$(FAST)" != "" ]; then break; fi
 		seconds=$$(echo $${time} | cut -f1 -d.)
 		if [ "$${seconds}" -gt "10" ]; then break; fi
