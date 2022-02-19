@@ -149,11 +149,11 @@ reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
 			exit 1
 		fi
 		echo $${time} > "${@:.txt=.time}"
-		echo "cycles=$${cycles}; time=$${time} -> too fast, need more cycles (attempt #$${attempt})..."
 		if [ "$(FAST)" != "" ]; then break; fi
 		seconds=$$(echo $${time} | cut -f1 -d.)
 		if [ "$${seconds}" -gt "10" ]; then break; fi
 		if [ "$${seconds}" -gt "0" -a "$${cycles}" -ge "$(WANTED)" ]; then break; fi
+		echo "cycles=$${cycles}; time=$${time} -> too fast, need more cycles (attempt #$${attempt})..."
 		cycles=$$(expr $${cycles} \* 2)
 		if [ "$${cycles}" -gt "2147483647" ]; then break; fi
 		if [ "$${cycles}" -lt "$(WANTED)" -a "$${seconds}" -lt "1" ]; then cycles=$(WANTED); fi
