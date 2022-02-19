@@ -142,7 +142,7 @@ reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
 	cycles=1
 	attempt=1
 	while true; do
-		time=$$({ time -p "$<" $(INPUT) $${cycles} | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
+		time=$$({ time -p "$<" $(INPUT) $${cycles} | tail -n +1 | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
 		if [[ ! "$${time}" =~ ^[0-9.]+$$ ]]; then
 			time -p "$<" $(INPUT) $${cycles} 2>&1
 			echo "For some reason, \$$time is not an integer: $${time}"
