@@ -140,10 +140,16 @@ bin/java-%.bin: java/%.java bin
 reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
 	"$<" 7 1
 	cycles=1
+	attempt=1
 	while true; do
 		time=$$({ time -p "$<" $(INPUT) $${cycles} | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
+		if [[ ! "$${time}" =~ ^[0-9.]+$$ ]]; then
+			echo "Failed to calculate time:"
+			time -p "$<" $(INPUT) $${cycles}
+			exit 1
+		fi
 		echo $${time} > "${@:.txt=.time}"
-		echo "cycles=$${cycles}; time=$${time} -> too fast, need more cycles..."
+		echo "cycles=$${cycles}; time=$${time} -> too fast, need more cycles (attempt $${attempt})..."
 		if [ "$(FAST)" != "" ]; then break; fi
 		seconds=$$(echo $${time} | cut -f1 -d.)
 		if [ "$${seconds}" -gt "10" ]; then break; fi
@@ -151,6 +157,7 @@ reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
 		cycles=$$(expr $${cycles} \* 2)
 		if [ "$${cycles}" -gt "2147483647" ]; then break; fi
 		if [ "$${cycles}" -lt "$(WANTED)" -a "$${seconds}" -lt "1" ]; then cycles=$(WANTED); fi
+		attempt=$$(expr $${attempt} + 1)
 	done
 	instructions=$$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)
 	per=$$(echo "scale = 16 ; $${time} / $${cycles}" | bc)
