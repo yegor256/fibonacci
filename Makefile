@@ -181,7 +181,7 @@ reports/%.txt: bin/%.bin asm/%.asm
 		echo ""
 	} > "$@"
 	echo "${subst bin/,,$<},$${instructions},$${cycles},$${time},$${per}" > "${@:.txt=.csv}"
-	echo "<program><name>${subst bin/,,$<}</name> \
+	echo "<program><name>${subst bin/,,${$<:,.bin=}}</name> \
 		<instructions>$${instructions}</instructions> \
 		<cycles>$${cycles}</cycles> \
 		<time>$${time}</time> \
