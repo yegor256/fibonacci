@@ -20,7 +20,7 @@
 
 .ONESHELL:
 .SHELLFLAGS: -e -o pipefail -c
-.PHONY: clean
+.PHONY: clean sa env lint
 
 SHELL = /bin/bash
 
@@ -133,9 +133,9 @@ bin/java-%.bin: java/%.java bin
 	if [ "$(uname)" == "Darwin" ]; then
 		jar -c -e "$${name}" -f "tmp/$${name}.jar" -C "tmp/$${name}" .
 	else
-		jar cfe "tmp/Objects.jar" Objects -C "tmp/Objects" .
+		jar cfe "tmp/$${name}.jar" "$${name}" -C "tmp/$${name}" .
 	fi
-	native-image -jar "tmp/$${name}.jar" --verbose "$@"
+	native-image -jar "tmp/$${name}.jar" "$@"
 
 reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
 	"$<" 7 1
