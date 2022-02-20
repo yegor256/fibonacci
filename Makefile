@@ -159,17 +159,22 @@ reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
 		if [ "$${cycles}" -lt "$(WANTED)" -a "$${seconds}" -lt "1" ]; then cycles=$(WANTED); fi
 		attempt=$$(expr $${attempt} + 1)
 	done
+	sudo perf stat "$<" $(INPUT) $${cycles} > "${@:.txt=.perf}" 2>&1
+	ticks=$$(cat "${@:.txt=.perf}" | grep cycles | sed 's/ \+/ /' | cut -f 2 -d ' ')
+	ticks_per_cycle=$$(echo "scale = 16 ; $${ticks} / $${cycles}" | bc)
 	instructions=$$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)
-	per=$$(echo "scale = 16 ; $${time} / $${cycles}" | bc)
+	time_per_cycle=$$(echo "scale = 16 ; $${time} / $${cycles}" | bc)
 	{
 	  	echo "$<:"
+		echo "CPU ticks: $${ticks}"
+		echo "CPU ticks per cycle: $${ticks_per_cycle}"
 	  	echo "Instructions: $${instructions}"
 		echo "Cycles: $${cycles}"
 		echo "Time: $${time}"
-		echo "Per cycle: $${per}"
+		echo "Per cycle: $${time_per_cycle}"
 		echo ""
 	} > "$@"
-	echo "${subst bin/,,$<},$${instructions},$${cycles},$${time},$${per}" > "${@:.txt=.csv}"
+	echo "${subst bin/,,$<},$${instructions},$${ticks_per_cycle},$${cycles},$${time},$${time_per_cycle}" > "${@:.txt=.csv}"
 
 clean:
 	rm -rf $(DIRS)
