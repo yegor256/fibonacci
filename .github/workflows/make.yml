@@ -10,6 +10,9 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
+      - run: | 
+          sudo mkdir -p /usr/local/opt
+          sudo wget --no-verbose -O /usr/local/opt/Saxon.jar https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar
       - run: sudo apt-get update -y
       - run: sudo apt-get install -y lsb-release
       - uses: actions/setup-java@v2
@@ -50,4 +53,12 @@ jobs:
       - uses: actions/checkout@v2
       - run: make clean
       - run: make env
-      - run: make WANTED=1024 summary.csv
+      - run: make WANTED=1024 index.html
+      - run: mkdir gh-pages
+      - run: cp index.html gh-pages
+      - run: cp index.xml gh-pages
+      - uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: gh-pages
+          clean: false

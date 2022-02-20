@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/yegor256/fibonacci/master/logo.svg" height="92px"/>
+
 [![new](https://github.com/yegor256/fibonacci/actions/workflows/make.yml/badge.svg)](https://github.com/yegor256/fibonacci/actions/workflows/make.yml)
 
 Here we compare [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_number) 
