@@ -13,10 +13,10 @@ jobs:
       ImageOS: ubuntu20
     steps:
       - run: sudo mkdir -p /opt/hostedtoolcache
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6
-          bundler-cache: false
+#      - uses: ruby/setup-ruby@v1
+#        with:
+#          ruby-version: 2.6
+#          bundler-cache: false
       - run: gem install xcop
       - run: | 
           sudo mkdir -p /usr/local/opt
