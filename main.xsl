@@ -85,9 +85,8 @@ SOFTWARE.
         <title>Fibonacci</title>
         <meta charset="UTF-8"/>
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-        <link rel="icon" href="https://raw.githubusercontent.com/yegor256/fibonacci/master/logo-64.png" type="image/png"/>
+        <link rel="icon" href="https://raw.githubusercontent.com/yegor256/fibonacci/master/logo.svg" type="image/png"/>
         <link href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css.min.css" rel="stylesheet"/>
-        <link href="https://cdn.jsdelivr.net/gh/yegor256/drops@gh-pages/drops.min.css" rel="stylesheet"/>
         <style>
           table { width: auto; }
           * { font-family: monospace; font-size: 14px; }
@@ -99,7 +98,7 @@ SOFTWARE.
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"/>
         <script type="text/javascript">
           $(function() {
-            $("#data").tablesorter();
+            $("#programs").tablesorter();
           });
         </script>
       </head>
