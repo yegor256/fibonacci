@@ -1,28 +1,36 @@
-<fibonacci date='2022-02-21'><programs><program><name>cpp-interpreter</name> 	<instructions>3299</instructions> 	<cycles>16384</cycles> 	<time>1.60</time> 	<per>.0000976562500000</per></program>
-<program><name>cpp-recursion</name> 	<instructions>68</instructions> 	<cycles>128</cycles> 	<time>1.03</time> 	<per>.0080468750000000</per></program>
-<program><name>cpp-binpow-matrix</name> 	<instructions>165</instructions> 	<cycles>67108864</cycles> 	<time>1.99</time> 	<per>.0000000296533107</per></program>
-<program><name>cpp-decorators</name> 	<instructions>187</instructions> 	<cycles>128</cycles> 	<time>1.97</time> 	<per>.0153906250000000</per></program>
-<program><name>cpp-lambdas</name> 	<instructions>485</instructions> 	<cycles>2</cycles> 	<time>15.63</time> 	<per>7.8150000000000000</per></program>
-<program><name>cpp-objects</name> 	<instructions>432</instructions> 	<cycles>2</cycles> 	<time>15.87</time> 	<per>7.9350000000000000</per></program>
-<program><name>cpp-loop</name> 	<instructions>126</instructions> 	<cycles>134217728</cycles> 	<time>1.34</time> 	<per>.0000000099837779</per></program>
-<program><name>cpp-inlines</name> 	<instructions>68</instructions> 	<cycles>128</cycles> 	<time>1.10</time> 	<per>.0085937500000000</per></program>
-<program><name>cpp-matrixes</name> 	<instructions>166</instructions> 	<cycles>67108864</cycles> 	<time>1.10</time> 	<per>.0000000163912773</per></program>
-<program><name>cpp-functions</name> 	<instructions>86</instructions> 	<cycles>64</cycles> 	<time>2.49</time> 	<per>.0389062500000000</per></program>
-<program><name>rust-structs</name> 	<instructions>677</instructions> 	<cycles>64</cycles> 	<time>61.66</time> 	<per>.9634375000000000</per></program>
-<program><name>rust-recursion</name> 	<instructions>565</instructions> 	<cycles>2147483648</cycles> 	<time>0.01</time> 	<per>.0000000000046566</per></program>
-<program><name>lisp-recursion</name> 	<instructions>1</instructions> 	<cycles>64</cycles> 	<time>3.67</time> 	<per>.0573437500000000</per></program>
-<program><name>haskell-recursion</name> 	<instructions>1251</instructions> 	<cycles>64</cycles> 	<time>11.56</time> 	<per>.1806250000000000</per></program>
-<program><name>haskell-polymorphic_recursion</name> 	<instructions>2609</instructions> 	<cycles>8</cycles> 	<time>13.53</time> 	<per>1.6912500000000000</per></program>
-<program><name>haskell-zipwith</name> 	<instructions>1217</instructions> 	<cycles>2097152</cycles> 	<time>1.01</time> 	<per>.0000004816055297</per></program>
-<program><name>haskell-tail_recursion</name> 	<instructions>1274</instructions> 	<cycles>524288</cycles> 	<time>1.24</time> 	<per>.0000023651123046</per></program>
-<program><name>haskell-object_dynamic</name> 	<instructions>1380</instructions> 	<cycles>262144</cycles> 	<time>1.80</time> 	<per>.0000068664550781</per></program>
-<program><name>haskell-object</name> 	<instructions>1423</instructions> 	<cycles>8</cycles> 	<time>12.44</time> 	<per>1.5550000000000000</per></program>
-<program><name>haskell-iterate</name> 	<instructions>1241</instructions> 	<cycles>1048576</cycles> 	<time>1.56</time> 	<per>.0000014877319335</per></program>
-<program><name>haskell-adt</name> 	<instructions>1356</instructions> 	<cycles>64</cycles> 	<time>18.60</time> 	<per>.2906250000000000</per></program>
-<program><name>go-fast</name> 	<instructions>1</instructions> 	<cycles>67108864</cycles> 	<time>1.16</time> 	<per>.0000000172853469</per></program>
-<program><name>go-structs</name> 	<instructions>1</instructions> 	<cycles>4</cycles> 	<time>16.13</time> 	<per>4.0325000000000000</per></program>
-<program><name>go-recursion</name> 	<instructions>1</instructions> 	<cycles>64</cycles> 	<time>1.20</time> 	<per>.0187500000000000</per></program>
-<program><name>java-Objects</name> 	<instructions>1</instructions> 	<cycles>16</cycles> 	<time>20.99</time> 	<per>1.3118750000000000</per></program>
-<program><name>java-Functions</name> 	<instructions>1</instructions> 	<cycles>64</cycles> 	<time>1.15</time> 	<per>.0179687500000000</per></program>
-<program><name>java-Recursion</name> 	<instructions>1</instructions> 	<cycles>64</cycles> 	<time>1.12</time> 	<per>.0175000000000000</per></program>
+<fibonacci date='2022-02-21'><programs><program> 	<file>cpp/interpreter.cpp</file> 	<name>cpp-interpreter</name> 	<instructions>3299</instructions> 	<cycles>16384</cycles> 	<time>1.16</time> 	<per>.0000708007812500</per></program>
+<program> 	<file>cpp/recursion.cpp</file> 	<name>cpp-recursion</name> 	<instructions>68</instructions> 	<cycles>256</cycles> 	<time>1.61</time> 	<per>.0062890625000000</per></program>
+<program> 	<file>cpp/binpow-matrix.cpp</file> 	<name>cpp-binpow-matrix</name> 	<instructions>165</instructions> 	<cycles>67108864</cycles> 	<time>1.81</time> 	<per>.0000000269711017</per></program>
+<program> 	<file>cpp/decorators.cpp</file> 	<name>cpp-decorators</name> 	<instructions>187</instructions> 	<cycles>128</cycles> 	<time>1.35</time> 	<per>.0105468750000000</per></program>
+<program> 	<file>cpp/lambdas.cpp</file> 	<name>cpp-lambdas</name> 	<instructions>485</instructions> 	<cycles>2</cycles> 	<time>11.09</time> 	<per>5.5450000000000000</per></program>
+<program> 	<file>cpp/objects.cpp</file> 	<name>cpp-objects</name> 	<instructions>432</instructions> 	<cycles>2</cycles> 	<time>11.51</time> 	<per>5.7550000000000000</per></program>
+<program> 	<file>cpp/loop.cpp</file> 	<name>cpp-loop</name> 	<instructions>126</instructions> 	<cycles>268435456</cycles> 	<time>1.98</time> 	<per>.0000000073760747</per></program>
+<program> 	<file>cpp/inlines.cpp</file> 	<name>cpp-inlines</name> 	<instructions>68</instructions> 	<cycles>256</cycles> 	<time>1.63</time> 	<per>.0063671875000000</per></program>
+<program> 	<file>cpp/matrixes.cpp</file> 	<name>cpp-matrixes</name> 	<instructions>166</instructions> 	<cycles>134217728</cycles> 	<time>1.62</time> 	<per>.0000000120699405</per></program>
+<program> 	<file>cpp/functions.cpp</file> 	<name>cpp-functions</name> 	<instructions>86</instructions> 	<cycles>64</cycles> 	<time>1.69</time> 	<per>.0264062500000000</per></program>
+<program> 	<file>rust/structs.rs</file> 	<name>rust-structs</name> 	<instructions>677</instructions> 	<cycles>16</cycles> 	<time>16.03</time> 	<per>1.0018750000000000</per></program>
+<program> 	<file>rust/recursion.rs</file> 	<name>rust-recursion</name> 	<instructions>565</instructions> 	<cycles>2147483648</cycles> 	<time>0.01</time> 	<per>.0000000000046566</per></program>
+<program> 	<file>lisp/recursion.lisp</file> 	<name>lisp-recursion</name> 	<instructions>1</instructions> 	<cycles>64</cycles> 	<time>2.75</time> 	<per>.0429687500000000</per></program>
+<program> 	<file>haskell/recursion.hi
+haskell/recursion.hs</file> 	<name>haskell-recursion</name> 	<instructions>1251</instructions> 	<cycles>64</cycles> 	<time>9.84</time> 	<per>.1537500000000000</per></program>
+<program> 	<file>haskell/polymorphic_recursion.hi
+haskell/polymorphic_recursion.hs</file> 	<name>haskell-polymorphic_recursion</name> 	<instructions>2609</instructions> 	<cycles>8</cycles> 	<time>11.58</time> 	<per>1.4475000000000000</per></program>
+<program> 	<file>haskell/zipwith.hi
+haskell/zipwith.hs</file> 	<name>haskell-zipwith</name> 	<instructions>1217</instructions> 	<cycles>4194304</cycles> 	<time>1.75</time> 	<per>.0000004172325134</per></program>
+<program> 	<file>haskell/tail_recursion.hi
+haskell/tail_recursion.hs</file> 	<name>haskell-tail_recursion</name> 	<instructions>1274</instructions> 	<cycles>524288</cycles> 	<time>1.10</time> 	<per>.0000020980834960</per></program>
+<program> 	<file>haskell/object_dynamic.hi
+haskell/object_dynamic.hs</file> 	<name>haskell-object_dynamic</name> 	<instructions>1380</instructions> 	<cycles>262144</cycles> 	<time>1.59</time> 	<per>.0000060653686523</per></program>
+<program> 	<file>haskell/object.hi
+haskell/object.hs</file> 	<name>haskell-object</name> 	<instructions>1423</instructions> 	<cycles>16</cycles> 	<time>19.29</time> 	<per>1.2056250000000000</per></program>
+<program> 	<file>haskell/iterate.hi
+haskell/iterate.hs</file> 	<name>haskell-iterate</name> 	<instructions>1241</instructions> 	<cycles>1048576</cycles> 	<time>1.24</time> 	<per>.0000011825561523</per></program>
+<program> 	<file>haskell/adt.hi
+haskell/adt.hs</file> 	<name>haskell-adt</name> 	<instructions>1356</instructions> 	<cycles>64</cycles> 	<time>16.23</time> 	<per>.2535937500000000</per></program>
+<program> 	<file></file> 	<name>go-fast</name> 	<instructions>1</instructions> 	<cycles>67108864</cycles> 	<time>1.37</time> 	<per>.0000000204145908</per></program>
+<program> 	<file></file> 	<name>go-structs</name> 	<instructions>1</instructions> 	<cycles>4</cycles> 	<time>16.76</time> 	<per>4.1900000000000000</per></program>
+<program> 	<file></file> 	<name>go-recursion</name> 	<instructions>1</instructions> 	<cycles>128</cycles> 	<time>1.83</time> 	<per>.0142968750000000</per></program>
+<program> 	<file>java/Objects.java</file> 	<name>java-Objects</name> 	<instructions>1</instructions> 	<cycles>16</cycles> 	<time>15.76</time> 	<per>.9850000000000000</per></program>
+<program> 	<file>java/Functions.java</file> 	<name>java-Functions</name> 	<instructions>1</instructions> 	<cycles>128</cycles> 	<time>1.70</time> 	<per>.0132812500000000</per></program>
+<program> 	<file>java/Recursion.java</file> 	<name>java-Recursion</name> 	<instructions>1</instructions> 	<cycles>128</cycles> 	<time>1.64</time> 	<per>.0128125000000000</per></program>
 </programs></fibonacci>
