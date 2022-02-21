@@ -29,6 +29,7 @@ WANTED = 8
 
 CC = clang++
 CCFLAGS = -mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
+GO = go
 RUSTC = rustc
 RUSTFLAGS = -C opt-level=3
 HC = ghc
@@ -82,7 +83,7 @@ env:
 	cpplint --version
 	javac --version
 	sbcl --version
-	go version
+	$(GO) version
 
 sa: Makefile
 	diff -u <(cat $(CPPS)) <(clang-format --style=file $(CPPS))
@@ -127,7 +128,7 @@ bin/lisp-%.bin: lisp/%.lisp
 
 bin/go-%.bin: go/cmd/%/main.go
 	cd go
-	go build -o "../$@" "$(subst go/,./,${<:/main.go=})"
+	$(GO) build -o "../$@" "$(subst go/,./,${<:/main.go=})"
 
 bin/haskell-%.bin: haskell/%.hs $(HCLIBS)
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
