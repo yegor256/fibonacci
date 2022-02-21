@@ -83,11 +83,11 @@ SOFTWARE.
     <html>
       <head>
         <title>Fibonacci</title>
-        <meta charset='UTF-8'/>
-        <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+        <meta charset="UTF-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
         <link rel="icon" href="https://raw.githubusercontent.com/yegor256/fibonacci/master/logo-64.png" type="image/png"/>
-        <link href='https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css.min.css' rel='stylesheet'/>
-        <link href='https://cdn.jsdelivr.net/gh/yegor256/drops@gh-pages/drops.min.css' rel='stylesheet'/>
+        <link href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css.min.css" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/gh/yegor256/drops@gh-pages/drops.min.css" rel="stylesheet"/>
         <style>
           table { width: auto; }
           * { font-family: monospace; font-size: 14px; }
@@ -107,7 +107,7 @@ SOFTWARE.
         <p>
           <xsl:text>This is the result:</xsl:text>
         </p>
-        <xsl:apply-templates select="programs" />
+        <xsl:apply-templates select="programs"/>
         <p>
           <xsl:text>If you want to add another program to the list, just submit a pull request to </xsl:text>
           <a href="https://github.com/yegor256/fibonacci">
