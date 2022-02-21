@@ -66,7 +66,9 @@ SOFTWARE.
             <xsl:text>https://github.com/yegor256/fibonacci/blob/master/</xsl:text>
             <xsl:value-of select="file"/>
           </xsl:attribute>
-          <xsl:value-of select="name"/>
+          <xsl:value-of select="substring-before(name, '-')"/>
+          <xsl:text>/</xsl:text>
+          <xsl:value-of select="substring-after(name, '-')"/>
         </a>
       </th>
       <td class="data">

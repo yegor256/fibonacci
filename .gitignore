@@ -8,3 +8,6 @@ summary.csv
 index.xml
 index.html
 *.hi
+.DS_Store
+EIFGENs/
+*.ecf
