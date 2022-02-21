@@ -49,6 +49,12 @@ SOFTWARE.
           <th class="sorter data">
             <xsl:text>Time per Cycle, seconds</xsl:text>
           </th>
+          <th class="sorter data">
+            <xsl:text>Total Ticks</xsl:text>
+          </th>
+          <th class="sorter data">
+            <xsl:text>Ticks per Cycle</xsl:text>
+          </th>
         </tr>
       </thead>
       <tbody>

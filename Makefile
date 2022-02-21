@@ -195,7 +195,10 @@ reports/%.txt: bin/%.bin asm/%.asm
 		<instructions>$${instructions}</instructions> \
 		<cycles>$${cycles}</cycles> \
 		<time>$${time}</time> \
-		<per>$${per}</per></program>" > "${@:.txt=.xml}"
+		<time_per_cycle>$${time_per_cycle}</per> \
+		<ticks>$${ticks}</ticks> \
+		<ticks_per_cycle>$${ticks_per_cycle}</per> \
+		</program>" > "${@:.txt=.xml}"
 
 clean:
 	rm -rf $(DIRS)
