@@ -8,16 +8,13 @@ concurrency:
   cancel-in-progress: true
 jobs:
   build:
-    runs-on: self-hosted
-    env:
-      ImageOS: ubuntu20
+    runs-on: ubuntu-latest
     steps:
-      - run: sudo mkdir -p /opt/hostedtoolcache
-#      - uses: ruby/setup-ruby@v1
-#        with:
-#          ruby-version: 2.6
-#          bundler-cache: false
-#      - run: gem install xcop
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+          bundler-cache: false
+      - run: gem install xcop
       - run: sudo apt-get install -y wget
       - run: | 
           sudo mkdir -p /usr/local/opt
@@ -62,7 +59,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: make clean
       - run: make env
-      - run: make WANTED=1024 index.html
+      - run: make WANTED=64 index.html
       - run: mkdir gh-pages
       - run: cp index.html gh-pages
       - run: cp index.xml gh-pages
