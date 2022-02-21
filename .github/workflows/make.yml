@@ -9,6 +9,8 @@ concurrency:
 jobs:
   build:
     runs-on: self-hosted
+    env:
+      ImageOS: ubuntu20
     steps:
       - uses: ruby/setup-ruby@v1
         with:
