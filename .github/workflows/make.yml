@@ -17,7 +17,7 @@ jobs:
 #        with:
 #          ruby-version: 2.6
 #          bundler-cache: false
-      - run: gem install xcop
+#      - run: gem install xcop
       - run: | 
           sudo mkdir -p /usr/local/opt
           sudo wget --no-verbose -O /usr/local/opt/Saxon.jar https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar
