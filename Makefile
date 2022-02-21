@@ -183,7 +183,10 @@ reports/%.txt: bin/%.bin asm/%.asm
 		echo ""
 	} > "$@"
 	echo "${subst bin/,,$<},$${instructions},$${cycles},$${time},$${per}" > "${@:.txt=.csv}"
-	echo "<program><name>$(subst bin/,,${<:.bin=})</name> \
+	name=$(subst bin/,,${<:.bin=})
+	echo "<program> \
+		<file>$$(ls $$(echo $${name} | cut -f1 -d-)/$$(echo $${name} | cut -f2- -d-).*)</file> \
+		<name>$${name}</name> \
 		<instructions>$${instructions}</instructions> \
 		<cycles>$${cycles}</cycles> \
 		<time>$${time}</time> \

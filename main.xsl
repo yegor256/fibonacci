@@ -62,11 +62,22 @@ SOFTWARE.
     <tr>
       <th class="left">
         <a>
+          <xsl:attribute name="href">
+            <xsl:text>https://github.com/yegor256/fibonacci/blob/master/</xsl:text>
+            <xsl:value-of select="file"/>
+          </xsl:attribute>
           <xsl:value-of select="name"/>
         </a>
       </th>
       <td class="data">
-        <xsl:value-of select="instructions"/>
+        <xsl:choose>
+          <xsl:when test="instructions = 1">
+            <xsl:text>n/a</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="instructions"/>
+          </xsl:otherwise>
+        </xsl:choose>
       </td>
       <td class="data">
         <xsl:value-of select="cycles"/>
