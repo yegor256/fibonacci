@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/yegor256/fibonacci/master/logo.svg" height="92px"/>
+
 [![new](https://github.com/yegor256/fibonacci/actions/workflows/make.yml/badge.svg)](https://github.com/yegor256/fibonacci/actions/workflows/make.yml)
 
 Here we compare [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_number) 
@@ -9,7 +11,9 @@ works faster. If you can imagine some other way how this algorithm
 could be implemented in C++ or other languages, 
 don't hesitate to submit a pull request.
 
-To build it just run:
+Recent results are published here: [index.html](https://yegor256.github.io/fibonacci/index.html)
+
+To build it locally, just run:
 
 ```bash
 $ make

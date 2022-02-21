@@ -8,8 +8,17 @@ concurrency:
   cancel-in-progress: true
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+          bundler-cache: false
+      - run: gem install xcop
+      - run: sudo apt-get install -y wget
+      - run: | 
+          sudo mkdir -p /usr/local/opt
+          sudo wget --no-verbose -O /usr/local/opt/Saxon.jar https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar
       - run: sudo apt-get update -y
       - run: sudo apt-get install -y lsb-release
       - uses: actions/setup-java@v2
@@ -25,11 +34,12 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: '1.16.1'
-      - uses: DeLaGuardo/setup-graalvm@5.0
+      - uses: graalvm/setup-graalvm@v1
         with:
-          graalvm: '22.0.0.2'
-          java: 'java11'
-      - run: gu install native-image
+          version: '22.0.0.2'
+          java-version: '11'
+          components: 'native-image'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: sudo snap install powershell --classic
       - uses: egor-tensin/setup-clang@v1
         with:
@@ -45,9 +55,17 @@ jobs:
       - run: sudo apt-get install -y bc
       - run: sudo apt-get install -y ghc
       - run: sudo apt-get install -y sbcl
-      - run: sudo apt-get install -y linux-tools-generic
-      - run: sudo rm /usr/bin/perf && sudo ln -s /usr/lib/linux-tools/*/perf /usr/bin/perf
+#      - run: sudo apt-get install -y linux-tools-generic
+#      - run: sudo rm /usr/bin/perf && sudo ln -s /usr/lib/linux-tools/*/perf /usr/bin/perf
       - uses: actions/checkout@v2
       - run: make clean
       - run: make env
-      - run: make WANTED=1024 summary.csv
+      - run: make WANTED=64 index.html
+      - run: mkdir gh-pages
+      - run: cp index.html gh-pages
+      - run: cp index.xml gh-pages
+      - uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: gh-pages
+          clean: false
