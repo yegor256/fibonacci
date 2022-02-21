@@ -10,9 +10,10 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.6'
+          ruby-version: 2.6
+          bundler-cache: true
       - run: gem install xcop
       - run: | 
           sudo mkdir -p /usr/local/opt

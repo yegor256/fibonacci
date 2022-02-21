@@ -5,9 +5,10 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.6'
+          ruby-version: 2.6
+          bundler-cache: true
       - run: gem install xcop
       - uses: actions/setup-java@v2
         with:
