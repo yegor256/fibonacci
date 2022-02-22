@@ -11,9 +11,9 @@ jobs:
     runs-on: self-hosted
     steps:
       - run: |
-        sudo apt-get install -y openssh-server
-        sudo systemctl enable ssh
-        sudo systemctl start ssh
+          sudo apt-get install -y openssh-server
+          sudo systemctl enable ssh
+          sudo systemctl start ssh
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
