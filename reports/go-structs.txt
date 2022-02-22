@@ -1,0 +1,8 @@
+bin/go-structs.bin:
+CPU ticks: <not
+CPU ticks per cycle: 
+Instructions: 1
+Cycles: 4
+Time: 16.70
+Per cycle: 4.1750000000000000
+

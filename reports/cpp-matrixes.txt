@@ -1,0 +1,8 @@
+bin/cpp-matrixes.bin:
+CPU ticks: <not
+CPU ticks per cycle: 
+Instructions: 166
+Cycles: 67108864
+Time: 1.05
+Per cycle: .0000000156462192
+

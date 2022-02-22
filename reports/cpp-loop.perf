@@ -1,0 +1,20 @@
+32-th Fibonacci number is 3524578
+Total is 268435456
+
+ Performance counter stats for 'bin/cpp-loop.bin 32 134217728':
+
+           1267.15 msec task-clock                #    0.999 CPUs utilized          
+                 8      context-switches          #    0.006 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              1233      page-faults               #    0.973 K/sec                  
+   <not supported>      cycles                                                      
+   <not supported>      instructions                                                
+   <not supported>      branches                                                    
+   <not supported>      branch-misses                                               
+
+       1.267986351 seconds time elapsed
+
+       1.263709000 seconds user
+       0.003992000 seconds sys
+
+

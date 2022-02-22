@@ -1,0 +1,8 @@
+bin/go-recursion.bin:
+CPU ticks: <not
+CPU ticks per cycle: 
+Instructions: 1
+Cycles: 64
+Time: 1.15
+Per cycle: .0179687500000000
+

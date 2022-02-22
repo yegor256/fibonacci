@@ -1,0 +1,20 @@
+32-th Fibonacci number is 3524578
+Total is -1006632960
+
+ Performance counter stats for 'bin/cpp-binpow-matrix.bin 32 33554432':
+
+           1141.16 msec task-clock                #    1.000 CPUs utilized          
+                10      context-switches          #    0.009 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              1232      page-faults               #    0.001 M/sec                  
+   <not supported>      cycles                                                      
+   <not supported>      instructions                                                
+   <not supported>      branches                                                    
+   <not supported>      branch-misses                                               
+
+       1.141645422 seconds time elapsed
+
+       1.141700000 seconds user
+       0.000000000 seconds sys
+
+

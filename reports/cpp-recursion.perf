@@ -1,0 +1,20 @@
+32-th Fibonacci number is 3524578
+Total is 451145984
+
+ Performance counter stats for 'bin/cpp-recursion.bin 32 128':
+
+           1044.87 msec task-clock                #    0.999 CPUs utilized          
+                21      context-switches          #    0.020 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              1233      page-faults               #    0.001 M/sec                  
+   <not supported>      cycles                                                      
+   <not supported>      instructions                                                
+   <not supported>      branches                                                    
+   <not supported>      branch-misses                                               
+
+       1.045985355 seconds time elapsed
+
+       1.037355000 seconds user
+       0.008196000 seconds sys
+
+

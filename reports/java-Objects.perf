@@ -1,0 +1,20 @@
+32-th Fibonacci number is 3524578
+Total is 56393248
+
+ Performance counter stats for 'bin/java-Objects.bin 32 16':
+
+          19335.17 msec task-clock                #    1.000 CPUs utilized          
+               101      context-switches          #    0.005 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             13550      page-faults               #    0.701 K/sec                  
+   <not supported>      cycles                                                      
+   <not supported>      instructions                                                
+   <not supported>      branches                                                    
+   <not supported>      branch-misses                                               
+
+      19.338755909 seconds time elapsed
+
+      19.294932000 seconds user
+       0.039997000 seconds sys
+
+

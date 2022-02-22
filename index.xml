@@ -1,36 +1,28 @@
-<fibonacci date='2022-02-21'><programs><program> 	<file>cpp/interpreter.cpp</file> 	<name>cpp-interpreter</name> 	<instructions>3299</instructions> 	<cycles>16384</cycles> 	<time>1.28</time> 	<per></per></program>
-<program> 	<file>cpp/recursion.cpp</file> 	<name>cpp-recursion</name> 	<instructions>68</instructions> 	<cycles>256</cycles> 	<time>1.73</time> 	<per></per></program>
-<program> 	<file>cpp/binpow-matrix.cpp</file> 	<name>cpp-binpow-matrix</name> 	<instructions>165</instructions> 	<cycles>67108864</cycles> 	<time>1.91</time> 	<per></per></program>
-<program> 	<file>cpp/decorators.cpp</file> 	<name>cpp-decorators</name> 	<instructions>187</instructions> 	<cycles>128</cycles> 	<time>1.43</time> 	<per></per></program>
-<program> 	<file>cpp/lambdas.cpp</file> 	<name>cpp-lambdas</name> 	<instructions>485</instructions> 	<cycles>2</cycles> 	<time>12.63</time> 	<per></per></program>
-<program> 	<file>cpp/objects.cpp</file> 	<name>cpp-objects</name> 	<instructions>432</instructions> 	<cycles>2</cycles> 	<time>11.51</time> 	<per></per></program>
-<program> 	<file>cpp/loop.cpp</file> 	<name>cpp-loop</name> 	<instructions>126</instructions> 	<cycles>268435456</cycles> 	<time>2.11</time> 	<per></per></program>
-<program> 	<file>cpp/inlines.cpp</file> 	<name>cpp-inlines</name> 	<instructions>68</instructions> 	<cycles>256</cycles> 	<time>1.73</time> 	<per></per></program>
-<program> 	<file>cpp/matrixes.cpp</file> 	<name>cpp-matrixes</name> 	<instructions>166</instructions> 	<cycles>134217728</cycles> 	<time>1.76</time> 	<per></per></program>
-<program> 	<file>cpp/functions.cpp</file> 	<name>cpp-functions</name> 	<instructions>86</instructions> 	<cycles>64</cycles> 	<time>2.01</time> 	<per></per></program>
-<program> 	<file>rust/structs.rs</file> 	<name>rust-structs</name> 	<instructions>677</instructions> 	<cycles>16</cycles> 	<time>18.41</time> 	<per></per></program>
-<program> 	<file>rust/recursion.rs</file> 	<name>rust-recursion</name> 	<instructions>565</instructions> 	<cycles>2147483648</cycles> 	<time>0.01</time> 	<per></per></program>
-<program> 	<file>lisp/recursion.lisp</file> 	<name>lisp-recursion</name> 	<instructions>1</instructions> 	<cycles>64</cycles> 	<time>2.97</time> 	<per></per></program>
-<program> 	<file>haskell/recursion.hi
-haskell/recursion.hs</file> 	<name>haskell-recursion</name> 	<instructions>1251</instructions> 	<cycles>64</cycles> 	<time>8.67</time> 	<per></per></program>
-<program> 	<file>haskell/polymorphic_recursion.hi
-haskell/polymorphic_recursion.hs</file> 	<name>haskell-polymorphic_recursion</name> 	<instructions>2609</instructions> 	<cycles>8</cycles> 	<time>11.31</time> 	<per></per></program>
-<program> 	<file>haskell/zipwith.hi
-haskell/zipwith.hs</file> 	<name>haskell-zipwith</name> 	<instructions>1217</instructions> 	<cycles>4194304</cycles> 	<time>1.82</time> 	<per></per></program>
-<program> 	<file>haskell/tail_recursion.hi
-haskell/tail_recursion.hs</file> 	<name>haskell-tail_recursion</name> 	<instructions>1274</instructions> 	<cycles>524288</cycles> 	<time>1.12</time> 	<per></per></program>
-<program> 	<file>haskell/object_dynamic.hi
-haskell/object_dynamic.hs</file> 	<name>haskell-object_dynamic</name> 	<instructions>1380</instructions> 	<cycles>262144</cycles> 	<time>1.41</time> 	<per></per></program>
-<program> 	<file>haskell/object.hi
-haskell/object.hs</file> 	<name>haskell-object</name> 	<instructions>1423</instructions> 	<cycles>16</cycles> 	<time>20.73</time> 	<per></per></program>
-<program> 	<file>haskell/iterate.hi
-haskell/iterate.hs</file> 	<name>haskell-iterate</name> 	<instructions>1241</instructions> 	<cycles>1048576</cycles> 	<time>1.15</time> 	<per></per></program>
-<program> 	<file>haskell/adt.hi
-haskell/adt.hs</file> 	<name>haskell-adt</name> 	<instructions>1356</instructions> 	<cycles>64</cycles> 	<time>15.71</time> 	<per></per></program>
-<program> 	<file></file> 	<name>go-fast</name> 	<instructions>1</instructions> 	<cycles>134217728</cycles> 	<time>1.67</time> 	<per></per></program>
-<program> 	<file></file> 	<name>go-structs</name> 	<instructions>1</instructions> 	<cycles>4</cycles> 	<time>20.42</time> 	<per></per></program>
-<program> 	<file></file> 	<name>go-recursion</name> 	<instructions>1</instructions> 	<cycles>128</cycles> 	<time>1.93</time> 	<per></per></program>
-<program> 	<file>java/Objects.java</file> 	<name>java-Objects</name> 	<instructions>1</instructions> 	<cycles>8</cycles> 	<time>12.13</time> 	<per></per></program>
-<program> 	<file>java/Functions.java</file> 	<name>java-Functions</name> 	<instructions>1</instructions> 	<cycles>128</cycles> 	<time>1.62</time> 	<per></per></program>
-<program> 	<file>java/Recursion.java</file> 	<name>java-Recursion</name> 	<instructions>1</instructions> 	<cycles>128</cycles> 	<time>1.84</time> 	<per></per></program>
+<fibonacci date='2022-02-22'><programs><program> 	<file>cpp/interpreter.cpp</file> 	<name>cpp-interpreter</name> 	<instructions>3299</instructions> 	<cycles>16384</cycles> 	<time>1.54</time> 	<time_per_cycle>.0000939941406250</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>cpp/recursion.cpp</file> 	<name>cpp-recursion</name> 	<instructions>68</instructions> 	<cycles>128</cycles> 	<time>1.03</time> 	<time_per_cycle>.0080468750000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>cpp/binpow-matrix.cpp</file> 	<name>cpp-binpow-matrix</name> 	<instructions>165</instructions> 	<cycles>33554432</cycles> 	<time>1.14</time> 	<time_per_cycle>.0000000339746475</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>cpp/decorators.cpp</file> 	<name>cpp-decorators</name> 	<instructions>187</instructions> 	<cycles>128</cycles> 	<time>1.91</time> 	<time_per_cycle>.0149218750000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>cpp/lambdas.cpp</file> 	<name>cpp-lambdas</name> 	<instructions>485</instructions> 	<cycles>2</cycles> 	<time>15.41</time> 	<time_per_cycle>7.7050000000000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>cpp/objects.cpp</file> 	<name>cpp-objects</name> 	<instructions>432</instructions> 	<cycles>2</cycles> 	<time>15.36</time> 	<time_per_cycle>7.6800000000000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>cpp/loop.cpp</file> 	<name>cpp-loop</name> 	<instructions>126</instructions> 	<cycles>134217728</cycles> 	<time>1.26</time> 	<time_per_cycle>.0000000093877315</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>cpp/inlines.cpp</file> 	<name>cpp-inlines</name> 	<instructions>68</instructions> 	<cycles>128</cycles> 	<time>1.04</time> 	<time_per_cycle>.0081250000000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>cpp/matrixes.cpp</file> 	<name>cpp-matrixes</name> 	<instructions>166</instructions> 	<cycles>67108864</cycles> 	<time>1.05</time> 	<time_per_cycle>.0000000156462192</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>cpp/functions.cpp</file> 	<name>cpp-functions</name> 	<instructions>86</instructions> 	<cycles>64</cycles> 	<time>2.39</time> 	<time_per_cycle>.0373437500000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>rust/structs.rs</file> 	<name>rust-structs</name> 	<instructions>677</instructions> 	<cycles>64</cycles> 	<time>59.36</time> 	<time_per_cycle>.9275000000000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>rust/recursion.rs</file> 	<name>rust-recursion</name> 	<instructions>565</instructions> 	<cycles>2147483648</cycles> 	<time>0.01</time> 	<time_per_cycle>.0000000000046566</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>lisp/recursion.lisp</file> 	<name>lisp-recursion</name> 	<instructions>1</instructions> 	<cycles>64</cycles> 	<time>3.52</time> 	<time_per_cycle>.0550000000000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>haskell/recursion.hi haskell/recursion.hs</file> 	<name>haskell-recursion</name> 	<instructions>1251</instructions> 	<cycles>64</cycles> 	<time>11.67</time> 	<time_per_cycle>.1823437500000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>haskell/polymorphic_recursion.hi haskell/polymorphic_recursion.hs</file> 	<name>haskell-polymorphic_recursion</name> 	<instructions>2609</instructions> 	<cycles>8</cycles> 	<time>13.43</time> 	<time_per_cycle>1.6787500000000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>haskell/zipwith.hi haskell/zipwith.hs</file> 	<name>haskell-zipwith</name> 	<instructions>1217</instructions> 	<cycles>2097152</cycles> 	<time>1.09</time> 	<time_per_cycle>.0000005197525024</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>haskell/tail_recursion.hi haskell/tail_recursion.hs</file> 	<name>haskell-tail_recursion</name> 	<instructions>1274</instructions> 	<cycles>524288</cycles> 	<time>1.33</time> 	<time_per_cycle>.0000025367736816</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>haskell/object_dynamic.hi haskell/object_dynamic.hs</file> 	<name>haskell-object_dynamic</name> 	<instructions>1380</instructions> 	<cycles>262144</cycles> 	<time>1.85</time> 	<time_per_cycle>.0000070571899414</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>haskell/object.hi haskell/object.hs</file> 	<name>haskell-object</name> 	<instructions>1423</instructions> 	<cycles>8</cycles> 	<time>11.81</time> 	<time_per_cycle>1.4762500000000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>haskell/iterate.hi haskell/iterate.hs</file> 	<name>haskell-iterate</name> 	<instructions>1241</instructions> 	<cycles>1048576</cycles> 	<time>1.50</time> 	<time_per_cycle>.0000014305114746</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>haskell/adt.hi haskell/adt.hs</file> 	<name>haskell-adt</name> 	<instructions>1356</instructions> 	<cycles>64</cycles> 	<time>18.72</time> 	<time_per_cycle>.2925000000000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file></file> 	<name>go-fast</name> 	<instructions>1</instructions> 	<cycles>67108864</cycles> 	<time>1.13</time> 	<time_per_cycle>.0000000168383121</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file></file> 	<name>go-structs</name> 	<instructions>1</instructions> 	<cycles>4</cycles> 	<time>16.70</time> 	<time_per_cycle>4.1750000000000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file></file> 	<name>go-recursion</name> 	<instructions>1</instructions> 	<cycles>64</cycles> 	<time>1.15</time> 	<time_per_cycle>.0179687500000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>java/Objects.java</file> 	<name>java-Objects</name> 	<instructions>1</instructions> 	<cycles>16</cycles> 	<time>19.28</time> 	<time_per_cycle>1.2050000000000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>java/Functions.java</file> 	<name>java-Functions</name> 	<instructions>1</instructions> 	<cycles>64</cycles> 	<time>1.08</time> 	<time_per_cycle>.0168750000000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
+<program> 	<file>java/Recursion.java</file> 	<name>java-Recursion</name> 	<instructions>1</instructions> 	<cycles>64</cycles> 	<time>1.08</time> 	<time_per_cycle>.0168750000000000</time_per_cycle> 	<ticks>&lt;not</ticks> 	<ticks_per_cycle></ticks_per_cycle> 	</program>
 </programs></fibonacci>
