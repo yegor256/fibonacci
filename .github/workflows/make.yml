@@ -12,7 +12,7 @@ jobs:
     env:
       ImageOS: ubuntu20
     steps:
-      - run: sudo mkdir -p /opt/hostedtoolcache && chown $(whoami) /opt/hostedtoolcache
+      - run: sudo mkdir -p /opt/hostedtoolcache && sudo chown $(whoami) /opt/hostedtoolcache
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
