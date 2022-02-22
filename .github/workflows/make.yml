@@ -60,12 +60,12 @@ jobs:
       - run: sudo apt-get install -y bc
       - run: sudo apt-get install -y ghc
       - run: sudo apt-get install -y sbcl
-#      - run: sudo apt-get install -y linux-tools-generic
-#      - run: sudo rm /usr/bin/perf && sudo ln -s /usr/lib/linux-tools/*/perf /usr/bin/perf
+      - run: sudo apt-get install -y linux-tools-generic
+      - run: sudo rm /usr/bin/perf && sudo ln -s /usr/lib/linux-tools/*/perf /usr/bin/perf
       - uses: actions/checkout@v2
       - run: make clean
       - run: make env
-      - run: make WANTED=64 index.html
+      - run: make WANTED=256 index.html
       - run: mkdir gh-pages
       - run: cp index.html gh-pages
       - run: cp index.xml gh-pages
