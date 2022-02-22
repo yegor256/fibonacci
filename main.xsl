@@ -94,7 +94,13 @@ SOFTWARE.
         <xsl:value-of select="time"/>
       </td>
       <td class="data">
-        <xsl:value-of select="per"/>
+        <xsl:value-of select="time_per_cycle"/>
+      </td>
+      <td class="data">
+        <xsl:value-of select="ticks"/>
+      </td>
+      <td class="data">
+        <xsl:value-of select="ticks_per_cycle"/>
       </td>
     </tr>
   </xsl:template>
