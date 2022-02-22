@@ -10,10 +10,6 @@ jobs:
           ruby-version: 2.6
           bundler-cache: true
       - run: gem install xcop
-      - uses: actions/setup-java@v2
-        with:
-          distribution: 'zulu'
-          java-version: '11'
       - uses: actions/setup-python@v2
         with:
           python-version: '3.x'
