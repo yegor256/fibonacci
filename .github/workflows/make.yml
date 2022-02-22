@@ -12,7 +12,7 @@ jobs:
     env:
       ImageOS: ubuntu20
     steps:
-      - run: sudo apt-get install -ybuild-essential curl wget git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libxml2-dev autoconf libc6-dev ncurses-dev automake libtool
+      - run: sudo apt-get install -y build-essential curl wget git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libxml2-dev autoconf libc6-dev ncurses-dev automake libtool
       - run: sudo mkdir -p /opt/hostedtoolcache && sudo chown $(whoami) /opt/hostedtoolcache
       - uses: ruby/setup-ruby@v1
         with:
