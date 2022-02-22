@@ -37,3 +37,21 @@ You need to have [Clang](https://clang.llvm.org),
 [Clang-Format](https://clang.llvm.org/docs/ClangFormat.html),
 [cppcheck](https://github.com/danmar/cppcheck),
 and [cpplint](https://github.com/cpplint/cpplint) installed.
+
+## How to Setup
+
+If you want this code to run on your own machine, you will 
+need to configure a self-hosted runner, as it's done in this repo.
+Just rent a server with at least 8Gb RAM (not Docker!) and then login there
+as `root`:
+
+```bash
+adduser --quiet --disabled-password --force-badname --gecos "" runner
+usermod -aG sudo runner
+echo "runner ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+su - runner
+```
+
+Then, you follow the instructions from 
+[here](https://github.com/yegor256/fibonacci/settings/actions/runners/new?arch=x64&os=linux)
+
