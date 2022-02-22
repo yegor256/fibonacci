@@ -147,7 +147,9 @@ SOFTWARE.
       </head>
       <body>
         <p>
-          <xsl:text>This is the result:</xsl:text>
+          <xsl:text>This is what it takes to calculate the </xsl:text>
+          <xsl:value-of select="@input"/>
+          <xsl:text>th Fibonacci number:</xsl:text>
         </p>
         <xsl:apply-templates select="programs"/>
         <p>
@@ -171,7 +173,7 @@ SOFTWARE.
             <xsl:text>@yegor256</xsl:text>
           </a>
           <xsl:text> at &quot;</xsl:text>
-          <xsl:value-of select="uname"/>
+          <xsl:value-of select="@uname"/>
           <xsl:text>&quot; machine.</xsl:text>
         </p>
       </body>
