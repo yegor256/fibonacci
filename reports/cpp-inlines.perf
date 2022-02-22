@@ -1,20 +1,20 @@
 32-th Fibonacci number is 3524578
-Total is 451145984
+Total is 902291968
 
- Performance counter stats for 'bin/cpp-inlines.bin 32 128':
+ Performance counter stats for 'bin/cpp-inlines.bin 32 256':
 
-           1029.39 msec task-clock                #    0.999 CPUs utilized          
-                22      context-switches          #    0.021 K/sec                  
+           1834.59 msec task-clock                #    0.999 CPUs utilized          
+                22      context-switches          #    0.012 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              1235      page-faults               #    0.001 M/sec                  
+              1235      page-faults               #    0.673 K/sec                  
    <not supported>      cycles                                                      
    <not supported>      instructions                                                
    <not supported>      branches                                                    
    <not supported>      branch-misses                                               
 
-       1.030275725 seconds time elapsed
+       1.836087943 seconds time elapsed
 
-       1.025825000 seconds user
-       0.004003000 seconds sys
+       1.823122000 seconds user
+       0.012051000 seconds sys
 
 

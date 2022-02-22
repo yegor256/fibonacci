@@ -1,18 +1,18 @@
 32-th Fibonacci number is 14098312
  Performance counter stats for 'bin/go-structs.bin 32 4':
 
-          17509.26 msec task-clock                #    1.051 CPUs utilized          
-             21021      context-switches          #    0.001 M/sec                  
-               324      cpu-migrations            #    0.019 K/sec                  
-             18044      page-faults               #    0.001 M/sec                  
+          21492.87 msec task-clock                #    1.038 CPUs utilized          
+             24366      context-switches          #    0.001 M/sec                  
+               124      cpu-migrations            #    0.006 K/sec                  
+             25997      page-faults               #    0.001 M/sec                  
    <not supported>      cycles                                                      
    <not supported>      instructions                                                
    <not supported>      branches                                                    
    <not supported>      branch-misses                                               
 
-      16.656160413 seconds time elapsed
+      20.712682300 seconds time elapsed
 
-      17.263170000 seconds user
-       0.370904000 seconds sys
+      21.202627000 seconds user
+       0.389223000 seconds sys
 
 

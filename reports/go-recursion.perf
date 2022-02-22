@@ -1,18 +1,18 @@
-32-th Fibonacci number is 225572992
- Performance counter stats for 'bin/go-recursion.bin 32 64':
+32-th Fibonacci number is 451145984
+ Performance counter stats for 'bin/go-recursion.bin 32 128':
 
-           1172.41 msec task-clock                #    1.002 CPUs utilized          
-               199      context-switches          #    0.170 K/sec                  
-                 3      cpu-migrations            #    0.003 K/sec                  
-                91      page-faults               #    0.078 K/sec                  
+           1930.32 msec task-clock                #    1.001 CPUs utilized          
+               268      context-switches          #    0.139 K/sec                  
+                 4      cpu-migrations            #    0.002 K/sec                  
+                90      page-faults               #    0.047 K/sec                  
    <not supported>      cycles                                                      
    <not supported>      instructions                                                
    <not supported>      branches                                                    
    <not supported>      branch-misses                                               
 
-       1.170647783 seconds time elapsed
+       1.927679680 seconds time elapsed
 
-       1.170611000 seconds user
-       0.004008000 seconds sys
+       1.932763000 seconds user
+       0.000000000 seconds sys
 
 

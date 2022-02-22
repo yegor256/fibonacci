@@ -2,7 +2,7 @@ bin/java-Objects.bin:
 CPU ticks: <not
 CPU ticks per cycle: 
 Instructions: 1
-Cycles: 16
-Time: 19.28
-Per cycle: 1.2050000000000000
+Cycles: 8
+Time: 12.11
+Per cycle: 1.5137500000000000
 

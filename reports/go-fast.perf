@@ -1,18 +1,18 @@
-32-th Fibonacci number is -2013265920
- Performance counter stats for 'bin/go-fast.bin 32 67108864':
+32-th Fibonacci number is 268435456
+ Performance counter stats for 'bin/go-fast.bin 32 134217728':
 
-           1154.52 msec task-clock                #    1.002 CPUs utilized          
-               187      context-switches          #    0.162 K/sec                  
-                 5      cpu-migrations            #    0.004 K/sec                  
-                94      page-faults               #    0.081 K/sec                  
+           1894.13 msec task-clock                #    1.001 CPUs utilized          
+               280      context-switches          #    0.148 K/sec                  
+                 3      cpu-migrations            #    0.002 K/sec                  
+                89      page-faults               #    0.047 K/sec                  
    <not supported>      cycles                                                      
    <not supported>      instructions                                                
    <not supported>      branches                                                    
    <not supported>      branch-misses                                               
 
-       1.152106240 seconds time elapsed
+       1.892322598 seconds time elapsed
 
-       1.152981000 seconds user
-       0.003989000 seconds sys
+       1.896706000 seconds user
+       0.000000000 seconds sys
 
 

@@ -3,6 +3,6 @@ CPU ticks: <not
 CPU ticks per cycle: 
 Instructions: 1274
 Cycles: 524288
-Time: 1.33
-Per cycle: .0000025367736816
+Time: 1.13
+Per cycle: .0000021553039550
 
