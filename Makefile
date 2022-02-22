@@ -66,7 +66,7 @@ summary.csv: $(DIRS) $(REPORTS)
 
 index.xml: $(DIRS) $(REPORTS) Makefile
 	{
-		printf "<fibonacci input='$(INPUT)' date='$$(date +"%Y-%m-%d" | jq -Rr @html)' uname='$$(uname | jq -Rr @html)'><programs>"
+		printf "<fibonacci input='$(INPUT)' date='$$(date +"%Y-%m-%d" | jq -Rr @html)' uname='$$(uname -a | jq -Rr @html)'><programs>"
 		for r in $(REPORTS:.txt=.xml); do cat $${r}; done
 		printf "</programs></fibonacci>"
 	} > index.xml

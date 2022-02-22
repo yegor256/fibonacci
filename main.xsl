@@ -55,6 +55,9 @@ SOFTWARE.
           <th class="sorter data">
             <xsl:text>Ticks per Cycle</xsl:text>
           </th>
+          <th class="sorter data">
+            <xsl:text>GHz</xsl:text>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -119,6 +122,9 @@ SOFTWARE.
       </td>
       <td class="data">
         <xsl:value-of select="ticks_per_cycle"/>
+      </td>
+      <td class="data">
+        <xsl:value-of select="format-number((ticks_per_cycle / time_per_cycle) / 1000000000, '%0.1f')"/>
       </td>
     </tr>
   </xsl:template>
