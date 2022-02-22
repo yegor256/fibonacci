@@ -1,8 +1,8 @@
 bin/cpp-interpreter.bin:
-CPU ticks: 3637549020
-CPU ticks per cycle: 222018
+CPU ticks: 3645787882
+CPU ticks per cycle: 222521
 Instructions: 3299
 Cycles: 16384
-Time: 1.29
-Per cycle: .0000787353515625
+Time: 1.33
+Per cycle: .0000811767578125
 

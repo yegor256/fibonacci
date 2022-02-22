@@ -3,21 +3,21 @@ Total is 902291968
 
  Performance counter stats for 'bin/lisp-recursion.bin 32 256':
 
-          12886.82 msec task-clock                #    1.000 CPUs utilized          
-                41      context-switches          #    0.003 K/sec                  
-                 1      cpu-migrations            #    0.000 K/sec                  
-               580      page-faults               #    0.045 K/sec                  
-       38343339666      cycles                    #    2.975 GHz                    
-          65156643      stalled-cycles-frontend   #    0.17% frontend cycles idle   
-         258409354      stalled-cycles-backend    #    0.67% backend cycles idle    
-       84840055101      instructions              #    2.21  insn per cycle         
-                                                  #    0.00  stalled cycles per insn
-       26170931077      branches                  # 2030.830 M/sec                  
+          15275.17 msec task-clock                #    1.000 CPUs utilized          
+                20      context-switches          #    0.001 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               580      page-faults               #    0.038 K/sec                  
+       39725077956      cycles                    #    2.601 GHz                    
+          95574329      stalled-cycles-frontend   #    0.24% frontend cycles idle   
+         451555537      stalled-cycles-backend    #    1.14% backend cycles idle    
+       84842388158      instructions              #    2.14  insn per cycle         
+                                                  #    0.01  stalled cycles per insn
+       26171345546      branches                  # 1713.326 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-      12.891106590 seconds time elapsed
+      15.277840969 seconds time elapsed
 
-      12.882808000 seconds user
-       0.003999000 seconds sys
+      15.275503000 seconds user
+       0.000000000 seconds sys
 
 
