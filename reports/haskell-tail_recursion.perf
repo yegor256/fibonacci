@@ -1,23 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 923946975232
+Total is 1847893950464
 
- Performance counter stats for 'bin/haskell-tail_recursion.bin 32 262144':
+ Performance counter stats for 'bin/haskell-tail_recursion.bin 32 524288':
 
-           1008.15 msec task-clock                #    0.999 CPUs utilized          
-                 0      context-switches          #    0.000 K/sec                  
+           1686.29 msec task-clock                #    0.999 CPUs utilized          
+                 3      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             11951      page-faults               #    0.012 M/sec                  
-        2576380757      cycles                    #    2.556 GHz                    
-          74715609      stalled-cycles-frontend   #    2.90% frontend cycles idle   
-          84609004      stalled-cycles-backend    #    3.28% backend cycles idle    
-        4743956239      instructions              #    1.84  insn per cycle         
-                                                  #    0.02  stalled cycles per insn
-        1094667635      branches                  # 1085.816 M/sec                  
+             21672      page-faults               #    0.013 M/sec                  
+        4751200176      cycles                    #    2.818 GHz                    
+         111419853      stalled-cycles-frontend   #    2.35% frontend cycles idle   
+         244786221      stalled-cycles-backend    #    5.15% backend cycles idle    
+        9549479426      instructions              #    2.01  insn per cycle         
+                                                  #    0.03  stalled cycles per insn
+        2201325316      branches                  # 1305.423 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.008752948 seconds time elapsed
+       1.687202588 seconds time elapsed
 
-       0.976740000 seconds user
-       0.032075000 seconds sys
+       1.658894000 seconds user
+       0.027995000 seconds sys
 
 

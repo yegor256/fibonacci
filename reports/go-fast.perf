@@ -1,21 +1,21 @@
 32-th Fibonacci number is -2013265920
  Performance counter stats for 'bin/go-fast.bin 32 67108864':
 
-           1202.18 msec task-clock                #    1.012 CPUs utilized          
-               185      context-switches          #    0.154 K/sec                  
+           1082.04 msec task-clock                #    1.012 CPUs utilized          
+               170      context-switches          #    0.157 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               196      page-faults               #    0.163 K/sec                  
-        3321846812      cycles                    #    2.763 GHz                    
-         104143381      stalled-cycles-frontend   #    3.14% frontend cycles idle   
-          18495831      stalled-cycles-backend    #    0.56% backend cycles idle    
-       13493857917      instructions              #    4.06  insn per cycle         
+               211      page-faults               #    0.195 K/sec                  
+        3139071527      cycles                    #    2.901 GHz                    
+         107119654      stalled-cycles-frontend   #    3.41% frontend cycles idle   
+          11213355      stalled-cycles-backend    #    0.36% backend cycles idle    
+       13493613245      instructions              #    4.30  insn per cycle         
                                                   #    0.01  stalled cycles per insn
-        2416868302      branches                  # 2010.405 M/sec                  
+        2416823728      branches                  # 2233.578 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.187439938 seconds time elapsed
+       1.069607025 seconds time elapsed
 
-       1.173167000 seconds user
-       0.035698000 seconds sys
+       1.075373000 seconds user
+       0.012082000 seconds sys
 
 

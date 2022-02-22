@@ -1,21 +1,21 @@
 32-th Fibonacci number is 7049156
  Performance counter stats for 'bin/go-structs.bin 32 2':
 
-          14844.42 msec task-clock                #    1.121 CPUs utilized          
-             13601      context-switches          #    0.916 K/sec                  
-                 9      cpu-migrations            #    0.001 K/sec                  
-              6731      page-faults               #    0.453 K/sec                  
-       38476872282      cycles                    #    2.592 GHz                    
-        3280368340      stalled-cycles-frontend   #    8.53% frontend cycles idle   
-        6579914722      stalled-cycles-backend    #   17.10% backend cycles idle    
-       58235973194      instructions              #    1.51  insn per cycle         
+          14788.21 msec task-clock                #    1.124 CPUs utilized          
+             13942      context-switches          #    0.943 K/sec                  
+                27      cpu-migrations            #    0.002 K/sec                  
+              6619      page-faults               #    0.448 K/sec                  
+       37985720417      cycles                    #    2.569 GHz                    
+        3174562932      stalled-cycles-frontend   #    8.36% frontend cycles idle   
+        6680129540      stalled-cycles-backend    #   17.59% backend cycles idle    
+       58230139759      instructions              #    1.53  insn per cycle         
                                                   #    0.11  stalled cycles per insn
-       11522407094      branches                  #  776.211 M/sec                  
+       11521874086      branches                  #  779.126 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-      13.245544159 seconds time elapsed
+      13.162347585 seconds time elapsed
 
-      13.698488000 seconds user
-       1.596913000 seconds sys
+      13.608409000 seconds user
+       1.662827000 seconds sys
 
 
