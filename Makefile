@@ -174,7 +174,7 @@ reports/%.txt: bin/%.bin asm/%.asm
 	done
 	sudo perf stat "$<" $(INPUT) $${cycles} > "${@:.txt=.perf}" 2>&1
 	ticks=$$(cat "${@:.txt=.perf}" | sed 's/ \+/ /g' | grep ' cycles #' | cut -f 2 -d ' ')
-	ticks_per_cycle=$$(echo "scale = 16 ; $${ticks} / $${cycles}" | bc)
+	ticks_per_cycle=$$(echo "scale = 0 ; $${ticks} / $${cycles}" | bc)
 	instructions=$$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)
 	time_per_cycle=$$(echo "scale = 16 ; $${time} / $${cycles}" | bc)
 	{
