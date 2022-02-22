@@ -88,7 +88,14 @@ SOFTWARE.
             </span>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="instructions"/>
+            <a>
+              <xsl:attribute name="href">
+                <xsl:text>https://github.com/yegor256/fibonacci/blob/gh-pages/asm/</xsl:text>
+                <xsl:value-of select="name"/>
+                <xsl:text>.asm</xsl:text>
+              </xsl:attribute>
+              <xsl:value-of select="instructions"/>
+            </a>
           </xsl:otherwise>
         </xsl:choose>
       </td>
