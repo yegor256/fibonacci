@@ -1,20 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 1847893950464
+Total is 923946975232
 
- Performance counter stats for 'bin/haskell-tail_recursion.bin 32 524288':
+ Performance counter stats for 'bin/haskell-tail_recursion.bin 32 262144':
 
-           1128.86 msec task-clock                #    1.000 CPUs utilized          
-                 5      context-switches          #    0.004 K/sec                  
+           1054.93 msec task-clock                #    0.999 CPUs utilized          
+                 0      context-switches          #    0.000 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             23516      page-faults               #    0.021 M/sec                  
-   <not supported>      cycles                                                      
-   <not supported>      instructions                                                
-   <not supported>      branches                                                    
-   <not supported>      branch-misses                                               
+             11944      page-faults               #    0.011 M/sec                  
+        2599882174      cycles                    #    2.465 GHz                    
+          91845531      stalled-cycles-frontend   #    3.53% frontend cycles idle   
+          79511559      stalled-cycles-backend    #    3.06% backend cycles idle    
+        4744079503      instructions              #    1.82  insn per cycle         
+                                                  #    0.02  stalled cycles per insn
+        1094682361      branches                  # 1037.681 M/sec                  
+                 0      branch-misses             #    0.00% of all branches        
 
-       1.129275721 seconds time elapsed
+       1.055700860 seconds time elapsed
 
-       1.077179000 seconds user
-       0.052056000 seconds sys
+       1.004047000 seconds user
+       0.051751000 seconds sys
 
 

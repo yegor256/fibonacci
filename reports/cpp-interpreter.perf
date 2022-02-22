@@ -1,20 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 1912111104
+Total is -1191428096
 
- Performance counter stats for 'bin/cpp-interpreter.bin 32 16384':
+ Performance counter stats for 'bin/cpp-interpreter.bin 32 8192':
 
-           1284.00 msec task-clock                #    1.000 CPUs utilized          
-                11      context-switches          #    0.009 K/sec                  
+           1065.46 msec task-clock                #    0.998 CPUs utilized          
+                 4      context-switches          #    0.004 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              1315      page-faults               #    0.001 M/sec                  
-   <not supported>      cycles                                                      
-   <not supported>      instructions                                                
-   <not supported>      branches                                                    
-   <not supported>      branch-misses                                               
+              2840      page-faults               #    0.003 M/sec                  
+        2264448995      cycles                    #    2.125 GHz                    
+          94215704      stalled-cycles-frontend   #    4.16% frontend cycles idle   
+         213228398      stalled-cycles-backend    #    9.42% backend cycles idle    
+        4717264419      instructions              #    2.08  insn per cycle         
+                                                  #    0.05  stalled cycles per insn
+         983186129      branches                  #  922.784 M/sec                  
+                 0      branch-misses             #    0.00% of all branches        
 
-       1.284642644 seconds time elapsed
+       1.067745461 seconds time elapsed
 
-       1.284460000 seconds user
-       0.000000000 seconds sys
+       1.052174000 seconds user
+       0.015858000 seconds sys
 
 

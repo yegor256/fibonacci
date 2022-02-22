@@ -1,18 +1,21 @@
-32-th Fibonacci number is 14098312
- Performance counter stats for 'bin/go-structs.bin 32 4':
+32-th Fibonacci number is 7049156
+ Performance counter stats for 'bin/go-structs.bin 32 2':
 
-          21492.87 msec task-clock                #    1.038 CPUs utilized          
-             24366      context-switches          #    0.001 M/sec                  
-               124      cpu-migrations            #    0.006 K/sec                  
-             25997      page-faults               #    0.001 M/sec                  
-   <not supported>      cycles                                                      
-   <not supported>      instructions                                                
-   <not supported>      branches                                                    
-   <not supported>      branch-misses                                               
+          19150.70 msec task-clock                #    1.134 CPUs utilized          
+             14489      context-switches          #    0.757 K/sec                  
+                43      cpu-migrations            #    0.002 K/sec                  
+              6449      page-faults               #    0.337 K/sec                  
+       42013942408      cycles                    #    2.194 GHz                    
+        3663289801      stalled-cycles-frontend   #    8.72% frontend cycles idle   
+        5408379489      stalled-cycles-backend    #   12.87% backend cycles idle    
+       58263403225      instructions              #    1.39  insn per cycle         
+                                                  #    0.09  stalled cycles per insn
+       11528688558      branches                  #  601.998 M/sec                  
+                 0      branch-misses             #    0.00% of all branches        
 
-      20.712682300 seconds time elapsed
+      16.890046414 seconds time elapsed
 
-      21.202627000 seconds user
-       0.389223000 seconds sys
+      17.752312000 seconds user
+       2.570272000 seconds sys
 
 

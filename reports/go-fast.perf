@@ -1,18 +1,21 @@
-32-th Fibonacci number is 268435456
- Performance counter stats for 'bin/go-fast.bin 32 134217728':
+32-th Fibonacci number is -2013265920
+ Performance counter stats for 'bin/go-fast.bin 32 67108864':
 
-           1894.13 msec task-clock                #    1.001 CPUs utilized          
-               280      context-switches          #    0.148 K/sec                  
-                 3      cpu-migrations            #    0.002 K/sec                  
-                89      page-faults               #    0.047 K/sec                  
-   <not supported>      cycles                                                      
-   <not supported>      instructions                                                
-   <not supported>      branches                                                    
-   <not supported>      branch-misses                                               
+           2054.43 msec task-clock                #    1.008 CPUs utilized          
+               272      context-switches          #    0.132 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               195      page-faults               #    0.095 K/sec                  
+        5170414782      cycles                    #    2.517 GHz                    
+          48285501      stalled-cycles-frontend   #    0.93% frontend cycles idle   
+         170582927      stalled-cycles-backend    #    3.30% backend cycles idle    
+       13495712779      instructions              #    2.61  insn per cycle         
+                                                  #    0.01  stalled cycles per insn
+        2417215729      branches                  # 1176.585 M/sec                  
+                 0      branch-misses             #    0.00% of all branches        
 
-       1.892322598 seconds time elapsed
+       2.037657223 seconds time elapsed
 
-       1.896706000 seconds user
-       0.000000000 seconds sys
+       2.056712000 seconds user
+       0.012170000 seconds sys
 
 

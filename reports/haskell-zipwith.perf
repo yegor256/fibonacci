@@ -1,20 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 14783151603712
+Total is 7391575801856
 
- Performance counter stats for 'bin/haskell-zipwith.bin 32 4194304':
+ Performance counter stats for 'bin/haskell-zipwith.bin 32 2097152':
 
-           1837.19 msec task-clock                #    1.000 CPUs utilized          
-                48      context-switches          #    0.026 K/sec                  
+           1295.46 msec task-clock                #    0.998 CPUs utilized          
+                 6      context-switches          #    0.005 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-            169947      page-faults               #    0.093 M/sec                  
-   <not supported>      cycles                                                      
-   <not supported>      instructions                                                
-   <not supported>      branches                                                    
-   <not supported>      branch-misses                                               
+             78766      page-faults               #    0.061 M/sec                  
+        3147946815      cycles                    #    2.430 GHz                    
+         111843716      stalled-cycles-frontend   #    3.55% frontend cycles idle   
+         681004871      stalled-cycles-backend    #   21.63% backend cycles idle    
+        7129399066      instructions              #    2.26  insn per cycle         
+                                                  #    0.10  stalled cycles per insn
+        1345817592      branches                  # 1038.871 M/sec                  
+                 0      branch-misses             #    0.00% of all branches        
 
-       1.837969099 seconds time elapsed
+       1.298657719 seconds time elapsed
 
-       1.521148000 seconds user
-       0.316238000 seconds sys
+       1.125174000 seconds user
+       0.171284000 seconds sys
 
 

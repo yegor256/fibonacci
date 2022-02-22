@@ -1,20 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 225572992
+Total is 902291968
 
- Performance counter stats for 'bin/haskell-recursion.bin 32 64':
+ Performance counter stats for 'bin/haskell-recursion.bin 32 256':
 
-           9845.01 msec task-clock                #    1.000 CPUs utilized          
-               388      context-switches          #    0.039 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-              1906      page-faults               #    0.194 K/sec                  
-   <not supported>      cycles                                                      
-   <not supported>      instructions                                                
-   <not supported>      branches                                                    
-   <not supported>      branch-misses                                               
+          63190.12 msec task-clock                #    1.000 CPUs utilized          
+               192      context-switches          #    0.003 K/sec                  
+                 1      cpu-migrations            #    0.000 K/sec                  
+              1231      page-faults               #    0.019 K/sec                  
+      152481625099      cycles                    #    2.413 GHz                    
+        2220771123      stalled-cycles-frontend   #    1.46% frontend cycles idle   
+        1648710616      stalled-cycles-backend    #    1.08% backend cycles idle    
+      316120961363      instructions              #    2.07  insn per cycle         
+                                                  #    0.01  stalled cycles per insn
+       69417764790      branches                  # 1098.554 M/sec                  
+                 0      branch-misses             #    0.00% of all branches        
 
-       9.848863938 seconds time elapsed
+      63.212911513 seconds time elapsed
 
-       9.840958000 seconds user
-       0.003998000 seconds sys
+      62.814269000 seconds user
+       0.372420000 seconds sys
 
 

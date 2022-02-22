@@ -1,20 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 268435456
+Total is -2013265920
 
- Performance counter stats for 'bin/cpp-matrixes.bin 32 134217728':
+ Performance counter stats for 'bin/cpp-matrixes.bin 32 67108864':
 
-           1767.38 msec task-clock                #    0.999 CPUs utilized          
-                25      context-switches          #    0.014 K/sec                  
+           1507.70 msec task-clock                #    0.999 CPUs utilized          
+                 6      context-switches          #    0.004 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              1232      page-faults               #    0.697 K/sec                  
-   <not supported>      cycles                                                      
-   <not supported>      instructions                                                
-   <not supported>      branches                                                    
-   <not supported>      branch-misses                                               
+              2759      page-faults               #    0.002 M/sec                  
+        3655929297      cycles                    #    2.425 GHz                    
+           4134551      stalled-cycles-frontend   #    0.11% frontend cycles idle   
+        1350516522      stalled-cycles-backend    #   36.94% backend cycles idle    
+        9630456697      instructions              #    2.63  insn per cycle         
+                                                  #    0.14  stalled cycles per insn
+        1149327292      branches                  #  762.305 M/sec                  
+                 0      branch-misses             #    0.00% of all branches        
 
-       1.768323084 seconds time elapsed
+       1.508722405 seconds time elapsed
 
-       1.760678000 seconds user
-       0.007064000 seconds sys
+       1.504982000 seconds user
+       0.004037000 seconds sys
 
 

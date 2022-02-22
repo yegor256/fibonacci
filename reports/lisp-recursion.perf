@@ -1,20 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 225572992
+Total is 902291968
 
- Performance counter stats for 'bin/lisp-recursion.bin 32 64':
+ Performance counter stats for 'bin/lisp-recursion.bin 32 256':
 
-           2972.85 msec task-clock                #    1.000 CPUs utilized          
-                14      context-switches          #    0.005 K/sec                  
+          17210.24 msec task-clock                #    1.000 CPUs utilized          
+                36      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               587      page-faults               #    0.197 K/sec                  
-   <not supported>      cycles                                                      
-   <not supported>      instructions                                                
-   <not supported>      branches                                                    
-   <not supported>      branch-misses                                               
+               580      page-faults               #    0.034 K/sec                  
+       42294116590      cycles                    #    2.457 GHz                    
+         154343060      stalled-cycles-frontend   #    0.36% frontend cycles idle   
+         801179326      stalled-cycles-backend    #    1.89% backend cycles idle    
+       84844707647      instructions              #    2.01  insn per cycle         
+                                                  #    0.01  stalled cycles per insn
+       26171712355      branches                  # 1520.706 M/sec                  
+                 0      branch-misses             #    0.00% of all branches        
 
-       2.973627804 seconds time elapsed
+      17.215015276 seconds time elapsed
 
-       2.973241000 seconds user
-       0.000000000 seconds sys
+      17.194469000 seconds user
+       0.015926000 seconds sys
 
 

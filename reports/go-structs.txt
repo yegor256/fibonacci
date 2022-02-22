@@ -1,8 +1,13 @@
 bin/go-structs.bin:
-CPU ticks: <not
-CPU ticks per cycle: 
+CPU ticks: 42013942408
+3663289801
+5408379489
+#
+CPU ticks per cycle: 42013942408
+3663289801
+5408379489
 Instructions: 1
-Cycles: 4
-Time: 20.75
-Per cycle: 5.1875000000000000
+Cycles: 2
+Time: 15.83
+Per cycle: 7.9150000000000000
 

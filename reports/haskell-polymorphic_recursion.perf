@@ -1,20 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 28196624
+Total is 14098312
 
- Performance counter stats for 'bin/haskell-polymorphic_recursion.bin 32 8':
+ Performance counter stats for 'bin/haskell-polymorphic_recursion.bin 32 4':
 
-          11213.88 msec task-clock                #    1.000 CPUs utilized          
-                56      context-switches          #    0.005 K/sec                  
+          13087.71 msec task-clock                #    0.999 CPUs utilized          
+                49      context-switches          #    0.004 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2086      page-faults               #    0.186 K/sec                  
-   <not supported>      cycles                                                      
-   <not supported>      instructions                                                
-   <not supported>      branches                                                    
-   <not supported>      branch-misses                                               
+              1438      page-faults               #    0.110 K/sec                  
+       31588261915      cycles                    #    2.414 GHz                    
+        1297178794      stalled-cycles-frontend   #    4.11% frontend cycles idle   
+         420665975      stalled-cycles-backend    #    1.33% backend cycles idle    
+       51074401578      instructions              #    1.62  insn per cycle         
+                                                  #    0.03  stalled cycles per insn
+       12182016359      branches                  #  930.798 M/sec                  
+                 0      branch-misses             #    0.00% of all branches        
 
-      11.215120554 seconds time elapsed
+      13.094603254 seconds time elapsed
 
-      11.213914000 seconds user
-       0.000000000 seconds sys
+      12.995289000 seconds user
+       0.092058000 seconds sys
 
 

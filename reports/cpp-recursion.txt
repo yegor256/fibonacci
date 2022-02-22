@@ -1,8 +1,13 @@
 bin/cpp-recursion.bin:
-CPU ticks: <not
-CPU ticks per cycle: 
+CPU ticks: 6457726271
+45553786
+78707815
+#
+CPU ticks per cycle: 6457726271
+45553786
+78707815
 Instructions: 68
 Cycles: 256
-Time: 1.73
-Per cycle: .0067578125000000
+Time: 2.78
+Per cycle: .0108593750000000
 

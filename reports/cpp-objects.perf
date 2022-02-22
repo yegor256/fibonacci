@@ -3,18 +3,21 @@ Total is 7049156
 
  Performance counter stats for 'bin/cpp-objects.bin 32 2':
 
-          13050.93 msec task-clock                #    1.000 CPUs utilized          
-               399      context-switches          #    0.031 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-              1287      page-faults               #    0.099 K/sec                  
-   <not supported>      cycles                                                      
-   <not supported>      instructions                                                
-   <not supported>      branches                                                    
-   <not supported>      branch-misses                                               
+          18212.51 msec task-clock                #    0.999 CPUs utilized          
+                62      context-switches          #    0.003 K/sec                  
+                 2      cpu-migrations            #    0.000 K/sec                  
+              2817      page-faults               #    0.155 K/sec                  
+       44650153885      cycles                    #    2.452 GHz                    
+        1221370882      stalled-cycles-frontend   #    2.74% frontend cycles idle   
+        2213408376      stalled-cycles-backend    #    4.96% backend cycles idle    
+      116875680150      instructions              #    2.62  insn per cycle         
+                                                  #    0.02  stalled cycles per insn
+       23796442034      branches                  # 1306.599 M/sec                  
+                 0      branch-misses             #    0.00% of all branches        
 
-      13.054338039 seconds time elapsed
+      18.234589362 seconds time elapsed
 
-      13.048030000 seconds user
-       0.002875000 seconds sys
+      18.201577000 seconds user
+       0.011058000 seconds sys
 
 
