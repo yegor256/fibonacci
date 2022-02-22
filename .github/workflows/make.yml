@@ -9,11 +9,10 @@ concurrency:
 jobs:
   build:
     runs-on: self-hosted
+    env:
+      ImageOS: ubuntu20
     steps:
-      - run: |
-          sudo apt-get install -y openssh-server
-          sudo systemctl enable ssh
-          sudo systemctl start ssh
+      - run: sudo mkdir -p /opt/hostedtoolcache && chown $(whoami) /opt/hostedtoolcache
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
