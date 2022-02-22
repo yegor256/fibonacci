@@ -1,8 +1,8 @@
 bin/cpp-lambdas.bin:
-CPU ticks: 41013891585
-CPU ticks per cycle: 20506945792
+CPU ticks: 38838541288
+CPU ticks per cycle: 19419270644
 Instructions: 485
 Cycles: 2
-Time: 15.56
-Per cycle: 7.7800000000000000
+Time: 14.69
+Per cycle: 7.3450000000000000
 

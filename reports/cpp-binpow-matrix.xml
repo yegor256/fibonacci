@@ -1,1 +1,1 @@
-<program> 	<file>cpp/binpow-matrix.cpp</file> 	<name>cpp-binpow-matrix</name> 	<instructions>165</instructions> 	<cycles>33554432</cycles> 	<time>1.27</time> 	<time_per_cycle>.0000000378489494</time_per_cycle> 	<ticks>3028096661</ticks> 	<ticks_per_cycle>90</ticks_per_cycle> 	</program>
+<program> 	<file>cpp/binpow-matrix.cpp</file> 	<name>cpp-binpow-matrix</name> 	<instructions>165</instructions> 	<cycles>67108864</cycles> 	<time>1.92</time> 	<time_per_cycle>.0000000286102294</time_per_cycle> 	<ticks>6190246626</ticks> 	<ticks_per_cycle>92</ticks_per_cycle> 	</program>

@@ -1,23 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 14098312
+Total is 28196624
 
- Performance counter stats for 'bin/haskell-polymorphic_recursion.bin 32 4':
+ Performance counter stats for 'bin/haskell-polymorphic_recursion.bin 32 8':
 
-          11316.03 msec task-clock                #    1.000 CPUs utilized          
-                16      context-switches          #    0.001 K/sec                  
+          21781.48 msec task-clock                #    1.000 CPUs utilized          
+                29      context-switches          #    0.001 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              1231      page-faults               #    0.109 K/sec                  
-       30407504922      cycles                    #    2.687 GHz                    
-        1328517625      stalled-cycles-frontend   #    4.37% frontend cycles idle   
-         362738883      stalled-cycles-backend    #    1.19% backend cycles idle    
-       51070594479      instructions              #    1.68  insn per cycle         
+              1440      page-faults               #    0.066 K/sec                  
+       59288853096      cycles                    #    2.722 GHz                    
+        2657012220      stalled-cycles-frontend   #    4.48% frontend cycles idle   
+         596028227      stalled-cycles-backend    #    1.01% backend cycles idle    
+      102133181262      instructions              #    1.72  insn per cycle         
                                                   #    0.03  stalled cycles per insn
-       12181343227      branches                  # 1076.468 M/sec                  
+       24361496458      branches                  # 1118.450 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-      11.318380676 seconds time elapsed
+      21.784789250 seconds time elapsed
 
-      11.256635000 seconds user
-       0.059914000 seconds sys
+      21.693438000 seconds user
+       0.088008000 seconds sys
 
 

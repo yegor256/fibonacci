@@ -3,21 +3,21 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-functions.bin 32 256':
 
-           9847.57 msec task-clock                #    1.000 CPUs utilized          
-                21      context-switches          #    0.002 K/sec                  
+          10265.18 msec task-clock                #    1.000 CPUs utilized          
+                19      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2762      page-faults               #    0.280 K/sec                  
-       26650374200      cycles                    #    2.706 GHz                    
-          61614926      stalled-cycles-frontend   #    0.23% frontend cycles idle   
-          29851179      stalled-cycles-backend    #    0.11% backend cycles idle    
-       46962922893      instructions              #    1.76  insn per cycle         
+              2759      page-faults               #    0.269 K/sec                  
+       26999793652      cycles                    #    2.630 GHz                    
+          70052490      stalled-cycles-frontend   #    0.26% frontend cycles idle   
+          42411565      stalled-cycles-backend    #    0.16% backend cycles idle    
+       46963073864      instructions              #    1.74  insn per cycle         
                                                   #    0.00  stalled cycles per insn
-       13544547806      branches                  # 1375.420 M/sec                  
+       13544567952      branches                  # 1319.467 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       9.849875520 seconds time elapsed
+      10.267088641 seconds time elapsed
 
-       9.844322000 seconds user
-       0.003907000 seconds sys
+      10.253595000 seconds user
+       0.012009000 seconds sys
 
 

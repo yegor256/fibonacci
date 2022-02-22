@@ -1,1 +1,1 @@
-<program> 	<file>lisp/recursion.lisp</file> 	<name>lisp-recursion</name> 	<instructions>1</instructions> 	<cycles>256</cycles> 	<time>14.06</time> 	<time_per_cycle>.0549218750000000</time_per_cycle> 	<ticks>40452349664</ticks> 	<ticks_per_cycle>158016990</ticks_per_cycle> 	</program>
+<program> 	<file>lisp/recursion.lisp</file> 	<name>lisp-recursion</name> 	<instructions>1</instructions> 	<cycles>256</cycles> 	<time>14.00</time> 	<time_per_cycle>.0546875000000000</time_per_cycle> 	<ticks>38343339666</ticks> 	<ticks_per_cycle>149778670</ticks_per_cycle> 	</program>
