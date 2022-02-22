@@ -59,7 +59,7 @@ SOFTWARE.
       </thead>
       <tbody>
         <xsl:apply-templates select="program">
-          <xsl:sort select="per" data-type="number"/>
+          <xsl:sort select="time_per_cycle" data-type="number"/>
         </xsl:apply-templates>
       </tbody>
     </table>
@@ -80,7 +80,9 @@ SOFTWARE.
       <td class="data">
         <xsl:choose>
           <xsl:when test="instructions = 1">
-            <xsl:text>n/a</xsl:text>
+            <span style="color: gray">
+              <xsl:text>n/a</xsl:text>
+            </span>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="instructions"/>
@@ -88,7 +90,16 @@ SOFTWARE.
         </xsl:choose>
       </td>
       <td class="data">
-        <xsl:value-of select="cycles"/>
+        <xsl:choose>
+          <xsl:when test="cycles = 2147483648">
+            <span style="color: firebrick" title="{cycles}">
+              <xsl:text>MAX</xsl:text>
+            </span>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="cycles"/>
+          </xsl:otherwise>
+        </xsl:choose>
       </td>
       <td class="data">
         <xsl:value-of select="time"/>
