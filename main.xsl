@@ -97,7 +97,14 @@ SOFTWARE.
         <xsl:value-of select="time_per_cycle"/>
       </td>
       <td class="data">
-        <xsl:value-of select="ticks"/>
+        <a>
+          <xsl:attribute name="href">
+            <xsl:text>https://github.com/yegor256/fibonacci/blob/gh-pages/reports/</xsl:text>
+            <xsl:value-of select="name"/>
+            <xsl:text>.perf</xsl:text>
+          </xsl:attribute>
+          <xsl:value-of select="ticks"/>
+        </a>
       </td>
       <td class="data">
         <xsl:value-of select="ticks_per_cycle"/>
@@ -152,6 +159,9 @@ SOFTWARE.
           <a href="https://www.yegor256.com">
             <xsl:text>@yegor256</xsl:text>
           </a>
+          <xsl:text> at &quot;</xsl:text>
+          <xsl:value-of select="uname"/>
+          <xsl:text>&quot; machine.</xsl:text>
         </p>
       </body>
     </html>
