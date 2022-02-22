@@ -3,21 +3,21 @@ Total is 7391575801856
 
  Performance counter stats for 'bin/haskell-zipwith.bin 32 2097152':
 
-           1295.46 msec task-clock                #    0.998 CPUs utilized          
-                 6      context-switches          #    0.005 K/sec                  
+           1828.06 msec task-clock                #    0.999 CPUs utilized          
+                 5      context-switches          #    0.003 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             78766      page-faults               #    0.061 M/sec                  
-        3147946815      cycles                    #    2.430 GHz                    
-         111843716      stalled-cycles-frontend   #    3.55% frontend cycles idle   
-         681004871      stalled-cycles-backend    #   21.63% backend cycles idle    
-        7129399066      instructions              #    2.26  insn per cycle         
-                                                  #    0.10  stalled cycles per insn
-        1345817592      branches                  # 1038.871 M/sec                  
+             78758      page-faults               #    0.043 M/sec                  
+        3718842978      cycles                    #    2.034 GHz                    
+         213976129      stalled-cycles-frontend   #    5.75% frontend cycles idle   
+         258087686      stalled-cycles-backend    #    6.94% backend cycles idle    
+        7129875896      instructions              #    1.92  insn per cycle         
+                                                  #    0.04  stalled cycles per insn
+        1345900253      branches                  #  736.244 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.298657719 seconds time elapsed
+       1.829698573 seconds time elapsed
 
-       1.125174000 seconds user
-       0.171284000 seconds sys
+       1.650873000 seconds user
+       0.178228000 seconds sys
 
 

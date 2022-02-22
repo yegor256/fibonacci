@@ -1,23 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 56393248
+Total is 28196624
 
- Performance counter stats for 'bin/java-Objects.bin 32 16':
+ Performance counter stats for 'bin/java-Objects.bin 32 8':
 
-          21050.14 msec task-clock                #    1.000 CPUs utilized          
-                60      context-switches          #    0.003 K/sec                  
+          12346.81 msec task-clock                #    1.000 CPUs utilized          
+                23      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             13291      page-faults               #    0.631 K/sec                  
-       50925910170      cycles                    #    2.419 GHz                    
-         742888694      stalled-cycles-frontend   #    1.46% frontend cycles idle   
-       14619720490      stalled-cycles-backend    #   28.71% backend cycles idle    
-       95334768092      instructions              #    1.87  insn per cycle         
-                                                  #    0.15  stalled cycles per insn
-       20540099714      branches                  #  975.770 M/sec                  
+             13801      page-faults               #    0.001 M/sec                  
+       29328250778      cycles                    #    2.375 GHz                    
+         577866956      stalled-cycles-frontend   #    1.97% frontend cycles idle   
+        5893134754      stalled-cycles-backend    #   20.09% backend cycles idle    
+       47682373190      instructions              #    1.63  insn per cycle         
+                                                  #    0.12  stalled cycles per insn
+       10271749169      branches                  #  831.936 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-      21.057600604 seconds time elapsed
+      12.350394964 seconds time elapsed
 
-      21.017529000 seconds user
-       0.031635000 seconds sys
+      12.303063000 seconds user
+       0.044044000 seconds sys
 
 

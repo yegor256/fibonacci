@@ -3,21 +3,21 @@ Total is 1847893950464
 
  Performance counter stats for 'bin/haskell-iterate.bin 32 524288':
 
-           1007.59 msec task-clock                #    0.999 CPUs utilized          
-                 3      context-switches          #    0.003 K/sec                  
+           1299.23 msec task-clock                #    0.987 CPUs utilized          
+                 2      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             21932      page-faults               #    0.022 M/sec                  
-        2468454544      cycles                    #    2.450 GHz                    
-          54339376      stalled-cycles-frontend   #    2.20% frontend cycles idle   
-         215042103      stalled-cycles-backend    #    8.71% backend cycles idle    
-        5444081799      instructions              #    2.21  insn per cycle         
-                                                  #    0.04  stalled cycles per insn
-        1109403001      branches                  # 1101.050 M/sec                  
+             21934      page-faults               #    0.017 M/sec                  
+        3040560879      cycles                    #    2.340 GHz                    
+          96401534      stalled-cycles-frontend   #    3.17% frontend cycles idle   
+         120193860      stalled-cycles-backend    #    3.95% backend cycles idle    
+        5444251077      instructions              #    1.79  insn per cycle         
+                                                  #    0.02  stalled cycles per insn
+        1109446416      branches                  #  853.926 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.008445033 seconds time elapsed
+       1.315699534 seconds time elapsed
 
-       0.964586000 seconds user
-       0.043452000 seconds sys
+       1.270826000 seconds user
+       0.044615000 seconds sys
 
 
