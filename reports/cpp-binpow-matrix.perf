@@ -3,21 +3,21 @@ Total is -1006632960
 
  Performance counter stats for 'bin/cpp-binpow-matrix.bin 32 33554432':
 
-           1063.53 msec task-clock                #    0.999 CPUs utilized          
-                 8      context-switches          #    0.008 K/sec                  
+           1305.88 msec task-clock                #    1.000 CPUs utilized          
+                 2      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2760      page-faults               #    0.003 M/sec                  
-        2892333464      cycles                    #    2.720 GHz                    
-           6919022      stalled-cycles-frontend   #    0.24% frontend cycles idle   
-        1068916644      stalled-cycles-backend    #   36.96% backend cycles idle    
-        9965770499      instructions              #    3.45  insn per cycle         
-                                                  #    0.11  stalled cycles per insn
-        1082191455      branches                  # 1017.545 M/sec                  
+              2762      page-faults               #    0.002 M/sec                  
+        3028096661      cycles                    #    2.319 GHz                    
+           8273139      stalled-cycles-frontend   #    0.27% frontend cycles idle   
+         926860597      stalled-cycles-backend    #   30.61% backend cycles idle    
+        9965875146      instructions              #    3.29  insn per cycle         
+                                                  #    0.09  stalled cycles per insn
+        1082200591      branches                  #  828.712 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.064674889 seconds time elapsed
+       1.306426328 seconds time elapsed
 
-       1.064519000 seconds user
-       0.000000000 seconds sys
+       1.297586000 seconds user
+       0.009458000 seconds sys
 
 

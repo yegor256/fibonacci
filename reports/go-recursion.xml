@@ -1,1 +1,1 @@
-<program> 	<file></file> 	<name>go-recursion</name> 	<instructions>1</instructions> 	<cycles>256</cycles> 	<time>4.60</time> 	<time_per_cycle>.0179687500000000</time_per_cycle> 	<ticks>13658201753</ticks> 	<ticks_per_cycle>53352350</ticks_per_cycle> 	</program>
+<program> 	<file></file> 	<name>go-recursion</name> 	<instructions>1</instructions> 	<cycles>256</cycles> 	<time>5.40</time> 	<time_per_cycle>.0210937500000000</time_per_cycle> 	<ticks>14257988304</ticks> 	<ticks_per_cycle>55695266</ticks_per_cycle> 	</program>

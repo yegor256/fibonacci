@@ -1,1 +1,1 @@
-<program> 	<file>cpp/lambdas.cpp</file> 	<name>cpp-lambdas</name> 	<instructions>485</instructions> 	<cycles>2</cycles> 	<time>13.52</time> 	<time_per_cycle>6.7600000000000000</time_per_cycle> 	<ticks>39376534822</ticks> 	<ticks_per_cycle>19688267411</ticks_per_cycle> 	</program>
+<program> 	<file>cpp/lambdas.cpp</file> 	<name>cpp-lambdas</name> 	<instructions>485</instructions> 	<cycles>2</cycles> 	<time>15.56</time> 	<time_per_cycle>7.7800000000000000</time_per_cycle> 	<ticks>41013891585</ticks> 	<ticks_per_cycle>20506945792</ticks_per_cycle> 	</program>

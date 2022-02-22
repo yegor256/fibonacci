@@ -1,21 +1,21 @@
 32-th Fibonacci number is -2013265920
  Performance counter stats for 'bin/go-fast.bin 32 67108864':
 
-           1184.25 msec task-clock                #    1.013 CPUs utilized          
-               182      context-switches          #    0.154 K/sec                  
+           1271.44 msec task-clock                #    1.013 CPUs utilized          
+               188      context-switches          #    0.148 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               195      page-faults               #    0.165 K/sec                  
-        3264253710      cycles                    #    2.756 GHz                    
-         101812428      stalled-cycles-frontend   #    3.12% frontend cycles idle   
-          21419981      stalled-cycles-backend    #    0.66% backend cycles idle    
-       13493772156      instructions              #    4.13  insn per cycle         
-                                                  #    0.01  stalled cycles per insn
-        2416851211      branches                  # 2040.828 M/sec                  
+               208      page-faults               #    0.164 K/sec                  
+        3588384491      cycles                    #    2.822 GHz                    
+          56830552      stalled-cycles-frontend   #    1.58% frontend cycles idle   
+          30961188      stalled-cycles-backend    #    0.86% backend cycles idle    
+       13493970722      instructions              #    3.76  insn per cycle         
+                                                  #    0.00  stalled cycles per insn
+        2416892335      branches                  # 1900.912 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.169424536 seconds time elapsed
+       1.255466915 seconds time elapsed
 
-       1.174974000 seconds user
-       0.016073000 seconds sys
+       1.263043000 seconds user
+       0.016090000 seconds sys
 
 

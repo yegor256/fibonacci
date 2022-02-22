@@ -3,21 +3,21 @@ Total is 1847893950464
 
  Performance counter stats for 'bin/haskell-tail_recursion.bin 32 524288':
 
-           1768.26 msec task-clock                #    1.000 CPUs utilized          
-                 1      context-switches          #    0.001 K/sec                  
+           1818.55 msec task-clock                #    0.999 CPUs utilized          
+                 5      context-switches          #    0.003 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             21678      page-faults               #    0.012 M/sec                  
-        4913932090      cycles                    #    2.779 GHz                    
-         134844921      stalled-cycles-frontend   #    2.74% frontend cycles idle   
-         228548246      stalled-cycles-backend    #    4.65% backend cycles idle    
-        9549437848      instructions              #    1.94  insn per cycle         
+             21676      page-faults               #    0.012 M/sec                  
+        4956727873      cycles                    #    2.726 GHz                    
+         140982220      stalled-cycles-frontend   #    2.84% frontend cycles idle   
+         192201476      stalled-cycles-backend    #    3.88% backend cycles idle    
+        9549321410      instructions              #    1.93  insn per cycle         
                                                   #    0.02  stalled cycles per insn
-        2201329039      branches                  # 1244.911 M/sec                  
+        2201320690      branches                  # 1210.484 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.769092995 seconds time elapsed
+       1.819781951 seconds time elapsed
 
-       1.736904000 seconds user
-       0.032040000 seconds sys
+       1.759281000 seconds user
+       0.059844000 seconds sys
 
 
