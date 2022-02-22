@@ -1,8 +1,8 @@
 bin/cpp-loop.bin:
-CPU ticks: 3806859501
-CPU ticks per cycle: 28.3633135333657264
+CPU ticks: 3290918439
+CPU ticks per cycle: 24
 Instructions: 126
 Cycles: 134217728
-Time: 1.75
-Per cycle: .0000000130385160
+Time: 1.22
+Per cycle: .0000000090897083
 

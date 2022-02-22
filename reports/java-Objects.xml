@@ -1,1 +1,1 @@
-<program> 	<file>java/Objects.java</file> 	<name>java-Objects</name> 	<instructions>1</instructions> 	<cycles>8</cycles> 	<time>13.91</time> 	<time_per_cycle>1.7387500000000000</time_per_cycle> 	<ticks>29328250778</ticks> 	<ticks_per_cycle>3666031347.2500000000000000</ticks_per_cycle> 	</program>
+<program> 	<file>java/Objects.java</file> 	<name>java-Objects</name> 	<instructions>1</instructions> 	<cycles>16</cycles> 	<time>18.13</time> 	<time_per_cycle>1.1331250000000000</time_per_cycle> 	<ticks>50773118620</ticks> 	<ticks_per_cycle>3173319913</ticks_per_cycle> 	</program>

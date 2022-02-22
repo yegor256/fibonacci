@@ -3,21 +3,21 @@ Total is -2013265920
 
  Performance counter stats for 'bin/cpp-matrixes.bin 32 67108864':
 
-           1401.36 msec task-clock                #    0.999 CPUs utilized          
-                 5      context-switches          #    0.004 K/sec                  
+            982.90 msec task-clock                #    0.999 CPUs utilized          
+                 3      context-switches          #    0.003 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2762      page-faults               #    0.002 M/sec                  
-        3473882222      cycles                    #    2.479 GHz                    
-           5369645      stalled-cycles-frontend   #    0.15% frontend cycles idle   
-        1109333827      stalled-cycles-backend    #   31.93% backend cycles idle    
-        9630652777      instructions              #    2.77  insn per cycle         
-                                                  #    0.12  stalled cycles per insn
-        1149365087      branches                  #  820.180 M/sec                  
+              2761      page-faults               #    0.003 M/sec                  
+        2877662173      cycles                    #    2.928 GHz                    
+           3081713      stalled-cycles-frontend   #    0.11% frontend cycles idle   
+        1949483355      stalled-cycles-backend    #   67.75% backend cycles idle    
+        9629865929      instructions              #    3.35  insn per cycle         
+                                                  #    0.20  stalled cycles per insn
+        1149224693      branches                  # 1169.223 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.402194297 seconds time elapsed
+       0.983523560 seconds time elapsed
 
-       1.393034000 seconds user
-       0.009623000 seconds sys
+       0.975866000 seconds user
+       0.007858000 seconds sys
 
 

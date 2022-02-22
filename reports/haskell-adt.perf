@@ -3,21 +3,21 @@ Total is 902291968
 
  Performance counter stats for 'bin/haskell-adt.bin 32 256':
 
-         133212.09 msec task-clock                #    0.999 CPUs utilized          
-               369      context-switches          #    0.003 K/sec                  
-                 3      cpu-migrations            #    0.000 K/sec                  
-              1438      page-faults               #    0.011 K/sec                  
-      298553763824      cycles                    #    2.241 GHz                    
-       10558477881      stalled-cycles-frontend   #    3.54% frontend cycles idle   
-       10582622357      stalled-cycles-backend    #    3.54% backend cycles idle    
-      560481112334      instructions              #    1.88  insn per cycle         
-                                                  #    0.02  stalled cycles per insn
-      116885707975      branches                  #  877.441 M/sec                  
+          95413.45 msec task-clock                #    1.000 CPUs utilized          
+               163      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              1442      page-faults               #    0.015 K/sec                  
+      258141970539      cycles                    #    2.706 GHz                    
+        4921972989      stalled-cycles-frontend   #    1.91% frontend cycles idle   
+       14753556943      stalled-cycles-backend    #    5.72% backend cycles idle    
+      560428661545      instructions              #    2.17  insn per cycle         
+                                                  #    0.03  stalled cycles per insn
+      116876457551      branches                  # 1224.947 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-     133.295289133 seconds time elapsed
+      95.430128837 seconds time elapsed
 
-     132.468700000 seconds user
-       0.738413000 seconds sys
+      94.911864000 seconds user
+       0.499736000 seconds sys
 
 
