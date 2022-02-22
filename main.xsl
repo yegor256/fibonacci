@@ -90,7 +90,7 @@ SOFTWARE.
           <xsl:otherwise>
             <a>
               <xsl:attribute name="href">
-                <xsl:text>https://github.com/yegor256/fibonacci/blob/gh-pages/asm/</xsl:text>
+                <xsl:text>https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm</xsl:text>
                 <xsl:value-of select="name"/>
                 <xsl:text>.asm</xsl:text>
               </xsl:attribute>
@@ -120,7 +120,7 @@ SOFTWARE.
       <td class="data">
         <a>
           <xsl:attribute name="href">
-            <xsl:text>https://github.com/yegor256/fibonacci/blob/gh-pages/reports/</xsl:text>
+            <xsl:text>https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/</xsl:text>
             <xsl:value-of select="name"/>
             <xsl:text>.perf</xsl:text>
           </xsl:attribute>
