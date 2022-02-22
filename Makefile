@@ -195,9 +195,9 @@ reports/%.txt: bin/%.bin asm/%.asm
 		<instructions>$${instructions}</instructions> \
 		<cycles>$${cycles}</cycles> \
 		<time>$${time}</time> \
-		<time_per_cycle>$${time_per_cycle}</per> \
+		<time_per_cycle>$${time_per_cycle}</time_per_cycle> \
 		<ticks>$${ticks}</ticks> \
-		<ticks_per_cycle>$${ticks_per_cycle}</per> \
+		<ticks_per_cycle>$${ticks_per_cycle}</ticks_per_cycle> \
 		</program>" > "${@:.txt=.xml}"
 
 clean:
