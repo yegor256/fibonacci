@@ -189,15 +189,16 @@ reports/%.txt: bin/%.bin asm/%.asm
 	} > "$@"
 	echo "${subst bin/,,$<},$${instructions},$${ticks_per_cycle},$${cycles},$${time},$${time_per_cycle}" > "${@:.txt=.csv}"
 	name=$(subst bin/,,${<:.bin=})
+	file=$$(ls $$(echo $${name} | cut -f1 -d-)/$$(echo $${name} | cut -f2- -d-).*)
 	echo "<program> \
-		<file>$$(ls $$(echo $${name} | cut -f1 -d-)/$$(echo $${name} | cut -f2- -d-).*)</file> \
-		<name>$${name}</name> \
-		<instructions>$${instructions}</instructions> \
-		<cycles>$${cycles}</cycles> \
-		<time>$${time}</time> \
-		<time_per_cycle>$${time_per_cycle}</time_per_cycle> \
-		<ticks>$${ticks}</ticks> \
-		<ticks_per_cycle>$${ticks_per_cycle}</ticks_per_cycle> \
+		<file>$$(echo $${file} | jq -Rr @html)</file> \
+		<name>$$(echo $${name} | jq -Rr @html)</name> \
+		<instructions>$$(echo $${instructions} | jq -Rr @html)</instructions> \
+		<cycles>$$(echo $${cycles} | jq -Rr @html)</cycles> \
+		<time>$$(echo $${time} | jq -Rr @html)</time> \
+		<time_per_cycle>$$(echo $${time_per_cycle} | jq -Rr @html)</time_per_cycle> \
+		<ticks>$$(echo $${ticks} | jq -Rr @html)</ticks> \
+		<ticks_per_cycle>$$(echo $${ticks_per_cycle} | jq -Rr @html)</ticks_per_cycle> \
 		</program>" > "${@:.txt=.xml}"
 
 clean:
