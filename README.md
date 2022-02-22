@@ -53,5 +53,5 @@ su - runner
 ```
 
 Then, you follow the instructions from 
-[here](https://github.com/yegor256/fibonacci/settings/actions/runners/new?arch=x64&os=linux)
+[here](https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-runners).
 
