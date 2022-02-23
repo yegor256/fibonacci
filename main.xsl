@@ -77,7 +77,7 @@ SOFTWARE.
           <xsl:otherwise>
             <a>
               <xsl:attribute name="href">
-                <xsl:text>https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm</xsl:text>
+                <xsl:text>https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/</xsl:text>
                 <xsl:value-of select="name"/>
                 <xsl:text>.asm</xsl:text>
               </xsl:attribute>
