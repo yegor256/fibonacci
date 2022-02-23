@@ -46,10 +46,10 @@ Just rent a server with at least 8Gb RAM (not Docker!) and then login there
 as `root`:
 
 ```bash
-adduser --quiet --disabled-password --force-badname --gecos "" runner
-usermod -aG sudo runner
-echo "runner ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-su - runner
+$ adduser --quiet --disabled-password --force-badname --gecos "" runner
+$ usermod -aG sudo runner
+$ echo "runner ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+$ su - runner
 ```
 
 Then, you follow the instructions from 
