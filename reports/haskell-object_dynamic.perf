@@ -3,21 +3,21 @@ Total is 461973487616
 
  Performance counter stats for 'bin/haskell-object_dynamic.bin 32 131072':
 
-           1658.12 msec task-clock                #    0.999 CPUs utilized          
-                 5      context-switches          #    0.003 K/sec                  
+           1136.44 msec task-clock                #    1.000 CPUs utilized          
+                 1      context-switches          #    0.001 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              6573      page-faults               #    0.004 M/sec                  
-        3780799638      cycles                    #    2.280 GHz                    
-          79730512      stalled-cycles-frontend   #    2.11% frontend cycles idle   
-         201095220      stalled-cycles-backend    #    5.32% backend cycles idle    
-        7807659611      instructions              #    2.07  insn per cycle         
-                                                  #    0.03  stalled cycles per insn
-        1760257302      branches                  # 1061.599 M/sec                  
+              6565      page-faults               #    0.006 M/sec                  
+        3486641313      cycles                    #    3.068 GHz                    
+          56224419      stalled-cycles-frontend   #    1.61% frontend cycles idle   
+         276409384      stalled-cycles-backend    #    7.93% backend cycles idle    
+        7806637651      instructions              #    2.24  insn per cycle         
+                                                  #    0.04  stalled cycles per insn
+        1760073631      branches                  # 1548.756 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.659266371 seconds time elapsed
+       1.136904329 seconds time elapsed
 
-       1.626768000 seconds user
-       0.031916000 seconds sys
+       1.116868000 seconds user
+       0.020019000 seconds sys
 
 

@@ -1,21 +1,21 @@
 32-th Fibonacci number is 7049156
  Performance counter stats for 'bin/go-structs.bin 32 2':
 
-          14788.21 msec task-clock                #    1.124 CPUs utilized          
-             13942      context-switches          #    0.943 K/sec                  
-                27      cpu-migrations            #    0.002 K/sec                  
-              6619      page-faults               #    0.448 K/sec                  
-       37985720417      cycles                    #    2.569 GHz                    
-        3174562932      stalled-cycles-frontend   #    8.36% frontend cycles idle   
-        6680129540      stalled-cycles-backend    #   17.59% backend cycles idle    
-       58230139759      instructions              #    1.53  insn per cycle         
-                                                  #    0.11  stalled cycles per insn
-       11521874086      branches                  #  779.126 M/sec                  
+          12883.55 msec task-clock                #    1.121 CPUs utilized          
+             13659      context-switches          #    0.001 M/sec                  
+                 4      cpu-migrations            #    0.000 K/sec                  
+              6631      page-faults               #    0.515 K/sec                  
+       36063170820      cycles                    #    2.799 GHz                    
+        3048788006      stalled-cycles-frontend   #    8.45% frontend cycles idle   
+        7310686007      stalled-cycles-backend    #   20.27% backend cycles idle    
+       58224981332      instructions              #    1.61  insn per cycle         
+                                                  #    0.13  stalled cycles per insn
+       11520779581      branches                  #  894.224 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-      13.162347585 seconds time elapsed
+      11.497684355 seconds time elapsed
 
-      13.608409000 seconds user
-       1.662827000 seconds sys
+      11.834323000 seconds user
+       1.357772000 seconds sys
 
 

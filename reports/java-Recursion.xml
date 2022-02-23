@@ -1,1 +1,1 @@
-<program> 	<file>java/Recursion.java</file> 	<name>java-Recursion</name> 	<instructions>1</instructions> 	<cycles>256</cycles> 	<time>3.81</time> 	<time_per_cycle>.0148828125000000</time_per_cycle> 	<ticks>10658964427</ticks> 	<ticks_per_cycle>41636579</ticks_per_cycle> 	</program>
+<program> 	<file>java/Recursion.java</file> 	<name>java-Recursion</name> 	<instructions>1</instructions> 	<cycles>256</cycles> 	<time>3.50</time> 	<time_per_cycle>.0136718750000000</time_per_cycle> 	<ticks>10286518997</ticks> 	<ticks_per_cycle>40181714</ticks_per_cycle> 	</program>

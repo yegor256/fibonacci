@@ -3,21 +3,21 @@ Total is 1847893950464
 
  Performance counter stats for 'bin/haskell-tail_recursion.bin 32 524288':
 
-           1686.29 msec task-clock                #    0.999 CPUs utilized          
-                 3      context-switches          #    0.002 K/sec                  
+           1565.49 msec task-clock                #    0.999 CPUs utilized          
+                 2      context-switches          #    0.001 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             21672      page-faults               #    0.013 M/sec                  
-        4751200176      cycles                    #    2.818 GHz                    
-         111419853      stalled-cycles-frontend   #    2.35% frontend cycles idle   
-         244786221      stalled-cycles-backend    #    5.15% backend cycles idle    
-        9549479426      instructions              #    2.01  insn per cycle         
-                                                  #    0.03  stalled cycles per insn
-        2201325316      branches                  # 1305.423 M/sec                  
+             21678      page-faults               #    0.014 M/sec                  
+        4650510627      cycles                    #    2.971 GHz                    
+          76044440      stalled-cycles-frontend   #    1.64% frontend cycles idle   
+         236365146      stalled-cycles-backend    #    5.08% backend cycles idle    
+        9548993563      instructions              #    2.05  insn per cycle         
+                                                  #    0.02  stalled cycles per insn
+        2201257571      branches                  # 1406.113 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.687202588 seconds time elapsed
+       1.566311571 seconds time elapsed
 
-       1.658894000 seconds user
-       0.027995000 seconds sys
+       1.546061000 seconds user
+       0.020027000 seconds sys
 
 

@@ -1,23 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 56393248
+Total is 902291968
 
- Performance counter stats for 'bin/java-Objects.bin 32 16':
+ Performance counter stats for 'bin/java-Objects.bin 32 256':
 
-          18124.15 msec task-clock                #    1.000 CPUs utilized          
-                71      context-switches          #    0.004 K/sec                  
+         252156.62 msec task-clock                #    1.000 CPUs utilized          
+               510      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             13291      page-faults               #    0.733 K/sec                  
-       48374567802      cycles                    #    2.669 GHz                    
-         633432083      stalled-cycles-frontend   #    1.31% frontend cycles idle   
-       15650428839      stalled-cycles-backend    #   32.35% backend cycles idle    
-       95326135401      instructions              #    1.97  insn per cycle         
-                                                  #    0.16  stalled cycles per insn
-       20538311164      branches                  # 1133.202 M/sec                  
+             13292      page-faults               #    0.053 K/sec                  
+      734774520146      cycles                    #    2.914 GHz                    
+        7853709334      stalled-cycles-frontend   #    1.07% frontend cycles idle   
+      264520170677      stalled-cycles-backend    #   36.00% backend cycles idle    
+     1524762836585      instructions              #    2.08  insn per cycle         
+                                                  #    0.17  stalled cycles per insn
+      328549630638      branches                  # 1302.959 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-      18.131631450 seconds time elapsed
+     252.201685072 seconds time elapsed
 
-      18.087391000 seconds user
-       0.036030000 seconds sys
+     252.128714000 seconds user
+       0.020010000 seconds sys
 
 

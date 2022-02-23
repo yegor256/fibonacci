@@ -1,1 +1,1 @@
-<program> 	<file>cpp/objects.cpp</file> 	<name>cpp-objects</name> 	<instructions>432</instructions> 	<cycles>2</cycles> 	<time>13.71</time> 	<time_per_cycle>6.8550000000000000</time_per_cycle> 	<ticks>41960988758</ticks> 	<ticks_per_cycle>20980494379</ticks_per_cycle> 	</program>
+<program> 	<file>cpp/objects.cpp</file> 	<name>cpp-objects</name> 	<instructions>432</instructions> 	<cycles>2</cycles> 	<time>12.66</time> 	<time_per_cycle>6.3300000000000000</time_per_cycle> 	<ticks>39695722405</ticks> 	<ticks_per_cycle>19847861202</ticks_per_cycle> 	</program>
