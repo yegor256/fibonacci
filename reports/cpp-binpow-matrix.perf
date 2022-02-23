@@ -1,23 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is -2013265920
+Total is -1006632960
 
- Performance counter stats for 'bin/cpp-binpow-matrix.bin 32 67108864':
+ Performance counter stats for 'bin/cpp-binpow-matrix.bin 32 33554432':
 
-           2031.64 msec task-clock                #    1.000 CPUs utilized          
-                 5      context-switches          #    0.002 K/sec                  
+           1261.44 msec task-clock                #    0.999 CPUs utilized          
+                 6      context-switches          #    0.005 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2762      page-faults               #    0.001 M/sec                  
-        5668067122      cycles                    #    2.790 GHz                    
-           6645670      stalled-cycles-frontend   #    0.12% frontend cycles idle   
-        2278533178      stalled-cycles-backend    #   40.20% backend cycles idle    
-       19898859418      instructions              #    3.51  insn per cycle         
-                                                  #    0.11  stalled cycles per insn
-        2156090861      branches                  # 1061.255 M/sec                  
+              2762      page-faults               #    0.002 M/sec                  
+        3141091876      cycles                    #    2.490 GHz                    
+           6366453      stalled-cycles-frontend   #    0.20% frontend cycles idle   
+         939433211      stalled-cycles-backend    #   29.91% backend cycles idle    
+        9966234769      instructions              #    3.17  insn per cycle         
+                                                  #    0.09  stalled cycles per insn
+        1082273946      branches                  #  857.967 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       2.032213337 seconds time elapsed
+       1.262286382 seconds time elapsed
 
-       2.028454000 seconds user
-       0.004005000 seconds sys
+       1.258225000 seconds user
+       0.004198000 seconds sys
 
 

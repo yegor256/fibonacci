@@ -1,23 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 14783151603712
+Total is 7391575801856
 
- Performance counter stats for 'bin/haskell-zipwith.bin 32 4194304':
+ Performance counter stats for 'bin/haskell-zipwith.bin 32 2097152':
 
-           1786.10 msec task-clock                #    0.999 CPUs utilized          
-                 4      context-switches          #    0.002 K/sec                  
+           1158.50 msec task-clock                #    0.999 CPUs utilized          
+                 1      context-switches          #    0.001 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-            164271      page-faults               #    0.092 M/sec                  
-        5513293431      cycles                    #    3.087 GHz                    
-          70506318      stalled-cycles-frontend   #    1.28% frontend cycles idle   
-        2018149133      stalled-cycles-backend    #   36.61% backend cycles idle    
-       14546352835      instructions              #    2.64  insn per cycle         
-                                                  #    0.14  stalled cycles per insn
-        2752658754      branches                  # 1541.160 M/sec                  
+             78760      page-faults               #    0.068 M/sec                  
+        2854249250      cycles                    #    2.464 GHz                    
+          54404186      stalled-cycles-frontend   #    1.91% frontend cycles idle   
+         844273879      stalled-cycles-backend    #   29.58% backend cycles idle    
+        7129041638      instructions              #    2.50  insn per cycle         
+                                                  #    0.12  stalled cycles per insn
+        1345751361      branches                  # 1161.629 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.787184202 seconds time elapsed
+       1.159171946 seconds time elapsed
 
-       1.630150000 seconds user
-       0.156592000 seconds sys
+       1.043172000 seconds user
+       0.115884000 seconds sys
 
 

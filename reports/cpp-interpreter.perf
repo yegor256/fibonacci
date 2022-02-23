@@ -3,21 +3,21 @@ Total is 1912111104
 
  Performance counter stats for 'bin/cpp-interpreter.bin 32 16384':
 
-           1063.96 msec task-clock                #    1.000 CPUs utilized          
-                 6      context-switches          #    0.006 K/sec                  
+           1181.00 msec task-clock                #    0.999 CPUs utilized          
+                 8      context-switches          #    0.007 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2845      page-faults               #    0.003 M/sec                  
-        3382009080      cycles                    #    3.179 GHz                    
-          28600067      stalled-cycles-frontend   #    0.85% frontend cycles idle   
-         527304431      stalled-cycles-backend    #   15.59% backend cycles idle    
-        9396820744      instructions              #    2.78  insn per cycle         
-                                                  #    0.06  stalled cycles per insn
-        1956952148      branches                  # 1839.317 M/sec                  
+              2841      page-faults               #    0.002 M/sec                  
+        3471948265      cycles                    #    2.940 GHz                    
+          40640016      stalled-cycles-frontend   #    1.17% frontend cycles idle   
+         513358329      stalled-cycles-backend    #   14.79% backend cycles idle    
+        9397132053      instructions              #    2.71  insn per cycle         
+                                                  #    0.05  stalled cycles per insn
+        1957010369      branches                  # 1657.081 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.064424249 seconds time elapsed
+       1.181996150 seconds time elapsed
 
-       1.061020000 seconds user
-       0.003588000 seconds sys
+       1.173973000 seconds user
+       0.008009000 seconds sys
 
 

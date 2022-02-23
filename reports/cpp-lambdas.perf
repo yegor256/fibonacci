@@ -3,21 +3,21 @@ Total is 7049156
 
  Performance counter stats for 'bin/cpp-lambdas.bin 32 2':
 
-          12061.58 msec task-clock                #    1.000 CPUs utilized          
-                15      context-switches          #    0.001 K/sec                  
+          12433.68 msec task-clock                #    1.000 CPUs utilized          
+                39      context-switches          #    0.003 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2788      page-faults               #    0.231 K/sec                  
-       37104263340      cycles                    #    3.076 GHz                    
-          83371345      stalled-cycles-frontend   #    0.22% frontend cycles idle   
-        2674402217      stalled-cycles-backend    #    7.21% backend cycles idle    
-      116759136904      instructions              #    3.15  insn per cycle         
+              2790      page-faults               #    0.224 K/sec                  
+       36710562440      cycles                    #    2.953 GHz                    
+          81163275      stalled-cycles-frontend   #    0.22% frontend cycles idle   
+        2584691566      stalled-cycles-backend    #    7.04% backend cycles idle    
+      116760307483      instructions              #    3.18  insn per cycle         
                                                   #    0.02  stalled cycles per insn
-       23794452067      branches                  # 1972.747 M/sec                  
+       23794684687      branches                  # 1913.729 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-      12.063090331 seconds time elapsed
+      12.437139956 seconds time elapsed
 
-      12.055062000 seconds user
-       0.007129000 seconds sys
+      12.430018000 seconds user
+       0.004000000 seconds sys
 
 
