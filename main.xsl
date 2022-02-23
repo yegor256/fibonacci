@@ -37,8 +37,9 @@ SOFTWARE.
           <xsl:for-each select="/*/headers/h">
             <th>
               <xsl:attribute name="class">
+                <xsl:text>sorter</xsl:text>
                 <xsl:if test="not(@type) or @type = 'data'">
-                  <xsl:text>sorter data</xsl:text>
+                  <xsl:text> data</xsl:text>
                 </xsl:if>
               </xsl:attribute>
               <xsl:value-of select="@short"/>
