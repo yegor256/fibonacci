@@ -117,7 +117,7 @@ SOFTWARE.
         <xsl:value-of select="ticks_per_cycle"/>
       </td>
       <td class="data">
-        <xsl:value-of select="format-number(1000000000 * number(ticks_per_cycle) div number(time_per_cycle), '#.0')"/>
+        <xsl:value-of select="format-number(number(ticks_per_cycle) div number(time_per_cycle), '#.0')"/>
       </td>
     </tr>
   </xsl:template>
