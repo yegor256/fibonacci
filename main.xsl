@@ -34,30 +34,16 @@ SOFTWARE.
       </colgroup>
       <thead>
         <tr>
-          <th>
-            <xsl:text>Program</xsl:text>
-          </th>
-          <th class="sorter data">
-            <xsl:text>Assembly Instructions</xsl:text>
-          </th>
-          <th class="sorter data">
-            <xsl:text>Repeat Cycles</xsl:text>
-          </th>
-          <th class="sorter data">
-            <xsl:text>Total Time, seconds</xsl:text>
-          </th>
-          <th class="sorter data">
-            <xsl:text>Time per Cycle, seconds</xsl:text>
-          </th>
-          <th class="sorter data">
-            <xsl:text>Total Ticks</xsl:text>
-          </th>
-          <th class="sorter data">
-            <xsl:text>Ticks per Cycle</xsl:text>
-          </th>
-          <th class="sorter data">
-            <xsl:text>GHz</xsl:text>
-          </th>
+          <xsl:for-each select="/*/headers/h">
+            <th>
+              <xsl:attribute name="class">
+                <xsl:if test="not(@type) or @type = 'data'">
+                  <xsl:text>sorter data</xsl:text>
+                </xsl:if>
+              </xsl:attribute>
+              <xsl:value-of select="@short"/>
+            </th>
+          </xsl:for-each>
         </tr>
       </thead>
       <tbody>
@@ -144,8 +130,8 @@ SOFTWARE.
         <link rel="icon" href="https://raw.githubusercontent.com/yegor256/fibonacci/master/logo.svg" type="image/png"/>
         <link href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css.min.css" rel="stylesheet"/>
         <style>
-          table { width: auto; }
-          * { font-family: monospace; font-size: 14px; }
+          table { width: auto; font-family: monospace; }
+          * { font-size: 14px; }
           .data { text-align: right; }
           .left { border-bottom: 0; }
           .sorter { cursor: pointer; }
@@ -162,16 +148,18 @@ SOFTWARE.
         <p>
           <xsl:text>This is what it takes to calculate the </xsl:text>
           <xsl:value-of select="@input"/>
-          <xsl:text>th Fibonacci number:</xsl:text>
+          <xsl:text>th Fibonacci number using different algorithms:</xsl:text>
         </p>
         <xsl:apply-templates select="programs"/>
+        <xsl:apply-templates select="headers"/>
         <p>
           <xsl:text>If you want to add another program to the list, just submit a pull request to </xsl:text>
           <a href="https://github.com/yegor256/fibonacci">
             <xsl:text>yegor256/fibonacci</xsl:text>
           </a>
           <xsl:text>.</xsl:text>
-          <br/>
+        </p>
+        <p>
           <xsl:text>Here is </xsl:text>
           <a href="index.xml">
             <xsl:text>index.xml</xsl:text>
@@ -191,5 +179,21 @@ SOFTWARE.
         </p>
       </body>
     </html>
+  </xsl:template>
+  <xsl:template match="headers">
+    <p>
+      <xsl:apply-templates select="h"/>
+    </p>
+  </xsl:template>
+  <xsl:template match="headers/h">
+    <xsl:if test="position() &gt; 1">
+      <xsl:text> </xsl:text>
+    </xsl:if>
+    <strong>
+      <xsl:value-of select="@short"/>
+    </strong>
+    <xsl:text>: </xsl:text>
+    <xsl:value-of select="text()"/>
+    <xsl:text>.</xsl:text>
   </xsl:template>
 </xsl:stylesheet>

@@ -66,7 +66,18 @@ summary.csv: $(DIRS) $(REPORTS)
 
 index.xml: $(DIRS) $(REPORTS) Makefile
 	{
-		printf "<fibonacci input='$(INPUT)' date='$$(date +"%Y-%m-%d" | jq -Rr @html)' uname='$$(uname -a | jq -Rr @html)'><programs>"
+		printf "<fibonacci input='$(INPUT)' date='$$(date +"%Y-%m-%d" | jq -Rr @html)' uname='$$(uname -a | jq -Rr @html)'>"
+		printf '<headers>'
+		printf "<h m='file' short='Program' type='text'>File name as it's seen in the source code repository</h>"
+		printf "<h m='instructions' short='ASM'>Total number of Assembly instructions seen in the compiled .asm file; not every compiler provides this information though</h>"
+		printf "<h m='cycles' short='Cycles'>How many times the Fibonacci number has been calculated</h>"
+		printf "<h m='time' short='Time'>How many seconds it took to execute all calculations</h>"
+		printf "<h m='time_per_cycle' short='SPC'>How many seconds per each calculation</h>"
+		printf "<h m='ticks' short='Ticks'>How many total CPU ticks it took to execute all calculations, according to perf</h>"
+		printf "<h m='ticks_per_cycle' short='TPC'>How many ticks per a single calculation</h>"
+		printf "<h m='ghz' short='GHz'>TPC divided by SPC and multiplied by one billion; this is approximately how fast is the CPU</h>"
+		printf '</headers>'
+		printf '<programs>'
 		for r in $(REPORTS:.txt=.xml); do cat $${r}; done
 		printf "</programs></fibonacci>"
 	} > index.xml
