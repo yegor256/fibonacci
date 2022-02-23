@@ -1,21 +1,21 @@
 32-th Fibonacci number is 902291968
  Performance counter stats for 'bin/go-recursion.bin 32 256':
 
-           4363.65 msec task-clock                #    1.008 CPUs utilized          
-               497      context-switches          #    0.114 K/sec                  
+           4324.69 msec task-clock                #    1.008 CPUs utilized          
+               495      context-switches          #    0.114 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
                208      page-faults               #    0.048 K/sec                  
-       12843877529      cycles                    #    2.943 GHz                    
-          22698116      stalled-cycles-frontend   #    0.18% frontend cycles idle   
-        5373978550      stalled-cycles-backend    #   41.84% backend cycles idle    
-       34298810452      instructions              #    2.67  insn per cycle         
-                                                  #    0.16  stalled cycles per insn
-        7220559747      branches                  # 1654.706 M/sec                  
+       12966609043      cycles                    #    2.998 GHz                    
+          29161475      stalled-cycles-frontend   #    0.22% frontend cycles idle   
+        4929796576      stalled-cycles-backend    #   38.02% backend cycles idle    
+       34298734616      instructions              #    2.65  insn per cycle         
+                                                  #    0.14  stalled cycles per insn
+        7220545840      branches                  # 1669.611 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       4.327249201 seconds time elapsed
+       4.289073181 seconds time elapsed
 
-       4.347299000 seconds user
-       0.028133000 seconds sys
+       4.285536000 seconds user
+       0.052044000 seconds sys
 
 

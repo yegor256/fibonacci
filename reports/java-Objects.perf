@@ -3,21 +3,21 @@ Total is 902291968
 
  Performance counter stats for 'bin/java-Objects.bin 32 256':
 
-         266588.41 msec task-clock                #    1.000 CPUs utilized          
-               497      context-switches          #    0.002 K/sec                  
-                 1      cpu-migrations            #    0.000 K/sec                  
-             13804      page-faults               #    0.052 K/sec                  
-      746311964860      cycles                    #    2.799 GHz                    
-        8453467625      stalled-cycles-frontend   #    1.13% frontend cycles idle   
-      259172520892      stalled-cycles-backend    #   34.73% backend cycles idle    
-     1524853366013      instructions              #    2.04  insn per cycle         
-                                                  #    0.17  stalled cycles per insn
-      328577913251      branches                  # 1232.529 M/sec                  
+         249335.90 msec task-clock                #    1.000 CPUs utilized          
+               285      context-switches          #    0.001 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             13292      page-faults               #    0.053 K/sec                  
+      724942200462      cycles                    #    2.907 GHz                    
+       41707194992      stalled-cycles-frontend   #    5.75% frontend cycles idle   
+      240646906271      stalled-cycles-backend    #   33.20% backend cycles idle    
+     1524755991623      instructions              #    2.10  insn per cycle         
+                                                  #    0.16  stalled cycles per insn
+      328548405779      branches                  # 1317.694 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-     266.637112193 seconds time elapsed
+     249.362868733 seconds time elapsed
 
-     266.544456000 seconds user
-       0.036017000 seconds sys
+     249.291677000 seconds user
+       0.040013000 seconds sys
 
 

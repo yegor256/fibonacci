@@ -1,1 +1,1 @@
-<program> 	<file></file> 	<name>go-structs</name> 	<instructions>1</instructions> 	<cycles>2</cycles> 	<time>11.78</time> 	<time_per_cycle>5.8900000000000000</time_per_cycle> 	<ticks>37766028212</ticks> 	<ticks_per_cycle>18883014106</ticks_per_cycle> 	</program>
+<program> 	<file></file> 	<name>go-structs</name> 	<instructions>1</instructions> 	<cycles>2</cycles> 	<time>12.77</time> 	<time_per_cycle>6.3850000000000000</time_per_cycle> 	<ticks>36831941197</ticks> 	<ticks_per_cycle>18415970598</ticks_per_cycle> 	</program>
