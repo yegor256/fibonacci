@@ -33,10 +33,15 @@ You need to have [Clang](https://clang.llvm.org),
 [Rust](https://www.rust-lang.org/tools/install),
 [Common Lisp](https://lisp-lang.org/learn/getting-started/),
 [Haskell](https://www.haskell.org/),
+[GraalVM](https://www.graalvm.org/java/quickstart/),
+[Ruby](https://www.ruby-lang.org/en/documentation/installation/),
+[Go](https://go.dev/doc/install),
 [Clang-Tidy](https://clang.llvm.org/extra/clang-tidy/),
 [Clang-Format](https://clang.llvm.org/docs/ClangFormat.html),
 [cppcheck](https://github.com/danmar/cppcheck),
 and [cpplint](https://github.com/cpplint/cpplint) installed.
+It's better to check [this file](https://github.com/yegor256/fibonacci/blob/master/.github/workflows/pr.yml) for the full list of
+dependencies.
 
 ## How to Setup
 
