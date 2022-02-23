@@ -75,7 +75,7 @@ index.xml: $(DIRS) $(REPORTS) Makefile
 		printf "<h m='time_per_cycle' short='SPC'>How many seconds per each calculation</h>"
 		printf "<h m='ticks' short='Ticks'>How many total CPU ticks it took to execute all calculations, according to perf</h>"
 		printf "<h m='ticks_per_cycle' short='TPC'>How many ticks per a single calculation</h>"
-		printf "<h m='ghz' short='GHz'>TPC divided by SPC and divided by one billion; this is approximately how fast is the CPU</h>"
+		printf "<h m='ghz' short='GHz'>TPC divided by SPC and divided by one billion; this is approximately how fast is the CPU; this metric for all programs is expected to have almost the same values, otherwise something is wrong with the method</h>"
 		printf '</headers>'
 		printf '<programs>'
 		for r in $(REPORTS:.txt=.xml); do cat $${r}; done
