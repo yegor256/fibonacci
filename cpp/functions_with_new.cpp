@@ -43,8 +43,8 @@ int __attribute__((noinline)) fibo_impl(int *px, int *p1, int *p2) {
     return *p1;
   }
   return op(add_impl,
-            fibo(op(sub_impl, *px, *p1)), 
-            fibo(op(sub_impl, *px, *p2)));
+    fibo(op(sub_impl, *px, *p1)), 
+      fibo(op(sub_impl, *px, *p2)));
 }
 
 int __attribute__((noinline)) fibo(int x) {
