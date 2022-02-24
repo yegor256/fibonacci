@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// #include "./main.h"
+#include "./main.h"
 
 class Bool {
 public:
@@ -81,17 +81,35 @@ private:
   Int* right;
 };
 
+class If : public Int {
+public:
+  If(Bool* t, Int* l, Int* r) : term(t), left(l), right(r) {}
+  ~If() override {
+    delete term;
+    delete left;
+    delete right;
+  }
+  int get() override {
+    if (term->get()) {
+      return left->get();
+    }
+    return right->get();
+  }
+private:
+  Bool* term;
+  Int* left;
+  Int* right;
+};
+
 class Fibo : public Int {
 public:
   explicit Fibo(Int* v) : value(v) {}
   ~Fibo() override { delete value; }
   int get() override {
     Int* iff =
-      (new Less(new Integer(value), new Integer(2)))->get()
-      ?
-      (Int*)(new Integer(1)) :
-      (Int*)(new Add(new Fibo(new Sub(new Integer(value), new Integer(1))),
-                     new Fibo(new Sub(new Integer(value), new Integer(2)))));
+      new If(new Less(new Integer(value), new Integer(2)), new Integer(1),
+        new Add(new Fibo(new Sub(new Integer(value), new Integer(1))),
+          new Fibo(new Sub(new Integer(value), new Integer(2)))));
     int result = iff->get();
     delete iff;
     return result;
