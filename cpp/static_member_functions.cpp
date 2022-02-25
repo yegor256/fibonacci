@@ -46,11 +46,10 @@ public:
   static int Solve(int num) {
     if (Comparer::Solve(num, 2)) {
       return 1;
-    } else  {
-      return Adder::Solve(
-        Fibo::Solve(Substructor::Solve(num, 1)),
-          Fibo::Solve(Substructor::Solve(num, 2)));
-        }
+    }
+    return Adder::Solve(
+      Fibo::Solve(Substructor::Solve(num, 1)),
+        Fibo::Solve(Substructor::Solve(num, 2)));
     }
 };
 
