@@ -18,24 +18,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef INCLUDE_MAIN_H__
-#define INCLUDE_MAIN_H__
+#include "./main.h"
 
-#include <stdio.h>
-#include "./metrics.h"
-
-int calc(int);
-
-int main() {
-    int total = 0;
-    int fibo = 0;
-    for (int i = 0; i < CYCLES; ++i) {
-        fibo = calc(INPUT);
-        total += fibo;
-    }
-    printf(
-        "%d-th Fibonacci number is %d; total is %d\n",
-        INPUT, fibo, total);
+int calc(int x) {
+  int p1 = 0;
+  int p2 = 1;
+  for (int i = 1; i < x; ++i) {
+    int t = p2;
+    p2 = p1 + p2;
+    p1 = t;
+  }
+  return p1 + p2;
 }
-
-#endif  // INCLUDE_MAIN_H__

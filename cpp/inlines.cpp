@@ -18,16 +18,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "../include/main.h"
+#include "./main.h"
 
-int fibo(int x) {
-    if (x < 2) {
-        return 1;
-    }
-    return fibo(x - 1) + fibo(x - 2);
-}
+inline bool less(int a, int b) { return a < b; }
+
+inline int sub(int a, int b) { return a - b; }
+
+inline int add(int a, int b) { return a + b; }
 
 int calc(int x) {
-    return fibo(x);
+  if (less(x, 2)) {
+    return 1;
+  }
+  return add(calc(sub(x, 1)), calc(sub(x, 2)));
 }
-

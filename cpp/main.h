@@ -18,28 +18,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "../include/main.h"
+#ifndef INCLUDE_MAIN_H__
+#define INCLUDE_MAIN_H__
 
-inline int less(int a, int b) {
-    return static_cast<int>(a < b);
+#include <stdio.h>
+#include <stdlib.h>
+
+int calc(int);
+
+// see https://stackoverflow.com/questions/70686140
+volatile int dummy = 0;
+
+int main(int argc, char* argv[]) {
+  if (argc != 3) {
+    printf("Two args required: INPUT and CYCLES\n");
+    return 1;
+  }
+  int total = 0;
+  int f = 0;
+  int input = atoi(argv[1]);
+  int cycles = atoi(argv[2]);
+  for (int i = 0; i < cycles; ++i) {
+    f = calc(input + dummy);
+    total += f;
+  }
+  printf("%d-th Fibonacci number is %d\nTotal is %d\n", input, f, total);
 }
 
-inline int sub(int a, int b) {
-    return a - b;
-}
-
-inline int add(int a, int b) {
-    return a + b;
-}
-
-int fibo(int x) {
-    if (less(x, 2) != 0) {
-        return 1;
-    }
-    return add(fibo(sub(x, 1)), fibo(sub(x, 2)));
-}
-
-inline int calc(int x) {
-    return fibo(x);
-}
-
+#endif  // INCLUDE_MAIN_H__

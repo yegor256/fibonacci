@@ -18,16 +18,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "../include/main.h"
-
-int calc(int x) {
-    int p1 = 0;
-    int p2 = 1;
-    for (int i = 1; i < x; ++i) {
-        int t = p2;
-        p2 = p1 + p2;
-        p1 = t;
+class Recursion {
+  public static int fibo(int x) {
+    if (x < 2) {
+      return 1;
     }
-    return p1 + p2;
+    return fibo(x - 1) + fibo(x - 2);
+  }
+  public static void main(final String... args) {
+    if (args.length != 2) {
+      System.out.print("Two args required: INPUT and CYCLES\n");
+      return;
+    }
+    int total = 0;
+    int f = 0;
+    int input = java.lang.Integer.parseInt(args[0]);
+    int cycles = java.lang.Integer.parseInt(args[1]);
+    for (int i = 0; i < cycles; ++i) {
+      f = fibo(input);
+      total += f;
+    }
+    System.out.print(
+      String.format(
+        "%d-th Fibonacci number is %d\nTotal is %d\n",
+        input, f, total
+      )
+    );
+  }
 }
-

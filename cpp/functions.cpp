@@ -18,28 +18,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "../include/main.h"
+#include "./main.h"
 
-int less(int a, int b) {
-    return static_cast<int>(a < b);
+bool __attribute__((noinline)) less(int a, int b) { return a < b; }
+
+int __attribute__((noinline)) sub(int a, int b) { return a - b; }
+
+int __attribute__((noinline)) add(int a, int b) { return a + b; }
+
+int __attribute__((noinline)) fibo(int x) {
+  if (less(x, 2)) {
+    return 1;
+  }
+  return add(fibo(sub(x, 1)), fibo(sub(x, 2)));
 }
 
-int sub(int a, int b) {
-    return a - b;
-}
-
-int add(int a, int b) {
-    return a + b;
-}
-
-int fibo(int x) {
-    if (less(x, 2) != 0) {
-        return 1;
-    }
-    return add(fibo(sub(x, 1)), fibo(sub(x, 2)));
-}
-
-int calc(int x) {
-    return fibo(x);
-}
-
+int __attribute__((noinline)) calc(int x) { return fibo(x); }
