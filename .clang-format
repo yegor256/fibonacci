@@ -8,5 +8,4 @@ ContinuationIndentWidth: 2
 IndentWidth:     2
 PPIndentWidth: 0
 TabWidth: 4
-EmptyLineBeforeAccessModifier: Never
 AlignAfterOpenBracket: DontAlign
