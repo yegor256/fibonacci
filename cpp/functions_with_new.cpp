@@ -30,16 +30,16 @@ int __attribute__((noinline)) op(Foo impl, int left_arg, int right_arg) {
   return result;
 }
 
-bool __attribute__((noinline)) less_impl(int *a, int *b) { return *a < *b; }
+bool __attribute__((noinline)) less_impl(int const * const a, int const * const b) { return *a < *b; }
 
-int __attribute__((noinline)) sub_impl(int *a, int *b) { return *a - *b; }
+int __attribute__((noinline)) sub_impl(int const * const a, int const * const b) { return *a - *b; }
 
-int __attribute__((noinline)) add_impl(int *a, int *b) { return *a + *b; }
+int __attribute__((noinline)) add_impl(int const * const a, int const * const b) { return *a + *b; }
 
 int __attribute__((noinline)) fibo(int x);
 
-int __attribute__((noinline)) fibo_impl(int *px, int *p1, int *p2) {
-  if (op(less_impl, *px, *p2)) {
+int __attribute__((noinline)) fibo_impl(int const * const px, int const * const p1, int const * const p2) {
+  if (op(less_impl, *px, *p2) != 0) {
     return *p1;
   }
   return op(add_impl,
