@@ -18,35 +18,38 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-SHELL=/bin/bash
 .ONESHELL:
-.SHELLFLAGS = -e -o pipefail -c
-.PHONY: clean
+.SHELLFLAGS: -e -o pipefail -c
+.PHONY: clean sa env lint
+
+SHELL = /bin/bash
 
 INPUT = 32
 WANTED = 8
 
-CC=clang++
-CCFLAGS=-mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
-RUSTC=rustc
-RUSTFLAGS=-C opt-level=3
-HC=ghc
-HCFLAGS=-dynamic -Wall -Werror
-HCLIBDIR=haskell/Mainlib
-HCLIBS=$(wildcard $(HCLIBDIR)/*.hs)
+CC = clang++
+CCFLAGS = -mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
+GO = go
+RUSTC = rustc
+RUSTFLAGS = -C opt-level=3
+HC = ghc
+HCFLAGS = -dynamic -Wall -Werror
+HCLIBDIR = haskell/Mainlib
+HCLIBS = $(wildcard $(HCLIBDIR)/*.hs)
+SAXON = "/usr/local/opt/Saxon.jar"
 
-DIRS=asm bin reports
+DIRS = asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
 RUSTS = $(wildcard rust/*.rs)
 LISPS = $(wildcard lisp/*.lisp)
 HASKELLS = $(wildcard haskell/*.hs)
 JAVAS = $(wildcard java/*.java)
 GOS = $(wildcard go/cmd/*/main.go)
-ASMS = $(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm}))))))
+ASMS = $(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm}  ${JAVAS:.java=.asm}))))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
-summary.txt: env $(DIRS) $(ASMS) $(BINS) $(REPORTS) $(CYCLES) Makefile
+summary.txt: $(DIRS) $(ASMS) $(BINS) $(REPORTS) Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
 	{
 		date
@@ -61,6 +64,27 @@ summary.csv: $(DIRS) $(REPORTS)
 	{ for r in $(REPORTS:.txt=.csv); do cat $${r}; done } > summary.csv
 	cat summary.csv | sort -k5 -g -t,
 
+index.xml: $(DIRS) $(REPORTS) Makefile
+	{
+		printf "<fibonacci input='$(INPUT)' date='$$(date +"%Y-%m-%d" | jq -Rr @html)' uname='$$(uname -a | jq -Rr @html)'>"
+		printf '<headers>'
+		printf "<h m='file' short='Program' type='text'>File name as it's seen in the source code repository</h>"
+		printf "<h m='instructions' short='ASM'>Total number of Assembly instructions seen in the compiled .asm file; not every compiler provides this information though</h>"
+		printf "<h m='cycles' short='Cycles'>How many times the Fibonacci number has been calculated</h>"
+		printf "<h m='time' short='Time'>How many seconds it took to execute all calculations</h>"
+		printf "<h m='time_per_cycle' short='SPC'>How many seconds per each calculation</h>"
+		printf "<h m='ticks' short='Ticks'>How many total CPU ticks it took to execute all calculations, according to perf</h>"
+		printf "<h m='ticks_per_cycle' short='TPC'>How many ticks per a single calculation</h>"
+		printf "<h m='ghz' short='GHz'>TPC divided by SPC and divided by one billion; this is approximately how fast is the CPU</h>"
+		printf '</headers>'
+		printf '<programs>'
+		for r in $(REPORTS:.txt=.xml); do cat $${r}; done
+		printf "</programs></fibonacci>"
+	} > index.xml
+
+index.html: index.xml main.xsl Makefile
+	java -jar $(SAXON) "-s:index.xml" -xsl:main.xsl "-o:index.html"
+
 env:
 	$(CC) --version
 	$(RUSTC) --version
@@ -68,8 +92,9 @@ env:
 	$(HC) --version
 	cppcheck --version
 	cpplint --version
+	javac --version
 	sbcl --version
-	go version
+	$(GO) version
 
 sa: Makefile
 	diff -u <(cat $(CPPS)) <(clang-format --style=file $(CPPS))
@@ -79,6 +104,7 @@ sa: Makefile
 		'-warnings-as-errors=*' \
 		'-checks=*,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
 		$(CPPS)
+	#xcop *.xsl
 
 asm/cpp-%.asm: cpp/%.cpp
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
@@ -113,7 +139,7 @@ bin/lisp-%.bin: lisp/%.lisp
 
 bin/go-%.bin: go/cmd/%/main.go
 	cd go
-	go build -o "../$@" "$(subst go/,./,${<:/main.go=})"
+	$(GO) build -o "../$@" "$(subst go/,./,${<:/main.go=})"
 
 bin/haskell-%.bin: haskell/%.hs $(HCLIBS)
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
@@ -128,39 +154,76 @@ bin/java-%.bin: java/%.java
 	name=$(subst java/,,$(<:.java=))
 	mkdir -p "tmp/$${name}"
 	javac -d "tmp/$${name}" "$<"
-	jar --create --main-class=$${name} --file="tmp/$${name}.jar" -C "tmp/$${name}" .
-	native-image -jar "tmp/$${name}.jar" --verbose "$@"
+	if [ "$(uname)" == "Darwin" ]; then
+		jar -c -e "$${name}" -f "tmp/$${name}.jar" -C "tmp/$${name}" .
+	else
+		jar cfe "tmp/$${name}.jar" "$${name}" -C "tmp/$${name}" .
+	fi
+	native-image -jar "tmp/$${name}.jar" "$@"
 
-reports/%.txt: bin/%.bin asm/%.asm Makefile $(DIRS)
+reports/%.txt: bin/%.bin asm/%.asm
 	"$<" 7 1
 	cycles=1
+	attempt=1
 	while true; do
-		time=$$({ time -p "$<" $(INPUT) $${cycles} | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
+		time=$$({ time -p "$<" $(INPUT) $${cycles} | tail -n +1 | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
+		if [[ ! "$${time}" =~ ^[0-9.]+$$ ]]; then
+			time -p "$<" $(INPUT) $${cycles} 2>&1
+			echo "For some reason, \$$time is not an integer: $${time}"
+			exit 1
+		fi
 		echo $${time} > "${@:.txt=.time}"
-		echo "cycles=$${cycles}; time=$${time} -> too fast, need more cycles..."
 		if [ "$(FAST)" != "" ]; then break; fi
 		seconds=$$(echo $${time} | cut -f1 -d.)
 		if [ "$${seconds}" -gt "10" ]; then break; fi
 		if [ "$${seconds}" -gt "0" -a "$${cycles}" -ge "$(WANTED)" ]; then break; fi
+		echo "cycles=$${cycles}; time=$${time} -> too fast, need more cycles (attempt #$${attempt})..."
 		cycles=$$(expr $${cycles} \* 2)
 		if [ "$${cycles}" -gt "2147483647" ]; then break; fi
 		if [ "$${cycles}" -lt "$(WANTED)" -a "$${seconds}" -lt "1" ]; then cycles=$(WANTED); fi
+		attempt=$$(expr $${attempt} + 1)
 	done
+	sudo perf stat "$<" $(INPUT) $${cycles} > "${@:.txt=.perf}" 2>&1
+	ticks=$$(cat "${@:.txt=.perf}" | sed 's/ \+/ /g' | grep ' cycles #' | cut -f 2 -d ' ')
+	if [[ ! "$${ticks}" =~ ^[0-9.]+$$ ]]; then
+		ticks=1
+	fi
+	ticks_per_cycle=$$(echo "scale = 0 ; $${ticks} / $${cycles}" | bc)
 	instructions=$$(grep -e $$'^\(\t\| \)\+[a-z]\+' "$(subst bin/,asm/,${<:.bin=.asm})" | wc -l | xargs)
-	per=$$(echo "scale = 16 ; $${time} / $${cycles}" | bc)
+	time_per_cycle=$$(echo "scale = 16 ; $${time} / $${cycles}" | bc)
 	{
 	  	echo "$<:"
+		echo "CPU ticks: $${ticks}"
+		echo "CPU ticks per cycle: $${ticks_per_cycle}"
 	  	echo "Instructions: $${instructions}"
 		echo "Cycles: $${cycles}"
 		echo "Time: $${time}"
-		echo "Per cycle: $${per}"
+		echo "Per cycle: $${time_per_cycle}"
 		echo ""
 	} > "$@"
-	echo "${subst bin/,,$<},$${instructions},$${cycles},$${time},$${per}" > "${@:.txt=.csv}"
+	echo "${subst bin/,,$<},$${instructions},$${ticks_per_cycle},$${cycles},$${time},$${time_per_cycle}" > "${@:.txt=.csv}"
+	name=$(subst bin/,,${<:.bin=})
+	file=$$(ls $$(echo $${name} | cut -f1 -d-)/$$(echo $${name} | cut -f2- -d-).*)
+	echo "<program> \
+		<file>$$(echo $${file} | jq -Rr @html)</file> \
+		<name>$$(echo $${name} | jq -Rr @html)</name> \
+		<instructions>$$(echo $${instructions} | jq -Rr @html)</instructions> \
+		<cycles>$$(echo $${cycles} | jq -Rr @html)</cycles> \
+		<time>$$(echo $${time} | jq -Rr @html)</time> \
+		<time_per_cycle>$$(echo $${time_per_cycle} | jq -Rr @html)</time_per_cycle> \
+		<ticks>$$(echo $${ticks} | jq -Rr @html)</ticks> \
+		<ticks_per_cycle>$$(echo $${ticks_per_cycle} | jq -Rr @html)</ticks_per_cycle> \
+		</program>" > "${@:.txt=.xml}"
 
 clean:
 	rm -rf $(DIRS)
 	rm -f summary.txt summary.csv
+
+$(ASMS): | asm
+
+$(BINS): | bin
+
+$(REPORTS): | reports
 
 $(DIRS):
 	mkdir "$@"
