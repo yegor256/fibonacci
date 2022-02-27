@@ -20,7 +20,7 @@
 
 use std::env;
 
-pub unsafe fn fibonacci(input: u32) -> u32 {
+pub fn fibonacci(input: u32) -> u32 {
 	match input {
 		0 => 1,
 		1 => 1,
@@ -35,10 +35,8 @@ pub fn main() {
 	let mut total = 0;
 	let mut f = 0;
 	for _ in 0..cycles {
-		unsafe {
-		    f = fibonacci(input);
-		    total += f;
-		}
+		f = fibonacci(input);
+		total += f;
 	}
   	println!("{}-th Fibonacci number is {}\nTotal is {}\n", input, f, total);
 }
