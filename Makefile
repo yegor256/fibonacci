@@ -44,8 +44,9 @@ RUSTS = $(wildcard rust/*.rs)
 LISPS = $(wildcard lisp/*.lisp)
 HASKELLS = $(wildcard haskell/*.hs)
 JAVAS = $(wildcard java/*.java)
+EIFFELS = eiffel/application.e
 GOS = $(wildcard go/cmd/*/main.go)
-ASMS = $(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm}  ${JAVAS:.java=.asm}))))))
+ASMS = $(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm} ${JAVAS:.java=.asm} ${EIFFELS:.e=.asm}))))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -115,6 +116,9 @@ asm/rust-%.asm: rust/%.rs
 asm/lisp-%.asm: lisp/%.lisp
 	echo " no asm here" > "$@"
 
+asm/eiffel-%.asm: eiffel/%.e
+	echo " no asm here" > "$@"
+
 asm/go-%.asm: go/cmd/%/main.go
 	echo " no asm here" > "$@"
 
@@ -136,6 +140,9 @@ bin/rust-%.bin: rust/%.rs
 
 bin/lisp-%.bin: lisp/%.lisp
 	sbcl --load "$<"
+
+bin/eiffel-%.bin: eiffel/%.e
+	ec -file "$@" "$<" && chmod a+x "$@"
 
 bin/go-%.bin: go/cmd/%/main.go
 	cd go
@@ -197,9 +204,10 @@ reports/%.txt: bin/%.bin asm/%.asm
 		echo "CPU ticks per cycle: $${ticks_per_cycle}"
 	  	echo "Instructions: $${instructions}"
 		echo "Cycles: $${cycles}"
-		echo "Time: $${time}"
-		echo "Per cycle: $${time_per_cycle}"
-		echo ""
+		echo "Total Time: $${time}"
+		echo "Time per cycle: $${time_per_cycle}"
+		echo "Ticks: $${ticks}"
+		echo "Ticks per cycle: $${ticks_per_cycle}"
 	} > "$@"
 	echo "${subst bin/,,$<},$${instructions},$${ticks_per_cycle},$${cycles},$${time},$${time_per_cycle}" > "${@:.txt=.csv}"
 	name=$(subst bin/,,${<:.bin=})
