@@ -3,21 +3,21 @@ Total is 352321536
 
  Performance counter stats for 'bin/java-Recursion.bin 7 16777216':
 
-           1159.89 msec task-clock                #    1.000 CPUs utilized          
-                 3      context-switches          #    0.003 K/sec                  
+           1358.21 msec task-clock                #    0.999 CPUs utilized          
+                 6      context-switches          #    0.004 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               529      page-faults               #    0.456 K/sec                  
-        3812919963      cycles                    #    3.287 GHz                    
-           1654045      stalled-cycles-frontend   #    0.04% frontend cycles idle   
-           3999840      stalled-cycles-backend    #    0.10% backend cycles idle    
-       10828975259      instructions              #    2.84  insn per cycle         
-                                                  #    0.00  stalled cycles per insn
-        3474349152      branches                  # 2995.422 M/sec                  
+               532      page-faults               #    0.392 K/sec                  
+        4108624195      cycles                    #    3.025 GHz                    
+           3756294      stalled-cycles-frontend   #    0.09% frontend cycles idle   
+         590067508      stalled-cycles-backend    #   14.36% backend cycles idle    
+       10829290099      instructions              #    2.64  insn per cycle         
+                                                  #    0.05  stalled cycles per insn
+        3474404676      branches                  # 2558.073 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.160445614 seconds time elapsed
+       1.359282411 seconds time elapsed
 
-       1.156214000 seconds user
-       0.004001000 seconds sys
+       1.354698000 seconds user
+       0.003996000 seconds sys
 
 

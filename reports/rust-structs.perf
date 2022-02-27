@@ -1,24 +1,24 @@
 7-th Fibonacci number is 21
-Total is 44040192
+Total is 22020096
 
 
- Performance counter stats for 'bin/rust-structs.bin 7 2097152':
+ Performance counter stats for 'bin/rust-structs.bin 7 1048576':
 
-           2056.85 msec task-clock                #    1.000 CPUs utilized          
-                 6      context-switches          #    0.003 K/sec                  
+           1036.02 msec task-clock                #    0.999 CPUs utilized          
+                 0      context-switches          #    0.000 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-                81      page-faults               #    0.039 K/sec                  
-        6597601149      cycles                    #    3.208 GHz                    
-          32762913      stalled-cycles-frontend   #    0.50% frontend cycles idle   
-        2523424290      stalled-cycles-backend    #   38.25% backend cycles idle    
-       11013761118      instructions              #    1.67  insn per cycle         
+                81      page-faults               #    0.078 K/sec                  
+        3380480772      cycles                    #    3.263 GHz                    
+          19209140      stalled-cycles-frontend   #    0.57% frontend cycles idle   
+        1250768127      stalled-cycles-backend    #   37.00% backend cycles idle    
+        5507542523      instructions              #    1.63  insn per cycle         
                                                   #    0.23  stalled cycles per insn
-        1785355250      branches                  #  868.006 M/sec                  
+         892812540      branches                  #  861.768 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       2.057837164 seconds time elapsed
+       1.036624967 seconds time elapsed
 
-       2.057240000 seconds user
+       1.036604000 seconds user
        0.000000000 seconds sys
 
 

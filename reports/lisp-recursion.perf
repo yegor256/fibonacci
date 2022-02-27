@@ -3,21 +3,21 @@ Total is 88080384
 
  Performance counter stats for 'bin/lisp-recursion.bin 7 4194304':
 
-           1115.00 msec task-clock                #    0.999 CPUs utilized          
-                 1      context-switches          #    0.001 K/sec                  
+           1095.55 msec task-clock                #    1.000 CPUs utilized          
+                 0      context-switches          #    0.000 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               596      page-faults               #    0.535 K/sec                  
-        3623628382      cycles                    #    3.250 GHz                    
-           4081587      stalled-cycles-frontend   #    0.11% frontend cycles idle   
-          23289421      stalled-cycles-backend    #    0.64% backend cycles idle    
-        8296188332      instructions              #    2.29  insn per cycle         
+               596      page-faults               #    0.544 K/sec                  
+        3622480928      cycles                    #    3.307 GHz                    
+           4076959      stalled-cycles-frontend   #    0.11% frontend cycles idle   
+          21360851      stalled-cycles-backend    #    0.59% backend cycles idle    
+        8296139789      instructions              #    2.29  insn per cycle         
                                                   #    0.00  stalled cycles per insn
-        2535824731      branches                  # 2274.284 M/sec                  
+        2535815053      branches                  # 2314.645 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.115749344 seconds time elapsed
+       1.095985717 seconds time elapsed
 
-       1.107643000 seconds user
-       0.007997000 seconds sys
+       1.092003000 seconds user
+       0.004000000 seconds sys
 
 

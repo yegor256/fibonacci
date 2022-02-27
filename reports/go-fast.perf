@@ -1,21 +1,21 @@
 7-th Fibonacci number is 1342177280
  Performance counter stats for 'bin/go-fast.bin 7 268435456':
 
-           1044.68 msec task-clock                #    1.010 CPUs utilized          
-               172      context-switches          #    0.165 K/sec                  
+           1036.22 msec task-clock                #    1.010 CPUs utilized          
+               169      context-switches          #    0.163 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               207      page-faults               #    0.198 K/sec                  
-        3421035903      cycles                    #    3.275 GHz                    
-           6241055      stalled-cycles-frontend   #    0.18% frontend cycles idle   
-           7989439      stalled-cycles-backend    #    0.23% backend cycles idle    
-       13694891533      instructions              #    4.00  insn per cycle         
+               209      page-faults               #    0.202 K/sec                  
+        3394191738      cycles                    #    3.276 GHz                    
+           5056019      stalled-cycles-frontend   #    0.15% frontend cycles idle   
+           6921575      stalled-cycles-backend    #    0.20% backend cycles idle    
+       13694867502      instructions              #    4.03  insn per cycle         
                                                   #    0.00  stalled cycles per insn
-        2953686476      branches                  # 2827.351 M/sec                  
+        2953682058      branches                  # 2850.431 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.034584894 seconds time elapsed
+       1.025866441 seconds time elapsed
 
-       1.040218000 seconds user
-       0.008065000 seconds sys
+       1.036206000 seconds user
+       0.004048000 seconds sys
 
 

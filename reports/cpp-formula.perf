@@ -1,23 +1,23 @@
 7-th Fibonacci number is 13
-Total is 436207616
+Total is 872415232
 
- Performance counter stats for 'bin/cpp-formula.bin 7 33554432':
+ Performance counter stats for 'bin/cpp-formula.bin 7 67108864':
 
-           1027.84 msec task-clock                #    0.999 CPUs utilized          
-                 5      context-switches          #    0.005 K/sec                  
+           1878.39 msec task-clock                #    1.000 CPUs utilized          
+                 9      context-switches          #    0.005 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2761      page-faults               #    0.003 M/sec                  
-        3191611697      cycles                    #    3.105 GHz                    
-           4116738      stalled-cycles-frontend   #    0.13% frontend cycles idle   
-          96481648      stalled-cycles-backend    #    3.02% backend cycles idle    
-       10737558449      instructions              #    3.36  insn per cycle         
-                                                  #    0.01  stalled cycles per insn
-        1786836743      branches                  # 1738.436 M/sec                  
+              2761      page-faults               #    0.001 M/sec                  
+        6077452788      cycles                    #    3.235 GHz                    
+           6413934      stalled-cycles-frontend   #    0.11% frontend cycles idle   
+          54676880      stalled-cycles-backend    #    0.90% backend cycles idle    
+       21443200274      instructions              #    3.53  insn per cycle         
+                                                  #    0.00  stalled cycles per insn
+        3565545936      branches                  # 1898.188 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.028554242 seconds time elapsed
+       1.879184850 seconds time elapsed
 
-       1.028657000 seconds user
-       0.000000000 seconds sys
+       1.872016000 seconds user
+       0.007093000 seconds sys
 
 

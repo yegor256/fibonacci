@@ -3,21 +3,21 @@ Total is 352321536
 
  Performance counter stats for 'bin/java-Functions.bin 7 16777216':
 
-           1204.58 msec task-clock                #    0.999 CPUs utilized          
-                 2      context-switches          #    0.002 K/sec                  
+           1166.88 msec task-clock                #    1.000 CPUs utilized          
+                 0      context-switches          #    0.000 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               532      page-faults               #    0.442 K/sec                  
-        3961024866      cycles                    #    3.288 GHz                    
-           3714963      stalled-cycles-frontend   #    0.09% frontend cycles idle   
-         297513485      stalled-cycles-backend    #    7.51% backend cycles idle    
-       10829038551      instructions              #    2.73  insn per cycle         
-                                                  #    0.03  stalled cycles per insn
-        3474360578      branches                  # 2884.283 M/sec                  
+               530      page-faults               #    0.454 K/sec                  
+        3834101416      cycles                    #    3.286 GHz                    
+           3647816      stalled-cycles-frontend   #    0.10% frontend cycles idle   
+          10477935      stalled-cycles-backend    #    0.27% backend cycles idle    
+       10828958749      instructions              #    2.82  insn per cycle         
+                                                  #    0.00  stalled cycles per insn
+        3474346034      branches                  # 2977.470 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.205249166 seconds time elapsed
+       1.167369134 seconds time elapsed
 
-       1.201094000 seconds user
-       0.004005000 seconds sys
+       1.163334000 seconds user
+       0.003998000 seconds sys
 
 

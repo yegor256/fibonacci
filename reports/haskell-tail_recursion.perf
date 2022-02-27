@@ -3,21 +3,21 @@ Total is 44040192
 
  Performance counter stats for 'bin/haskell-tail_recursion.bin 7 2097152':
 
-           1934.94 msec task-clock                #    0.999 CPUs utilized          
-                 4      context-switches          #    0.002 K/sec                  
+           1748.84 msec task-clock                #    1.000 CPUs utilized          
+                 2      context-switches          #    0.001 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             85928      page-faults               #    0.044 M/sec                  
-        6306665255      cycles                    #    3.259 GHz                    
-         203874715      stalled-cycles-frontend   #    3.23% frontend cycles idle   
-         857107431      stalled-cycles-backend    #   13.59% backend cycles idle    
-       12878165709      instructions              #    2.04  insn per cycle         
-                                                  #    0.07  stalled cycles per insn
-        2793154535      branches                  # 1443.532 M/sec                  
+             85927      page-faults               #    0.049 M/sec                  
+        5688349402      cycles                    #    3.253 GHz                    
+          93267982      stalled-cycles-frontend   #    1.64% frontend cycles idle   
+         974146410      stalled-cycles-backend    #   17.13% backend cycles idle    
+       12877780372      instructions              #    2.26  insn per cycle         
+                                                  #    0.08  stalled cycles per insn
+        2793085772      branches                  # 1597.106 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.935949526 seconds time elapsed
+       1.749498989 seconds time elapsed
 
-       1.815577000 seconds user
-       0.119993000 seconds sys
+       1.641243000 seconds user
+       0.108045000 seconds sys
 
 

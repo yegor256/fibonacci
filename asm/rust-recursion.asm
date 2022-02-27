@@ -112,10 +112,10 @@ _ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$1
 	.size	_ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17h71f62b09d7c4e505E, .Lfunc_end2-_ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17h71f62b09d7c4e505E
 	.cfi_endproc
 
-	.section	.text._ZN9recursion9fibonacci17h2bf30f900a194c92E,"ax",@progbits
+	.section	.text._ZN9recursion9fibonacci17hb5eced23184a3df2E,"ax",@progbits
 	.p2align	4, 0x90
-	.type	_ZN9recursion9fibonacci17h2bf30f900a194c92E,@function
-_ZN9recursion9fibonacci17h2bf30f900a194c92E:
+	.type	_ZN9recursion9fibonacci17hb5eced23184a3df2E,@function
+_ZN9recursion9fibonacci17hb5eced23184a3df2E:
 	.cfi_startproc
 	pushq	%rbp
 	.cfi_def_cfa_offset 16
@@ -133,7 +133,7 @@ _ZN9recursion9fibonacci17h2bf30f900a194c92E:
 	.p2align	4, 0x90
 .LBB3_2:
 	leal	-2(%rbx), %edi
-	callq	_ZN9recursion9fibonacci17h2bf30f900a194c92E
+	callq	_ZN9recursion9fibonacci17hb5eced23184a3df2E
 	addl	$-1, %ebx
 	addl	%eax, %ebp
 	cmpl	$1, %ebx
@@ -149,7 +149,7 @@ _ZN9recursion9fibonacci17h2bf30f900a194c92E:
 	.cfi_def_cfa_offset 8
 	retq
 .Lfunc_end3:
-	.size	_ZN9recursion9fibonacci17h2bf30f900a194c92E, .Lfunc_end3-_ZN9recursion9fibonacci17h2bf30f900a194c92E
+	.size	_ZN9recursion9fibonacci17hb5eced23184a3df2E, .Lfunc_end3-_ZN9recursion9fibonacci17hb5eced23184a3df2E
 	.cfi_endproc
 
 	.section	.text._ZN9recursion4main17he8e3de5d50a1b14aE,"ax",@progbits
@@ -345,7 +345,7 @@ _ZN9recursion4main17he8e3de5d50a1b14aE:
 	shrq	$32, %rbx
 	je	.LBB4_85
 	movq	%rbp, %rdi
-	callq	_ZN9recursion9fibonacci17h2bf30f900a194c92E
+	callq	_ZN9recursion9fibonacci17hb5eced23184a3df2E
 	imull	%eax, %ebx
 	jmp	.LBB4_87
 .LBB4_55:
