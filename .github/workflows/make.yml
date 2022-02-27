@@ -63,8 +63,15 @@ jobs:
       - uses: actions/checkout@v2
       - run: make clean
       - run: make env
+      - run: make WANTED=256 INPUT=7 index.html
+      - run: mkdir gh-pages && mv index.html gh-pages/seven.html
+      - uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: gh-pages
+          clean: false
       - run: make WANTED=256 index.html
-      - run: mkdir gh-pages
+      - run: rm -rf gh-pages && mkdir gh-pages
       - run: cp index.html gh-pages
       - run: cp index.xml gh-pages
       - run: cp -r reports gh-pages
