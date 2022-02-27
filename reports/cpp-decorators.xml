@@ -1,1 +1,1 @@
-<program> 	<file>cpp/decorators.cpp</file> 	<name>cpp-decorators</name> 	<instructions>187</instructions> 	<cycles>256</cycles> 	<time>3.37</time> 	<time_per_cycle>.0131640625000000</time_per_cycle> 	<ticks>10522300636</ticks> 	<ticks_per_cycle>41102736</ticks_per_cycle> 	</program>
+<program> 	<file>cpp/decorators.cpp</file> 	<name>cpp-decorators</name> 	<instructions>187</instructions> 	<cycles>2097152</cycles> 	<time>1.16</time> 	<time_per_cycle>.0000005531311035</time_per_cycle> 	<ticks>3844341069</ticks> 	<ticks_per_cycle>1833</ticks_per_cycle> 	</program>

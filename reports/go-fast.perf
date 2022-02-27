@@ -1,21 +1,21 @@
-32-th Fibonacci number is 268435456
- Performance counter stats for 'bin/go-fast.bin 32 134217728':
+7-th Fibonacci number is 1342177280
+ Performance counter stats for 'bin/go-fast.bin 7 268435456':
 
-           1885.66 msec task-clock                #    1.008 CPUs utilized          
-               255      context-switches          #    0.135 K/sec                  
+           1044.68 msec task-clock                #    1.010 CPUs utilized          
+               172      context-switches          #    0.165 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               195      page-faults               #    0.103 K/sec                  
-        6155765707      cycles                    #    3.265 GHz                    
-         194067845      stalled-cycles-frontend   #    3.15% frontend cycles idle   
-          24074240      stalled-cycles-backend    #    0.39% backend cycles idle    
-       26984249038      instructions              #    4.38  insn per cycle         
-                                                  #    0.01  stalled cycles per insn
-        4833069931      branches                  # 2563.061 M/sec                  
+               207      page-faults               #    0.198 K/sec                  
+        3421035903      cycles                    #    3.275 GHz                    
+           6241055      stalled-cycles-frontend   #    0.18% frontend cycles idle   
+           7989439      stalled-cycles-backend    #    0.23% backend cycles idle    
+       13694891533      instructions              #    4.00  insn per cycle         
+                                                  #    0.00  stalled cycles per insn
+        2953686476      branches                  # 2827.351 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.870817986 seconds time elapsed
+       1.034584894 seconds time elapsed
 
-       1.870402000 seconds user
-       0.020025000 seconds sys
+       1.040218000 seconds user
+       0.008065000 seconds sys
 
 

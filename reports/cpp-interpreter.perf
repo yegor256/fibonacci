@@ -1,23 +1,23 @@
-32-th Fibonacci number is 3524578
-Total is 1912111104
+7-th Fibonacci number is 21
+Total is 1376256
 
- Performance counter stats for 'bin/cpp-interpreter.bin 32 16384':
+ Performance counter stats for 'bin/cpp-interpreter.bin 7 65536':
 
-           1048.64 msec task-clock                #    0.999 CPUs utilized          
-                 5      context-switches          #    0.005 K/sec                  
+           1117.65 msec task-clock                #    0.999 CPUs utilized          
+                 6      context-switches          #    0.005 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2841      page-faults               #    0.003 M/sec                  
-        3432834248      cycles                    #    3.274 GHz                    
-          32781612      stalled-cycles-frontend   #    0.95% frontend cycles idle   
-         492962893      stalled-cycles-backend    #   14.36% backend cycles idle    
-        9396563750      instructions              #    2.74  insn per cycle         
+              2840      page-faults               #    0.003 M/sec                  
+        3634377902      cycles                    #    3.252 GHz                    
+          20063030      stalled-cycles-frontend   #    0.55% frontend cycles idle   
+         509222535      stalled-cycles-backend    #   14.01% backend cycles idle    
+       10261635928      instructions              #    2.82  insn per cycle         
                                                   #    0.05  stalled cycles per insn
-        1956901535      branches                  # 1866.125 M/sec                  
+        2135620532      branches                  # 1910.805 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.049210511 seconds time elapsed
+       1.118331248 seconds time elapsed
 
-       1.049288000 seconds user
+       1.118465000 seconds user
        0.000000000 seconds sys
 
 

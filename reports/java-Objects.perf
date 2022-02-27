@@ -1,23 +1,23 @@
-32-th Fibonacci number is 3524578
-Total is 902291968
+7-th Fibonacci number is 21
+Total is 11010048
 
- Performance counter stats for 'bin/java-Objects.bin 32 256':
+ Performance counter stats for 'bin/java-Objects.bin 7 524288':
 
-         226884.86 msec task-clock                #    1.000 CPUs utilized          
-               476      context-switches          #    0.002 K/sec                  
-                 1      cpu-migrations            #    0.000 K/sec                  
-             13290      page-faults               #    0.059 K/sec                  
-      726010549462      cycles                    #    3.200 GHz                    
-        6325445213      stalled-cycles-frontend   #    0.87% frontend cycles idle   
-      301164362645      stalled-cycles-backend    #   41.48% backend cycles idle    
-     1524756434049      instructions              #    2.10  insn per cycle         
-                                                  #    0.20  stalled cycles per insn
-      328557638099      branches                  # 1448.125 M/sec                  
+           1078.09 msec task-clock                #    0.999 CPUs utilized          
+                 2      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             13544      page-faults               #    0.013 M/sec                  
+        3405894565      cycles                    #    3.159 GHz                    
+          13544933      stalled-cycles-frontend   #    0.40% frontend cycles idle   
+        2003124513      stalled-cycles-backend    #   58.81% backend cycles idle    
+        8851456076      instructions              #    2.60  insn per cycle         
+                                                  #    0.23  stalled cycles per insn
+        1582554587      branches                  # 1467.929 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-     226.922516428 seconds time elapsed
+       1.078714630 seconds time elapsed
 
-     226.854285000 seconds user
-       0.024007000 seconds sys
+       1.058527000 seconds user
+       0.020023000 seconds sys
 
 

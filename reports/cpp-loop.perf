@@ -1,23 +1,23 @@
-32-th Fibonacci number is 3524578
-Total is 536870912
+7-th Fibonacci number is 21
+Total is 1342177280
 
- Performance counter stats for 'bin/cpp-loop.bin 32 268435456':
+ Performance counter stats for 'bin/cpp-loop.bin 7 268435456':
 
-           2107.12 msec task-clock                #    1.000 CPUs utilized          
-                 6      context-switches          #    0.003 K/sec                  
+           1073.52 msec task-clock                #    1.000 CPUs utilized          
+                 4      context-switches          #    0.004 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2764      page-faults               #    0.001 M/sec                  
-        6310714899      cycles                    #    2.995 GHz                    
-           5443436      stalled-cycles-frontend   #    0.09% frontend cycles idle   
-        2958555184      stalled-cycles-backend    #   46.88% backend cycles idle    
-       26610113281      instructions              #    4.22  insn per cycle         
-                                                  #    0.11  stalled cycles per insn
-        4035212160      branches                  # 1915.035 M/sec                  
+              2759      page-faults               #    0.003 M/sec                  
+        3544640097      cycles                    #    3.302 GHz                    
+           3458923      stalled-cycles-frontend   #    0.10% frontend cycles idle   
+         230943870      stalled-cycles-backend    #    6.52% backend cycles idle    
+       16408391417      instructions              #    4.63  insn per cycle         
+                                                  #    0.01  stalled cycles per insn
+        3229701730      branches                  # 3008.514 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       2.107898048 seconds time elapsed
+       1.074056098 seconds time elapsed
 
-       2.100021000 seconds user
-       0.007994000 seconds sys
+       1.070302000 seconds user
+       0.004013000 seconds sys
 
 

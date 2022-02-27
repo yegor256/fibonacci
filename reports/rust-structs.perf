@@ -1,24 +1,24 @@
-32-th Fibonacci number is 3524578
-Total is 902291968
+7-th Fibonacci number is 21
+Total is 44040192
 
 
- Performance counter stats for 'bin/rust-structs.bin 32 256':
+ Performance counter stats for 'bin/rust-structs.bin 7 2097152':
 
-         224645.28 msec task-clock                #    1.000 CPUs utilized          
-               700      context-switches          #    0.003 K/sec                  
-                 1      cpu-migrations            #    0.000 K/sec                  
-                82      page-faults               #    0.000 K/sec                  
-      724939202840      cycles                    #    3.227 GHz                    
-        9009771287      stalled-cycles-frontend   #    1.24% frontend cycles idle   
-       84581758743      stalled-cycles-backend    #   11.67% backend cycles idle    
-      847609581959      instructions              #    1.17  insn per cycle         
-                                                  #    0.10  stalled cycles per insn
-      167226516555      branches                  #  744.403 M/sec                  
+           2056.85 msec task-clock                #    1.000 CPUs utilized          
+                 6      context-switches          #    0.003 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+                81      page-faults               #    0.039 K/sec                  
+        6597601149      cycles                    #    3.208 GHz                    
+          32762913      stalled-cycles-frontend   #    0.50% frontend cycles idle   
+        2523424290      stalled-cycles-backend    #   38.25% backend cycles idle    
+       11013761118      instructions              #    1.67  insn per cycle         
+                                                  #    0.23  stalled cycles per insn
+        1785355250      branches                  #  868.006 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-     224.700850796 seconds time elapsed
+       2.057837164 seconds time elapsed
 
-     224.627819000 seconds user
-       0.008001000 seconds sys
+       2.057240000 seconds user
+       0.000000000 seconds sys
 
 

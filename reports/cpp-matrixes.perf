@@ -1,23 +1,23 @@
-32-th Fibonacci number is 3524578
-Total is 268435456
+7-th Fibonacci number is 21
+Total is -1476395008
 
- Performance counter stats for 'bin/cpp-matrixes.bin 32 134217728':
+ Performance counter stats for 'bin/cpp-matrixes.bin 7 134217728':
 
-           1706.88 msec task-clock                #    1.000 CPUs utilized          
-                 4      context-switches          #    0.002 K/sec                  
+           1207.20 msec task-clock                #    1.000 CPUs utilized          
+                 4      context-switches          #    0.003 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2762      page-faults               #    0.002 M/sec                  
-        5634563694      cycles                    #    3.301 GHz                    
-           3052614      stalled-cycles-frontend   #    0.05% frontend cycles idle   
-        4117301824      stalled-cycles-backend    #   73.07% backend cycles idle    
-       19227427597      instructions              #    3.41  insn per cycle         
-                                                  #    0.21  stalled cycles per insn
-        2290249140      branches                  # 1341.773 M/sec                  
+              2759      page-faults               #    0.002 M/sec                  
+        3702417825      cycles                    #    3.067 GHz                    
+           3302213      stalled-cycles-frontend   #    0.09% frontend cycles idle   
+        2430405401      stalled-cycles-backend    #   65.64% backend cycles idle    
+       13053039949      instructions              #    3.53  insn per cycle         
+                                                  #    0.19  stalled cycles per insn
+        1619104723      branches                  # 1341.202 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.707409899 seconds time elapsed
+       1.207664243 seconds time elapsed
 
-       1.707569000 seconds user
+       1.207972000 seconds user
        0.000000000 seconds sys
 
 

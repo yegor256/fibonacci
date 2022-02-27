@@ -1,23 +1,23 @@
-32-th Fibonacci number is 3524578
-Total is 902291968
+7-th Fibonacci number is 21
+Total is 352321536
 
- Performance counter stats for 'bin/java-Functions.bin 32 256':
+ Performance counter stats for 'bin/java-Functions.bin 7 16777216':
 
-           3391.27 msec task-clock                #    1.000 CPUs utilized          
-                 5      context-switches          #    0.001 K/sec                  
+           1204.58 msec task-clock                #    0.999 CPUs utilized          
+                 2      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               533      page-faults               #    0.157 K/sec                  
-       10306647803      cycles                    #    3.039 GHz                    
-          12178535      stalled-cycles-frontend   #    0.12% frontend cycles idle   
-          42300063      stalled-cycles-backend    #    0.41% backend cycles idle    
-       27981260904      instructions              #    2.71  insn per cycle         
-                                                  #    0.00  stalled cycles per insn
-        9024812497      branches                  # 2661.194 M/sec                  
+               532      page-faults               #    0.442 K/sec                  
+        3961024866      cycles                    #    3.288 GHz                    
+           3714963      stalled-cycles-frontend   #    0.09% frontend cycles idle   
+         297513485      stalled-cycles-backend    #    7.51% backend cycles idle    
+       10829038551      instructions              #    2.73  insn per cycle         
+                                                  #    0.03  stalled cycles per insn
+        3474360578      branches                  # 2884.283 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       3.392123779 seconds time elapsed
+       1.205249166 seconds time elapsed
 
-       3.391704000 seconds user
-       0.000000000 seconds sys
+       1.201094000 seconds user
+       0.004005000 seconds sys
 
 

@@ -1,23 +1,23 @@
-32-th Fibonacci number is 3524578
-Total is 902291968
+7-th Fibonacci number is 21
+Total is 22020096
 
- Performance counter stats for 'bin/haskell-recursion.bin 32 256':
+ Performance counter stats for 'bin/haskell-recursion.bin 7 1048576':
 
-          43143.09 msec task-clock                #    1.000 CPUs utilized          
-                54      context-switches          #    0.001 K/sec                  
+           1411.94 msec task-clock                #    1.000 CPUs utilized          
+                 2      context-switches          #    0.001 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              1240      page-faults               #    0.029 K/sec                  
-      138029564164      cycles                    #    3.199 GHz                    
-        1255721645      stalled-cycles-frontend   #    0.91% frontend cycles idle   
-         764609587      stalled-cycles-backend    #    0.55% backend cycles idle    
-      316089262636      instructions              #    2.29  insn per cycle         
-                                                  #    0.00  stalled cycles per insn
-       69412177387      branches                  # 1608.883 M/sec                  
+             44972      page-faults               #    0.032 M/sec                  
+        4653418263      cycles                    #    3.296 GHz                    
+          70107248      stalled-cycles-frontend   #    1.51% frontend cycles idle   
+         478764390      stalled-cycles-backend    #   10.29% backend cycles idle    
+       10325604046      instructions              #    2.22  insn per cycle         
+                                                  #    0.05  stalled cycles per insn
+        2195720068      branches                  # 1555.105 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-      43.148141106 seconds time elapsed
+       1.412607456 seconds time elapsed
 
-      43.050829000 seconds user
-       0.091998000 seconds sys
+       1.344356000 seconds user
+       0.068020000 seconds sys
 
 
