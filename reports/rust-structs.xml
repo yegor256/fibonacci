@@ -1,1 +1,1 @@
-<program> 	<file>rust/structs.rs</file> 	<name>rust-structs</name> 	<instructions>677</instructions> 	<cycles>16</cycles> 	<time>16.07</time> 	<time_per_cycle>1.0043750000000000</time_per_cycle> 	<ticks>45767287413</ticks> 	<ticks_per_cycle>2860455463</ticks_per_cycle> 	</program>
+<program> 	<file>rust/structs.rs</file> 	<name>rust-structs</name> 	<instructions>706</instructions> 	<cycles>256</cycles> 	<time>223.24</time> 	<time_per_cycle>.8720312500000000</time_per_cycle> 	<ticks>724939202840</ticks> 	<ticks_per_cycle>2831793761</ticks_per_cycle> 	</program>

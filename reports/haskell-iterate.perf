@@ -3,21 +3,21 @@ Total is 3695787900928
 
  Performance counter stats for 'bin/haskell-iterate.bin 32 1048576':
 
-           1498.30 msec task-clock                #    1.000 CPUs utilized          
-                 2      context-switches          #    0.001 K/sec                  
+           1362.72 msec task-clock                #    0.999 CPUs utilized          
+                 4      context-switches          #    0.003 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             45224      page-faults               #    0.030 M/sec                  
-        4505889432      cycles                    #    3.007 GHz                    
-          59092237      stalled-cycles-frontend   #    1.31% frontend cycles idle   
-         465791935      stalled-cycles-backend    #   10.34% backend cycles idle    
-       11017396855      instructions              #    2.45  insn per cycle         
-                                                  #    0.04  stalled cycles per insn
-        2244184063      branches                  # 1497.823 M/sec                  
+             45228      page-faults               #    0.033 M/sec                  
+        4476720141      cycles                    #    3.285 GHz                    
+          57501570      stalled-cycles-frontend   #    1.28% frontend cycles idle   
+         498077599      stalled-cycles-backend    #   11.13% backend cycles idle    
+       11016765759      instructions              #    2.46  insn per cycle         
+                                                  #    0.05  stalled cycles per insn
+        2244094742      branches                  # 1646.771 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.498987067 seconds time elapsed
+       1.363566088 seconds time elapsed
 
-       1.438725000 seconds user
-       0.060125000 seconds sys
+       1.291262000 seconds user
+       0.071939000 seconds sys
 
 

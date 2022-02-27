@@ -1,0 +1,23 @@
+32-th Fibonacci number is 0
+Total is 0
+
+ Performance counter stats for 'bin/cpp-formula.bin 32 33554432':
+
+           1071.29 msec task-clock                #    1.000 CPUs utilized          
+                 3      context-switches          #    0.003 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              2761      page-faults               #    0.003 M/sec                  
+        3535990373      cycles                    #    3.301 GHz                    
+           6686264      stalled-cycles-frontend   #    0.19% frontend cycles idle   
+          32499599      stalled-cycles-backend    #    0.92% backend cycles idle    
+       11878894685      instructions              #    3.36  insn per cycle         
+                                                  #    0.00  stalled cycles per insn
+        2256693348      branches                  # 2106.528 M/sec                  
+                 0      branch-misses             #    0.00% of all branches        
+
+       1.071674924 seconds time elapsed
+
+       1.068046000 seconds user
+       0.003993000 seconds sys
+
+

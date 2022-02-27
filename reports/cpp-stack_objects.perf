@@ -1,0 +1,23 @@
+32-th Fibonacci number is 3524578
+Total is 902291968
+
+ Performance counter stats for 'bin/cpp-stack_objects.bin 32 256':
+
+           3687.33 msec task-clock                #    1.000 CPUs utilized          
+                14      context-switches          #    0.004 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              2762      page-faults               #    0.749 K/sec                  
+       12064636897      cycles                    #    3.272 GHz                    
+           7119988      stalled-cycles-frontend   #    0.06% frontend cycles idle   
+        5850609538      stalled-cycles-backend    #   48.49% backend cycles idle    
+       34323364593      instructions              #    2.84  insn per cycle         
+                                                  #    0.17  stalled cycles per insn
+        5422628223      branches                  # 1470.611 M/sec                  
+                 0      branch-misses             #    0.00% of all branches        
+
+       3.688587920 seconds time elapsed
+
+       3.687804000 seconds user
+       0.000000000 seconds sys
+
+

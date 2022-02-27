@@ -1,24 +1,24 @@
 32-th Fibonacci number is 3524578
-Total is 56393248
+Total is 902291968
 
 
- Performance counter stats for 'bin/rust-structs.bin 32 16':
+ Performance counter stats for 'bin/rust-structs.bin 32 256':
 
-          15785.27 msec task-clock                #    1.000 CPUs utilized          
-                38      context-switches          #    0.002 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-                81      page-faults               #    0.005 K/sec                  
-       45767287413      cycles                    #    2.899 GHz                    
-         658388582      stalled-cycles-frontend   #    1.44% frontend cycles idle   
-        6710868220      stalled-cycles-backend    #   14.66% backend cycles idle    
-       52978643170      instructions              #    1.16  insn per cycle         
-                                                  #    0.13  stalled cycles per insn
-       10452221306      branches                  #  662.150 M/sec                  
+         224645.28 msec task-clock                #    1.000 CPUs utilized          
+               700      context-switches          #    0.003 K/sec                  
+                 1      cpu-migrations            #    0.000 K/sec                  
+                82      page-faults               #    0.000 K/sec                  
+      724939202840      cycles                    #    3.227 GHz                    
+        9009771287      stalled-cycles-frontend   #    1.24% frontend cycles idle   
+       84581758743      stalled-cycles-backend    #   11.67% backend cycles idle    
+      847609581959      instructions              #    1.17  insn per cycle         
+                                                  #    0.10  stalled cycles per insn
+      167226516555      branches                  #  744.403 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-      15.789172159 seconds time elapsed
+     224.700850796 seconds time elapsed
 
-      15.785421000 seconds user
-       0.000000000 seconds sys
+     224.627819000 seconds user
+       0.008001000 seconds sys
 
 
