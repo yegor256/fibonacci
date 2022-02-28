@@ -192,7 +192,11 @@ reports/%.txt: bin/%.bin asm/%.asm | reports
 		if [ "$${cycles}" -lt "$(WANTED)" -a "$${seconds}" -lt "1" ]; then cycles=$(WANTED); fi
 		attempt=$$(expr $${attempt} + 1)
 	done
-	perf stat "$<" $(INPUT) $${cycles} > "${@:.txt=.perf}" 2>&1
+	if [ "$(uname)" == "Darwin" ]; then
+		echo "No perf on MacOS" > "${@:.txt=.perf}"
+	else
+		sudo perf stat "$<" $(INPUT) $${cycles} > "${@:.txt=.perf}" 2>&1
+	fi
 	ticks=$$(cat "${@:.txt=.perf}" | sed 's/ \+/ /g' | grep ' cycles #' | cut -f 2 -d ' ')
 	if [[ ! "$${ticks}" =~ ^[0-9.]+$$ ]]; then
 		ticks=1
