@@ -148,8 +148,15 @@ SOFTWARE.
       <body>
         <p>
           <xsl:text>This is what it takes to calculate the </xsl:text>
-          <xsl:value-of select="@input"/>
-          <xsl:text>th Fibonacci number using different algorithms:</xsl:text>
+          <strong>
+            <xsl:value-of select="@input"/>
+            <xsl:text>th</xsl:text>
+          </strong>
+          <xsl:text> </xsl:text>
+          <a href="https://en.wikipedia.org/wiki/Fibonacci_number">
+            <xsl:text>Fibonacci number</xsl:text>
+          </a>
+          <xsl:text> using different algorithms:</xsl:text>
         </p>
         <xsl:apply-templates select="programs"/>
         <xsl:apply-templates select="headers"/>

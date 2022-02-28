@@ -61,7 +61,7 @@ jobs:
       - run: sudo apt-get install -y linux-tools-generic
       - run: sudo rm /usr/bin/perf && sudo ln -s /usr/lib/linux-tools/*/perf /usr/bin/perf
       - uses: actions/checkout@v2
-      - run: make clean
+      - run: sudo make clean
       - run: make env
       - run: sudo make WANTED=256 INPUT=7 index.html
       - run: mkdir gh-pages && mv index.html gh-pages/seven.html
@@ -70,7 +70,7 @@ jobs:
           branch: gh-pages
           folder: gh-pages
           clean: false
-      - run: make clean
+      - run: sudo make clean
       - run: sudo make WANTED=256 index.html
       - run: rm -rf gh-pages && mkdir gh-pages
       - run: cp index.html gh-pages
