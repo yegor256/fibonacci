@@ -70,6 +70,7 @@ jobs:
           branch: gh-pages
           folder: gh-pages
           clean: false
+      - run: make clean
       - run: sudo make WANTED=256 index.html
       - run: rm -rf gh-pages && mkdir gh-pages
       - run: cp index.html gh-pages
