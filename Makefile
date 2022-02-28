@@ -142,7 +142,7 @@ bin/lisp-%.bin: lisp/%.lisp | bin
 	sbcl --load "$<"
 
 bin/eiffel-%.bin: eiffel/%.e | bin
-	ec -precompile "$<"
+	ec "$<" -precompile 
 	mv application "$@"
 	chmod a+x "$@"
 
