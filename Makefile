@@ -22,7 +22,7 @@
 .SHELLFLAGS: -e -o pipefail -c
 .PHONY: clean sa env lint
 
-SHELL = /bin/bash
+SHELL = bash
 
 INPUT = 32
 WANTED = 8
@@ -46,7 +46,7 @@ HASKELLS = $(wildcard haskell/*.hs)
 JAVAS = $(wildcard java/*.java)
 EIFFELS = eiffel/application.e
 GOS = $(wildcard go/cmd/*/main.go)
-ASMS = $(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm} ${JAVAS:.java=.asm} ${EIFFELS:.e=.asm}))))))
+ASMS = $(subst eiffel/,asm/eiffel-,$(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm} ${JAVAS:.java=.asm} ${EIFFELS:.e=.asm})))))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -107,48 +107,50 @@ sa: Makefile
 		$(CPPS)
 	#xcop *.xsl
 
-asm/cpp-%.asm: cpp/%.cpp
+asm/cpp-%.asm: cpp/%.cpp | asm
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
 
-asm/rust-%.asm: rust/%.rs
+asm/rust-%.asm: rust/%.rs | asm
 	$(RUSTC) $(RUSTFLAGS) --emit=asm -o "$@" "$<"
 
-asm/lisp-%.asm: lisp/%.lisp
+asm/lisp-%.asm: lisp/%.lisp | asm
 	echo " no asm here" > "$@"
 
-asm/eiffel-%.asm: eiffel/%.e
+asm/eiffel-%.asm: eiffel/%.e | asm
 	echo " no asm here" > "$@"
 
-asm/go-%.asm: go/cmd/%/main.go
+asm/go-%.asm: go/cmd/%/main.go | asm
 	echo " no asm here" > "$@"
 
-asm/haskell-%.asm: haskell/%.hs $(HCLIBS)
+asm/haskell-%.asm: haskell/%.hs $(HCLIBS) | asm
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
 	$(HC) $(HCFLAGS) -S $(HCLIBS) "$<"
 	mv $${source}.s "$@"
 	cat $(HCLIBDIR)/*.s >> "$@"
 	rm $(HCLIBDIR)/*.s
 
-asm/java-%.asm: java/%.java
+asm/java-%.asm: java/%.java | asm
 	echo " no asm here" > "$@"
 
-bin/cpp-%.bin: cpp/%.cpp
+bin/cpp-%.bin: cpp/%.cpp | bin
 	$(CC) $(CCFLAGS) -o "$@" "$<"
 
-bin/rust-%.bin: rust/%.rs
+bin/rust-%.bin: rust/%.rs | bin
 	$(RUSTC) $(RUSTFLAGS) -o "$@" "$<"
 
-bin/lisp-%.bin: lisp/%.lisp
+bin/lisp-%.bin: lisp/%.lisp | bin
 	sbcl --load "$<"
 
-bin/eiffel-%.bin: eiffel/%.e
-	ec -file "$@" "$<" && chmod a+x "$@"
+bin/eiffel-%.bin: eiffel/%.e | bin
+	ec "$<"
+	mv application "$@"
+	chmod a+x "$@"
 
-bin/go-%.bin: go/cmd/%/main.go
+bin/go-%.bin: go/cmd/%/main.go | bin
 	cd go
 	$(GO) build -o "../$@" "$(subst go/,./,${<:/main.go=})"
 
-bin/haskell-%.bin: haskell/%.hs $(HCLIBS)
+bin/haskell-%.bin: haskell/%.hs $(HCLIBS) | bin
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
 	$(HC) $(HCFLAGS) $(HCLIBS) "$<"
 	mv $${source} "$@"
@@ -157,7 +159,7 @@ bin/haskell-%.bin: haskell/%.hs $(HCLIBS)
 	rm $(HCLIBDIR)/*.o
 	rm $(HCLIBDIR)/*.hi
 
-bin/java-%.bin: java/%.java
+bin/java-%.bin: java/%.java | bin
 	name=$(subst java/,,$(<:.java=))
 	mkdir -p "tmp/$${name}"
 	javac -d "tmp/$${name}" "$<"
@@ -168,7 +170,7 @@ bin/java-%.bin: java/%.java
 	fi
 	native-image -jar "tmp/$${name}.jar" "$@"
 
-reports/%.txt: bin/%.bin asm/%.asm
+reports/%.txt: bin/%.bin asm/%.asm | reports
 	"$<" 7 1
 	cycles=1
 	attempt=1
@@ -190,7 +192,7 @@ reports/%.txt: bin/%.bin asm/%.asm
 		if [ "$${cycles}" -lt "$(WANTED)" -a "$${seconds}" -lt "1" ]; then cycles=$(WANTED); fi
 		attempt=$$(expr $${attempt} + 1)
 	done
-	sudo perf stat "$<" $(INPUT) $${cycles} > "${@:.txt=.perf}" 2>&1
+	perf stat "$<" $(INPUT) $${cycles} > "${@:.txt=.perf}" 2>&1
 	ticks=$$(cat "${@:.txt=.perf}" | sed 's/ \+/ /g' | grep ' cycles #' | cut -f 2 -d ' ')
 	if [[ ! "$${ticks}" =~ ^[0-9.]+$$ ]]; then
 		ticks=1
@@ -226,12 +228,6 @@ reports/%.txt: bin/%.bin asm/%.asm
 clean:
 	rm -rf $(DIRS)
 	rm -f summary.txt summary.csv
-
-$(ASMS): | asm
-
-$(BINS): | bin
-
-$(REPORTS): | reports
 
 $(DIRS):
 	mkdir "$@"

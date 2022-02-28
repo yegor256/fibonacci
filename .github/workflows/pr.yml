@@ -45,5 +45,5 @@ jobs:
       - uses: actions/checkout@v2
       - run: make clean
       - run: make env
-      - run: make FAST=1 INPUT=7
+      - run: sudo make FAST=1 INPUT=7
       - run: make sa
