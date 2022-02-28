@@ -142,7 +142,7 @@ bin/lisp-%.bin: lisp/%.lisp | bin
 	sbcl --load "$<"
 
 bin/eiffel-%.bin: eiffel/%.e | bin
-	ec "$<" -precompile 
+	ec "$<" -precompile
 	mv application "$@"
 	chmod a+x "$@"
 
@@ -163,7 +163,7 @@ bin/java-%.bin: java/%.java | bin
 	name=$(subst java/,,$(<:.java=))
 	mkdir -p "tmp/$${name}"
 	javac -d "tmp/$${name}" "$<"
-	if [ "$(uname)" == "Darwin" ]; then
+	if [ "$$(uname)" == "Darwin" ]; then
 		jar -c -e "$${name}" -f "tmp/$${name}.jar" -C "tmp/$${name}" .
 	else
 		jar cfe "tmp/$${name}.jar" "$${name}" -C "tmp/$${name}" .
@@ -192,7 +192,7 @@ reports/%.txt: bin/%.bin asm/%.asm | reports
 		if [ "$${cycles}" -lt "$(WANTED)" -a "$${seconds}" -lt "1" ]; then cycles=$(WANTED); fi
 		attempt=$$(expr $${attempt} + 1)
 	done
-	if [ "$(uname)" == "Darwin" ]; then
+	if [ "$$(uname)" == "Darwin" ]; then
 		echo "No perf on MacOS" > "${@:.txt=.perf}"
 	else
 		sudo perf stat "$<" $(INPUT) $${cycles} > "${@:.txt=.perf}" 2>&1
@@ -232,6 +232,7 @@ reports/%.txt: bin/%.bin asm/%.asm | reports
 clean:
 	rm -rf $(DIRS)
 	rm -f summary.txt summary.csv
+	rm -rf EIFGENs
 
 $(DIRS):
 	mkdir "$@"
