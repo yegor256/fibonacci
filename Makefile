@@ -28,7 +28,7 @@ INPUT = 32
 WANTED = 8
 
 CC = clang++
-CCFLAGS = -mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
+CCFLAGS = -mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=address"; fi)
 GO = go
 RUSTC = rustc
 RUSTFLAGS = -C opt-level=3
