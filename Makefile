@@ -28,14 +28,16 @@ INPUT = 32
 WANTED = 8
 
 CC = clang++
-CCFLAGS = -mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
+CCFLAGS = -mllvm --x86-asm-syntax=intel -O0 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
 GO = go
+GOFLAGS = -gcflags '-N -l'
 RUSTC = rustc
-RUSTFLAGS = -C opt-level=3
+RUSTFLAGS = -C opt-level=0
 HC = ghc
-HCFLAGS = -dynamic -Wall -Werror
+HCFLAGS = -dynamic -Wall -Werror -O0
 HCLIBDIR = haskell/Mainlib
 HCLIBS = $(wildcard $(HCLIBDIR)/*.hs)
+NIFLAGS = -H:Optimize=0
 SAXON = "/usr/local/opt/Saxon.jar"
 
 DIRS = asm bin reports
@@ -148,7 +150,7 @@ bin/eiffel-%.bin: eiffel/%.e | bin
 
 bin/go-%.bin: go/cmd/%/main.go | bin
 	cd go
-	$(GO) build -o "../$@" "$(subst go/,./,${<:/main.go=})"
+	$(GO) build $(GOFLAGS) -o "../$@" "$(subst go/,./,${<:/main.go=})"
 
 bin/haskell-%.bin: haskell/%.hs $(HCLIBS) | bin
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
@@ -168,7 +170,7 @@ bin/java-%.bin: java/%.java | bin
 	else
 		jar cfe "tmp/$${name}.jar" "$${name}" -C "tmp/$${name}" .
 	fi
-	native-image -jar "tmp/$${name}.jar" "$@"
+		native-image $(NIFLAGS) -jar "tmp/$${name}.jar" "$@"
 
 reports/%.txt: bin/%.bin asm/%.asm | reports
 	"$<" 7 1
