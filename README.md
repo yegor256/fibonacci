@@ -11,7 +11,11 @@ works faster. If you can imagine some other way how this algorithm
 could be implemented in C++ or other languages, 
 don't hesitate to submit a pull request.
 
-Recent results are published here: [index.html](https://yegor256.github.io/fibonacci/index.html)
+Recent results are published here: 
+
+  * [32nd Fibonacci number](https://yegor256.github.io/fibonacci/index.html)
+  * [16th](https://yegor256.github.io/fibonacci/sixteen.html)
+  * [7th](https://yegor256.github.io/fibonacci/seven.html)
 
 To build it locally, just run:
 
