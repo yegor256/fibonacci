@@ -42,6 +42,7 @@ jobs:
           java-version: '11'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
+      - run: sudo apt-get install -y snapd
       - run: sudo snap install powershell --classic
       - uses: egor-tensin/setup-clang@v1
         with:
