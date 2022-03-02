@@ -65,9 +65,8 @@ jobs:
       - run: sudo apt-get install -y linux-tools-generic
       - run: sudo rm /usr/bin/perf && sudo ln -s /usr/lib/linux-tools/*/perf /usr/bin/perf
       - uses: actions/checkout@v2
-      - run: rm -rf ~/.es
-      - run: make clean
       - run: make env
+      - run: make clean
       - run: make WANTED=256 INPUT=7 index.html
       - run: mkdir gh-pages && mv index.html gh-pages/seven.html
       - uses: JamesIves/github-pages-deploy-action@4.1.4
@@ -75,7 +74,14 @@ jobs:
           branch: gh-pages
           folder: gh-pages
           clean: false
-      - run: rm -rf ~/.es
+      - run: make clean
+      - run: make WANTED=256 INPUT=16 index.html
+      - run: mkdir gh-pages && mv index.html gh-pages/sixteen.html
+      - uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: gh-pages
+          clean: false
       - run: make clean
       - run: make WANTED=256 index.html
       - run: rm -rf gh-pages && mkdir gh-pages
