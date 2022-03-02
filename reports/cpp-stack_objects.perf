@@ -3,21 +3,21 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-stack_objects.bin 32 256':
 
-           3701.54 msec task-clock                #    1.000 CPUs utilized          
-                10      context-switches          #    0.003 K/sec                  
+          34986.70 msec task-clock                #    1.000 CPUs utilized          
+                63      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2760      page-faults               #    0.746 K/sec                  
-       12291566790      cycles                    #    3.321 GHz                    
-           9774594      stalled-cycles-frontend   #    0.08% frontend cycles idle   
-        5667056797      stalled-cycles-backend    #   46.11% backend cycles idle    
-       34323831801      instructions              #    2.79  insn per cycle         
-                                                  #    0.17  stalled cycles per insn
-        5422718595      branches                  # 1464.988 M/sec                  
+              2762      page-faults               #    0.079 K/sec                  
+      111943976083      cycles                    #    3.200 GHz                    
+         217316140      stalled-cycles-frontend   #    0.19% frontend cycles idle   
+       47356822062      stalled-cycles-backend    #   42.30% backend cycles idle    
+      232862591954      instructions              #    2.08  insn per cycle         
+                                                  #    0.20  stalled cycles per insn
+       40617970781      branches                  # 1160.955 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       3.702544326 seconds time elapsed
+      34.991960155 seconds time elapsed
 
-       3.697975000 seconds user
-       0.004139000 seconds sys
+      34.982748000 seconds user
+       0.004001000 seconds sys
 
 

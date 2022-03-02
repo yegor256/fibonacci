@@ -3,21 +3,21 @@ Total is 28196624
 
  Performance counter stats for 'bin/haskell-polymorphic_recursion.bin 32 8':
 
-          16722.22 msec task-clock                #    1.000 CPUs utilized          
-                18      context-switches          #    0.001 K/sec                  
+          16667.99 msec task-clock                #    1.000 CPUs utilized          
+                34      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              1438      page-faults               #    0.086 K/sec                  
-       53782647147      cycles                    #    3.216 GHz                    
-        1396440966      stalled-cycles-frontend   #    2.60% frontend cycles idle   
-         418285075      stalled-cycles-backend    #    0.78% backend cycles idle    
-      102125527326      instructions              #    1.90  insn per cycle         
-                                                  #    0.01  stalled cycles per insn
-       24360116302      branches                  # 1456.751 M/sec                  
+              1443      page-faults               #    0.087 K/sec                  
+       53896847729      cycles                    #    3.234 GHz                    
+        1604220583      stalled-cycles-frontend   #    2.98% frontend cycles idle   
+         406424325      stalled-cycles-backend    #    0.75% backend cycles idle    
+      102125002407      instructions              #    1.89  insn per cycle         
+                                                  #    0.02  stalled cycles per insn
+       24360038470      branches                  # 1461.486 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-      16.724142488 seconds time elapsed
+      16.671444187 seconds time elapsed
 
-      16.694378000 seconds user
-       0.028002000 seconds sys
+      15.244109000 seconds user
+       1.424273000 seconds sys
 
 

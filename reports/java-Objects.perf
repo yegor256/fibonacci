@@ -1,23 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 902291968
+Total is 28196624
 
- Performance counter stats for 'bin/java-Objects.bin 32 256':
+ Performance counter stats for 'bin/java-Objects.bin 32 8':
 
-         231727.33 msec task-clock                #    1.000 CPUs utilized          
-               339      context-switches          #    0.001 K/sec                  
+          10945.29 msec task-clock                #    1.000 CPUs utilized          
+                14      context-switches          #    0.001 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             13290      page-faults               #    0.057 K/sec                  
-      738091108033      cycles                    #    3.185 GHz                    
-        6668031267      stalled-cycles-frontend   #    0.90% frontend cycles idle   
-      307550462126      stalled-cycles-backend    #   41.67% backend cycles idle    
-     1524735755287      instructions              #    2.07  insn per cycle         
-                                                  #    0.20  stalled cycles per insn
-      328552342104      branches                  # 1417.840 M/sec                  
+             13546      page-faults               #    0.001 M/sec                  
+       35887621041      cycles                    #    3.279 GHz                    
+         428659283      stalled-cycles-frontend   #    1.19% frontend cycles idle   
+        6871923159      stalled-cycles-backend    #   19.15% backend cycles idle    
+       78859493955      instructions              #    2.20  insn per cycle         
+                                                  #    0.09  stalled cycles per insn
+       18706852710      branches                  # 1709.124 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-     231.757189970 seconds time elapsed
+      10.947012020 seconds time elapsed
 
-     231.687411000 seconds user
-       0.036013000 seconds sys
+      10.929685000 seconds user
+       0.015992000 seconds sys
 
 

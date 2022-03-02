@@ -1,23 +1,23 @@
 32-th Fibonacci number is 0
 Total is 0
 
- Performance counter stats for 'bin/cpp-formula.bin 32 33554432':
+ Performance counter stats for 'bin/cpp-formula.bin 32 4194304':
 
-           1040.89 msec task-clock                #    0.999 CPUs utilized          
-                 6      context-switches          #    0.006 K/sec                  
+           1099.53 msec task-clock                #    0.999 CPUs utilized          
+                 5      context-switches          #    0.005 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2761      page-faults               #    0.003 M/sec                  
-        3454369411      cycles                    #    3.319 GHz                    
-           4343892      stalled-cycles-frontend   #    0.13% frontend cycles idle   
-          34204156      stalled-cycles-backend    #    0.99% backend cycles idle    
-       11878646673      instructions              #    3.44  insn per cycle         
-                                                  #    0.00  stalled cycles per insn
-        2256645226      branches                  # 2168.004 M/sec                  
+              2760      page-faults               #    0.003 M/sec                  
+        3633605535      cycles                    #    3.305 GHz                    
+          10666488      stalled-cycles-frontend   #    0.29% frontend cycles idle   
+        2418013368      stalled-cycles-backend    #   66.55% backend cycles idle    
+        4362540669      instructions              #    1.20  insn per cycle         
+                                                  #    0.55  stalled cycles per insn
+         587325848      branches                  #  534.160 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.041529010 seconds time elapsed
+       1.100165300 seconds time elapsed
 
-       1.037604000 seconds user
-       0.004009000 seconds sys
+       1.092417000 seconds user
+       0.007999000 seconds sys
 
 

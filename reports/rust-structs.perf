@@ -1,24 +1,24 @@
 32-th Fibonacci number is 3524578
-Total is 902291968
+Total is 56393248
 
 
- Performance counter stats for 'bin/rust-structs.bin 32 256':
+ Performance counter stats for 'bin/rust-structs.bin 32 16':
 
-         222499.28 msec task-clock                #    1.000 CPUs utilized          
-               254      context-switches          #    0.001 K/sec                  
+          20676.61 msec task-clock                #    1.000 CPUs utilized          
+                42      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-                85      page-faults               #    0.000 K/sec                  
-      720168746649      cycles                    #    3.237 GHz                    
-        8854708482      stalled-cycles-frontend   #    1.23% frontend cycles idle   
-       83755029576      stalled-cycles-backend    #   11.63% backend cycles idle    
-      847604745030      instructions              #    1.18  insn per cycle         
-                                                  #    0.10  stalled cycles per insn
-      167225568034      branches                  #  751.578 M/sec                  
+                80      page-faults               #    0.004 K/sec                  
+       66182883423      cycles                    #    3.201 GHz                    
+         917214151      stalled-cycles-frontend   #    1.39% frontend cycles idle   
+       19983877359      stalled-cycles-backend    #   30.19% backend cycles idle    
+       78959428436      instructions              #    1.19  insn per cycle         
+                                                  #    0.25  stalled cycles per insn
+       15885060539      branches                  #  768.262 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-     222.521856375 seconds time elapsed
+      20.680807016 seconds time elapsed
 
-     222.496545000 seconds user
+      20.676791000 seconds user
        0.000000000 seconds sys
 
 

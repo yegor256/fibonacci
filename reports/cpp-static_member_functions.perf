@@ -3,21 +3,21 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-static_member_functions.bin 32 256':
 
-           2178.33 msec task-clock                #    1.000 CPUs utilized          
-                 4      context-switches          #    0.002 K/sec                  
+          10262.96 msec task-clock                #    1.000 CPUs utilized          
+                16      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2759      page-faults               #    0.001 M/sec                  
-        7221664730      cycles                    #    3.315 GHz                    
-          27287152      stalled-cycles-frontend   #    0.38% frontend cycles idle   
-          16604396      stalled-cycles-backend    #    0.23% backend cycles idle    
-       18719696941      instructions              #    2.59  insn per cycle         
-                                                  #    0.00  stalled cycles per insn
-        3617808880      branches                  # 1660.821 M/sec                  
+              2759      page-faults               #    0.269 K/sec                  
+       33437154722      cycles                    #    3.258 GHz                    
+          51074058      stalled-cycles-frontend   #    0.15% frontend cycles idle   
+        5875035725      stalled-cycles-backend    #   17.57% backend cycles idle    
+       81249874183      instructions              #    2.43  insn per cycle         
+                                                  #    0.07  stalled cycles per insn
+       16251371859      branches                  # 1583.498 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       2.178824130 seconds time elapsed
+      10.264285332 seconds time elapsed
 
-       2.176016000 seconds user
-       0.003053000 seconds sys
+      10.263366000 seconds user
+       0.000000000 seconds sys
 
 

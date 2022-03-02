@@ -1,23 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 7049156
+Total is 3524578
 
- Performance counter stats for 'bin/cpp-objects.bin 32 2':
+ Performance counter stats for 'bin/cpp-objects.bin 32 1':
 
-          11759.74 msec task-clock                #    1.000 CPUs utilized          
-                27      context-switches          #    0.002 K/sec                  
+          21983.21 msec task-clock                #    1.000 CPUs utilized          
+                45      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2815      page-faults               #    0.239 K/sec                  
-       37838415115      cycles                    #    3.218 GHz                    
-         222157936      stalled-cycles-frontend   #    0.59% frontend cycles idle   
-        1876223600      stalled-cycles-backend    #    4.96% backend cycles idle    
-      116867224854      instructions              #    3.09  insn per cycle         
-                                                  #    0.02  stalled cycles per insn
-       23794971646      branches                  # 2023.426 M/sec                  
+              6754      page-faults               #    0.307 K/sec                  
+       69255587455      cycles                    #    3.150 GHz                    
+        1402604207      stalled-cycles-frontend   #    2.03% frontend cycles idle   
+       34281255847      stalled-cycles-backend    #   49.50% backend cycles idle    
+      176951077637      instructions              #    2.56  insn per cycle         
+                                                  #    0.19  stalled cycles per insn
+       40524842473      branches                  # 1843.445 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-      11.762127580 seconds time elapsed
+      21.986903625 seconds time elapsed
 
-      11.756107000 seconds user
-       0.003998000 seconds sys
+      21.963317000 seconds user
+       0.020013000 seconds sys
 
 

@@ -9,71 +9,63 @@ main:                                   # @main
 # %bb.0:
 	push	rbp
 	.cfi_def_cfa_offset 16
-	push	r15
-	.cfi_def_cfa_offset 24
-	push	r14
-	.cfi_def_cfa_offset 32
-	push	rbx
-	.cfi_def_cfa_offset 40
-	push	rax
-	.cfi_def_cfa_offset 48
-	.cfi_offset rbx, -40
-	.cfi_offset r14, -32
-	.cfi_offset r15, -24
 	.cfi_offset rbp, -16
-	cmp	edi, 3
-	jne	.LBB0_1
-# %bb.2:
-	mov	rbx, rsi
-	mov	rdi, qword ptr [rsi + 8]
-	xor	r14d, r14d
-	xor	esi, esi
-	mov	edx, 10
-	call	strtol
-	mov	r15, rax
-	mov	rdi, qword ptr [rbx + 16]
-	xor	esi, esi
-	mov	edx, 10
-	call	strtol
-	mov	rbx, rax
-	mov	eax, 0
-	mov	ebp, 0
-	test	ebx, ebx
-	jle	.LBB0_5
-# %bb.3:
-	xor	ebp, ebp
-	.p2align	4, 0x90
-.LBB0_4:                                # =>This Inner Loop Header: Depth=1
-	mov	edi, dword ptr [rip + dummy]
-	add	edi, r15d
-	call	_Z4calci
-	add	ebp, eax
-	add	ebx, -1
-	jne	.LBB0_4
-.LBB0_5:
-	mov	edi, offset .L.str.1
-	mov	esi, r15d
-	mov	edx, eax
-	mov	ecx, ebp
-	xor	eax, eax
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 48
+	mov	dword ptr [rbp - 4], 0
+	mov	dword ptr [rbp - 8], edi
+	mov	qword ptr [rbp - 16], rsi
+	cmp	dword ptr [rbp - 8], 3
+	je	.LBB0_2
+# %bb.1:
+	movabs	rdi, offset .L.str
+	mov	al, 0
 	call	printf
-	jmp	.LBB0_6
-.LBB0_1:
-	mov	edi, offset .Lstr
-	call	puts@PLT
-	mov	r14d, 1
+	mov	dword ptr [rbp - 4], 1
+	jmp	.LBB0_7
+.LBB0_2:
+	mov	dword ptr [rbp - 20], 0
+	mov	dword ptr [rbp - 24], 0
+	mov	rax, qword ptr [rbp - 16]
+	mov	rdi, qword ptr [rax + 8]
+	call	atoi
+	mov	dword ptr [rbp - 28], eax
+	mov	rax, qword ptr [rbp - 16]
+	mov	rdi, qword ptr [rax + 16]
+	call	atoi
+	mov	dword ptr [rbp - 32], eax
+	mov	dword ptr [rbp - 36], 0
+.LBB0_3:                                # =>This Inner Loop Header: Depth=1
+	mov	eax, dword ptr [rbp - 36]
+	cmp	eax, dword ptr [rbp - 32]
+	jge	.LBB0_6
+# %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
+	mov	edi, dword ptr [rbp - 28]
+	mov	eax, dword ptr [dummy]
+	add	edi, eax
+	call	_Z4calci
+	mov	dword ptr [rbp - 24], eax
+	mov	eax, dword ptr [rbp - 24]
+	add	eax, dword ptr [rbp - 20]
+	mov	dword ptr [rbp - 20], eax
+# %bb.5:                                #   in Loop: Header=BB0_3 Depth=1
+	mov	eax, dword ptr [rbp - 36]
+	add	eax, 1
+	mov	dword ptr [rbp - 36], eax
+	jmp	.LBB0_3
 .LBB0_6:
-	mov	eax, r14d
-	add	rsp, 8
-	.cfi_def_cfa_offset 40
-	pop	rbx
-	.cfi_def_cfa_offset 32
-	pop	r14
-	.cfi_def_cfa_offset 24
-	pop	r15
-	.cfi_def_cfa_offset 16
+	mov	esi, dword ptr [rbp - 28]
+	mov	edx, dword ptr [rbp - 24]
+	mov	ecx, dword ptr [rbp - 20]
+	movabs	rdi, offset .L.str.1
+	mov	al, 0
+	call	printf
+.LBB0_7:
+	mov	eax, dword ptr [rbp - 4]
+	add	rsp, 48
 	pop	rbp
-	.cfi_def_cfa_offset 8
+	.cfi_def_cfa rsp, 8
 	ret
 .Lfunc_end0:
 	.size	main, .Lfunc_end0-main
@@ -90,176 +82,135 @@ _Z4calci:                               # @_Z4calci
 # %bb.0:
 	push	rbp
 	.cfi_def_cfa_offset 16
-	push	r14
-	.cfi_def_cfa_offset 24
-	push	rbx
-	.cfi_def_cfa_offset 32
-	sub	rsp, 32
-	.cfi_def_cfa_offset 64
-	.cfi_offset rbx, -32
-	.cfi_offset r14, -24
 	.cfi_offset rbp, -16
-	mov	ebx, edi
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 112
+	mov	dword ptr [rbp - 4], edi
 	mov	edi, 32
 	call	_Znwm
-	mov	r14, rax
+	mov	rcx, rax
+	mov	qword ptr [rbp - 96], rcx       # 8-byte Spill
+	mov	byte ptr [rbp - 69], 1
+	mov	qword ptr [rbp - 88], rax       # 8-byte Spill
 .Ltmp0:
 	mov	edi, 24
 	call	_Znwm
 .Ltmp1:
-# %bb.1:
-	mov	rbp, rax
-	add	ebx, 1
-	mov	dword ptr [rax + 8], ebx
-	mov	byte ptr [rax + 12], 1
-	mov	qword ptr [rax], offset _ZTV5ValueIiE+16
-	mov	dword ptr [rax + 16], ebx
-.Ltmp3:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp4:
-# %bb.2:
-	movabs	rbx, 4294967297
-	mov	qword ptr [rax + 8], rbx
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], rbp
-	mov	dword ptr [r14 + 8], 0
-	mov	byte ptr [r14 + 12], 0
-	mov	qword ptr [r14], offset _ZTV4Fibo+16
-	mov	qword ptr [r14 + 16], rbp
-	mov	qword ptr [rsp + 24], 0
-	mov	qword ptr [r14 + 24], rax
-	mov	qword ptr [rsp + 16], 0
-.Ltmp12:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp13:
-# %bb.3:
-	mov	qword ptr [rax + 8], rbx
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], r14
-	mov	qword ptr [rsp], r14
-	mov	qword ptr [rsp + 8], rax
-.Ltmp21:
-	mov	rdi, rsp
-	call	_ZN9InterpretIiE3getEv
-.Ltmp22:
-# %bb.4:
-	mov	ebp, eax
-	mov	rbx, qword ptr [rsp + 8]
-	test	rbx, rbx
-	je	.LBB1_21
-# %bb.5:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB1_14
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB1_16
-	jmp	.LBB1_21
-.LBB1_14:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB1_21
-.LBB1_16:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB1_18
-# %bb.17:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB1_20
-	jmp	.LBB1_21
-.LBB1_18:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB1_21
-.LBB1_20:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB1_21:
-	mov	eax, ebp
-	add	rsp, 32
-	.cfi_def_cfa_offset 32
-	pop	rbx
-	.cfi_def_cfa_offset 24
-	pop	r14
-	.cfi_def_cfa_offset 16
-	pop	rbp
-	.cfi_def_cfa_offset 8
-	ret
-.LBB1_26:
-	.cfi_def_cfa_offset 64
-.Ltmp23:
-	mov	rbp, rax
-	mov	rdi, rsp
-	call	_ZN9InterpretIiED2Ev
-	mov	rdi, rbp
-	call	_Unwind_Resume@PLT
-.LBB1_12:
-.Ltmp14:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rdi, r14
-	call	_ZN4FiboD0Ev
-.Ltmp15:
-	call	__cxa_rethrow
-.Ltmp16:
-# %bb.13:
-.LBB1_22:
-.Ltmp17:
-	mov	rbp, rax
-.Ltmp18:
-	call	__cxa_end_catch
-.Ltmp19:
-# %bb.23:
-	lea	rdi, [rsp + 16]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	mov	rdi, rbp
-	call	_Unwind_Resume@PLT
-.LBB1_11:
-.Ltmp20:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB1_9:
-.Ltmp5:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rdi, rbp
-	call	_ZdlPv
-.Ltmp6:
-	call	__cxa_rethrow
-.Ltmp7:
-# %bb.10:
-.LBB1_7:
-.Ltmp8:
-	mov	rbp, rax
-.Ltmp9:
-	call	__cxa_end_catch
-.Ltmp10:
-	jmp	.LBB1_25
-.LBB1_8:
-.Ltmp11:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB1_24:
+	mov	qword ptr [rbp - 80], rax       # 8-byte Spill
+	jmp	.LBB1_1
+.LBB1_1:
+	mov	rdi, qword ptr [rbp - 80]       # 8-byte Reload
+	mov	rax, rdi
+	mov	qword ptr [rbp - 104], rax      # 8-byte Spill
+	mov	esi, dword ptr [rbp - 4]
+	add	esi, 1
 .Ltmp2:
-	mov	rbp, rax
-.LBB1_25:
-	mov	rdi, r14
+	call	_ZN5ValueIiEC2Ei
+.Ltmp3:
+	jmp	.LBB1_2
+.LBB1_2:
+.Ltmp5:
+	mov	rsi, qword ptr [rbp - 104]      # 8-byte Reload
+	lea	rdi, [rbp - 56]
+	call	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+.Ltmp6:
+	jmp	.LBB1_3
+.LBB1_3:
+.Ltmp8:
+	mov	rdi, qword ptr [rbp - 88]       # 8-byte Reload
+	lea	rsi, [rbp - 56]
+	call	_ZN4FiboC2ESt10shared_ptrI11ComputationIiEE
+.Ltmp9:
+	jmp	.LBB1_4
+.LBB1_4:
+	mov	rsi, qword ptr [rbp - 88]       # 8-byte Reload
+	mov	byte ptr [rbp - 69], 0
+.Ltmp10:
+	lea	rdi, [rbp - 40]
+	call	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+.Ltmp11:
+	jmp	.LBB1_5
+.LBB1_5:
+.Ltmp13:
+	lea	rdi, [rbp - 24]
+	lea	rsi, [rbp - 40]
+	call	_ZN9InterpretIiEC2ESt10shared_ptrI11ComputationIiEE
+.Ltmp14:
+	jmp	.LBB1_6
+.LBB1_6:
+	lea	rdi, [rbp - 40]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 56]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+.Ltmp16:
+	lea	rdi, [rbp - 24]
+	call	_ZN9InterpretIiE3getEv
+.Ltmp17:
+	mov	dword ptr [rbp - 108], eax      # 4-byte Spill
+	jmp	.LBB1_7
+.LBB1_7:
+	lea	rdi, [rbp - 24]
+	call	_ZN9InterpretIiED2Ev
+	mov	eax, dword ptr [rbp - 108]      # 4-byte Reload
+	add	rsp, 112
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB1_8:
+	.cfi_def_cfa rbp, 16
+.Ltmp7:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 64], rcx
+	mov	dword ptr [rbp - 68], eax
+	jmp	.LBB1_13
+.LBB1_9:
+.Ltmp4:
+	mov	rdi, qword ptr [rbp - 80]       # 8-byte Reload
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 64], rcx
+	mov	dword ptr [rbp - 68], eax
 	call	_ZdlPv
-	mov	rdi, rbp
+	jmp	.LBB1_13
+.LBB1_10:
+.Ltmp12:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 64], rcx
+	mov	dword ptr [rbp - 68], eax
+	jmp	.LBB1_12
+.LBB1_11:
+.Ltmp15:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 64], rcx
+	mov	dword ptr [rbp - 68], eax
+	lea	rdi, [rbp - 40]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+.LBB1_12:
+	lea	rdi, [rbp - 56]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+.LBB1_13:
+	test	byte ptr [rbp - 69], 1
+	jne	.LBB1_14
+	jmp	.LBB1_15
+.LBB1_14:
+	mov	rdi, qword ptr [rbp - 96]       # 8-byte Reload
+	call	_ZdlPv
+.LBB1_15:
+	jmp	.LBB1_17
+.LBB1_16:
+.Ltmp18:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 64], rcx
+	mov	dword ptr [rbp - 68], eax
+	lea	rdi, [rbp - 24]
+	call	_ZN9InterpretIiED2Ev
+.LBB1_17:
+	mov	rdi, qword ptr [rbp - 64]
 	call	_Unwind_Resume@PLT
 .Lfunc_end1:
 	.size	_Z4calci, .Lfunc_end1-_Z4calci
@@ -269,9 +220,7 @@ _Z4calci:                               # @_Z4calci
 GCC_except_table1:
 .Lexception0:
 	.byte	255                             # @LPStart Encoding = omit
-	.byte	3                               # @TType Encoding = udata4
-	.uleb128 .Lttbase0-.Lttbaseref0
-.Lttbaseref0:
+	.byte	255                             # @TType Encoding = omit
 	.byte	1                               # Call site Encoding = uleb128
 	.uleb128 .Lcst_end0-.Lcst_begin0
 .Lcst_begin0:
@@ -281,126 +230,191 @@ GCC_except_table1:
 	.byte	0                               #   On action: cleanup
 	.uleb128 .Ltmp0-.Lfunc_begin0           # >> Call Site 2 <<
 	.uleb128 .Ltmp1-.Ltmp0                  #   Call between .Ltmp0 and .Ltmp1
-	.uleb128 .Ltmp2-.Lfunc_begin0           #     jumps to .Ltmp2
+	.uleb128 .Ltmp7-.Lfunc_begin0           #     jumps to .Ltmp7
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp3-.Lfunc_begin0           # >> Call Site 3 <<
-	.uleb128 .Ltmp4-.Ltmp3                  #   Call between .Ltmp3 and .Ltmp4
-	.uleb128 .Ltmp5-.Lfunc_begin0           #     jumps to .Ltmp5
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp12-.Lfunc_begin0          # >> Call Site 4 <<
-	.uleb128 .Ltmp13-.Ltmp12                #   Call between .Ltmp12 and .Ltmp13
-	.uleb128 .Ltmp14-.Lfunc_begin0          #     jumps to .Ltmp14
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp21-.Lfunc_begin0          # >> Call Site 5 <<
-	.uleb128 .Ltmp22-.Ltmp21                #   Call between .Ltmp21 and .Ltmp22
-	.uleb128 .Ltmp23-.Lfunc_begin0          #     jumps to .Ltmp23
+	.uleb128 .Ltmp2-.Lfunc_begin0           # >> Call Site 3 <<
+	.uleb128 .Ltmp3-.Ltmp2                  #   Call between .Ltmp2 and .Ltmp3
+	.uleb128 .Ltmp4-.Lfunc_begin0           #     jumps to .Ltmp4
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp22-.Lfunc_begin0          # >> Call Site 6 <<
-	.uleb128 .Ltmp15-.Ltmp22                #   Call between .Ltmp22 and .Ltmp15
-	.byte	0                               #     has no landing pad
+	.uleb128 .Ltmp5-.Lfunc_begin0           # >> Call Site 4 <<
+	.uleb128 .Ltmp6-.Ltmp5                  #   Call between .Ltmp5 and .Ltmp6
+	.uleb128 .Ltmp7-.Lfunc_begin0           #     jumps to .Ltmp7
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp15-.Lfunc_begin0          # >> Call Site 7 <<
-	.uleb128 .Ltmp16-.Ltmp15                #   Call between .Ltmp15 and .Ltmp16
-	.uleb128 .Ltmp17-.Lfunc_begin0          #     jumps to .Ltmp17
+	.uleb128 .Ltmp8-.Lfunc_begin0           # >> Call Site 5 <<
+	.uleb128 .Ltmp11-.Ltmp8                 #   Call between .Ltmp8 and .Ltmp11
+	.uleb128 .Ltmp12-.Lfunc_begin0          #     jumps to .Ltmp12
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp18-.Lfunc_begin0          # >> Call Site 8 <<
-	.uleb128 .Ltmp19-.Ltmp18                #   Call between .Ltmp18 and .Ltmp19
-	.uleb128 .Ltmp20-.Lfunc_begin0          #     jumps to .Ltmp20
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp19-.Lfunc_begin0          # >> Call Site 9 <<
-	.uleb128 .Ltmp6-.Ltmp19                 #   Call between .Ltmp19 and .Ltmp6
-	.byte	0                               #     has no landing pad
+	.uleb128 .Ltmp13-.Lfunc_begin0          # >> Call Site 6 <<
+	.uleb128 .Ltmp14-.Ltmp13                #   Call between .Ltmp13 and .Ltmp14
+	.uleb128 .Ltmp15-.Lfunc_begin0          #     jumps to .Ltmp15
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp6-.Lfunc_begin0           # >> Call Site 10 <<
-	.uleb128 .Ltmp7-.Ltmp6                  #   Call between .Ltmp6 and .Ltmp7
-	.uleb128 .Ltmp8-.Lfunc_begin0           #     jumps to .Ltmp8
+	.uleb128 .Ltmp16-.Lfunc_begin0          # >> Call Site 7 <<
+	.uleb128 .Ltmp17-.Ltmp16                #   Call between .Ltmp16 and .Ltmp17
+	.uleb128 .Ltmp18-.Lfunc_begin0          #     jumps to .Ltmp18
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp9-.Lfunc_begin0           # >> Call Site 11 <<
-	.uleb128 .Ltmp10-.Ltmp9                 #   Call between .Ltmp9 and .Ltmp10
-	.uleb128 .Ltmp11-.Lfunc_begin0          #     jumps to .Ltmp11
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp10-.Lfunc_begin0          # >> Call Site 12 <<
-	.uleb128 .Lfunc_end1-.Ltmp10            #   Call between .Ltmp10 and .Lfunc_end1
+	.uleb128 .Ltmp17-.Lfunc_begin0          # >> Call Site 8 <<
+	.uleb128 .Lfunc_end1-.Ltmp17            #   Call between .Ltmp17 and .Lfunc_end1
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
 .Lcst_end0:
-	.byte	1                               # >> Action Record 1 <<
-                                        #   Catch TypeInfo 1
-	.byte	0                               #   No further actions
-	.p2align	2
-                                        # >> Catch TypeInfos <<
-	.long	0                               # TypeInfo 1
-.Lttbase0:
 	.p2align	2
                                         # -- End function
-	.section	.text._ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev,comdat
-	.weak	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev # -- Begin function _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.section	.text._Z4cptrIiEN11ComputationIT_E3ptrEPS2_,"axG",@progbits,_Z4cptrIiEN11ComputationIT_E3ptrEPS2_,comdat
+	.weak	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_ # -- Begin function _Z4cptrIiEN11ComputationIT_E3ptrEPS2_
 	.p2align	4, 0x90
-	.type	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev,@function
-_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev: # @_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.type	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_,@function
+_Z4cptrIiEN11ComputationIT_E3ptrEPS2_:  # @_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
 	.cfi_startproc
 # %bb.0:
-	push	rbx
+	push	rbp
 	.cfi_def_cfa_offset 16
-	.cfi_offset rbx, -16
-	mov	rbx, qword ptr [rdi + 8]
-	test	rbx, rbx
-	je	.LBB2_9
-# %bb.1:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB2_3
-# %bb.2:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB2_5
-	jmp	.LBB2_9
-.LBB2_3:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB2_9
-.LBB2_5:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB2_7
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB2_10
-.LBB2_9:
-	pop	rbx
-	.cfi_def_cfa_offset 8
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	rax, rdi
+	mov	qword ptr [rbp - 24], rax       # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 8], rax
+	mov	qword ptr [rbp - 16], rsi
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2IS1_vEEPT_
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
 	ret
-.LBB2_7:
-	.cfi_def_cfa_offset 16
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB2_9
-.LBB2_10:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	pop	rbx
-	.cfi_def_cfa_offset 8
-	jmp	qword ptr [rax + 24]            # TAILCALL
 .Lfunc_end2:
-	.size	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev, .Lfunc_end2-_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.size	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_, .Lfunc_end2-_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4                               # -- Begin function _ZN9InterpretIiE3getEv
-.LCPI3_0:
-	.zero	16
+	.section	.text._ZN5ValueIiEC2Ei,"axG",@progbits,_ZN5ValueIiEC2Ei,comdat
+	.weak	_ZN5ValueIiEC2Ei                # -- Begin function _ZN5ValueIiEC2Ei
+	.p2align	4, 0x90
+	.type	_ZN5ValueIiEC2Ei,@function
+_ZN5ValueIiEC2Ei:                       # @_ZN5ValueIiEC2Ei
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	dword ptr [rbp - 12], esi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rdi       # 8-byte Spill
+	mov	esi, dword ptr [rbp - 12]
+	call	_ZN11ComputationIiEC2Ei
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	movabs	rcx, offset _ZTV5ValueIiE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	mov	ecx, dword ptr [rbp - 12]
+	mov	dword ptr [rax + 16], ecx
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end3:
+	.size	_ZN5ValueIiEC2Ei, .Lfunc_end3-_ZN5ValueIiEC2Ei
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN4FiboC2ESt10shared_ptrI11ComputationIiEE,"axG",@progbits,_ZN4FiboC2ESt10shared_ptrI11ComputationIiEE,comdat
+	.weak	_ZN4FiboC2ESt10shared_ptrI11ComputationIiEE # -- Begin function _ZN4FiboC2ESt10shared_ptrI11ComputationIiEE
+	.p2align	4, 0x90
+	.type	_ZN4FiboC2ESt10shared_ptrI11ComputationIiEE,@function
+_ZN4FiboC2ESt10shared_ptrI11ComputationIiEE: # @_ZN4FiboC2ESt10shared_ptrI11ComputationIiEE
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 24], rsi       # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 32], rdi       # 8-byte Spill
+	call	_ZN11ComputationIiEC2Ev
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	movabs	rcx, offset _ZTV4Fibo
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	add	rax, 16
+	mov	qword ptr [rbp - 16], rax       # 8-byte Spill
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end4:
+	.size	_ZN4FiboC2ESt10shared_ptrI11ComputationIiEE, .Lfunc_end4-_ZN4FiboC2ESt10shared_ptrI11ComputationIiEE
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN9InterpretIiEC2ESt10shared_ptrI11ComputationIiEE,"axG",@progbits,_ZN9InterpretIiEC2ESt10shared_ptrI11ComputationIiEE,comdat
+	.weak	_ZN9InterpretIiEC2ESt10shared_ptrI11ComputationIiEE # -- Begin function _ZN9InterpretIiEC2ESt10shared_ptrI11ComputationIiEE
+	.p2align	4, 0x90
+	.type	_ZN9InterpretIiEC2ESt10shared_ptrI11ComputationIiEE,@function
+_ZN9InterpretIiEC2ESt10shared_ptrI11ComputationIiEE: # @_ZN9InterpretIiEC2ESt10shared_ptrI11ComputationIiEE
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 24], rsi       # 8-byte Spill
+	mov	rax, rdi
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	mov	qword ptr [rbp - 8], rax
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rax       # 8-byte Spill
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end5:
+	.size	_ZN9InterpretIiEC2ESt10shared_ptrI11ComputationIiEE, .Lfunc_end5-_ZN9InterpretIiEC2ESt10shared_ptrI11ComputationIiEE
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt10shared_ptrI11ComputationIiEED2Ev,"axG",@progbits,_ZNSt10shared_ptrI11ComputationIiEED2Ev,comdat
+	.weak	_ZNSt10shared_ptrI11ComputationIiEED2Ev # -- Begin function _ZNSt10shared_ptrI11ComputationIiEED2Ev
+	.p2align	4, 0x90
+	.type	_ZNSt10shared_ptrI11ComputationIiEED2Ev,@function
+_ZNSt10shared_ptrI11ComputationIiEED2Ev: # @_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end6:
+	.size	_ZNSt10shared_ptrI11ComputationIiEED2Ev, .Lfunc_end6-_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	.cfi_endproc
+                                        # -- End function
 	.section	.text._ZN9InterpretIiE3getEv,"axG",@progbits,_ZN9InterpretIiE3getEv,comdat
-	.weak	_ZN9InterpretIiE3getEv
+	.weak	_ZN9InterpretIiE3getEv          # -- Begin function _ZN9InterpretIiE3getEv
 	.p2align	4, 0x90
 	.type	_ZN9InterpretIiE3getEv,@function
 _ZN9InterpretIiE3getEv:                 # @_ZN9InterpretIiE3getEv
@@ -411,228 +425,203 @@ _ZN9InterpretIiE3getEv:                 # @_ZN9InterpretIiE3getEv
 # %bb.0:
 	push	rbp
 	.cfi_def_cfa_offset 16
-	push	r14
-	.cfi_def_cfa_offset 24
-	push	rbx
-	.cfi_def_cfa_offset 32
-	sub	rsp, 32
-	.cfi_def_cfa_offset 64
-	.cfi_offset rbx, -32
-	.cfi_offset r14, -24
 	.cfi_offset rbp, -16
-	mov	rsi, qword ptr [rdi]
-	mov	qword ptr [rsp], rsi
-	mov	rax, qword ptr [rdi + 8]
-	mov	qword ptr [rsp + 8], rax
-	test	rax, rax
-	je	.LBB3_4
-# %bb.1:
-	mov	ecx, offset __pthread_key_create
-	test	rcx, rcx
-	je	.LBB3_3
-# %bb.2:
-	lock		add	dword ptr [rax + 8], 1
-	mov	rsi, qword ptr [rsp]
-.LBB3_4:
-	cmp	byte ptr [rsi + 12], 0
-	jne	.LBB3_28
-	jmp	.LBB3_5
-.LBB3_3:
-	add	dword ptr [rax + 8], 1
-	cmp	byte ptr [rsi + 12], 0
-	je	.LBB3_5
-.LBB3_28:
-	mov	ebp, dword ptr [rsi + 8]
-	mov	rbx, qword ptr [rsp + 8]
-	test	rbx, rbx
-	je	.LBB3_38
-# %bb.29:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB3_31
-# %bb.30:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB3_33
-	jmp	.LBB3_38
-.LBB3_5:
-	lea	r14, [rsp + 16]
-	mov	ebx, offset __pthread_key_create
-	jmp	.LBB3_6
-	.p2align	4, 0x90
-.LBB3_27:                               #   in Loop: Header=BB3_6 Depth=1
-	mov	rsi, qword ptr [rsp]
-	cmp	byte ptr [rsi + 12], 0
-	jne	.LBB3_28
-.LBB3_6:                                # =>This Inner Loop Header: Depth=1
-	mov	rax, qword ptr [rsi]
-.Ltmp24:
-	mov	rdi, r14
-	call	qword ptr [rax + 16]
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 64
+	mov	qword ptr [rbp - 8], rdi
+	mov	rsi, qword ptr [rbp - 8]
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+.LBB7_1:                                # =>This Inner Loop Header: Depth=1
+	jmp	.LBB7_2
+.LBB7_2:                                #   in Loop: Header=BB7_1 Depth=1
+	lea	rdi, [rbp - 24]
+	call	_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	mov	rdi, rax
+.Ltmp19:
+	call	_ZN11ComputationIiE8finishedEv
+.Ltmp20:
+	mov	byte ptr [rbp - 57], al         # 1-byte Spill
+	jmp	.LBB7_3
+.LBB7_3:                                #   in Loop: Header=BB7_1 Depth=1
+	mov	al, byte ptr [rbp - 57]         # 1-byte Reload
+	test	al, 1
+	jne	.LBB7_4
+	jmp	.LBB7_6
+.LBB7_4:
+	jmp	.LBB7_8
+.LBB7_5:
 .Ltmp25:
-# %bb.7:                                #   in Loop: Header=BB3_6 Depth=1
-	mov	rax, qword ptr [rsp + 16]
-	mov	rcx, qword ptr [rsp + 24]
-	xorps	xmm0, xmm0
-	movaps	xmmword ptr [rsp + 16], xmm0
-	mov	qword ptr [rsp], rax
-	mov	rbp, qword ptr [rsp + 8]
-	mov	qword ptr [rsp + 8], rcx
-	test	rbp, rbp
-	je	.LBB3_17
-# %bb.8:                                #   in Loop: Header=BB3_6 Depth=1
-	test	rbx, rbx
-	je	.LBB3_10
-# %bb.9:                                #   in Loop: Header=BB3_6 Depth=1
-	mov	eax, -1
-	lock		xadd	dword ptr [rbp + 8], eax
-	cmp	eax, 1
-	je	.LBB3_12
-	jmp	.LBB3_17
-	.p2align	4, 0x90
-.LBB3_10:                               #   in Loop: Header=BB3_6 Depth=1
-	mov	eax, dword ptr [rbp + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbp + 8], ecx
-	cmp	eax, 1
-	jne	.LBB3_17
-.LBB3_12:                               #   in Loop: Header=BB3_6 Depth=1
-	mov	rax, qword ptr [rbp]
-	mov	rdi, rbp
-	call	qword ptr [rax + 16]
-	test	rbx, rbx
-	je	.LBB3_14
-# %bb.13:                               #   in Loop: Header=BB3_6 Depth=1
-	mov	eax, -1
-	lock		xadd	dword ptr [rbp + 12], eax
-	cmp	eax, 1
-	je	.LBB3_16
-	jmp	.LBB3_17
-.LBB3_14:                               #   in Loop: Header=BB3_6 Depth=1
-	mov	eax, dword ptr [rbp + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbp + 12], ecx
-	cmp	eax, 1
-	jne	.LBB3_17
-.LBB3_16:                               #   in Loop: Header=BB3_6 Depth=1
-	mov	rax, qword ptr [rbp]
-	mov	rdi, rbp
-	call	qword ptr [rax + 24]
-	.p2align	4, 0x90
-.LBB3_17:                               #   in Loop: Header=BB3_6 Depth=1
-	mov	rbp, qword ptr [rsp + 24]
-	test	rbp, rbp
-	je	.LBB3_27
-# %bb.18:                               #   in Loop: Header=BB3_6 Depth=1
-	test	rbx, rbx
-	je	.LBB3_20
-# %bb.19:                               #   in Loop: Header=BB3_6 Depth=1
-	mov	eax, -1
-	lock		xadd	dword ptr [rbp + 8], eax
-	cmp	eax, 1
-	jne	.LBB3_27
-	jmp	.LBB3_22
-	.p2align	4, 0x90
-.LBB3_20:                               #   in Loop: Header=BB3_6 Depth=1
-	mov	eax, dword ptr [rbp + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbp + 8], ecx
-	cmp	eax, 1
-	jne	.LBB3_27
-.LBB3_22:                               #   in Loop: Header=BB3_6 Depth=1
-	mov	rax, qword ptr [rbp]
-	mov	rdi, rbp
-	call	qword ptr [rax + 16]
-	test	rbx, rbx
-	je	.LBB3_24
-# %bb.23:                               #   in Loop: Header=BB3_6 Depth=1
-	mov	eax, -1
-	lock		xadd	dword ptr [rbp + 12], eax
-	cmp	eax, 1
-	jne	.LBB3_27
-	jmp	.LBB3_26
-.LBB3_24:                               #   in Loop: Header=BB3_6 Depth=1
-	mov	eax, dword ptr [rbp + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbp + 12], ecx
-	cmp	eax, 1
-	jne	.LBB3_27
-.LBB3_26:                               #   in Loop: Header=BB3_6 Depth=1
-	mov	rax, qword ptr [rbp]
-	mov	rdi, rbp
-	call	qword ptr [rax + 24]
-	jmp	.LBB3_27
-.LBB3_31:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB3_38
-.LBB3_33:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB3_35
-# %bb.34:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB3_37
-	jmp	.LBB3_38
-.LBB3_35:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB3_38
-.LBB3_37:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB3_38:
-	mov	eax, ebp
-	add	rsp, 32
-	.cfi_def_cfa_offset 32
-	pop	rbx
-	.cfi_def_cfa_offset 24
-	pop	r14
-	.cfi_def_cfa_offset 16
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 32], rcx
+	mov	dword ptr [rbp - 36], eax
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	jmp	.LBB7_10
+.LBB7_6:                                #   in Loop: Header=BB7_1 Depth=1
+	lea	rdi, [rbp - 24]
+	call	_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	mov	rsi, rax
+	mov	rax, qword ptr [rsi]
+	mov	rax, qword ptr [rax + 16]
+.Ltmp21:
+	lea	rdi, [rbp - 56]
+	call	rax
+.Ltmp22:
+	jmp	.LBB7_7
+.LBB7_7:                                #   in Loop: Header=BB7_1 Depth=1
+	lea	rdi, [rbp - 24]
+	lea	rsi, [rbp - 56]
+	call	_ZNSt10shared_ptrI11ComputationIiEEaSEOS2_
+	lea	rdi, [rbp - 56]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	jmp	.LBB7_1
+.LBB7_8:
+	lea	rdi, [rbp - 24]
+	call	_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	mov	rdi, rax
+.Ltmp23:
+	call	_ZN11ComputationIiE6resultEv
+.Ltmp24:
+	mov	dword ptr [rbp - 64], eax       # 4-byte Spill
+	jmp	.LBB7_9
+.LBB7_9:
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	eax, dword ptr [rbp - 64]       # 4-byte Reload
+	add	rsp, 64
 	pop	rbp
-	.cfi_def_cfa_offset 8
+	.cfi_def_cfa rsp, 8
 	ret
-.LBB3_39:
-	.cfi_def_cfa_offset 64
-.Ltmp26:
-	mov	rbx, rax
-	mov	rdi, rsp
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	mov	rdi, rbx
+.LBB7_10:
+	.cfi_def_cfa rbp, 16
+	mov	rdi, qword ptr [rbp - 32]
 	call	_Unwind_Resume@PLT
-.Lfunc_end3:
-	.size	_ZN9InterpretIiE3getEv, .Lfunc_end3-_ZN9InterpretIiE3getEv
+.Lfunc_end7:
+	.size	_ZN9InterpretIiE3getEv, .Lfunc_end7-_ZN9InterpretIiE3getEv
 	.cfi_endproc
 	.section	.gcc_except_table._ZN9InterpretIiE3getEv,"aG",@progbits,_ZN9InterpretIiE3getEv,comdat
 	.p2align	2
-GCC_except_table3:
+GCC_except_table7:
 .Lexception1:
 	.byte	255                             # @LPStart Encoding = omit
 	.byte	255                             # @TType Encoding = omit
 	.byte	1                               # Call site Encoding = uleb128
 	.uleb128 .Lcst_end1-.Lcst_begin1
 .Lcst_begin1:
-	.uleb128 .Ltmp24-.Lfunc_begin1          # >> Call Site 1 <<
-	.uleb128 .Ltmp25-.Ltmp24                #   Call between .Ltmp24 and .Ltmp25
-	.uleb128 .Ltmp26-.Lfunc_begin1          #     jumps to .Ltmp26
+	.uleb128 .Ltmp19-.Lfunc_begin1          # >> Call Site 1 <<
+	.uleb128 .Ltmp24-.Ltmp19                #   Call between .Ltmp19 and .Ltmp24
+	.uleb128 .Ltmp25-.Lfunc_begin1          #     jumps to .Ltmp25
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp25-.Lfunc_begin1          # >> Call Site 2 <<
-	.uleb128 .Lfunc_end3-.Ltmp25            #   Call between .Ltmp25 and .Lfunc_end3
+	.uleb128 .Ltmp24-.Lfunc_begin1          # >> Call Site 2 <<
+	.uleb128 .Lfunc_end7-.Ltmp24            #   Call between .Ltmp24 and .Lfunc_end7
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
 .Lcst_end1:
 	.p2align	2
+                                        # -- End function
+	.section	.text._ZN9InterpretIiED2Ev,"axG",@progbits,_ZN9InterpretIiED2Ev,comdat
+	.weak	_ZN9InterpretIiED2Ev            # -- Begin function _ZN9InterpretIiED2Ev
+	.p2align	4, 0x90
+	.type	_ZN9InterpretIiED2Ev,@function
+_ZN9InterpretIiED2Ev:                   # @_ZN9InterpretIiED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end8:
+	.size	_ZN9InterpretIiED2Ev, .Lfunc_end8-_ZN9InterpretIiED2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN11ComputationIiEC2Ev,"axG",@progbits,_ZN11ComputationIiEC2Ev,comdat
+	.weak	_ZN11ComputationIiEC2Ev         # -- Begin function _ZN11ComputationIiEC2Ev
+	.p2align	4, 0x90
+	.type	_ZN11ComputationIiEC2Ev,@function
+_ZN11ComputationIiEC2Ev:                # @_ZN11ComputationIiEC2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	movabs	rcx, offset _ZTV11ComputationIiE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	mov	dword ptr [rax + 8], 0
+	mov	byte ptr [rax + 12], 0
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end9:
+	.size	_ZN11ComputationIiEC2Ev, .Lfunc_end9-_ZN11ComputationIiEC2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_,"axG",@progbits,_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_,comdat
+	.weak	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_ # -- Begin function _ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	.p2align	4, 0x90
+	.type	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_,@function
+_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_: # @_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end10:
+	.size	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_, .Lfunc_end10-_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt10shared_ptrI11ComputationIiEEC2EOS2_,"axG",@progbits,_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_,comdat
+	.weak	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_ # -- Begin function _ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	.p2align	4, 0x90
+	.type	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_,@function
+_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_: # @_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rax       # 8-byte Spill
+	mov	rdi, qword ptr [rbp - 16]
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end11:
+	.size	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_, .Lfunc_end11-_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN4FiboD2Ev,"axG",@progbits,_ZN4FiboD2Ev,comdat
 	.weak	_ZN4FiboD2Ev                    # -- Begin function _ZN4FiboD2Ev
@@ -641,60 +630,28 @@ GCC_except_table3:
 _ZN4FiboD2Ev:                           # @_ZN4FiboD2Ev
 	.cfi_startproc
 # %bb.0:
-	push	rbx
+	push	rbp
 	.cfi_def_cfa_offset 16
-	.cfi_offset rbx, -16
-	mov	qword ptr [rdi], offset _ZTV4Fibo+16
-	mov	rbx, qword ptr [rdi + 24]
-	test	rbx, rbx
-	je	.LBB4_9
-# %bb.1:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB4_3
-# %bb.2:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB4_5
-	jmp	.LBB4_9
-.LBB4_3:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB4_9
-.LBB4_5:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB4_7
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB4_10
-.LBB4_9:
-	pop	rbx
-	.cfi_def_cfa_offset 8
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	movabs	rax, offset _ZTV4Fibo
+	add	rax, 16
+	mov	qword ptr [rdi], rax
+	add	rdi, 16
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZN11ComputationIiED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
 	ret
-.LBB4_7:
-	.cfi_def_cfa_offset 16
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB4_9
-.LBB4_10:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	pop	rbx
-	.cfi_def_cfa_offset 8
-	jmp	qword ptr [rax + 24]            # TAILCALL
-.Lfunc_end4:
-	.size	_ZN4FiboD2Ev, .Lfunc_end4-_ZN4FiboD2Ev
+.Lfunc_end12:
+	.size	_ZN4FiboD2Ev, .Lfunc_end12-_ZN4FiboD2Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN4FiboD0Ev,"axG",@progbits,_ZN4FiboD0Ev,comdat
@@ -704,69 +661,24 @@ _ZN4FiboD2Ev:                           # @_ZN4FiboD2Ev
 _ZN4FiboD0Ev:                           # @_ZN4FiboD0Ev
 	.cfi_startproc
 # %bb.0:
-	push	r14
+	push	rbp
 	.cfi_def_cfa_offset 16
-	push	rbx
-	.cfi_def_cfa_offset 24
-	push	rax
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -24
-	.cfi_offset r14, -16
-	mov	r14, rdi
-	mov	qword ptr [rdi], offset _ZTV4Fibo+16
-	mov	rbx, qword ptr [rdi + 24]
-	test	rbx, rbx
-	je	.LBB5_10
-# %bb.1:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB5_3
-# %bb.2:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB5_5
-	jmp	.LBB5_10
-.LBB5_3:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB5_10
-.LBB5_5:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB5_7
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB5_9
-	jmp	.LBB5_10
-.LBB5_7:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB5_10
-.LBB5_9:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB5_10:
-	mov	rdi, r14
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
-	.cfi_def_cfa_offset 16
-	pop	r14
-	.cfi_def_cfa_offset 8
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end5:
-	.size	_ZN4FiboD0Ev, .Lfunc_end5-_ZN4FiboD0Ev
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZN4FiboD2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end13:
+	.size	_ZN4FiboD0Ev, .Lfunc_end13-_ZN4FiboD0Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN4Fibo4evalEv,"axG",@progbits,_ZN4Fibo4evalEv,comdat
@@ -781,315 +693,552 @@ _ZN4Fibo4evalEv:                        # @_ZN4Fibo4evalEv
 # %bb.0:
 	push	rbp
 	.cfi_def_cfa_offset 16
-	push	r15
-	.cfi_def_cfa_offset 24
-	push	r14
-	.cfi_def_cfa_offset 32
-	push	r13
-	.cfi_def_cfa_offset 40
-	push	r12
-	.cfi_def_cfa_offset 48
-	push	rbx
-	.cfi_def_cfa_offset 56
-	sub	rsp, 56
-	.cfi_def_cfa_offset 112
-	.cfi_offset rbx, -56
-	.cfi_offset r12, -48
-	.cfi_offset r13, -40
-	.cfi_offset r14, -32
-	.cfi_offset r15, -24
 	.cfi_offset rbp, -16
-	mov	rbx, rsi
-	mov	r14, rdi
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 160
+	mov	qword ptr [rbp - 136], rdi      # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 128], rax      # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rbp - 120], rax      # 8-byte Spill
 	mov	edi, 64
 	call	_Znwm
-	mov	r15, rax
-	mov	rax, qword ptr [rbx + 16]
-	mov	qword ptr [rsp + 8], rax
-	mov	rax, qword ptr [rbx + 24]
-	mov	qword ptr [rsp + 16], rax
-	test	rax, rax
-	je	.LBB6_4
-# %bb.1:
-	mov	ecx, offset __pthread_key_create
-	test	rcx, rcx
-	je	.LBB6_3
-# %bb.2:
-	lock		add	dword ptr [rax + 8], 1
-	jmp	.LBB6_4
-.LBB6_3:
-	add	dword ptr [rax + 8], 1
-.LBB6_4:
+	mov	rsi, qword ptr [rbp - 120]      # 8-byte Reload
+	mov	rcx, rax
+	mov	qword ptr [rbp - 112], rcx      # 8-byte Spill
+	mov	byte ptr [rbp - 81], 1
+	mov	qword ptr [rbp - 104], rax      # 8-byte Spill
+	add	rsi, 16
+	lea	rdi, [rbp - 32]
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+.Ltmp26:
+	mov	edi, 24
+	call	_Znwm
 .Ltmp27:
-	mov	edi, 24
-	call	_Znwm
+	mov	qword ptr [rbp - 96], rax       # 8-byte Spill
+	jmp	.LBB14_1
+.LBB14_1:
+	mov	rdi, qword ptr [rbp - 96]       # 8-byte Reload
+	mov	rax, rdi
+	mov	qword ptr [rbp - 144], rax      # 8-byte Spill
 .Ltmp28:
-# %bb.5:
-	mov	r13, rax
-	mov	dword ptr [rax + 8], 0
-	mov	byte ptr [rax + 12], 1
-	mov	dword ptr [rax + 16], 0
-	mov	qword ptr [rax], offset _ZTV3Int+16
-	mov	qword ptr [rsp + 24], rax
-	mov	qword ptr [rsp + 32], 0
-.Ltmp30:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp31:
-# %bb.6:
-	mov	r12, rax
-	movabs	rbp, 4294967297
-	mov	qword ptr [rax + 8], rbp
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], r13
-	mov	qword ptr [rsp + 32], rax
-.Ltmp39:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp40:
-# %bb.7:
-	mov	rbx, rax
-	mov	dword ptr [rax + 8], 1
-	mov	byte ptr [rax + 12], 1
-	mov	dword ptr [rax + 16], 1
-	mov	qword ptr [rax], offset _ZTV3Int+16
-	mov	qword ptr [rsp + 40], rax
-	mov	qword ptr [rsp + 48], 0
-.Ltmp42:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp43:
-# %bb.8:
-	mov	qword ptr [rax + 8], rbp
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], rbx
-	mov	dword ptr [r15 + 8], 0
-	mov	byte ptr [r15 + 12], 0
-	mov	qword ptr [r15], offset _ZTV7FiboDyn+16
-	mov	rcx, qword ptr [rsp + 8]
-	mov	qword ptr [r15 + 16], rcx
-	mov	rcx, qword ptr [rsp + 16]
-	mov	qword ptr [rsp + 16], 0
-	mov	qword ptr [r15 + 24], rcx
-	mov	qword ptr [rsp + 8], 0
-	mov	qword ptr [r15 + 32], r13
-	mov	qword ptr [rsp + 32], 0
-	mov	qword ptr [r15 + 40], r12
-	mov	qword ptr [rsp + 24], 0
-	mov	qword ptr [r15 + 48], rbx
-	mov	qword ptr [rsp + 48], 0
-	mov	qword ptr [r15 + 56], rax
-	mov	qword ptr [rsp + 40], 0
-	mov	qword ptr [r14], r15
-	mov	qword ptr [r14 + 8], 0
-.Ltmp51:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp52:
-# %bb.9:
-	mov	qword ptr [rax + 8], rbp
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], r15
-	mov	qword ptr [r14 + 8], rax
-	mov	rax, r14
-	add	rsp, 56
-	.cfi_def_cfa_offset 56
-	pop	rbx
-	.cfi_def_cfa_offset 48
-	pop	r12
-	.cfi_def_cfa_offset 40
-	pop	r13
-	.cfi_def_cfa_offset 32
-	pop	r14
-	.cfi_def_cfa_offset 24
-	pop	r15
-	.cfi_def_cfa_offset 16
-	pop	rbp
-	.cfi_def_cfa_offset 8
-	ret
-.LBB6_19:
-	.cfi_def_cfa_offset 112
-.Ltmp53:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rax, qword ptr [r15]
-	mov	rdi, r15
-	call	qword ptr [rax + 8]
-.Ltmp54:
-	call	__cxa_rethrow
-.Ltmp55:
-# %bb.20:
-.LBB6_21:
-.Ltmp56:
-	mov	r14, rax
-.Ltmp57:
-	call	__cxa_end_catch
-.Ltmp58:
-# %bb.22:
-	lea	rdi, [rsp + 40]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	xor	ebx, ebx
-	jmp	.LBB6_27
-.LBB6_18:
-.Ltmp59:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB6_16:
-.Ltmp44:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 8]
-.Ltmp45:
-	call	__cxa_rethrow
-.Ltmp46:
-# %bb.17:
-.LBB6_14:
-.Ltmp47:
-	mov	r14, rax
-.Ltmp48:
-	call	__cxa_end_catch
-.Ltmp49:
-	jmp	.LBB6_26
-.LBB6_15:
-.Ltmp50:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB6_25:
-.Ltmp41:
-	mov	r14, rax
-.LBB6_26:
-	mov	bl, 1
-.LBB6_27:
-	lea	rdi, [rsp + 24]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	lea	rdi, [rsp + 8]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	test	bl, bl
-	jne	.LBB6_28
-	jmp	.LBB6_29
-.LBB6_12:
-.Ltmp32:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rax, qword ptr [r13]
-	mov	rdi, r13
-	call	qword ptr [rax + 8]
-.Ltmp33:
-	call	__cxa_rethrow
-.Ltmp34:
-# %bb.13:
-.LBB6_10:
-.Ltmp35:
-	mov	r14, rax
-.Ltmp36:
-	call	__cxa_end_catch
-.Ltmp37:
-	jmp	.LBB6_24
-.LBB6_11:
-.Ltmp38:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB6_23:
+	xor	esi, esi
+	call	_ZN3IntC2Ei
 .Ltmp29:
-	mov	r14, rax
-.LBB6_24:
-	lea	rdi, [rsp + 8]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-.LBB6_28:
-	mov	rdi, r15
+	jmp	.LBB14_2
+.LBB14_2:
+.Ltmp31:
+	mov	rsi, qword ptr [rbp - 144]      # 8-byte Reload
+	lea	rdi, [rbp - 48]
+	call	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+.Ltmp32:
+	jmp	.LBB14_3
+.LBB14_3:
+.Ltmp34:
+	mov	edi, 24
+	call	_Znwm
+.Ltmp35:
+	mov	qword ptr [rbp - 152], rax      # 8-byte Spill
+	jmp	.LBB14_4
+.LBB14_4:
+	mov	rdi, qword ptr [rbp - 152]      # 8-byte Reload
+	mov	rax, rdi
+	mov	qword ptr [rbp - 160], rax      # 8-byte Spill
+.Ltmp36:
+	mov	esi, 1
+	call	_ZN3IntC2Ei
+.Ltmp37:
+	jmp	.LBB14_5
+.LBB14_5:
+.Ltmp39:
+	mov	rsi, qword ptr [rbp - 160]      # 8-byte Reload
+	lea	rdi, [rbp - 80]
+	call	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+.Ltmp40:
+	jmp	.LBB14_6
+.LBB14_6:
+.Ltmp42:
+	mov	rdi, qword ptr [rbp - 104]      # 8-byte Reload
+	lea	rsi, [rbp - 32]
+	lea	rdx, [rbp - 48]
+	lea	rcx, [rbp - 80]
+	call	_ZN7FiboDynC2ESt10shared_ptrI11ComputationIiEES3_S3_
+.Ltmp43:
+	jmp	.LBB14_7
+.LBB14_7:
+	mov	rsi, qword ptr [rbp - 104]      # 8-byte Reload
+	mov	rdi, qword ptr [rbp - 136]      # 8-byte Reload
+	mov	byte ptr [rbp - 81], 0
+.Ltmp44:
+	call	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+.Ltmp45:
+	jmp	.LBB14_8
+.LBB14_8:
+	lea	rdi, [rbp - 80]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 48]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 32]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rax, qword ptr [rbp - 128]      # 8-byte Reload
+	add	rsp, 160
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB14_9:
+	.cfi_def_cfa rbp, 16
+.Ltmp33:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 56], rcx
+	mov	dword ptr [rbp - 60], eax
+	jmp	.LBB14_15
+.LBB14_10:
+.Ltmp30:
+	mov	rdi, qword ptr [rbp - 96]       # 8-byte Reload
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 56], rcx
+	mov	dword ptr [rbp - 60], eax
 	call	_ZdlPv
-.LBB6_29:
-	mov	rdi, r14
+	jmp	.LBB14_15
+.LBB14_11:
+.Ltmp41:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 56], rcx
+	mov	dword ptr [rbp - 60], eax
+	jmp	.LBB14_14
+.LBB14_12:
+.Ltmp38:
+	mov	rdi, qword ptr [rbp - 152]      # 8-byte Reload
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 56], rcx
+	mov	dword ptr [rbp - 60], eax
+	call	_ZdlPv
+	jmp	.LBB14_14
+.LBB14_13:
+.Ltmp46:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 56], rcx
+	mov	dword ptr [rbp - 60], eax
+	lea	rdi, [rbp - 80]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+.LBB14_14:
+	lea	rdi, [rbp - 48]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+.LBB14_15:
+	lea	rdi, [rbp - 32]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	test	byte ptr [rbp - 81], 1
+	jne	.LBB14_16
+	jmp	.LBB14_17
+.LBB14_16:
+	mov	rdi, qword ptr [rbp - 112]      # 8-byte Reload
+	call	_ZdlPv
+.LBB14_17:
+	jmp	.LBB14_18
+.LBB14_18:
+	mov	rdi, qword ptr [rbp - 56]
 	call	_Unwind_Resume@PLT
-.Lfunc_end6:
-	.size	_ZN4Fibo4evalEv, .Lfunc_end6-_ZN4Fibo4evalEv
+.Lfunc_end14:
+	.size	_ZN4Fibo4evalEv, .Lfunc_end14-_ZN4Fibo4evalEv
 	.cfi_endproc
 	.section	.gcc_except_table._ZN4Fibo4evalEv,"aG",@progbits,_ZN4Fibo4evalEv,comdat
 	.p2align	2
-GCC_except_table6:
+GCC_except_table14:
 .Lexception2:
 	.byte	255                             # @LPStart Encoding = omit
-	.byte	3                               # @TType Encoding = udata4
-	.uleb128 .Lttbase1-.Lttbaseref1
-.Lttbaseref1:
+	.byte	255                             # @TType Encoding = omit
 	.byte	1                               # Call site Encoding = uleb128
 	.uleb128 .Lcst_end2-.Lcst_begin2
 .Lcst_begin2:
 	.uleb128 .Lfunc_begin2-.Lfunc_begin2    # >> Call Site 1 <<
-	.uleb128 .Ltmp27-.Lfunc_begin2          #   Call between .Lfunc_begin2 and .Ltmp27
+	.uleb128 .Ltmp26-.Lfunc_begin2          #   Call between .Lfunc_begin2 and .Ltmp26
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp27-.Lfunc_begin2          # >> Call Site 2 <<
-	.uleb128 .Ltmp28-.Ltmp27                #   Call between .Ltmp27 and .Ltmp28
-	.uleb128 .Ltmp29-.Lfunc_begin2          #     jumps to .Ltmp29
+	.uleb128 .Ltmp26-.Lfunc_begin2          # >> Call Site 2 <<
+	.uleb128 .Ltmp27-.Ltmp26                #   Call between .Ltmp26 and .Ltmp27
+	.uleb128 .Ltmp33-.Lfunc_begin2          #     jumps to .Ltmp33
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp30-.Lfunc_begin2          # >> Call Site 3 <<
-	.uleb128 .Ltmp31-.Ltmp30                #   Call between .Ltmp30 and .Ltmp31
-	.uleb128 .Ltmp32-.Lfunc_begin2          #     jumps to .Ltmp32
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp39-.Lfunc_begin2          # >> Call Site 4 <<
+	.uleb128 .Ltmp28-.Lfunc_begin2          # >> Call Site 3 <<
+	.uleb128 .Ltmp29-.Ltmp28                #   Call between .Ltmp28 and .Ltmp29
+	.uleb128 .Ltmp30-.Lfunc_begin2          #     jumps to .Ltmp30
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp31-.Lfunc_begin2          # >> Call Site 4 <<
+	.uleb128 .Ltmp32-.Ltmp31                #   Call between .Ltmp31 and .Ltmp32
+	.uleb128 .Ltmp33-.Lfunc_begin2          #     jumps to .Ltmp33
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp34-.Lfunc_begin2          # >> Call Site 5 <<
+	.uleb128 .Ltmp35-.Ltmp34                #   Call between .Ltmp34 and .Ltmp35
+	.uleb128 .Ltmp41-.Lfunc_begin2          #     jumps to .Ltmp41
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp36-.Lfunc_begin2          # >> Call Site 6 <<
+	.uleb128 .Ltmp37-.Ltmp36                #   Call between .Ltmp36 and .Ltmp37
+	.uleb128 .Ltmp38-.Lfunc_begin2          #     jumps to .Ltmp38
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp39-.Lfunc_begin2          # >> Call Site 7 <<
 	.uleb128 .Ltmp40-.Ltmp39                #   Call between .Ltmp39 and .Ltmp40
 	.uleb128 .Ltmp41-.Lfunc_begin2          #     jumps to .Ltmp41
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp42-.Lfunc_begin2          # >> Call Site 5 <<
-	.uleb128 .Ltmp43-.Ltmp42                #   Call between .Ltmp42 and .Ltmp43
-	.uleb128 .Ltmp44-.Lfunc_begin2          #     jumps to .Ltmp44
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp51-.Lfunc_begin2          # >> Call Site 6 <<
-	.uleb128 .Ltmp52-.Ltmp51                #   Call between .Ltmp51 and .Ltmp52
-	.uleb128 .Ltmp53-.Lfunc_begin2          #     jumps to .Ltmp53
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp52-.Lfunc_begin2          # >> Call Site 7 <<
-	.uleb128 .Ltmp54-.Ltmp52                #   Call between .Ltmp52 and .Ltmp54
-	.byte	0                               #     has no landing pad
+	.uleb128 .Ltmp42-.Lfunc_begin2          # >> Call Site 8 <<
+	.uleb128 .Ltmp45-.Ltmp42                #   Call between .Ltmp42 and .Ltmp45
+	.uleb128 .Ltmp46-.Lfunc_begin2          #     jumps to .Ltmp46
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp54-.Lfunc_begin2          # >> Call Site 8 <<
-	.uleb128 .Ltmp55-.Ltmp54                #   Call between .Ltmp54 and .Ltmp55
-	.uleb128 .Ltmp56-.Lfunc_begin2          #     jumps to .Ltmp56
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp57-.Lfunc_begin2          # >> Call Site 9 <<
-	.uleb128 .Ltmp58-.Ltmp57                #   Call between .Ltmp57 and .Ltmp58
-	.uleb128 .Ltmp59-.Lfunc_begin2          #     jumps to .Ltmp59
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp58-.Lfunc_begin2          # >> Call Site 10 <<
-	.uleb128 .Ltmp45-.Ltmp58                #   Call between .Ltmp58 and .Ltmp45
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp45-.Lfunc_begin2          # >> Call Site 11 <<
-	.uleb128 .Ltmp46-.Ltmp45                #   Call between .Ltmp45 and .Ltmp46
-	.uleb128 .Ltmp47-.Lfunc_begin2          #     jumps to .Ltmp47
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp48-.Lfunc_begin2          # >> Call Site 12 <<
-	.uleb128 .Ltmp49-.Ltmp48                #   Call between .Ltmp48 and .Ltmp49
-	.uleb128 .Ltmp50-.Lfunc_begin2          #     jumps to .Ltmp50
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp49-.Lfunc_begin2          # >> Call Site 13 <<
-	.uleb128 .Ltmp33-.Ltmp49                #   Call between .Ltmp49 and .Ltmp33
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp33-.Lfunc_begin2          # >> Call Site 14 <<
-	.uleb128 .Ltmp34-.Ltmp33                #   Call between .Ltmp33 and .Ltmp34
-	.uleb128 .Ltmp35-.Lfunc_begin2          #     jumps to .Ltmp35
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp36-.Lfunc_begin2          # >> Call Site 15 <<
-	.uleb128 .Ltmp37-.Ltmp36                #   Call between .Ltmp36 and .Ltmp37
-	.uleb128 .Ltmp38-.Lfunc_begin2          #     jumps to .Ltmp38
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp37-.Lfunc_begin2          # >> Call Site 16 <<
-	.uleb128 .Lfunc_end6-.Ltmp37            #   Call between .Ltmp37 and .Lfunc_end6
+	.uleb128 .Ltmp45-.Lfunc_begin2          # >> Call Site 9 <<
+	.uleb128 .Lfunc_end14-.Ltmp45           #   Call between .Ltmp45 and .Lfunc_end14
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
 .Lcst_end2:
+	.p2align	2
+                                        # -- End function
+	.section	.text._ZN11ComputationIiED2Ev,"axG",@progbits,_ZN11ComputationIiED2Ev,comdat
+	.weak	_ZN11ComputationIiED2Ev         # -- Begin function _ZN11ComputationIiED2Ev
+	.p2align	4, 0x90
+	.type	_ZN11ComputationIiED2Ev,@function
+_ZN11ComputationIiED2Ev:                # @_ZN11ComputationIiED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end15:
+	.size	_ZN11ComputationIiED2Ev, .Lfunc_end15-_ZN11ComputationIiED2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN11ComputationIiED0Ev,"axG",@progbits,_ZN11ComputationIiED0Ev,comdat
+	.weak	_ZN11ComputationIiED0Ev         # -- Begin function _ZN11ComputationIiED0Ev
+	.p2align	4, 0x90
+	.type	_ZN11ComputationIiED0Ev,@function
+_ZN11ComputationIiED0Ev:                # @_ZN11ComputationIiED0Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZN11ComputationIiED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end16:
+	.size	_ZN11ComputationIiED0Ev, .Lfunc_end16-_ZN11ComputationIiED0Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN11ComputationIiE4evalEv,"axG",@progbits,_ZN11ComputationIiE4evalEv,comdat
+	.weak	_ZN11ComputationIiE4evalEv      # -- Begin function _ZN11ComputationIiE4evalEv
+	.p2align	4, 0x90
+	.type	_ZN11ComputationIiE4evalEv,@function
+_ZN11ComputationIiE4evalEv:             # @_ZN11ComputationIiE4evalEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	rax, rdi
+	mov	qword ptr [rbp - 24], rax       # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 8], rax
+	mov	qword ptr [rbp - 16], rsi
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2IS1_vEEPT_
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end17:
+	.size	_ZN11ComputationIiE4evalEv, .Lfunc_end17-_ZN11ComputationIiE4evalEv
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt10shared_ptrI11ComputationIiEEC2IS1_vEEPT_,"axG",@progbits,_ZNSt10shared_ptrI11ComputationIiEEC2IS1_vEEPT_,comdat
+	.weak	_ZNSt10shared_ptrI11ComputationIiEEC2IS1_vEEPT_ # -- Begin function _ZNSt10shared_ptrI11ComputationIiEEC2IS1_vEEPT_
+	.p2align	4, 0x90
+	.type	_ZNSt10shared_ptrI11ComputationIiEEC2IS1_vEEPT_,@function
+_ZNSt10shared_ptrI11ComputationIiEEC2IS1_vEEPT_: # @_ZNSt10shared_ptrI11ComputationIiEEC2IS1_vEEPT_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end18:
+	.size	_ZNSt10shared_ptrI11ComputationIiEEC2IS1_vEEPT_, .Lfunc_end18-_ZNSt10shared_ptrI11ComputationIiEEC2IS1_vEEPT_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_ # -- Begin function _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_,@function
+_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_: # @_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 32], rdi       # 8-byte Spill
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rdi], rax
+	add	rdi, 8
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_St17integral_constantIbLb0EE
+	mov	rdi, qword ptr [rbp - 32]       # 8-byte Reload
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end19:
+	.size	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_, .Lfunc_end19-_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_St17integral_constantIbLb0EE,"axG",@progbits,_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_St17integral_constantIbLb0EE,comdat
+	.weak	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_St17integral_constantIbLb0EE # -- Begin function _ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_St17integral_constantIbLb0EE
+	.p2align	4, 0x90
+	.type	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_St17integral_constantIbLb0EE,@function
+_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_St17integral_constantIbLb0EE: # @_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_St17integral_constantIbLb0EE
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 16], rdi
+	mov	qword ptr [rbp - 24], rsi
+	mov	rdi, qword ptr [rbp - 16]
+	mov	rsi, qword ptr [rbp - 24]
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end20:
+	.size	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_St17integral_constantIbLb0EE, .Lfunc_end20-_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_St17integral_constantIbLb0EE
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_ # -- Begin function _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_,@function
+_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_: # @_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end21:
+	.size	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_, .Lfunc_end21-_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_,"axG",@progbits,_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_,comdat
+	.weak	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_ # -- Begin function _ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_
+	.p2align	4, 0x90
+	.type	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_,@function
+_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_: # @_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_
+.Lfunc_begin3:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception3
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 64
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 48], rax       # 8-byte Spill
+	mov	qword ptr [rax], 0
+.Ltmp47:
+	mov	edi, 24
+	call	_Znwm
+.Ltmp48:
+	mov	qword ptr [rbp - 40], rax       # 8-byte Spill
+	jmp	.LBB22_1
+.LBB22_1:
+	mov	rdi, qword ptr [rbp - 40]       # 8-byte Reload
+	mov	qword ptr [rbp - 56], rdi       # 8-byte Spill
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ES2_
+	mov	rcx, qword ptr [rbp - 56]       # 8-byte Reload
+	mov	rax, qword ptr [rbp - 48]       # 8-byte Reload
+	mov	qword ptr [rax], rcx
+	jmp	.LBB22_8
+.LBB22_2:
+.Ltmp49:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 24], rcx
+	mov	dword ptr [rbp - 28], eax
+# %bb.3:
+	mov	rdi, qword ptr [rbp - 24]
+	call	__cxa_begin_catch
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rbp - 64], rax       # 8-byte Spill
+	cmp	rax, 0
+	je	.LBB22_5
+# %bb.4:
+	mov	rdi, qword ptr [rbp - 64]       # 8-byte Reload
+	mov	rax, qword ptr [rdi]
+	call	qword ptr [rax + 8]
+.LBB22_5:
+.Ltmp50:
+	call	__cxa_rethrow
+.Ltmp51:
+	jmp	.LBB22_11
+.LBB22_6:
+.Ltmp52:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 24], rcx
+	mov	dword ptr [rbp - 28], eax
+.Ltmp53:
+	call	__cxa_end_catch
+.Ltmp54:
+	jmp	.LBB22_7
+.LBB22_7:
+	jmp	.LBB22_9
+.LBB22_8:
+	add	rsp, 64
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB22_9:
+	.cfi_def_cfa rbp, 16
+	mov	rdi, qword ptr [rbp - 24]
+	call	_Unwind_Resume@PLT
+.LBB22_10:
+.Ltmp55:
+	mov	rdi, rax
+                                        # kill: def $eax killed $edx killed $rdx
+	call	__clang_call_terminate
+.LBB22_11:
+.Lfunc_end22:
+	.size	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_, .Lfunc_end22-_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_
+	.cfi_endproc
+	.section	.gcc_except_table._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_,"aG",@progbits,_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIiEEET_,comdat
+	.p2align	2
+GCC_except_table22:
+.Lexception3:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	3                               # @TType Encoding = udata4
+	.uleb128 .Lttbase0-.Lttbaseref0
+.Lttbaseref0:
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end3-.Lcst_begin3
+.Lcst_begin3:
+	.uleb128 .Ltmp47-.Lfunc_begin3          # >> Call Site 1 <<
+	.uleb128 .Ltmp48-.Ltmp47                #   Call between .Ltmp47 and .Ltmp48
+	.uleb128 .Ltmp49-.Lfunc_begin3          #     jumps to .Ltmp49
+	.byte	1                               #   On action: 1
+	.uleb128 .Ltmp48-.Lfunc_begin3          # >> Call Site 2 <<
+	.uleb128 .Ltmp50-.Ltmp48                #   Call between .Ltmp48 and .Ltmp50
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp50-.Lfunc_begin3          # >> Call Site 3 <<
+	.uleb128 .Ltmp51-.Ltmp50                #   Call between .Ltmp50 and .Ltmp51
+	.uleb128 .Ltmp52-.Lfunc_begin3          #     jumps to .Ltmp52
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp53-.Lfunc_begin3          # >> Call Site 4 <<
+	.uleb128 .Ltmp54-.Ltmp53                #   Call between .Ltmp53 and .Ltmp54
+	.uleb128 .Ltmp55-.Lfunc_begin3          #     jumps to .Ltmp55
+	.byte	1                               #   On action: 1
+	.uleb128 .Ltmp54-.Lfunc_begin3          # >> Call Site 5 <<
+	.uleb128 .Lfunc_end22-.Ltmp54           #   Call between .Ltmp54 and .Lfunc_end22
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end3:
 	.byte	1                               # >> Action Record 1 <<
                                         #   Catch TypeInfo 1
 	.byte	0                               #   No further actions
 	.p2align	2
                                         # >> Catch TypeInfos <<
 	.long	0                               # TypeInfo 1
-.Lttbase1:
+.Lttbase0:
 	.p2align	2
+                                        # -- End function
+	.section	.text._ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ES2_,"axG",@progbits,_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ES2_,comdat
+	.weak	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ES2_ # -- Begin function _ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ES2_
+	.p2align	4, 0x90
+	.type	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ES2_,@function
+_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ES2_: # @_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ES2_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rdi       # 8-byte Spill
+	call	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	movabs	rcx, offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	mov	rcx, qword ptr [rbp - 16]
+	mov	qword ptr [rax + 16], rcx
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end23:
+	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ES2_, .Lfunc_end23-_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ES2_
+	.cfi_endproc
                                         # -- End function
 	.section	.text.__clang_call_terminate,"axG",@progbits,__clang_call_terminate,comdat
 	.hidden	__clang_call_terminate          # -- Begin function __clang_call_terminate
@@ -1101,8 +1250,58 @@ __clang_call_terminate:                 # @__clang_call_terminate
 	push	rax
 	call	__cxa_begin_catch
 	call	_ZSt9terminatev
-.Lfunc_end7:
-	.size	__clang_call_terminate, .Lfunc_end7-__clang_call_terminate
+.Lfunc_end24:
+	.size	__clang_call_terminate, .Lfunc_end24-__clang_call_terminate
+                                        # -- End function
+	.section	.text._ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EEC2Ev,"axG",@progbits,_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EEC2Ev,comdat
+	.weak	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EEC2Ev # -- Begin function _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	.p2align	4, 0x90
+	.type	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EEC2Ev,@function
+_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EEC2Ev: # @_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	movabs	rcx, offset _ZTVSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	mov	dword ptr [rax + 8], 1
+	mov	dword ptr [rax + 12], 1
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end25:
+	.size	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EEC2Ev, .Lfunc_end25-_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev,"axG",@progbits,_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev,comdat
+	.weak	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev # -- Begin function _ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.p2align	4, 0x90
+	.type	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev,@function
+_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev: # @_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end26:
+	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev, .Lfunc_end26-_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.cfi_endproc
                                         # -- End function
 	.section	.text._ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED0Ev,"axG",@progbits,_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED0Ev,comdat
 	.weak	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED0Ev # -- Begin function _ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED0Ev
@@ -1111,9 +1310,24 @@ __clang_call_terminate:                 # @__clang_call_terminate
 _ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED0Ev: # @_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED0Ev
 	.cfi_startproc
 # %bb.0:
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end8:
-	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED0Ev, .Lfunc_end8-_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED0Ev
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end27:
+	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED0Ev, .Lfunc_end27-_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED0Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv,"axG",@progbits,_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv,comdat
@@ -1123,16 +1337,29 @@ _ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED0Ev: # @_
 _ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv: # @_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv
 	.cfi_startproc
 # %bb.0:
-	mov	rdi, qword ptr [rdi + 16]
-	test	rdi, rdi
-	je	.LBB9_1
-# %bb.2:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	rax, qword ptr [rax + 16]
+	mov	qword ptr [rbp - 16], rax       # 8-byte Spill
+	cmp	rax, 0
+	je	.LBB28_2
+# %bb.1:
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
 	mov	rax, qword ptr [rdi]
-	jmp	qword ptr [rax + 8]             # TAILCALL
-.LBB9_1:
+	call	qword ptr [rax + 8]
+.LBB28_2:
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end9:
-	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv, .Lfunc_end9-_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv
+.Lfunc_end28:
+	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv, .Lfunc_end28-_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv,"axG",@progbits,_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv,comdat
@@ -1142,9 +1369,29 @@ _ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_dispo
 _ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv: # @_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv
 	.cfi_startproc
 # %bb.0:
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end10:
-	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv, .Lfunc_end10-_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rax       # 8-byte Spill
+	cmp	rax, 0
+	je	.LBB29_2
+# %bb.1:
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+.LBB29_2:
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end29:
+	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv, .Lfunc_end29-_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info,"axG",@progbits,_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info,comdat
@@ -1154,2010 +1401,20 @@ _ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_destr
 _ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info: # @_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info
 	.cfi_startproc
 # %bb.0:
-	xor	eax, eax
-	ret
-.Lfunc_end11:
-	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info, .Lfunc_end11-_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info
-	.cfi_endproc
-                                        # -- End function
-	.section	.text._ZN3IntD0Ev,"axG",@progbits,_ZN3IntD0Ev,comdat
-	.weak	_ZN3IntD0Ev                     # -- Begin function _ZN3IntD0Ev
-	.p2align	4, 0x90
-	.type	_ZN3IntD0Ev,@function
-_ZN3IntD0Ev:                            # @_ZN3IntD0Ev
-	.cfi_startproc
-# %bb.0:
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end12:
-	.size	_ZN3IntD0Ev, .Lfunc_end12-_ZN3IntD0Ev
-	.cfi_endproc
-                                        # -- End function
-	.section	.text._ZN5ValueIiE4evalEv,"axG",@progbits,_ZN5ValueIiE4evalEv,comdat
-	.weak	_ZN5ValueIiE4evalEv             # -- Begin function _ZN5ValueIiE4evalEv
-	.p2align	4, 0x90
-	.type	_ZN5ValueIiE4evalEv,@function
-_ZN5ValueIiE4evalEv:                    # @_ZN5ValueIiE4evalEv
-.Lfunc_begin3:
-	.cfi_startproc
-	.cfi_personality 3, __gxx_personality_v0
-	.cfi_lsda 3, .Lexception3
-# %bb.0:
-	push	r15
-	.cfi_def_cfa_offset 16
-	push	r14
-	.cfi_def_cfa_offset 24
-	push	rbx
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -32
-	.cfi_offset r14, -24
-	.cfi_offset r15, -16
-	mov	r15, rsi
-	mov	r14, rdi
-	mov	edi, 24
-	call	_Znwm
-	mov	rbx, rax
-	mov	eax, dword ptr [r15 + 16]
-	mov	dword ptr [rbx + 8], eax
-	mov	byte ptr [rbx + 12], 1
-	mov	qword ptr [rbx], offset _ZTV5ValueIiE+16
-	mov	dword ptr [rbx + 16], eax
-	mov	qword ptr [r14], rbx
-	mov	qword ptr [r14 + 8], 0
-.Ltmp60:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp61:
-# %bb.1:
-	movabs	rcx, 4294967297
-	mov	qword ptr [rax + 8], rcx
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], rbx
-	mov	qword ptr [r14 + 8], rax
-	mov	rax, r14
-	pop	rbx
-	.cfi_def_cfa_offset 24
-	pop	r14
-	.cfi_def_cfa_offset 16
-	pop	r15
-	.cfi_def_cfa_offset 8
-	ret
-.LBB13_5:
-	.cfi_def_cfa_offset 32
-.Ltmp62:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 8]
-.Ltmp63:
-	call	__cxa_rethrow
-.Ltmp64:
-# %bb.6:
-.LBB13_2:
-.Ltmp65:
-	mov	rbx, rax
-.Ltmp66:
-	call	__cxa_end_catch
-.Ltmp67:
-# %bb.3:
-	mov	rdi, rbx
-	call	_Unwind_Resume@PLT
-.LBB13_4:
-.Ltmp68:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.Lfunc_end13:
-	.size	_ZN5ValueIiE4evalEv, .Lfunc_end13-_ZN5ValueIiE4evalEv
-	.cfi_endproc
-	.section	.gcc_except_table._ZN5ValueIiE4evalEv,"aG",@progbits,_ZN5ValueIiE4evalEv,comdat
-	.p2align	2
-GCC_except_table13:
-.Lexception3:
-	.byte	255                             # @LPStart Encoding = omit
-	.byte	3                               # @TType Encoding = udata4
-	.uleb128 .Lttbase2-.Lttbaseref2
-.Lttbaseref2:
-	.byte	1                               # Call site Encoding = uleb128
-	.uleb128 .Lcst_end3-.Lcst_begin3
-.Lcst_begin3:
-	.uleb128 .Lfunc_begin3-.Lfunc_begin3    # >> Call Site 1 <<
-	.uleb128 .Ltmp60-.Lfunc_begin3          #   Call between .Lfunc_begin3 and .Ltmp60
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp60-.Lfunc_begin3          # >> Call Site 2 <<
-	.uleb128 .Ltmp61-.Ltmp60                #   Call between .Ltmp60 and .Ltmp61
-	.uleb128 .Ltmp62-.Lfunc_begin3          #     jumps to .Ltmp62
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp61-.Lfunc_begin3          # >> Call Site 3 <<
-	.uleb128 .Ltmp63-.Ltmp61                #   Call between .Ltmp61 and .Ltmp63
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp63-.Lfunc_begin3          # >> Call Site 4 <<
-	.uleb128 .Ltmp64-.Ltmp63                #   Call between .Ltmp63 and .Ltmp64
-	.uleb128 .Ltmp65-.Lfunc_begin3          #     jumps to .Ltmp65
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp66-.Lfunc_begin3          # >> Call Site 5 <<
-	.uleb128 .Ltmp67-.Ltmp66                #   Call between .Ltmp66 and .Ltmp67
-	.uleb128 .Ltmp68-.Lfunc_begin3          #     jumps to .Ltmp68
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp67-.Lfunc_begin3          # >> Call Site 6 <<
-	.uleb128 .Lfunc_end13-.Ltmp67           #   Call between .Ltmp67 and .Lfunc_end13
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-.Lcst_end3:
-	.byte	1                               # >> Action Record 1 <<
-                                        #   Catch TypeInfo 1
-	.byte	0                               #   No further actions
-	.p2align	2
-                                        # >> Catch TypeInfos <<
-	.long	0                               # TypeInfo 1
-.Lttbase2:
-	.p2align	2
-                                        # -- End function
-	.section	.text._ZN11ComputationIiED2Ev,"axG",@progbits,_ZN11ComputationIiED2Ev,comdat
-	.weak	_ZN11ComputationIiED2Ev         # -- Begin function _ZN11ComputationIiED2Ev
-	.p2align	4, 0x90
-	.type	_ZN11ComputationIiED2Ev,@function
-_ZN11ComputationIiED2Ev:                # @_ZN11ComputationIiED2Ev
-	.cfi_startproc
-# %bb.0:
-	ret
-.Lfunc_end14:
-	.size	_ZN11ComputationIiED2Ev, .Lfunc_end14-_ZN11ComputationIiED2Ev
-	.cfi_endproc
-                                        # -- End function
-	.section	.text._ZN5ValueIiED0Ev,"axG",@progbits,_ZN5ValueIiED0Ev,comdat
-	.weak	_ZN5ValueIiED0Ev                # -- Begin function _ZN5ValueIiED0Ev
-	.p2align	4, 0x90
-	.type	_ZN5ValueIiED0Ev,@function
-_ZN5ValueIiED0Ev:                       # @_ZN5ValueIiED0Ev
-	.cfi_startproc
-# %bb.0:
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end15:
-	.size	_ZN5ValueIiED0Ev, .Lfunc_end15-_ZN5ValueIiED0Ev
-	.cfi_endproc
-                                        # -- End function
-	.section	.text._ZN7FiboDynD2Ev,"axG",@progbits,_ZN7FiboDynD2Ev,comdat
-	.weak	_ZN7FiboDynD2Ev                 # -- Begin function _ZN7FiboDynD2Ev
-	.p2align	4, 0x90
-	.type	_ZN7FiboDynD2Ev,@function
-_ZN7FiboDynD2Ev:                        # @_ZN7FiboDynD2Ev
-	.cfi_startproc
-# %bb.0:
-	push	r14
-	.cfi_def_cfa_offset 16
-	push	rbx
-	.cfi_def_cfa_offset 24
-	push	rax
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -24
-	.cfi_offset r14, -16
-	mov	r14, rdi
-	mov	qword ptr [rdi], offset _ZTV7FiboDyn+16
-	mov	rbx, qword ptr [rdi + 56]
-	test	rbx, rbx
-	je	.LBB16_10
-# %bb.1:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB16_3
-# %bb.2:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB16_5
-	jmp	.LBB16_10
-.LBB16_3:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB16_10
-.LBB16_5:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB16_7
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB16_9
-	jmp	.LBB16_10
-.LBB16_7:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB16_10
-.LBB16_9:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB16_10:
-	mov	rbx, qword ptr [r14 + 40]
-	test	rbx, rbx
-	je	.LBB16_20
-# %bb.11:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB16_13
-# %bb.12:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB16_15
-	jmp	.LBB16_20
-.LBB16_13:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB16_20
-.LBB16_15:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB16_17
-# %bb.16:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB16_19
-	jmp	.LBB16_20
-.LBB16_17:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB16_20
-.LBB16_19:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB16_20:
-	mov	rbx, qword ptr [r14 + 24]
-	test	rbx, rbx
-	je	.LBB16_29
-# %bb.21:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB16_23
-# %bb.22:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB16_25
-	jmp	.LBB16_29
-.LBB16_23:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB16_29
-.LBB16_25:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB16_27
-# %bb.26:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB16_30
-.LBB16_29:
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
-	.cfi_def_cfa_offset 16
-	pop	r14
-	.cfi_def_cfa_offset 8
-	ret
-.LBB16_27:
-	.cfi_def_cfa_offset 32
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB16_29
-.LBB16_30:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
-	.cfi_def_cfa_offset 16
-	pop	r14
-	.cfi_def_cfa_offset 8
-	jmp	qword ptr [rax + 24]            # TAILCALL
-.Lfunc_end16:
-	.size	_ZN7FiboDynD2Ev, .Lfunc_end16-_ZN7FiboDynD2Ev
-	.cfi_endproc
-                                        # -- End function
-	.section	.text._ZN7FiboDynD0Ev,"axG",@progbits,_ZN7FiboDynD0Ev,comdat
-	.weak	_ZN7FiboDynD0Ev                 # -- Begin function _ZN7FiboDynD0Ev
-	.p2align	4, 0x90
-	.type	_ZN7FiboDynD0Ev,@function
-_ZN7FiboDynD0Ev:                        # @_ZN7FiboDynD0Ev
-	.cfi_startproc
-# %bb.0:
-	push	rbx
-	.cfi_def_cfa_offset 16
-	.cfi_offset rbx, -16
-	mov	rbx, rdi
-	call	_ZN7FiboDynD2Ev
-	mov	rdi, rbx
-	pop	rbx
-	.cfi_def_cfa_offset 8
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end17:
-	.size	_ZN7FiboDynD0Ev, .Lfunc_end17-_ZN7FiboDynD0Ev
-	.cfi_endproc
-                                        # -- End function
-	.section	.text._ZN7FiboDyn4evalEv,"axG",@progbits,_ZN7FiboDyn4evalEv,comdat
-	.weak	_ZN7FiboDyn4evalEv              # -- Begin function _ZN7FiboDyn4evalEv
-	.p2align	4, 0x90
-	.type	_ZN7FiboDyn4evalEv,@function
-_ZN7FiboDyn4evalEv:                     # @_ZN7FiboDyn4evalEv
-.Lfunc_begin4:
-	.cfi_startproc
-	.cfi_personality 3, __gxx_personality_v0
-	.cfi_lsda 3, .Lexception4
-# %bb.0:
 	push	rbp
 	.cfi_def_cfa_offset 16
-	push	r15
-	.cfi_def_cfa_offset 24
-	push	r14
-	.cfi_def_cfa_offset 32
-	push	r13
-	.cfi_def_cfa_offset 40
-	push	r12
-	.cfi_def_cfa_offset 48
-	push	rbx
-	.cfi_def_cfa_offset 56
-	sub	rsp, 232
-	.cfi_def_cfa_offset 288
-	.cfi_offset rbx, -56
-	.cfi_offset r12, -48
-	.cfi_offset r13, -40
-	.cfi_offset r14, -32
-	.cfi_offset r15, -24
 	.cfi_offset rbp, -16
-	mov	r13, rsi
-	mov	qword ptr [rsp + 224], rdi      # 8-byte Spill
-	mov	edi, 64
-	call	_Znwm
-	mov	r15, rax
-.Ltmp69:
-	mov	edi, 48
-	call	_Znwm
-.Ltmp70:
-# %bb.1:
-	mov	r12, rax
-	mov	rax, qword ptr [r13 + 16]
-	mov	qword ptr [rsp + 112], rax
-	mov	rax, qword ptr [r13 + 24]
-	mov	qword ptr [rsp + 120], rax
-	test	rax, rax
-	je	.LBB18_5
-# %bb.2:
-	mov	ecx, offset __pthread_key_create
-	test	rcx, rcx
-	je	.LBB18_4
-# %bb.3:
-	lock		add	dword ptr [rax + 8], 1
-	jmp	.LBB18_5
-.LBB18_4:
-	add	dword ptr [rax + 8], 1
-.LBB18_5:
-.Ltmp72:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp73:
-# %bb.6:
-	mov	rbx, rax
-	mov	dword ptr [rax + 8], 1
-	mov	byte ptr [rax + 12], 1
-	mov	dword ptr [rax + 16], 1
-	mov	qword ptr [rax], offset _ZTV3Int+16
-	mov	qword ptr [rsp + 96], rax
-	mov	qword ptr [rsp + 104], 0
-.Ltmp75:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp76:
-# %bb.7:
-	movabs	r14, 4294967297
-	mov	qword ptr [rax + 8], r14
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], rbx
-	mov	qword ptr [rsp + 104], rax
-	mov	rcx, qword ptr [rsp + 112]
-	mov	rdx, qword ptr [rsp + 120]
-	test	rdx, rdx
-	je	.LBB18_10
-# %bb.8:
-	mov	esi, offset __pthread_key_create
-	test	rsi, rsi
-	je	.LBB18_9
-# %bb.16:
-	lock		add	dword ptr [rdx + 8], 1
-	mov	rbx, qword ptr [rsp + 96]
-	mov	rax, qword ptr [rsp + 104]
-	test	rax, rax
-	je	.LBB18_17
-.LBB18_10:
-	mov	esi, offset __pthread_key_create
-	test	rsi, rsi
-	je	.LBB18_18
-.LBB18_11:
-	lock		add	dword ptr [rax + 8], 1
-	jmp	.LBB18_19
-.LBB18_9:
-	add	dword ptr [rdx + 8], 1
-	mov	esi, offset __pthread_key_create
-	test	rsi, rsi
-	jne	.LBB18_11
-.LBB18_18:
-	add	dword ptr [rax + 8], 1
-	jmp	.LBB18_19
-.LBB18_17:
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
 	xor	eax, eax
-.LBB18_19:
-	mov	word ptr [r12 + 8], 0
-	mov	qword ptr [r12 + 16], rcx
-	mov	qword ptr [r12 + 24], rdx
-	mov	qword ptr [r12 + 32], rbx
-	mov	qword ptr [r12 + 40], rax
-	mov	qword ptr [r12], offset _ZTV2LTIiE+16
-	mov	qword ptr [rsp], r12
-	mov	qword ptr [rsp + 8], 0
-.Ltmp84:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp85:
-# %bb.20:
-	mov	qword ptr [rax + 8], r14
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], r12
-	mov	qword ptr [rsp + 8], rax
-	mov	rax, qword ptr [r13 + 32]
-	mov	qword ptr [rsp + 32], rax
-	mov	rax, qword ptr [r13 + 40]
-	mov	qword ptr [rsp + 40], rax
-	test	rax, rax
-	je	.LBB18_29
-# %bb.21:
-	mov	ecx, offset __pthread_key_create
-	test	rcx, rcx
-	je	.LBB18_28
-# %bb.22:
-	lock		add	dword ptr [rax + 8], 1
-	jmp	.LBB18_29
-.LBB18_28:
-	add	dword ptr [rax + 8], 1
-.LBB18_29:
-.Ltmp93:
-	mov	edi, 64
-	call	_Znwm
-.Ltmp94:
-# %bb.30:
-	mov	r12, rax
-.Ltmp96:
-	mov	edi, 48
-	call	_Znwm
-.Ltmp97:
-# %bb.31:
-	mov	rbx, rax
-	mov	rax, qword ptr [r13 + 16]
-	mov	qword ptr [rsp + 64], rax
-	mov	rax, qword ptr [r13 + 24]
-	mov	qword ptr [rsp + 72], rax
-	test	rax, rax
-	je	.LBB18_35
-# %bb.32:
-	mov	ecx, offset __pthread_key_create
-	test	rcx, rcx
-	je	.LBB18_34
-# %bb.33:
-	lock		add	dword ptr [rax + 8], 1
-	jmp	.LBB18_35
-.LBB18_34:
-	add	dword ptr [rax + 8], 1
-.LBB18_35:
-.Ltmp99:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp100:
-# %bb.36:
-	mov	rbp, rax
-	mov	dword ptr [rax + 8], -1
-	mov	byte ptr [rax + 12], 1
-	mov	dword ptr [rax + 16], -1
-	mov	qword ptr [rax], offset _ZTV3Int+16
-	mov	qword ptr [rsp + 48], rax
-	mov	qword ptr [rsp + 56], 0
-.Ltmp102:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp103:
-# %bb.37:
-	mov	qword ptr [rax + 8], r14
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], rbp
-	mov	qword ptr [rsp + 56], rax
-	mov	rcx, qword ptr [rsp + 64]
-	mov	rdx, qword ptr [rsp + 72]
-	test	rdx, rdx
-	je	.LBB18_40
-# %bb.38:
-	mov	esi, offset __pthread_key_create
-	test	rsi, rsi
-	je	.LBB18_39
-# %bb.46:
-	lock		add	dword ptr [rdx + 8], 1
-	mov	rbp, qword ptr [rsp + 48]
-	mov	rax, qword ptr [rsp + 56]
-	test	rax, rax
-	je	.LBB18_47
-.LBB18_40:
-	mov	esi, offset __pthread_key_create
-	test	rsi, rsi
-	je	.LBB18_48
-.LBB18_41:
-	lock		add	dword ptr [rax + 8], 1
-	jmp	.LBB18_49
-.LBB18_39:
-	add	dword ptr [rdx + 8], 1
-	mov	esi, offset __pthread_key_create
-	test	rsi, rsi
-	jne	.LBB18_41
-.LBB18_48:
-	add	dword ptr [rax + 8], 1
-	jmp	.LBB18_49
-.LBB18_47:
-	xor	eax, eax
-.LBB18_49:
-	mov	dword ptr [rbx + 8], 0
-	mov	byte ptr [rbx + 12], 0
-	mov	qword ptr [rbx + 16], rcx
-	mov	qword ptr [rbx + 24], rdx
-	mov	qword ptr [rbx + 32], rbp
-	mov	qword ptr [rbx + 40], rax
-	mov	qword ptr [rbx], offset _ZTV3SumIiE+16
-.Ltmp111:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp112:
-# %bb.50:
-	mov	qword ptr [rax + 8], r14
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], rbx
-	mov	qword ptr [rsp + 192], rbx
-	mov	qword ptr [rsp + 200], rax
-.Ltmp120:
-	lea	rdi, [rsp + 80]
-	lea	rsi, [rsp + 192]
-	call	_ZN5ForceIiE3ptrEv
-.Ltmp121:
-# %bb.51:
-	mov	rax, qword ptr [r13 + 48]
-	mov	qword ptr [rsp + 16], rax
-	mov	rax, qword ptr [r13 + 56]
-	mov	qword ptr [rsp + 24], rax
-	test	rax, rax
-	je	.LBB18_60
-# %bb.52:
-	mov	ecx, offset __pthread_key_create
-	test	rcx, rcx
-	je	.LBB18_59
-# %bb.53:
-	lock		add	dword ptr [rax + 8], 1
-	jmp	.LBB18_60
-.LBB18_59:
-	add	dword ptr [rax + 8], 1
-.LBB18_60:
-.Ltmp123:
-	mov	edi, 48
-	call	_Znwm
-.Ltmp124:
-# %bb.61:
-	mov	rbx, rax
-	mov	rax, qword ptr [r13 + 32]
-	mov	qword ptr [rsp + 144], rax
-	mov	rax, qword ptr [r13 + 40]
-	mov	qword ptr [rsp + 152], rax
-	test	rax, rax
-	je	.LBB18_65
-# %bb.62:
-	mov	ecx, offset __pthread_key_create
-	test	rcx, rcx
-	je	.LBB18_64
-# %bb.63:
-	lock		add	dword ptr [rax + 8], 1
-	jmp	.LBB18_65
-.LBB18_64:
-	add	dword ptr [rax + 8], 1
-.LBB18_65:
-	mov	rax, qword ptr [r13 + 48]
-	mov	qword ptr [rsp + 128], rax
-	mov	rax, qword ptr [r13 + 56]
-	mov	qword ptr [rsp + 136], rax
-	test	rax, rax
-	mov	rbp, qword ptr [rsp + 224]      # 8-byte Reload
-	je	.LBB18_69
-# %bb.66:
-	mov	ecx, offset __pthread_key_create
-	test	rcx, rcx
-	je	.LBB18_68
-# %bb.67:
-	lock		add	dword ptr [rax + 8], 1
-.LBB18_69:
-	mov	rax, qword ptr [rsp + 144]
-	mov	rcx, qword ptr [rsp + 152]
-	test	rcx, rcx
-	jne	.LBB18_70
-	jmp	.LBB18_73
-.LBB18_68:
-	add	dword ptr [rax + 8], 1
-	mov	rax, qword ptr [rsp + 144]
-	mov	rcx, qword ptr [rsp + 152]
-	test	rcx, rcx
-	je	.LBB18_73
-.LBB18_70:
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	je	.LBB18_72
-# %bb.71:
-	lock		add	dword ptr [rcx + 8], 1
-.LBB18_73:
-	mov	rdx, qword ptr [rsp + 128]
-	mov	rsi, qword ptr [rsp + 136]
-	test	rsi, rsi
-	jne	.LBB18_74
-	jmp	.LBB18_77
-.LBB18_72:
-	add	dword ptr [rcx + 8], 1
-	mov	rdx, qword ptr [rsp + 128]
-	mov	rsi, qword ptr [rsp + 136]
-	test	rsi, rsi
-	je	.LBB18_77
-.LBB18_74:
-	mov	edi, offset __pthread_key_create
-	test	rdi, rdi
-	je	.LBB18_76
-# %bb.75:
-	lock		add	dword ptr [rsi + 8], 1
-	jmp	.LBB18_77
-.LBB18_76:
-	add	dword ptr [rsi + 8], 1
-.LBB18_77:
-	mov	dword ptr [rbx + 8], 0
-	mov	byte ptr [rbx + 12], 0
-	mov	qword ptr [rbx + 16], rax
-	mov	qword ptr [rbx + 24], rcx
-	mov	qword ptr [rbx + 32], rdx
-	mov	qword ptr [rbx + 40], rsi
-	mov	qword ptr [rbx], offset _ZTV3SumIiE+16
-.Ltmp126:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp127:
-# %bb.78:
-	mov	qword ptr [rax + 8], r14
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], rbx
-	mov	qword ptr [rsp + 176], rbx
-	mov	qword ptr [rsp + 184], rax
-.Ltmp135:
-	lea	rdi, [rsp + 160]
-	lea	rsi, [rsp + 176]
-	call	_ZN5ForceIiE3ptrEv
-.Ltmp136:
-# %bb.79:
-	mov	dword ptr [r12 + 8], 0
-	mov	byte ptr [r12 + 12], 0
-	mov	qword ptr [r12], offset _ZTV7FiboDyn+16
-	mov	rax, qword ptr [rsp + 80]
-	mov	qword ptr [r12 + 16], rax
-	mov	rax, qword ptr [rsp + 88]
-	mov	qword ptr [rsp + 88], 0
-	mov	qword ptr [r12 + 24], rax
-	mov	qword ptr [rsp + 80], 0
-	mov	rax, qword ptr [rsp + 16]
-	mov	qword ptr [r12 + 32], rax
-	mov	rax, qword ptr [rsp + 24]
-	mov	qword ptr [rsp + 24], 0
-	mov	qword ptr [r12 + 40], rax
-	mov	qword ptr [rsp + 16], 0
-	mov	rax, qword ptr [rsp + 160]
-	mov	qword ptr [r12 + 48], rax
-	mov	rax, qword ptr [rsp + 168]
-	mov	qword ptr [rsp + 168], 0
-	mov	qword ptr [r12 + 56], rax
-	mov	qword ptr [rsp + 160], 0
-	mov	qword ptr [rsp + 208], r12
-	mov	qword ptr [rsp + 216], 0
-.Ltmp138:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp139:
-# %bb.80:
-	mov	qword ptr [rax + 8], r14
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], r12
-	mov	dword ptr [r15 + 8], 0
-	mov	byte ptr [r15 + 12], 0
-	mov	qword ptr [r15], offset _ZTV2IfIiE+16
-	mov	rcx, qword ptr [rsp]
-	mov	qword ptr [r15 + 16], rcx
-	mov	rcx, qword ptr [rsp + 8]
-	mov	qword ptr [rsp + 8], 0
-	mov	qword ptr [r15 + 24], rcx
-	mov	qword ptr [rsp], 0
-	mov	rcx, qword ptr [rsp + 32]
-	mov	qword ptr [r15 + 32], rcx
-	mov	rcx, qword ptr [rsp + 40]
-	mov	qword ptr [rsp + 40], 0
-	mov	qword ptr [r15 + 40], rcx
-	mov	qword ptr [rsp + 32], 0
-	mov	qword ptr [r15 + 48], r12
-	mov	qword ptr [rsp + 216], 0
-	mov	qword ptr [r15 + 56], rax
-	mov	qword ptr [rsp + 208], 0
-	mov	qword ptr [rbp], r15
-	mov	qword ptr [rbp + 8], 0
-.Ltmp147:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp148:
-# %bb.81:
-	mov	qword ptr [rax + 8], r14
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], r15
-	mov	qword ptr [rbp + 8], rax
-	mov	rbx, qword ptr [rsp + 184]
-	test	rbx, rbx
-	je	.LBB18_104
-# %bb.82:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_97
-# %bb.83:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB18_99
-	jmp	.LBB18_104
-.LBB18_97:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB18_104
-.LBB18_99:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_101
-# %bb.100:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB18_103
-	jmp	.LBB18_104
-.LBB18_101:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB18_104
-.LBB18_103:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB18_104:
-	mov	rbx, qword ptr [rsp + 136]
-	test	rbx, rbx
-	je	.LBB18_114
-# %bb.105:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_107
-# %bb.106:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB18_109
-	jmp	.LBB18_114
-.LBB18_107:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB18_114
-.LBB18_109:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_111
-# %bb.110:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB18_113
-	jmp	.LBB18_114
-.LBB18_111:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB18_114
-.LBB18_113:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB18_114:
-	mov	rbx, qword ptr [rsp + 152]
-	test	rbx, rbx
-	je	.LBB18_124
-# %bb.115:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_117
-# %bb.116:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB18_119
-	jmp	.LBB18_124
-.LBB18_117:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB18_124
-.LBB18_119:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_121
-# %bb.120:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB18_123
-	jmp	.LBB18_124
-.LBB18_121:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB18_124
-.LBB18_123:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB18_124:
-	mov	rbx, qword ptr [rsp + 24]
-	test	rbx, rbx
-	je	.LBB18_134
-# %bb.125:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_127
-# %bb.126:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB18_129
-	jmp	.LBB18_134
-.LBB18_127:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB18_134
-.LBB18_129:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_131
-# %bb.130:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB18_133
-	jmp	.LBB18_134
-.LBB18_131:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB18_134
-.LBB18_133:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB18_134:
-	mov	rbx, qword ptr [rsp + 88]
-	test	rbx, rbx
-	je	.LBB18_144
-# %bb.135:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_137
-# %bb.136:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB18_139
-	jmp	.LBB18_144
-.LBB18_137:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB18_144
-.LBB18_139:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_141
-# %bb.140:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB18_143
-	jmp	.LBB18_144
-.LBB18_141:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB18_144
-.LBB18_143:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB18_144:
-	mov	rbx, qword ptr [rsp + 200]
-	test	rbx, rbx
-	je	.LBB18_154
-# %bb.145:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_147
-# %bb.146:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB18_149
-	jmp	.LBB18_154
-.LBB18_147:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB18_154
-.LBB18_149:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_151
-# %bb.150:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB18_153
-	jmp	.LBB18_154
-.LBB18_151:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB18_154
-.LBB18_153:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB18_154:
-	mov	rbx, qword ptr [rsp + 56]
-	test	rbx, rbx
-	je	.LBB18_164
-# %bb.155:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_157
-# %bb.156:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB18_159
-	jmp	.LBB18_164
-.LBB18_157:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB18_164
-.LBB18_159:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_161
-# %bb.160:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB18_163
-	jmp	.LBB18_164
-.LBB18_161:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB18_164
-.LBB18_163:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB18_164:
-	mov	rbx, qword ptr [rsp + 72]
-	test	rbx, rbx
-	je	.LBB18_174
-# %bb.165:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_167
-# %bb.166:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB18_169
-	jmp	.LBB18_174
-.LBB18_167:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB18_174
-.LBB18_169:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_171
-# %bb.170:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB18_173
-	jmp	.LBB18_174
-.LBB18_171:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB18_174
-.LBB18_173:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB18_174:
-	mov	rbx, qword ptr [rsp + 40]
-	test	rbx, rbx
-	je	.LBB18_184
-# %bb.175:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_177
-# %bb.176:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB18_179
-	jmp	.LBB18_184
-.LBB18_177:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB18_184
-.LBB18_179:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_181
-# %bb.180:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB18_183
-	jmp	.LBB18_184
-.LBB18_181:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB18_184
-.LBB18_183:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB18_184:
-	mov	rbx, qword ptr [rsp + 8]
-	test	rbx, rbx
-	je	.LBB18_194
-# %bb.185:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_187
-# %bb.186:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB18_189
-	jmp	.LBB18_194
-.LBB18_187:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB18_194
-.LBB18_189:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_191
-# %bb.190:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB18_193
-	jmp	.LBB18_194
-.LBB18_191:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB18_194
-.LBB18_193:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB18_194:
-	mov	rbx, qword ptr [rsp + 104]
-	test	rbx, rbx
-	je	.LBB18_204
-# %bb.195:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_197
-# %bb.196:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB18_199
-	jmp	.LBB18_204
-.LBB18_197:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB18_204
-.LBB18_199:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_201
-# %bb.200:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB18_203
-	jmp	.LBB18_204
-.LBB18_201:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB18_204
-.LBB18_203:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB18_204:
-	mov	rbx, qword ptr [rsp + 120]
-	test	rbx, rbx
-	je	.LBB18_214
-# %bb.205:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_207
-# %bb.206:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB18_209
-	jmp	.LBB18_214
-.LBB18_207:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB18_214
-.LBB18_209:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB18_211
-# %bb.210:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB18_213
-	jmp	.LBB18_214
-.LBB18_211:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB18_214
-.LBB18_213:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB18_214:
-	mov	rax, rbp
-	add	rsp, 232
-	.cfi_def_cfa_offset 56
-	pop	rbx
-	.cfi_def_cfa_offset 48
-	pop	r12
-	.cfi_def_cfa_offset 40
-	pop	r13
-	.cfi_def_cfa_offset 32
-	pop	r14
-	.cfi_def_cfa_offset 24
-	pop	r15
-	.cfi_def_cfa_offset 16
+                                        # kill: def $rax killed $eax
 	pop	rbp
-	.cfi_def_cfa_offset 8
+	.cfi_def_cfa rsp, 8
 	ret
-.LBB18_95:
-	.cfi_def_cfa_offset 288
-.Ltmp149:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rax, qword ptr [r15]
-	mov	rdi, r15
-	call	qword ptr [rax + 8]
-.Ltmp150:
-	call	__cxa_rethrow
-.Ltmp151:
-# %bb.96:
-.LBB18_221:
-.Ltmp152:
-	mov	r14, rax
-.Ltmp153:
-	call	__cxa_end_catch
-.Ltmp154:
-# %bb.222:
-	lea	rdi, [rsp + 208]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	xor	ebx, ebx
-	jmp	.LBB18_223
-.LBB18_94:
-.Ltmp155:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB18_92:
-.Ltmp140:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rax, qword ptr [r12]
-	mov	rdi, r12
-	call	qword ptr [rax + 8]
-.Ltmp141:
-	call	__cxa_rethrow
-.Ltmp142:
-# %bb.93:
-.LBB18_89:
-.Ltmp143:
-	mov	r14, rax
-.Ltmp144:
-	call	__cxa_end_catch
-.Ltmp145:
-# %bb.90:
-	mov	bl, 1
-.LBB18_223:
-	lea	rdi, [rsp + 160]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	xor	ebp, ebp
-	jmp	.LBB18_224
-.LBB18_91:
-.Ltmp146:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB18_220:
-.Ltmp137:
-	mov	r14, rax
-	mov	bpl, 1
-	mov	bl, 1
-.LBB18_224:
-	lea	rdi, [rsp + 176]
-	call	_ZN9InterpretIiED2Ev
-	jmp	.LBB18_225
-.LBB18_87:
-.Ltmp128:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 8]
-.Ltmp129:
-	call	__cxa_rethrow
-.Ltmp130:
-# %bb.88:
-.LBB18_84:
-.Ltmp131:
-	mov	r14, rax
-.Ltmp132:
-	call	__cxa_end_catch
-.Ltmp133:
-# %bb.85:
-	mov	bpl, 1
-	mov	bl, 1
-.LBB18_225:
-	lea	rdi, [rsp + 128]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	lea	rdi, [rsp + 144]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	jmp	.LBB18_226
-.LBB18_86:
-.Ltmp134:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB18_219:
-.Ltmp125:
-	mov	r14, rax
-	mov	bpl, 1
-	mov	bl, 1
-.LBB18_226:
-	lea	rdi, [rsp + 16]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	lea	rdi, [rsp + 80]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	jmp	.LBB18_227
-.LBB18_218:
-.Ltmp122:
-	mov	r14, rax
-	mov	bpl, 1
-	mov	bl, 1
-.LBB18_227:
-	lea	rdi, [rsp + 192]
-	call	_ZN9InterpretIiED2Ev
-.LBB18_228:
-	lea	rdi, [rsp + 48]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	lea	rdi, [rsp + 64]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	test	bpl, bpl
-	jne	.LBB18_232
-	jmp	.LBB18_233
-.LBB18_57:
-.Ltmp113:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 8]
-.Ltmp114:
-	call	__cxa_rethrow
-.Ltmp115:
-# %bb.58:
-.LBB18_54:
-.Ltmp116:
-	mov	r14, rax
-.Ltmp117:
-	call	__cxa_end_catch
-.Ltmp118:
-# %bb.55:
-	mov	bpl, 1
-	mov	bl, 1
-	jmp	.LBB18_228
-.LBB18_56:
-.Ltmp119:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB18_44:
-.Ltmp104:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rax, qword ptr [rbp]
-	mov	rdi, rbp
-	call	qword ptr [rax + 8]
-.Ltmp105:
-	call	__cxa_rethrow
-.Ltmp106:
-# %bb.45:
-.LBB18_42:
-.Ltmp107:
-	mov	r14, rax
-.Ltmp108:
-	call	__cxa_end_catch
-.Ltmp109:
-	jmp	.LBB18_230
-.LBB18_43:
-.Ltmp110:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB18_229:
-.Ltmp101:
-	mov	r14, rax
-.LBB18_230:
-	lea	rdi, [rsp + 64]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	mov	rdi, rbx
-	call	_ZdlPv
-	jmp	.LBB18_231
-.LBB18_217:
-.Ltmp98:
-	mov	r14, rax
-.LBB18_231:
-	mov	bl, 1
-.LBB18_232:
-	mov	rdi, r12
-	call	_ZdlPv
-.LBB18_233:
-	lea	rdi, [rsp + 32]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	mov	rdi, rsp
-	call	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
-.LBB18_234:
-	lea	rdi, [rsp + 96]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	lea	rdi, [rsp + 112]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	test	bl, bl
-	jne	.LBB18_237
-	jmp	.LBB18_238
-.LBB18_216:
-.Ltmp95:
-	mov	r14, rax
-	mov	bl, 1
-	jmp	.LBB18_233
-.LBB18_26:
-.Ltmp86:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rax, qword ptr [r12]
-	mov	rdi, r12
-	call	qword ptr [rax + 8]
-.Ltmp87:
-	call	__cxa_rethrow
-.Ltmp88:
-# %bb.27:
-.LBB18_23:
-.Ltmp89:
-	mov	r14, rax
-.Ltmp90:
-	call	__cxa_end_catch
-.Ltmp91:
-# %bb.24:
-	mov	bl, 1
-	jmp	.LBB18_234
-.LBB18_25:
-.Ltmp92:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB18_14:
-.Ltmp77:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 8]
-.Ltmp78:
-	call	__cxa_rethrow
-.Ltmp79:
-# %bb.15:
-.LBB18_12:
-.Ltmp80:
-	mov	r14, rax
-.Ltmp81:
-	call	__cxa_end_catch
-.Ltmp82:
-	jmp	.LBB18_236
-.LBB18_13:
-.Ltmp83:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB18_235:
-.Ltmp74:
-	mov	r14, rax
-.LBB18_236:
-	lea	rdi, [rsp + 112]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	mov	rdi, r12
-	call	_ZdlPv
-	jmp	.LBB18_237
-.LBB18_215:
-.Ltmp71:
-	mov	r14, rax
-.LBB18_237:
-	mov	rdi, r15
-	call	_ZdlPv
-.LBB18_238:
-	mov	rdi, r14
-	call	_Unwind_Resume@PLT
-.Lfunc_end18:
-	.size	_ZN7FiboDyn4evalEv, .Lfunc_end18-_ZN7FiboDyn4evalEv
-	.cfi_endproc
-	.section	.gcc_except_table._ZN7FiboDyn4evalEv,"aG",@progbits,_ZN7FiboDyn4evalEv,comdat
-	.p2align	2
-GCC_except_table18:
-.Lexception4:
-	.byte	255                             # @LPStart Encoding = omit
-	.byte	3                               # @TType Encoding = udata4
-	.uleb128 .Lttbase3-.Lttbaseref3
-.Lttbaseref3:
-	.byte	1                               # Call site Encoding = uleb128
-	.uleb128 .Lcst_end4-.Lcst_begin4
-.Lcst_begin4:
-	.uleb128 .Lfunc_begin4-.Lfunc_begin4    # >> Call Site 1 <<
-	.uleb128 .Ltmp69-.Lfunc_begin4          #   Call between .Lfunc_begin4 and .Ltmp69
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp69-.Lfunc_begin4          # >> Call Site 2 <<
-	.uleb128 .Ltmp70-.Ltmp69                #   Call between .Ltmp69 and .Ltmp70
-	.uleb128 .Ltmp71-.Lfunc_begin4          #     jumps to .Ltmp71
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp72-.Lfunc_begin4          # >> Call Site 3 <<
-	.uleb128 .Ltmp73-.Ltmp72                #   Call between .Ltmp72 and .Ltmp73
-	.uleb128 .Ltmp74-.Lfunc_begin4          #     jumps to .Ltmp74
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp75-.Lfunc_begin4          # >> Call Site 4 <<
-	.uleb128 .Ltmp76-.Ltmp75                #   Call between .Ltmp75 and .Ltmp76
-	.uleb128 .Ltmp77-.Lfunc_begin4          #     jumps to .Ltmp77
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp84-.Lfunc_begin4          # >> Call Site 5 <<
-	.uleb128 .Ltmp85-.Ltmp84                #   Call between .Ltmp84 and .Ltmp85
-	.uleb128 .Ltmp86-.Lfunc_begin4          #     jumps to .Ltmp86
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp93-.Lfunc_begin4          # >> Call Site 6 <<
-	.uleb128 .Ltmp94-.Ltmp93                #   Call between .Ltmp93 and .Ltmp94
-	.uleb128 .Ltmp95-.Lfunc_begin4          #     jumps to .Ltmp95
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp96-.Lfunc_begin4          # >> Call Site 7 <<
-	.uleb128 .Ltmp97-.Ltmp96                #   Call between .Ltmp96 and .Ltmp97
-	.uleb128 .Ltmp98-.Lfunc_begin4          #     jumps to .Ltmp98
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp99-.Lfunc_begin4          # >> Call Site 8 <<
-	.uleb128 .Ltmp100-.Ltmp99               #   Call between .Ltmp99 and .Ltmp100
-	.uleb128 .Ltmp101-.Lfunc_begin4         #     jumps to .Ltmp101
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp102-.Lfunc_begin4         # >> Call Site 9 <<
-	.uleb128 .Ltmp103-.Ltmp102              #   Call between .Ltmp102 and .Ltmp103
-	.uleb128 .Ltmp104-.Lfunc_begin4         #     jumps to .Ltmp104
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp111-.Lfunc_begin4         # >> Call Site 10 <<
-	.uleb128 .Ltmp112-.Ltmp111              #   Call between .Ltmp111 and .Ltmp112
-	.uleb128 .Ltmp113-.Lfunc_begin4         #     jumps to .Ltmp113
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp120-.Lfunc_begin4         # >> Call Site 11 <<
-	.uleb128 .Ltmp121-.Ltmp120              #   Call between .Ltmp120 and .Ltmp121
-	.uleb128 .Ltmp122-.Lfunc_begin4         #     jumps to .Ltmp122
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp123-.Lfunc_begin4         # >> Call Site 12 <<
-	.uleb128 .Ltmp124-.Ltmp123              #   Call between .Ltmp123 and .Ltmp124
-	.uleb128 .Ltmp125-.Lfunc_begin4         #     jumps to .Ltmp125
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp126-.Lfunc_begin4         # >> Call Site 13 <<
-	.uleb128 .Ltmp127-.Ltmp126              #   Call between .Ltmp126 and .Ltmp127
-	.uleb128 .Ltmp128-.Lfunc_begin4         #     jumps to .Ltmp128
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp135-.Lfunc_begin4         # >> Call Site 14 <<
-	.uleb128 .Ltmp136-.Ltmp135              #   Call between .Ltmp135 and .Ltmp136
-	.uleb128 .Ltmp137-.Lfunc_begin4         #     jumps to .Ltmp137
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp138-.Lfunc_begin4         # >> Call Site 15 <<
-	.uleb128 .Ltmp139-.Ltmp138              #   Call between .Ltmp138 and .Ltmp139
-	.uleb128 .Ltmp140-.Lfunc_begin4         #     jumps to .Ltmp140
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp147-.Lfunc_begin4         # >> Call Site 16 <<
-	.uleb128 .Ltmp148-.Ltmp147              #   Call between .Ltmp147 and .Ltmp148
-	.uleb128 .Ltmp149-.Lfunc_begin4         #     jumps to .Ltmp149
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp148-.Lfunc_begin4         # >> Call Site 17 <<
-	.uleb128 .Ltmp150-.Ltmp148              #   Call between .Ltmp148 and .Ltmp150
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp150-.Lfunc_begin4         # >> Call Site 18 <<
-	.uleb128 .Ltmp151-.Ltmp150              #   Call between .Ltmp150 and .Ltmp151
-	.uleb128 .Ltmp152-.Lfunc_begin4         #     jumps to .Ltmp152
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp153-.Lfunc_begin4         # >> Call Site 19 <<
-	.uleb128 .Ltmp154-.Ltmp153              #   Call between .Ltmp153 and .Ltmp154
-	.uleb128 .Ltmp155-.Lfunc_begin4         #     jumps to .Ltmp155
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp154-.Lfunc_begin4         # >> Call Site 20 <<
-	.uleb128 .Ltmp141-.Ltmp154              #   Call between .Ltmp154 and .Ltmp141
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp141-.Lfunc_begin4         # >> Call Site 21 <<
-	.uleb128 .Ltmp142-.Ltmp141              #   Call between .Ltmp141 and .Ltmp142
-	.uleb128 .Ltmp143-.Lfunc_begin4         #     jumps to .Ltmp143
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp144-.Lfunc_begin4         # >> Call Site 22 <<
-	.uleb128 .Ltmp145-.Ltmp144              #   Call between .Ltmp144 and .Ltmp145
-	.uleb128 .Ltmp146-.Lfunc_begin4         #     jumps to .Ltmp146
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp145-.Lfunc_begin4         # >> Call Site 23 <<
-	.uleb128 .Ltmp129-.Ltmp145              #   Call between .Ltmp145 and .Ltmp129
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp129-.Lfunc_begin4         # >> Call Site 24 <<
-	.uleb128 .Ltmp130-.Ltmp129              #   Call between .Ltmp129 and .Ltmp130
-	.uleb128 .Ltmp131-.Lfunc_begin4         #     jumps to .Ltmp131
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp132-.Lfunc_begin4         # >> Call Site 25 <<
-	.uleb128 .Ltmp133-.Ltmp132              #   Call between .Ltmp132 and .Ltmp133
-	.uleb128 .Ltmp134-.Lfunc_begin4         #     jumps to .Ltmp134
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp133-.Lfunc_begin4         # >> Call Site 26 <<
-	.uleb128 .Ltmp114-.Ltmp133              #   Call between .Ltmp133 and .Ltmp114
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp114-.Lfunc_begin4         # >> Call Site 27 <<
-	.uleb128 .Ltmp115-.Ltmp114              #   Call between .Ltmp114 and .Ltmp115
-	.uleb128 .Ltmp116-.Lfunc_begin4         #     jumps to .Ltmp116
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp117-.Lfunc_begin4         # >> Call Site 28 <<
-	.uleb128 .Ltmp118-.Ltmp117              #   Call between .Ltmp117 and .Ltmp118
-	.uleb128 .Ltmp119-.Lfunc_begin4         #     jumps to .Ltmp119
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp118-.Lfunc_begin4         # >> Call Site 29 <<
-	.uleb128 .Ltmp105-.Ltmp118              #   Call between .Ltmp118 and .Ltmp105
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp105-.Lfunc_begin4         # >> Call Site 30 <<
-	.uleb128 .Ltmp106-.Ltmp105              #   Call between .Ltmp105 and .Ltmp106
-	.uleb128 .Ltmp107-.Lfunc_begin4         #     jumps to .Ltmp107
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp108-.Lfunc_begin4         # >> Call Site 31 <<
-	.uleb128 .Ltmp109-.Ltmp108              #   Call between .Ltmp108 and .Ltmp109
-	.uleb128 .Ltmp110-.Lfunc_begin4         #     jumps to .Ltmp110
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp109-.Lfunc_begin4         # >> Call Site 32 <<
-	.uleb128 .Ltmp87-.Ltmp109               #   Call between .Ltmp109 and .Ltmp87
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp87-.Lfunc_begin4          # >> Call Site 33 <<
-	.uleb128 .Ltmp88-.Ltmp87                #   Call between .Ltmp87 and .Ltmp88
-	.uleb128 .Ltmp89-.Lfunc_begin4          #     jumps to .Ltmp89
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp90-.Lfunc_begin4          # >> Call Site 34 <<
-	.uleb128 .Ltmp91-.Ltmp90                #   Call between .Ltmp90 and .Ltmp91
-	.uleb128 .Ltmp92-.Lfunc_begin4          #     jumps to .Ltmp92
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp91-.Lfunc_begin4          # >> Call Site 35 <<
-	.uleb128 .Ltmp78-.Ltmp91                #   Call between .Ltmp91 and .Ltmp78
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp78-.Lfunc_begin4          # >> Call Site 36 <<
-	.uleb128 .Ltmp79-.Ltmp78                #   Call between .Ltmp78 and .Ltmp79
-	.uleb128 .Ltmp80-.Lfunc_begin4          #     jumps to .Ltmp80
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp81-.Lfunc_begin4          # >> Call Site 37 <<
-	.uleb128 .Ltmp82-.Ltmp81                #   Call between .Ltmp81 and .Ltmp82
-	.uleb128 .Ltmp83-.Lfunc_begin4          #     jumps to .Ltmp83
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp82-.Lfunc_begin4          # >> Call Site 38 <<
-	.uleb128 .Lfunc_end18-.Ltmp82           #   Call between .Ltmp82 and .Lfunc_end18
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-.Lcst_end4:
-	.byte	1                               # >> Action Record 1 <<
-                                        #   Catch TypeInfo 1
-	.byte	0                               #   No further actions
-	.p2align	2
-                                        # >> Catch TypeInfos <<
-	.long	0                               # TypeInfo 1
-.Lttbase3:
-	.p2align	2
-                                        # -- End function
-	.section	.text._ZN5ForceIiE3ptrEv,"axG",@progbits,_ZN5ForceIiE3ptrEv,comdat
-	.weak	_ZN5ForceIiE3ptrEv              # -- Begin function _ZN5ForceIiE3ptrEv
-	.p2align	4, 0x90
-	.type	_ZN5ForceIiE3ptrEv,@function
-_ZN5ForceIiE3ptrEv:                     # @_ZN5ForceIiE3ptrEv
-.Lfunc_begin5:
-	.cfi_startproc
-	.cfi_personality 3, __gxx_personality_v0
-	.cfi_lsda 3, .Lexception5
-# %bb.0:
-	push	r15
-	.cfi_def_cfa_offset 16
-	push	r14
-	.cfi_def_cfa_offset 24
-	push	rbx
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -32
-	.cfi_offset r14, -24
-	.cfi_offset r15, -16
-	mov	r15, rsi
-	mov	r14, rdi
-	mov	edi, 24
-	call	_Znwm
-	mov	rbx, rax
-.Ltmp156:
-	mov	rdi, r15
-	call	_ZN9InterpretIiE3getEv
-.Ltmp157:
-# %bb.1:
-	mov	dword ptr [rbx + 8], eax
-	mov	byte ptr [rbx + 12], 1
-	mov	qword ptr [rbx], offset _ZTV5ValueIiE+16
-	mov	dword ptr [rbx + 16], eax
-	mov	qword ptr [r14], rbx
-	mov	qword ptr [r14 + 8], 0
-.Ltmp159:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp160:
-# %bb.2:
-	movabs	rcx, 4294967297
-	mov	qword ptr [rax + 8], rcx
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], rbx
-	mov	qword ptr [r14 + 8], rax
-	mov	rax, r14
-	pop	rbx
-	.cfi_def_cfa_offset 24
-	pop	r14
-	.cfi_def_cfa_offset 16
-	pop	r15
-	.cfi_def_cfa_offset 8
-	ret
-.LBB19_6:
-	.cfi_def_cfa_offset 32
-.Ltmp161:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 8]
-.Ltmp162:
-	call	__cxa_rethrow
-.Ltmp163:
-# %bb.7:
-.LBB19_3:
-.Ltmp164:
-	mov	r14, rax
-.Ltmp165:
-	call	__cxa_end_catch
-.Ltmp166:
-# %bb.4:
-	mov	rdi, r14
-	call	_Unwind_Resume@PLT
-.LBB19_5:
-.Ltmp167:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB19_8:
-.Ltmp158:
-	mov	r14, rax
-	mov	rdi, rbx
-	call	_ZdlPv
-	mov	rdi, r14
-	call	_Unwind_Resume@PLT
-.Lfunc_end19:
-	.size	_ZN5ForceIiE3ptrEv, .Lfunc_end19-_ZN5ForceIiE3ptrEv
-	.cfi_endproc
-	.section	.gcc_except_table._ZN5ForceIiE3ptrEv,"aG",@progbits,_ZN5ForceIiE3ptrEv,comdat
-	.p2align	2
-GCC_except_table19:
-.Lexception5:
-	.byte	255                             # @LPStart Encoding = omit
-	.byte	3                               # @TType Encoding = udata4
-	.uleb128 .Lttbase4-.Lttbaseref4
-.Lttbaseref4:
-	.byte	1                               # Call site Encoding = uleb128
-	.uleb128 .Lcst_end5-.Lcst_begin5
-.Lcst_begin5:
-	.uleb128 .Lfunc_begin5-.Lfunc_begin5    # >> Call Site 1 <<
-	.uleb128 .Ltmp156-.Lfunc_begin5         #   Call between .Lfunc_begin5 and .Ltmp156
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp156-.Lfunc_begin5         # >> Call Site 2 <<
-	.uleb128 .Ltmp157-.Ltmp156              #   Call between .Ltmp156 and .Ltmp157
-	.uleb128 .Ltmp158-.Lfunc_begin5         #     jumps to .Ltmp158
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp159-.Lfunc_begin5         # >> Call Site 3 <<
-	.uleb128 .Ltmp160-.Ltmp159              #   Call between .Ltmp159 and .Ltmp160
-	.uleb128 .Ltmp161-.Lfunc_begin5         #     jumps to .Ltmp161
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp160-.Lfunc_begin5         # >> Call Site 4 <<
-	.uleb128 .Ltmp162-.Ltmp160              #   Call between .Ltmp160 and .Ltmp162
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp162-.Lfunc_begin5         # >> Call Site 5 <<
-	.uleb128 .Ltmp163-.Ltmp162              #   Call between .Ltmp162 and .Ltmp163
-	.uleb128 .Ltmp164-.Lfunc_begin5         #     jumps to .Ltmp164
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp165-.Lfunc_begin5         # >> Call Site 6 <<
-	.uleb128 .Ltmp166-.Ltmp165              #   Call between .Ltmp165 and .Ltmp166
-	.uleb128 .Ltmp167-.Lfunc_begin5         #     jumps to .Ltmp167
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp166-.Lfunc_begin5         # >> Call Site 7 <<
-	.uleb128 .Lfunc_end19-.Ltmp166          #   Call between .Ltmp166 and .Lfunc_end19
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-.Lcst_end5:
-	.byte	1                               # >> Action Record 1 <<
-                                        #   Catch TypeInfo 1
-	.byte	0                               #   No further actions
-	.p2align	2
-                                        # >> Catch TypeInfos <<
-	.long	0                               # TypeInfo 1
-.Lttbase4:
-	.p2align	2
-                                        # -- End function
-	.section	.text._ZN9InterpretIiED2Ev,"axG",@progbits,_ZN9InterpretIiED2Ev,comdat
-	.weak	_ZN9InterpretIiED2Ev            # -- Begin function _ZN9InterpretIiED2Ev
-	.p2align	4, 0x90
-	.type	_ZN9InterpretIiED2Ev,@function
-_ZN9InterpretIiED2Ev:                   # @_ZN9InterpretIiED2Ev
-	.cfi_startproc
-# %bb.0:
-	push	rbx
-	.cfi_def_cfa_offset 16
-	.cfi_offset rbx, -16
-	mov	rbx, qword ptr [rdi + 8]
-	test	rbx, rbx
-	je	.LBB20_9
-# %bb.1:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB20_3
-# %bb.2:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB20_5
-	jmp	.LBB20_9
-.LBB20_3:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB20_9
-.LBB20_5:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB20_7
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB20_10
-.LBB20_9:
-	pop	rbx
-	.cfi_def_cfa_offset 8
-	ret
-.LBB20_7:
-	.cfi_def_cfa_offset 16
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB20_9
-.LBB20_10:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	pop	rbx
-	.cfi_def_cfa_offset 8
-	jmp	qword ptr [rax + 24]            # TAILCALL
-.Lfunc_end20:
-	.size	_ZN9InterpretIiED2Ev, .Lfunc_end20-_ZN9InterpretIiED2Ev
-	.cfi_endproc
-                                        # -- End function
-	.section	.text._ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev,comdat
-	.weak	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev # -- Begin function _ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	.p2align	4, 0x90
-	.type	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev,@function
-_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev: # @_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	.cfi_startproc
-# %bb.0:
-	push	rbx
-	.cfi_def_cfa_offset 16
-	.cfi_offset rbx, -16
-	mov	rbx, qword ptr [rdi + 8]
-	test	rbx, rbx
-	je	.LBB21_9
-# %bb.1:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB21_3
-# %bb.2:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB21_5
-	jmp	.LBB21_9
-.LBB21_3:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB21_9
-.LBB21_5:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB21_7
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB21_10
-.LBB21_9:
-	pop	rbx
-	.cfi_def_cfa_offset 8
-	ret
-.LBB21_7:
-	.cfi_def_cfa_offset 16
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB21_9
-.LBB21_10:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	pop	rbx
-	.cfi_def_cfa_offset 8
-	jmp	qword ptr [rax + 24]            # TAILCALL
-.Lfunc_end21:
-	.size	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev, .Lfunc_end21-_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
+.Lfunc_end30:
+	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info, .Lfunc_end30-_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev,"axG",@progbits,_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev,comdat
@@ -3167,9 +1424,2013 @@ _ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev: # @_ZNSt
 _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev: # @_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev
 	.cfi_startproc
 # %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	pop	rbp
+	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end22:
-	.size	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev, .Lfunc_end22-_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev
+.Lfunc_end31:
+	.size	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev, .Lfunc_end31-_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED0Ev,"axG",@progbits,_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED0Ev,comdat
+	.weak	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED0Ev # -- Begin function _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED0Ev
+	.p2align	4, 0x90
+	.type	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED0Ev,@function
+_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED0Ev: # @_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED0Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	ud2
+.Lfunc_end32:
+	.size	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED0Ev, .Lfunc_end32-_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED0Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv,"axG",@progbits,_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv,comdat
+	.weak	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv # -- Begin function _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv
+	.p2align	4, 0x90
+	.type	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv,@function
+_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv: # @_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rax       # 8-byte Spill
+	cmp	rax, 0
+	je	.LBB33_2
+# %bb.1:
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	mov	rax, qword ptr [rdi]
+	call	qword ptr [rax + 8]
+.LBB33_2:
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end33:
+	.size	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv, .Lfunc_end33-_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2Ev,"axG",@progbits,_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2Ev,comdat
+	.weak	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2Ev # -- Begin function _ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	.p2align	4, 0x90
+	.type	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2Ev,@function
+_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2Ev: # @_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rax], 0
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end34:
+	.size	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2Ev, .Lfunc_end34-_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_,"axG",@progbits,_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_,comdat
+	.weak	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_ # -- Begin function _ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_
+	.p2align	4, 0x90
+	.type	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_,@function
+_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_: # @_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 8]
+	mov	rcx, qword ptr [rbp - 16]
+	mov	rcx, qword ptr [rcx]
+	mov	qword ptr [rbp - 24], rcx
+	mov	rdx, qword ptr [rax]
+	mov	rcx, qword ptr [rbp - 16]
+	mov	qword ptr [rcx], rdx
+	mov	rcx, qword ptr [rbp - 24]
+	mov	qword ptr [rax], rcx
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end35:
+	.size	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_, .Lfunc_end35-_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_,"axG",@progbits,_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_,comdat
+	.weak	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_ # -- Begin function _ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	.p2align	4, 0x90
+	.type	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_,@function
+_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_: # @_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end36:
+	.size	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_, .Lfunc_end36-_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN3IntC2Ei,"axG",@progbits,_ZN3IntC2Ei,comdat
+	.weak	_ZN3IntC2Ei                     # -- Begin function _ZN3IntC2Ei
+	.p2align	4, 0x90
+	.type	_ZN3IntC2Ei,@function
+_ZN3IntC2Ei:                            # @_ZN3IntC2Ei
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	dword ptr [rbp - 12], esi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rdi       # 8-byte Spill
+	mov	esi, dword ptr [rbp - 12]
+	call	_ZN5ValueIiEC2Ei
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	movabs	rcx, offset _ZTV3Int
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end37:
+	.size	_ZN3IntC2Ei, .Lfunc_end37-_ZN3IntC2Ei
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN7FiboDynC2ESt10shared_ptrI11ComputationIiEES3_S3_,"axG",@progbits,_ZN7FiboDynC2ESt10shared_ptrI11ComputationIiEES3_S3_,comdat
+	.weak	_ZN7FiboDynC2ESt10shared_ptrI11ComputationIiEES3_S3_ # -- Begin function _ZN7FiboDynC2ESt10shared_ptrI11ComputationIiEES3_S3_
+	.p2align	4, 0x90
+	.type	_ZN7FiboDynC2ESt10shared_ptrI11ComputationIiEES3_S3_,@function
+_ZN7FiboDynC2ESt10shared_ptrI11ComputationIiEES3_S3_: # @_ZN7FiboDynC2ESt10shared_ptrI11ComputationIiEES3_S3_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 64
+	mov	qword ptr [rbp - 64], rsi       # 8-byte Spill
+	mov	qword ptr [rbp - 48], rdx       # 8-byte Spill
+	mov	qword ptr [rbp - 24], rcx       # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 32], rdi       # 8-byte Spill
+	call	_ZN11ComputationIiEC2Ev
+	mov	rdi, qword ptr [rbp - 64]       # 8-byte Reload
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	movabs	rcx, offset _ZTV7FiboDyn
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	add	rax, 16
+	mov	qword ptr [rbp - 56], rax       # 8-byte Spill
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 56]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	mov	rdi, qword ptr [rbp - 48]       # 8-byte Reload
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	add	rax, 32
+	mov	qword ptr [rbp - 40], rax       # 8-byte Spill
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 40]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rax, 48
+	mov	qword ptr [rbp - 16], rax       # 8-byte Spill
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	add	rsp, 64
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end38:
+	.size	_ZN7FiboDynC2ESt10shared_ptrI11ComputationIiEES3_S3_, .Lfunc_end38-_ZN7FiboDynC2ESt10shared_ptrI11ComputationIiEES3_S3_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_ # -- Begin function _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_,@function
+_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_: # @_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	rax, qword ptr [rbp - 16]
+	mov	rax, qword ptr [rax]
+	mov	qword ptr [rdi], rax
+	add	rdi, 8
+	mov	rsi, qword ptr [rbp - 16]
+	add	rsi, 8
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2ERKS2_
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end39:
+	.size	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_, .Lfunc_end39-_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2ERKS2_,"axG",@progbits,_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2ERKS2_,comdat
+	.weak	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2ERKS2_ # -- Begin function _ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2ERKS2_
+	.p2align	4, 0x90
+	.type	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2ERKS2_,@function
+_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2ERKS2_: # @_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2ERKS2_
+.Lfunc_begin4:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception4
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rax       # 8-byte Spill
+	mov	rcx, qword ptr [rbp - 16]
+	mov	rcx, qword ptr [rcx]
+	mov	qword ptr [rax], rcx
+	cmp	qword ptr [rax], 0
+	je	.LBB40_3
+# %bb.1:
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	mov	rdi, qword ptr [rax]
+.Ltmp56:
+	call	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE15_M_add_ref_copyEv
+.Ltmp57:
+	jmp	.LBB40_2
+.LBB40_2:
+	jmp	.LBB40_3
+.LBB40_3:
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB40_4:
+	.cfi_def_cfa rbp, 16
+.Ltmp58:
+	mov	rdi, rax
+                                        # kill: def $eax killed $edx killed $rdx
+	call	__clang_call_terminate
+.Lfunc_end40:
+	.size	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2ERKS2_, .Lfunc_end40-_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2ERKS2_
+	.cfi_endproc
+	.section	.gcc_except_table._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2ERKS2_,"aG",@progbits,_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2ERKS2_,comdat
+	.p2align	2
+GCC_except_table40:
+.Lexception4:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	3                               # @TType Encoding = udata4
+	.uleb128 .Lttbase1-.Lttbaseref1
+.Lttbaseref1:
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end4-.Lcst_begin4
+.Lcst_begin4:
+	.uleb128 .Ltmp56-.Lfunc_begin4          # >> Call Site 1 <<
+	.uleb128 .Ltmp57-.Ltmp56                #   Call between .Ltmp56 and .Ltmp57
+	.uleb128 .Ltmp58-.Lfunc_begin4          #     jumps to .Ltmp58
+	.byte	1                               #   On action: 1
+.Lcst_end4:
+	.byte	1                               # >> Action Record 1 <<
+                                        #   Catch TypeInfo 1
+	.byte	0                               #   No further actions
+	.p2align	2
+                                        # >> Catch TypeInfos <<
+	.long	0                               # TypeInfo 1
+.Lttbase1:
+	.p2align	2
+                                        # -- End function
+	.section	.text._ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE15_M_add_ref_copyEv,"axG",@progbits,_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE15_M_add_ref_copyEv,comdat
+	.weak	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE15_M_add_ref_copyEv # -- Begin function _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE15_M_add_ref_copyEv
+	.p2align	4, 0x90
+	.type	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE15_M_add_ref_copyEv,@function
+_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE15_M_add_ref_copyEv: # @_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE15_M_add_ref_copyEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	add	rdi, 8
+	mov	esi, 1
+	call	_ZN9__gnu_cxxL21__atomic_add_dispatchEPii
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end41:
+	.size	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE15_M_add_ref_copyEv, .Lfunc_end41-_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE15_M_add_ref_copyEv
+	.cfi_endproc
+                                        # -- End function
+	.text
+	.p2align	4, 0x90                         # -- Begin function _ZN9__gnu_cxxL21__atomic_add_dispatchEPii
+	.type	_ZN9__gnu_cxxL21__atomic_add_dispatchEPii,@function
+_ZN9__gnu_cxxL21__atomic_add_dispatchEPii: # @_ZN9__gnu_cxxL21__atomic_add_dispatchEPii
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	dword ptr [rbp - 12], esi
+	call	_ZL18__gthread_active_pv
+	cmp	eax, 0
+	je	.LBB42_2
+# %bb.1:
+	mov	rdi, qword ptr [rbp - 8]
+	mov	esi, dword ptr [rbp - 12]
+	call	_ZN9__gnu_cxxL12__atomic_addEPVii
+	jmp	.LBB42_3
+.LBB42_2:
+	mov	rdi, qword ptr [rbp - 8]
+	mov	esi, dword ptr [rbp - 12]
+	call	_ZN9__gnu_cxxL19__atomic_add_singleEPii
+.LBB42_3:
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end42:
+	.size	_ZN9__gnu_cxxL21__atomic_add_dispatchEPii, .Lfunc_end42-_ZN9__gnu_cxxL21__atomic_add_dispatchEPii
+	.cfi_endproc
+                                        # -- End function
+	.p2align	4, 0x90                         # -- Begin function _ZL18__gthread_active_pv
+	.type	_ZL18__gthread_active_pv,@function
+_ZL18__gthread_active_pv:               # @_ZL18__gthread_active_pv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	eax, offset __pthread_key_create
+	test	rax, rax
+	setne	al
+	movzx	eax, al
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end43:
+	.size	_ZL18__gthread_active_pv, .Lfunc_end43-_ZL18__gthread_active_pv
+	.cfi_endproc
+                                        # -- End function
+	.p2align	4, 0x90                         # -- Begin function _ZN9__gnu_cxxL12__atomic_addEPVii
+	.type	_ZN9__gnu_cxxL12__atomic_addEPVii,@function
+_ZN9__gnu_cxxL12__atomic_addEPVii:      # @_ZN9__gnu_cxxL12__atomic_addEPVii
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	dword ptr [rbp - 12], esi
+	mov	rcx, qword ptr [rbp - 8]
+	mov	eax, dword ptr [rbp - 12]
+	mov	dword ptr [rbp - 16], eax
+	mov	eax, dword ptr [rbp - 16]
+	lock		xadd	dword ptr [rcx], eax
+	mov	dword ptr [rbp - 20], eax
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end44:
+	.size	_ZN9__gnu_cxxL12__atomic_addEPVii, .Lfunc_end44-_ZN9__gnu_cxxL12__atomic_addEPVii
+	.cfi_endproc
+                                        # -- End function
+	.p2align	4, 0x90                         # -- Begin function _ZN9__gnu_cxxL19__atomic_add_singleEPii
+	.type	_ZN9__gnu_cxxL19__atomic_add_singleEPii,@function
+_ZN9__gnu_cxxL19__atomic_add_singleEPii: # @_ZN9__gnu_cxxL19__atomic_add_singleEPii
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	dword ptr [rbp - 12], esi
+	mov	ecx, dword ptr [rbp - 12]
+	mov	rax, qword ptr [rbp - 8]
+	add	ecx, dword ptr [rax]
+	mov	dword ptr [rax], ecx
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end45:
+	.size	_ZN9__gnu_cxxL19__atomic_add_singleEPii, .Lfunc_end45-_ZN9__gnu_cxxL19__atomic_add_singleEPii
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN3IntD2Ev,"axG",@progbits,_ZN3IntD2Ev,comdat
+	.weak	_ZN3IntD2Ev                     # -- Begin function _ZN3IntD2Ev
+	.p2align	4, 0x90
+	.type	_ZN3IntD2Ev,@function
+_ZN3IntD2Ev:                            # @_ZN3IntD2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZN5ValueIiED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end46:
+	.size	_ZN3IntD2Ev, .Lfunc_end46-_ZN3IntD2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN3IntD0Ev,"axG",@progbits,_ZN3IntD0Ev,comdat
+	.weak	_ZN3IntD0Ev                     # -- Begin function _ZN3IntD0Ev
+	.p2align	4, 0x90
+	.type	_ZN3IntD0Ev,@function
+_ZN3IntD0Ev:                            # @_ZN3IntD0Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZN3IntD2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end47:
+	.size	_ZN3IntD0Ev, .Lfunc_end47-_ZN3IntD0Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN5ValueIiE4evalEv,"axG",@progbits,_ZN5ValueIiE4evalEv,comdat
+	.weak	_ZN5ValueIiE4evalEv             # -- Begin function _ZN5ValueIiE4evalEv
+	.p2align	4, 0x90
+	.type	_ZN5ValueIiE4evalEv,@function
+_ZN5ValueIiE4evalEv:                    # @_ZN5ValueIiE4evalEv
+.Lfunc_begin5:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception5
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 80
+	mov	qword ptr [rbp - 72], rdi       # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 64], rax       # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rbp - 56], rax       # 8-byte Spill
+	mov	edi, 24
+	call	_Znwm
+	mov	rdi, rax
+	mov	rax, qword ptr [rbp - 56]       # 8-byte Reload
+	mov	rcx, rdi
+	mov	qword ptr [rbp - 48], rcx       # 8-byte Spill
+	mov	rcx, rdi
+	mov	qword ptr [rbp - 40], rcx       # 8-byte Spill
+	mov	esi, dword ptr [rax + 16]
+.Ltmp59:
+	call	_ZN5ValueIiEC2Ei
+.Ltmp60:
+	jmp	.LBB48_1
+.LBB48_1:
+	mov	rdi, qword ptr [rbp - 72]       # 8-byte Reload
+	mov	rsi, qword ptr [rbp - 40]       # 8-byte Reload
+	call	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+	mov	rax, qword ptr [rbp - 64]       # 8-byte Reload
+	add	rsp, 80
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB48_2:
+	.cfi_def_cfa rbp, 16
+.Ltmp61:
+	mov	rdi, qword ptr [rbp - 48]       # 8-byte Reload
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 24], rcx
+	mov	dword ptr [rbp - 28], eax
+	call	_ZdlPv
+# %bb.3:
+	mov	rdi, qword ptr [rbp - 24]
+	call	_Unwind_Resume@PLT
+.Lfunc_end48:
+	.size	_ZN5ValueIiE4evalEv, .Lfunc_end48-_ZN5ValueIiE4evalEv
+	.cfi_endproc
+	.section	.gcc_except_table._ZN5ValueIiE4evalEv,"aG",@progbits,_ZN5ValueIiE4evalEv,comdat
+	.p2align	2
+GCC_except_table48:
+.Lexception5:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end5-.Lcst_begin5
+.Lcst_begin5:
+	.uleb128 .Lfunc_begin5-.Lfunc_begin5    # >> Call Site 1 <<
+	.uleb128 .Ltmp59-.Lfunc_begin5          #   Call between .Lfunc_begin5 and .Ltmp59
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp59-.Lfunc_begin5          # >> Call Site 2 <<
+	.uleb128 .Ltmp60-.Ltmp59                #   Call between .Ltmp59 and .Ltmp60
+	.uleb128 .Ltmp61-.Lfunc_begin5          #     jumps to .Ltmp61
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp60-.Lfunc_begin5          # >> Call Site 3 <<
+	.uleb128 .Lfunc_end48-.Ltmp60           #   Call between .Ltmp60 and .Lfunc_end48
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end5:
+	.p2align	2
+                                        # -- End function
+	.section	.text._ZN11ComputationIiEC2Ei,"axG",@progbits,_ZN11ComputationIiEC2Ei,comdat
+	.weak	_ZN11ComputationIiEC2Ei         # -- Begin function _ZN11ComputationIiEC2Ei
+	.p2align	4, 0x90
+	.type	_ZN11ComputationIiEC2Ei,@function
+_ZN11ComputationIiEC2Ei:                # @_ZN11ComputationIiEC2Ei
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	dword ptr [rbp - 12], esi
+	mov	rax, qword ptr [rbp - 8]
+	movabs	rcx, offset _ZTV11ComputationIiE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	mov	ecx, dword ptr [rbp - 12]
+	mov	dword ptr [rax + 8], ecx
+	mov	byte ptr [rax + 12], 1
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end49:
+	.size	_ZN11ComputationIiEC2Ei, .Lfunc_end49-_ZN11ComputationIiEC2Ei
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN5ValueIiED2Ev,"axG",@progbits,_ZN5ValueIiED2Ev,comdat
+	.weak	_ZN5ValueIiED2Ev                # -- Begin function _ZN5ValueIiED2Ev
+	.p2align	4, 0x90
+	.type	_ZN5ValueIiED2Ev,@function
+_ZN5ValueIiED2Ev:                       # @_ZN5ValueIiED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZN11ComputationIiED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end50:
+	.size	_ZN5ValueIiED2Ev, .Lfunc_end50-_ZN5ValueIiED2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN5ValueIiED0Ev,"axG",@progbits,_ZN5ValueIiED0Ev,comdat
+	.weak	_ZN5ValueIiED0Ev                # -- Begin function _ZN5ValueIiED0Ev
+	.p2align	4, 0x90
+	.type	_ZN5ValueIiED0Ev,@function
+_ZN5ValueIiED0Ev:                       # @_ZN5ValueIiED0Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZN5ValueIiED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end51:
+	.size	_ZN5ValueIiED0Ev, .Lfunc_end51-_ZN5ValueIiED0Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN7FiboDynD2Ev,"axG",@progbits,_ZN7FiboDynD2Ev,comdat
+	.weak	_ZN7FiboDynD2Ev                 # -- Begin function _ZN7FiboDynD2Ev
+	.p2align	4, 0x90
+	.type	_ZN7FiboDynD2Ev,@function
+_ZN7FiboDynD2Ev:                        # @_ZN7FiboDynD2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	movabs	rax, offset _ZTV7FiboDyn
+	add	rax, 16
+	mov	qword ptr [rdi], rax
+	add	rdi, 48
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	add	rdi, 32
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	add	rdi, 16
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZN11ComputationIiED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end52:
+	.size	_ZN7FiboDynD2Ev, .Lfunc_end52-_ZN7FiboDynD2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN7FiboDynD0Ev,"axG",@progbits,_ZN7FiboDynD0Ev,comdat
+	.weak	_ZN7FiboDynD0Ev                 # -- Begin function _ZN7FiboDynD0Ev
+	.p2align	4, 0x90
+	.type	_ZN7FiboDynD0Ev,@function
+_ZN7FiboDynD0Ev:                        # @_ZN7FiboDynD0Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZN7FiboDynD2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end53:
+	.size	_ZN7FiboDynD0Ev, .Lfunc_end53-_ZN7FiboDynD0Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN7FiboDyn4evalEv,"axG",@progbits,_ZN7FiboDyn4evalEv,comdat
+	.weak	_ZN7FiboDyn4evalEv              # -- Begin function _ZN7FiboDyn4evalEv
+	.p2align	4, 0x90
+	.type	_ZN7FiboDyn4evalEv,@function
+_ZN7FiboDyn4evalEv:                     # @_ZN7FiboDyn4evalEv
+.Lfunc_begin6:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception6
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 432
+	mov	qword ptr [rbp - 328], rdi      # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 320], rax      # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rbp - 312], rax      # 8-byte Spill
+	mov	edi, 64
+	call	_Znwm
+	mov	rcx, rax
+	mov	qword ptr [rbp - 304], rcx      # 8-byte Spill
+	mov	byte ptr [rbp - 275], 1
+	mov	qword ptr [rbp - 296], rax      # 8-byte Spill
+.Ltmp62:
+	mov	edi, 48
+	call	_Znwm
+.Ltmp63:
+	mov	qword ptr [rbp - 288], rax      # 8-byte Spill
+	jmp	.LBB54_1
+.LBB54_1:
+	mov	rsi, qword ptr [rbp - 312]      # 8-byte Reload
+	mov	rax, qword ptr [rbp - 288]      # 8-byte Reload
+	mov	byte ptr [rbp - 81], 1
+	mov	qword ptr [rbp - 344], rax      # 8-byte Spill
+	add	rsi, 16
+	lea	rdi, [rbp - 64]
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+.Ltmp65:
+	mov	edi, 24
+	call	_Znwm
+.Ltmp66:
+	mov	qword ptr [rbp - 336], rax      # 8-byte Spill
+	jmp	.LBB54_2
+.LBB54_2:
+	mov	rdi, qword ptr [rbp - 336]      # 8-byte Reload
+	mov	rax, rdi
+	mov	qword ptr [rbp - 352], rax      # 8-byte Spill
+.Ltmp67:
+	mov	esi, 1
+	call	_ZN3IntC2Ei
+.Ltmp68:
+	jmp	.LBB54_3
+.LBB54_3:
+.Ltmp70:
+	mov	rsi, qword ptr [rbp - 352]      # 8-byte Reload
+	lea	rdi, [rbp - 80]
+	call	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+.Ltmp71:
+	jmp	.LBB54_4
+.LBB54_4:
+.Ltmp73:
+	mov	rdi, qword ptr [rbp - 344]      # 8-byte Reload
+	lea	rsi, [rbp - 64]
+	lea	rdx, [rbp - 80]
+	call	_ZN2LTIiEC2ESt10shared_ptrI11ComputationIiEES4_
+.Ltmp74:
+	jmp	.LBB54_5
+.LBB54_5:
+	mov	rsi, qword ptr [rbp - 344]      # 8-byte Reload
+	mov	byte ptr [rbp - 81], 0
+.Ltmp75:
+	lea	rdi, [rbp - 32]
+	call	_Z4cptrIbEN11ComputationIT_E3ptrEPS2_
+.Ltmp76:
+	jmp	.LBB54_6
+.LBB54_6:
+	mov	rsi, qword ptr [rbp - 312]      # 8-byte Reload
+	add	rsi, 32
+	lea	rdi, [rbp - 104]
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+.Ltmp78:
+	mov	edi, 64
+	call	_Znwm
+.Ltmp79:
+	mov	qword ptr [rbp - 360], rax      # 8-byte Spill
+	jmp	.LBB54_7
+.LBB54_7:
+	mov	rax, qword ptr [rbp - 360]      # 8-byte Reload
+	mov	byte ptr [rbp - 274], 1
+	mov	qword ptr [rbp - 376], rax      # 8-byte Spill
+.Ltmp81:
+	mov	edi, 48
+	call	_Znwm
+.Ltmp82:
+	mov	qword ptr [rbp - 368], rax      # 8-byte Spill
+	jmp	.LBB54_8
+.LBB54_8:
+	mov	rsi, qword ptr [rbp - 312]      # 8-byte Reload
+	mov	rax, qword ptr [rbp - 368]      # 8-byte Reload
+	mov	byte ptr [rbp - 185], 1
+	mov	qword ptr [rbp - 392], rax      # 8-byte Spill
+	add	rsi, 16
+	lea	rdi, [rbp - 168]
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+.Ltmp84:
+	mov	edi, 24
+	call	_Znwm
+.Ltmp85:
+	mov	qword ptr [rbp - 384], rax      # 8-byte Spill
+	jmp	.LBB54_9
+.LBB54_9:
+	mov	rdi, qword ptr [rbp - 384]      # 8-byte Reload
+	mov	rax, rdi
+	mov	qword ptr [rbp - 400], rax      # 8-byte Spill
+.Ltmp86:
+	mov	esi, -1
+	call	_ZN3IntC2Ei
+.Ltmp87:
+	jmp	.LBB54_10
+.LBB54_10:
+.Ltmp89:
+	mov	rsi, qword ptr [rbp - 400]      # 8-byte Reload
+	lea	rdi, [rbp - 184]
+	call	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+.Ltmp90:
+	jmp	.LBB54_11
+.LBB54_11:
+.Ltmp92:
+	mov	rdi, qword ptr [rbp - 392]      # 8-byte Reload
+	lea	rsi, [rbp - 168]
+	lea	rdx, [rbp - 184]
+	call	_ZN3SumIiEC2ESt10shared_ptrI11ComputationIiEES4_
+.Ltmp93:
+	jmp	.LBB54_12
+.LBB54_12:
+	mov	rsi, qword ptr [rbp - 392]      # 8-byte Reload
+	mov	byte ptr [rbp - 185], 0
+.Ltmp94:
+	lea	rdi, [rbp - 152]
+	call	_ZN5ForceIiEC2EP11ComputationIiE
+.Ltmp95:
+	jmp	.LBB54_13
+.LBB54_13:
+.Ltmp97:
+	lea	rdi, [rbp - 136]
+	lea	rsi, [rbp - 152]
+	call	_ZN5ForceIiE3ptrEv
+.Ltmp98:
+	jmp	.LBB54_14
+.LBB54_14:
+	mov	rsi, qword ptr [rbp - 312]      # 8-byte Reload
+	add	rsi, 48
+	lea	rdi, [rbp - 208]
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+.Ltmp100:
+	mov	edi, 48
+	call	_Znwm
+.Ltmp101:
+	mov	qword ptr [rbp - 408], rax      # 8-byte Spill
+	jmp	.LBB54_15
+.LBB54_15:
+	mov	rax, qword ptr [rbp - 408]      # 8-byte Reload
+	mov	rsi, qword ptr [rbp - 312]      # 8-byte Reload
+	mov	byte ptr [rbp - 273], 1
+	mov	qword ptr [rbp - 432], rax      # 8-byte Spill
+	add	rsi, 32
+	lea	rdi, [rbp - 256]
+	mov	qword ptr [rbp - 424], rdi      # 8-byte Spill
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	mov	rsi, qword ptr [rbp - 312]      # 8-byte Reload
+	add	rsi, 48
+	lea	rdi, [rbp - 272]
+	mov	qword ptr [rbp - 416], rdi      # 8-byte Spill
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	mov	rdi, qword ptr [rbp - 408]      # 8-byte Reload
+	mov	rsi, qword ptr [rbp - 424]      # 8-byte Reload
+	mov	rdx, qword ptr [rbp - 416]      # 8-byte Reload
+.Ltmp103:
+	call	_ZN3SumIiEC2ESt10shared_ptrI11ComputationIiEES4_
+.Ltmp104:
+	jmp	.LBB54_16
+.LBB54_16:
+	mov	rsi, qword ptr [rbp - 432]      # 8-byte Reload
+	mov	byte ptr [rbp - 273], 0
+.Ltmp105:
+	lea	rdi, [rbp - 240]
+	call	_ZN5ForceIiEC2EP11ComputationIiE
+.Ltmp106:
+	jmp	.LBB54_17
+.LBB54_17:
+.Ltmp108:
+	lea	rdi, [rbp - 224]
+	lea	rsi, [rbp - 240]
+	call	_ZN5ForceIiE3ptrEv
+.Ltmp109:
+	jmp	.LBB54_18
+.LBB54_18:
+.Ltmp111:
+	mov	rdi, qword ptr [rbp - 376]      # 8-byte Reload
+	lea	rsi, [rbp - 136]
+	lea	rdx, [rbp - 208]
+	lea	rcx, [rbp - 224]
+	call	_ZN7FiboDynC2ESt10shared_ptrI11ComputationIiEES3_S3_
+.Ltmp112:
+	jmp	.LBB54_19
+.LBB54_19:
+	mov	rsi, qword ptr [rbp - 376]      # 8-byte Reload
+	mov	byte ptr [rbp - 274], 0
+.Ltmp113:
+	lea	rdi, [rbp - 120]
+	call	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+.Ltmp114:
+	jmp	.LBB54_20
+.LBB54_20:
+.Ltmp116:
+	mov	rdi, qword ptr [rbp - 296]      # 8-byte Reload
+	lea	rsi, [rbp - 32]
+	lea	rdx, [rbp - 104]
+	lea	rcx, [rbp - 120]
+	call	_ZN2IfIiEC2ESt10shared_ptrI11ComputationIbEES1_IS2_IiEES6_
+.Ltmp117:
+	jmp	.LBB54_21
+.LBB54_21:
+	mov	rsi, qword ptr [rbp - 296]      # 8-byte Reload
+	mov	rdi, qword ptr [rbp - 328]      # 8-byte Reload
+	mov	byte ptr [rbp - 275], 0
+.Ltmp118:
+	call	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+.Ltmp119:
+	jmp	.LBB54_22
+.LBB54_22:
+	lea	rdi, [rbp - 120]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 224]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 240]
+	call	_ZN5ForceIiED2Ev
+	lea	rdi, [rbp - 272]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 256]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 208]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 136]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 152]
+	call	_ZN5ForceIiED2Ev
+	lea	rdi, [rbp - 184]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 168]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 104]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 32]
+	call	_ZNSt10shared_ptrI11ComputationIbEED2Ev
+	lea	rdi, [rbp - 80]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 64]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rax, qword ptr [rbp - 320]      # 8-byte Reload
+	add	rsp, 432
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB54_23:
+	.cfi_def_cfa rbp, 16
+.Ltmp64:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	jmp	.LBB54_57
+.LBB54_24:
+.Ltmp72:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	jmp	.LBB54_54
+.LBB54_25:
+.Ltmp69:
+	mov	rdi, qword ptr [rbp - 336]      # 8-byte Reload
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	call	_ZdlPv
+	jmp	.LBB54_54
+.LBB54_26:
+.Ltmp77:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	jmp	.LBB54_53
+.LBB54_27:
+.Ltmp80:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	jmp	.LBB54_52
+.LBB54_28:
+.Ltmp83:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	jmp	.LBB54_49
+.LBB54_29:
+.Ltmp91:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	jmp	.LBB54_46
+.LBB54_30:
+.Ltmp88:
+	mov	rdi, qword ptr [rbp - 384]      # 8-byte Reload
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	call	_ZdlPv
+	jmp	.LBB54_46
+.LBB54_31:
+.Ltmp96:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	jmp	.LBB54_45
+.LBB54_32:
+.Ltmp99:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	jmp	.LBB54_44
+.LBB54_33:
+.Ltmp102:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	jmp	.LBB54_43
+.LBB54_34:
+.Ltmp107:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	jmp	.LBB54_40
+.LBB54_35:
+.Ltmp110:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	jmp	.LBB54_39
+.LBB54_36:
+.Ltmp115:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	jmp	.LBB54_38
+.LBB54_37:
+.Ltmp120:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 40], rcx
+	mov	dword ptr [rbp - 44], eax
+	lea	rdi, [rbp - 120]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+.LBB54_38:
+	lea	rdi, [rbp - 224]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+.LBB54_39:
+	lea	rdi, [rbp - 240]
+	call	_ZN5ForceIiED2Ev
+.LBB54_40:
+	lea	rdi, [rbp - 272]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 256]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	test	byte ptr [rbp - 273], 1
+	jne	.LBB54_41
+	jmp	.LBB54_42
+.LBB54_41:
+	mov	rdi, qword ptr [rbp - 408]      # 8-byte Reload
+	call	_ZdlPv
+.LBB54_42:
+	jmp	.LBB54_43
+.LBB54_43:
+	lea	rdi, [rbp - 208]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 136]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+.LBB54_44:
+	lea	rdi, [rbp - 152]
+	call	_ZN5ForceIiED2Ev
+.LBB54_45:
+	lea	rdi, [rbp - 184]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+.LBB54_46:
+	lea	rdi, [rbp - 168]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	test	byte ptr [rbp - 185], 1
+	jne	.LBB54_47
+	jmp	.LBB54_48
+.LBB54_47:
+	mov	rdi, qword ptr [rbp - 368]      # 8-byte Reload
+	call	_ZdlPv
+.LBB54_48:
+	jmp	.LBB54_49
+.LBB54_49:
+	test	byte ptr [rbp - 274], 1
+	jne	.LBB54_50
+	jmp	.LBB54_51
+.LBB54_50:
+	mov	rdi, qword ptr [rbp - 360]      # 8-byte Reload
+	call	_ZdlPv
+.LBB54_51:
+	jmp	.LBB54_52
+.LBB54_52:
+	lea	rdi, [rbp - 104]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 32]
+	call	_ZNSt10shared_ptrI11ComputationIbEED2Ev
+.LBB54_53:
+	lea	rdi, [rbp - 80]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+.LBB54_54:
+	lea	rdi, [rbp - 64]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	test	byte ptr [rbp - 81], 1
+	jne	.LBB54_55
+	jmp	.LBB54_56
+.LBB54_55:
+	mov	rdi, qword ptr [rbp - 288]      # 8-byte Reload
+	call	_ZdlPv
+.LBB54_56:
+	jmp	.LBB54_57
+.LBB54_57:
+	test	byte ptr [rbp - 275], 1
+	jne	.LBB54_58
+	jmp	.LBB54_59
+.LBB54_58:
+	mov	rdi, qword ptr [rbp - 304]      # 8-byte Reload
+	call	_ZdlPv
+.LBB54_59:
+	jmp	.LBB54_60
+.LBB54_60:
+	mov	rdi, qword ptr [rbp - 40]
+	call	_Unwind_Resume@PLT
+.Lfunc_end54:
+	.size	_ZN7FiboDyn4evalEv, .Lfunc_end54-_ZN7FiboDyn4evalEv
+	.cfi_endproc
+	.section	.gcc_except_table._ZN7FiboDyn4evalEv,"aG",@progbits,_ZN7FiboDyn4evalEv,comdat
+	.p2align	2
+GCC_except_table54:
+.Lexception6:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end6-.Lcst_begin6
+.Lcst_begin6:
+	.uleb128 .Lfunc_begin6-.Lfunc_begin6    # >> Call Site 1 <<
+	.uleb128 .Ltmp62-.Lfunc_begin6          #   Call between .Lfunc_begin6 and .Ltmp62
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp62-.Lfunc_begin6          # >> Call Site 2 <<
+	.uleb128 .Ltmp63-.Ltmp62                #   Call between .Ltmp62 and .Ltmp63
+	.uleb128 .Ltmp64-.Lfunc_begin6          #     jumps to .Ltmp64
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp65-.Lfunc_begin6          # >> Call Site 3 <<
+	.uleb128 .Ltmp66-.Ltmp65                #   Call between .Ltmp65 and .Ltmp66
+	.uleb128 .Ltmp72-.Lfunc_begin6          #     jumps to .Ltmp72
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp67-.Lfunc_begin6          # >> Call Site 4 <<
+	.uleb128 .Ltmp68-.Ltmp67                #   Call between .Ltmp67 and .Ltmp68
+	.uleb128 .Ltmp69-.Lfunc_begin6          #     jumps to .Ltmp69
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp70-.Lfunc_begin6          # >> Call Site 5 <<
+	.uleb128 .Ltmp71-.Ltmp70                #   Call between .Ltmp70 and .Ltmp71
+	.uleb128 .Ltmp72-.Lfunc_begin6          #     jumps to .Ltmp72
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp73-.Lfunc_begin6          # >> Call Site 6 <<
+	.uleb128 .Ltmp76-.Ltmp73                #   Call between .Ltmp73 and .Ltmp76
+	.uleb128 .Ltmp77-.Lfunc_begin6          #     jumps to .Ltmp77
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp78-.Lfunc_begin6          # >> Call Site 7 <<
+	.uleb128 .Ltmp79-.Ltmp78                #   Call between .Ltmp78 and .Ltmp79
+	.uleb128 .Ltmp80-.Lfunc_begin6          #     jumps to .Ltmp80
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp81-.Lfunc_begin6          # >> Call Site 8 <<
+	.uleb128 .Ltmp82-.Ltmp81                #   Call between .Ltmp81 and .Ltmp82
+	.uleb128 .Ltmp83-.Lfunc_begin6          #     jumps to .Ltmp83
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp84-.Lfunc_begin6          # >> Call Site 9 <<
+	.uleb128 .Ltmp85-.Ltmp84                #   Call between .Ltmp84 and .Ltmp85
+	.uleb128 .Ltmp91-.Lfunc_begin6          #     jumps to .Ltmp91
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp86-.Lfunc_begin6          # >> Call Site 10 <<
+	.uleb128 .Ltmp87-.Ltmp86                #   Call between .Ltmp86 and .Ltmp87
+	.uleb128 .Ltmp88-.Lfunc_begin6          #     jumps to .Ltmp88
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp89-.Lfunc_begin6          # >> Call Site 11 <<
+	.uleb128 .Ltmp90-.Ltmp89                #   Call between .Ltmp89 and .Ltmp90
+	.uleb128 .Ltmp91-.Lfunc_begin6          #     jumps to .Ltmp91
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp92-.Lfunc_begin6          # >> Call Site 12 <<
+	.uleb128 .Ltmp95-.Ltmp92                #   Call between .Ltmp92 and .Ltmp95
+	.uleb128 .Ltmp96-.Lfunc_begin6          #     jumps to .Ltmp96
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp97-.Lfunc_begin6          # >> Call Site 13 <<
+	.uleb128 .Ltmp98-.Ltmp97                #   Call between .Ltmp97 and .Ltmp98
+	.uleb128 .Ltmp99-.Lfunc_begin6          #     jumps to .Ltmp99
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp100-.Lfunc_begin6         # >> Call Site 14 <<
+	.uleb128 .Ltmp101-.Ltmp100              #   Call between .Ltmp100 and .Ltmp101
+	.uleb128 .Ltmp102-.Lfunc_begin6         #     jumps to .Ltmp102
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp103-.Lfunc_begin6         # >> Call Site 15 <<
+	.uleb128 .Ltmp106-.Ltmp103              #   Call between .Ltmp103 and .Ltmp106
+	.uleb128 .Ltmp107-.Lfunc_begin6         #     jumps to .Ltmp107
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp108-.Lfunc_begin6         # >> Call Site 16 <<
+	.uleb128 .Ltmp109-.Ltmp108              #   Call between .Ltmp108 and .Ltmp109
+	.uleb128 .Ltmp110-.Lfunc_begin6         #     jumps to .Ltmp110
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp111-.Lfunc_begin6         # >> Call Site 17 <<
+	.uleb128 .Ltmp114-.Ltmp111              #   Call between .Ltmp111 and .Ltmp114
+	.uleb128 .Ltmp115-.Lfunc_begin6         #     jumps to .Ltmp115
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp116-.Lfunc_begin6         # >> Call Site 18 <<
+	.uleb128 .Ltmp119-.Ltmp116              #   Call between .Ltmp116 and .Ltmp119
+	.uleb128 .Ltmp120-.Lfunc_begin6         #     jumps to .Ltmp120
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp119-.Lfunc_begin6         # >> Call Site 19 <<
+	.uleb128 .Lfunc_end54-.Ltmp119          #   Call between .Ltmp119 and .Lfunc_end54
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end6:
+	.p2align	2
+                                        # -- End function
+	.section	.text._Z4cptrIbEN11ComputationIT_E3ptrEPS2_,"axG",@progbits,_Z4cptrIbEN11ComputationIT_E3ptrEPS2_,comdat
+	.weak	_Z4cptrIbEN11ComputationIT_E3ptrEPS2_ # -- Begin function _Z4cptrIbEN11ComputationIT_E3ptrEPS2_
+	.p2align	4, 0x90
+	.type	_Z4cptrIbEN11ComputationIT_E3ptrEPS2_,@function
+_Z4cptrIbEN11ComputationIT_E3ptrEPS2_:  # @_Z4cptrIbEN11ComputationIT_E3ptrEPS2_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	rax, rdi
+	mov	qword ptr [rbp - 24], rax       # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 8], rax
+	mov	qword ptr [rbp - 16], rsi
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt10shared_ptrI11ComputationIbEEC2IS1_vEEPT_
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end55:
+	.size	_Z4cptrIbEN11ComputationIT_E3ptrEPS2_, .Lfunc_end55-_Z4cptrIbEN11ComputationIT_E3ptrEPS2_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN2LTIiEC2ESt10shared_ptrI11ComputationIiEES4_,"axG",@progbits,_ZN2LTIiEC2ESt10shared_ptrI11ComputationIiEES4_,comdat
+	.weak	_ZN2LTIiEC2ESt10shared_ptrI11ComputationIiEES4_ # -- Begin function _ZN2LTIiEC2ESt10shared_ptrI11ComputationIiEES4_
+	.p2align	4, 0x90
+	.type	_ZN2LTIiEC2ESt10shared_ptrI11ComputationIiEES4_,@function
+_ZN2LTIiEC2ESt10shared_ptrI11ComputationIiEES4_: # @_ZN2LTIiEC2ESt10shared_ptrI11ComputationIiEES4_
+.Lfunc_begin7:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception7
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 96
+	mov	qword ptr [rbp - 88], rdx       # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 80], rax       # 8-byte Spill
+	lea	rdi, [rbp - 24]
+	mov	qword ptr [rbp - 72], rdi       # 8-byte Spill
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	mov	rsi, qword ptr [rbp - 88]       # 8-byte Reload
+	lea	rdi, [rbp - 40]
+	mov	qword ptr [rbp - 64], rdi       # 8-byte Spill
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	mov	rdi, qword ptr [rbp - 80]       # 8-byte Reload
+	mov	rsi, qword ptr [rbp - 72]       # 8-byte Reload
+	mov	rdx, qword ptr [rbp - 64]       # 8-byte Reload
+.Ltmp121:
+	call	_ZN8BinaryOpIibEC2ESt10shared_ptrI11ComputationIiEES4_
+.Ltmp122:
+	jmp	.LBB56_1
+.LBB56_1:
+	lea	rdi, [rbp - 40]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rax, qword ptr [rbp - 80]       # 8-byte Reload
+	movabs	rcx, offset _ZTV2LTIiE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	add	rsp, 96
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB56_2:
+	.cfi_def_cfa rbp, 16
+.Ltmp123:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 48], rcx
+	mov	dword ptr [rbp - 52], eax
+	lea	rdi, [rbp - 40]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+# %bb.3:
+	mov	rdi, qword ptr [rbp - 48]
+	call	_Unwind_Resume@PLT
+.Lfunc_end56:
+	.size	_ZN2LTIiEC2ESt10shared_ptrI11ComputationIiEES4_, .Lfunc_end56-_ZN2LTIiEC2ESt10shared_ptrI11ComputationIiEES4_
+	.cfi_endproc
+	.section	.gcc_except_table._ZN2LTIiEC2ESt10shared_ptrI11ComputationIiEES4_,"aG",@progbits,_ZN2LTIiEC2ESt10shared_ptrI11ComputationIiEES4_,comdat
+	.p2align	2
+GCC_except_table56:
+.Lexception7:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end7-.Lcst_begin7
+.Lcst_begin7:
+	.uleb128 .Ltmp121-.Lfunc_begin7         # >> Call Site 1 <<
+	.uleb128 .Ltmp122-.Ltmp121              #   Call between .Ltmp121 and .Ltmp122
+	.uleb128 .Ltmp123-.Lfunc_begin7         #     jumps to .Ltmp123
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp122-.Lfunc_begin7         # >> Call Site 2 <<
+	.uleb128 .Lfunc_end56-.Ltmp122          #   Call between .Ltmp122 and .Lfunc_end56
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end7:
+	.p2align	2
+                                        # -- End function
+	.section	.text._ZN3SumIiEC2ESt10shared_ptrI11ComputationIiEES4_,"axG",@progbits,_ZN3SumIiEC2ESt10shared_ptrI11ComputationIiEES4_,comdat
+	.weak	_ZN3SumIiEC2ESt10shared_ptrI11ComputationIiEES4_ # -- Begin function _ZN3SumIiEC2ESt10shared_ptrI11ComputationIiEES4_
+	.p2align	4, 0x90
+	.type	_ZN3SumIiEC2ESt10shared_ptrI11ComputationIiEES4_,@function
+_ZN3SumIiEC2ESt10shared_ptrI11ComputationIiEES4_: # @_ZN3SumIiEC2ESt10shared_ptrI11ComputationIiEES4_
+.Lfunc_begin8:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception8
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 96
+	mov	qword ptr [rbp - 88], rdx       # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 80], rax       # 8-byte Spill
+	lea	rdi, [rbp - 24]
+	mov	qword ptr [rbp - 72], rdi       # 8-byte Spill
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	mov	rsi, qword ptr [rbp - 88]       # 8-byte Reload
+	lea	rdi, [rbp - 40]
+	mov	qword ptr [rbp - 64], rdi       # 8-byte Spill
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	mov	rdi, qword ptr [rbp - 80]       # 8-byte Reload
+	mov	rsi, qword ptr [rbp - 72]       # 8-byte Reload
+	mov	rdx, qword ptr [rbp - 64]       # 8-byte Reload
+.Ltmp124:
+	call	_ZN8BinaryOpIiiEC2ESt10shared_ptrI11ComputationIiEES4_
+.Ltmp125:
+	jmp	.LBB57_1
+.LBB57_1:
+	lea	rdi, [rbp - 40]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rax, qword ptr [rbp - 80]       # 8-byte Reload
+	movabs	rcx, offset _ZTV3SumIiE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	add	rsp, 96
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB57_2:
+	.cfi_def_cfa rbp, 16
+.Ltmp126:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 48], rcx
+	mov	dword ptr [rbp - 52], eax
+	lea	rdi, [rbp - 40]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+# %bb.3:
+	mov	rdi, qword ptr [rbp - 48]
+	call	_Unwind_Resume@PLT
+.Lfunc_end57:
+	.size	_ZN3SumIiEC2ESt10shared_ptrI11ComputationIiEES4_, .Lfunc_end57-_ZN3SumIiEC2ESt10shared_ptrI11ComputationIiEES4_
+	.cfi_endproc
+	.section	.gcc_except_table._ZN3SumIiEC2ESt10shared_ptrI11ComputationIiEES4_,"aG",@progbits,_ZN3SumIiEC2ESt10shared_ptrI11ComputationIiEES4_,comdat
+	.p2align	2
+GCC_except_table57:
+.Lexception8:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end8-.Lcst_begin8
+.Lcst_begin8:
+	.uleb128 .Ltmp124-.Lfunc_begin8         # >> Call Site 1 <<
+	.uleb128 .Ltmp125-.Ltmp124              #   Call between .Ltmp124 and .Ltmp125
+	.uleb128 .Ltmp126-.Lfunc_begin8         #     jumps to .Ltmp126
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp125-.Lfunc_begin8         # >> Call Site 2 <<
+	.uleb128 .Lfunc_end57-.Ltmp125          #   Call between .Ltmp125 and .Lfunc_end57
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end8:
+	.p2align	2
+                                        # -- End function
+	.section	.text._ZN5ForceIiEC2EP11ComputationIiE,"axG",@progbits,_ZN5ForceIiEC2EP11ComputationIiE,comdat
+	.weak	_ZN5ForceIiEC2EP11ComputationIiE # -- Begin function _ZN5ForceIiEC2EP11ComputationIiE
+	.p2align	4, 0x90
+	.type	_ZN5ForceIiEC2EP11ComputationIiE,@function
+_ZN5ForceIiEC2EP11ComputationIiE:       # @_ZN5ForceIiEC2EP11ComputationIiE
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 48
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 40], rax       # 8-byte Spill
+	mov	rsi, qword ptr [rbp - 16]
+	lea	rdi, [rbp - 32]
+	call	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+	mov	rdi, qword ptr [rbp - 40]       # 8-byte Reload
+	lea	rsi, [rbp - 32]
+	call	_ZN9InterpretIiEC2ESt10shared_ptrI11ComputationIiEE
+	lea	rdi, [rbp - 32]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	add	rsp, 48
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end58:
+	.size	_ZN5ForceIiEC2EP11ComputationIiE, .Lfunc_end58-_ZN5ForceIiEC2EP11ComputationIiE
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN5ForceIiE3ptrEv,"axG",@progbits,_ZN5ForceIiE3ptrEv,comdat
+	.weak	_ZN5ForceIiE3ptrEv              # -- Begin function _ZN5ForceIiE3ptrEv
+	.p2align	4, 0x90
+	.type	_ZN5ForceIiE3ptrEv,@function
+_ZN5ForceIiE3ptrEv:                     # @_ZN5ForceIiE3ptrEv
+.Lfunc_begin9:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception9
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 80
+	mov	qword ptr [rbp - 72], rdi       # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 64], rax       # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rbp - 56], rax       # 8-byte Spill
+	mov	edi, 24
+	call	_Znwm
+	mov	rdi, qword ptr [rbp - 56]       # 8-byte Reload
+	mov	rcx, rax
+	mov	qword ptr [rbp - 48], rcx       # 8-byte Spill
+	mov	qword ptr [rbp - 40], rax       # 8-byte Spill
+.Ltmp127:
+	call	_ZN9InterpretIiE3getEv
+.Ltmp128:
+	mov	dword ptr [rbp - 32], eax       # 4-byte Spill
+	jmp	.LBB59_1
+.LBB59_1:
+.Ltmp129:
+	mov	esi, dword ptr [rbp - 32]       # 4-byte Reload
+	mov	rdi, qword ptr [rbp - 40]       # 8-byte Reload
+	call	_ZN5ValueIiEC2Ei
+.Ltmp130:
+	jmp	.LBB59_2
+.LBB59_2:
+	mov	rdi, qword ptr [rbp - 72]       # 8-byte Reload
+	mov	rsi, qword ptr [rbp - 40]       # 8-byte Reload
+	call	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+	mov	rax, qword ptr [rbp - 64]       # 8-byte Reload
+	add	rsp, 80
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB59_3:
+	.cfi_def_cfa rbp, 16
+.Ltmp131:
+	mov	rdi, qword ptr [rbp - 48]       # 8-byte Reload
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 24], rcx
+	mov	dword ptr [rbp - 28], eax
+	call	_ZdlPv
+# %bb.4:
+	mov	rdi, qword ptr [rbp - 24]
+	call	_Unwind_Resume@PLT
+.Lfunc_end59:
+	.size	_ZN5ForceIiE3ptrEv, .Lfunc_end59-_ZN5ForceIiE3ptrEv
+	.cfi_endproc
+	.section	.gcc_except_table._ZN5ForceIiE3ptrEv,"aG",@progbits,_ZN5ForceIiE3ptrEv,comdat
+	.p2align	2
+GCC_except_table59:
+.Lexception9:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end9-.Lcst_begin9
+.Lcst_begin9:
+	.uleb128 .Lfunc_begin9-.Lfunc_begin9    # >> Call Site 1 <<
+	.uleb128 .Ltmp127-.Lfunc_begin9         #   Call between .Lfunc_begin9 and .Ltmp127
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp127-.Lfunc_begin9         # >> Call Site 2 <<
+	.uleb128 .Ltmp130-.Ltmp127              #   Call between .Ltmp127 and .Ltmp130
+	.uleb128 .Ltmp131-.Lfunc_begin9         #     jumps to .Ltmp131
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp130-.Lfunc_begin9         # >> Call Site 3 <<
+	.uleb128 .Lfunc_end59-.Ltmp130          #   Call between .Ltmp130 and .Lfunc_end59
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end9:
+	.p2align	2
+                                        # -- End function
+	.section	.text._ZN2IfIiEC2ESt10shared_ptrI11ComputationIbEES1_IS2_IiEES6_,"axG",@progbits,_ZN2IfIiEC2ESt10shared_ptrI11ComputationIbEES1_IS2_IiEES6_,comdat
+	.weak	_ZN2IfIiEC2ESt10shared_ptrI11ComputationIbEES1_IS2_IiEES6_ # -- Begin function _ZN2IfIiEC2ESt10shared_ptrI11ComputationIbEES1_IS2_IiEES6_
+	.p2align	4, 0x90
+	.type	_ZN2IfIiEC2ESt10shared_ptrI11ComputationIbEES1_IS2_IiEES6_,@function
+_ZN2IfIiEC2ESt10shared_ptrI11ComputationIbEES1_IS2_IiEES6_: # @_ZN2IfIiEC2ESt10shared_ptrI11ComputationIbEES1_IS2_IiEES6_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 80
+	mov	qword ptr [rbp - 64], rsi       # 8-byte Spill
+	mov	qword ptr [rbp - 48], rdx       # 8-byte Spill
+	mov	qword ptr [rbp - 24], rcx       # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 32], rdi       # 8-byte Spill
+	mov	qword ptr [rbp - 72], rdi       # 8-byte Spill
+	xor	esi, esi
+	mov	edx, 13
+	call	memset@PLT
+	mov	rdi, qword ptr [rbp - 72]       # 8-byte Reload
+	call	_ZN11ComputationIiEC2Ev
+	mov	rdi, qword ptr [rbp - 64]       # 8-byte Reload
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	movabs	rcx, offset _ZTV2IfIiE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	add	rax, 16
+	mov	qword ptr [rbp - 56], rax       # 8-byte Spill
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 56]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt10shared_ptrI11ComputationIbEEC2EOS2_
+	mov	rdi, qword ptr [rbp - 48]       # 8-byte Reload
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	add	rax, 32
+	mov	qword ptr [rbp - 40], rax       # 8-byte Spill
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 40]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rax, 48
+	mov	qword ptr [rbp - 16], rax       # 8-byte Spill
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	add	rsp, 80
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end60:
+	.size	_ZN2IfIiEC2ESt10shared_ptrI11ComputationIbEES1_IS2_IiEES6_, .Lfunc_end60-_ZN2IfIiEC2ESt10shared_ptrI11ComputationIbEES1_IS2_IiEES6_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN5ForceIiED2Ev,"axG",@progbits,_ZN5ForceIiED2Ev,comdat
+	.weak	_ZN5ForceIiED2Ev                # -- Begin function _ZN5ForceIiED2Ev
+	.p2align	4, 0x90
+	.type	_ZN5ForceIiED2Ev,@function
+_ZN5ForceIiED2Ev:                       # @_ZN5ForceIiED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZN9InterpretIiED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end61:
+	.size	_ZN5ForceIiED2Ev, .Lfunc_end61-_ZN5ForceIiED2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt10shared_ptrI11ComputationIbEED2Ev,"axG",@progbits,_ZNSt10shared_ptrI11ComputationIbEED2Ev,comdat
+	.weak	_ZNSt10shared_ptrI11ComputationIbEED2Ev # -- Begin function _ZNSt10shared_ptrI11ComputationIbEED2Ev
+	.p2align	4, 0x90
+	.type	_ZNSt10shared_ptrI11ComputationIbEED2Ev,@function
+_ZNSt10shared_ptrI11ComputationIbEED2Ev: # @_ZNSt10shared_ptrI11ComputationIbEED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end62:
+	.size	_ZNSt10shared_ptrI11ComputationIbEED2Ev, .Lfunc_end62-_ZNSt10shared_ptrI11ComputationIbEED2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt10shared_ptrI11ComputationIbEEC2IS1_vEEPT_,"axG",@progbits,_ZNSt10shared_ptrI11ComputationIbEEC2IS1_vEEPT_,comdat
+	.weak	_ZNSt10shared_ptrI11ComputationIbEEC2IS1_vEEPT_ # -- Begin function _ZNSt10shared_ptrI11ComputationIbEEC2IS1_vEEPT_
+	.p2align	4, 0x90
+	.type	_ZNSt10shared_ptrI11ComputationIbEEC2IS1_vEEPT_,@function
+_ZNSt10shared_ptrI11ComputationIbEEC2IS1_vEEPT_: # @_ZNSt10shared_ptrI11ComputationIbEEC2IS1_vEEPT_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end63:
+	.size	_ZNSt10shared_ptrI11ComputationIbEEC2IS1_vEEPT_, .Lfunc_end63-_ZNSt10shared_ptrI11ComputationIbEEC2IS1_vEEPT_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_ # -- Begin function _ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_,@function
+_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_: # @_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 32], rdi       # 8-byte Spill
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rdi], rax
+	add	rdi, 8
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_St17integral_constantIbLb0EE
+	mov	rdi, qword ptr [rbp - 32]       # 8-byte Reload
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end64:
+	.size	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_, .Lfunc_end64-_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2IS1_vEEPT_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_St17integral_constantIbLb0EE,"axG",@progbits,_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_St17integral_constantIbLb0EE,comdat
+	.weak	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_St17integral_constantIbLb0EE # -- Begin function _ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_St17integral_constantIbLb0EE
+	.p2align	4, 0x90
+	.type	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_St17integral_constantIbLb0EE,@function
+_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_St17integral_constantIbLb0EE: # @_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_St17integral_constantIbLb0EE
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 16], rdi
+	mov	qword ptr [rbp - 24], rsi
+	mov	rdi, qword ptr [rbp - 16]
+	mov	rsi, qword ptr [rbp - 24]
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end65:
+	.size	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_St17integral_constantIbLb0EE, .Lfunc_end65-_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_St17integral_constantIbLb0EE
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_ # -- Begin function _ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_,@function
+_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_: # @_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end66:
+	.size	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_, .Lfunc_end66-_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_,"axG",@progbits,_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_,comdat
+	.weak	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_ # -- Begin function _ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_
+	.p2align	4, 0x90
+	.type	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_,@function
+_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_: # @_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_
+.Lfunc_begin10:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception10
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 64
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 48], rax       # 8-byte Spill
+	mov	qword ptr [rax], 0
+.Ltmp132:
+	mov	edi, 24
+	call	_Znwm
+.Ltmp133:
+	mov	qword ptr [rbp - 40], rax       # 8-byte Spill
+	jmp	.LBB67_1
+.LBB67_1:
+	mov	rdi, qword ptr [rbp - 40]       # 8-byte Reload
+	mov	qword ptr [rbp - 56], rdi       # 8-byte Spill
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ES2_
+	mov	rcx, qword ptr [rbp - 56]       # 8-byte Reload
+	mov	rax, qword ptr [rbp - 48]       # 8-byte Reload
+	mov	qword ptr [rax], rcx
+	jmp	.LBB67_8
+.LBB67_2:
+.Ltmp134:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 24], rcx
+	mov	dword ptr [rbp - 28], eax
+# %bb.3:
+	mov	rdi, qword ptr [rbp - 24]
+	call	__cxa_begin_catch
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rbp - 64], rax       # 8-byte Spill
+	cmp	rax, 0
+	je	.LBB67_5
+# %bb.4:
+	mov	rdi, qword ptr [rbp - 64]       # 8-byte Reload
+	mov	rax, qword ptr [rdi]
+	call	qword ptr [rax + 8]
+.LBB67_5:
+.Ltmp135:
+	call	__cxa_rethrow
+.Ltmp136:
+	jmp	.LBB67_11
+.LBB67_6:
+.Ltmp137:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 24], rcx
+	mov	dword ptr [rbp - 28], eax
+.Ltmp138:
+	call	__cxa_end_catch
+.Ltmp139:
+	jmp	.LBB67_7
+.LBB67_7:
+	jmp	.LBB67_9
+.LBB67_8:
+	add	rsp, 64
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB67_9:
+	.cfi_def_cfa rbp, 16
+	mov	rdi, qword ptr [rbp - 24]
+	call	_Unwind_Resume@PLT
+.LBB67_10:
+.Ltmp140:
+	mov	rdi, rax
+                                        # kill: def $eax killed $edx killed $rdx
+	call	__clang_call_terminate
+.LBB67_11:
+.Lfunc_end67:
+	.size	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_, .Lfunc_end67-_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_
+	.cfi_endproc
+	.section	.gcc_except_table._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_,"aG",@progbits,_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2IP11ComputationIbEEET_,comdat
+	.p2align	2
+GCC_except_table67:
+.Lexception10:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	3                               # @TType Encoding = udata4
+	.uleb128 .Lttbase2-.Lttbaseref2
+.Lttbaseref2:
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end10-.Lcst_begin10
+.Lcst_begin10:
+	.uleb128 .Ltmp132-.Lfunc_begin10        # >> Call Site 1 <<
+	.uleb128 .Ltmp133-.Ltmp132              #   Call between .Ltmp132 and .Ltmp133
+	.uleb128 .Ltmp134-.Lfunc_begin10        #     jumps to .Ltmp134
+	.byte	1                               #   On action: 1
+	.uleb128 .Ltmp133-.Lfunc_begin10        # >> Call Site 2 <<
+	.uleb128 .Ltmp135-.Ltmp133              #   Call between .Ltmp133 and .Ltmp135
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp135-.Lfunc_begin10        # >> Call Site 3 <<
+	.uleb128 .Ltmp136-.Ltmp135              #   Call between .Ltmp135 and .Ltmp136
+	.uleb128 .Ltmp137-.Lfunc_begin10        #     jumps to .Ltmp137
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp138-.Lfunc_begin10        # >> Call Site 4 <<
+	.uleb128 .Ltmp139-.Ltmp138              #   Call between .Ltmp138 and .Ltmp139
+	.uleb128 .Ltmp140-.Lfunc_begin10        #     jumps to .Ltmp140
+	.byte	1                               #   On action: 1
+	.uleb128 .Ltmp139-.Lfunc_begin10        # >> Call Site 5 <<
+	.uleb128 .Lfunc_end67-.Ltmp139          #   Call between .Ltmp139 and .Lfunc_end67
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end10:
+	.byte	1                               # >> Action Record 1 <<
+                                        #   Catch TypeInfo 1
+	.byte	0                               #   No further actions
+	.p2align	2
+                                        # >> Catch TypeInfos <<
+	.long	0                               # TypeInfo 1
+.Lttbase2:
+	.p2align	2
+                                        # -- End function
+	.section	.text._ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ES2_,"axG",@progbits,_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ES2_,comdat
+	.weak	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ES2_ # -- Begin function _ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ES2_
+	.p2align	4, 0x90
+	.type	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ES2_,@function
+_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ES2_: # @_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ES2_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rdi       # 8-byte Spill
+	call	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	movabs	rcx, offset _ZTVSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	mov	rcx, qword ptr [rbp - 16]
+	mov	qword ptr [rax + 16], rcx
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end68:
+	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ES2_, .Lfunc_end68-_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ES2_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev,"axG",@progbits,_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev,comdat
+	.weak	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev # -- Begin function _ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.p2align	4, 0x90
+	.type	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev,@function
+_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev: # @_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end69:
+	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev, .Lfunc_end69-_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED0Ev,"axG",@progbits,_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED0Ev,comdat
@@ -3179,9 +3440,24 @@ _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev: # @_ZNSt16_Sp_counte
 _ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED0Ev: # @_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED0Ev
 	.cfi_startproc
 # %bb.0:
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end23:
-	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED0Ev, .Lfunc_end23-_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED0Ev
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end70:
+	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED0Ev, .Lfunc_end70-_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED0Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv,"axG",@progbits,_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv,comdat
@@ -3191,16 +3467,29 @@ _ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED0Ev: # @_
 _ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv: # @_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv
 	.cfi_startproc
 # %bb.0:
-	mov	rdi, qword ptr [rdi + 16]
-	test	rdi, rdi
-	je	.LBB24_1
-# %bb.2:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	rax, qword ptr [rax + 16]
+	mov	qword ptr [rbp - 16], rax       # 8-byte Spill
+	cmp	rax, 0
+	je	.LBB71_2
+# %bb.1:
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
 	mov	rax, qword ptr [rdi]
-	jmp	qword ptr [rax + 8]             # TAILCALL
-.LBB24_1:
+	call	qword ptr [rax + 8]
+.LBB71_2:
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end24:
-	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv, .Lfunc_end24-_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv
+.Lfunc_end71:
+	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv, .Lfunc_end71-_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv,"axG",@progbits,_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv,comdat
@@ -3210,9 +3499,29 @@ _ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_dispo
 _ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv: # @_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv
 	.cfi_startproc
 # %bb.0:
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end25:
-	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv, .Lfunc_end25-_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rax       # 8-byte Spill
+	cmp	rax, 0
+	je	.LBB72_2
+# %bb.1:
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+.LBB72_2:
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end72:
+	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv, .Lfunc_end72-_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info,"axG",@progbits,_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info,comdat
@@ -3222,130 +3531,95 @@ _ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_destr
 _ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info: # @_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info
 	.cfi_startproc
 # %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
 	xor	eax, eax
+                                        # kill: def $rax killed $eax
+	pop	rbp
+	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end26:
-	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info, .Lfunc_end26-_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info
+.Lfunc_end73:
+	.size	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info, .Lfunc_end73-_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info
 	.cfi_endproc
                                         # -- End function
-	.section	.text._ZN8BinaryOpIibED2Ev,"axG",@progbits,_ZN8BinaryOpIibED2Ev,comdat
-	.weak	_ZN8BinaryOpIibED2Ev            # -- Begin function _ZN8BinaryOpIibED2Ev
+	.section	.text._ZN8BinaryOpIibEC2ESt10shared_ptrI11ComputationIiEES4_,"axG",@progbits,_ZN8BinaryOpIibEC2ESt10shared_ptrI11ComputationIiEES4_,comdat
+	.weak	_ZN8BinaryOpIibEC2ESt10shared_ptrI11ComputationIiEES4_ # -- Begin function _ZN8BinaryOpIibEC2ESt10shared_ptrI11ComputationIiEES4_
 	.p2align	4, 0x90
-	.type	_ZN8BinaryOpIibED2Ev,@function
-_ZN8BinaryOpIibED2Ev:                   # @_ZN8BinaryOpIibED2Ev
+	.type	_ZN8BinaryOpIibEC2ESt10shared_ptrI11ComputationIiEES4_,@function
+_ZN8BinaryOpIibEC2ESt10shared_ptrI11ComputationIiEES4_: # @_ZN8BinaryOpIibEC2ESt10shared_ptrI11ComputationIiEES4_
 	.cfi_startproc
 # %bb.0:
-	push	r14
+	push	rbp
 	.cfi_def_cfa_offset 16
-	push	rbx
-	.cfi_def_cfa_offset 24
-	push	rax
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -24
-	.cfi_offset r14, -16
-	mov	r14, rdi
-	mov	qword ptr [rdi], offset _ZTV8BinaryOpIibE+16
-	mov	rbx, qword ptr [rdi + 40]
-	test	rbx, rbx
-	je	.LBB27_10
-# %bb.1:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB27_3
-# %bb.2:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB27_5
-	jmp	.LBB27_10
-.LBB27_3:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB27_10
-.LBB27_5:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB27_7
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB27_9
-	jmp	.LBB27_10
-.LBB27_7:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB27_10
-.LBB27_9:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB27_10:
-	mov	rbx, qword ptr [r14 + 24]
-	test	rbx, rbx
-	je	.LBB27_19
-# %bb.11:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB27_13
-# %bb.12:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB27_15
-	jmp	.LBB27_19
-.LBB27_13:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB27_19
-.LBB27_15:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB27_17
-# %bb.16:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB27_20
-.LBB27_19:
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
-	.cfi_def_cfa_offset 16
-	pop	r14
-	.cfi_def_cfa_offset 8
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 64
+	mov	qword ptr [rbp - 48], rsi       # 8-byte Spill
+	mov	qword ptr [rbp - 24], rdx       # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 32], rdi       # 8-byte Spill
+	mov	qword ptr [rbp - 56], rdi       # 8-byte Spill
+	xor	esi, esi
+	mov	edx, 10
+	call	memset@PLT
+	mov	rdi, qword ptr [rbp - 56]       # 8-byte Reload
+	call	_ZN11ComputationIbEC2Ev
+	mov	rdi, qword ptr [rbp - 48]       # 8-byte Reload
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	movabs	rcx, offset _ZTV8BinaryOpIibE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	add	rax, 16
+	mov	qword ptr [rbp - 40], rax       # 8-byte Spill
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 40]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rax, 32
+	mov	qword ptr [rbp - 16], rax       # 8-byte Spill
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	add	rsp, 64
+	pop	rbp
+	.cfi_def_cfa rsp, 8
 	ret
-.LBB27_17:
-	.cfi_def_cfa_offset 32
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB27_19
-.LBB27_20:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
+.Lfunc_end74:
+	.size	_ZN8BinaryOpIibEC2ESt10shared_ptrI11ComputationIiEES4_, .Lfunc_end74-_ZN8BinaryOpIibEC2ESt10shared_ptrI11ComputationIiEES4_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN2LTIiED2Ev,"axG",@progbits,_ZN2LTIiED2Ev,comdat
+	.weak	_ZN2LTIiED2Ev                   # -- Begin function _ZN2LTIiED2Ev
+	.p2align	4, 0x90
+	.type	_ZN2LTIiED2Ev,@function
+_ZN2LTIiED2Ev:                          # @_ZN2LTIiED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
 	.cfi_def_cfa_offset 16
-	pop	r14
-	.cfi_def_cfa_offset 8
-	jmp	qword ptr [rax + 24]            # TAILCALL
-.Lfunc_end27:
-	.size	_ZN8BinaryOpIibED2Ev, .Lfunc_end27-_ZN8BinaryOpIibED2Ev
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZN8BinaryOpIibED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end75:
+	.size	_ZN2LTIiED2Ev, .Lfunc_end75-_ZN2LTIiED2Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN2LTIiED0Ev,"axG",@progbits,_ZN2LTIiED0Ev,comdat
@@ -3355,112 +3629,24 @@ _ZN8BinaryOpIibED2Ev:                   # @_ZN8BinaryOpIibED2Ev
 _ZN2LTIiED0Ev:                          # @_ZN2LTIiED0Ev
 	.cfi_startproc
 # %bb.0:
-	push	r14
+	push	rbp
 	.cfi_def_cfa_offset 16
-	push	rbx
-	.cfi_def_cfa_offset 24
-	push	rax
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -24
-	.cfi_offset r14, -16
-	mov	r14, rdi
-	mov	qword ptr [rdi], offset _ZTV8BinaryOpIibE+16
-	mov	rbx, qword ptr [rdi + 40]
-	test	rbx, rbx
-	je	.LBB28_10
-# %bb.1:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB28_3
-# %bb.2:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB28_5
-	jmp	.LBB28_10
-.LBB28_3:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB28_10
-.LBB28_5:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB28_7
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB28_9
-	jmp	.LBB28_10
-.LBB28_7:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB28_10
-.LBB28_9:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB28_10:
-	mov	rbx, qword ptr [r14 + 24]
-	test	rbx, rbx
-	je	.LBB28_20
-# %bb.11:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB28_13
-# %bb.12:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB28_15
-	jmp	.LBB28_20
-.LBB28_13:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB28_20
-.LBB28_15:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB28_17
-# %bb.16:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB28_19
-	jmp	.LBB28_20
-.LBB28_17:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB28_20
-.LBB28_19:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB28_20:
-	mov	rdi, r14
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
-	.cfi_def_cfa_offset 16
-	pop	r14
-	.cfi_def_cfa_offset 8
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end28:
-	.size	_ZN2LTIiED0Ev, .Lfunc_end28-_ZN2LTIiED0Ev
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZN2LTIiED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end76:
+	.size	_ZN2LTIiED0Ev, .Lfunc_end76-_ZN2LTIiED0Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN8BinaryOpIibE4evalEv,"axG",@progbits,_ZN8BinaryOpIibE4evalEv,comdat
@@ -3468,406 +3654,167 @@ _ZN2LTIiED0Ev:                          # @_ZN2LTIiED0Ev
 	.p2align	4, 0x90
 	.type	_ZN8BinaryOpIibE4evalEv,@function
 _ZN8BinaryOpIibE4evalEv:                # @_ZN8BinaryOpIibE4evalEv
-.Lfunc_begin6:
+.Lfunc_begin11:
 	.cfi_startproc
 	.cfi_personality 3, __gxx_personality_v0
-	.cfi_lsda 3, .Lexception6
+	.cfi_lsda 3, .Lexception11
 # %bb.0:
 	push	rbp
 	.cfi_def_cfa_offset 16
-	push	r14
-	.cfi_def_cfa_offset 24
-	push	rbx
-	.cfi_def_cfa_offset 32
-	sub	rsp, 64
-	.cfi_def_cfa_offset 96
-	.cfi_offset rbx, -32
-	.cfi_offset r14, -24
 	.cfi_offset rbp, -16
-	mov	rbx, rsi
-	mov	r14, rdi
-	mov	rax, qword ptr [rsi + 16]
-	mov	qword ptr [rsp + 16], rax
-	mov	rcx, qword ptr [rsi + 24]
-	mov	qword ptr [rsp + 24], rcx
-	test	rcx, rcx
-	je	.LBB29_8
-# %bb.1:
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	je	.LBB29_6
-# %bb.2:
-	lock		add	dword ptr [rcx + 8], 1
-	mov	rax, qword ptr [rsp + 16]
-	mov	rcx, qword ptr [rsp + 24]
-	test	rcx, rcx
-	je	.LBB29_8
-# %bb.3:
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	je	.LBB29_7
-.LBB29_4:
-	lock		add	dword ptr [rcx + 8], 1
-	jmp	.LBB29_9
-.LBB29_8:
-	xor	ecx, ecx
-	jmp	.LBB29_9
-.LBB29_6:
-	add	dword ptr [rcx + 8], 1
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	jne	.LBB29_4
-.LBB29_7:
-	add	dword ptr [rcx + 8], 1
-.LBB29_9:
-	mov	qword ptr [rsp + 48], rax
-	mov	qword ptr [rsp + 56], rcx
-.Ltmp168:
-	lea	rdi, [rsp + 48]
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 160
+	mov	qword ptr [rbp - 128], rdi      # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 120], rax      # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rsi, qword ptr [rbp - 16]
+	mov	qword ptr [rbp - 112], rsi      # 8-byte Spill
+	add	rsi, 16
+	lea	rdi, [rbp - 48]
+	mov	qword ptr [rbp - 104], rdi      # 8-byte Spill
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	mov	rsi, qword ptr [rbp - 104]      # 8-byte Reload
+.Ltmp141:
+	lea	rdi, [rbp - 32]
+	call	_ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE
+.Ltmp142:
+	jmp	.LBB77_1
+.LBB77_1:
+.Ltmp144:
+	lea	rdi, [rbp - 32]
 	call	_ZN9InterpretIiE3getEv
-.Ltmp169:
-# %bb.10:
-	mov	ebp, eax
-	mov	rax, qword ptr [rbx + 32]
-	mov	qword ptr [rsp], rax
-	mov	rcx, qword ptr [rbx + 40]
-	mov	qword ptr [rsp + 8], rcx
-	test	rcx, rcx
-	je	.LBB29_18
-# %bb.11:
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	je	.LBB29_16
-# %bb.12:
-	lock		add	dword ptr [rcx + 8], 1
-	mov	rax, qword ptr [rsp]
-	mov	rcx, qword ptr [rsp + 8]
-	test	rcx, rcx
-	je	.LBB29_18
-# %bb.13:
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	je	.LBB29_17
-.LBB29_14:
-	lock		add	dword ptr [rcx + 8], 1
-	jmp	.LBB29_19
-.LBB29_18:
-	xor	ecx, ecx
-	jmp	.LBB29_19
-.LBB29_16:
-	add	dword ptr [rcx + 8], 1
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	jne	.LBB29_14
-.LBB29_17:
-	add	dword ptr [rcx + 8], 1
-.LBB29_19:
-	mov	qword ptr [rsp + 32], rax
-	mov	qword ptr [rsp + 40], rcx
-.Ltmp171:
-	lea	rdi, [rsp + 32]
+.Ltmp145:
+	mov	dword ptr [rbp - 132], eax      # 4-byte Spill
+	jmp	.LBB77_2
+.LBB77_2:
+	mov	rsi, qword ptr [rbp - 112]      # 8-byte Reload
+	add	rsi, 32
+	lea	rdi, [rbp - 96]
+	mov	qword ptr [rbp - 144], rdi      # 8-byte Spill
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	mov	rsi, qword ptr [rbp - 144]      # 8-byte Reload
+.Ltmp147:
+	lea	rdi, [rbp - 80]
+	call	_ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE
+.Ltmp148:
+	jmp	.LBB77_3
+.LBB77_3:
+.Ltmp150:
+	lea	rdi, [rbp - 80]
 	call	_ZN9InterpretIiE3getEv
-.Ltmp172:
-# %bb.20:
-	mov	rcx, qword ptr [rbx]
-.Ltmp173:
-	mov	rdi, rbx
-	mov	esi, ebp
-	mov	edx, eax
-	call	qword ptr [rcx + 24]
-.Ltmp174:
-# %bb.21:
-	mov	rbx, rax
-	mov	qword ptr [r14], rax
-	mov	qword ptr [r14 + 8], 0
-.Ltmp176:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp177:
-# %bb.22:
-	movabs	rcx, 4294967297
-	mov	qword ptr [rax + 8], rcx
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], rbx
-	mov	qword ptr [r14 + 8], rax
-	mov	rbx, qword ptr [rsp + 40]
-	test	rbx, rbx
-	je	.LBB29_30
-# %bb.23:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB29_25
-# %bb.24:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB29_26
-	jmp	.LBB29_30
-.LBB29_25:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB29_30
-.LBB29_26:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB29_28
-# %bb.27:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB29_29
-	jmp	.LBB29_30
-.LBB29_28:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB29_30
-.LBB29_29:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB29_30:
-	mov	rbx, qword ptr [rsp + 8]
-	test	rbx, rbx
-	je	.LBB29_38
-# %bb.31:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB29_33
-# %bb.32:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB29_34
-	jmp	.LBB29_38
-.LBB29_33:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB29_38
-.LBB29_34:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB29_36
-# %bb.35:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB29_37
-	jmp	.LBB29_38
-.LBB29_36:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB29_38
-.LBB29_37:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB29_38:
-	mov	rbx, qword ptr [rsp + 56]
-	test	rbx, rbx
-	je	.LBB29_46
-# %bb.39:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB29_41
-# %bb.40:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB29_42
-	jmp	.LBB29_46
-.LBB29_41:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB29_46
-.LBB29_42:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB29_44
-# %bb.43:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB29_45
-	jmp	.LBB29_46
-.LBB29_44:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB29_46
-.LBB29_45:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB29_46:
-	mov	rbx, qword ptr [rsp + 24]
-	test	rbx, rbx
-	je	.LBB29_54
-# %bb.47:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB29_49
-# %bb.48:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB29_50
-	jmp	.LBB29_54
-.LBB29_49:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB29_54
-.LBB29_50:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB29_52
-# %bb.51:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB29_53
-	jmp	.LBB29_54
-.LBB29_52:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB29_54
-.LBB29_53:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB29_54:
-	mov	rax, r14
-	add	rsp, 64
-	.cfi_def_cfa_offset 32
-	pop	rbx
-	.cfi_def_cfa_offset 24
-	pop	r14
-	.cfi_def_cfa_offset 16
+.Ltmp151:
+	mov	dword ptr [rbp - 148], eax      # 4-byte Spill
+	jmp	.LBB77_4
+.LBB77_4:
+	mov	edx, dword ptr [rbp - 148]      # 4-byte Reload
+	mov	esi, dword ptr [rbp - 132]      # 4-byte Reload
+	mov	rdi, qword ptr [rbp - 112]      # 8-byte Reload
+	mov	rax, qword ptr [rdi]
+	mov	rax, qword ptr [rax + 24]
+.Ltmp152:
+	call	rax
+.Ltmp153:
+	mov	qword ptr [rbp - 160], rax      # 8-byte Spill
+	jmp	.LBB77_5
+.LBB77_5:
+.Ltmp154:
+	mov	rsi, qword ptr [rbp - 160]      # 8-byte Reload
+	mov	rdi, qword ptr [rbp - 128]      # 8-byte Reload
+	call	_Z4cptrIbEN11ComputationIT_E3ptrEPS2_
+.Ltmp155:
+	jmp	.LBB77_6
+.LBB77_6:
+	lea	rdi, [rbp - 80]
+	call	_ZN5ForceIiED2Ev
+	lea	rdi, [rbp - 96]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 32]
+	call	_ZN5ForceIiED2Ev
+	lea	rdi, [rbp - 48]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rax, qword ptr [rbp - 120]      # 8-byte Reload
+	add	rsp, 160
 	pop	rbp
-	.cfi_def_cfa_offset 8
+	.cfi_def_cfa rsp, 8
 	ret
-.LBB29_55:
-	.cfi_def_cfa_offset 96
-.Ltmp178:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	test	rbx, rbx
-	je	.LBB29_57
-# %bb.56:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 8]
-.LBB29_57:
-.Ltmp179:
-	call	__cxa_rethrow
-.Ltmp180:
-# %bb.58:
-.LBB29_59:
-.Ltmp181:
-	mov	rbx, rax
-.Ltmp182:
-	call	__cxa_end_catch
-.Ltmp183:
-	jmp	.LBB29_63
-.LBB29_60:
-.Ltmp184:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB29_61:
-.Ltmp170:
-	mov	rbx, rax
-	jmp	.LBB29_64
-.LBB29_62:
-.Ltmp175:
-	mov	rbx, rax
-.LBB29_63:
-	lea	rdi, [rsp + 32]
-	call	_ZN9InterpretIiED2Ev
-	mov	rdi, rsp
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-.LBB29_64:
-	lea	rdi, [rsp + 48]
-	call	_ZN9InterpretIiED2Ev
-	lea	rdi, [rsp + 16]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	mov	rdi, rbx
+.LBB77_7:
+	.cfi_def_cfa rbp, 16
+.Ltmp143:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 56], rcx
+	mov	dword ptr [rbp - 60], eax
+	jmp	.LBB77_13
+.LBB77_8:
+.Ltmp146:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 56], rcx
+	mov	dword ptr [rbp - 60], eax
+	jmp	.LBB77_12
+.LBB77_9:
+.Ltmp149:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 56], rcx
+	mov	dword ptr [rbp - 60], eax
+	jmp	.LBB77_11
+.LBB77_10:
+.Ltmp156:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 56], rcx
+	mov	dword ptr [rbp - 60], eax
+	lea	rdi, [rbp - 80]
+	call	_ZN5ForceIiED2Ev
+.LBB77_11:
+	lea	rdi, [rbp - 96]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+.LBB77_12:
+	lea	rdi, [rbp - 32]
+	call	_ZN5ForceIiED2Ev
+.LBB77_13:
+	lea	rdi, [rbp - 48]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+# %bb.14:
+	mov	rdi, qword ptr [rbp - 56]
 	call	_Unwind_Resume@PLT
-.Lfunc_end29:
-	.size	_ZN8BinaryOpIibE4evalEv, .Lfunc_end29-_ZN8BinaryOpIibE4evalEv
+.Lfunc_end77:
+	.size	_ZN8BinaryOpIibE4evalEv, .Lfunc_end77-_ZN8BinaryOpIibE4evalEv
 	.cfi_endproc
 	.section	.gcc_except_table._ZN8BinaryOpIibE4evalEv,"aG",@progbits,_ZN8BinaryOpIibE4evalEv,comdat
 	.p2align	2
-GCC_except_table29:
-.Lexception6:
+GCC_except_table77:
+.Lexception11:
 	.byte	255                             # @LPStart Encoding = omit
-	.byte	3                               # @TType Encoding = udata4
-	.uleb128 .Lttbase5-.Lttbaseref5
-.Lttbaseref5:
+	.byte	255                             # @TType Encoding = omit
 	.byte	1                               # Call site Encoding = uleb128
-	.uleb128 .Lcst_end6-.Lcst_begin6
-.Lcst_begin6:
-	.uleb128 .Ltmp168-.Lfunc_begin6         # >> Call Site 1 <<
-	.uleb128 .Ltmp169-.Ltmp168              #   Call between .Ltmp168 and .Ltmp169
-	.uleb128 .Ltmp170-.Lfunc_begin6         #     jumps to .Ltmp170
+	.uleb128 .Lcst_end11-.Lcst_begin11
+.Lcst_begin11:
+	.uleb128 .Ltmp141-.Lfunc_begin11        # >> Call Site 1 <<
+	.uleb128 .Ltmp142-.Ltmp141              #   Call between .Ltmp141 and .Ltmp142
+	.uleb128 .Ltmp143-.Lfunc_begin11        #     jumps to .Ltmp143
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp171-.Lfunc_begin6         # >> Call Site 2 <<
-	.uleb128 .Ltmp174-.Ltmp171              #   Call between .Ltmp171 and .Ltmp174
-	.uleb128 .Ltmp175-.Lfunc_begin6         #     jumps to .Ltmp175
+	.uleb128 .Ltmp144-.Lfunc_begin11        # >> Call Site 2 <<
+	.uleb128 .Ltmp145-.Ltmp144              #   Call between .Ltmp144 and .Ltmp145
+	.uleb128 .Ltmp146-.Lfunc_begin11        #     jumps to .Ltmp146
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp176-.Lfunc_begin6         # >> Call Site 3 <<
-	.uleb128 .Ltmp177-.Ltmp176              #   Call between .Ltmp176 and .Ltmp177
-	.uleb128 .Ltmp178-.Lfunc_begin6         #     jumps to .Ltmp178
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp177-.Lfunc_begin6         # >> Call Site 4 <<
-	.uleb128 .Ltmp179-.Ltmp177              #   Call between .Ltmp177 and .Ltmp179
+	.uleb128 .Ltmp147-.Lfunc_begin11        # >> Call Site 3 <<
+	.uleb128 .Ltmp148-.Ltmp147              #   Call between .Ltmp147 and .Ltmp148
+	.uleb128 .Ltmp149-.Lfunc_begin11        #     jumps to .Ltmp149
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp150-.Lfunc_begin11        # >> Call Site 4 <<
+	.uleb128 .Ltmp155-.Ltmp150              #   Call between .Ltmp150 and .Ltmp155
+	.uleb128 .Ltmp156-.Lfunc_begin11        #     jumps to .Ltmp156
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp155-.Lfunc_begin11        # >> Call Site 5 <<
+	.uleb128 .Lfunc_end77-.Ltmp155          #   Call between .Ltmp155 and .Lfunc_end77
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp179-.Lfunc_begin6         # >> Call Site 5 <<
-	.uleb128 .Ltmp180-.Ltmp179              #   Call between .Ltmp179 and .Ltmp180
-	.uleb128 .Ltmp181-.Lfunc_begin6         #     jumps to .Ltmp181
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp182-.Lfunc_begin6         # >> Call Site 6 <<
-	.uleb128 .Ltmp183-.Ltmp182              #   Call between .Ltmp182 and .Ltmp183
-	.uleb128 .Ltmp184-.Lfunc_begin6         #     jumps to .Ltmp184
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp183-.Lfunc_begin6         # >> Call Site 7 <<
-	.uleb128 .Lfunc_end29-.Ltmp183          #   Call between .Ltmp183 and .Lfunc_end29
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-.Lcst_end6:
-	.byte	1                               # >> Action Record 1 <<
-                                        #   Catch TypeInfo 1
-	.byte	0                               #   No further actions
-	.p2align	2
-                                        # >> Catch TypeInfos <<
-	.long	0                               # TypeInfo 1
-.Lttbase5:
+.Lcst_end11:
 	.p2align	2
                                         # -- End function
 	.section	.text._ZN2LTIiE2opEii,"axG",@progbits,_ZN2LTIiE2opEii,comdat
@@ -3875,34 +3822,139 @@ GCC_except_table29:
 	.p2align	4, 0x90
 	.type	_ZN2LTIiE2opEii,@function
 _ZN2LTIiE2opEii:                        # @_ZN2LTIiE2opEii
+.Lfunc_begin12:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception12
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 48
+	mov	qword ptr [rbp - 8], rdi
+	mov	dword ptr [rbp - 12], esi
+	mov	dword ptr [rbp - 16], edx
+	mov	edi, 16
+	call	_Znwm
+	mov	rdi, rax
+	mov	rax, rdi
+	mov	qword ptr [rbp - 48], rax       # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 40], rax       # 8-byte Spill
+	mov	eax, dword ptr [rbp - 12]
+	mov	ecx, dword ptr [rbp - 16]
+	sub	eax, ecx
+	setl	al
+	movzx	esi, al
+.Ltmp157:
+	call	_ZN4BoolC2Eb
+.Ltmp158:
+	jmp	.LBB78_1
+.LBB78_1:
+	mov	rax, qword ptr [rbp - 40]       # 8-byte Reload
+	add	rsp, 48
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB78_2:
+	.cfi_def_cfa rbp, 16
+.Ltmp159:
+	mov	rdi, qword ptr [rbp - 48]       # 8-byte Reload
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 24], rcx
+	mov	dword ptr [rbp - 28], eax
+	call	_ZdlPv
+# %bb.3:
+	mov	rdi, qword ptr [rbp - 24]
+	call	_Unwind_Resume@PLT
+.Lfunc_end78:
+	.size	_ZN2LTIiE2opEii, .Lfunc_end78-_ZN2LTIiE2opEii
+	.cfi_endproc
+	.section	.gcc_except_table._ZN2LTIiE2opEii,"aG",@progbits,_ZN2LTIiE2opEii,comdat
+	.p2align	2
+GCC_except_table78:
+.Lexception12:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end12-.Lcst_begin12
+.Lcst_begin12:
+	.uleb128 .Lfunc_begin12-.Lfunc_begin12  # >> Call Site 1 <<
+	.uleb128 .Ltmp157-.Lfunc_begin12        #   Call between .Lfunc_begin12 and .Ltmp157
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp157-.Lfunc_begin12        # >> Call Site 2 <<
+	.uleb128 .Ltmp158-.Ltmp157              #   Call between .Ltmp157 and .Ltmp158
+	.uleb128 .Ltmp159-.Lfunc_begin12        #     jumps to .Ltmp159
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp158-.Lfunc_begin12        # >> Call Site 3 <<
+	.uleb128 .Lfunc_end78-.Ltmp158          #   Call between .Ltmp158 and .Lfunc_end78
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end12:
+	.p2align	2
+                                        # -- End function
+	.section	.text._ZN11ComputationIbEC2Ev,"axG",@progbits,_ZN11ComputationIbEC2Ev,comdat
+	.weak	_ZN11ComputationIbEC2Ev         # -- Begin function _ZN11ComputationIbEC2Ev
+	.p2align	4, 0x90
+	.type	_ZN11ComputationIbEC2Ev,@function
+_ZN11ComputationIbEC2Ev:                # @_ZN11ComputationIbEC2Ev
 	.cfi_startproc
 # %bb.0:
 	push	rbp
 	.cfi_def_cfa_offset 16
-	push	rbx
-	.cfi_def_cfa_offset 24
-	push	rax
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -24
 	.cfi_offset rbp, -16
-	mov	ebx, edx
-	mov	ebp, esi
-	mov	edi, 16
-	call	_Znwm
-	cmp	ebp, ebx
-	setl	byte ptr [rax + 8]
-	mov	byte ptr [rax + 9], 1
-	setl	byte ptr [rax + 10]
-	mov	qword ptr [rax], offset _ZTV4Bool+16
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
-	.cfi_def_cfa_offset 16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	movabs	rcx, offset _ZTV11ComputationIbE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	mov	byte ptr [rax + 8], 0
+	mov	byte ptr [rax + 9], 0
 	pop	rbp
-	.cfi_def_cfa_offset 8
+	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end30:
-	.size	_ZN2LTIiE2opEii, .Lfunc_end30-_ZN2LTIiE2opEii
+.Lfunc_end79:
+	.size	_ZN11ComputationIbEC2Ev, .Lfunc_end79-_ZN11ComputationIbEC2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN8BinaryOpIibED2Ev,"axG",@progbits,_ZN8BinaryOpIibED2Ev,comdat
+	.weak	_ZN8BinaryOpIibED2Ev            # -- Begin function _ZN8BinaryOpIibED2Ev
+	.p2align	4, 0x90
+	.type	_ZN8BinaryOpIibED2Ev,@function
+_ZN8BinaryOpIibED2Ev:                   # @_ZN8BinaryOpIibED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	movabs	rax, offset _ZTV8BinaryOpIibE
+	add	rax, 16
+	mov	qword ptr [rdi], rax
+	add	rdi, 32
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	add	rdi, 16
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZN11ComputationIbED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end80:
+	.size	_ZN8BinaryOpIibED2Ev, .Lfunc_end80-_ZN8BinaryOpIibED2Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN8BinaryOpIibED0Ev,"axG",@progbits,_ZN8BinaryOpIibED0Ev,comdat
@@ -3912,112 +3964,24 @@ _ZN2LTIiE2opEii:                        # @_ZN2LTIiE2opEii
 _ZN8BinaryOpIibED0Ev:                   # @_ZN8BinaryOpIibED0Ev
 	.cfi_startproc
 # %bb.0:
-	push	r14
+	push	rbp
 	.cfi_def_cfa_offset 16
-	push	rbx
-	.cfi_def_cfa_offset 24
-	push	rax
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -24
-	.cfi_offset r14, -16
-	mov	r14, rdi
-	mov	qword ptr [rdi], offset _ZTV8BinaryOpIibE+16
-	mov	rbx, qword ptr [rdi + 40]
-	test	rbx, rbx
-	je	.LBB31_10
-# %bb.1:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB31_3
-# %bb.2:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB31_5
-	jmp	.LBB31_10
-.LBB31_3:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB31_10
-.LBB31_5:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB31_7
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB31_9
-	jmp	.LBB31_10
-.LBB31_7:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB31_10
-.LBB31_9:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB31_10:
-	mov	rbx, qword ptr [r14 + 24]
-	test	rbx, rbx
-	je	.LBB31_20
-# %bb.11:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB31_13
-# %bb.12:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB31_15
-	jmp	.LBB31_20
-.LBB31_13:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB31_20
-.LBB31_15:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB31_17
-# %bb.16:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB31_19
-	jmp	.LBB31_20
-.LBB31_17:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB31_20
-.LBB31_19:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB31_20:
-	mov	rdi, r14
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
-	.cfi_def_cfa_offset 16
-	pop	r14
-	.cfi_def_cfa_offset 8
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end31:
-	.size	_ZN8BinaryOpIibED0Ev, .Lfunc_end31-_ZN8BinaryOpIibED0Ev
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZN8BinaryOpIibED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end81:
+	.size	_ZN8BinaryOpIibED0Ev, .Lfunc_end81-_ZN8BinaryOpIibED0Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN8BinaryOpIibE2opEii,"axG",@progbits,_ZN8BinaryOpIibE2opEii,comdat
@@ -4027,10 +3991,226 @@ _ZN8BinaryOpIibED0Ev:                   # @_ZN8BinaryOpIibED0Ev
 _ZN8BinaryOpIibE2opEii:                 # @_ZN8BinaryOpIibE2opEii
 	.cfi_startproc
 # %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	dword ptr [rbp - 12], esi
+	mov	dword ptr [rbp - 16], edx
 	xor	eax, eax
+                                        # kill: def $rax killed $eax
+	pop	rbp
+	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end32:
-	.size	_ZN8BinaryOpIibE2opEii, .Lfunc_end32-_ZN8BinaryOpIibE2opEii
+.Lfunc_end82:
+	.size	_ZN8BinaryOpIibE2opEii, .Lfunc_end82-_ZN8BinaryOpIibE2opEii
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN11ComputationIbED2Ev,"axG",@progbits,_ZN11ComputationIbED2Ev,comdat
+	.weak	_ZN11ComputationIbED2Ev         # -- Begin function _ZN11ComputationIbED2Ev
+	.p2align	4, 0x90
+	.type	_ZN11ComputationIbED2Ev,@function
+_ZN11ComputationIbED2Ev:                # @_ZN11ComputationIbED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end83:
+	.size	_ZN11ComputationIbED2Ev, .Lfunc_end83-_ZN11ComputationIbED2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN11ComputationIbED0Ev,"axG",@progbits,_ZN11ComputationIbED0Ev,comdat
+	.weak	_ZN11ComputationIbED0Ev         # -- Begin function _ZN11ComputationIbED0Ev
+	.p2align	4, 0x90
+	.type	_ZN11ComputationIbED0Ev,@function
+_ZN11ComputationIbED0Ev:                # @_ZN11ComputationIbED0Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZN11ComputationIbED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end84:
+	.size	_ZN11ComputationIbED0Ev, .Lfunc_end84-_ZN11ComputationIbED0Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN11ComputationIbE4evalEv,"axG",@progbits,_ZN11ComputationIbE4evalEv,comdat
+	.weak	_ZN11ComputationIbE4evalEv      # -- Begin function _ZN11ComputationIbE4evalEv
+	.p2align	4, 0x90
+	.type	_ZN11ComputationIbE4evalEv,@function
+_ZN11ComputationIbE4evalEv:             # @_ZN11ComputationIbE4evalEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	rax, rdi
+	mov	qword ptr [rbp - 24], rax       # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 8], rax
+	mov	qword ptr [rbp - 16], rsi
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt10shared_ptrI11ComputationIbEEC2IS1_vEEPT_
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end85:
+	.size	_ZN11ComputationIbE4evalEv, .Lfunc_end85-_ZN11ComputationIbE4evalEv
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE,"axG",@progbits,_ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE,comdat
+	.weak	_ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE # -- Begin function _ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE
+	.p2align	4, 0x90
+	.type	_ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE,@function
+_ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE: # @_ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE
+.Lfunc_begin13:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception13
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 64
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 56], rax       # 8-byte Spill
+	lea	rdi, [rbp - 24]
+	mov	qword ptr [rbp - 48], rdi       # 8-byte Spill
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	mov	rdi, qword ptr [rbp - 56]       # 8-byte Reload
+	mov	rsi, qword ptr [rbp - 48]       # 8-byte Reload
+.Ltmp160:
+	call	_ZN9InterpretIiEC2ESt10shared_ptrI11ComputationIiEE
+.Ltmp161:
+	jmp	.LBB86_1
+.LBB86_1:
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	add	rsp, 64
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB86_2:
+	.cfi_def_cfa rbp, 16
+.Ltmp162:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 32], rcx
+	mov	dword ptr [rbp - 36], eax
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+# %bb.3:
+	mov	rdi, qword ptr [rbp - 32]
+	call	_Unwind_Resume@PLT
+.Lfunc_end86:
+	.size	_ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE, .Lfunc_end86-_ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE
+	.cfi_endproc
+	.section	.gcc_except_table._ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE,"aG",@progbits,_ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE,comdat
+	.p2align	2
+GCC_except_table86:
+.Lexception13:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end13-.Lcst_begin13
+.Lcst_begin13:
+	.uleb128 .Ltmp160-.Lfunc_begin13        # >> Call Site 1 <<
+	.uleb128 .Ltmp161-.Ltmp160              #   Call between .Ltmp160 and .Ltmp161
+	.uleb128 .Ltmp162-.Lfunc_begin13        #     jumps to .Ltmp162
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp161-.Lfunc_begin13        # >> Call Site 2 <<
+	.uleb128 .Lfunc_end86-.Ltmp161          #   Call between .Ltmp161 and .Lfunc_end86
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end13:
+	.p2align	2
+                                        # -- End function
+	.section	.text._ZN4BoolC2Eb,"axG",@progbits,_ZN4BoolC2Eb,comdat
+	.weak	_ZN4BoolC2Eb                    # -- Begin function _ZN4BoolC2Eb
+	.p2align	4, 0x90
+	.type	_ZN4BoolC2Eb,@function
+_ZN4BoolC2Eb:                           # @_ZN4BoolC2Eb
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	al, sil
+	mov	qword ptr [rbp - 8], rdi
+	and	al, 1
+	mov	byte ptr [rbp - 9], al
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rdi       # 8-byte Spill
+	mov	al, byte ptr [rbp - 9]
+	and	al, 1
+	movzx	esi, al
+	call	_ZN5ValueIbEC2Eb
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	movabs	rcx, offset _ZTV4Bool
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end87:
+	.size	_ZN4BoolC2Eb, .Lfunc_end87-_ZN4BoolC2Eb
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN4BoolD2Ev,"axG",@progbits,_ZN4BoolD2Ev,comdat
+	.weak	_ZN4BoolD2Ev                    # -- Begin function _ZN4BoolD2Ev
+	.p2align	4, 0x90
+	.type	_ZN4BoolD2Ev,@function
+_ZN4BoolD2Ev:                           # @_ZN4BoolD2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZN5ValueIbED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end88:
+	.size	_ZN4BoolD2Ev, .Lfunc_end88-_ZN4BoolD2Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN4BoolD0Ev,"axG",@progbits,_ZN4BoolD0Ev,comdat
@@ -4040,9 +4220,24 @@ _ZN8BinaryOpIibE2opEii:                 # @_ZN8BinaryOpIibE2opEii
 _ZN4BoolD0Ev:                           # @_ZN4BoolD0Ev
 	.cfi_startproc
 # %bb.0:
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end33:
-	.size	_ZN4BoolD0Ev, .Lfunc_end33-_ZN4BoolD0Ev
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZN4BoolD2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end89:
+	.size	_ZN4BoolD0Ev, .Lfunc_end89-_ZN4BoolD0Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN5ValueIbE4evalEv,"axG",@progbits,_ZN5ValueIbE4evalEv,comdat
@@ -4050,133 +4245,139 @@ _ZN4BoolD0Ev:                           # @_ZN4BoolD0Ev
 	.p2align	4, 0x90
 	.type	_ZN5ValueIbE4evalEv,@function
 _ZN5ValueIbE4evalEv:                    # @_ZN5ValueIbE4evalEv
-.Lfunc_begin7:
+.Lfunc_begin14:
 	.cfi_startproc
 	.cfi_personality 3, __gxx_personality_v0
-	.cfi_lsda 3, .Lexception7
+	.cfi_lsda 3, .Lexception14
 # %bb.0:
-	push	r15
+	push	rbp
 	.cfi_def_cfa_offset 16
-	push	r14
-	.cfi_def_cfa_offset 24
-	push	rbx
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -32
-	.cfi_offset r14, -24
-	.cfi_offset r15, -16
-	mov	r15, rsi
-	mov	r14, rdi
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 80
+	mov	qword ptr [rbp - 72], rdi       # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 64], rax       # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rbp - 56], rax       # 8-byte Spill
 	mov	edi, 16
 	call	_Znwm
-	mov	rbx, rax
-	mov	al, byte ptr [r15 + 10]
-	mov	byte ptr [rbx + 8], al
-	mov	byte ptr [rbx + 9], 1
-	mov	qword ptr [rbx], offset _ZTV5ValueIbE+16
-	mov	byte ptr [rbx + 10], al
-	mov	qword ptr [r14], rbx
-	mov	qword ptr [r14 + 8], 0
-.Ltmp185:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp186:
-# %bb.1:
-	movabs	rcx, 4294967297
-	mov	qword ptr [rax + 8], rcx
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], rbx
-	mov	qword ptr [r14 + 8], rax
-	mov	rax, r14
-	pop	rbx
-	.cfi_def_cfa_offset 24
-	pop	r14
-	.cfi_def_cfa_offset 16
-	pop	r15
-	.cfi_def_cfa_offset 8
+	mov	rdi, rax
+	mov	rax, qword ptr [rbp - 56]       # 8-byte Reload
+	mov	rcx, rdi
+	mov	qword ptr [rbp - 48], rcx       # 8-byte Spill
+	mov	rcx, rdi
+	mov	qword ptr [rbp - 40], rcx       # 8-byte Spill
+	movzx	esi, byte ptr [rax + 10]
+.Ltmp163:
+	and	esi, 1
+	call	_ZN5ValueIbEC2Eb
+.Ltmp164:
+	jmp	.LBB90_1
+.LBB90_1:
+	mov	rdi, qword ptr [rbp - 72]       # 8-byte Reload
+	mov	rsi, qword ptr [rbp - 40]       # 8-byte Reload
+	call	_Z4cptrIbEN11ComputationIT_E3ptrEPS2_
+	mov	rax, qword ptr [rbp - 64]       # 8-byte Reload
+	add	rsp, 80
+	pop	rbp
+	.cfi_def_cfa rsp, 8
 	ret
-.LBB34_5:
-	.cfi_def_cfa_offset 32
-.Ltmp187:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 8]
-.Ltmp188:
-	call	__cxa_rethrow
-.Ltmp189:
-# %bb.6:
-.LBB34_2:
-.Ltmp190:
-	mov	rbx, rax
-.Ltmp191:
-	call	__cxa_end_catch
-.Ltmp192:
+.LBB90_2:
+	.cfi_def_cfa rbp, 16
+.Ltmp165:
+	mov	rdi, qword ptr [rbp - 48]       # 8-byte Reload
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 24], rcx
+	mov	dword ptr [rbp - 28], eax
+	call	_ZdlPv
 # %bb.3:
-	mov	rdi, rbx
+	mov	rdi, qword ptr [rbp - 24]
 	call	_Unwind_Resume@PLT
-.LBB34_4:
-.Ltmp193:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.Lfunc_end34:
-	.size	_ZN5ValueIbE4evalEv, .Lfunc_end34-_ZN5ValueIbE4evalEv
+.Lfunc_end90:
+	.size	_ZN5ValueIbE4evalEv, .Lfunc_end90-_ZN5ValueIbE4evalEv
 	.cfi_endproc
 	.section	.gcc_except_table._ZN5ValueIbE4evalEv,"aG",@progbits,_ZN5ValueIbE4evalEv,comdat
 	.p2align	2
-GCC_except_table34:
-.Lexception7:
+GCC_except_table90:
+.Lexception14:
 	.byte	255                             # @LPStart Encoding = omit
-	.byte	3                               # @TType Encoding = udata4
-	.uleb128 .Lttbase6-.Lttbaseref6
-.Lttbaseref6:
+	.byte	255                             # @TType Encoding = omit
 	.byte	1                               # Call site Encoding = uleb128
-	.uleb128 .Lcst_end7-.Lcst_begin7
-.Lcst_begin7:
-	.uleb128 .Lfunc_begin7-.Lfunc_begin7    # >> Call Site 1 <<
-	.uleb128 .Ltmp185-.Lfunc_begin7         #   Call between .Lfunc_begin7 and .Ltmp185
+	.uleb128 .Lcst_end14-.Lcst_begin14
+.Lcst_begin14:
+	.uleb128 .Lfunc_begin14-.Lfunc_begin14  # >> Call Site 1 <<
+	.uleb128 .Ltmp163-.Lfunc_begin14        #   Call between .Lfunc_begin14 and .Ltmp163
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp185-.Lfunc_begin7         # >> Call Site 2 <<
-	.uleb128 .Ltmp186-.Ltmp185              #   Call between .Ltmp185 and .Ltmp186
-	.uleb128 .Ltmp187-.Lfunc_begin7         #     jumps to .Ltmp187
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp186-.Lfunc_begin7         # >> Call Site 3 <<
-	.uleb128 .Ltmp188-.Ltmp186              #   Call between .Ltmp186 and .Ltmp188
+	.uleb128 .Ltmp163-.Lfunc_begin14        # >> Call Site 2 <<
+	.uleb128 .Ltmp164-.Ltmp163              #   Call between .Ltmp163 and .Ltmp164
+	.uleb128 .Ltmp165-.Lfunc_begin14        #     jumps to .Ltmp165
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp164-.Lfunc_begin14        # >> Call Site 3 <<
+	.uleb128 .Lfunc_end90-.Ltmp164          #   Call between .Ltmp164 and .Lfunc_end90
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp188-.Lfunc_begin7         # >> Call Site 4 <<
-	.uleb128 .Ltmp189-.Ltmp188              #   Call between .Ltmp188 and .Ltmp189
-	.uleb128 .Ltmp190-.Lfunc_begin7         #     jumps to .Ltmp190
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp191-.Lfunc_begin7         # >> Call Site 5 <<
-	.uleb128 .Ltmp192-.Ltmp191              #   Call between .Ltmp191 and .Ltmp192
-	.uleb128 .Ltmp193-.Lfunc_begin7         #     jumps to .Ltmp193
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp192-.Lfunc_begin7         # >> Call Site 6 <<
-	.uleb128 .Lfunc_end34-.Ltmp192          #   Call between .Ltmp192 and .Lfunc_end34
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-.Lcst_end7:
-	.byte	1                               # >> Action Record 1 <<
-                                        #   Catch TypeInfo 1
-	.byte	0                               #   No further actions
-	.p2align	2
-                                        # >> Catch TypeInfos <<
-	.long	0                               # TypeInfo 1
-.Lttbase6:
+.Lcst_end14:
 	.p2align	2
                                         # -- End function
-	.section	.text._ZN11ComputationIbED2Ev,"axG",@progbits,_ZN11ComputationIbED2Ev,comdat
-	.weak	_ZN11ComputationIbED2Ev         # -- Begin function _ZN11ComputationIbED2Ev
+	.section	.text._ZN11ComputationIbEC2Eb,"axG",@progbits,_ZN11ComputationIbEC2Eb,comdat
+	.weak	_ZN11ComputationIbEC2Eb         # -- Begin function _ZN11ComputationIbEC2Eb
 	.p2align	4, 0x90
-	.type	_ZN11ComputationIbED2Ev,@function
-_ZN11ComputationIbED2Ev:                # @_ZN11ComputationIbED2Ev
+	.type	_ZN11ComputationIbEC2Eb,@function
+_ZN11ComputationIbEC2Eb:                # @_ZN11ComputationIbEC2Eb
 	.cfi_startproc
 # %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	al, sil
+	mov	qword ptr [rbp - 8], rdi
+	and	al, 1
+	mov	byte ptr [rbp - 9], al
+	mov	rax, qword ptr [rbp - 8]
+	movabs	rcx, offset _ZTV11ComputationIbE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	mov	cl, byte ptr [rbp - 9]
+	and	cl, 1
+	mov	byte ptr [rax + 8], cl
+	mov	byte ptr [rax + 9], 1
+	pop	rbp
+	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end35:
-	.size	_ZN11ComputationIbED2Ev, .Lfunc_end35-_ZN11ComputationIbED2Ev
+.Lfunc_end91:
+	.size	_ZN11ComputationIbEC2Eb, .Lfunc_end91-_ZN11ComputationIbEC2Eb
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN5ValueIbED2Ev,"axG",@progbits,_ZN5ValueIbED2Ev,comdat
+	.weak	_ZN5ValueIbED2Ev                # -- Begin function _ZN5ValueIbED2Ev
+	.p2align	4, 0x90
+	.type	_ZN5ValueIbED2Ev,@function
+_ZN5ValueIbED2Ev:                       # @_ZN5ValueIbED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZN11ComputationIbED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end92:
+	.size	_ZN5ValueIbED2Ev, .Lfunc_end92-_ZN5ValueIbED2Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN5ValueIbED0Ev,"axG",@progbits,_ZN5ValueIbED0Ev,comdat
@@ -4186,129 +4387,137 @@ _ZN11ComputationIbED2Ev:                # @_ZN11ComputationIbED2Ev
 _ZN5ValueIbED0Ev:                       # @_ZN5ValueIbED0Ev
 	.cfi_startproc
 # %bb.0:
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end36:
-	.size	_ZN5ValueIbED0Ev, .Lfunc_end36-_ZN5ValueIbED0Ev
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZN5ValueIbED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end93:
+	.size	_ZN5ValueIbED0Ev, .Lfunc_end93-_ZN5ValueIbED0Ev
 	.cfi_endproc
                                         # -- End function
-	.section	.text._ZN8BinaryOpIiiED2Ev,"axG",@progbits,_ZN8BinaryOpIiiED2Ev,comdat
-	.weak	_ZN8BinaryOpIiiED2Ev            # -- Begin function _ZN8BinaryOpIiiED2Ev
+	.section	.text._ZN5ValueIbEC2Eb,"axG",@progbits,_ZN5ValueIbEC2Eb,comdat
+	.weak	_ZN5ValueIbEC2Eb                # -- Begin function _ZN5ValueIbEC2Eb
 	.p2align	4, 0x90
-	.type	_ZN8BinaryOpIiiED2Ev,@function
-_ZN8BinaryOpIiiED2Ev:                   # @_ZN8BinaryOpIiiED2Ev
+	.type	_ZN5ValueIbEC2Eb,@function
+_ZN5ValueIbEC2Eb:                       # @_ZN5ValueIbEC2Eb
 	.cfi_startproc
 # %bb.0:
-	push	r14
+	push	rbp
 	.cfi_def_cfa_offset 16
-	push	rbx
-	.cfi_def_cfa_offset 24
-	push	rax
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -24
-	.cfi_offset r14, -16
-	mov	r14, rdi
-	mov	qword ptr [rdi], offset _ZTV8BinaryOpIiiE+16
-	mov	rbx, qword ptr [rdi + 40]
-	test	rbx, rbx
-	je	.LBB37_10
-# %bb.1:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB37_3
-# %bb.2:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB37_5
-	jmp	.LBB37_10
-.LBB37_3:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB37_10
-.LBB37_5:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB37_7
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB37_9
-	jmp	.LBB37_10
-.LBB37_7:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB37_10
-.LBB37_9:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB37_10:
-	mov	rbx, qword ptr [r14 + 24]
-	test	rbx, rbx
-	je	.LBB37_19
-# %bb.11:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB37_13
-# %bb.12:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB37_15
-	jmp	.LBB37_19
-.LBB37_13:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB37_19
-.LBB37_15:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB37_17
-# %bb.16:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB37_20
-.LBB37_19:
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
-	.cfi_def_cfa_offset 16
-	pop	r14
-	.cfi_def_cfa_offset 8
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	al, sil
+	mov	qword ptr [rbp - 8], rdi
+	and	al, 1
+	mov	byte ptr [rbp - 9], al
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rdi       # 8-byte Spill
+	mov	al, byte ptr [rbp - 9]
+	and	al, 1
+	movzx	esi, al
+	call	_ZN11ComputationIbEC2Eb
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	movabs	rcx, offset _ZTV5ValueIbE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	mov	cl, byte ptr [rbp - 9]
+	and	cl, 1
+	mov	byte ptr [rax + 10], cl
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
 	ret
-.LBB37_17:
-	.cfi_def_cfa_offset 32
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB37_19
-.LBB37_20:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
+.Lfunc_end94:
+	.size	_ZN5ValueIbEC2Eb, .Lfunc_end94-_ZN5ValueIbEC2Eb
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN8BinaryOpIiiEC2ESt10shared_ptrI11ComputationIiEES4_,"axG",@progbits,_ZN8BinaryOpIiiEC2ESt10shared_ptrI11ComputationIiEES4_,comdat
+	.weak	_ZN8BinaryOpIiiEC2ESt10shared_ptrI11ComputationIiEES4_ # -- Begin function _ZN8BinaryOpIiiEC2ESt10shared_ptrI11ComputationIiEES4_
+	.p2align	4, 0x90
+	.type	_ZN8BinaryOpIiiEC2ESt10shared_ptrI11ComputationIiEES4_,@function
+_ZN8BinaryOpIiiEC2ESt10shared_ptrI11ComputationIiEES4_: # @_ZN8BinaryOpIiiEC2ESt10shared_ptrI11ComputationIiEES4_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
 	.cfi_def_cfa_offset 16
-	pop	r14
-	.cfi_def_cfa_offset 8
-	jmp	qword ptr [rax + 24]            # TAILCALL
-.Lfunc_end37:
-	.size	_ZN8BinaryOpIiiED2Ev, .Lfunc_end37-_ZN8BinaryOpIiiED2Ev
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 64
+	mov	qword ptr [rbp - 48], rsi       # 8-byte Spill
+	mov	qword ptr [rbp - 24], rdx       # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 32], rdi       # 8-byte Spill
+	mov	qword ptr [rbp - 56], rdi       # 8-byte Spill
+	xor	esi, esi
+	mov	edx, 13
+	call	memset@PLT
+	mov	rdi, qword ptr [rbp - 56]       # 8-byte Reload
+	call	_ZN11ComputationIiEC2Ev
+	mov	rdi, qword ptr [rbp - 48]       # 8-byte Reload
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	movabs	rcx, offset _ZTV8BinaryOpIiiE
+	add	rcx, 16
+	mov	qword ptr [rax], rcx
+	add	rax, 16
+	mov	qword ptr [rbp - 40], rax       # 8-byte Spill
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 40]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rax, 32
+	mov	qword ptr [rbp - 16], rax       # 8-byte Spill
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2EOS2_
+	add	rsp, 64
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end95:
+	.size	_ZN8BinaryOpIiiEC2ESt10shared_ptrI11ComputationIiEES4_, .Lfunc_end95-_ZN8BinaryOpIiiEC2ESt10shared_ptrI11ComputationIiEES4_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN3SumIiED2Ev,"axG",@progbits,_ZN3SumIiED2Ev,comdat
+	.weak	_ZN3SumIiED2Ev                  # -- Begin function _ZN3SumIiED2Ev
+	.p2align	4, 0x90
+	.type	_ZN3SumIiED2Ev,@function
+_ZN3SumIiED2Ev:                         # @_ZN3SumIiED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZN8BinaryOpIiiED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end96:
+	.size	_ZN3SumIiED2Ev, .Lfunc_end96-_ZN3SumIiED2Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN3SumIiED0Ev,"axG",@progbits,_ZN3SumIiED0Ev,comdat
@@ -4318,112 +4527,24 @@ _ZN8BinaryOpIiiED2Ev:                   # @_ZN8BinaryOpIiiED2Ev
 _ZN3SumIiED0Ev:                         # @_ZN3SumIiED0Ev
 	.cfi_startproc
 # %bb.0:
-	push	r14
+	push	rbp
 	.cfi_def_cfa_offset 16
-	push	rbx
-	.cfi_def_cfa_offset 24
-	push	rax
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -24
-	.cfi_offset r14, -16
-	mov	r14, rdi
-	mov	qword ptr [rdi], offset _ZTV8BinaryOpIiiE+16
-	mov	rbx, qword ptr [rdi + 40]
-	test	rbx, rbx
-	je	.LBB38_10
-# %bb.1:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB38_3
-# %bb.2:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB38_5
-	jmp	.LBB38_10
-.LBB38_3:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB38_10
-.LBB38_5:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB38_7
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB38_9
-	jmp	.LBB38_10
-.LBB38_7:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB38_10
-.LBB38_9:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB38_10:
-	mov	rbx, qword ptr [r14 + 24]
-	test	rbx, rbx
-	je	.LBB38_20
-# %bb.11:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB38_13
-# %bb.12:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB38_15
-	jmp	.LBB38_20
-.LBB38_13:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB38_20
-.LBB38_15:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB38_17
-# %bb.16:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB38_19
-	jmp	.LBB38_20
-.LBB38_17:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB38_20
-.LBB38_19:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB38_20:
-	mov	rdi, r14
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
-	.cfi_def_cfa_offset 16
-	pop	r14
-	.cfi_def_cfa_offset 8
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end38:
-	.size	_ZN3SumIiED0Ev, .Lfunc_end38-_ZN3SumIiED0Ev
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZN3SumIiED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end97:
+	.size	_ZN3SumIiED0Ev, .Lfunc_end97-_ZN3SumIiED0Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN8BinaryOpIiiE4evalEv,"axG",@progbits,_ZN8BinaryOpIiiE4evalEv,comdat
@@ -4431,406 +4552,167 @@ _ZN3SumIiED0Ev:                         # @_ZN3SumIiED0Ev
 	.p2align	4, 0x90
 	.type	_ZN8BinaryOpIiiE4evalEv,@function
 _ZN8BinaryOpIiiE4evalEv:                # @_ZN8BinaryOpIiiE4evalEv
-.Lfunc_begin8:
+.Lfunc_begin15:
 	.cfi_startproc
 	.cfi_personality 3, __gxx_personality_v0
-	.cfi_lsda 3, .Lexception8
+	.cfi_lsda 3, .Lexception15
 # %bb.0:
 	push	rbp
 	.cfi_def_cfa_offset 16
-	push	r14
-	.cfi_def_cfa_offset 24
-	push	rbx
-	.cfi_def_cfa_offset 32
-	sub	rsp, 64
-	.cfi_def_cfa_offset 96
-	.cfi_offset rbx, -32
-	.cfi_offset r14, -24
 	.cfi_offset rbp, -16
-	mov	rbx, rsi
-	mov	r14, rdi
-	mov	rax, qword ptr [rsi + 16]
-	mov	qword ptr [rsp + 16], rax
-	mov	rcx, qword ptr [rsi + 24]
-	mov	qword ptr [rsp + 24], rcx
-	test	rcx, rcx
-	je	.LBB39_8
-# %bb.1:
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	je	.LBB39_6
-# %bb.2:
-	lock		add	dword ptr [rcx + 8], 1
-	mov	rax, qword ptr [rsp + 16]
-	mov	rcx, qword ptr [rsp + 24]
-	test	rcx, rcx
-	je	.LBB39_8
-# %bb.3:
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	je	.LBB39_7
-.LBB39_4:
-	lock		add	dword ptr [rcx + 8], 1
-	jmp	.LBB39_9
-.LBB39_8:
-	xor	ecx, ecx
-	jmp	.LBB39_9
-.LBB39_6:
-	add	dword ptr [rcx + 8], 1
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	jne	.LBB39_4
-.LBB39_7:
-	add	dword ptr [rcx + 8], 1
-.LBB39_9:
-	mov	qword ptr [rsp + 48], rax
-	mov	qword ptr [rsp + 56], rcx
-.Ltmp194:
-	lea	rdi, [rsp + 48]
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 160
+	mov	qword ptr [rbp - 128], rdi      # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 120], rax      # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rsi, qword ptr [rbp - 16]
+	mov	qword ptr [rbp - 112], rsi      # 8-byte Spill
+	add	rsi, 16
+	lea	rdi, [rbp - 48]
+	mov	qword ptr [rbp - 104], rdi      # 8-byte Spill
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	mov	rsi, qword ptr [rbp - 104]      # 8-byte Reload
+.Ltmp166:
+	lea	rdi, [rbp - 32]
+	call	_ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE
+.Ltmp167:
+	jmp	.LBB98_1
+.LBB98_1:
+.Ltmp169:
+	lea	rdi, [rbp - 32]
 	call	_ZN9InterpretIiE3getEv
-.Ltmp195:
-# %bb.10:
-	mov	ebp, eax
-	mov	rax, qword ptr [rbx + 32]
-	mov	qword ptr [rsp], rax
-	mov	rcx, qword ptr [rbx + 40]
-	mov	qword ptr [rsp + 8], rcx
-	test	rcx, rcx
-	je	.LBB39_18
-# %bb.11:
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	je	.LBB39_16
-# %bb.12:
-	lock		add	dword ptr [rcx + 8], 1
-	mov	rax, qword ptr [rsp]
-	mov	rcx, qword ptr [rsp + 8]
-	test	rcx, rcx
-	je	.LBB39_18
-# %bb.13:
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	je	.LBB39_17
-.LBB39_14:
-	lock		add	dword ptr [rcx + 8], 1
-	jmp	.LBB39_19
-.LBB39_18:
-	xor	ecx, ecx
-	jmp	.LBB39_19
-.LBB39_16:
-	add	dword ptr [rcx + 8], 1
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	jne	.LBB39_14
-.LBB39_17:
-	add	dword ptr [rcx + 8], 1
-.LBB39_19:
-	mov	qword ptr [rsp + 32], rax
-	mov	qword ptr [rsp + 40], rcx
-.Ltmp197:
-	lea	rdi, [rsp + 32]
+.Ltmp170:
+	mov	dword ptr [rbp - 132], eax      # 4-byte Spill
+	jmp	.LBB98_2
+.LBB98_2:
+	mov	rsi, qword ptr [rbp - 112]      # 8-byte Reload
+	add	rsi, 32
+	lea	rdi, [rbp - 96]
+	mov	qword ptr [rbp - 144], rdi      # 8-byte Spill
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2ERKS2_
+	mov	rsi, qword ptr [rbp - 144]      # 8-byte Reload
+.Ltmp172:
+	lea	rdi, [rbp - 80]
+	call	_ZN5ForceIiEC2ESt10shared_ptrI11ComputationIiEE
+.Ltmp173:
+	jmp	.LBB98_3
+.LBB98_3:
+.Ltmp175:
+	lea	rdi, [rbp - 80]
 	call	_ZN9InterpretIiE3getEv
-.Ltmp198:
-# %bb.20:
-	mov	rcx, qword ptr [rbx]
-.Ltmp199:
-	mov	rdi, rbx
-	mov	esi, ebp
-	mov	edx, eax
-	call	qword ptr [rcx + 24]
-.Ltmp200:
-# %bb.21:
-	mov	rbx, rax
-	mov	qword ptr [r14], rax
-	mov	qword ptr [r14 + 8], 0
-.Ltmp202:
-	mov	edi, 24
-	call	_Znwm
-.Ltmp203:
-# %bb.22:
-	movabs	rcx, 4294967297
-	mov	qword ptr [rax + 8], rcx
-	mov	qword ptr [rax], offset _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE+16
-	mov	qword ptr [rax + 16], rbx
-	mov	qword ptr [r14 + 8], rax
-	mov	rbx, qword ptr [rsp + 40]
-	test	rbx, rbx
-	je	.LBB39_30
-# %bb.23:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB39_25
-# %bb.24:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB39_26
-	jmp	.LBB39_30
-.LBB39_25:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB39_30
-.LBB39_26:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB39_28
-# %bb.27:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB39_29
-	jmp	.LBB39_30
-.LBB39_28:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB39_30
-.LBB39_29:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB39_30:
-	mov	rbx, qword ptr [rsp + 8]
-	test	rbx, rbx
-	je	.LBB39_38
-# %bb.31:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB39_33
-# %bb.32:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB39_34
-	jmp	.LBB39_38
-.LBB39_33:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB39_38
-.LBB39_34:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB39_36
-# %bb.35:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB39_37
-	jmp	.LBB39_38
-.LBB39_36:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB39_38
-.LBB39_37:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB39_38:
-	mov	rbx, qword ptr [rsp + 56]
-	test	rbx, rbx
-	je	.LBB39_46
-# %bb.39:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB39_41
-# %bb.40:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB39_42
-	jmp	.LBB39_46
-.LBB39_41:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB39_46
-.LBB39_42:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB39_44
-# %bb.43:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB39_45
-	jmp	.LBB39_46
-.LBB39_44:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB39_46
-.LBB39_45:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB39_46:
-	mov	rbx, qword ptr [rsp + 24]
-	test	rbx, rbx
-	je	.LBB39_54
-# %bb.47:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB39_49
-# %bb.48:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB39_50
-	jmp	.LBB39_54
-.LBB39_49:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB39_54
-.LBB39_50:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB39_52
-# %bb.51:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB39_53
-	jmp	.LBB39_54
-.LBB39_52:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB39_54
-.LBB39_53:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB39_54:
-	mov	rax, r14
-	add	rsp, 64
-	.cfi_def_cfa_offset 32
-	pop	rbx
-	.cfi_def_cfa_offset 24
-	pop	r14
-	.cfi_def_cfa_offset 16
+.Ltmp176:
+	mov	dword ptr [rbp - 148], eax      # 4-byte Spill
+	jmp	.LBB98_4
+.LBB98_4:
+	mov	edx, dword ptr [rbp - 148]      # 4-byte Reload
+	mov	esi, dword ptr [rbp - 132]      # 4-byte Reload
+	mov	rdi, qword ptr [rbp - 112]      # 8-byte Reload
+	mov	rax, qword ptr [rdi]
+	mov	rax, qword ptr [rax + 24]
+.Ltmp177:
+	call	rax
+.Ltmp178:
+	mov	qword ptr [rbp - 160], rax      # 8-byte Spill
+	jmp	.LBB98_5
+.LBB98_5:
+.Ltmp179:
+	mov	rsi, qword ptr [rbp - 160]      # 8-byte Reload
+	mov	rdi, qword ptr [rbp - 128]      # 8-byte Reload
+	call	_Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+.Ltmp180:
+	jmp	.LBB98_6
+.LBB98_6:
+	lea	rdi, [rbp - 80]
+	call	_ZN5ForceIiED2Ev
+	lea	rdi, [rbp - 96]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	lea	rdi, [rbp - 32]
+	call	_ZN5ForceIiED2Ev
+	lea	rdi, [rbp - 48]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rax, qword ptr [rbp - 120]      # 8-byte Reload
+	add	rsp, 160
 	pop	rbp
-	.cfi_def_cfa_offset 8
+	.cfi_def_cfa rsp, 8
 	ret
-.LBB39_55:
-	.cfi_def_cfa_offset 96
-.Ltmp204:
-	mov	rdi, rax
-	call	__cxa_begin_catch
-	test	rbx, rbx
-	je	.LBB39_57
-# %bb.56:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 8]
-.LBB39_57:
-.Ltmp205:
-	call	__cxa_rethrow
-.Ltmp206:
-# %bb.58:
-.LBB39_59:
-.Ltmp207:
-	mov	rbx, rax
-.Ltmp208:
-	call	__cxa_end_catch
-.Ltmp209:
-	jmp	.LBB39_63
-.LBB39_60:
-.Ltmp210:
-	mov	rdi, rax
-	call	__clang_call_terminate
-.LBB39_61:
-.Ltmp196:
-	mov	rbx, rax
-	jmp	.LBB39_64
-.LBB39_62:
-.Ltmp201:
-	mov	rbx, rax
-.LBB39_63:
-	lea	rdi, [rsp + 32]
-	call	_ZN9InterpretIiED2Ev
-	mov	rdi, rsp
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-.LBB39_64:
-	lea	rdi, [rsp + 48]
-	call	_ZN9InterpretIiED2Ev
-	lea	rdi, [rsp + 16]
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	mov	rdi, rbx
+.LBB98_7:
+	.cfi_def_cfa rbp, 16
+.Ltmp168:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 56], rcx
+	mov	dword ptr [rbp - 60], eax
+	jmp	.LBB98_13
+.LBB98_8:
+.Ltmp171:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 56], rcx
+	mov	dword ptr [rbp - 60], eax
+	jmp	.LBB98_12
+.LBB98_9:
+.Ltmp174:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 56], rcx
+	mov	dword ptr [rbp - 60], eax
+	jmp	.LBB98_11
+.LBB98_10:
+.Ltmp181:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 56], rcx
+	mov	dword ptr [rbp - 60], eax
+	lea	rdi, [rbp - 80]
+	call	_ZN5ForceIiED2Ev
+.LBB98_11:
+	lea	rdi, [rbp - 96]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+.LBB98_12:
+	lea	rdi, [rbp - 32]
+	call	_ZN5ForceIiED2Ev
+.LBB98_13:
+	lea	rdi, [rbp - 48]
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+# %bb.14:
+	mov	rdi, qword ptr [rbp - 56]
 	call	_Unwind_Resume@PLT
-.Lfunc_end39:
-	.size	_ZN8BinaryOpIiiE4evalEv, .Lfunc_end39-_ZN8BinaryOpIiiE4evalEv
+.Lfunc_end98:
+	.size	_ZN8BinaryOpIiiE4evalEv, .Lfunc_end98-_ZN8BinaryOpIiiE4evalEv
 	.cfi_endproc
 	.section	.gcc_except_table._ZN8BinaryOpIiiE4evalEv,"aG",@progbits,_ZN8BinaryOpIiiE4evalEv,comdat
 	.p2align	2
-GCC_except_table39:
-.Lexception8:
+GCC_except_table98:
+.Lexception15:
 	.byte	255                             # @LPStart Encoding = omit
-	.byte	3                               # @TType Encoding = udata4
-	.uleb128 .Lttbase7-.Lttbaseref7
-.Lttbaseref7:
+	.byte	255                             # @TType Encoding = omit
 	.byte	1                               # Call site Encoding = uleb128
-	.uleb128 .Lcst_end8-.Lcst_begin8
-.Lcst_begin8:
-	.uleb128 .Ltmp194-.Lfunc_begin8         # >> Call Site 1 <<
-	.uleb128 .Ltmp195-.Ltmp194              #   Call between .Ltmp194 and .Ltmp195
-	.uleb128 .Ltmp196-.Lfunc_begin8         #     jumps to .Ltmp196
+	.uleb128 .Lcst_end15-.Lcst_begin15
+.Lcst_begin15:
+	.uleb128 .Ltmp166-.Lfunc_begin15        # >> Call Site 1 <<
+	.uleb128 .Ltmp167-.Ltmp166              #   Call between .Ltmp166 and .Ltmp167
+	.uleb128 .Ltmp168-.Lfunc_begin15        #     jumps to .Ltmp168
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp197-.Lfunc_begin8         # >> Call Site 2 <<
-	.uleb128 .Ltmp200-.Ltmp197              #   Call between .Ltmp197 and .Ltmp200
-	.uleb128 .Ltmp201-.Lfunc_begin8         #     jumps to .Ltmp201
+	.uleb128 .Ltmp169-.Lfunc_begin15        # >> Call Site 2 <<
+	.uleb128 .Ltmp170-.Ltmp169              #   Call between .Ltmp169 and .Ltmp170
+	.uleb128 .Ltmp171-.Lfunc_begin15        #     jumps to .Ltmp171
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp202-.Lfunc_begin8         # >> Call Site 3 <<
-	.uleb128 .Ltmp203-.Ltmp202              #   Call between .Ltmp202 and .Ltmp203
-	.uleb128 .Ltmp204-.Lfunc_begin8         #     jumps to .Ltmp204
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp203-.Lfunc_begin8         # >> Call Site 4 <<
-	.uleb128 .Ltmp205-.Ltmp203              #   Call between .Ltmp203 and .Ltmp205
+	.uleb128 .Ltmp172-.Lfunc_begin15        # >> Call Site 3 <<
+	.uleb128 .Ltmp173-.Ltmp172              #   Call between .Ltmp172 and .Ltmp173
+	.uleb128 .Ltmp174-.Lfunc_begin15        #     jumps to .Ltmp174
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp175-.Lfunc_begin15        # >> Call Site 4 <<
+	.uleb128 .Ltmp180-.Ltmp175              #   Call between .Ltmp175 and .Ltmp180
+	.uleb128 .Ltmp181-.Lfunc_begin15        #     jumps to .Ltmp181
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp180-.Lfunc_begin15        # >> Call Site 5 <<
+	.uleb128 .Lfunc_end98-.Ltmp180          #   Call between .Ltmp180 and .Lfunc_end98
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp205-.Lfunc_begin8         # >> Call Site 5 <<
-	.uleb128 .Ltmp206-.Ltmp205              #   Call between .Ltmp205 and .Ltmp206
-	.uleb128 .Ltmp207-.Lfunc_begin8         #     jumps to .Ltmp207
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp208-.Lfunc_begin8         # >> Call Site 6 <<
-	.uleb128 .Ltmp209-.Ltmp208              #   Call between .Ltmp208 and .Ltmp209
-	.uleb128 .Ltmp210-.Lfunc_begin8         #     jumps to .Ltmp210
-	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp209-.Lfunc_begin8         # >> Call Site 7 <<
-	.uleb128 .Lfunc_end39-.Ltmp209          #   Call between .Ltmp209 and .Lfunc_end39
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-.Lcst_end8:
-	.byte	1                               # >> Action Record 1 <<
-                                        #   Catch TypeInfo 1
-	.byte	0                               #   No further actions
-	.p2align	2
-                                        # >> Catch TypeInfos <<
-	.long	0                               # TypeInfo 1
-.Lttbase7:
+.Lcst_end15:
 	.p2align	2
                                         # -- End function
 	.section	.text._ZN3SumIiE2opEii,"axG",@progbits,_ZN3SumIiE2opEii,comdat
@@ -4838,34 +4720,111 @@ GCC_except_table39:
 	.p2align	4, 0x90
 	.type	_ZN3SumIiE2opEii,@function
 _ZN3SumIiE2opEii:                       # @_ZN3SumIiE2opEii
+.Lfunc_begin16:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception16
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 48
+	mov	qword ptr [rbp - 8], rdi
+	mov	dword ptr [rbp - 12], esi
+	mov	dword ptr [rbp - 16], edx
+	mov	edi, 24
+	call	_Znwm
+	mov	rdi, rax
+	mov	rax, rdi
+	mov	qword ptr [rbp - 48], rax       # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 40], rax       # 8-byte Spill
+	mov	esi, dword ptr [rbp - 12]
+	mov	eax, dword ptr [rbp - 16]
+	add	esi, eax
+.Ltmp182:
+	call	_ZN5ValueIiEC2Ei
+.Ltmp183:
+	jmp	.LBB99_1
+.LBB99_1:
+	mov	rax, qword ptr [rbp - 40]       # 8-byte Reload
+	add	rsp, 48
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB99_2:
+	.cfi_def_cfa rbp, 16
+.Ltmp184:
+	mov	rdi, qword ptr [rbp - 48]       # 8-byte Reload
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 24], rcx
+	mov	dword ptr [rbp - 28], eax
+	call	_ZdlPv
+# %bb.3:
+	mov	rdi, qword ptr [rbp - 24]
+	call	_Unwind_Resume@PLT
+.Lfunc_end99:
+	.size	_ZN3SumIiE2opEii, .Lfunc_end99-_ZN3SumIiE2opEii
+	.cfi_endproc
+	.section	.gcc_except_table._ZN3SumIiE2opEii,"aG",@progbits,_ZN3SumIiE2opEii,comdat
+	.p2align	2
+GCC_except_table99:
+.Lexception16:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end16-.Lcst_begin16
+.Lcst_begin16:
+	.uleb128 .Lfunc_begin16-.Lfunc_begin16  # >> Call Site 1 <<
+	.uleb128 .Ltmp182-.Lfunc_begin16        #   Call between .Lfunc_begin16 and .Ltmp182
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp182-.Lfunc_begin16        # >> Call Site 2 <<
+	.uleb128 .Ltmp183-.Ltmp182              #   Call between .Ltmp182 and .Ltmp183
+	.uleb128 .Ltmp184-.Lfunc_begin16        #     jumps to .Ltmp184
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp183-.Lfunc_begin16        # >> Call Site 3 <<
+	.uleb128 .Lfunc_end99-.Ltmp183          #   Call between .Ltmp183 and .Lfunc_end99
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end16:
+	.p2align	2
+                                        # -- End function
+	.section	.text._ZN8BinaryOpIiiED2Ev,"axG",@progbits,_ZN8BinaryOpIiiED2Ev,comdat
+	.weak	_ZN8BinaryOpIiiED2Ev            # -- Begin function _ZN8BinaryOpIiiED2Ev
+	.p2align	4, 0x90
+	.type	_ZN8BinaryOpIiiED2Ev,@function
+_ZN8BinaryOpIiiED2Ev:                   # @_ZN8BinaryOpIiiED2Ev
 	.cfi_startproc
 # %bb.0:
 	push	rbp
 	.cfi_def_cfa_offset 16
-	push	rbx
-	.cfi_def_cfa_offset 24
-	push	rax
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -24
 	.cfi_offset rbp, -16
-	mov	ebx, edx
-	mov	ebp, esi
-	mov	edi, 24
-	call	_Znwm
-	add	ebp, ebx
-	mov	dword ptr [rax + 8], ebp
-	mov	byte ptr [rax + 12], 1
-	mov	qword ptr [rax], offset _ZTV5ValueIiE+16
-	mov	dword ptr [rax + 16], ebp
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
-	.cfi_def_cfa_offset 16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	movabs	rax, offset _ZTV8BinaryOpIiiE
+	add	rax, 16
+	mov	qword ptr [rdi], rax
+	add	rdi, 32
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	add	rdi, 16
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZN11ComputationIiED2Ev
+	add	rsp, 16
 	pop	rbp
-	.cfi_def_cfa_offset 8
+	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end40:
-	.size	_ZN3SumIiE2opEii, .Lfunc_end40-_ZN3SumIiE2opEii
+.Lfunc_end100:
+	.size	_ZN8BinaryOpIiiED2Ev, .Lfunc_end100-_ZN8BinaryOpIiiED2Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN8BinaryOpIiiED0Ev,"axG",@progbits,_ZN8BinaryOpIiiED0Ev,comdat
@@ -4875,112 +4834,24 @@ _ZN3SumIiE2opEii:                       # @_ZN3SumIiE2opEii
 _ZN8BinaryOpIiiED0Ev:                   # @_ZN8BinaryOpIiiED0Ev
 	.cfi_startproc
 # %bb.0:
-	push	r14
+	push	rbp
 	.cfi_def_cfa_offset 16
-	push	rbx
-	.cfi_def_cfa_offset 24
-	push	rax
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -24
-	.cfi_offset r14, -16
-	mov	r14, rdi
-	mov	qword ptr [rdi], offset _ZTV8BinaryOpIiiE+16
-	mov	rbx, qword ptr [rdi + 40]
-	test	rbx, rbx
-	je	.LBB41_10
-# %bb.1:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB41_3
-# %bb.2:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB41_5
-	jmp	.LBB41_10
-.LBB41_3:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB41_10
-.LBB41_5:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB41_7
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB41_9
-	jmp	.LBB41_10
-.LBB41_7:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB41_10
-.LBB41_9:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB41_10:
-	mov	rbx, qword ptr [r14 + 24]
-	test	rbx, rbx
-	je	.LBB41_20
-# %bb.11:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB41_13
-# %bb.12:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB41_15
-	jmp	.LBB41_20
-.LBB41_13:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB41_20
-.LBB41_15:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB41_17
-# %bb.16:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB41_19
-	jmp	.LBB41_20
-.LBB41_17:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB41_20
-.LBB41_19:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB41_20:
-	mov	rdi, r14
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
-	.cfi_def_cfa_offset 16
-	pop	r14
-	.cfi_def_cfa_offset 8
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end41:
-	.size	_ZN8BinaryOpIiiED0Ev, .Lfunc_end41-_ZN8BinaryOpIiiED0Ev
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	call	_ZN8BinaryOpIiiED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end101:
+	.size	_ZN8BinaryOpIiiED0Ev, .Lfunc_end101-_ZN8BinaryOpIiiED0Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN8BinaryOpIiiE2opEii,"axG",@progbits,_ZN8BinaryOpIiiE2opEii,comdat
@@ -4990,10 +4861,72 @@ _ZN8BinaryOpIiiED0Ev:                   # @_ZN8BinaryOpIiiED0Ev
 _ZN8BinaryOpIiiE2opEii:                 # @_ZN8BinaryOpIiiE2opEii
 	.cfi_startproc
 # %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	dword ptr [rbp - 12], esi
+	mov	dword ptr [rbp - 16], edx
 	xor	eax, eax
+                                        # kill: def $rax killed $eax
+	pop	rbp
+	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end42:
-	.size	_ZN8BinaryOpIiiE2opEii, .Lfunc_end42-_ZN8BinaryOpIiiE2opEii
+.Lfunc_end102:
+	.size	_ZN8BinaryOpIiiE2opEii, .Lfunc_end102-_ZN8BinaryOpIiiE2opEii
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_,"axG",@progbits,_ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_,comdat
+	.weak	_ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_ # -- Begin function _ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_
+	.p2align	4, 0x90
+	.type	_ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_,@function
+_ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_: # @_ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end103:
+	.size	_ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_, .Lfunc_end103-_ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt10shared_ptrI11ComputationIbEEC2EOS2_,"axG",@progbits,_ZNSt10shared_ptrI11ComputationIbEEC2EOS2_,comdat
+	.weak	_ZNSt10shared_ptrI11ComputationIbEEC2EOS2_ # -- Begin function _ZNSt10shared_ptrI11ComputationIbEEC2EOS2_
+	.p2align	4, 0x90
+	.type	_ZNSt10shared_ptrI11ComputationIbEEC2EOS2_,@function
+_ZNSt10shared_ptrI11ComputationIbEEC2EOS2_: # @_ZNSt10shared_ptrI11ComputationIbEEC2EOS2_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rax       # 8-byte Spill
+	mov	rdi, qword ptr [rbp - 16]
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end104:
+	.size	_ZNSt10shared_ptrI11ComputationIbEEC2EOS2_, .Lfunc_end104-_ZNSt10shared_ptrI11ComputationIbEEC2EOS2_
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN2IfIiED2Ev,"axG",@progbits,_ZN2IfIiED2Ev,comdat
@@ -5003,160 +4936,34 @@ _ZN8BinaryOpIiiE2opEii:                 # @_ZN8BinaryOpIiiE2opEii
 _ZN2IfIiED2Ev:                          # @_ZN2IfIiED2Ev
 	.cfi_startproc
 # %bb.0:
-	push	r14
+	push	rbp
 	.cfi_def_cfa_offset 16
-	push	rbx
-	.cfi_def_cfa_offset 24
-	push	rax
-	.cfi_def_cfa_offset 32
-	.cfi_offset rbx, -24
-	.cfi_offset r14, -16
-	mov	r14, rdi
-	mov	qword ptr [rdi], offset _ZTV2IfIiE+16
-	mov	rbx, qword ptr [rdi + 56]
-	test	rbx, rbx
-	je	.LBB43_10
-# %bb.1:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB43_3
-# %bb.2:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB43_5
-	jmp	.LBB43_10
-.LBB43_3:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB43_10
-.LBB43_5:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB43_7
-# %bb.6:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB43_9
-	jmp	.LBB43_10
-.LBB43_7:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB43_10
-.LBB43_9:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB43_10:
-	mov	rbx, qword ptr [r14 + 40]
-	test	rbx, rbx
-	je	.LBB43_20
-# %bb.11:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB43_13
-# %bb.12:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB43_15
-	jmp	.LBB43_20
-.LBB43_13:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB43_20
-.LBB43_15:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB43_17
-# %bb.16:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB43_19
-	jmp	.LBB43_20
-.LBB43_17:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB43_20
-.LBB43_19:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB43_20:
-	mov	rbx, qword ptr [r14 + 24]
-	test	rbx, rbx
-	je	.LBB43_29
-# %bb.21:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB43_23
-# %bb.22:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB43_25
-	jmp	.LBB43_29
-.LBB43_23:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB43_29
-.LBB43_25:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB43_27
-# %bb.26:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB43_30
-.LBB43_29:
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
-	.cfi_def_cfa_offset 16
-	pop	r14
-	.cfi_def_cfa_offset 8
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
+	movabs	rax, offset _ZTV2IfIiE
+	add	rax, 16
+	mov	qword ptr [rdi], rax
+	add	rdi, 48
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	add	rdi, 32
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	add	rdi, 16
+	call	_ZNSt10shared_ptrI11ComputationIbEED2Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZN11ComputationIiED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
 	ret
-.LBB43_27:
-	.cfi_def_cfa_offset 32
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB43_29
-.LBB43_30:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	add	rsp, 8
-	.cfi_def_cfa_offset 24
-	pop	rbx
-	.cfi_def_cfa_offset 16
-	pop	r14
-	.cfi_def_cfa_offset 8
-	jmp	qword ptr [rax + 24]            # TAILCALL
-.Lfunc_end43:
-	.size	_ZN2IfIiED2Ev, .Lfunc_end43-_ZN2IfIiED2Ev
+.Lfunc_end105:
+	.size	_ZN2IfIiED2Ev, .Lfunc_end105-_ZN2IfIiED2Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN2IfIiED0Ev,"axG",@progbits,_ZN2IfIiED0Ev,comdat
@@ -5166,17 +4973,24 @@ _ZN2IfIiED2Ev:                          # @_ZN2IfIiED2Ev
 _ZN2IfIiED0Ev:                          # @_ZN2IfIiED0Ev
 	.cfi_startproc
 # %bb.0:
-	push	rbx
+	push	rbp
 	.cfi_def_cfa_offset 16
-	.cfi_offset rbx, -16
-	mov	rbx, rdi
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rdi       # 8-byte Spill
 	call	_ZN2IfIiED2Ev
-	mov	rdi, rbx
-	pop	rbx
-	.cfi_def_cfa_offset 8
-	jmp	_ZdlPv                          # TAILCALL
-.Lfunc_end44:
-	.size	_ZN2IfIiED0Ev, .Lfunc_end44-_ZN2IfIiED0Ev
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	call	_ZdlPv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end106:
+	.size	_ZN2IfIiED0Ev, .Lfunc_end106-_ZN2IfIiED0Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN2IfIiE4evalEv,"axG",@progbits,_ZN2IfIiE4evalEv,comdat
@@ -5184,519 +4998,1591 @@ _ZN2IfIiED0Ev:                          # @_ZN2IfIiED0Ev
 	.p2align	4, 0x90
 	.type	_ZN2IfIiE4evalEv,@function
 _ZN2IfIiE4evalEv:                       # @_ZN2IfIiE4evalEv
-.Lfunc_begin9:
+.Lfunc_begin17:
 	.cfi_startproc
 	.cfi_personality 3, __gxx_personality_v0
-	.cfi_lsda 3, .Lexception9
+	.cfi_lsda 3, .Lexception17
 # %bb.0:
 	push	rbp
 	.cfi_def_cfa_offset 16
-	push	r15
-	.cfi_def_cfa_offset 24
-	push	r14
-	.cfi_def_cfa_offset 32
-	push	rbx
-	.cfi_def_cfa_offset 40
-	sub	rsp, 40
-	.cfi_def_cfa_offset 80
-	.cfi_offset rbx, -40
-	.cfi_offset r14, -32
-	.cfi_offset r15, -24
 	.cfi_offset rbp, -16
-	mov	rbx, rsi
-	mov	r14, rdi
-	xorps	xmm0, xmm0
-	movups	xmmword ptr [rdi], xmm0
-	mov	rax, qword ptr [rsi + 16]
-	mov	qword ptr [rsp + 8], rax
-	mov	rcx, qword ptr [rsi + 24]
-	mov	qword ptr [rsp + 16], rcx
-	test	rcx, rcx
-	je	.LBB45_8
-# %bb.1:
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	je	.LBB45_6
-# %bb.2:
-	lock		add	dword ptr [rcx + 8], 1
-	mov	rax, qword ptr [rsp + 8]
-	mov	rcx, qword ptr [rsp + 16]
-	test	rcx, rcx
-	je	.LBB45_8
-# %bb.3:
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	je	.LBB45_7
-.LBB45_4:
-	lock		add	dword ptr [rcx + 8], 1
-	jmp	.LBB45_9
-.LBB45_8:
-	xor	ecx, ecx
-	jmp	.LBB45_9
-.LBB45_6:
-	add	dword ptr [rcx + 8], 1
-	mov	edx, offset __pthread_key_create
-	test	rdx, rdx
-	jne	.LBB45_4
-.LBB45_7:
-	add	dword ptr [rcx + 8], 1
-.LBB45_9:
-	mov	qword ptr [rsp + 24], rax
-	mov	qword ptr [rsp + 32], rcx
-.Ltmp211:
-	lea	rdi, [rsp + 24]
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 112
+	mov	qword ptr [rbp - 104], rdi      # 8-byte Spill
+	mov	rax, rdi
+	mov	qword ptr [rbp - 96], rax       # 8-byte Spill
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rbp - 88], rax       # 8-byte Spill
+	mov	byte ptr [rbp - 17], 0
+	call	_ZNSt10shared_ptrI11ComputationIiEEC2Ev
+	mov	rsi, qword ptr [rbp - 88]       # 8-byte Reload
+	add	rsi, 16
+	lea	rdi, [rbp - 56]
+	mov	qword ptr [rbp - 80], rdi       # 8-byte Spill
+	call	_ZNSt10shared_ptrI11ComputationIbEEC2ERKS2_
+	mov	rsi, qword ptr [rbp - 80]       # 8-byte Reload
+.Ltmp185:
+	lea	rdi, [rbp - 40]
+	call	_ZN5ForceIbEC2ESt10shared_ptrI11ComputationIbEE
+.Ltmp186:
+	jmp	.LBB107_1
+.LBB107_1:
+.Ltmp188:
+	lea	rdi, [rbp - 40]
 	call	_ZN9InterpretIbE3getEv
-.Ltmp212:
-# %bb.10:
-	mov	r15d, eax
-	mov	rbp, qword ptr [rsp + 32]
-	test	rbp, rbp
-	je	.LBB45_18
-# %bb.11:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB45_13
-# %bb.12:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbp + 8], eax
-	cmp	eax, 1
-	je	.LBB45_14
-	jmp	.LBB45_18
-.LBB45_13:
-	mov	eax, dword ptr [rbp + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbp + 8], ecx
-	cmp	eax, 1
-	jne	.LBB45_18
-.LBB45_14:
-	mov	rax, qword ptr [rbp]
-	mov	rdi, rbp
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB45_16
-# %bb.15:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbp + 12], eax
-	cmp	eax, 1
-	je	.LBB45_17
-	jmp	.LBB45_18
-.LBB45_16:
-	mov	eax, dword ptr [rbp + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbp + 12], ecx
-	cmp	eax, 1
-	jne	.LBB45_18
-.LBB45_17:
-	mov	rax, qword ptr [rbp]
-	mov	rdi, rbp
-	call	qword ptr [rax + 24]
-.LBB45_18:
-	mov	rbp, qword ptr [rsp + 16]
-	test	rbp, rbp
-	je	.LBB45_26
-# %bb.19:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB45_21
-# %bb.20:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbp + 8], eax
-	cmp	eax, 1
-	je	.LBB45_22
-	jmp	.LBB45_26
-.LBB45_21:
-	mov	eax, dword ptr [rbp + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbp + 8], ecx
-	cmp	eax, 1
-	jne	.LBB45_26
-.LBB45_22:
-	mov	rax, qword ptr [rbp]
-	mov	rdi, rbp
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB45_24
-# %bb.23:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbp + 12], eax
-	cmp	eax, 1
-	je	.LBB45_25
-	jmp	.LBB45_26
-.LBB45_24:
-	mov	eax, dword ptr [rbp + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbp + 12], ecx
-	cmp	eax, 1
-	jne	.LBB45_26
-.LBB45_25:
-	mov	rax, qword ptr [rbp]
-	mov	rdi, rbp
-	call	qword ptr [rax + 24]
-.LBB45_26:
-	test	r15b, r15b
-	je	.LBB45_28
-# %bb.27:
-	mov	rax, qword ptr [rbx + 32]
-	mov	qword ptr [r14], rax
-	mov	rbp, qword ptr [rbx + 40]
-	mov	rbx, qword ptr [r14 + 8]
-	cmp	rbp, rbx
-	jne	.LBB45_29
-	jmp	.LBB45_42
-.LBB45_28:
-	mov	rax, qword ptr [rbx + 48]
-	mov	qword ptr [r14], rax
-	mov	rbp, qword ptr [rbx + 56]
-	mov	rbx, qword ptr [r14 + 8]
-	cmp	rbp, rbx
-	je	.LBB45_42
-.LBB45_29:
-	test	rbp, rbp
-	je	.LBB45_32
-# %bb.30:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB45_33
-# %bb.31:
-	lock		add	dword ptr [rbp + 8], 1
-	mov	rbx, qword ptr [r14 + 8]
-.LBB45_32:
-	test	rbx, rbx
-	jne	.LBB45_34
-	jmp	.LBB45_41
-.LBB45_33:
-	add	dword ptr [rbp + 8], 1
-	test	rbx, rbx
-	je	.LBB45_41
-.LBB45_34:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB45_36
-# %bb.35:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB45_37
-	jmp	.LBB45_41
-.LBB45_36:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB45_41
-.LBB45_37:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB45_39
-# %bb.38:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB45_40
-	jmp	.LBB45_41
-.LBB45_39:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB45_41
-.LBB45_40:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB45_41:
-	mov	qword ptr [r14 + 8], rbp
-.LBB45_42:
-	mov	rax, r14
-	add	rsp, 40
-	.cfi_def_cfa_offset 40
-	pop	rbx
-	.cfi_def_cfa_offset 32
-	pop	r14
-	.cfi_def_cfa_offset 24
-	pop	r15
-	.cfi_def_cfa_offset 16
+.Ltmp189:
+	mov	byte ptr [rbp - 105], al        # 1-byte Spill
+	jmp	.LBB107_2
+.LBB107_2:
+	lea	rdi, [rbp - 40]
+	call	_ZN5ForceIbED2Ev
+	lea	rdi, [rbp - 56]
+	call	_ZNSt10shared_ptrI11ComputationIbEED2Ev
+	mov	al, byte ptr [rbp - 105]        # 1-byte Reload
+	test	al, 1
+	jne	.LBB107_3
+	jmp	.LBB107_7
+.LBB107_3:
+	mov	rdi, qword ptr [rbp - 104]      # 8-byte Reload
+	mov	rsi, qword ptr [rbp - 88]       # 8-byte Reload
+	add	rsi, 32
+	call	_ZNSt10shared_ptrI11ComputationIiEEaSERKS2_
+	jmp	.LBB107_8
+.LBB107_4:
+.Ltmp187:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 64], rcx
+	mov	dword ptr [rbp - 68], eax
+	jmp	.LBB107_6
+.LBB107_5:
+.Ltmp190:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 64], rcx
+	mov	dword ptr [rbp - 68], eax
+	lea	rdi, [rbp - 40]
+	call	_ZN5ForceIbED2Ev
+.LBB107_6:
+	lea	rdi, [rbp - 56]
+	call	_ZNSt10shared_ptrI11ComputationIbEED2Ev
+	mov	rdi, qword ptr [rbp - 104]      # 8-byte Reload
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+	jmp	.LBB107_11
+.LBB107_7:
+	mov	rdi, qword ptr [rbp - 104]      # 8-byte Reload
+	mov	rsi, qword ptr [rbp - 88]       # 8-byte Reload
+	add	rsi, 48
+	call	_ZNSt10shared_ptrI11ComputationIiEEaSERKS2_
+.LBB107_8:
+	mov	byte ptr [rbp - 17], 1
+	test	byte ptr [rbp - 17], 1
+	jne	.LBB107_10
+# %bb.9:
+	mov	rdi, qword ptr [rbp - 104]      # 8-byte Reload
+	call	_ZNSt10shared_ptrI11ComputationIiEED2Ev
+.LBB107_10:
+	mov	rax, qword ptr [rbp - 96]       # 8-byte Reload
+	add	rsp, 112
 	pop	rbp
-	.cfi_def_cfa_offset 8
+	.cfi_def_cfa rsp, 8
 	ret
-.LBB45_43:
-	.cfi_def_cfa_offset 80
-.Ltmp213:
-	mov	rbx, rax
-	lea	rdi, [rsp + 24]
-	call	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	lea	rdi, [rsp + 8]
-	call	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	mov	rdi, r14
-	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	mov	rdi, rbx
+.LBB107_11:
+	.cfi_def_cfa rbp, 16
+	mov	rdi, qword ptr [rbp - 64]
 	call	_Unwind_Resume@PLT
-.Lfunc_end45:
-	.size	_ZN2IfIiE4evalEv, .Lfunc_end45-_ZN2IfIiE4evalEv
+.Lfunc_end107:
+	.size	_ZN2IfIiE4evalEv, .Lfunc_end107-_ZN2IfIiE4evalEv
 	.cfi_endproc
 	.section	.gcc_except_table._ZN2IfIiE4evalEv,"aG",@progbits,_ZN2IfIiE4evalEv,comdat
 	.p2align	2
-GCC_except_table45:
-.Lexception9:
+GCC_except_table107:
+.Lexception17:
 	.byte	255                             # @LPStart Encoding = omit
 	.byte	255                             # @TType Encoding = omit
 	.byte	1                               # Call site Encoding = uleb128
-	.uleb128 .Lcst_end9-.Lcst_begin9
-.Lcst_begin9:
-	.uleb128 .Ltmp211-.Lfunc_begin9         # >> Call Site 1 <<
-	.uleb128 .Ltmp212-.Ltmp211              #   Call between .Ltmp211 and .Ltmp212
-	.uleb128 .Ltmp213-.Lfunc_begin9         #     jumps to .Ltmp213
+	.uleb128 .Lcst_end17-.Lcst_begin17
+.Lcst_begin17:
+	.uleb128 .Ltmp185-.Lfunc_begin17        # >> Call Site 1 <<
+	.uleb128 .Ltmp186-.Ltmp185              #   Call between .Ltmp185 and .Ltmp186
+	.uleb128 .Ltmp187-.Lfunc_begin17        #     jumps to .Ltmp187
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp212-.Lfunc_begin9         # >> Call Site 2 <<
-	.uleb128 .Lfunc_end45-.Ltmp212          #   Call between .Ltmp212 and .Lfunc_end45
+	.uleb128 .Ltmp188-.Lfunc_begin17        # >> Call Site 2 <<
+	.uleb128 .Ltmp189-.Ltmp188              #   Call between .Ltmp188 and .Ltmp189
+	.uleb128 .Ltmp190-.Lfunc_begin17        #     jumps to .Ltmp190
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp189-.Lfunc_begin17        # >> Call Site 3 <<
+	.uleb128 .Lfunc_end107-.Ltmp189         #   Call between .Ltmp189 and .Lfunc_end107
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-.Lcst_end9:
+.Lcst_end17:
 	.p2align	2
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4                               # -- Begin function _ZN9InterpretIbE3getEv
-.LCPI46_0:
-	.zero	16
-	.section	.text._ZN9InterpretIbE3getEv,"axG",@progbits,_ZN9InterpretIbE3getEv,comdat
-	.weak	_ZN9InterpretIbE3getEv
+	.section	.text._ZNSt10shared_ptrI11ComputationIiEEC2Ev,"axG",@progbits,_ZNSt10shared_ptrI11ComputationIiEEC2Ev,comdat
+	.weak	_ZNSt10shared_ptrI11ComputationIiEEC2Ev # -- Begin function _ZNSt10shared_ptrI11ComputationIiEEC2Ev
 	.p2align	4, 0x90
-	.type	_ZN9InterpretIbE3getEv,@function
-_ZN9InterpretIbE3getEv:                 # @_ZN9InterpretIbE3getEv
-.Lfunc_begin10:
+	.type	_ZNSt10shared_ptrI11ComputationIiEEC2Ev,@function
+_ZNSt10shared_ptrI11ComputationIiEEC2Ev: # @_ZNSt10shared_ptrI11ComputationIiEEC2Ev
 	.cfi_startproc
-	.cfi_personality 3, __gxx_personality_v0
-	.cfi_lsda 3, .Lexception10
 # %bb.0:
 	push	rbp
 	.cfi_def_cfa_offset 16
-	push	r14
-	.cfi_def_cfa_offset 24
-	push	rbx
-	.cfi_def_cfa_offset 32
-	sub	rsp, 32
-	.cfi_def_cfa_offset 64
-	.cfi_offset rbx, -32
-	.cfi_offset r14, -24
 	.cfi_offset rbp, -16
-	mov	rsi, qword ptr [rdi]
-	mov	qword ptr [rsp], rsi
-	mov	rax, qword ptr [rdi + 8]
-	mov	qword ptr [rsp + 8], rax
-	test	rax, rax
-	je	.LBB46_4
-# %bb.1:
-	mov	ecx, offset __pthread_key_create
-	test	rcx, rcx
-	je	.LBB46_3
-# %bb.2:
-	lock		add	dword ptr [rax + 8], 1
-	mov	rsi, qword ptr [rsp]
-.LBB46_4:
-	cmp	byte ptr [rsi + 9], 0
-	jne	.LBB46_28
-	jmp	.LBB46_5
-.LBB46_3:
-	add	dword ptr [rax + 8], 1
-	cmp	byte ptr [rsi + 9], 0
-	je	.LBB46_5
-.LBB46_28:
-	mov	bpl, byte ptr [rsi + 8]
-	mov	rbx, qword ptr [rsp + 8]
-	test	rbx, rbx
-	je	.LBB46_38
-# %bb.29:
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB46_31
-# %bb.30:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 8], eax
-	cmp	eax, 1
-	je	.LBB46_33
-	jmp	.LBB46_38
-.LBB46_5:
-	lea	r14, [rsp + 16]
-	mov	ebx, offset __pthread_key_create
-	jmp	.LBB46_6
-	.p2align	4, 0x90
-.LBB46_27:                              #   in Loop: Header=BB46_6 Depth=1
-	mov	rsi, qword ptr [rsp]
-	cmp	byte ptr [rsi + 9], 0
-	jne	.LBB46_28
-.LBB46_6:                               # =>This Inner Loop Header: Depth=1
-	mov	rax, qword ptr [rsi]
-.Ltmp214:
-	mov	rdi, r14
-	call	qword ptr [rax + 16]
-.Ltmp215:
-# %bb.7:                                #   in Loop: Header=BB46_6 Depth=1
-	mov	rax, qword ptr [rsp + 16]
-	mov	rcx, qword ptr [rsp + 24]
-	xorps	xmm0, xmm0
-	movaps	xmmword ptr [rsp + 16], xmm0
-	mov	qword ptr [rsp], rax
-	mov	rbp, qword ptr [rsp + 8]
-	mov	qword ptr [rsp + 8], rcx
-	test	rbp, rbp
-	je	.LBB46_17
-# %bb.8:                                #   in Loop: Header=BB46_6 Depth=1
-	test	rbx, rbx
-	je	.LBB46_10
-# %bb.9:                                #   in Loop: Header=BB46_6 Depth=1
-	mov	eax, -1
-	lock		xadd	dword ptr [rbp + 8], eax
-	cmp	eax, 1
-	je	.LBB46_12
-	jmp	.LBB46_17
-	.p2align	4, 0x90
-.LBB46_10:                              #   in Loop: Header=BB46_6 Depth=1
-	mov	eax, dword ptr [rbp + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbp + 8], ecx
-	cmp	eax, 1
-	jne	.LBB46_17
-.LBB46_12:                              #   in Loop: Header=BB46_6 Depth=1
-	mov	rax, qword ptr [rbp]
-	mov	rdi, rbp
-	call	qword ptr [rax + 16]
-	test	rbx, rbx
-	je	.LBB46_14
-# %bb.13:                               #   in Loop: Header=BB46_6 Depth=1
-	mov	eax, -1
-	lock		xadd	dword ptr [rbp + 12], eax
-	cmp	eax, 1
-	je	.LBB46_16
-	jmp	.LBB46_17
-.LBB46_14:                              #   in Loop: Header=BB46_6 Depth=1
-	mov	eax, dword ptr [rbp + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbp + 12], ecx
-	cmp	eax, 1
-	jne	.LBB46_17
-.LBB46_16:                              #   in Loop: Header=BB46_6 Depth=1
-	mov	rax, qword ptr [rbp]
-	mov	rdi, rbp
-	call	qword ptr [rax + 24]
-	.p2align	4, 0x90
-.LBB46_17:                              #   in Loop: Header=BB46_6 Depth=1
-	mov	rbp, qword ptr [rsp + 24]
-	test	rbp, rbp
-	je	.LBB46_27
-# %bb.18:                               #   in Loop: Header=BB46_6 Depth=1
-	test	rbx, rbx
-	je	.LBB46_20
-# %bb.19:                               #   in Loop: Header=BB46_6 Depth=1
-	mov	eax, -1
-	lock		xadd	dword ptr [rbp + 8], eax
-	cmp	eax, 1
-	jne	.LBB46_27
-	jmp	.LBB46_22
-	.p2align	4, 0x90
-.LBB46_20:                              #   in Loop: Header=BB46_6 Depth=1
-	mov	eax, dword ptr [rbp + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbp + 8], ecx
-	cmp	eax, 1
-	jne	.LBB46_27
-.LBB46_22:                              #   in Loop: Header=BB46_6 Depth=1
-	mov	rax, qword ptr [rbp]
-	mov	rdi, rbp
-	call	qword ptr [rax + 16]
-	test	rbx, rbx
-	je	.LBB46_24
-# %bb.23:                               #   in Loop: Header=BB46_6 Depth=1
-	mov	eax, -1
-	lock		xadd	dword ptr [rbp + 12], eax
-	cmp	eax, 1
-	jne	.LBB46_27
-	jmp	.LBB46_26
-.LBB46_24:                              #   in Loop: Header=BB46_6 Depth=1
-	mov	eax, dword ptr [rbp + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbp + 12], ecx
-	cmp	eax, 1
-	jne	.LBB46_27
-.LBB46_26:                              #   in Loop: Header=BB46_6 Depth=1
-	mov	rax, qword ptr [rbp]
-	mov	rdi, rbp
-	call	qword ptr [rax + 24]
-	jmp	.LBB46_27
-.LBB46_31:
-	mov	eax, dword ptr [rbx + 8]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 8], ecx
-	cmp	eax, 1
-	jne	.LBB46_38
-.LBB46_33:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	eax, offset __pthread_key_create
-	test	rax, rax
-	je	.LBB46_35
-# %bb.34:
-	mov	eax, -1
-	lock		xadd	dword ptr [rbx + 12], eax
-	cmp	eax, 1
-	je	.LBB46_37
-	jmp	.LBB46_38
-.LBB46_35:
-	mov	eax, dword ptr [rbx + 12]
-	lea	ecx, [rax - 1]
-	mov	dword ptr [rbx + 12], ecx
-	cmp	eax, 1
-	jne	.LBB46_38
-.LBB46_37:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-.LBB46_38:
-	mov	eax, ebp
-	add	rsp, 32
-	.cfi_def_cfa_offset 32
-	pop	rbx
-	.cfi_def_cfa_offset 24
-	pop	r14
-	.cfi_def_cfa_offset 16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	add	rsp, 16
 	pop	rbp
-	.cfi_def_cfa_offset 8
+	.cfi_def_cfa rsp, 8
 	ret
-.LBB46_39:
-	.cfi_def_cfa_offset 64
-.Ltmp216:
-	mov	rbx, rax
-	mov	rdi, rsp
-	call	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
-	mov	rdi, rbx
-	call	_Unwind_Resume@PLT
-.Lfunc_end46:
-	.size	_ZN9InterpretIbE3getEv, .Lfunc_end46-_ZN9InterpretIbE3getEv
+.Lfunc_end108:
+	.size	_ZNSt10shared_ptrI11ComputationIiEEC2Ev, .Lfunc_end108-_ZNSt10shared_ptrI11ComputationIiEEC2Ev
 	.cfi_endproc
-	.section	.gcc_except_table._ZN9InterpretIbE3getEv,"aG",@progbits,_ZN9InterpretIbE3getEv,comdat
+                                        # -- End function
+	.section	.text._ZNSt10shared_ptrI11ComputationIbEEC2ERKS2_,"axG",@progbits,_ZNSt10shared_ptrI11ComputationIbEEC2ERKS2_,comdat
+	.weak	_ZNSt10shared_ptrI11ComputationIbEEC2ERKS2_ # -- Begin function _ZNSt10shared_ptrI11ComputationIbEEC2ERKS2_
+	.p2align	4, 0x90
+	.type	_ZNSt10shared_ptrI11ComputationIbEEC2ERKS2_,@function
+_ZNSt10shared_ptrI11ComputationIbEEC2ERKS2_: # @_ZNSt10shared_ptrI11ComputationIbEEC2ERKS2_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end109:
+	.size	_ZNSt10shared_ptrI11ComputationIbEEC2ERKS2_, .Lfunc_end109-_ZNSt10shared_ptrI11ComputationIbEEC2ERKS2_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN5ForceIbEC2ESt10shared_ptrI11ComputationIbEE,"axG",@progbits,_ZN5ForceIbEC2ESt10shared_ptrI11ComputationIbEE,comdat
+	.weak	_ZN5ForceIbEC2ESt10shared_ptrI11ComputationIbEE # -- Begin function _ZN5ForceIbEC2ESt10shared_ptrI11ComputationIbEE
+	.p2align	4, 0x90
+	.type	_ZN5ForceIbEC2ESt10shared_ptrI11ComputationIbEE,@function
+_ZN5ForceIbEC2ESt10shared_ptrI11ComputationIbEE: # @_ZN5ForceIbEC2ESt10shared_ptrI11ComputationIbEE
+.Lfunc_begin18:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception18
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 64
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 56], rax       # 8-byte Spill
+	lea	rdi, [rbp - 24]
+	mov	qword ptr [rbp - 48], rdi       # 8-byte Spill
+	call	_ZNSt10shared_ptrI11ComputationIbEEC2ERKS2_
+	mov	rdi, qword ptr [rbp - 56]       # 8-byte Reload
+	mov	rsi, qword ptr [rbp - 48]       # 8-byte Reload
+.Ltmp191:
+	call	_ZN9InterpretIbEC2ESt10shared_ptrI11ComputationIbEE
+.Ltmp192:
+	jmp	.LBB110_1
+.LBB110_1:
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIbEED2Ev
+	add	rsp, 64
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB110_2:
+	.cfi_def_cfa rbp, 16
+.Ltmp193:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 32], rcx
+	mov	dword ptr [rbp - 36], eax
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIbEED2Ev
+# %bb.3:
+	mov	rdi, qword ptr [rbp - 32]
+	call	_Unwind_Resume@PLT
+.Lfunc_end110:
+	.size	_ZN5ForceIbEC2ESt10shared_ptrI11ComputationIbEE, .Lfunc_end110-_ZN5ForceIbEC2ESt10shared_ptrI11ComputationIbEE
+	.cfi_endproc
+	.section	.gcc_except_table._ZN5ForceIbEC2ESt10shared_ptrI11ComputationIbEE,"aG",@progbits,_ZN5ForceIbEC2ESt10shared_ptrI11ComputationIbEE,comdat
 	.p2align	2
-GCC_except_table46:
-.Lexception10:
+GCC_except_table110:
+.Lexception18:
 	.byte	255                             # @LPStart Encoding = omit
 	.byte	255                             # @TType Encoding = omit
 	.byte	1                               # Call site Encoding = uleb128
-	.uleb128 .Lcst_end10-.Lcst_begin10
-.Lcst_begin10:
-	.uleb128 .Ltmp214-.Lfunc_begin10        # >> Call Site 1 <<
-	.uleb128 .Ltmp215-.Ltmp214              #   Call between .Ltmp214 and .Ltmp215
-	.uleb128 .Ltmp216-.Lfunc_begin10        #     jumps to .Ltmp216
+	.uleb128 .Lcst_end18-.Lcst_begin18
+.Lcst_begin18:
+	.uleb128 .Ltmp191-.Lfunc_begin18        # >> Call Site 1 <<
+	.uleb128 .Ltmp192-.Ltmp191              #   Call between .Ltmp191 and .Ltmp192
+	.uleb128 .Ltmp193-.Lfunc_begin18        #     jumps to .Ltmp193
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp215-.Lfunc_begin10        # >> Call Site 2 <<
-	.uleb128 .Lfunc_end46-.Ltmp215          #   Call between .Ltmp215 and .Lfunc_end46
+	.uleb128 .Ltmp192-.Lfunc_begin18        # >> Call Site 2 <<
+	.uleb128 .Lfunc_end110-.Ltmp192         #   Call between .Ltmp192 and .Lfunc_end110
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-.Lcst_end10:
+.Lcst_end18:
 	.p2align	2
+                                        # -- End function
+	.section	.text._ZN9InterpretIbE3getEv,"axG",@progbits,_ZN9InterpretIbE3getEv,comdat
+	.weak	_ZN9InterpretIbE3getEv          # -- Begin function _ZN9InterpretIbE3getEv
+	.p2align	4, 0x90
+	.type	_ZN9InterpretIbE3getEv,@function
+_ZN9InterpretIbE3getEv:                 # @_ZN9InterpretIbE3getEv
+.Lfunc_begin19:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception19
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 64
+	mov	qword ptr [rbp - 8], rdi
+	mov	rsi, qword ptr [rbp - 8]
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIbEEC2ERKS2_
+.LBB111_1:                              # =>This Inner Loop Header: Depth=1
+	jmp	.LBB111_2
+.LBB111_2:                              #   in Loop: Header=BB111_1 Depth=1
+	lea	rdi, [rbp - 24]
+	call	_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	mov	rdi, rax
+.Ltmp194:
+	call	_ZN11ComputationIbE8finishedEv
+.Ltmp195:
+	mov	byte ptr [rbp - 57], al         # 1-byte Spill
+	jmp	.LBB111_3
+.LBB111_3:                              #   in Loop: Header=BB111_1 Depth=1
+	mov	al, byte ptr [rbp - 57]         # 1-byte Reload
+	test	al, 1
+	jne	.LBB111_4
+	jmp	.LBB111_6
+.LBB111_4:
+	jmp	.LBB111_8
+.LBB111_5:
+.Ltmp200:
+	mov	rcx, rax
+	mov	eax, edx
+	mov	qword ptr [rbp - 32], rcx
+	mov	dword ptr [rbp - 36], eax
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIbEED2Ev
+	jmp	.LBB111_10
+.LBB111_6:                              #   in Loop: Header=BB111_1 Depth=1
+	lea	rdi, [rbp - 24]
+	call	_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	mov	rsi, rax
+	mov	rax, qword ptr [rsi]
+	mov	rax, qword ptr [rax + 16]
+.Ltmp196:
+	lea	rdi, [rbp - 56]
+	call	rax
+.Ltmp197:
+	jmp	.LBB111_7
+.LBB111_7:                              #   in Loop: Header=BB111_1 Depth=1
+	lea	rdi, [rbp - 24]
+	lea	rsi, [rbp - 56]
+	call	_ZNSt10shared_ptrI11ComputationIbEEaSEOS2_
+	lea	rdi, [rbp - 56]
+	call	_ZNSt10shared_ptrI11ComputationIbEED2Ev
+	jmp	.LBB111_1
+.LBB111_8:
+	lea	rdi, [rbp - 24]
+	call	_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	mov	rdi, rax
+.Ltmp198:
+	call	_ZN11ComputationIbE6resultEv
+.Ltmp199:
+	mov	byte ptr [rbp - 58], al         # 1-byte Spill
+	jmp	.LBB111_9
+.LBB111_9:
+	lea	rdi, [rbp - 24]
+	call	_ZNSt10shared_ptrI11ComputationIbEED2Ev
+	mov	al, byte ptr [rbp - 58]         # 1-byte Reload
+	and	al, 1
+	movzx	eax, al
+	add	rsp, 64
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB111_10:
+	.cfi_def_cfa rbp, 16
+	mov	rdi, qword ptr [rbp - 32]
+	call	_Unwind_Resume@PLT
+.Lfunc_end111:
+	.size	_ZN9InterpretIbE3getEv, .Lfunc_end111-_ZN9InterpretIbE3getEv
+	.cfi_endproc
+	.section	.gcc_except_table._ZN9InterpretIbE3getEv,"aG",@progbits,_ZN9InterpretIbE3getEv,comdat
+	.p2align	2
+GCC_except_table111:
+.Lexception19:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end19-.Lcst_begin19
+.Lcst_begin19:
+	.uleb128 .Ltmp194-.Lfunc_begin19        # >> Call Site 1 <<
+	.uleb128 .Ltmp199-.Ltmp194              #   Call between .Ltmp194 and .Ltmp199
+	.uleb128 .Ltmp200-.Lfunc_begin19        #     jumps to .Ltmp200
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp199-.Lfunc_begin19        # >> Call Site 2 <<
+	.uleb128 .Lfunc_end111-.Ltmp199         #   Call between .Ltmp199 and .Lfunc_end111
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end19:
+	.p2align	2
+                                        # -- End function
+	.section	.text._ZN5ForceIbED2Ev,"axG",@progbits,_ZN5ForceIbED2Ev,comdat
+	.weak	_ZN5ForceIbED2Ev                # -- Begin function _ZN5ForceIbED2Ev
+	.p2align	4, 0x90
+	.type	_ZN5ForceIbED2Ev,@function
+_ZN5ForceIbED2Ev:                       # @_ZN5ForceIbED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZN9InterpretIbED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end112:
+	.size	_ZN5ForceIbED2Ev, .Lfunc_end112-_ZN5ForceIbED2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt10shared_ptrI11ComputationIiEEaSERKS2_,"axG",@progbits,_ZNSt10shared_ptrI11ComputationIiEEaSERKS2_,comdat
+	.weak	_ZNSt10shared_ptrI11ComputationIiEEaSERKS2_ # -- Begin function _ZNSt10shared_ptrI11ComputationIiEEaSERKS2_
+	.p2align	4, 0x90
+	.type	_ZNSt10shared_ptrI11ComputationIiEEaSERKS2_,@function
+_ZNSt10shared_ptrI11ComputationIiEEaSERKS2_: # @_ZNSt10shared_ptrI11ComputationIiEEaSERKS2_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rdi       # 8-byte Spill
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSERKS4_
+                                        # kill: def $rcx killed $rax
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end113:
+	.size	_ZNSt10shared_ptrI11ComputationIiEEaSERKS2_, .Lfunc_end113-_ZNSt10shared_ptrI11ComputationIiEEaSERKS2_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2Ev,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2Ev,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2Ev # -- Begin function _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2Ev,@function
+_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2Ev: # @_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rdi], 0
+	add	rdi, 8
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end114:
+	.size	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2Ev, .Lfunc_end114-_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_ # -- Begin function _ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_,@function
+_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_: # @_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	rax, qword ptr [rbp - 16]
+	mov	rax, qword ptr [rax]
+	mov	qword ptr [rdi], rax
+	add	rdi, 8
+	mov	rsi, qword ptr [rbp - 16]
+	add	rsi, 8
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2ERKS2_
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end115:
+	.size	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_, .Lfunc_end115-_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2ERKS4_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN9InterpretIbEC2ESt10shared_ptrI11ComputationIbEE,"axG",@progbits,_ZN9InterpretIbEC2ESt10shared_ptrI11ComputationIbEE,comdat
+	.weak	_ZN9InterpretIbEC2ESt10shared_ptrI11ComputationIbEE # -- Begin function _ZN9InterpretIbEC2ESt10shared_ptrI11ComputationIbEE
+	.p2align	4, 0x90
+	.type	_ZN9InterpretIbEC2ESt10shared_ptrI11ComputationIbEE,@function
+_ZN9InterpretIbEC2ESt10shared_ptrI11ComputationIbEE: # @_ZN9InterpretIbEC2ESt10shared_ptrI11ComputationIbEE
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 24], rsi       # 8-byte Spill
+	mov	rax, rdi
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	mov	qword ptr [rbp - 8], rax
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rax       # 8-byte Spill
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 16]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt10shared_ptrI11ComputationIbEEC2EOS2_
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end116:
+	.size	_ZN9InterpretIbEC2ESt10shared_ptrI11ComputationIbEE, .Lfunc_end116-_ZN9InterpretIbEC2ESt10shared_ptrI11ComputationIbEE
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv,"axG",@progbits,_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv,comdat
+	.weak	_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv # -- Begin function _ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	.p2align	4, 0x90
+	.type	_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv,@function
+_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv: # @_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end117:
+	.size	_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv, .Lfunc_end117-_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN11ComputationIbE8finishedEv,"axG",@progbits,_ZN11ComputationIbE8finishedEv,comdat
+	.weak	_ZN11ComputationIbE8finishedEv  # -- Begin function _ZN11ComputationIbE8finishedEv
+	.p2align	4, 0x90
+	.type	_ZN11ComputationIbE8finishedEv,@function
+_ZN11ComputationIbE8finishedEv:         # @_ZN11ComputationIbE8finishedEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	al, byte ptr [rax + 9]
+	and	al, 1
+	movzx	eax, al
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end118:
+	.size	_ZN11ComputationIbE8finishedEv, .Lfunc_end118-_ZN11ComputationIbE8finishedEv
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt10shared_ptrI11ComputationIbEEaSEOS2_,"axG",@progbits,_ZNSt10shared_ptrI11ComputationIbEEaSEOS2_,comdat
+	.weak	_ZNSt10shared_ptrI11ComputationIbEEaSEOS2_ # -- Begin function _ZNSt10shared_ptrI11ComputationIbEEaSEOS2_
+	.p2align	4, 0x90
+	.type	_ZNSt10shared_ptrI11ComputationIbEEaSEOS2_,@function
+_ZNSt10shared_ptrI11ComputationIbEEaSEOS2_: # @_ZNSt10shared_ptrI11ComputationIbEEaSEOS2_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rax       # 8-byte Spill
+	mov	qword ptr [rbp - 32], rax       # 8-byte Spill
+	mov	rdi, qword ptr [rbp - 16]
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 32]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_
+                                        # kill: def $rcx killed $rax
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end119:
+	.size	_ZNSt10shared_ptrI11ComputationIbEEaSEOS2_, .Lfunc_end119-_ZNSt10shared_ptrI11ComputationIbEEaSEOS2_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN11ComputationIbE6resultEv,"axG",@progbits,_ZN11ComputationIbE6resultEv,comdat
+	.weak	_ZN11ComputationIbE6resultEv    # -- Begin function _ZN11ComputationIbE6resultEv
+	.p2align	4, 0x90
+	.type	_ZN11ComputationIbE6resultEv,@function
+_ZN11ComputationIbE6resultEv:           # @_ZN11ComputationIbE6resultEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	al, byte ptr [rax + 8]
+	and	al, 1
+	movzx	eax, al
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end120:
+	.size	_ZN11ComputationIbE6resultEv, .Lfunc_end120-_ZN11ComputationIbE6resultEv
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv,"axG",@progbits,_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv,comdat
+	.weak	_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv # -- Begin function _ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv
+	.p2align	4, 0x90
+	.type	_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv,@function
+_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv: # @_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZNKSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE3getEv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end121:
+	.size	_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv, .Lfunc_end121-_ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNKSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE3getEv,"axG",@progbits,_ZNKSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE3getEv,comdat
+	.weak	_ZNKSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE3getEv # -- Begin function _ZNKSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE3getEv
+	.p2align	4, 0x90
+	.type	_ZNKSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE3getEv,@function
+_ZNKSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE3getEv: # @_ZNKSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE3getEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	rax, qword ptr [rax]
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end122:
+	.size	_ZNKSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE3getEv, .Lfunc_end122-_ZNKSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE3getEv
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_ # -- Begin function _ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_,@function
+_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_: # @_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 48
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 40], rax       # 8-byte Spill
+	mov	rdi, qword ptr [rbp - 16]
+	call	_ZSt4moveIRSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_
+	mov	rsi, rax
+	lea	rdi, [rbp - 32]
+	call	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_
+	mov	rsi, qword ptr [rbp - 40]       # 8-byte Reload
+	lea	rdi, [rbp - 32]
+	call	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_
+	lea	rdi, [rbp - 32]
+	call	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	mov	rax, qword ptr [rbp - 40]       # 8-byte Reload
+	add	rsp, 48
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end123:
+	.size	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_, .Lfunc_end123-_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZSt4moveIRSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_,"axG",@progbits,_ZSt4moveIRSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_,comdat
+	.weak	_ZSt4moveIRSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_ # -- Begin function _ZSt4moveIRSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_
+	.p2align	4, 0x90
+	.type	_ZSt4moveIRSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_,@function
+_ZSt4moveIRSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_: # @_ZSt4moveIRSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end124:
+	.size	_ZSt4moveIRSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_, .Lfunc_end124-_ZSt4moveIRSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_ # -- Begin function _ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_,@function
+_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_: # @_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rdi       # 8-byte Spill
+	mov	rax, qword ptr [rbp - 16]
+	mov	rax, qword ptr [rax]
+	mov	qword ptr [rdi], rax
+	add	rdi, 8
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rdi, 8
+	mov	rsi, qword ptr [rbp - 16]
+	add	rsi, 8
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rax], 0
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end125:
+	.size	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_, .Lfunc_end125-_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_ # -- Begin function _ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_,@function
+_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_: # @_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rdi       # 8-byte Spill
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZSt4swapIP11ComputationIbEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rdi, 8
+	mov	rsi, qword ptr [rbp - 16]
+	add	rsi, 8
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end126:
+	.size	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_, .Lfunc_end126-_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev # -- Begin function _ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev,@function
+_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev: # @_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	add	rdi, 8
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end127:
+	.size	_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev, .Lfunc_end127-_ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZSt4swapIP11ComputationIbEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_,"axG",@progbits,_ZSt4swapIP11ComputationIbEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_,comdat
+	.weak	_ZSt4swapIP11ComputationIbEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_ # -- Begin function _ZSt4swapIP11ComputationIbEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_
+	.p2align	4, 0x90
+	.type	_ZSt4swapIP11ComputationIbEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_,@function
+_ZSt4swapIP11ComputationIbEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_: # @_ZSt4swapIP11ComputationIbEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZSt4moveIRP11ComputationIbEEONSt16remove_referenceIT_E4typeEOS5_
+	mov	rax, qword ptr [rax]
+	mov	qword ptr [rbp - 24], rax
+	mov	rdi, qword ptr [rbp - 16]
+	call	_ZSt4moveIRP11ComputationIbEEONSt16remove_referenceIT_E4typeEOS5_
+	mov	rcx, qword ptr [rax]
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rax], rcx
+	lea	rdi, [rbp - 24]
+	call	_ZSt4moveIRP11ComputationIbEEONSt16remove_referenceIT_E4typeEOS5_
+	mov	rcx, qword ptr [rax]
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rax], rcx
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end128:
+	.size	_ZSt4swapIP11ComputationIbEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_, .Lfunc_end128-_ZSt4swapIP11ComputationIbEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZSt4moveIRP11ComputationIbEEONSt16remove_referenceIT_E4typeEOS5_,"axG",@progbits,_ZSt4moveIRP11ComputationIbEEONSt16remove_referenceIT_E4typeEOS5_,comdat
+	.weak	_ZSt4moveIRP11ComputationIbEEONSt16remove_referenceIT_E4typeEOS5_ # -- Begin function _ZSt4moveIRP11ComputationIbEEONSt16remove_referenceIT_E4typeEOS5_
+	.p2align	4, 0x90
+	.type	_ZSt4moveIRP11ComputationIbEEONSt16remove_referenceIT_E4typeEOS5_,@function
+_ZSt4moveIRP11ComputationIbEEONSt16remove_referenceIT_E4typeEOS5_: # @_ZSt4moveIRP11ComputationIbEEONSt16remove_referenceIT_E4typeEOS5_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end129:
+	.size	_ZSt4moveIRP11ComputationIbEEONSt16remove_referenceIT_E4typeEOS5_, .Lfunc_end129-_ZSt4moveIRP11ComputationIbEEONSt16remove_referenceIT_E4typeEOS5_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EED2Ev,"axG",@progbits,_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EED2Ev,comdat
+	.weak	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EED2Ev # -- Begin function _ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.p2align	4, 0x90
+	.type	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EED2Ev,@function
+_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EED2Ev: # @_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 16], rax       # 8-byte Spill
+	cmp	qword ptr [rax], 0
+	je	.LBB130_2
+# %bb.1:
+	mov	rax, qword ptr [rbp - 16]       # 8-byte Reload
+	mov	rdi, qword ptr [rax]
+	call	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv
+.LBB130_2:
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end130:
+	.size	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EED2Ev, .Lfunc_end130-_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv,"axG",@progbits,_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv,comdat
+	.weak	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv # -- Begin function _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv
+	.p2align	4, 0x90
+	.type	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv,@function
+_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv: # @_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv
+.Lfunc_begin20:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception20
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rdi       # 8-byte Spill
+	add	rdi, 8
+.Ltmp201:
+	mov	esi, -1
+	call	_ZN9__gnu_cxxL27__exchange_and_add_dispatchEPii
+.Ltmp202:
+	mov	dword ptr [rbp - 12], eax       # 4-byte Spill
+	jmp	.LBB131_1
+.LBB131_1:
+	mov	eax, dword ptr [rbp - 12]       # 4-byte Reload
+	cmp	eax, 1
+	jne	.LBB131_6
+# %bb.2:
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	mov	rax, qword ptr [rdi]
+	mov	rax, qword ptr [rax + 16]
+	call	rax
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rdi, 12
+.Ltmp203:
+	mov	esi, -1
+	call	_ZN9__gnu_cxxL27__exchange_and_add_dispatchEPii
+.Ltmp204:
+	mov	dword ptr [rbp - 28], eax       # 4-byte Spill
+	jmp	.LBB131_3
+.LBB131_3:
+	mov	eax, dword ptr [rbp - 28]       # 4-byte Reload
+	cmp	eax, 1
+	jne	.LBB131_5
+# %bb.4:
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	mov	rax, qword ptr [rdi]
+	call	qword ptr [rax + 24]
+.LBB131_5:
+	jmp	.LBB131_6
+.LBB131_6:
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB131_7:
+	.cfi_def_cfa rbp, 16
+.Ltmp205:
+	mov	rdi, rax
+                                        # kill: def $eax killed $edx killed $rdx
+	call	__clang_call_terminate
+.Lfunc_end131:
+	.size	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv, .Lfunc_end131-_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv
+	.cfi_endproc
+	.section	.gcc_except_table._ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv,"aG",@progbits,_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv,comdat
+	.p2align	2
+GCC_except_table131:
+.Lexception20:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	3                               # @TType Encoding = udata4
+	.uleb128 .Lttbase3-.Lttbaseref3
+.Lttbaseref3:
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end20-.Lcst_begin20
+.Lcst_begin20:
+	.uleb128 .Ltmp201-.Lfunc_begin20        # >> Call Site 1 <<
+	.uleb128 .Ltmp202-.Ltmp201              #   Call between .Ltmp201 and .Ltmp202
+	.uleb128 .Ltmp205-.Lfunc_begin20        #     jumps to .Ltmp205
+	.byte	1                               #   On action: 1
+	.uleb128 .Ltmp202-.Lfunc_begin20        # >> Call Site 2 <<
+	.uleb128 .Ltmp203-.Ltmp202              #   Call between .Ltmp202 and .Ltmp203
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp203-.Lfunc_begin20        # >> Call Site 3 <<
+	.uleb128 .Ltmp204-.Ltmp203              #   Call between .Ltmp203 and .Ltmp204
+	.uleb128 .Ltmp205-.Lfunc_begin20        #     jumps to .Ltmp205
+	.byte	1                               #   On action: 1
+	.uleb128 .Ltmp204-.Lfunc_begin20        # >> Call Site 4 <<
+	.uleb128 .Lfunc_end131-.Ltmp204         #   Call between .Ltmp204 and .Lfunc_end131
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end20:
+	.byte	1                               # >> Action Record 1 <<
+                                        #   Catch TypeInfo 1
+	.byte	0                               #   No further actions
+	.p2align	2
+                                        # >> Catch TypeInfos <<
+	.long	0                               # TypeInfo 1
+.Lttbase3:
+	.p2align	2
+                                        # -- End function
+	.text
+	.p2align	4, 0x90                         # -- Begin function _ZN9__gnu_cxxL27__exchange_and_add_dispatchEPii
+	.type	_ZN9__gnu_cxxL27__exchange_and_add_dispatchEPii,@function
+_ZN9__gnu_cxxL27__exchange_and_add_dispatchEPii: # @_ZN9__gnu_cxxL27__exchange_and_add_dispatchEPii
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 16], rdi
+	mov	dword ptr [rbp - 20], esi
+	call	_ZL18__gthread_active_pv
+	cmp	eax, 0
+	je	.LBB132_2
+# %bb.1:
+	mov	rdi, qword ptr [rbp - 16]
+	mov	esi, dword ptr [rbp - 20]
+	call	_ZN9__gnu_cxxL18__exchange_and_addEPVii
+	mov	dword ptr [rbp - 4], eax
+	jmp	.LBB132_3
+.LBB132_2:
+	mov	rdi, qword ptr [rbp - 16]
+	mov	esi, dword ptr [rbp - 20]
+	call	_ZN9__gnu_cxxL25__exchange_and_add_singleEPii
+	mov	dword ptr [rbp - 4], eax
+.LBB132_3:
+	mov	eax, dword ptr [rbp - 4]
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end132:
+	.size	_ZN9__gnu_cxxL27__exchange_and_add_dispatchEPii, .Lfunc_end132-_ZN9__gnu_cxxL27__exchange_and_add_dispatchEPii
+	.cfi_endproc
+                                        # -- End function
+	.p2align	4, 0x90                         # -- Begin function _ZN9__gnu_cxxL18__exchange_and_addEPVii
+	.type	_ZN9__gnu_cxxL18__exchange_and_addEPVii,@function
+_ZN9__gnu_cxxL18__exchange_and_addEPVii: # @_ZN9__gnu_cxxL18__exchange_and_addEPVii
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	dword ptr [rbp - 12], esi
+	mov	rcx, qword ptr [rbp - 8]
+	mov	eax, dword ptr [rbp - 12]
+	mov	dword ptr [rbp - 16], eax
+	mov	eax, dword ptr [rbp - 16]
+	lock		xadd	dword ptr [rcx], eax
+	mov	dword ptr [rbp - 20], eax
+	mov	eax, dword ptr [rbp - 20]
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end133:
+	.size	_ZN9__gnu_cxxL18__exchange_and_addEPVii, .Lfunc_end133-_ZN9__gnu_cxxL18__exchange_and_addEPVii
+	.cfi_endproc
+                                        # -- End function
+	.p2align	4, 0x90                         # -- Begin function _ZN9__gnu_cxxL25__exchange_and_add_singleEPii
+	.type	_ZN9__gnu_cxxL25__exchange_and_add_singleEPii,@function
+_ZN9__gnu_cxxL25__exchange_and_add_singleEPii: # @_ZN9__gnu_cxxL25__exchange_and_add_singleEPii
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	dword ptr [rbp - 12], esi
+	mov	rax, qword ptr [rbp - 8]
+	mov	eax, dword ptr [rax]
+	mov	dword ptr [rbp - 16], eax
+	mov	ecx, dword ptr [rbp - 12]
+	mov	rax, qword ptr [rbp - 8]
+	add	ecx, dword ptr [rax]
+	mov	dword ptr [rax], ecx
+	mov	eax, dword ptr [rbp - 16]
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end134:
+	.size	_ZN9__gnu_cxxL25__exchange_and_add_singleEPii, .Lfunc_end134-_ZN9__gnu_cxxL25__exchange_and_add_singleEPii
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN9InterpretIbED2Ev,"axG",@progbits,_ZN9InterpretIbED2Ev,comdat
+	.weak	_ZN9InterpretIbED2Ev            # -- Begin function _ZN9InterpretIbED2Ev
+	.p2align	4, 0x90
+	.type	_ZN9InterpretIbED2Ev,@function
+_ZN9InterpretIbED2Ev:                   # @_ZN9InterpretIbED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZNSt10shared_ptrI11ComputationIbEED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end135:
+	.size	_ZN9InterpretIbED2Ev, .Lfunc_end135-_ZN9InterpretIbED2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSERKS4_,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSERKS4_,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSERKS4_ # -- Begin function _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSERKS4_
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSERKS4_,@function
+_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSERKS4_: # @_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSERKS4_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rdi       # 8-byte Spill
+	mov	rax, qword ptr [rbp - 16]
+	mov	rax, qword ptr [rax]
+	mov	qword ptr [rdi], rax
+	add	rdi, 8
+	mov	rsi, qword ptr [rbp - 16]
+	add	rsi, 8
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEaSERKS2_
+                                        # kill: def $rcx killed $rax
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end136:
+	.size	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSERKS4_, .Lfunc_end136-_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSERKS4_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEaSERKS2_,"axG",@progbits,_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEaSERKS2_,comdat
+	.weak	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEaSERKS2_ # -- Begin function _ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEaSERKS2_
+	.p2align	4, 0x90
+	.type	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEaSERKS2_,@function
+_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEaSERKS2_: # @_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEaSERKS2_
+.Lfunc_begin21:
+	.cfi_startproc
+	.cfi_personality 3, __gxx_personality_v0
+	.cfi_lsda 3, .Lexception21
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rcx, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 32], rcx       # 8-byte Spill
+	mov	rax, qword ptr [rbp - 16]
+	mov	rax, qword ptr [rax]
+	mov	qword ptr [rbp - 24], rax
+	mov	rax, qword ptr [rbp - 24]
+	cmp	rax, qword ptr [rcx]
+	je	.LBB137_7
+# %bb.1:
+	cmp	qword ptr [rbp - 24], 0
+	je	.LBB137_4
+# %bb.2:
+	mov	rdi, qword ptr [rbp - 24]
+.Ltmp206:
+	call	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE15_M_add_ref_copyEv
+.Ltmp207:
+	jmp	.LBB137_3
+.LBB137_3:
+	jmp	.LBB137_4
+.LBB137_4:
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	cmp	qword ptr [rax], 0
+	je	.LBB137_6
+# %bb.5:
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	mov	rdi, qword ptr [rax]
+	call	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv
+.LBB137_6:
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	mov	rcx, qword ptr [rbp - 24]
+	mov	qword ptr [rax], rcx
+.LBB137_7:
+	mov	rax, qword ptr [rbp - 32]       # 8-byte Reload
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.LBB137_8:
+	.cfi_def_cfa rbp, 16
+.Ltmp208:
+	mov	rdi, rax
+                                        # kill: def $eax killed $edx killed $rdx
+	call	__clang_call_terminate
+.Lfunc_end137:
+	.size	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEaSERKS2_, .Lfunc_end137-_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEaSERKS2_
+	.cfi_endproc
+	.section	.gcc_except_table._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEaSERKS2_,"aG",@progbits,_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEaSERKS2_,comdat
+	.p2align	2
+GCC_except_table137:
+.Lexception21:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	3                               # @TType Encoding = udata4
+	.uleb128 .Lttbase4-.Lttbaseref4
+.Lttbaseref4:
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end21-.Lcst_begin21
+.Lcst_begin21:
+	.uleb128 .Ltmp206-.Lfunc_begin21        # >> Call Site 1 <<
+	.uleb128 .Ltmp207-.Ltmp206              #   Call between .Ltmp206 and .Ltmp207
+	.uleb128 .Ltmp208-.Lfunc_begin21        #     jumps to .Ltmp208
+	.byte	1                               #   On action: 1
+.Lcst_end21:
+	.byte	1                               # >> Action Record 1 <<
+                                        #   Catch TypeInfo 1
+	.byte	0                               #   No further actions
+	.p2align	2
+                                        # >> Catch TypeInfos <<
+	.long	0                               # TypeInfo 1
+.Lttbase4:
+	.p2align	2
+                                        # -- End function
+	.section	.text._ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv,"axG",@progbits,_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv,comdat
+	.weak	_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv # -- Begin function _ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	.p2align	4, 0x90
+	.type	_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv,@function
+_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv: # @_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end138:
+	.size	_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv, .Lfunc_end138-_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN11ComputationIiE8finishedEv,"axG",@progbits,_ZN11ComputationIiE8finishedEv,comdat
+	.weak	_ZN11ComputationIiE8finishedEv  # -- Begin function _ZN11ComputationIiE8finishedEv
+	.p2align	4, 0x90
+	.type	_ZN11ComputationIiE8finishedEv,@function
+_ZN11ComputationIiE8finishedEv:         # @_ZN11ComputationIiE8finishedEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	al, byte ptr [rax + 12]
+	and	al, 1
+	movzx	eax, al
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end139:
+	.size	_ZN11ComputationIiE8finishedEv, .Lfunc_end139-_ZN11ComputationIiE8finishedEv
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt10shared_ptrI11ComputationIiEEaSEOS2_,"axG",@progbits,_ZNSt10shared_ptrI11ComputationIiEEaSEOS2_,comdat
+	.weak	_ZNSt10shared_ptrI11ComputationIiEEaSEOS2_ # -- Begin function _ZNSt10shared_ptrI11ComputationIiEEaSEOS2_
+	.p2align	4, 0x90
+	.type	_ZNSt10shared_ptrI11ComputationIiEEaSEOS2_,@function
+_ZNSt10shared_ptrI11ComputationIiEEaSEOS2_: # @_ZNSt10shared_ptrI11ComputationIiEEaSEOS2_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rax       # 8-byte Spill
+	mov	qword ptr [rbp - 32], rax       # 8-byte Spill
+	mov	rdi, qword ptr [rbp - 16]
+	call	_ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	mov	rdi, qword ptr [rbp - 32]       # 8-byte Reload
+	mov	rsi, rax
+	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_
+                                        # kill: def $rcx killed $rax
+	mov	rax, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end140:
+	.size	_ZNSt10shared_ptrI11ComputationIiEEaSEOS2_, .Lfunc_end140-_ZNSt10shared_ptrI11ComputationIiEEaSEOS2_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZN11ComputationIiE6resultEv,"axG",@progbits,_ZN11ComputationIiE6resultEv,comdat
+	.weak	_ZN11ComputationIiE6resultEv    # -- Begin function _ZN11ComputationIiE6resultEv
+	.p2align	4, 0x90
+	.type	_ZN11ComputationIiE6resultEv,@function
+_ZN11ComputationIiE6resultEv:           # @_ZN11ComputationIiE6resultEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	eax, dword ptr [rax + 8]
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end141:
+	.size	_ZN11ComputationIiE6resultEv, .Lfunc_end141-_ZN11ComputationIiE6resultEv
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv,"axG",@progbits,_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv,comdat
+	.weak	_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv # -- Begin function _ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv
+	.p2align	4, 0x90
+	.type	_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv,@function
+_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv: # @_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZNKSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE3getEv
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end142:
+	.size	_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv, .Lfunc_end142-_ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNKSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE3getEv,"axG",@progbits,_ZNKSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE3getEv,comdat
+	.weak	_ZNKSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE3getEv # -- Begin function _ZNKSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE3getEv
+	.p2align	4, 0x90
+	.type	_ZNKSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE3getEv,@function
+_ZNKSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE3getEv: # @_ZNKSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE3getEv
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	mov	rax, qword ptr [rax]
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end143:
+	.size	_ZNKSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE3getEv, .Lfunc_end143-_ZNKSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE3getEv
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_ # -- Begin function _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_,@function
+_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_: # @_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 48
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 40], rax       # 8-byte Spill
+	mov	rdi, qword ptr [rbp - 16]
+	call	_ZSt4moveIRSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_
+	mov	rsi, rax
+	lea	rdi, [rbp - 32]
+	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_
+	mov	rsi, qword ptr [rbp - 40]       # 8-byte Reload
+	lea	rdi, [rbp - 32]
+	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_
+	lea	rdi, [rbp - 32]
+	call	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	mov	rax, qword ptr [rbp - 40]       # 8-byte Reload
+	add	rsp, 48
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end144:
+	.size	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_, .Lfunc_end144-_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZSt4moveIRSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_,"axG",@progbits,_ZSt4moveIRSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_,comdat
+	.weak	_ZSt4moveIRSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_ # -- Begin function _ZSt4moveIRSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_
+	.p2align	4, 0x90
+	.type	_ZSt4moveIRSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_,@function
+_ZSt4moveIRSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_: # @_ZSt4moveIRSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end145:
+	.size	_ZSt4moveIRSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_, .Lfunc_end145-_ZSt4moveIRSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_ # -- Begin function _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_,@function
+_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_: # @_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rdi       # 8-byte Spill
+	mov	rax, qword ptr [rbp - 16]
+	mov	rax, qword ptr [rax]
+	mov	qword ptr [rdi], rax
+	add	rdi, 8
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEC2Ev
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rdi, 8
+	mov	rsi, qword ptr [rbp - 16]
+	add	rsi, 8
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rax], 0
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end146:
+	.size	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_, .Lfunc_end146-_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEC2EOS4_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_ # -- Begin function _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_,@function
+_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_: # @_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	mov	qword ptr [rbp - 24], rdi       # 8-byte Spill
+	mov	rsi, qword ptr [rbp - 16]
+	call	_ZSt4swapIP11ComputationIiEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_
+	mov	rdi, qword ptr [rbp - 24]       # 8-byte Reload
+	add	rdi, 8
+	mov	rsi, qword ptr [rbp - 16]
+	add	rsi, 8
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end147:
+	.size	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_, .Lfunc_end147-_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev,"axG",@progbits,_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev,comdat
+	.weak	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev # -- Begin function _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.p2align	4, 0x90
+	.type	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev,@function
+_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev: # @_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 16
+	mov	qword ptr [rbp - 8], rdi
+	mov	rdi, qword ptr [rbp - 8]
+	add	rdi, 8
+	call	_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EED2Ev
+	add	rsp, 16
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end148:
+	.size	_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev, .Lfunc_end148-_ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZSt4swapIP11ComputationIiEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_,"axG",@progbits,_ZSt4swapIP11ComputationIiEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_,comdat
+	.weak	_ZSt4swapIP11ComputationIiEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_ # -- Begin function _ZSt4swapIP11ComputationIiEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_
+	.p2align	4, 0x90
+	.type	_ZSt4swapIP11ComputationIiEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_,@function
+_ZSt4swapIP11ComputationIiEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_: # @_ZSt4swapIP11ComputationIiEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	sub	rsp, 32
+	mov	qword ptr [rbp - 8], rdi
+	mov	qword ptr [rbp - 16], rsi
+	mov	rdi, qword ptr [rbp - 8]
+	call	_ZSt4moveIRP11ComputationIiEEONSt16remove_referenceIT_E4typeEOS5_
+	mov	rax, qword ptr [rax]
+	mov	qword ptr [rbp - 24], rax
+	mov	rdi, qword ptr [rbp - 16]
+	call	_ZSt4moveIRP11ComputationIiEEONSt16remove_referenceIT_E4typeEOS5_
+	mov	rcx, qword ptr [rax]
+	mov	rax, qword ptr [rbp - 8]
+	mov	qword ptr [rax], rcx
+	lea	rdi, [rbp - 24]
+	call	_ZSt4moveIRP11ComputationIiEEONSt16remove_referenceIT_E4typeEOS5_
+	mov	rcx, qword ptr [rax]
+	mov	rax, qword ptr [rbp - 16]
+	mov	qword ptr [rax], rcx
+	add	rsp, 32
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end149:
+	.size	_ZSt4swapIP11ComputationIiEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_, .Lfunc_end149-_ZSt4swapIP11ComputationIiEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_
+	.cfi_endproc
+                                        # -- End function
+	.section	.text._ZSt4moveIRP11ComputationIiEEONSt16remove_referenceIT_E4typeEOS5_,"axG",@progbits,_ZSt4moveIRP11ComputationIiEEONSt16remove_referenceIT_E4typeEOS5_,comdat
+	.weak	_ZSt4moveIRP11ComputationIiEEONSt16remove_referenceIT_E4typeEOS5_ # -- Begin function _ZSt4moveIRP11ComputationIiEEONSt16remove_referenceIT_E4typeEOS5_
+	.p2align	4, 0x90
+	.type	_ZSt4moveIRP11ComputationIiEEONSt16remove_referenceIT_E4typeEOS5_,@function
+_ZSt4moveIRP11ComputationIiEEONSt16remove_referenceIT_E4typeEOS5_: # @_ZSt4moveIRP11ComputationIiEEONSt16remove_referenceIT_E4typeEOS5_
+	.cfi_startproc
+# %bb.0:
+	push	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbp, -16
+	mov	rbp, rsp
+	.cfi_def_cfa_register rbp
+	mov	qword ptr [rbp - 8], rdi
+	mov	rax, qword ptr [rbp - 8]
+	pop	rbp
+	.cfi_def_cfa rsp, 8
+	ret
+.Lfunc_end150:
+	.size	_ZSt4moveIRP11ComputationIiEEONSt16remove_referenceIT_E4typeEOS5_, .Lfunc_end150-_ZSt4moveIRP11ComputationIiEEONSt16remove_referenceIT_E4typeEOS5_
+	.cfi_endproc
                                         # -- End function
 	.type	dummy,@object                   # @dummy
 	.bss
@@ -5706,8 +6592,13 @@ dummy:
 	.long	0                               # 0x0
 	.size	dummy, 4
 
-	.type	.L.str.1,@object                # @.str.1
+	.type	.L.str,@object                  # @.str
 	.section	.rodata.str1.1,"aMS",@progbits,1
+.L.str:
+	.asciz	"Two args required: INPUT and CYCLES\n"
+	.size	.L.str, 37
+
+	.type	.L.str.1,@object                # @.str.1
 .L.str.1:
 	.asciz	"%d-th Fibonacci number is %d\nTotal is %d\n"
 	.size	.L.str.1, 42
@@ -5757,6 +6648,18 @@ _ZTI4Fibo:
 	.quad	_ZTI11ComputationIiE
 	.size	_ZTI4Fibo, 24
 
+	.type	_ZTV11ComputationIiE,@object    # @_ZTV11ComputationIiE
+	.section	.rodata._ZTV11ComputationIiE,"aG",@progbits,_ZTV11ComputationIiE,comdat
+	.weak	_ZTV11ComputationIiE
+	.p2align	3
+_ZTV11ComputationIiE:
+	.quad	0
+	.quad	_ZTI11ComputationIiE
+	.quad	_ZN11ComputationIiED2Ev
+	.quad	_ZN11ComputationIiED0Ev
+	.quad	_ZN11ComputationIiE4evalEv
+	.size	_ZTV11ComputationIiE, 40
+
 	.type	_ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE,@object # @_ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE
 	.section	.rodata._ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE,"aG",@progbits,_ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE,comdat
 	.weak	_ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE
@@ -5764,7 +6667,7 @@ _ZTI4Fibo:
 _ZTVSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE:
 	.quad	0
 	.quad	_ZTISt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE
-	.quad	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.quad	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED2Ev
 	.quad	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EED0Ev
 	.quad	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv
 	.quad	_ZNSt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv
@@ -5821,6 +6724,27 @@ _ZTISt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE:
 	.quad	_ZTISt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE
 	.size	_ZTISt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE, 24
 
+	.type	_ZTVSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE,@object # @_ZTVSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE
+	.section	.rodata._ZTVSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE,"aG",@progbits,_ZTVSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE,comdat
+	.weak	_ZTVSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE
+	.p2align	3
+_ZTVSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE:
+	.quad	0
+	.quad	_ZTISt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE
+	.quad	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.quad	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED0Ev
+	.quad	__cxa_pure_virtual
+	.quad	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv
+	.quad	__cxa_pure_virtual
+	.size	_ZTVSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE, 56
+
+	.type	_ZZL18__gthread_active_pvE20__gthread_active_ptr,@object # @_ZZL18__gthread_active_pvE20__gthread_active_ptr
+	.section	.rodata,"a",@progbits
+	.p2align	3
+_ZZL18__gthread_active_pvE20__gthread_active_ptr:
+	.quad	__pthread_key_create
+	.size	_ZZL18__gthread_active_pvE20__gthread_active_ptr, 8
+
 	.type	_ZTV3Int,@object                # @_ZTV3Int
 	.section	.rodata._ZTV3Int,"aG",@progbits,_ZTV3Int,comdat
 	.weak	_ZTV3Int
@@ -5828,7 +6752,7 @@ _ZTISt15_Sp_counted_ptrIP11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE:
 _ZTV3Int:
 	.quad	0
 	.quad	_ZTI3Int
-	.quad	_ZN11ComputationIiED2Ev
+	.quad	_ZN3IntD2Ev
 	.quad	_ZN3IntD0Ev
 	.quad	_ZN5ValueIiE4evalEv
 	.size	_ZTV3Int, 40
@@ -5874,7 +6798,7 @@ _ZTI3Int:
 _ZTV5ValueIiE:
 	.quad	0
 	.quad	_ZTI5ValueIiE
-	.quad	_ZN11ComputationIiED2Ev
+	.quad	_ZN5ValueIiED2Ev
 	.quad	_ZN5ValueIiED0Ev
 	.quad	_ZN5ValueIiE4evalEv
 	.size	_ZTV5ValueIiE, 40
@@ -5915,7 +6839,7 @@ _ZTI7FiboDyn:
 _ZTVSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE:
 	.quad	0
 	.quad	_ZTISt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE
-	.quad	_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev
+	.quad	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED2Ev
 	.quad	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EED0Ev
 	.quad	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv
 	.quad	_ZNSt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv
@@ -5946,7 +6870,7 @@ _ZTISt15_Sp_counted_ptrIP11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE:
 _ZTV2LTIiE:
 	.quad	0
 	.quad	_ZTI2LTIiE
-	.quad	_ZN8BinaryOpIibED2Ev
+	.quad	_ZN2LTIiED2Ev
 	.quad	_ZN2LTIiED0Ev
 	.quad	_ZN8BinaryOpIibE4evalEv
 	.quad	_ZN2LTIiE2opEii
@@ -6015,6 +6939,18 @@ _ZTV8BinaryOpIibE:
 	.quad	_ZN8BinaryOpIibE2opEii
 	.size	_ZTV8BinaryOpIibE, 48
 
+	.type	_ZTV11ComputationIbE,@object    # @_ZTV11ComputationIbE
+	.section	.rodata._ZTV11ComputationIbE,"aG",@progbits,_ZTV11ComputationIbE,comdat
+	.weak	_ZTV11ComputationIbE
+	.p2align	3
+_ZTV11ComputationIbE:
+	.quad	0
+	.quad	_ZTI11ComputationIbE
+	.quad	_ZN11ComputationIbED2Ev
+	.quad	_ZN11ComputationIbED0Ev
+	.quad	_ZN11ComputationIbE4evalEv
+	.size	_ZTV11ComputationIbE, 40
+
 	.type	_ZTV4Bool,@object               # @_ZTV4Bool
 	.section	.rodata._ZTV4Bool,"aG",@progbits,_ZTV4Bool,comdat
 	.weak	_ZTV4Bool
@@ -6022,7 +6958,7 @@ _ZTV8BinaryOpIibE:
 _ZTV4Bool:
 	.quad	0
 	.quad	_ZTI4Bool
-	.quad	_ZN11ComputationIbED2Ev
+	.quad	_ZN4BoolD2Ev
 	.quad	_ZN4BoolD0Ev
 	.quad	_ZN5ValueIbE4evalEv
 	.size	_ZTV4Bool, 40
@@ -6068,7 +7004,7 @@ _ZTI4Bool:
 _ZTV5ValueIbE:
 	.quad	0
 	.quad	_ZTI5ValueIbE
-	.quad	_ZN11ComputationIbED2Ev
+	.quad	_ZN5ValueIbED2Ev
 	.quad	_ZN5ValueIbED0Ev
 	.quad	_ZN5ValueIbE4evalEv
 	.size	_ZTV5ValueIbE, 40
@@ -6080,7 +7016,7 @@ _ZTV5ValueIbE:
 _ZTV3SumIiE:
 	.quad	0
 	.quad	_ZTI3SumIiE
-	.quad	_ZN8BinaryOpIiiED2Ev
+	.quad	_ZN3SumIiED2Ev
 	.quad	_ZN3SumIiED0Ev
 	.quad	_ZN8BinaryOpIiiE4evalEv
 	.quad	_ZN3SumIiE2opEii
@@ -6162,18 +7098,66 @@ _ZTI2IfIiE:
 	.quad	_ZTI11ComputationIiE
 	.size	_ZTI2IfIiE, 24
 
-	.type	.Lstr,@object                   # @str
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.Lstr:
-	.asciz	"Two args required: INPUT and CYCLES"
-	.size	.Lstr, 36
-
 	.weak	__pthread_key_create
 	.ident	"Ubuntu clang version 13.0.1-++20220120110924+75e33f71c2da-1~exp1~20220120231001.58"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
+	.addrsig_sym printf
+	.addrsig_sym atoi
+	.addrsig_sym _Z4calci
+	.addrsig_sym _Z4cptrIiEN11ComputationIT_E3ptrEPS2_
+	.addrsig_sym _Znwm
 	.addrsig_sym __gxx_personality_v0
+	.addrsig_sym _ZdlPv
+	.addrsig_sym _ZN9InterpretIiE3getEv
+	.addrsig_sym _ZSt4moveIRSt10shared_ptrI11ComputationIiEEEONSt16remove_referenceIT_E4typeEOS6_
+	.addrsig_sym _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_
+	.addrsig_sym __cxa_begin_catch
+	.addrsig_sym __cxa_rethrow
+	.addrsig_sym __cxa_end_catch
+	.addrsig_sym __clang_call_terminate
+	.addrsig_sym _ZSt9terminatev
+	.addrsig_sym _ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EE7_M_swapERS2_
+	.addrsig_sym _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE15_M_add_ref_copyEv
+	.addrsig_sym _ZN9__gnu_cxxL21__atomic_add_dispatchEPii
+	.addrsig_sym _ZL18__gthread_active_pv
+	.addrsig_sym _ZN9__gnu_cxxL12__atomic_addEPVii
+	.addrsig_sym _ZN9__gnu_cxxL19__atomic_add_singleEPii
 	.addrsig_sym __pthread_key_create
+	.addrsig_sym _Z4cptrIbEN11ComputationIT_E3ptrEPS2_
+	.addrsig_sym _ZN5ForceIiE3ptrEv
+	.addrsig_sym _ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE31_M_enable_shared_from_this_withIS1_S1_EENSt9enable_ifIXntsr15__has_esft_baseIT0_EE5valueEvE4typeEPT_
+	.addrsig_sym _ZSt4moveIRSt10shared_ptrI11ComputationIbEEEONSt16remove_referenceIT_E4typeEOS6_
+	.addrsig_sym _ZN9InterpretIbE3getEv
+	.addrsig_sym _ZNSt10shared_ptrI11ComputationIiEEaSERKS2_
+	.addrsig_sym _ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	.addrsig_sym _ZN11ComputationIbE8finishedEv
+	.addrsig_sym _ZNSt10shared_ptrI11ComputationIbEEaSEOS2_
+	.addrsig_sym _ZN11ComputationIbE6resultEv
+	.addrsig_sym _ZNKSt19__shared_ptr_accessI11ComputationIbELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv
+	.addrsig_sym _ZNKSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE3getEv
+	.addrsig_sym _ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_
+	.addrsig_sym _ZSt4moveIRSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_
+	.addrsig_sym _ZNSt12__shared_ptrI11ComputationIbELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_
+	.addrsig_sym _ZSt4swapIP11ComputationIbEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_
+	.addrsig_sym _ZSt4moveIRP11ComputationIbEEONSt16remove_referenceIT_E4typeEOS5_
+	.addrsig_sym _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv
+	.addrsig_sym _ZN9__gnu_cxxL27__exchange_and_add_dispatchEPii
+	.addrsig_sym _ZN9__gnu_cxxL18__exchange_and_addEPVii
+	.addrsig_sym _ZN9__gnu_cxxL25__exchange_and_add_singleEPii
+	.addrsig_sym _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSERKS4_
+	.addrsig_sym _ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE2EEaSERKS2_
+	.addrsig_sym _ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EEdeEv
+	.addrsig_sym _ZN11ComputationIiE8finishedEv
+	.addrsig_sym _ZNSt10shared_ptrI11ComputationIiEEaSEOS2_
+	.addrsig_sym _ZN11ComputationIiE6resultEv
+	.addrsig_sym _ZNKSt19__shared_ptr_accessI11ComputationIiELN9__gnu_cxx12_Lock_policyE2ELb0ELb0EE6_M_getEv
+	.addrsig_sym _ZNKSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE3getEv
+	.addrsig_sym _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEaSEOS4_
+	.addrsig_sym _ZSt4moveIRSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EEEONSt16remove_referenceIT_E4typeEOS8_
+	.addrsig_sym _ZNSt12__shared_ptrI11ComputationIiELN9__gnu_cxx12_Lock_policyE2EE4swapERS4_
+	.addrsig_sym _ZSt4swapIP11ComputationIiEENSt9enable_ifIXsr6__and_ISt6__not_ISt15__is_tuple_likeIT_EESt21is_move_constructibleIS6_ESt18is_move_assignableIS6_EEE5valueEvE4typeERS6_SF_
+	.addrsig_sym _ZSt4moveIRP11ComputationIiEEONSt16remove_referenceIT_E4typeEOS5_
 	.addrsig_sym _Unwind_Resume
 	.addrsig_sym dummy
 	.addrsig_sym _ZTVN10__cxxabiv120__si_class_type_infoE

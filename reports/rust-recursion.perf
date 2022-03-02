@@ -1,24 +1,24 @@
 32-th Fibonacci number is 3524578
-Total is 0
+Total is 902291968
 
 
- Performance counter stats for 'bin/rust-recursion.bin 32 2147483648':
+ Performance counter stats for 'bin/rust-recursion.bin 32 256':
 
-             11.39 msec task-clock                #    0.949 CPUs utilized          
-                 0      context-switches          #    0.000 K/sec                  
+           6715.50 msec task-clock                #    1.000 CPUs utilized          
+                10      context-switches          #    0.001 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-                81      page-faults               #    0.007 M/sec                  
-          32715362      cycles                    #    2.873 GHz                    
-            493044      stalled-cycles-frontend   #    1.51% frontend cycles idle   
-            351327      stalled-cycles-backend    #    1.07% backend cycles idle    
-          68049583      instructions              #    2.08  insn per cycle         
-                                                  #    0.01  stalled cycles per insn
-          14383638      branches                  # 1263.200 M/sec                  
+                81      page-faults               #    0.012 K/sec                  
+       20931832322      cycles                    #    3.117 GHz                    
+          75467396      stalled-cycles-frontend   #    0.36% frontend cycles idle   
+        4125694411      stalled-cycles-backend    #   19.71% backend cycles idle    
+       49158532209      instructions              #    2.35  insn per cycle         
+                                                  #    0.08  stalled cycles per insn
+       16455785504      branches                  # 2450.420 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       0.012002856 seconds time elapsed
+       6.716867120 seconds time elapsed
 
-       0.012052000 seconds user
+       6.715796000 seconds user
        0.000000000 seconds sys
 
 

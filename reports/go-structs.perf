@@ -1,21 +1,21 @@
 32-th Fibonacci number is 14098312
  Performance counter stats for 'bin/go-structs.bin 32 4':
 
-          23800.74 msec task-clock                #    1.129 CPUs utilized          
-             28852      context-switches          #    0.001 M/sec                  
-                34      cpu-migrations            #    0.001 K/sec                  
-             11184      page-faults               #    0.470 K/sec                  
-       70639002575      cycles                    #    2.968 GHz                    
-        5721670201      stalled-cycles-frontend   #    8.10% frontend cycles idle   
-       15182144489      stalled-cycles-backend    #   21.49% backend cycles idle    
-      116565697456      instructions              #    1.65  insn per cycle         
+          23584.22 msec task-clock                #    1.136 CPUs utilized          
+             29511      context-switches          #    0.001 M/sec                  
+                53      cpu-migrations            #    0.002 K/sec                  
+             11425      page-faults               #    0.484 K/sec                  
+       70139507524      cycles                    #    2.974 GHz                    
+        6039336318      stalled-cycles-frontend   #    8.61% frontend cycles idle   
+       15215385285      stalled-cycles-backend    #   21.69% backend cycles idle    
+      116632174689      instructions              #    1.66  insn per cycle         
                                                   #    0.13  stalled cycles per insn
-       23059519700      branches                  #  968.857 M/sec                  
+       23072627415      branches                  #  978.308 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-      21.078124037 seconds time elapsed
+      20.766462928 seconds time elapsed
 
-      21.702584000 seconds user
-       2.618796000 seconds sys
+      21.613787000 seconds user
+       2.517374000 seconds sys
 
 

@@ -1,23 +1,23 @@
 32-th Fibonacci number is 3524578
-Total is 268435456
+Total is 1058013184
 
- Performance counter stats for 'bin/cpp-matrixes.bin 32 134217728':
+ Performance counter stats for 'bin/cpp-matrixes.bin 32 524288':
 
-           1751.84 msec task-clock                #    1.000 CPUs utilized          
-                10      context-switches          #    0.006 K/sec                  
+           1495.86 msec task-clock                #    1.000 CPUs utilized          
+                 3      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2761      page-faults               #    0.002 M/sec                  
-        5718863394      cycles                    #    3.264 GHz                    
-           4578427      stalled-cycles-frontend   #    0.08% frontend cycles idle   
-        4092123318      stalled-cycles-backend    #   71.55% backend cycles idle    
-       19228676934      instructions              #    3.36  insn per cycle         
-                                                  #    0.21  stalled cycles per insn
-        2290498644      branches                  # 1307.480 M/sec                  
+              2760      page-faults               #    0.002 M/sec                  
+        4808039459      cycles                    #    3.214 GHz                    
+          12391641      stalled-cycles-frontend   #    0.26% frontend cycles idle   
+          92542420      stalled-cycles-backend    #    1.92% backend cycles idle    
+       11931545532      instructions              #    2.48  insn per cycle         
+                                                  #    0.01  stalled cycles per insn
+        2186468886      branches                  # 1461.677 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.752550886 seconds time elapsed
+       1.496275628 seconds time elapsed
 
-       1.746252000 seconds user
-       0.006246000 seconds sys
+       1.490574000 seconds user
+       0.006240000 seconds sys
 
 
