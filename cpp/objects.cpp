@@ -81,37 +81,24 @@ private:
   Int* right;
 };
 
-class If : public Int {
-public:
-  If(Bool* t, Int* l, Int* r) : term(t), left(l), right(r) {}
-  ~If() override {
-    delete term;
-    delete left;
-    delete right;
-  }
-  int get() override {
-    if (term->get()) {
-      return left->get();
-    }
-    return right->get();
-  }
-private:
-  Bool* term;
-  Int* left;
-  Int* right;
-};
-
 class Fibo : public Int {
 public:
   explicit Fibo(Int* v) : value(v) {}
   ~Fibo() override { delete value; }
   int get() override {
-    Int* iff =
-      new If(new Less(new Integer(value), new Integer(2)), new Integer(1),
-        new Add(new Fibo(new Sub(new Integer(value), new Integer(1))),
-          new Fibo(new Sub(new Integer(value), new Integer(2)))));
-    int result = iff->get();
-    delete iff;
+    Bool* cond = new Less(new Integer(value), new Integer(2));
+    int result = -1;
+    if (cond->get()) {
+      Int* one = new Integer(1);
+      result = one->get();
+      delete one;
+    } else {
+      Int* sum = new Add(new Fibo(new Sub(new Integer(value), new Integer(1))),
+                   new Fibo(new Sub(new Integer(value), new Integer(2))));
+      result = sum->get();
+      delete sum;
+    }
+    delete cond;
     return result;
   }
 private:
