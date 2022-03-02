@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: self-hosted
     env:
-      ImageOS: ubuntu20
+      ImageOS: ubuntu18
     steps:
       - run: sudo apt-get update -y
       - run: sudo apt-get install -y build-essential curl wget git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libxml2-dev autoconf libc6-dev ncurses-dev automake libtool
