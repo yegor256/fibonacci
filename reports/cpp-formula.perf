@@ -3,21 +3,21 @@ Total is 0
 
  Performance counter stats for 'bin/cpp-formula.bin 32 33554432':
 
-           1338.38 msec task-clock                #    1.000 CPUs utilized          
-                 4      context-switches          #    0.003 K/sec                  
+           1040.89 msec task-clock                #    0.999 CPUs utilized          
+                 6      context-switches          #    0.006 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2760      page-faults               #    0.002 M/sec                  
-        3933676623      cycles                    #    2.939 GHz                    
-           6062307      stalled-cycles-frontend   #    0.15% frontend cycles idle   
-         118658024      stalled-cycles-backend    #    3.02% backend cycles idle    
-       11878870778      instructions              #    3.02  insn per cycle         
-                                                  #    0.01  stalled cycles per insn
-        2256678604      branches                  # 1686.123 M/sec                  
+              2761      page-faults               #    0.003 M/sec                  
+        3454369411      cycles                    #    3.319 GHz                    
+           4343892      stalled-cycles-frontend   #    0.13% frontend cycles idle   
+          34204156      stalled-cycles-backend    #    0.99% backend cycles idle    
+       11878646673      instructions              #    3.44  insn per cycle         
+                                                  #    0.00  stalled cycles per insn
+        2256645226      branches                  # 2168.004 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.339002121 seconds time elapsed
+       1.041529010 seconds time elapsed
 
-       1.335372000 seconds user
+       1.037604000 seconds user
        0.004009000 seconds sys
 
 

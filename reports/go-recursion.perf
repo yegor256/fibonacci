@@ -1,21 +1,21 @@
 32-th Fibonacci number is 902291968
  Performance counter stats for 'bin/go-recursion.bin 32 256':
 
-           4420.25 msec task-clock                #    1.009 CPUs utilized          
-               502      context-switches          #    0.114 K/sec                  
+           3878.48 msec task-clock                #    1.008 CPUs utilized          
+               451      context-switches          #    0.116 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               208      page-faults               #    0.047 K/sec                  
-       13021616603      cycles                    #    2.946 GHz                    
-          31391202      stalled-cycles-frontend   #    0.24% frontend cycles idle   
-        3853238182      stalled-cycles-backend    #   29.59% backend cycles idle    
-       34298946538      instructions              #    2.63  insn per cycle         
-                                                  #    0.11  stalled cycles per insn
-        7220586379      branches                  # 1633.523 M/sec                  
+               195      page-faults               #    0.050 K/sec                  
+       12648596461      cycles                    #    3.261 GHz                    
+          21296543      stalled-cycles-frontend   #    0.17% frontend cycles idle   
+        3254580694      stalled-cycles-backend    #   25.73% backend cycles idle    
+       34297692795      instructions              #    2.71  insn per cycle         
+                                                  #    0.09  stalled cycles per insn
+        7220348109      branches                  # 1861.642 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       4.380692274 seconds time elapsed
+       3.847670954 seconds time elapsed
 
-       4.407510000 seconds user
-       0.028194000 seconds sys
+       3.847308000 seconds user
+       0.044011000 seconds sys
 
 

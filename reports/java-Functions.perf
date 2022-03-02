@@ -3,21 +3,21 @@ Total is 902291968
 
  Performance counter stats for 'bin/java-Functions.bin 32 256':
 
-           3283.70 msec task-clock                #    0.999 CPUs utilized          
-                12      context-switches          #    0.004 K/sec                  
+           3024.95 msec task-clock                #    1.000 CPUs utilized          
+                 4      context-switches          #    0.001 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               533      page-faults               #    0.162 K/sec                  
-       10322449582      cycles                    #    3.144 GHz                    
-          15708054      stalled-cycles-frontend   #    0.15% frontend cycles idle   
-          64367338      stalled-cycles-backend    #    0.62% backend cycles idle    
-       27981164924      instructions              #    2.71  insn per cycle         
+               527      page-faults               #    0.174 K/sec                  
+        9999102270      cycles                    #    3.306 GHz                    
+           5107622      stalled-cycles-frontend   #    0.05% frontend cycles idle   
+           6864747      stalled-cycles-backend    #    0.07% backend cycles idle    
+       27980705081      instructions              #    2.80  insn per cycle         
                                                   #    0.00  stalled cycles per insn
-        9024795092      branches                  # 2748.364 M/sec                  
+        9024719406      branches                  # 2983.423 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       3.285397186 seconds time elapsed
+       3.025682987 seconds time elapsed
 
-       3.284143000 seconds user
+       3.025245000 seconds user
        0.000000000 seconds sys
 
 

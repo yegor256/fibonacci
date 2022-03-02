@@ -3,21 +3,21 @@ Total is 14783151603712
 
  Performance counter stats for 'bin/haskell-zipwith.bin 32 4194304':
 
-           2037.12 msec task-clock                #    1.000 CPUs utilized          
-                 2      context-switches          #    0.001 K/sec                  
+           1683.71 msec task-clock                #    0.999 CPUs utilized          
+                 3      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-            164264      page-faults               #    0.081 M/sec                  
-        5658695678      cycles                    #    2.778 GHz                    
-          87296524      stalled-cycles-frontend   #    1.54% frontend cycles idle   
-        1847916982      stalled-cycles-backend    #   32.66% backend cycles idle    
-       14546772972      instructions              #    2.57  insn per cycle         
-                                                  #    0.13  stalled cycles per insn
-        2752739296      branches                  # 1351.293 M/sec                  
+            164269      page-faults               #    0.098 M/sec                  
+        5485228187      cycles                    #    3.258 GHz                    
+          71012547      stalled-cycles-frontend   #    1.29% frontend cycles idle   
+        2091208111      stalled-cycles-backend    #   38.12% backend cycles idle    
+       14546125548      instructions              #    2.65  insn per cycle         
+                                                  #    0.14  stalled cycles per insn
+        2752610735      branches                  # 1634.853 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       2.038038125 seconds time elapsed
+       1.684666416 seconds time elapsed
 
-       1.809589000 seconds user
-       0.228292000 seconds sys
+       1.532411000 seconds user
+       0.152028000 seconds sys
 
 

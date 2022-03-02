@@ -1,0 +1,23 @@
+32-th Fibonacci number is 3524578
+Total is 28196624
+
+ Performance counter stats for 'bin/haskell-objects.bin 32 8':
+
+          13098.05 msec task-clock                #    1.000 CPUs utilized          
+                57      context-switches          #    0.004 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+              1442      page-faults               #    0.110 K/sec                  
+       41362814309      cycles                    #    3.158 GHz                    
+         817458523      stalled-cycles-frontend   #    1.98% frontend cycles idle   
+         800172757      stalled-cycles-backend    #    1.93% backend cycles idle    
+       91853821792      instructions              #    2.22  insn per cycle         
+                                                  #    0.01  stalled cycles per insn
+       20793192646      branches                  # 1587.503 M/sec                  
+                 0      branch-misses             #    0.00% of all branches        
+
+      13.103485635 seconds time elapsed
+
+      13.033904000 seconds user
+       0.063998000 seconds sys
+
+
