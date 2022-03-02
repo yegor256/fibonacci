@@ -1,23 +1,23 @@
-7-th Fibonacci number is 21
-Total is 704643072
+32-th Fibonacci number is 3524578
+Total is 902291968
 
- Performance counter stats for 'bin/cpp-inlines.bin 7 33554432':
+ Performance counter stats for 'bin/cpp-inlines.bin 32 256':
 
-           1351.19 msec task-clock                #    1.000 CPUs utilized          
-                 6      context-switches          #    0.004 K/sec                  
+           2285.27 msec task-clock                #    1.000 CPUs utilized          
+                 5      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2760      page-faults               #    0.002 M/sec                  
-        4319941695      cycles                    #    3.197 GHz                    
-           7529453      stalled-cycles-frontend   #    0.17% frontend cycles idle   
-          69587188      stalled-cycles-backend    #    1.61% backend cycles idle    
-       14630018926      instructions              #    3.39  insn per cycle         
+              2761      page-faults               #    0.001 M/sec                  
+        6239670577      cycles                    #    2.730 GHz                    
+          35862762      stalled-cycles-frontend   #    0.57% frontend cycles idle   
+          48503405      stalled-cycles-backend    #    0.78% backend cycles idle    
+       18719630986      instructions              #    3.00  insn per cycle         
                                                   #    0.00  stalled cycles per insn
-        2827041802      branches                  # 2092.257 M/sec                  
+        3617798731      branches                  # 1583.093 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.351683263 seconds time elapsed
+       2.285804713 seconds time elapsed
 
-       1.339848000 seconds user
-       0.011972000 seconds sys
+       2.285981000 seconds user
+       0.000000000 seconds sys
 
 

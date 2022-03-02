@@ -1,23 +1,23 @@
-7-th Fibonacci number is 21
-Total is 352321536
+32-th Fibonacci number is 3524578
+Total is 902291968
 
- Performance counter stats for 'bin/java-Recursion.bin 7 16777216':
+ Performance counter stats for 'bin/java-Recursion.bin 32 256':
 
-           1358.21 msec task-clock                #    0.999 CPUs utilized          
-                 6      context-switches          #    0.004 K/sec                  
+           3361.65 msec task-clock                #    1.000 CPUs utilized          
+                 4      context-switches          #    0.001 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               532      page-faults               #    0.392 K/sec                  
-        4108624195      cycles                    #    3.025 GHz                    
-           3756294      stalled-cycles-frontend   #    0.09% frontend cycles idle   
-         590067508      stalled-cycles-backend    #   14.36% backend cycles idle    
-       10829290099      instructions              #    2.64  insn per cycle         
-                                                  #    0.05  stalled cycles per insn
-        3474404676      branches                  # 2558.073 M/sec                  
+               531      page-faults               #    0.158 K/sec                  
+       10313063373      cycles                    #    3.068 GHz                    
+          12684881      stalled-cycles-frontend   #    0.12% frontend cycles idle   
+          18848690      stalled-cycles-backend    #    0.18% backend cycles idle    
+       27981126244      instructions              #    2.71  insn per cycle         
+                                                  #    0.00  stalled cycles per insn
+        9024791936      branches                  # 2684.629 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.359282411 seconds time elapsed
+       3.362679231 seconds time elapsed
 
-       1.354698000 seconds user
-       0.003996000 seconds sys
+       3.362226000 seconds user
+       0.000000000 seconds sys
 
 

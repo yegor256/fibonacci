@@ -1,23 +1,23 @@
-7-th Fibonacci number is 21
-Total is 44040192
+32-th Fibonacci number is 3524578
+Total is 3695787900928
 
- Performance counter stats for 'bin/haskell-iterate.bin 7 2097152':
+ Performance counter stats for 'bin/haskell-iterate.bin 32 1048576':
 
-           1187.42 msec task-clock                #    0.999 CPUs utilized          
-                 3      context-switches          #    0.003 K/sec                  
+           1419.86 msec task-clock                #    1.000 CPUs utilized          
+                 4      context-switches          #    0.003 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             86191      page-faults               #    0.073 M/sec                  
-        3832119346      cycles                    #    3.227 GHz                    
-          54445911      stalled-cycles-frontend   #    1.42% frontend cycles idle   
-         922644137      stalled-cycles-backend    #   24.08% backend cycles idle    
-        9534072328      instructions              #    2.49  insn per cycle         
-                                                  #    0.10  stalled cycles per insn
-        1905589824      branches                  # 1604.812 M/sec                  
+             45224      page-faults               #    0.032 M/sec                  
+        4449543095      cycles                    #    3.134 GHz                    
+          46502653      stalled-cycles-frontend   #    1.05% frontend cycles idle   
+         495379727      stalled-cycles-backend    #   11.13% backend cycles idle    
+       11016931320      instructions              #    2.48  insn per cycle         
+                                                  #    0.04  stalled cycles per insn
+        2244125859      branches                  # 1580.527 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.188143079 seconds time elapsed
+       1.420562101 seconds time elapsed
 
-       1.079915000 seconds user
-       0.107993000 seconds sys
+       1.376215000 seconds user
+       0.044027000 seconds sys
 
 

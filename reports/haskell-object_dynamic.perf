@@ -1,23 +1,23 @@
-7-th Fibonacci number is 21
-Total is 11010048
+32-th Fibonacci number is 3524578
+Total is 461973487616
 
- Performance counter stats for 'bin/haskell-object_dynamic.bin 7 524288':
+ Performance counter stats for 'bin/haskell-object_dynamic.bin 32 131072':
 
-           1247.30 msec task-clock                #    0.999 CPUs utilized          
-                 4      context-switches          #    0.003 K/sec                  
+           1120.06 msec task-clock                #    0.999 CPUs utilized          
+                 3      context-switches          #    0.003 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             22183      page-faults               #    0.018 M/sec                  
-        3814524528      cycles                    #    3.058 GHz                    
-          93452132      stalled-cycles-frontend   #    2.45% frontend cycles idle   
-         357996667      stalled-cycles-backend    #    9.39% backend cycles idle    
-        8302660733      instructions              #    2.18  insn per cycle         
-                                                  #    0.04  stalled cycles per insn
-        1832112235      branches                  # 1468.860 M/sec                  
+              6573      page-faults               #    0.006 M/sec                  
+        3445470509      cycles                    #    3.076 GHz                    
+          51736927      stalled-cycles-frontend   #    1.50% frontend cycles idle   
+         180102726      stalled-cycles-backend    #    5.23% backend cycles idle    
+        7806674619      instructions              #    2.27  insn per cycle         
+                                                  #    0.02  stalled cycles per insn
+        1760081137      branches                  # 1571.413 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.248079730 seconds time elapsed
+       1.120877068 seconds time elapsed
 
-       1.207664000 seconds user
-       0.040024000 seconds sys
+       1.104607000 seconds user
+       0.016017000 seconds sys
 
 

@@ -1,24 +1,24 @@
-7-th Fibonacci number is 21
-Total is 2147483648
+32-th Fibonacci number is 3524578
+Total is 0
 
 
- Performance counter stats for 'bin/rust-recursion.bin 7 2147483648':
+ Performance counter stats for 'bin/rust-recursion.bin 32 2147483648':
 
-              0.57 msec task-clock                #    0.630 CPUs utilized          
+             10.00 msec task-clock                #    0.954 CPUs utilized          
                  0      context-switches          #    0.000 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-                80      page-faults               #    0.140 M/sec                  
-           1668613      cycles                    #    2.917 GHz                    
-            240012      stalled-cycles-frontend   #   14.38% frontend cycles idle   
-            496230      stalled-cycles-backend    #   29.74% backend cycles idle    
-           1357214      instructions              #    0.81  insn per cycle         
-                                                  #    0.37  stalled cycles per insn
-            277150      branches                  #  484.583 M/sec                  
+                78      page-faults               #    0.008 M/sec                  
+          30574906      cycles                    #    3.058 GHz                    
+            507271      stalled-cycles-frontend   #    1.66% frontend cycles idle   
+            727792      stalled-cycles-backend    #    2.38% backend cycles idle    
+          67991174      instructions              #    2.22  insn per cycle         
+                                                  #    0.01  stalled cycles per insn
+          14372078      branches                  # 1437.285 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       0.000908031 seconds time elapsed
+       0.010484371 seconds time elapsed
 
-       0.000975000 seconds user
+       0.010639000 seconds user
        0.000000000 seconds sys
 
 

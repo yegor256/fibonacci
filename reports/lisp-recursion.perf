@@ -1,23 +1,23 @@
-7-th Fibonacci number is 21
-Total is 88080384
+32-th Fibonacci number is 3524578
+Total is 902291968
 
- Performance counter stats for 'bin/lisp-recursion.bin 7 4194304':
+ Performance counter stats for 'bin/lisp-recursion.bin 32 256':
 
-           1095.55 msec task-clock                #    1.000 CPUs utilized          
-                 0      context-switches          #    0.000 K/sec                  
+          12708.88 msec task-clock                #    1.000 CPUs utilized          
+                25      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               596      page-faults               #    0.544 K/sec                  
-        3622480928      cycles                    #    3.307 GHz                    
-           4076959      stalled-cycles-frontend   #    0.11% frontend cycles idle   
-          21360851      stalled-cycles-backend    #    0.59% backend cycles idle    
-        8296139789      instructions              #    2.29  insn per cycle         
+               595      page-faults               #    0.047 K/sec                  
+       37669019496      cycles                    #    2.964 GHz                    
+          46123936      stalled-cycles-frontend   #    0.12% frontend cycles idle   
+         196082225      stalled-cycles-backend    #    0.52% backend cycles idle    
+       84840778517      instructions              #    2.25  insn per cycle         
                                                   #    0.00  stalled cycles per insn
-        2535815053      branches                  # 2314.645 M/sec                  
+       26171127596      branches                  # 2059.279 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.095985717 seconds time elapsed
+      12.711543872 seconds time elapsed
 
-       1.092003000 seconds user
-       0.004000000 seconds sys
+      12.704856000 seconds user
+       0.004001000 seconds sys
 
 

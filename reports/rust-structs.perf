@@ -1,24 +1,24 @@
-7-th Fibonacci number is 21
-Total is 22020096
+32-th Fibonacci number is 3524578
+Total is 902291968
 
 
- Performance counter stats for 'bin/rust-structs.bin 7 1048576':
+ Performance counter stats for 'bin/rust-structs.bin 32 256':
 
-           1036.02 msec task-clock                #    0.999 CPUs utilized          
-                 0      context-switches          #    0.000 K/sec                  
+         247598.28 msec task-clock                #    1.000 CPUs utilized          
+               395      context-switches          #    0.002 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-                81      page-faults               #    0.078 K/sec                  
-        3380480772      cycles                    #    3.263 GHz                    
-          19209140      stalled-cycles-frontend   #    0.57% frontend cycles idle   
-        1250768127      stalled-cycles-backend    #   37.00% backend cycles idle    
-        5507542523      instructions              #    1.63  insn per cycle         
-                                                  #    0.23  stalled cycles per insn
-         892812540      branches                  #  861.768 M/sec                  
+                78      page-faults               #    0.000 K/sec                  
+      746615833404      cycles                    #    3.015 GHz                    
+        9939771326      stalled-cycles-frontend   #    1.33% frontend cycles idle   
+       83743023924      stalled-cycles-backend    #   11.22% backend cycles idle    
+      847633143425      instructions              #    1.14  insn per cycle         
+                                                  #    0.10  stalled cycles per insn
+      167230436560      branches                  #  675.410 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.036624967 seconds time elapsed
+     247.632960038 seconds time elapsed
 
-       1.036604000 seconds user
+     247.592527000 seconds user
        0.000000000 seconds sys
 
 

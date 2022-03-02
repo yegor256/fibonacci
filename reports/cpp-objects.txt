@@ -1,9 +1,9 @@
 bin/cpp-objects.bin:
-CPU ticks: 3693351917
-CPU ticks per cycle: 112712
+CPU ticks: 38716218831
+CPU ticks per cycle: 19358109415
 Instructions: 432
-Cycles: 32768
-Total Time: 1.17
-Time per cycle: .0000357055664062
-Ticks: 3693351917
-Ticks per cycle: 112712
+Cycles: 2
+Total Time: 12.87
+Time per cycle: 6.4350000000000000
+Ticks: 38716218831
+Ticks per cycle: 19358109415

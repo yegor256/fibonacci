@@ -1,21 +1,21 @@
-7-th Fibonacci number is 352321536
- Performance counter stats for 'bin/go-recursion.bin 7 16777216':
+32-th Fibonacci number is 902291968
+ Performance counter stats for 'bin/go-recursion.bin 32 256':
 
-           1507.71 msec task-clock                #    1.010 CPUs utilized          
-               216      context-switches          #    0.143 K/sec                  
+           4336.46 msec task-clock                #    1.009 CPUs utilized          
+               495      context-switches          #    0.114 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               212      page-faults               #    0.141 K/sec                  
-        4864929828      cycles                    #    3.227 GHz                    
-          11619850      stalled-cycles-frontend   #    0.24% frontend cycles idle   
-        1718603986      stalled-cycles-backend    #   35.33% backend cycles idle    
-       13209260194      instructions              #    2.72  insn per cycle         
+               207      page-faults               #    0.048 K/sec                  
+       13307764699      cycles                    #    3.069 GHz                    
+          36841754      stalled-cycles-frontend   #    0.28% frontend cycles idle   
+        4346107237      stalled-cycles-backend    #   32.66% backend cycles idle    
+       34298736159      instructions              #    2.58  insn per cycle         
                                                   #    0.13  stalled cycles per insn
-        2769310637      branches                  # 1836.764 M/sec                  
+        7220547136      branches                  # 1665.078 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.493343745 seconds time elapsed
+       4.296508153 seconds time elapsed
 
-       1.481268000 seconds user
-       0.031942000 seconds sys
+       4.305240000 seconds user
+       0.048148000 seconds sys
 
 

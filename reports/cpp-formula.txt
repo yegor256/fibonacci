@@ -1,9 +1,9 @@
 bin/cpp-formula.bin:
-CPU ticks: 6077452788
-CPU ticks per cycle: 90
+CPU ticks: 3597747512
+CPU ticks per cycle: 107
 Instructions: 159
-Cycles: 67108864
-Total Time: 1.77
-Time per cycle: .0000000263750553
-Ticks: 6077452788
-Ticks per cycle: 90
+Cycles: 33554432
+Total Time: 1.17
+Time per cycle: .0000000348687171
+Ticks: 3597747512
+Ticks per cycle: 107

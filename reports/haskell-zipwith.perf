@@ -1,23 +1,23 @@
-7-th Fibonacci number is 21
-Total is 88080384
+32-th Fibonacci number is 3524578
+Total is 14783151603712
 
- Performance counter stats for 'bin/haskell-zipwith.bin 7 4194304':
+ Performance counter stats for 'bin/haskell-zipwith.bin 32 4194304':
 
-           1501.20 msec task-clock                #    0.999 CPUs utilized          
-                 4      context-switches          #    0.003 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-            164270      page-faults               #    0.109 M/sec                  
-        4906574243      cycles                    #    3.268 GHz                    
-          81128503      stalled-cycles-frontend   #    1.65% frontend cycles idle   
-        1657912398      stalled-cycles-backend    #   33.79% backend cycles idle    
-       12379122798      instructions              #    2.52  insn per cycle         
-                                                  #    0.13  stalled cycles per insn
-        2419335510      branches                  # 1611.606 M/sec                  
+           2203.74 msec task-clock                #    0.999 CPUs utilized          
+                 8      context-switches          #    0.004 K/sec                  
+                 1      cpu-migrations            #    0.000 K/sec                  
+            164269      page-faults               #    0.075 M/sec                  
+        5921404970      cycles                    #    2.687 GHz                    
+         103145332      stalled-cycles-frontend   #    1.74% frontend cycles idle   
+        1621599340      stalled-cycles-backend    #   27.39% backend cycles idle    
+       14547090688      instructions              #    2.46  insn per cycle         
+                                                  #    0.11  stalled cycles per insn
+        2752806702      branches                  # 1249.151 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.502068526 seconds time elapsed
+       2.206163248 seconds time elapsed
 
-       1.313510000 seconds user
-       0.188245000 seconds sys
+       1.944277000 seconds user
+       0.260045000 seconds sys
 
 

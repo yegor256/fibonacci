@@ -1,23 +1,23 @@
-7-th Fibonacci number is 21
-Total is 704643072
+32-th Fibonacci number is 3524578
+Total is 902291968
 
- Performance counter stats for 'bin/cpp-recursion.bin 7 33554432':
+ Performance counter stats for 'bin/cpp-recursion.bin 32 256':
 
-           1304.32 msec task-clock                #    1.000 CPUs utilized          
-                 7      context-switches          #    0.005 K/sec                  
+           1939.71 msec task-clock                #    1.000 CPUs utilized          
+                 7      context-switches          #    0.004 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2760      page-faults               #    0.002 M/sec                  
-        4292798288      cycles                    #    3.291 GHz                    
-           5083336      stalled-cycles-frontend   #    0.12% frontend cycles idle   
-          79318690      stalled-cycles-backend    #    1.85% backend cycles idle    
-       14630849098      instructions              #    3.41  insn per cycle         
-                                                  #    0.01  stalled cycles per insn
-        2827208444      branches                  # 2167.576 M/sec                  
+              2760      page-faults               #    0.001 M/sec                  
+        6103548331      cycles                    #    3.147 GHz                    
+          32796201      stalled-cycles-frontend   #    0.54% frontend cycles idle   
+          34254089      stalled-cycles-backend    #    0.56% backend cycles idle    
+       18719729858      instructions              #    3.07  insn per cycle         
+                                                  #    0.00  stalled cycles per insn
+        3617825906      branches                  # 1865.136 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.304916239 seconds time elapsed
+       1.940275101 seconds time elapsed
 
-       1.305109000 seconds user
+       1.940201000 seconds user
        0.000000000 seconds sys
 
 
