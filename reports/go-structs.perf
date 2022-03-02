@@ -1,21 +1,21 @@
-32-th Fibonacci number is 7049156
- Performance counter stats for 'bin/go-structs.bin 32 2':
+32-th Fibonacci number is 14098312
+ Performance counter stats for 'bin/go-structs.bin 32 4':
 
-          12781.12 msec task-clock                #    1.123 CPUs utilized          
-             14695      context-switches          #    0.001 M/sec                  
-                18      cpu-migrations            #    0.001 K/sec                  
-              7059      page-faults               #    0.552 K/sec                  
-       36033477477      cycles                    #    2.819 GHz                    
-        2998243028      stalled-cycles-frontend   #    8.32% frontend cycles idle   
-        7323853823      stalled-cycles-backend    #   20.33% backend cycles idle    
-       58229140342      instructions              #    1.62  insn per cycle         
-                                                  #    0.13  stalled cycles per insn
-       11521062212      branches                  #  901.413 M/sec                  
+          25888.67 msec task-clock                #    1.131 CPUs utilized          
+             30503      context-switches          #    0.001 M/sec                  
+                19      cpu-migrations            #    0.001 K/sec                  
+             11664      page-faults               #    0.451 K/sec                  
+       72645009583      cycles                    #    2.806 GHz                    
+        5858930789      stalled-cycles-frontend   #    8.07% frontend cycles idle   
+       14387160920      stalled-cycles-backend    #   19.80% backend cycles idle    
+      116552796404      instructions              #    1.60  insn per cycle         
+                                                  #    0.12  stalled cycles per insn
+       23057096608      branches                  #  890.625 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-      11.379431645 seconds time elapsed
+      22.885467705 seconds time elapsed
 
-      11.761911000 seconds user
-       1.315900000 seconds sys
+      23.571800000 seconds user
+       2.916088000 seconds sys
 
 

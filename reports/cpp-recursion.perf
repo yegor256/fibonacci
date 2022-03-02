@@ -3,21 +3,21 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-recursion.bin 32 256':
 
-           1939.71 msec task-clock                #    1.000 CPUs utilized          
-                 7      context-switches          #    0.004 K/sec                  
+           2059.65 msec task-clock                #    1.000 CPUs utilized          
+                 8      context-switches          #    0.004 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2760      page-faults               #    0.001 M/sec                  
-        6103548331      cycles                    #    3.147 GHz                    
-          32796201      stalled-cycles-frontend   #    0.54% frontend cycles idle   
-          34254089      stalled-cycles-backend    #    0.56% backend cycles idle    
-       18719729858      instructions              #    3.07  insn per cycle         
+              2762      page-faults               #    0.001 M/sec                  
+        6275261634      cycles                    #    3.047 GHz                    
+          36205116      stalled-cycles-frontend   #    0.58% frontend cycles idle   
+          21607227      stalled-cycles-backend    #    0.34% backend cycles idle    
+       18720004304      instructions              #    2.98  insn per cycle         
                                                   #    0.00  stalled cycles per insn
-        3617825906      branches                  # 1865.136 M/sec                  
+        3617877051      branches                  # 1756.553 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.940275101 seconds time elapsed
+       2.060588120 seconds time elapsed
 
-       1.940201000 seconds user
-       0.000000000 seconds sys
+       2.056432000 seconds user
+       0.004002000 seconds sys
 
 

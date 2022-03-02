@@ -1,1 +1,1 @@
-<program> 	<file>cpp/stack_objects.cpp</file> 	<name>cpp-stack_objects</name> 	<instructions>82</instructions> 	<cycles>256</cycles> 	<time>3.96</time> 	<time_per_cycle>.0154687500000000</time_per_cycle> 	<ticks>12368050013</ticks> 	<ticks_per_cycle>48312695</ticks_per_cycle> 	</program>
+<program> 	<file>cpp/stack_objects.cpp</file> 	<name>cpp-stack_objects</name> 	<instructions>82</instructions> 	<cycles>256</cycles> 	<time>4.27</time> 	<time_per_cycle>.0166796875000000</time_per_cycle> 	<ticks>12757472737</ticks> 	<ticks_per_cycle>49833877</ticks_per_cycle> 	</program>

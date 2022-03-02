@@ -3,21 +3,21 @@ Total is 14783151603712
 
  Performance counter stats for 'bin/haskell-zipwith.bin 32 4194304':
 
-           2203.74 msec task-clock                #    0.999 CPUs utilized          
-                 8      context-switches          #    0.004 K/sec                  
-                 1      cpu-migrations            #    0.000 K/sec                  
-            164269      page-faults               #    0.075 M/sec                  
-        5921404970      cycles                    #    2.687 GHz                    
-         103145332      stalled-cycles-frontend   #    1.74% frontend cycles idle   
-        1621599340      stalled-cycles-backend    #   27.39% backend cycles idle    
-       14547090688      instructions              #    2.46  insn per cycle         
-                                                  #    0.11  stalled cycles per insn
-        2752806702      branches                  # 1249.151 M/sec                  
+           2037.12 msec task-clock                #    1.000 CPUs utilized          
+                 2      context-switches          #    0.001 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+            164264      page-faults               #    0.081 M/sec                  
+        5658695678      cycles                    #    2.778 GHz                    
+          87296524      stalled-cycles-frontend   #    1.54% frontend cycles idle   
+        1847916982      stalled-cycles-backend    #   32.66% backend cycles idle    
+       14546772972      instructions              #    2.57  insn per cycle         
+                                                  #    0.13  stalled cycles per insn
+        2752739296      branches                  # 1351.293 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       2.206163248 seconds time elapsed
+       2.038038125 seconds time elapsed
 
-       1.944277000 seconds user
-       0.260045000 seconds sys
+       1.809589000 seconds user
+       0.228292000 seconds sys
 
 

@@ -1,9 +1,9 @@
 bin/haskell-tail_recursion.bin:
-CPU ticks: 4505448139
-CPU ticks per cycle: 8593
+CPU ticks: 4633473689
+CPU ticks per cycle: 8837
 Instructions: 1204
 Cycles: 524288
-Total Time: 1.45
-Time per cycle: .0000027656555175
-Ticks: 4505448139
-Ticks per cycle: 8593
+Total Time: 1.48
+Time per cycle: .0000028228759765
+Ticks: 4633473689
+Ticks per cycle: 8837

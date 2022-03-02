@@ -1,21 +1,21 @@
 32-th Fibonacci number is 268435456
  Performance counter stats for 'bin/go-fast.bin 32 134217728':
 
-           1856.12 msec task-clock                #    1.010 CPUs utilized          
-               253      context-switches          #    0.136 K/sec                  
-                 1      cpu-migrations            #    0.001 K/sec                  
-               208      page-faults               #    0.112 K/sec                  
-        5861502144      cycles                    #    3.158 GHz                    
-         160869300      stalled-cycles-frontend   #    2.74% frontend cycles idle   
-          16599333      stalled-cycles-backend    #    0.28% backend cycles idle    
-       26984224575      instructions              #    4.60  insn per cycle         
+           2325.83 msec task-clock                #    1.011 CPUs utilized          
+               295      context-switches          #    0.127 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               208      page-faults               #    0.089 K/sec                  
+        6418624720      cycles                    #    2.760 GHz                    
+         238983091      stalled-cycles-frontend   #    3.72% frontend cycles idle   
+          14786916      stalled-cycles-backend    #    0.23% backend cycles idle    
+       26985206038      instructions              #    4.20  insn per cycle         
                                                   #    0.01  stalled cycles per insn
-        4833067389      branches                  # 2603.859 M/sec                  
+        4833251450      branches                  # 2078.074 M/sec                  
                  0      branch-misses             #    0.00% of all branches        
 
-       1.838514730 seconds time elapsed
+       2.300454502 seconds time elapsed
 
-       1.848542000 seconds user
-       0.016109000 seconds sys
+       2.312373000 seconds user
+       0.024171000 seconds sys
 
 

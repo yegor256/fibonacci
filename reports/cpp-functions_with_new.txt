@@ -1,9 +1,9 @@
 bin/cpp-functions_with_new.bin:
-CPU ticks: 49357181934
-CPU ticks per cycle: 12339295483
+CPU ticks: 47995908834
+CPU ticks per cycle: 11998977208
 Instructions: 199
 Cycles: 4
-Total Time: 15.95
-Time per cycle: 3.9875000000000000
-Ticks: 49357181934
-Ticks per cycle: 12339295483
+Total Time: 15.52
+Time per cycle: 3.8800000000000000
+Ticks: 47995908834
+Ticks per cycle: 11998977208
