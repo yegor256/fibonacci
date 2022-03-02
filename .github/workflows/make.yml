@@ -76,7 +76,7 @@ jobs:
           clean: false
       - run: make clean
       - run: make WANTED=256 INPUT=16 index.html
-      - run: mkdir gh-pages && mv index.html gh-pages/sixteen.html
+      - run: rm -rf gh-pages && mkdir gh-pages && mv index.html gh-pages/sixteen.html
       - uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages
