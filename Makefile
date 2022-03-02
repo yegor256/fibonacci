@@ -199,7 +199,7 @@ reports/%.txt: bin/%.bin asm/%.asm | reports
 	else
 		sudo perf stat "$<" $(INPUT) $${cycles} > "${@:.txt=.perf}" 2>&1
 	fi
-	ticks=$$(cat "${@:.txt=.perf}" | sed 's/ \+/ /g' | grep ' cycles #' | cut -f 2 -d ' ')
+	ticks=$$(cat "${@:.txt=.perf}" | sed 's/ \+/ /g' | grep ' instructions #' | cut -f 2 -d ' ')
 	if [[ ! "$${ticks}" =~ ^[0-9.]+$$ ]]; then
 		ticks=1
 	fi
