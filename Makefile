@@ -33,6 +33,8 @@ GO = go
 GOFLAGS = -gcflags '-N -l'
 RUSTC = rustc
 RUSTFLAGS = -C opt-level=0
+FPC = fpc
+FPCFLAGS = -O-
 HC = ghc
 HCFLAGS = -dynamic -Wall -Werror -O0
 HCLIBDIR = haskell/Mainlib
@@ -43,12 +45,14 @@ SAXON = "/usr/local/opt/Saxon.jar"
 DIRS = asm bin reports
 CPPS = $(wildcard cpp/*.cpp)
 RUSTS = $(wildcard rust/*.rs)
+PASCALS = $(wildcard pascal/*.pp)
 LISPS = $(wildcard lisp/*.lisp)
 HASKELLS = $(wildcard haskell/*.hs)
 JAVAS = $(wildcard java/*.java)
+# Eiffel doesn't work, this may help: https://github.com/eiffel-docker/eiffel/issues/3
 # EIFFELS = eiffel/application.e
 GOS = $(wildcard go/cmd/*/main.go)
-ASMS = $(subst eiffel/,asm/eiffel-,$(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm} ${JAVAS:.java=.asm} ${EIFFELS:.e=.asm})))))))
+ASMS = $(subst pascal/,asm/pascal-,$(subst eiffel/,asm/eiffel-,$(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm} ${JAVAS:.java=.asm} ${EIFFELS:.e=.asm} ${PASCALS:.pp=.asm}))))))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -93,6 +97,7 @@ env:
 	$(RUSTC) --version
 	$(MAKE) -version
 	$(HC) --version
+	$(FPC) -version
 	cppcheck --version
 	cpplint --version
 	javac --version
@@ -116,6 +121,9 @@ asm/rust-%.asm: rust/%.rs | asm
 	$(RUSTC) $(RUSTFLAGS) --emit=asm -o "$@" "$<"
 
 asm/lisp-%.asm: lisp/%.lisp | asm
+	echo " no asm here" > "$@"
+
+asm/pascal-%.asm: pascal/%.pp | asm
 	echo " no asm here" > "$@"
 
 asm/eiffel-%.asm: eiffel/%.e | asm
@@ -147,6 +155,9 @@ bin/eiffel-%.bin: eiffel/%.e | bin
 	ec "$<" -batch
 	mv application "$@"
 	chmod a+x "$@"
+
+bin/pascal-%.bin: pascal/%.pp | bin
+	fpc "$<" "-FEbin" "-o$@"
 
 bin/go-%.bin: go/cmd/%/main.go | bin
 	cd go

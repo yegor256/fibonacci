@@ -42,6 +42,7 @@ jobs:
       - run: sudo apt-get install -y bc
       - run: sudo apt-get install -y ghc
       - run: sudo apt-get install -y sbcl
+      - run: sudo apt-get install -y fpc
       - uses: actions/checkout@v2
       - run: make clean
       - run: make env
