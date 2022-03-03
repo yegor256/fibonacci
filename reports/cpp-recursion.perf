@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-recursion.bin 32 256':
 
-       5446.631753      task-clock (msec)         #    0.999 CPUs utilized          
-               460      context-switches          #    0.084 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-             2,748      page-faults               #    0.505 K/sec                  
-    19,762,863,738      cycles                    #    3.628 GHz                      (83.34%)
-     6,488,127,180      stalled-cycles-frontend   #   32.83% frontend cycles idle     (83.33%)
-     1,119,422,471      stalled-cycles-backend    #    5.66% backend cycles idle      (66.68%)
-    29,810,597,352      instructions              #    1.51  insn per cycle         
+       5519.369124      task-clock (msec)         #    0.999 CPUs utilized          
+               467      context-switches          #    0.085 K/sec                  
+                 5      cpu-migrations            #    0.001 K/sec                  
+             2,746      page-faults               #    0.498 K/sec                  
+    19,901,417,300      cycles                    #    3.606 GHz                      (83.35%)
+     6,647,694,300      stalled-cycles-frontend   #   33.40% frontend cycles idle     (83.34%)
+     1,403,255,934      stalled-cycles-backend    #    7.05% backend cycles idle      (66.70%)
+    29,828,694,209      instructions              #    1.50  insn per cycle         
                                                   #    0.22  stalled cycles per insn  (83.35%)
-     6,323,803,151      branches                  # 1161.048 M/sec                    (83.33%)
-       108,168,212      branch-misses             #    1.71% of all branches          (83.31%)
+     6,327,811,490      branches                  # 1146.474 M/sec                    (83.33%)
+       108,314,803      branch-misses             #    1.71% of all branches          (83.28%)
 
-       5.449937487 seconds time elapsed
+       5.524120314 seconds time elapsed
 

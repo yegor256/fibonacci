@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/java-Recursion.bin 32 256':
 
-       3437.061314      task-clock (msec)         #    0.999 CPUs utilized          
-               291      context-switches          #    0.085 K/sec                  
+       3466.498969      task-clock (msec)         #    0.999 CPUs utilized          
+               291      context-switches          #    0.084 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               428      page-faults               #    0.125 K/sec                  
-    12,477,604,796      cycles                    #    3.630 GHz                      (83.26%)
-       360,173,938      stalled-cycles-frontend   #    2.89% frontend cycles idle     (83.36%)
-       412,583,143      stalled-cycles-backend    #    3.31% backend cycles idle      (66.74%)
-    28,878,283,135      instructions              #    2.31  insn per cycle         
-                                                  #    0.01  stalled cycles per insn  (83.38%)
-     9,019,758,912      branches                  # 2624.265 M/sec                    (83.36%)
-        25,922,310      branch-misses             #    0.29% of all branches          (83.28%)
+               430      page-faults               #    0.124 K/sec                  
+    12,559,945,129      cycles                    #    3.623 GHz                      (83.29%)
+       396,083,076      stalled-cycles-frontend   #    3.15% frontend cycles idle     (83.27%)
+       229,471,495      stalled-cycles-backend    #    1.83% backend cycles idle      (66.70%)
+    28,878,409,409      instructions              #    2.30  insn per cycle         
+                                                  #    0.01  stalled cycles per insn  (83.41%)
+     9,018,435,788      branches                  # 2601.598 M/sec                    (83.39%)
+        30,400,881      branch-misses             #    0.34% of all branches          (83.34%)
 
-       3.439364010 seconds time elapsed
+       3.468871826 seconds time elapsed
 

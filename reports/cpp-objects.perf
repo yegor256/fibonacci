@@ -3,17 +3,17 @@ Total is 3524578
 
  Performance counter stats for 'bin/cpp-objects.bin 32 1':
 
-      22829.009292      task-clock (msec)         #    0.999 CPUs utilized          
-             1,923      context-switches          #    0.084 K/sec                  
+      23051.281814      task-clock (msec)         #    0.999 CPUs utilized          
+             1,945      context-switches          #    0.084 K/sec                  
                  2      cpu-migrations            #    0.000 K/sec                  
-             6,740      page-faults               #    0.295 K/sec                  
-    82,829,501,287      cycles                    #    3.628 GHz                      (83.32%)
-    25,057,085,391      stalled-cycles-frontend   #   30.25% frontend cycles idle     (83.33%)
-     5,987,165,704      stalled-cycles-backend    #    7.23% backend cycles idle      (66.66%)
-   176,950,706,148      instructions              #    2.14  insn per cycle         
-                                                  #    0.14  stalled cycles per insn  (83.32%)
-    40,526,456,046      branches                  # 1775.217 M/sec                    (83.34%)
-        24,836,011      branch-misses             #    0.06% of all branches          (83.35%)
+             6,739      page-faults               #    0.292 K/sec                  
+    83,560,625,987      cycles                    #    3.625 GHz                      (83.34%)
+    25,786,745,586      stalled-cycles-frontend   #   30.86% frontend cycles idle     (83.33%)
+     5,455,542,091      stalled-cycles-backend    #    6.53% backend cycles idle      (66.68%)
+   176,990,834,412      instructions              #    2.12  insn per cycle         
+                                                  #    0.15  stalled cycles per insn  (83.34%)
+    40,524,937,569      branches                  # 1758.034 M/sec                    (83.33%)
+        22,527,433      branch-misses             #    0.06% of all branches          (83.33%)
 
-      22.845273908 seconds time elapsed
+      23.068455142 seconds time elapsed
 

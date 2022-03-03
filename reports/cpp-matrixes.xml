@@ -1,1 +1,1 @@
-<program> 	<file>cpp/matrixes.cpp</file> 	<name>cpp-matrixes</name> 	<instructions>463</instructions> 	<cycles>262144</cycles> 	<time>1.10</time> 	<time_per_cycle>.0000041961669921</time_per_cycle> 	<ticks>1</ticks> 	<ticks_per_cycle>0</ticks_per_cycle> 	</program>
+<program> 	<file>cpp/matrixes.cpp</file> 	<name>cpp-matrixes</name> 	<instructions>463</instructions> 	<cycles>262144</cycles> 	<time>1.07</time> 	<time_per_cycle>.0000040817260742</time_per_cycle> 	<ticks>3897638986</ticks> 	<ticks_per_cycle>14868</ticks_per_cycle> 	</program>

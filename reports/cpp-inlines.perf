@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-inlines.bin 32 256':
 
-      14591.863432      task-clock (msec)         #    0.999 CPUs utilized          
-             1,224      context-switches          #    0.084 K/sec                  
-                 6      cpu-migrations            #    0.000 K/sec                  
-             2,747      page-faults               #    0.188 K/sec                  
-    52,328,792,867      cycles                    #    3.586 GHz                      (83.32%)
-     9,817,394,966      stalled-cycles-frontend   #   18.76% frontend cycles idle     (83.33%)
-     3,171,249,014      stalled-cycles-backend    #    6.06% backend cycles idle      (66.68%)
-    81,249,223,783      instructions              #    1.55  insn per cycle         
-                                                  #    0.12  stalled cycles per insn  (83.34%)
-    16,256,582,826      branches                  # 1114.085 M/sec                    (83.35%)
-       316,984,002      branch-misses             #    1.95% of all branches          (83.33%)
+      14444.657370      task-clock (msec)         #    0.999 CPUs utilized          
+             1,210      context-switches          #    0.084 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             2,746      page-faults               #    0.190 K/sec                  
+    52,422,016,536      cycles                    #    3.629 GHz                      (83.33%)
+     9,919,614,743      stalled-cycles-frontend   #   18.92% frontend cycles idle     (83.34%)
+     3,060,503,693      stalled-cycles-backend    #    5.84% backend cycles idle      (66.68%)
+    81,265,027,378      instructions              #    1.55  insn per cycle         
+                                                  #    0.12  stalled cycles per insn  (83.35%)
+    16,251,093,305      branches                  # 1125.059 M/sec                    (83.34%)
+       317,337,410      branch-misses             #    1.95% of all branches          (83.32%)
 
-      14.601518099 seconds time elapsed
+      14.453763903 seconds time elapsed
 

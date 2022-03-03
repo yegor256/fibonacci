@@ -1,1 +1,1 @@
-<program> 	<file>haskell/adt.hi haskell/adt.hs</file> 	<name>haskell-adt</name> 	<instructions>1314</instructions> 	<cycles>256</cycles> 	<time>97.27</time> 	<time_per_cycle>.3799609375000000</time_per_cycle> 	<ticks>1</ticks> 	<ticks_per_cycle>0</ticks_per_cycle> 	</program>
+<program> 	<file>haskell/adt.hi haskell/adt.hs</file> 	<name>haskell-adt</name> 	<instructions>1314</instructions> 	<cycles>256</cycles> 	<time>90.14</time> 	<time_per_cycle>.3521093750000000</time_per_cycle> 	<ticks>326260329666</ticks> 	<ticks_per_cycle>1274454412</ticks_per_cycle> 	</program>

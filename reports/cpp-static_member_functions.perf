@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-static_member_functions.bin 32 256':
 
-      14635.491034      task-clock (msec)         #    0.999 CPUs utilized          
-             1,228      context-switches          #    0.084 K/sec                  
+      14638.296116      task-clock (msec)         #    0.999 CPUs utilized          
+             1,227      context-switches          #    0.084 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             2,743      page-faults               #    0.187 K/sec                  
-    53,179,488,933      cycles                    #    3.634 GHz                      (83.34%)
-     7,722,562,193      stalled-cycles-frontend   #   14.52% frontend cycles idle     (83.33%)
-     4,168,010,126      stalled-cycles-backend    #    7.84% backend cycles idle      (66.68%)
-    81,267,734,235      instructions              #    1.53  insn per cycle         
-                                                  #    0.10  stalled cycles per insn  (83.35%)
-    16,251,344,575      branches                  # 1110.407 M/sec                    (83.33%)
-       296,555,307      branch-misses             #    1.82% of all branches          (83.31%)
+             2,742      page-faults               #    0.187 K/sec                  
+    53,165,430,484      cycles                    #    3.632 GHz                      (83.32%)
+     7,703,463,424      stalled-cycles-frontend   #   14.49% frontend cycles idle     (83.33%)
+     3,191,467,674      stalled-cycles-backend    #    6.00% backend cycles idle      (66.68%)
+    81,267,762,131      instructions              #    1.53  insn per cycle         
+                                                  #    0.09  stalled cycles per insn  (83.35%)
+    16,251,271,380      branches                  # 1110.189 M/sec                    (83.34%)
+       296,506,396      branch-misses             #    1.82% of all branches          (83.33%)
 
-      14.644162995 seconds time elapsed
+      14.646574104 seconds time elapsed
 

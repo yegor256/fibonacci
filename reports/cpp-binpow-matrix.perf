@@ -3,17 +3,17 @@ Total is -62914560
 
  Performance counter stats for 'bin/cpp-binpow-matrix.bin 32 2097152':
 
-       1735.455852      task-clock (msec)         #    0.999 CPUs utilized          
-               149      context-switches          #    0.086 K/sec                  
+       1730.548838      task-clock (msec)         #    0.999 CPUs utilized          
+               148      context-switches          #    0.086 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             2,746      page-faults               #    0.002 M/sec                  
-     6,289,281,512      cycles                    #    3.624 GHz                      (83.17%)
-     2,885,472,417      stalled-cycles-frontend   #   45.88% frontend cycles idle     (83.28%)
-       203,571,412      stalled-cycles-backend    #    3.24% backend cycles idle      (66.83%)
-    10,561,853,246      instructions              #    1.68  insn per cycle         
-                                                  #    0.27  stalled cycles per insn  (83.43%)
-     1,569,960,308      branches                  #  904.639 M/sec                    (83.41%)
-         2,167,806      branch-misses             #    0.14% of all branches          (83.30%)
+             2,748      page-faults               #    0.002 M/sec                  
+     6,261,008,211      cycles                    #    3.618 GHz                      (83.30%)
+     2,848,711,606      stalled-cycles-frontend   #   45.50% frontend cycles idle     (83.36%)
+       267,056,410      stalled-cycles-backend    #    4.27% backend cycles idle      (66.74%)
+    10,560,759,974      instructions              #    1.69  insn per cycle         
+                                                  #    0.27  stalled cycles per insn  (83.38%)
+     1,570,206,072      branches                  #  907.346 M/sec                    (83.36%)
+         2,151,081      branch-misses             #    0.14% of all branches          (83.24%)
 
-       1.736796123 seconds time elapsed
+       1.731928558 seconds time elapsed
 

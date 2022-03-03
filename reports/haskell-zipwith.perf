@@ -3,17 +3,17 @@ Total is 7391575801856
 
  Performance counter stats for 'bin/haskell-zipwith.bin 32 2097152':
 
-       1025.505567      task-clock (msec)         #    0.999 CPUs utilized          
-                85      context-switches          #    0.083 K/sec                  
+       1022.542554      task-clock (msec)         #    0.999 CPUs utilized          
+                86      context-switches          #    0.084 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-            81,078      page-faults               #    0.079 M/sec                  
-     3,691,245,380      cycles                    #    3.599 GHz                      (83.24%)
-       973,975,500      stalled-cycles-frontend   #   26.39% frontend cycles idle     (83.23%)
-       814,442,512      stalled-cycles-backend    #   22.06% backend cycles idle      (66.48%)
-     7,354,270,542      instructions              #    1.99  insn per cycle         
-                                                  #    0.13  stalled cycles per insn  (83.21%)
-     1,450,699,280      branches                  # 1414.619 M/sec                    (83.58%)
-         1,358,368      branch-misses             #    0.09% of all branches          (83.47%)
+            81,075      page-faults               #    0.079 M/sec                  
+     3,692,502,340      cycles                    #    3.611 GHz                      (83.21%)
+       968,046,508      stalled-cycles-frontend   #   26.22% frontend cycles idle     (83.19%)
+       517,114,891      stalled-cycles-backend    #   14.00% backend cycles idle      (66.57%)
+     7,341,660,931      instructions              #    1.99  insn per cycle         
+                                                  #    0.13  stalled cycles per insn  (83.39%)
+     1,445,969,526      branches                  # 1414.092 M/sec                    (83.58%)
+         1,817,313      branch-misses             #    0.13% of all branches          (83.45%)
 
-       1.026854775 seconds time elapsed
+       1.023760856 seconds time elapsed
 

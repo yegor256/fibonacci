@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/java-Functions.bin 32 256':
 
-       8244.767078      task-clock (msec)         #    0.999 CPUs utilized          
-               689      context-switches          #    0.084 K/sec                  
+       8244.233859      task-clock (msec)         #    0.999 CPUs utilized          
+               692      context-switches          #    0.084 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               438      page-faults               #    0.053 K/sec                  
-    29,905,404,119      cycles                    #    3.627 GHz                      (83.32%)
-     3,022,998,775      stalled-cycles-frontend   #   10.11% frontend cycles idle     (83.32%)
-     2,338,459,288      stalled-cycles-backend    #    7.82% backend cycles idle      (66.65%)
-    55,049,196,534      instructions              #    1.84  insn per cycle         
-                                                  #    0.05  stalled cycles per insn  (83.32%)
-    16,242,738,601      branches                  # 1970.066 M/sec                    (83.36%)
-       312,029,018      branch-misses             #    1.92% of all branches          (83.37%)
+               427      page-faults               #    0.052 K/sec                  
+    29,924,558,628      cycles                    #    3.630 GHz                      (83.33%)
+     3,036,663,588      stalled-cycles-frontend   #   10.15% frontend cycles idle     (83.31%)
+     3,595,416,433      stalled-cycles-backend    #   12.01% backend cycles idle      (66.65%)
+    55,057,012,311      instructions              #    1.84  insn per cycle         
+                                                  #    0.07  stalled cycles per insn  (83.33%)
+    16,240,243,400      branches                  # 1969.891 M/sec                    (83.36%)
+       311,972,495      branch-misses             #    1.92% of all branches          (83.35%)
 
-       8.249939258 seconds time elapsed
+       8.249279740 seconds time elapsed
 

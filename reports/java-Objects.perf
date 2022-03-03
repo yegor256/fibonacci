@@ -3,17 +3,17 @@ Total is 28196624
 
  Performance counter stats for 'bin/java-Objects.bin 32 8':
 
-      14785.470192      task-clock (msec)         #    0.999 CPUs utilized          
-             1,238      context-switches          #    0.084 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-            13,497      page-faults               #    0.913 K/sec                  
-    53,642,668,912      cycles                    #    3.628 GHz                      (83.34%)
-    14,294,098,576      stalled-cycles-frontend   #   26.65% frontend cycles idle     (83.32%)
-     8,492,876,417      stalled-cycles-backend    #   15.83% backend cycles idle      (66.69%)
-    78,819,672,459      instructions              #    1.47  insn per cycle         
-                                                  #    0.18  stalled cycles per insn  (83.37%)
-    18,687,032,567      branches                  # 1263.878 M/sec                    (83.34%)
-       785,152,913      branch-misses             #    4.20% of all branches          (83.32%)
+      15071.263360      task-clock (msec)         #    0.999 CPUs utilized          
+             1,280      context-switches          #    0.085 K/sec                  
+                 5      cpu-migrations            #    0.000 K/sec                  
+            13,497      page-faults               #    0.896 K/sec                  
+    53,961,394,879      cycles                    #    3.580 GHz                      (83.30%)
+    14,729,856,698      stalled-cycles-frontend   #   27.30% frontend cycles idle     (83.34%)
+    10,102,689,020      stalled-cycles-backend    #   18.72% backend cycles idle      (66.66%)
+    78,802,788,561      instructions              #    1.46  insn per cycle         
+                                                  #    0.19  stalled cycles per insn  (83.33%)
+    18,694,837,806      branches                  # 1240.429 M/sec                    (83.37%)
+       784,792,387      branch-misses             #    4.20% of all branches          (83.34%)
 
-      14.796572303 seconds time elapsed
+      15.084548061 seconds time elapsed
 

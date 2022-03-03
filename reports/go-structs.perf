@@ -1,17 +1,17 @@
 32-th Fibonacci number is 7049156
  Performance counter stats for 'bin/go-structs.bin 32 2':
 
-      13483.189825      task-clock (msec)         #    1.063 CPUs utilized          
-            30,612      context-switches          #    0.002 M/sec                  
-               133      cpu-migrations            #    0.010 K/sec                  
-            15,435      page-faults               #    0.001 M/sec                  
-    37,057,033,766      cycles                    #    2.748 GHz                      (83.15%)
-    12,075,162,578      stalled-cycles-frontend   #   32.59% frontend cycles idle     (83.35%)
-     5,094,039,142      stalled-cycles-backend    #   13.75% backend cycles idle      (66.57%)
-    58,554,413,201      instructions              #    1.58  insn per cycle         
-                                                  #    0.21  stalled cycles per insn  (83.46%)
-    11,551,913,230      branches                  #  856.764 M/sec                    (83.53%)
-       341,904,521      branch-misses             #    2.96% of all branches          (83.40%)
+      13521.380451      task-clock (msec)         #    1.064 CPUs utilized          
+            31,502      context-switches          #    0.002 M/sec                  
+               139      cpu-migrations            #    0.010 K/sec                  
+            15,971      page-faults               #    0.001 M/sec                  
+    37,250,165,812      cycles                    #    2.755 GHz                      (83.35%)
+    12,227,760,482      stalled-cycles-frontend   #   32.83% frontend cycles idle     (83.32%)
+     5,038,704,897      stalled-cycles-backend    #   13.53% backend cycles idle      (66.57%)
+    58,569,663,860      instructions              #    1.57  insn per cycle         
+                                                  #    0.21  stalled cycles per insn  (83.47%)
+    11,596,083,756      branches                  #  857.611 M/sec                    (83.56%)
+       344,996,056      branch-misses             #    2.98% of all branches          (83.20%)
 
-      12.689973478 seconds time elapsed
+      12.708573950 seconds time elapsed
 
