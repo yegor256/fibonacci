@@ -3,17 +3,17 @@ Total is -1191428096
 
  Performance counter stats for 'bin/cpp-interpreter.bin 32 8192':
 
-       1847.422961      task-clock (msec)         #    0.999 CPUs utilized          
-               159      context-switches          #    0.086 K/sec                  
-                 1      cpu-migrations            #    0.001 K/sec                  
-             2,830      page-faults               #    0.002 M/sec                  
-     6,624,163,381      cycles                    #    3.586 GHz                      (83.35%)
-     2,006,378,817      stalled-cycles-frontend   #   30.29% frontend cycles idle     (83.34%)
-       398,322,026      stalled-cycles-backend    #    6.01% backend cycles idle      (66.67%)
-    10,804,709,273      instructions              #    1.63  insn per cycle         
-                                                  #    0.19  stalled cycles per insn  (83.33%)
-     2,256,263,347      branches                  # 1221.303 M/sec                    (83.33%)
-        36,156,332      branch-misses             #    1.60% of all branches          (83.31%)
+       1836.128974      task-clock (msec)         #    0.999 CPUs utilized          
+               157      context-switches          #    0.086 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             2,831      page-faults               #    0.002 M/sec                  
+     6,630,171,268      cycles                    #    3.611 GHz                      (83.24%)
+     2,016,697,439      stalled-cycles-frontend   #   30.42% frontend cycles idle     (83.19%)
+       283,958,406      stalled-cycles-backend    #    4.28% backend cycles idle      (66.66%)
+    10,799,269,392      instructions              #    1.63  insn per cycle         
+                                                  #    0.19  stalled cycles per insn  (83.41%)
+     2,255,383,091      branches                  # 1228.336 M/sec                    (83.44%)
+        35,226,633      branch-misses             #    1.56% of all branches          (83.47%)
 
-       1.849170528 seconds time elapsed
+       1.837768649 seconds time elapsed
 

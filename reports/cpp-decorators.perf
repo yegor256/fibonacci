@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-decorators.bin 32 256':
 
-       6360.905787      task-clock (msec)         #    0.999 CPUs utilized          
-               542      context-switches          #    0.085 K/sec                  
+       6363.485782      task-clock (msec)         #    0.999 CPUs utilized          
+               537      context-switches          #    0.084 K/sec                  
                  1      cpu-migrations            #    0.000 K/sec                  
-             2,784      page-faults               #    0.438 K/sec                  
-    23,045,533,913      cycles                    #    3.623 GHz                      (83.29%)
-     9,862,347,358      stalled-cycles-frontend   #   42.80% frontend cycles idle     (83.35%)
-     2,170,858,596      stalled-cycles-backend    #    9.42% backend cycles idle      (66.69%)
-    24,415,984,283      instructions              #    1.06  insn per cycle         
-                                                  #    0.40  stalled cycles per insn  (83.35%)
-     3,620,478,125      branches                  #  569.177 M/sec                    (83.35%)
-       234,247,525      branch-misses             #    6.47% of all branches          (83.32%)
+             2,786      page-faults               #    0.438 K/sec                  
+    23,087,186,683      cycles                    #    3.628 GHz                      (83.29%)
+     9,907,662,570      stalled-cycles-frontend   #   42.91% frontend cycles idle     (83.32%)
+     2,217,596,863      stalled-cycles-backend    #    9.61% backend cycles idle      (66.71%)
+    24,405,061,299      instructions              #    1.06  insn per cycle         
+                                                  #    0.41  stalled cycles per insn  (83.37%)
+     3,621,437,902      branches                  #  569.097 M/sec                    (83.35%)
+       232,436,495      branch-misses             #    6.42% of all branches          (83.32%)
 
-       6.365330843 seconds time elapsed
+       6.367794604 seconds time elapsed
 

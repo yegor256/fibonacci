@@ -1,17 +1,17 @@
 32-th Fibonacci number is -1006632960
  Performance counter stats for 'bin/go-fast.bin 32 33554432':
 
-       1064.887109      task-clock (msec)         #    1.001 CPUs utilized          
-               260      context-switches          #    0.244 K/sec                  
-                 1      cpu-migrations            #    0.001 K/sec                  
+       1067.118433      task-clock (msec)         #    1.001 CPUs utilized          
+               261      context-switches          #    0.245 K/sec                  
+                 3      cpu-migrations            #    0.003 K/sec                  
                211      page-faults               #    0.198 K/sec                  
-     3,847,431,585      cycles                    #    3.613 GHz                      (82.89%)
-     1,354,850,124      stalled-cycles-frontend   #   35.21% frontend cycles idle     (83.25%)
-       898,878,148      stalled-cycles-backend    #   23.36% backend cycles idle      (67.01%)
-     7,206,923,222      instructions              #    1.87  insn per cycle         
-                                                  #    0.19  stalled cycles per insn  (83.51%)
-     1,307,159,162      branches                  # 1227.510 M/sec                    (83.48%)
-            70,872      branch-misses             #    0.01% of all branches          (83.37%)
+     3,850,291,764      cycles                    #    3.608 GHz                      (83.05%)
+     1,359,377,938      stalled-cycles-frontend   #   35.31% frontend cycles idle     (83.18%)
+       325,045,973      stalled-cycles-backend    #    8.44% backend cycles idle      (67.02%)
+     7,213,852,234      instructions              #    1.87  insn per cycle         
+                                                  #    0.19  stalled cycles per insn  (83.53%)
+     1,307,386,945      branches                  # 1225.156 M/sec                    (83.54%)
+            59,355      branch-misses             #    0.00% of all branches          (83.22%)
 
-       1.063911520 seconds time elapsed
+       1.065964039 seconds time elapsed
 

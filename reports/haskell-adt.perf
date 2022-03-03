@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/haskell-adt.bin 32 256':
 
-      89954.484916      task-clock (msec)         #    0.999 CPUs utilized          
-             7,527      context-switches          #    0.084 K/sec                  
-                 7      cpu-migrations            #    0.000 K/sec                  
-               941      page-faults               #    0.010 K/sec                  
-   326,260,329,666      cycles                    #    3.627 GHz                      (83.32%)
-    75,592,317,571      stalled-cycles-frontend   #   23.17% frontend cycles idle     (83.34%)
-    57,854,342,527      stalled-cycles-backend    #   17.73% backend cycles idle      (66.66%)
-   580,354,362,819      instructions              #    1.78  insn per cycle         
-                                                  #    0.13  stalled cycles per insn  (83.32%)
-   121,578,729,708      branches                  # 1351.558 M/sec                    (83.34%)
-     3,337,791,706      branch-misses             #    2.75% of all branches          (83.34%)
+      90241.168687      task-clock (msec)         #    0.999 CPUs utilized          
+             7,592      context-switches          #    0.084 K/sec                  
+                 3      cpu-migrations            #    0.000 K/sec                  
+               942      page-faults               #    0.010 K/sec                  
+   327,601,629,573      cycles                    #    3.630 GHz                      (83.32%)
+    76,923,528,576      stalled-cycles-frontend   #   23.48% frontend cycles idle     (83.33%)
+    66,590,249,290      stalled-cycles-backend    #   20.33% backend cycles idle      (66.66%)
+   580,393,786,692      instructions              #    1.77  insn per cycle         
+                                                  #    0.13  stalled cycles per insn  (83.33%)
+   121,583,226,712      branches                  # 1347.314 M/sec                    (83.34%)
+     3,340,395,159      branch-misses             #    2.75% of all branches          (83.34%)
 
-      90.020432415 seconds time elapsed
+      90.307077248 seconds time elapsed
 

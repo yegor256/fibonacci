@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/lisp-recursion.bin 32 256':
 
-      16888.349882      task-clock (msec)         #    0.999 CPUs utilized          
-             1,412      context-switches          #    0.084 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-               847      page-faults               #    0.050 K/sec                  
-    61,303,670,156      cycles                    #    3.630 GHz                      (83.33%)
-    13,516,389,425      stalled-cycles-frontend   #   22.05% frontend cycles idle     (83.34%)
-     7,853,913,260      stalled-cycles-backend    #   12.81% backend cycles idle      (66.66%)
-    93,068,788,494      instructions              #    1.52  insn per cycle         
-                                                  #    0.15  stalled cycles per insn  (83.33%)
-    28,004,286,256      branches                  # 1658.201 M/sec                    (83.34%)
-       605,974,512      branch-misses             #    2.16% of all branches          (83.32%)
+      16896.819909      task-clock (msec)         #    0.999 CPUs utilized          
+             1,423      context-switches          #    0.084 K/sec                  
+                 1      cpu-migrations            #    0.000 K/sec                  
+               848      page-faults               #    0.050 K/sec                  
+    61,300,411,908      cycles                    #    3.628 GHz                      (83.31%)
+    13,511,338,514      stalled-cycles-frontend   #   22.04% frontend cycles idle     (83.33%)
+     7,901,269,960      stalled-cycles-backend    #   12.89% backend cycles idle      (66.67%)
+    93,063,865,949      instructions              #    1.52  insn per cycle         
+                                                  #    0.15  stalled cycles per insn  (83.34%)
+    28,006,755,386      branches                  # 1657.516 M/sec                    (83.35%)
+       605,948,620      branch-misses             #    2.16% of all branches          (83.34%)
 
-      16.898206299 seconds time elapsed
+      16.906945958 seconds time elapsed
 
