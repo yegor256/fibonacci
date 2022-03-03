@@ -3,21 +3,17 @@ Total is 28196624
 
  Performance counter stats for 'bin/java-Objects.bin 32 8':
 
-          10945.29 msec task-clock                #    1.000 CPUs utilized          
-                14      context-switches          #    0.001 K/sec                  
+      14785.470192      task-clock (msec)         #    0.999 CPUs utilized          
+             1,238      context-switches          #    0.084 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-             13546      page-faults               #    0.001 M/sec                  
-       35887621041      cycles                    #    3.279 GHz                    
-         428659283      stalled-cycles-frontend   #    1.19% frontend cycles idle   
-        6871923159      stalled-cycles-backend    #   19.15% backend cycles idle    
-       78859493955      instructions              #    2.20  insn per cycle         
-                                                  #    0.09  stalled cycles per insn
-       18706852710      branches                  # 1709.124 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+            13,497      page-faults               #    0.913 K/sec                  
+    53,642,668,912      cycles                    #    3.628 GHz                      (83.34%)
+    14,294,098,576      stalled-cycles-frontend   #   26.65% frontend cycles idle     (83.32%)
+     8,492,876,417      stalled-cycles-backend    #   15.83% backend cycles idle      (66.69%)
+    78,819,672,459      instructions              #    1.47  insn per cycle         
+                                                  #    0.18  stalled cycles per insn  (83.37%)
+    18,687,032,567      branches                  # 1263.878 M/sec                    (83.34%)
+       785,152,913      branch-misses             #    4.20% of all branches          (83.32%)
 
-      10.947012020 seconds time elapsed
-
-      10.929685000 seconds user
-       0.015992000 seconds sys
-
+      14.796572303 seconds time elapsed
 

@@ -3,21 +3,17 @@ Total is 3524578
 
  Performance counter stats for 'bin/cpp-lambdas.bin 32 1':
 
-          15997.96 msec task-clock                #    1.000 CPUs utilized          
-                47      context-switches          #    0.003 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-              3550      page-faults               #    0.222 K/sec                  
-       50437748282      cycles                    #    3.153 GHz                    
-        1712131675      stalled-cycles-frontend   #    3.39% frontend cycles idle   
-       14042316622      stalled-cycles-backend    #   27.84% backend cycles idle    
-      174855672594      instructions              #    3.47  insn per cycle         
-                                                  #    0.08  stalled cycles per insn
-       39903136193      branches                  # 2494.264 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+      20415.008049      task-clock (msec)         #    0.999 CPUs utilized          
+             1,724      context-switches          #    0.084 K/sec                  
+                 3      cpu-migrations            #    0.000 K/sec                  
+             3,530      page-faults               #    0.173 K/sec                  
+    73,915,881,223      cycles                    #    3.621 GHz                      (83.31%)
+    16,444,864,077      stalled-cycles-frontend   #   22.25% frontend cycles idle     (83.35%)
+     4,045,673,417      stalled-cycles-backend    #    5.47% backend cycles idle      (66.67%)
+   175,267,963,378      instructions              #    2.37  insn per cycle         
+                                                  #    0.09  stalled cycles per insn  (83.33%)
+    40,005,619,142      branches                  # 1959.618 M/sec                    (83.35%)
+        35,599,754      branch-misses             #    0.09% of all branches          (83.32%)
 
-      16.001835084 seconds time elapsed
-
-      15.990242000 seconds user
-       0.008004000 seconds sys
-
+      20.430145884 seconds time elapsed
 

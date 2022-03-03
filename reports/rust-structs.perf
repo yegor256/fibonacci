@@ -1,24 +1,20 @@
 32-th Fibonacci number is 3524578
-Total is 56393248
+Total is 28196624
 
 
- Performance counter stats for 'bin/rust-structs.bin 32 16':
+ Performance counter stats for 'bin/rust-structs.bin 32 8':
 
-          20676.61 msec task-clock                #    1.000 CPUs utilized          
-                42      context-switches          #    0.002 K/sec                  
+      12326.859325      task-clock (msec)         #    0.999 CPUs utilized          
+             1,032      context-switches          #    0.084 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-                80      page-faults               #    0.004 K/sec                  
-       66182883423      cycles                    #    3.201 GHz                    
-         917214151      stalled-cycles-frontend   #    1.39% frontend cycles idle   
-       19983877359      stalled-cycles-backend    #   30.19% backend cycles idle    
-       78959428436      instructions              #    1.19  insn per cycle         
-                                                  #    0.25  stalled cycles per insn
-       15885060539      branches                  #  768.262 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+                77      page-faults               #    0.006 K/sec                  
+    44,709,951,419      cycles                    #    3.627 GHz                      (83.34%)
+    17,853,191,959      stalled-cycles-frontend   #   39.93% frontend cycles idle     (83.33%)
+     8,617,222,510      stalled-cycles-backend    #   19.27% backend cycles idle      (66.66%)
+    39,492,545,308      instructions              #    0.88  insn per cycle         
+                                                  #    0.45  stalled cycles per insn  (83.34%)
+     7,943,010,765      branches                  #  644.366 M/sec                    (83.33%)
+       771,462,620      branch-misses             #    9.71% of all branches          (83.34%)
 
-      20.680807016 seconds time elapsed
-
-      20.676791000 seconds user
-       0.000000000 seconds sys
-
+      12.334480609 seconds time elapsed
 

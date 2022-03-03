@@ -3,21 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-static_member_functions.bin 32 256':
 
-          10262.96 msec task-clock                #    1.000 CPUs utilized          
-                16      context-switches          #    0.002 K/sec                  
+      14635.491034      task-clock (msec)         #    0.999 CPUs utilized          
+             1,228      context-switches          #    0.084 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2759      page-faults               #    0.269 K/sec                  
-       33437154722      cycles                    #    3.258 GHz                    
-          51074058      stalled-cycles-frontend   #    0.15% frontend cycles idle   
-        5875035725      stalled-cycles-backend    #   17.57% backend cycles idle    
-       81249874183      instructions              #    2.43  insn per cycle         
-                                                  #    0.07  stalled cycles per insn
-       16251371859      branches                  # 1583.498 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+             2,743      page-faults               #    0.187 K/sec                  
+    53,179,488,933      cycles                    #    3.634 GHz                      (83.34%)
+     7,722,562,193      stalled-cycles-frontend   #   14.52% frontend cycles idle     (83.33%)
+     4,168,010,126      stalled-cycles-backend    #    7.84% backend cycles idle      (66.68%)
+    81,267,734,235      instructions              #    1.53  insn per cycle         
+                                                  #    0.10  stalled cycles per insn  (83.35%)
+    16,251,344,575      branches                  # 1110.407 M/sec                    (83.33%)
+       296,555,307      branch-misses             #    1.82% of all branches          (83.31%)
 
-      10.264285332 seconds time elapsed
-
-      10.263366000 seconds user
-       0.000000000 seconds sys
-
+      14.644162995 seconds time elapsed
 

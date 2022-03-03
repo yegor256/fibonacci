@@ -4,21 +4,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/rust-recursion.bin 32 256':
 
-           6715.50 msec task-clock                #    1.000 CPUs utilized          
-                10      context-switches          #    0.001 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-                81      page-faults               #    0.012 K/sec                  
-       20931832322      cycles                    #    3.117 GHz                    
-          75467396      stalled-cycles-frontend   #    0.36% frontend cycles idle   
-        4125694411      stalled-cycles-backend    #   19.71% backend cycles idle    
-       49158532209      instructions              #    2.35  insn per cycle         
-                                                  #    0.08  stalled cycles per insn
-       16455785504      branches                  # 2450.420 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+       9513.669615      task-clock (msec)         #    0.999 CPUs utilized          
+               799      context-switches          #    0.084 K/sec                  
+                 4      cpu-migrations            #    0.000 K/sec                  
+                77      page-faults               #    0.008 K/sec                  
+    34,324,696,263      cycles                    #    3.608 GHz                      (83.32%)
+     8,173,660,018      stalled-cycles-frontend   #   23.81% frontend cycles idle     (83.32%)
+     2,405,186,017      stalled-cycles-backend    #    7.01% backend cycles idle      (66.66%)
+    49,167,516,883      instructions              #    1.43  insn per cycle         
+                                                  #    0.17  stalled cycles per insn  (83.33%)
+    16,452,349,494      branches                  # 1729.338 M/sec                    (83.36%)
+       157,048,939      branch-misses             #    0.95% of all branches          (83.35%)
 
-       6.716867120 seconds time elapsed
-
-       6.715796000 seconds user
-       0.000000000 seconds sys
-
+       9.520840056 seconds time elapsed
 

@@ -1,23 +1,19 @@
 32-th Fibonacci number is 3524578
-Total is 14783151603712
+Total is 7391575801856
 
- Performance counter stats for 'bin/haskell-zipwith.bin 32 4194304':
+ Performance counter stats for 'bin/haskell-zipwith.bin 32 2097152':
 
-           1699.92 msec task-clock                #    1.000 CPUs utilized          
-                 2      context-switches          #    0.001 K/sec                  
+       1025.505567      task-clock (msec)         #    0.999 CPUs utilized          
+                85      context-switches          #    0.083 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-            164261      page-faults               #    0.097 M/sec                  
-        5458940441      cycles                    #    3.211 GHz                    
-          75970531      stalled-cycles-frontend   #    1.39% frontend cycles idle   
-        2005904105      stalled-cycles-backend    #   36.75% backend cycles idle    
-       14546266587      instructions              #    2.66  insn per cycle         
-                                                  #    0.14  stalled cycles per insn
-        2752637574      branches                  # 1619.272 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+            81,078      page-faults               #    0.079 M/sec                  
+     3,691,245,380      cycles                    #    3.599 GHz                      (83.24%)
+       973,975,500      stalled-cycles-frontend   #   26.39% frontend cycles idle     (83.23%)
+       814,442,512      stalled-cycles-backend    #   22.06% backend cycles idle      (66.48%)
+     7,354,270,542      instructions              #    1.99  insn per cycle         
+                                                  #    0.13  stalled cycles per insn  (83.21%)
+     1,450,699,280      branches                  # 1414.619 M/sec                    (83.58%)
+         1,358,368      branch-misses             #    0.09% of all branches          (83.47%)
 
-       1.700579217 seconds time elapsed
-
-       1.432357000 seconds user
-       0.268082000 seconds sys
-
+       1.026854775 seconds time elapsed
 

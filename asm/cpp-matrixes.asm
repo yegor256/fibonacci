@@ -594,9 +594,6 @@ _ZSt6fill_nIPimiET_S1_T0_RKT1_:         # @_ZSt6fill_nIPimiET_S1_T0_RKT1_
 	mov	rsi, qword ptr [rbp - 16]
 	mov	rdx, qword ptr [rbp - 24]
 	call	_ZSt10__fill_n_aIPimiEN9__gnu_cxx11__enable_ifIXsr11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_
-	mov	rsi, rax
-	lea	rdi, [rbp - 8]
-	call	_ZSt12__niter_wrapIPiET_RKS1_S1_
 	add	rsp, 32
 	pop	rbp
 	.cfi_def_cfa rsp, 8
@@ -650,28 +647,6 @@ _ZNKSt5arrayIiLm2EE4sizeEv:             # @_ZNKSt5arrayIiLm2EE4sizeEv
 	.size	_ZNKSt5arrayIiLm2EE4sizeEv, .Lfunc_end9-_ZNKSt5arrayIiLm2EE4sizeEv
 	.cfi_endproc
                                         # -- End function
-	.section	.text._ZSt12__niter_wrapIPiET_RKS1_S1_,"axG",@progbits,_ZSt12__niter_wrapIPiET_RKS1_S1_,comdat
-	.weak	_ZSt12__niter_wrapIPiET_RKS1_S1_ # -- Begin function _ZSt12__niter_wrapIPiET_RKS1_S1_
-	.p2align	4, 0x90
-	.type	_ZSt12__niter_wrapIPiET_RKS1_S1_,@function
-_ZSt12__niter_wrapIPiET_RKS1_S1_:       # @_ZSt12__niter_wrapIPiET_RKS1_S1_
-	.cfi_startproc
-# %bb.0:
-	push	rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset rbp, -16
-	mov	rbp, rsp
-	.cfi_def_cfa_register rbp
-	mov	qword ptr [rbp - 8], rdi
-	mov	qword ptr [rbp - 16], rsi
-	mov	rax, qword ptr [rbp - 16]
-	pop	rbp
-	.cfi_def_cfa rsp, 8
-	ret
-.Lfunc_end10:
-	.size	_ZSt12__niter_wrapIPiET_RKS1_S1_, .Lfunc_end10-_ZSt12__niter_wrapIPiET_RKS1_S1_
-	.cfi_endproc
-                                        # -- End function
 	.section	.text._ZSt10__fill_n_aIPimiEN9__gnu_cxx11__enable_ifIXsr11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_,"axG",@progbits,_ZSt10__fill_n_aIPimiEN9__gnu_cxx11__enable_ifIXsr11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_,comdat
 	.weak	_ZSt10__fill_n_aIPimiEN9__gnu_cxx11__enable_ifIXsr11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_ # -- Begin function _ZSt10__fill_n_aIPimiEN9__gnu_cxx11__enable_ifIXsr11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_
 	.p2align	4, 0x90
@@ -692,28 +667,28 @@ _ZSt10__fill_n_aIPimiEN9__gnu_cxx11__enable_ifIXsr11__is_scalarIT1_EE7__valueET_
 	mov	dword ptr [rbp - 28], eax
 	mov	rax, qword ptr [rbp - 16]
 	mov	qword ptr [rbp - 40], rax
-.LBB11_1:                               # =>This Inner Loop Header: Depth=1
+.LBB10_1:                               # =>This Inner Loop Header: Depth=1
 	cmp	qword ptr [rbp - 40], 0
-	jbe	.LBB11_4
-# %bb.2:                                #   in Loop: Header=BB11_1 Depth=1
+	jbe	.LBB10_4
+# %bb.2:                                #   in Loop: Header=BB10_1 Depth=1
 	mov	ecx, dword ptr [rbp - 28]
 	mov	rax, qword ptr [rbp - 8]
 	mov	dword ptr [rax], ecx
-# %bb.3:                                #   in Loop: Header=BB11_1 Depth=1
+# %bb.3:                                #   in Loop: Header=BB10_1 Depth=1
 	mov	rax, qword ptr [rbp - 40]
 	add	rax, -1
 	mov	qword ptr [rbp - 40], rax
 	mov	rax, qword ptr [rbp - 8]
 	add	rax, 4
 	mov	qword ptr [rbp - 8], rax
-	jmp	.LBB11_1
-.LBB11_4:
+	jmp	.LBB10_1
+.LBB10_4:
 	mov	rax, qword ptr [rbp - 8]
 	pop	rbp
 	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end11:
-	.size	_ZSt10__fill_n_aIPimiEN9__gnu_cxx11__enable_ifIXsr11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_, .Lfunc_end11-_ZSt10__fill_n_aIPimiEN9__gnu_cxx11__enable_ifIXsr11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_
+.Lfunc_end10:
+	.size	_ZSt10__fill_n_aIPimiEN9__gnu_cxx11__enable_ifIXsr11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_, .Lfunc_end10-_ZSt10__fill_n_aIPimiEN9__gnu_cxx11__enable_ifIXsr11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZSt12__niter_baseIPiET_S1_,"axG",@progbits,_ZSt12__niter_baseIPiET_S1_,comdat
@@ -733,8 +708,8 @@ _ZSt12__niter_baseIPiET_S1_:            # @_ZSt12__niter_baseIPiET_S1_
 	pop	rbp
 	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end12:
-	.size	_ZSt12__niter_baseIPiET_S1_, .Lfunc_end12-_ZSt12__niter_baseIPiET_S1_
+.Lfunc_end11:
+	.size	_ZSt12__niter_baseIPiET_S1_, .Lfunc_end11-_ZSt12__niter_baseIPiET_S1_
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZNSt5arrayIiLm2EE4dataEv,"axG",@progbits,_ZNSt5arrayIiLm2EE4dataEv,comdat
@@ -757,8 +732,8 @@ _ZNSt5arrayIiLm2EE4dataEv:              # @_ZNSt5arrayIiLm2EE4dataEv
 	pop	rbp
 	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end13:
-	.size	_ZNSt5arrayIiLm2EE4dataEv, .Lfunc_end13-_ZNSt5arrayIiLm2EE4dataEv
+.Lfunc_end12:
+	.size	_ZNSt5arrayIiLm2EE4dataEv, .Lfunc_end12-_ZNSt5arrayIiLm2EE4dataEv
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZNSt14__array_traitsIiLm2EE6_S_ptrERA2_Ki,"axG",@progbits,_ZNSt14__array_traitsIiLm2EE6_S_ptrERA2_Ki,comdat
@@ -778,8 +753,8 @@ _ZNSt14__array_traitsIiLm2EE6_S_ptrERA2_Ki: # @_ZNSt14__array_traitsIiLm2EE6_S_p
 	pop	rbp
 	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end14:
-	.size	_ZNSt14__array_traitsIiLm2EE6_S_ptrERA2_Ki, .Lfunc_end14-_ZNSt14__array_traitsIiLm2EE6_S_ptrERA2_Ki
+.Lfunc_end13:
+	.size	_ZNSt14__array_traitsIiLm2EE6_S_ptrERA2_Ki, .Lfunc_end13-_ZNSt14__array_traitsIiLm2EE6_S_ptrERA2_Ki
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZNSt14__array_traitsIiLm2EE6_S_refERA2_Kim,"axG",@progbits,_ZNSt14__array_traitsIiLm2EE6_S_refERA2_Kim,comdat
@@ -803,8 +778,8 @@ _ZNSt14__array_traitsIiLm2EE6_S_refERA2_Kim: # @_ZNSt14__array_traitsIiLm2EE6_S_
 	pop	rbp
 	.cfi_def_cfa rsp, 8
 	ret
-.Lfunc_end15:
-	.size	_ZNSt14__array_traitsIiLm2EE6_S_refERA2_Kim, .Lfunc_end15-_ZNSt14__array_traitsIiLm2EE6_S_refERA2_Kim
+.Lfunc_end14:
+	.size	_ZNSt14__array_traitsIiLm2EE6_S_refERA2_Kim, .Lfunc_end14-_ZNSt14__array_traitsIiLm2EE6_S_refERA2_Kim
 	.cfi_endproc
                                         # -- End function
 	.type	dummy,@object                   # @dummy
@@ -851,7 +826,7 @@ dummy:
 	.asciz	"array::at: __n (which is %zu) >= _Nm (which is %zu)"
 	.size	.L.str.2, 52
 
-	.ident	"Ubuntu clang version 13.0.1-++20220120110924+75e33f71c2da-1~exp1~20220120231001.58"
+	.ident	"Ubuntu clang version 13.0.1-++20220120110844+75e33f71c2da-1~exp1~20220120230854.66"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym printf
@@ -866,7 +841,6 @@ dummy:
 	.addrsig_sym _ZSt6fill_nIPimiET_S1_T0_RKT1_
 	.addrsig_sym _ZNSt5arrayIiLm2EE5beginEv
 	.addrsig_sym _ZNKSt5arrayIiLm2EE4sizeEv
-	.addrsig_sym _ZSt12__niter_wrapIPiET_RKS1_S1_
 	.addrsig_sym _ZSt10__fill_n_aIPimiEN9__gnu_cxx11__enable_ifIXsr11__is_scalarIT1_EE7__valueET_E6__typeES4_T0_RKS3_
 	.addrsig_sym _ZSt12__niter_baseIPiET_S1_
 	.addrsig_sym _ZNSt5arrayIiLm2EE4dataEv

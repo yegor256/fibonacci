@@ -1,1 +1,1 @@
-<program> 	<file>cpp/formula.cpp</file> 	<name>cpp-formula</name> 	<instructions>197</instructions> 	<cycles>4194304</cycles> 	<time>1.10</time> 	<time_per_cycle>.0000002622604370</time_per_cycle> 	<ticks>3633605535</ticks> 	<ticks_per_cycle>866</ticks_per_cycle> 	</program>
+<program> 	<file>cpp/formula.cpp</file> 	<name>cpp-formula</name> 	<instructions>197</instructions> 	<cycles>8388608</cycles> 	<time>1.68</time> 	<time_per_cycle>.0000002002716064</time_per_cycle> 	<ticks>1</ticks> 	<ticks_per_cycle>0</ticks_per_cycle> 	</program>

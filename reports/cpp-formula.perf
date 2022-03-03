@@ -1,23 +1,19 @@
 32-th Fibonacci number is 0
 Total is 0
 
- Performance counter stats for 'bin/cpp-formula.bin 32 4194304':
+ Performance counter stats for 'bin/cpp-formula.bin 32 8388608':
 
-           1099.53 msec task-clock                #    0.999 CPUs utilized          
-                 5      context-switches          #    0.005 K/sec                  
+       1677.468935      task-clock (msec)         #    0.999 CPUs utilized          
+               147      context-switches          #    0.088 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2760      page-faults               #    0.003 M/sec                  
-        3633605535      cycles                    #    3.305 GHz                    
-          10666488      stalled-cycles-frontend   #    0.29% frontend cycles idle   
-        2418013368      stalled-cycles-backend    #   66.55% backend cycles idle    
-        4362540669      instructions              #    1.20  insn per cycle         
-                                                  #    0.55  stalled cycles per insn
-         587325848      branches                  #  534.160 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+             2,747      page-faults               #    0.002 M/sec                  
+     6,066,647,579      cycles                    #    3.617 GHz                      (83.33%)
+     3,512,180,100      stalled-cycles-frontend   #   57.89% frontend cycles idle     (83.32%)
+       346,392,676      stalled-cycles-backend    #    5.71% backend cycles idle      (66.61%)
+     8,686,751,724      instructions              #    1.43  insn per cycle         
+                                                  #    0.40  stalled cycles per insn  (83.29%)
+     1,161,865,307      branches                  #  692.630 M/sec                    (83.40%)
+            56,245      branch-misses             #    0.00% of all branches          (83.34%)
 
-       1.100165300 seconds time elapsed
-
-       1.092417000 seconds user
-       0.007999000 seconds sys
-
+       1.678932959 seconds time elapsed
 

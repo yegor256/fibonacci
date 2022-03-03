@@ -3,21 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/haskell-adt.bin 32 256':
 
-          74755.24 msec task-clock                #    1.000 CPUs utilized          
-               120      context-switches          #    0.002 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-              1442      page-faults               #    0.019 K/sec                  
-      238312753089      cycles                    #    3.188 GHz                    
-        2814730074      stalled-cycles-frontend   #    1.18% frontend cycles idle   
-       13461084702      stalled-cycles-backend    #    5.65% backend cycles idle    
-      560396217859      instructions              #    2.35  insn per cycle         
-                                                  #    0.02  stalled cycles per insn
-      116870709069      branches                  # 1563.378 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+      89935.482504      task-clock (msec)         #    0.999 CPUs utilized          
+             7,564      context-switches          #    0.084 K/sec                  
+                 3      cpu-migrations            #    0.000 K/sec                  
+               940      page-faults               #    0.010 K/sec                  
+   326,454,179,159      cycles                    #    3.630 GHz                      (83.32%)
+    75,306,894,739      stalled-cycles-frontend   #   23.07% frontend cycles idle     (83.34%)
+    54,926,176,117      stalled-cycles-backend    #   16.83% backend cycles idle      (66.66%)
+   580,334,072,537      instructions              #    1.78  insn per cycle         
+                                                  #    0.13  stalled cycles per insn  (83.33%)
+   121,594,357,094      branches                  # 1352.018 M/sec                    (83.34%)
+     3,335,878,695      branch-misses             #    2.74% of all branches          (83.33%)
 
-      74.765930441 seconds time elapsed
-
-      74.486000000 seconds user
-       0.267917000 seconds sys
-
+      90.002361693 seconds time elapsed
 

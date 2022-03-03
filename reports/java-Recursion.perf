@@ -3,21 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/java-Recursion.bin 32 256':
 
-           3228.62 msec task-clock                #    1.000 CPUs utilized          
-                 4      context-switches          #    0.001 K/sec                  
+       3437.061314      task-clock (msec)         #    0.999 CPUs utilized          
+               291      context-switches          #    0.085 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               525      page-faults               #    0.163 K/sec                  
-       10440882613      cycles                    #    3.234 GHz                    
-           9455360      stalled-cycles-frontend   #    0.09% frontend cycles idle   
-          13191983      stalled-cycles-backend    #    0.13% backend cycles idle    
-       28883537720      instructions              #    2.77  insn per cycle         
-                                                  #    0.00  stalled cycles per insn
-        9024830443      branches                  # 2795.262 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+               428      page-faults               #    0.125 K/sec                  
+    12,477,604,796      cycles                    #    3.630 GHz                      (83.26%)
+       360,173,938      stalled-cycles-frontend   #    2.89% frontend cycles idle     (83.36%)
+       412,583,143      stalled-cycles-backend    #    3.31% backend cycles idle      (66.74%)
+    28,878,283,135      instructions              #    2.31  insn per cycle         
+                                                  #    0.01  stalled cycles per insn  (83.38%)
+     9,019,758,912      branches                  # 2624.265 M/sec                    (83.36%)
+        25,922,310      branch-misses             #    0.29% of all branches          (83.28%)
 
-       3.229667496 seconds time elapsed
-
-       3.229297000 seconds user
-       0.000000000 seconds sys
-
+       3.439364010 seconds time elapsed
 

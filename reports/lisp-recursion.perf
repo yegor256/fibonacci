@@ -3,21 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/lisp-recursion.bin 32 256':
 
-          11581.96 msec task-clock                #    1.000 CPUs utilized          
-                21      context-switches          #    0.002 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-               596      page-faults               #    0.051 K/sec                  
-       36989842254      cycles                    #    3.194 GHz                    
-          31510342      stalled-cycles-frontend   #    0.09% frontend cycles idle   
-         115500107      stalled-cycles-backend    #    0.31% backend cycles idle    
-       84839465961      instructions              #    2.29  insn per cycle         
-                                                  #    0.00  stalled cycles per insn
-       26170888815      branches                  # 2259.625 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+      17017.713844      task-clock (msec)         #    0.999 CPUs utilized          
+             1,426      context-switches          #    0.084 K/sec                  
+                 3      cpu-migrations            #    0.000 K/sec                  
+               849      page-faults               #    0.050 K/sec                  
+    61,544,662,453      cycles                    #    3.617 GHz                      (83.33%)
+    13,786,084,901      stalled-cycles-frontend   #   22.40% frontend cycles idle     (83.31%)
+     7,843,451,108      stalled-cycles-backend    #   12.74% backend cycles idle      (66.69%)
+    93,086,684,816      instructions              #    1.51  insn per cycle         
+                                                  #    0.15  stalled cycles per insn  (83.35%)
+    27,999,985,110      branches                  # 1645.344 M/sec                    (83.34%)
+       606,237,571      branch-misses             #    2.17% of all branches          (83.33%)
 
-      11.584125758 seconds time elapsed
-
-      11.574123000 seconds user
-       0.008000000 seconds sys
-
+      17.028862511 seconds time elapsed
 

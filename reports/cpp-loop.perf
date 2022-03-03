@@ -3,21 +3,17 @@ Total is -503316480
 
  Performance counter stats for 'bin/cpp-loop.bin 32 16777216':
 
-           1470.44 msec task-clock                #    1.000 CPUs utilized          
-                 5      context-switches          #    0.003 K/sec                  
+       1232.839225      task-clock (msec)         #    0.999 CPUs utilized          
+               107      context-switches          #    0.087 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2760      page-faults               #    0.002 M/sec                  
-        4746822800      cycles                    #    3.228 GHz                    
-           4241572      stalled-cycles-frontend   #    0.09% frontend cycles idle   
-        3197650403      stalled-cycles-backend    #   67.36% backend cycles idle    
-        7785093302      instructions              #    1.64  insn per cycle         
-                                                  #    0.41  stalled cycles per insn
-        1132576679      branches                  #  770.227 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+             2,745      page-faults               #    0.002 M/sec                  
+     4,456,153,718      cycles                    #    3.615 GHz                      (83.11%)
+     2,497,009,282      stalled-cycles-frontend   #   56.04% frontend cycles idle     (83.15%)
+       171,709,254      stalled-cycles-backend    #    3.85% backend cycles idle      (66.92%)
+     7,784,355,511      instructions              #    1.75  insn per cycle         
+                                                  #    0.32  stalled cycles per insn  (83.46%)
+     1,132,179,531      branches                  #  918.351 M/sec                    (83.47%)
+            78,764      branch-misses             #    0.01% of all branches          (83.35%)
 
-       1.471007523 seconds time elapsed
-
-       1.467871000 seconds user
-       0.003374000 seconds sys
-
+       1.233963711 seconds time elapsed
 

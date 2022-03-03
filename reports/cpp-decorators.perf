@@ -3,21 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-decorators.bin 32 256':
 
-           4114.14 msec task-clock                #    1.000 CPUs utilized          
-                 9      context-switches          #    0.002 K/sec                  
+       6318.170311      task-clock (msec)         #    0.999 CPUs utilized          
+               532      context-switches          #    0.084 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2800      page-faults               #    0.681 K/sec                  
-       12840031572      cycles                    #    3.121 GHz                    
-          38688410      stalled-cycles-frontend   #    0.30% frontend cycles idle   
-        5529972858      stalled-cycles-backend    #   43.07% backend cycles idle    
-       24408806636      instructions              #    1.90  insn per cycle         
-                                                  #    0.23  stalled cycles per insn
-        3620297497      branches                  #  879.964 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+             2,783      page-faults               #    0.440 K/sec                  
+    22,888,304,530      cycles                    #    3.623 GHz                      (83.29%)
+     9,750,444,411      stalled-cycles-frontend   #   42.60% frontend cycles idle     (83.30%)
+     2,090,395,186      stalled-cycles-backend    #    9.13% backend cycles idle      (66.71%)
+    24,415,396,151      instructions              #    1.07  insn per cycle         
+                                                  #    0.40  stalled cycles per insn  (83.36%)
+     3,622,183,398      branches                  #  573.296 M/sec                    (83.37%)
+       231,030,184      branch-misses             #    6.38% of all branches          (83.33%)
 
-       4.114994620 seconds time elapsed
-
-       4.106817000 seconds user
-       0.007966000 seconds sys
-
+       6.322297576 seconds time elapsed
 

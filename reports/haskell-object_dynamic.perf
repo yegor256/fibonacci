@@ -1,23 +1,19 @@
 32-th Fibonacci number is 3524578
-Total is 461973487616
+Total is 923946975232
 
- Performance counter stats for 'bin/haskell-object_dynamic.bin 32 131072':
+ Performance counter stats for 'bin/haskell-object_dynamic.bin 32 262144':
 
-           1131.38 msec task-clock                #    0.999 CPUs utilized          
-                 3      context-switches          #    0.003 K/sec                  
+       1774.901388      task-clock (msec)         #    0.999 CPUs utilized          
+               148      context-switches          #    0.083 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              6568      page-faults               #    0.006 M/sec                  
-        3506263039      cycles                    #    3.099 GHz                    
-          74622814      stalled-cycles-frontend   #    2.13% frontend cycles idle   
-         200692016      stalled-cycles-backend    #    5.72% backend cycles idle    
-        7806663264      instructions              #    2.23  insn per cycle         
-                                                  #    0.03  stalled cycles per insn
-        1760076412      branches                  # 1555.683 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+            10,931      page-faults               #    0.006 M/sec                  
+     6,429,201,883      cycles                    #    3.622 GHz                      (83.33%)
+     1,501,984,291      stalled-cycles-frontend   #   23.36% frontend cycles idle     (83.35%)
+     1,894,500,232      stalled-cycles-backend    #   29.47% backend cycles idle      (66.65%)
+    10,809,355,879      instructions              #    1.68  insn per cycle         
+                                                  #    0.18  stalled cycles per insn  (83.32%)
+     2,335,097,075      branches                  # 1315.621 M/sec                    (83.35%)
+        73,465,749      branch-misses             #    3.15% of all branches          (83.32%)
 
-       1.132205522 seconds time elapsed
-
-       1.108146000 seconds user
-       0.024003000 seconds sys
-
+       1.776582283 seconds time elapsed
 

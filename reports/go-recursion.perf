@@ -1,21 +1,17 @@
 32-th Fibonacci number is 902291968
  Performance counter stats for 'bin/go-recursion.bin 32 256':
 
-           3858.41 msec task-clock                #    1.008 CPUs utilized          
-               450      context-switches          #    0.117 K/sec                  
-                 4      cpu-migrations            #    0.001 K/sec                  
-               208      page-faults               #    0.054 K/sec                  
-       12718096583      cycles                    #    3.296 GHz                    
-          20809862      stalled-cycles-frontend   #    0.16% frontend cycles idle   
-        4642541101      stalled-cycles-backend    #   36.50% backend cycles idle    
-       34297697683      instructions              #    2.70  insn per cycle         
-                                                  #    0.14  stalled cycles per insn
-        7220347876      branches                  # 1871.325 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+       4472.496436      task-clock (msec)         #    1.001 CPUs utilized          
+               881      context-switches          #    0.197 K/sec                  
+                 5      cpu-migrations            #    0.001 K/sec                  
+               220      page-faults               #    0.049 K/sec                  
+    16,205,679,274      cycles                    #    3.623 GHz                      (83.30%)
+     4,303,066,623      stalled-cycles-frontend   #   26.55% frontend cycles idle     (83.40%)
+       333,850,689      stalled-cycles-backend    #    2.06% backend cycles idle      (66.77%)
+    34,255,943,469      instructions              #    2.11  insn per cycle         
+                                                  #    0.13  stalled cycles per insn  (83.39%)
+     7,213,070,930      branches                  # 1612.762 M/sec                    (83.39%)
+        46,438,572      branch-misses             #    0.64% of all branches          (83.13%)
 
-       3.828779611 seconds time elapsed
-
-       3.831402000 seconds user
-       0.036032000 seconds sys
-
+       4.469156887 seconds time elapsed
 

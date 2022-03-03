@@ -1,21 +1,17 @@
-32-th Fibonacci number is -2013265920
- Performance counter stats for 'bin/go-fast.bin 32 67108864':
+32-th Fibonacci number is -1006632960
+ Performance counter stats for 'bin/go-fast.bin 32 33554432':
 
-           1186.60 msec task-clock                #    1.011 CPUs utilized          
-               184      context-switches          #    0.155 K/sec                  
+       1069.169880      task-clock (msec)         #    1.001 CPUs utilized          
+               259      context-switches          #    0.242 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-               207      page-faults               #    0.174 K/sec                  
-        3506595479      cycles                    #    2.955 GHz                    
-         128440540      stalled-cycles-frontend   #    3.66% frontend cycles idle   
-          12123325      stalled-cycles-backend    #    0.35% backend cycles idle    
-       14433310417      instructions              #    4.12  insn per cycle         
-                                                  #    0.01  stalled cycles per insn
-        2618182472      branches                  # 2206.464 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+               211      page-faults               #    0.197 K/sec                  
+     3,846,798,949      cycles                    #    3.598 GHz                      (82.94%)
+     1,353,807,367      stalled-cycles-frontend   #   35.19% frontend cycles idle     (83.19%)
+       842,982,695      stalled-cycles-backend    #   21.91% backend cycles idle      (66.99%)
+     7,205,755,434      instructions              #    1.87  insn per cycle         
+                                                  #    0.19  stalled cycles per insn  (83.58%)
+     1,306,793,361      branches                  # 1222.250 M/sec                    (83.56%)
+            68,581      branch-misses             #    0.01% of all branches          (83.32%)
 
-       1.173861752 seconds time elapsed
-
-       1.180420000 seconds user
-       0.012086000 seconds sys
-
+       1.068187437 seconds time elapsed
 

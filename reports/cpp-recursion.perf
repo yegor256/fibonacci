@@ -3,21 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-recursion.bin 32 256':
 
-           3848.98 msec task-clock                #    1.000 CPUs utilized          
-                 8      context-switches          #    0.002 K/sec                  
+       5446.631753      task-clock (msec)         #    0.999 CPUs utilized          
+               460      context-switches          #    0.084 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2760      page-faults               #    0.717 K/sec                  
-       12603941425      cycles                    #    3.275 GHz                    
-          18822504      stalled-cycles-frontend   #    0.15% frontend cycles idle   
-        4926814570      stalled-cycles-backend    #   39.09% backend cycles idle    
-       29812695508      instructions              #    2.37  insn per cycle         
-                                                  #    0.17  stalled cycles per insn
-        6325073049      branches                  # 1643.313 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+             2,748      page-faults               #    0.505 K/sec                  
+    19,762,863,738      cycles                    #    3.628 GHz                      (83.34%)
+     6,488,127,180      stalled-cycles-frontend   #   32.83% frontend cycles idle     (83.33%)
+     1,119,422,471      stalled-cycles-backend    #    5.66% backend cycles idle      (66.68%)
+    29,810,597,352      instructions              #    1.51  insn per cycle         
+                                                  #    0.22  stalled cycles per insn  (83.35%)
+     6,323,803,151      branches                  # 1161.048 M/sec                    (83.33%)
+       108,168,212      branch-misses             #    1.71% of all branches          (83.31%)
 
-       3.849796265 seconds time elapsed
-
-       3.845827000 seconds user
-       0.004002000 seconds sys
-
+       5.449937487 seconds time elapsed
 

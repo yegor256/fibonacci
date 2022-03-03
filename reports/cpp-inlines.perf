@@ -3,21 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-inlines.bin 32 256':
 
-          11030.64 msec task-clock                #    1.000 CPUs utilized          
-                10      context-switches          #    0.001 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-              2761      page-faults               #    0.250 K/sec                  
-       34562499811      cycles                    #    3.133 GHz                    
-          60128667      stalled-cycles-frontend   #    0.17% frontend cycles idle   
-        1010602932      stalled-cycles-backend    #    2.92% backend cycles idle    
-       81251544444      instructions              #    2.35  insn per cycle         
-                                                  #    0.01  stalled cycles per insn
-       16251691943      branches                  # 1473.323 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+      14591.863432      task-clock (msec)         #    0.999 CPUs utilized          
+             1,224      context-switches          #    0.084 K/sec                  
+                 6      cpu-migrations            #    0.000 K/sec                  
+             2,747      page-faults               #    0.188 K/sec                  
+    52,328,792,867      cycles                    #    3.586 GHz                      (83.32%)
+     9,817,394,966      stalled-cycles-frontend   #   18.76% frontend cycles idle     (83.33%)
+     3,171,249,014      stalled-cycles-backend    #    6.06% backend cycles idle      (66.68%)
+    81,249,223,783      instructions              #    1.55  insn per cycle         
+                                                  #    0.12  stalled cycles per insn  (83.34%)
+    16,256,582,826      branches                  # 1114.085 M/sec                    (83.35%)
+       316,984,002      branch-misses             #    1.95% of all branches          (83.33%)
 
-      11.031564692 seconds time elapsed
-
-      11.022400000 seconds user
-       0.008959000 seconds sys
-
+      14.601518099 seconds time elapsed
 

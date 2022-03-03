@@ -3,21 +3,17 @@ Total is 3524578
 
  Performance counter stats for 'bin/cpp-objects.bin 32 1':
 
-          21983.21 msec task-clock                #    1.000 CPUs utilized          
-                45      context-switches          #    0.002 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-              6754      page-faults               #    0.307 K/sec                  
-       69255587455      cycles                    #    3.150 GHz                    
-        1402604207      stalled-cycles-frontend   #    2.03% frontend cycles idle   
-       34281255847      stalled-cycles-backend    #   49.50% backend cycles idle    
-      176951077637      instructions              #    2.56  insn per cycle         
-                                                  #    0.19  stalled cycles per insn
-       40524842473      branches                  # 1843.445 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+      22829.009292      task-clock (msec)         #    0.999 CPUs utilized          
+             1,923      context-switches          #    0.084 K/sec                  
+                 2      cpu-migrations            #    0.000 K/sec                  
+             6,740      page-faults               #    0.295 K/sec                  
+    82,829,501,287      cycles                    #    3.628 GHz                      (83.32%)
+    25,057,085,391      stalled-cycles-frontend   #   30.25% frontend cycles idle     (83.33%)
+     5,987,165,704      stalled-cycles-backend    #    7.23% backend cycles idle      (66.66%)
+   176,950,706,148      instructions              #    2.14  insn per cycle         
+                                                  #    0.14  stalled cycles per insn  (83.32%)
+    40,526,456,046      branches                  # 1775.217 M/sec                    (83.34%)
+        24,836,011      branch-misses             #    0.06% of all branches          (83.35%)
 
-      21.986903625 seconds time elapsed
-
-      21.963317000 seconds user
-       0.020013000 seconds sys
-
+      22.845273908 seconds time elapsed
 

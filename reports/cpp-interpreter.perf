@@ -3,21 +3,17 @@ Total is -1191428096
 
  Performance counter stats for 'bin/cpp-interpreter.bin 32 8192':
 
-           1291.22 msec task-clock                #    1.000 CPUs utilized          
-                 5      context-switches          #    0.004 K/sec                  
+       1836.204429      task-clock (msec)         #    0.999 CPUs utilized          
+               158      context-switches          #    0.086 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-              2845      page-faults               #    0.002 M/sec                  
-        4272403597      cycles                    #    3.309 GHz                    
-          25232554      stalled-cycles-frontend   #    0.59% frontend cycles idle   
-         474052981      stalled-cycles-backend    #   11.10% backend cycles idle    
-       10800181643      instructions              #    2.53  insn per cycle         
-                                                  #    0.04  stalled cycles per insn
-        2255755328      branches                  # 1746.994 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+             2,831      page-faults               #    0.002 M/sec                  
+     6,615,909,961      cycles                    #    3.603 GHz                      (83.26%)
+     2,017,150,552      stalled-cycles-frontend   #   30.49% frontend cycles idle     (83.19%)
+       308,433,116      stalled-cycles-backend    #    4.66% backend cycles idle      (66.83%)
+    10,799,017,357      instructions              #    1.63  insn per cycle         
+                                                  #    0.19  stalled cycles per insn  (83.47%)
+     2,254,264,362      branches                  # 1227.676 M/sec                    (83.46%)
+        34,600,553      branch-misses             #    1.53% of all branches          (83.27%)
 
-       1.291767165 seconds time elapsed
-
-       1.291981000 seconds user
-       0.000000000 seconds sys
-
+       1.837775596 seconds time elapsed
 

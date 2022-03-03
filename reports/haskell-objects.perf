@@ -1,23 +1,19 @@
 32-th Fibonacci number is 3524578
-Total is 28196624
+Total is 56393248
 
- Performance counter stats for 'bin/haskell-objects.bin 32 8':
+ Performance counter stats for 'bin/haskell-objects.bin 32 16':
 
-          12529.87 msec task-clock                #    1.000 CPUs utilized          
-                26      context-switches          #    0.002 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-              1433      page-faults               #    0.114 K/sec                  
-       40541662344      cycles                    #    3.236 GHz                    
-         690504928      stalled-cycles-frontend   #    1.70% frontend cycles idle   
-         876727646      stalled-cycles-backend    #    2.16% backend cycles idle    
-       91852573588      instructions              #    2.27  insn per cycle         
-                                                  #    0.01  stalled cycles per insn
-       20792938761      branches                  # 1659.470 M/sec                  
-                 0      branch-misses             #    0.00% of all branches        
+      19682.953904      task-clock (msec)         #    0.999 CPUs utilized          
+             1,657      context-switches          #    0.084 K/sec                  
+                 1      cpu-migrations            #    0.000 K/sec                  
+               942      page-faults               #    0.048 K/sec                  
+    71,481,640,705      cycles                    #    3.632 GHz                      (83.32%)
+    16,552,607,397      stalled-cycles-frontend   #   23.16% frontend cycles idle     (83.34%)
+    20,135,816,270      stalled-cycles-backend    #   28.17% backend cycles idle      (66.64%)
+   114,691,604,404      instructions              #    1.60  insn per cycle         
+                                                  #    0.18  stalled cycles per insn  (83.32%)
+    24,616,883,392      branches                  # 1250.670 M/sec                    (83.36%)
+     1,031,620,947      branch-misses             #    4.19% of all branches          (83.33%)
 
-      12.532445123 seconds time elapsed
-
-      12.494120000 seconds user
-       0.035947000 seconds sys
-
+      19.697242907 seconds time elapsed
 
