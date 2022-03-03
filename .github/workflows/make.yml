@@ -66,23 +66,23 @@ jobs:
       - run: sudo apt-get install -y linux-tools-generic
       - run: sudo rm /usr/bin/perf && sudo ln -s /usr/lib/linux-tools/*/perf /usr/bin/perf
       - uses: actions/checkout@v3
-      - run: ls -al
-#      - run: make env
-#      - run: make clean
-#      - run: mkdir www
-#      - run: make WANTED=256 INPUT=7 index.html
-#      - run: mv index.html www/seven.html
-#      - run: rm -rf reports
-#      - run: make WANTED=256 INPUT=16 index.html
-#      - run: mv index.html www/sixteen.html
-#      - run: rm -rf reports
-#      - run: make WANTED=256 index.html
-#      - run: cp index.html www
-#      - run: cp index.xml www
-#      - run: cp -r reports www
-#      - run: cp -r asm www
-#      - uses: JamesIves/github-pages-deploy-action@v4.2.5
-#        with:
-#          branch: gh-pages
-#          folder: www
-#          clean: false
+      - run: if [ ! -e .git ]; then exit 1; fi
+      - run: make env
+      - run: make clean
+      - run: mkdir www
+      - run: make WANTED=256 INPUT=7 index.html
+      - run: mv index.html www/seven.html
+      - run: rm -rf reports
+      - run: make WANTED=256 INPUT=16 index.html
+      - run: mv index.html www/sixteen.html
+      - run: rm -rf reports
+      - run: make WANTED=256 index.html
+      - run: cp index.html www
+      - run: cp index.xml www
+      - run: cp -r reports www
+      - run: cp -r asm www
+      - uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: gh-pages
+          folder: www
+          clean: false
