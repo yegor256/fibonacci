@@ -1,17 +1,17 @@
-32-th Fibonacci number is 7049156
- Performance counter stats for 'bin/go-structs.bin 32 2':
+32-th Fibonacci number is 14098312
+ Performance counter stats for 'bin/go-structs.bin 32 4':
 
-      13453.669297      task-clock (msec)         #    1.065 CPUs utilized          
-            31,116      context-switches          #    0.002 M/sec                  
-               294      cpu-migrations            #    0.022 K/sec                  
-            15,843      page-faults               #    0.001 M/sec                  
-    37,540,021,797      cycles                    #    2.790 GHz                      (82.99%)
-    12,728,075,072      stalled-cycles-frontend   #   33.91% frontend cycles idle     (83.26%)
-     5,419,716,629      stalled-cycles-backend    #   14.44% backend cycles idle      (66.88%)
-    58,542,969,169      instructions              #    1.56  insn per cycle         
-                                                  #    0.22  stalled cycles per insn  (83.41%)
-    11,570,871,722      branches                  #  860.053 M/sec                    (83.59%)
-       341,746,382      branch-misses             #    2.95% of all branches          (83.28%)
+      21437.038315      task-clock (msec)         #    1.066 CPUs utilized          
+            54,815      context-switches          #    0.003 M/sec                  
+               433      cpu-migrations            #    0.020 K/sec                  
+            25,057      page-faults               #    0.001 M/sec                  
+    75,841,047,620      cycles                    #    3.538 GHz                      (83.31%)
+    25,933,052,708      stalled-cycles-frontend   #   34.19% frontend cycles idle     (83.24%)
+    11,130,047,272      stalled-cycles-backend    #   14.68% backend cycles idle      (66.70%)
+   116,832,065,324      instructions              #    1.54  insn per cycle         
+                                                  #    0.22  stalled cycles per insn  (83.35%)
+    23,123,751,905      branches                  # 1078.682 M/sec                    (83.22%)
+       683,236,815      branch-misses             #    2.95% of all branches          (83.52%)
 
-      12.638440279 seconds time elapsed
+      20.108207117 seconds time elapsed
 

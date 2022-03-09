@@ -3,17 +3,17 @@ Total is 56393248
 
  Performance counter stats for 'bin/haskell-objects.bin 32 16':
 
-      19404.086500      task-clock (msec)         #    0.999 CPUs utilized          
-             1,625      context-switches          #    0.084 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-               936      page-faults               #    0.048 K/sec                  
-    70,466,183,233      cycles                    #    3.632 GHz                      (83.35%)
-    14,966,732,669      stalled-cycles-frontend   #   21.24% frontend cycles idle     (83.33%)
-    13,398,766,906      stalled-cycles-backend    #   19.01% backend cycles idle      (66.67%)
-   114,706,884,358      instructions              #    1.63  insn per cycle         
-                                                  #    0.13  stalled cycles per insn  (83.35%)
-    24,605,434,740      branches                  # 1268.054 M/sec                    (83.33%)
-     1,086,325,631      branch-misses             #    4.41% of all branches          (83.32%)
+      21421.505364      task-clock (msec)         #    0.999 CPUs utilized          
+             1,810      context-switches          #    0.084 K/sec                  
+                20      cpu-migrations            #    0.001 K/sec                  
+               936      page-faults               #    0.044 K/sec                  
+    77,157,726,954      cycles                    #    3.602 GHz                      (83.33%)
+    21,556,532,480      stalled-cycles-frontend   #   27.94% frontend cycles idle     (83.31%)
+    18,392,467,443      stalled-cycles-backend    #   23.84% backend cycles idle      (66.69%)
+   114,541,751,807      instructions              #    1.48  insn per cycle         
+                                                  #    0.19  stalled cycles per insn  (83.34%)
+    24,597,709,819      branches                  # 1148.272 M/sec                    (83.33%)
+     1,148,926,223      branch-misses             #    4.67% of all branches          (83.34%)
 
-      19.417546434 seconds time elapsed
+      21.440965630 seconds time elapsed
 

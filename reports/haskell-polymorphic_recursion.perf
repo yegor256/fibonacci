@@ -3,17 +3,17 @@ Total is 28196624
 
  Performance counter stats for 'bin/haskell-polymorphic_recursion.bin 32 8':
 
-      17443.800757      task-clock (msec)         #    0.999 CPUs utilized          
-             1,462      context-switches          #    0.084 K/sec                  
-                 2      cpu-migrations            #    0.000 K/sec                  
-               938      page-faults               #    0.054 K/sec                  
-    63,279,277,968      cycles                    #    3.628 GHz                      (83.31%)
-    13,248,414,813      stalled-cycles-frontend   #   20.94% frontend cycles idle     (83.32%)
-    13,676,619,728      stalled-cycles-backend    #   21.61% backend cycles idle      (66.69%)
-    98,860,933,958      instructions              #    1.56  insn per cycle         
-                                                  #    0.14  stalled cycles per insn  (83.34%)
-    23,375,044,801      branches                  # 1340.020 M/sec                    (83.34%)
-       969,151,811      branch-misses             #    4.15% of all branches          (83.34%)
+      17044.890415      task-clock (msec)         #    0.999 CPUs utilized          
+             1,442      context-switches          #    0.085 K/sec                  
+                18      cpu-migrations            #    0.001 K/sec                  
+               943      page-faults               #    0.055 K/sec                  
+    61,493,287,157      cycles                    #    3.608 GHz                      (83.32%)
+    12,549,816,987      stalled-cycles-frontend   #   20.41% frontend cycles idle     (83.33%)
+    15,559,644,267      stalled-cycles-backend    #   25.30% backend cycles idle      (66.66%)
+    98,921,746,342      instructions              #    1.61  insn per cycle         
+                                                  #    0.16  stalled cycles per insn  (83.32%)
+    23,379,739,978      branches                  # 1371.657 M/sec                    (83.35%)
+       832,015,782      branch-misses             #    3.56% of all branches          (83.34%)
 
-      17.456883208 seconds time elapsed
+      17.060669400 seconds time elapsed
 

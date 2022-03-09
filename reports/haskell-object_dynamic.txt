@@ -1,9 +1,9 @@
 bin/haskell-object_dynamic.bin:
-CPU ticks: 6133261553
-CPU ticks per cycle: 23396
+CPU ticks: 6405871544
+CPU ticks per cycle: 24436
 Instructions: 1302
 Cycles: 262144
-Total Time: 1.68
-Time per cycle: .0000064086914062
-Ticks: 6133261553
-Ticks per cycle: 23396
+Total Time: 1.71
+Time per cycle: .0000065231323242
+Ticks: 6405871544
+Ticks per cycle: 24436

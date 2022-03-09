@@ -3,17 +3,17 @@ Total is 3524578
 
  Performance counter stats for 'bin/cpp-objects.bin 32 1':
 
-      22777.388809      task-clock (msec)         #    0.999 CPUs utilized          
-             1,923      context-switches          #    0.084 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-             6,739      page-faults               #    0.296 K/sec                  
-    82,706,143,222      cycles                    #    3.631 GHz                      (83.34%)
-    24,997,581,223      stalled-cycles-frontend   #   30.22% frontend cycles idle     (83.32%)
-     5,081,898,302      stalled-cycles-backend    #    6.14% backend cycles idle      (66.67%)
-   177,002,662,804      instructions              #    2.14  insn per cycle         
-                                                  #    0.14  stalled cycles per insn  (83.36%)
-    40,519,318,911      branches                  # 1778.927 M/sec                    (83.34%)
-        20,312,852      branch-misses             #    0.05% of all branches          (83.33%)
+      23557.104099      task-clock (msec)         #    0.999 CPUs utilized          
+             2,001      context-switches          #    0.085 K/sec                  
+                24      cpu-migrations            #    0.001 K/sec                  
+             6,740      page-faults               #    0.286 K/sec                  
+    84,662,642,621      cycles                    #    3.594 GHz                      (83.36%)
+    26,946,397,133      stalled-cycles-frontend   #   31.83% frontend cycles idle     (83.31%)
+     6,275,177,457      stalled-cycles-backend    #    7.41% backend cycles idle      (66.70%)
+   176,985,157,362      instructions              #    2.09  insn per cycle         
+                                                  #    0.15  stalled cycles per insn  (83.37%)
+    40,525,585,788      branches                  # 1720.313 M/sec                    (83.33%)
+        22,153,337      branch-misses             #    0.05% of all branches          (83.31%)
 
-      22.793190406 seconds time elapsed
+      23.580905254 seconds time elapsed
 

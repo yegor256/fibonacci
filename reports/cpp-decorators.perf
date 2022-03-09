@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-decorators.bin 32 256':
 
-       6363.485782      task-clock (msec)         #    0.999 CPUs utilized          
-               537      context-switches          #    0.084 K/sec                  
-                 1      cpu-migrations            #    0.000 K/sec                  
-             2,786      page-faults               #    0.438 K/sec                  
-    23,087,186,683      cycles                    #    3.628 GHz                      (83.29%)
-     9,907,662,570      stalled-cycles-frontend   #   42.91% frontend cycles idle     (83.32%)
-     2,217,596,863      stalled-cycles-backend    #    9.61% backend cycles idle      (66.71%)
-    24,405,061,299      instructions              #    1.06  insn per cycle         
-                                                  #    0.41  stalled cycles per insn  (83.37%)
-     3,621,437,902      branches                  #  569.097 M/sec                    (83.35%)
-       232,436,495      branch-misses             #    6.42% of all branches          (83.32%)
+       6444.968275      task-clock (msec)         #    0.999 CPUs utilized          
+               549      context-switches          #    0.085 K/sec                  
+                14      cpu-migrations            #    0.002 K/sec                  
+             2,786      page-faults               #    0.432 K/sec                  
+    23,222,787,761      cycles                    #    3.603 GHz                      (83.33%)
+    10,053,016,023      stalled-cycles-frontend   #   43.29% frontend cycles idle     (83.31%)
+     2,282,561,169      stalled-cycles-backend    #    9.83% backend cycles idle      (66.64%)
+    24,388,845,321      instructions              #    1.05  insn per cycle         
+                                                  #    0.41  stalled cycles per insn  (83.32%)
+     3,621,817,056      branches                  #  561.960 M/sec                    (83.38%)
+       233,677,167      branch-misses             #    6.45% of all branches          (83.34%)
 
-       6.367794604 seconds time elapsed
+       6.450685043 seconds time elapsed
 

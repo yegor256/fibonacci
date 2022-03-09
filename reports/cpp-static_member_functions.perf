@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-static_member_functions.bin 32 256':
 
-      14681.506849      task-clock (msec)         #    0.999 CPUs utilized          
-             1,232      context-switches          #    0.084 K/sec                  
-                 1      cpu-migrations            #    0.000 K/sec                  
-             2,744      page-faults               #    0.187 K/sec                  
-    53,274,146,369      cycles                    #    3.629 GHz                      (83.34%)
-     7,860,831,853      stalled-cycles-frontend   #   14.76% frontend cycles idle     (83.33%)
-     3,196,530,249      stalled-cycles-backend    #    6.00% backend cycles idle      (66.68%)
-    81,266,692,487      instructions              #    1.53  insn per cycle         
-                                                  #    0.10  stalled cycles per insn  (83.35%)
-    16,254,403,862      branches                  # 1107.135 M/sec                    (83.33%)
-       296,557,267      branch-misses             #    1.82% of all branches          (83.32%)
+      14970.830506      task-clock (msec)         #    0.999 CPUs utilized          
+             1,297      context-switches          #    0.087 K/sec                  
+                39      cpu-migrations            #    0.003 K/sec                  
+             2,744      page-faults               #    0.183 K/sec                  
+    53,911,279,446      cycles                    #    3.601 GHz                      (83.31%)
+     8,625,923,709      stalled-cycles-frontend   #   16.00% frontend cycles idle     (83.32%)
+     3,721,813,240      stalled-cycles-backend    #    6.90% backend cycles idle      (66.68%)
+    81,257,244,695      instructions              #    1.51  insn per cycle         
+                                                  #    0.11  stalled cycles per insn  (83.33%)
+    16,258,297,848      branches                  # 1085.998 M/sec                    (83.35%)
+       296,639,135      branch-misses             #    1.82% of all branches          (83.34%)
 
-      14.690187153 seconds time elapsed
+      14.984207225 seconds time elapsed
 

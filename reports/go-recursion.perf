@@ -1,17 +1,17 @@
 32-th Fibonacci number is 902291968
  Performance counter stats for 'bin/go-recursion.bin 32 256':
 
-       4450.453575      task-clock (msec)         #    1.001 CPUs utilized          
-               886      context-switches          #    0.199 K/sec                  
-                 2      cpu-migrations            #    0.000 K/sec                  
-               219      page-faults               #    0.049 K/sec                  
-    16,139,388,715      cycles                    #    3.626 GHz                      (83.31%)
-     4,234,862,844      stalled-cycles-frontend   #   26.24% frontend cycles idle     (83.38%)
-       278,736,364      stalled-cycles-backend    #    1.73% backend cycles idle      (66.79%)
-    34,282,296,459      instructions              #    2.12  insn per cycle         
-                                                  #    0.12  stalled cycles per insn  (83.41%)
-     7,215,207,815      branches                  # 1621.230 M/sec                    (83.39%)
-        46,348,219      branch-misses             #    0.64% of all branches          (83.13%)
+       4555.907159      task-clock (msec)         #    1.000 CPUs utilized          
+               912      context-switches          #    0.200 K/sec                  
+                28      cpu-migrations            #    0.006 K/sec                  
+               211      page-faults               #    0.046 K/sec                  
+    16,363,322,284      cycles                    #    3.592 GHz                      (83.36%)
+     4,463,125,302      stalled-cycles-frontend   #   27.28% frontend cycles idle     (83.35%)
+       525,512,775      stalled-cycles-backend    #    3.21% backend cycles idle      (66.72%)
+    34,281,534,042      instructions              #    2.10  insn per cycle         
+                                                  #    0.13  stalled cycles per insn  (83.36%)
+     7,218,434,465      branches                  # 1584.412 M/sec                    (83.43%)
+        46,446,342      branch-misses             #    0.64% of all branches          (83.15%)
 
-       4.447073002 seconds time elapsed
+       4.554708039 seconds time elapsed
 

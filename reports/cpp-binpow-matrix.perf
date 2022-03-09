@@ -3,17 +3,17 @@ Total is -62914560
 
  Performance counter stats for 'bin/cpp-binpow-matrix.bin 32 2097152':
 
-       1761.375843      task-clock (msec)         #    0.999 CPUs utilized          
-               150      context-switches          #    0.085 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-             2,745      page-faults               #    0.002 M/sec                  
-     6,338,791,249      cycles                    #    3.599 GHz                      (83.21%)
-     2,916,890,401      stalled-cycles-frontend   #   46.02% frontend cycles idle     (83.29%)
-       158,661,725      stalled-cycles-backend    #    2.50% backend cycles idle      (66.86%)
-    10,554,652,496      instructions              #    1.67  insn per cycle         
-                                                  #    0.28  stalled cycles per insn  (83.44%)
-     1,569,582,437      branches                  #  891.112 M/sec                    (83.43%)
-         2,154,819      branch-misses             #    0.14% of all branches          (83.20%)
+       1766.156423      task-clock (msec)         #    0.999 CPUs utilized          
+               160      context-switches          #    0.091 K/sec                  
+                14      cpu-migrations            #    0.008 K/sec                  
+             2,746      page-faults               #    0.002 M/sec                  
+     6,347,628,958      cycles                    #    3.594 GHz                      (83.25%)
+     2,939,709,510      stalled-cycles-frontend   #   46.31% frontend cycles idle     (83.23%)
+       289,100,370      stalled-cycles-backend    #    4.55% backend cycles idle      (66.57%)
+    10,564,820,581      instructions              #    1.66  insn per cycle         
+                                                  #    0.28  stalled cycles per insn  (83.30%)
+     1,571,560,210      branches                  #  889.819 M/sec                    (83.46%)
+         2,180,135      branch-misses             #    0.14% of all branches          (83.49%)
 
-       1.762809474 seconds time elapsed
+       1.768456947 seconds time elapsed
 

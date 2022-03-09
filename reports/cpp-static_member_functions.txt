@@ -1,9 +1,9 @@
 bin/cpp-static_member_functions.bin:
-CPU ticks: 53274146369
-CPU ticks per cycle: 208102134
+CPU ticks: 53911279446
+CPU ticks per cycle: 210590935
 Instructions: 116
 Cycles: 256
-Total Time: 14.70
-Time per cycle: .0574218750000000
-Ticks: 53274146369
-Ticks per cycle: 208102134
+Total Time: 14.94
+Time per cycle: .0583593750000000
+Ticks: 53911279446
+Ticks per cycle: 210590935

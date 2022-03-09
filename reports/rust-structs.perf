@@ -4,17 +4,17 @@ Total is 28196624
 
  Performance counter stats for 'bin/rust-structs.bin 32 8':
 
-      12313.092333      task-clock (msec)         #    0.999 CPUs utilized          
-             1,033      context-switches          #    0.084 K/sec                  
-                 1      cpu-migrations            #    0.000 K/sec                  
-                77      page-faults               #    0.006 K/sec                  
-    44,705,877,312      cycles                    #    3.631 GHz                      (83.32%)
-    17,858,284,215      stalled-cycles-frontend   #   39.95% frontend cycles idle     (83.32%)
-     7,759,945,786      stalled-cycles-backend    #   17.36% backend cycles idle      (66.69%)
-    39,486,254,221      instructions              #    0.88  insn per cycle         
-                                                  #    0.45  stalled cycles per insn  (83.35%)
-     7,942,820,270      branches                  #  645.071 M/sec                    (83.34%)
-       771,400,281      branch-misses             #    9.71% of all branches          (83.33%)
+      12653.276119      task-clock (msec)         #    0.999 CPUs utilized          
+             1,091      context-switches          #    0.086 K/sec                  
+                49      cpu-migrations            #    0.004 K/sec                  
+                78      page-faults               #    0.006 K/sec                  
+    45,430,626,150      cycles                    #    3.590 GHz                      (83.33%)
+    18,598,817,771      stalled-cycles-frontend   #   40.94% frontend cycles idle     (83.35%)
+     8,507,185,399      stalled-cycles-backend    #   18.73% backend cycles idle      (66.65%)
+    39,492,383,047      instructions              #    0.87  insn per cycle         
+                                                  #    0.47  stalled cycles per insn  (83.33%)
+     7,944,133,233      branches                  #  627.832 M/sec                    (83.35%)
+       771,808,070      branch-misses             #    9.72% of all branches          (83.33%)
 
-      12.320480599 seconds time elapsed
+      12.668770305 seconds time elapsed
 

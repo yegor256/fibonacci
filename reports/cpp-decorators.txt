@@ -1,9 +1,9 @@
 bin/cpp-decorators.bin:
-CPU ticks: 23087186683
-CPU ticks per cycle: 90184322
+CPU ticks: 23222787761
+CPU ticks per cycle: 90714014
 Instructions: 366
 Cycles: 256
-Total Time: 6.41
-Time per cycle: .0250390625000000
-Ticks: 23087186683
-Ticks per cycle: 90184322
+Total Time: 6.45
+Time per cycle: .0251953125000000
+Ticks: 23222787761
+Ticks per cycle: 90714014

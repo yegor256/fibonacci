@@ -3,17 +3,17 @@ Total is 0
 
  Performance counter stats for 'bin/cpp-formula.bin 32 8388608':
 
-       1698.338551      task-clock (msec)         #    0.999 CPUs utilized          
-               145      context-switches          #    0.085 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
+       1721.255857      task-clock (msec)         #    0.999 CPUs utilized          
+               151      context-switches          #    0.088 K/sec                  
+                 6      cpu-migrations            #    0.003 K/sec                  
              2,745      page-faults               #    0.002 M/sec                  
-     6,148,671,555      cycles                    #    3.620 GHz                      (83.28%)
-     3,594,183,524      stalled-cycles-frontend   #   58.45% frontend cycles idle     (83.28%)
-       195,813,397      stalled-cycles-backend    #    3.18% backend cycles idle      (66.56%)
-     8,692,759,751      instructions              #    1.41  insn per cycle         
-                                                  #    0.41  stalled cycles per insn  (83.26%)
-     1,167,757,308      branches                  #  687.588 M/sec                    (83.50%)
-            53,623      branch-misses             #    0.00% of all branches          (83.38%)
+     6,166,894,346      cycles                    #    3.583 GHz                      (83.31%)
+     3,614,817,116      stalled-cycles-frontend   #   58.62% frontend cycles idle     (83.27%)
+       304,226,702      stalled-cycles-backend    #    4.93% backend cycles idle      (66.56%)
+     8,689,110,816      instructions              #    1.41  insn per cycle         
+                                                  #    0.42  stalled cycles per insn  (83.26%)
+     1,165,457,483      branches                  #  677.097 M/sec                    (83.49%)
+            57,107      branch-misses             #    0.00% of all branches          (83.38%)
 
-       1.699794866 seconds time elapsed
+       1.723481253 seconds time elapsed
 

@@ -3,17 +3,17 @@ Total is 1847893950464
 
  Performance counter stats for 'bin/haskell-tail_recursion.bin 32 524288':
 
-       1528.928984      task-clock (msec)         #    0.999 CPUs utilized          
-               129      context-switches          #    0.084 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
+       1508.631822      task-clock (msec)         #    0.999 CPUs utilized          
+               132      context-switches          #    0.087 K/sec                  
+                 7      cpu-migrations            #    0.005 K/sec                  
             22,709      page-faults               #    0.015 M/sec                  
-     5,533,744,804      cycles                    #    3.619 GHz                      (83.28%)
-     1,112,651,888      stalled-cycles-frontend   #   20.11% frontend cycles idle     (83.26%)
-       856,043,333      stalled-cycles-backend    #   15.47% backend cycles idle      (66.55%)
-     9,846,441,775      instructions              #    1.78  insn per cycle         
-                                                  #    0.11  stalled cycles per insn  (83.29%)
-     2,275,319,080      branches                  # 1488.178 M/sec                    (83.50%)
-        41,663,229      branch-misses             #    1.83% of all branches          (83.41%)
+     5,432,886,325      cycles                    #    3.601 GHz                      (83.33%)
+     1,000,170,951      stalled-cycles-frontend   #   18.41% frontend cycles idle     (83.30%)
+       862,915,689      stalled-cycles-backend    #   15.88% backend cycles idle      (66.62%)
+     9,834,165,938      instructions              #    1.81  insn per cycle         
+                                                  #    0.10  stalled cycles per insn  (83.32%)
+     2,277,286,875      branches                  # 1509.505 M/sec                    (83.32%)
+        41,690,923      branch-misses             #    1.83% of all branches          (83.44%)
 
-       1.530439411 seconds time elapsed
+       1.510629095 seconds time elapsed
 

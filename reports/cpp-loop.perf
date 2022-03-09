@@ -3,17 +3,17 @@ Total is -503316480
 
  Performance counter stats for 'bin/cpp-loop.bin 32 16777216':
 
-       1229.606116      task-clock (msec)         #    0.999 CPUs utilized          
-               105      context-switches          #    0.085 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
+       1268.230858      task-clock (msec)         #    0.999 CPUs utilized          
+               111      context-switches          #    0.088 K/sec                  
+                 2      cpu-migrations            #    0.002 K/sec                  
              2,745      page-faults               #    0.002 M/sec                  
-     4,452,024,766      cycles                    #    3.621 GHz                      (83.05%)
-     2,489,921,441      stalled-cycles-frontend   #   55.93% frontend cycles idle     (83.35%)
-       151,487,543      stalled-cycles-backend    #    3.40% backend cycles idle      (66.85%)
-     7,776,544,805      instructions              #    1.75  insn per cycle         
-                                                  #    0.32  stalled cycles per insn  (83.41%)
-     1,132,210,122      branches                  #  920.791 M/sec                    (83.41%)
-            61,385      branch-misses             #    0.01% of all branches          (83.34%)
+     4,514,849,650      cycles                    #    3.560 GHz                      (83.29%)
+     2,553,087,142      stalled-cycles-frontend   #   56.55% frontend cycles idle     (83.30%)
+       199,187,267      stalled-cycles-backend    #    4.41% backend cycles idle      (66.57%)
+     7,791,354,678      instructions              #    1.73  insn per cycle         
+                                                  #    0.33  stalled cycles per insn  (83.25%)
+     1,129,030,237      branches                  #  890.240 M/sec                    (83.41%)
+            66,727      branch-misses             #    0.01% of all branches          (83.43%)
 
-       1.230735657 seconds time elapsed
+       1.269515576 seconds time elapsed
 

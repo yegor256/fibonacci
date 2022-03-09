@@ -3,17 +3,17 @@ Total is 923946975232
 
  Performance counter stats for 'bin/haskell-object_dynamic.bin 32 262144':
 
-       1697.970614      task-clock (msec)         #    0.999 CPUs utilized          
-               144      context-switches          #    0.085 K/sec                  
+       1787.095197      task-clock (msec)         #    0.999 CPUs utilized          
+               151      context-switches          #    0.084 K/sec                  
                  0      cpu-migrations            #    0.000 K/sec                  
-            10,931      page-faults               #    0.006 M/sec                  
-     6,133,261,553      cycles                    #    3.612 GHz                      (83.30%)
-     1,187,158,728      stalled-cycles-frontend   #   19.36% frontend cycles idle     (83.28%)
-     1,564,040,317      stalled-cycles-backend    #   25.50% backend cycles idle      (66.58%)
-    10,805,792,567      instructions              #    1.76  insn per cycle         
-                                                  #    0.14  stalled cycles per insn  (83.31%)
-     2,335,135,400      branches                  # 1375.251 M/sec                    (83.41%)
-        70,479,025      branch-misses             #    3.02% of all branches          (83.42%)
+            10,932      page-faults               #    0.006 M/sec                  
+     6,405,871,544      cycles                    #    3.585 GHz                      (83.17%)
+     1,516,208,975      stalled-cycles-frontend   #   23.67% frontend cycles idle     (83.32%)
+     1,193,807,336      stalled-cycles-backend    #   18.64% backend cycles idle      (66.60%)
+    10,814,227,163      instructions              #    1.69  insn per cycle         
+                                                  #    0.14  stalled cycles per insn  (83.40%)
+     2,327,087,597      branches                  # 1302.162 M/sec                    (83.55%)
+        71,218,240      branch-misses             #    3.06% of all branches          (83.36%)
 
-       1.699579103 seconds time elapsed
+       1.789042453 seconds time elapsed
 
