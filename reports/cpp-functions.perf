@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-functions.bin 32 256':
 
-      14748.418879      task-clock (msec)         #    0.999 CPUs utilized          
-             1,269      context-switches          #    0.086 K/sec                  
-                48      cpu-migrations            #    0.003 K/sec                  
-             2,746      page-faults               #    0.186 K/sec                  
-    53,078,958,005      cycles                    #    3.599 GHz                      (83.32%)
-    10,655,801,824      stalled-cycles-frontend   #   20.08% frontend cycles idle     (83.33%)
-     4,274,901,977      stalled-cycles-backend    #    8.05% backend cycles idle      (66.68%)
-    81,272,488,041      instructions              #    1.53  insn per cycle         
-                                                  #    0.13  stalled cycles per insn  (83.34%)
-    16,251,127,947      branches                  # 1101.890 M/sec                    (83.33%)
-       316,515,253      branch-misses             #    1.95% of all branches          (83.33%)
+      14718.297845      task-clock (msec)         #    0.999 CPUs utilized          
+             1,252      context-switches          #    0.085 K/sec                  
+                29      cpu-migrations            #    0.002 K/sec                  
+             2,746      page-faults               #    0.187 K/sec                  
+    52,698,788,056      cycles                    #    3.580 GHz                      (83.33%)
+    10,201,827,662      stalled-cycles-frontend   #   19.36% frontend cycles idle     (83.33%)
+     4,243,393,331      stalled-cycles-backend    #    8.05% backend cycles idle      (66.66%)
+    81,253,161,677      instructions              #    1.54  insn per cycle         
+                                                  #    0.13  stalled cycles per insn  (83.35%)
+    16,254,580,464      branches                  # 1104.379 M/sec                    (83.35%)
+       316,577,255      branch-misses             #    1.95% of all branches          (83.33%)
 
-      14.762521966 seconds time elapsed
+      14.730118983 seconds time elapsed
 

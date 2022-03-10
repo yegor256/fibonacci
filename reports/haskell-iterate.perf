@@ -3,17 +3,17 @@ Total is 3695787900928
 
  Performance counter stats for 'bin/haskell-iterate.bin 32 1048576':
 
-       1562.364176      task-clock (msec)         #    0.999 CPUs utilized          
-               132      context-switches          #    0.084 K/sec                  
-                 1      cpu-migrations            #    0.001 K/sec                  
-            43,702      page-faults               #    0.028 M/sec                  
-     5,585,354,644      cycles                    #    3.575 GHz                      (83.29%)
-     1,267,573,287      stalled-cycles-frontend   #   22.69% frontend cycles idle     (83.38%)
-       887,576,854      stalled-cycles-backend    #   15.89% backend cycles idle      (66.77%)
-    11,250,273,605      instructions              #    2.01  insn per cycle         
-                                                  #    0.11  stalled cycles per insn  (83.40%)
-     2,328,504,894      branches                  # 1490.373 M/sec                    (83.33%)
-        13,749,529      branch-misses             #    0.59% of all branches          (83.23%)
+       1779.798471      task-clock (msec)         #    0.999 CPUs utilized          
+               152      context-switches          #    0.085 K/sec                  
+                 2      cpu-migrations            #    0.001 K/sec                  
+            43,703      page-faults               #    0.025 M/sec                  
+     6,364,767,962      cycles                    #    3.576 GHz                      (83.23%)
+     1,969,575,650      stalled-cycles-frontend   #   30.94% frontend cycles idle     (83.40%)
+     1,166,302,870      stalled-cycles-backend    #   18.32% backend cycles idle      (66.72%)
+    11,223,948,753      instructions              #    1.76  insn per cycle         
+                                                  #    0.18  stalled cycles per insn  (83.37%)
+     2,334,330,118      branches                  # 1311.570 M/sec                    (83.41%)
+        24,545,064      branch-misses             #    1.05% of all branches          (83.24%)
 
-       1.564049705 seconds time elapsed
+       1.781984872 seconds time elapsed
 

@@ -4,17 +4,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/rust-recursion.bin 32 256':
 
-       9708.914888      task-clock (msec)         #    0.999 CPUs utilized          
-               839      context-switches          #    0.086 K/sec                  
-                29      cpu-migrations            #    0.003 K/sec                  
-                76      page-faults               #    0.008 K/sec                  
-    34,776,640,775      cycles                    #    3.582 GHz                      (83.34%)
-     8,699,421,087      stalled-cycles-frontend   #   25.02% frontend cycles idle     (83.33%)
-     2,885,900,776      stalled-cycles-backend    #    8.30% backend cycles idle      (66.65%)
-    49,141,325,710      instructions              #    1.41  insn per cycle         
-                                                  #    0.18  stalled cycles per insn  (83.32%)
-    16,455,640,556      branches                  # 1694.900 M/sec                    (83.34%)
-       160,391,141      branch-misses             #    0.97% of all branches          (83.34%)
+       9631.688062      task-clock (msec)         #    0.999 CPUs utilized          
+               844      context-switches          #    0.088 K/sec                  
+                27      cpu-migrations            #    0.003 K/sec                  
+                73      page-faults               #    0.008 K/sec                  
+    34,704,362,570      cycles                    #    3.603 GHz                      (83.33%)
+     8,527,020,676      stalled-cycles-frontend   #   24.57% frontend cycles idle     (83.31%)
+     3,524,334,668      stalled-cycles-backend    #   10.16% backend cycles idle      (66.65%)
+    49,163,513,983      instructions              #    1.42  insn per cycle         
+                                                  #    0.17  stalled cycles per insn  (83.33%)
+    16,462,479,102      branches                  # 1709.200 M/sec                    (83.36%)
+       158,339,802      branch-misses             #    0.96% of all branches          (83.35%)
 
-       9.717843118 seconds time elapsed
+       9.642880917 seconds time elapsed
 

@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/java-Functions.bin 32 256':
 
-       8372.838567      task-clock (msec)         #    0.999 CPUs utilized          
-               721      context-switches          #    0.086 K/sec                  
-                27      cpu-migrations            #    0.003 K/sec                  
-               427      page-faults               #    0.051 K/sec                  
-    30,173,162,749      cycles                    #    3.604 GHz                      (83.33%)
-     3,294,225,190      stalled-cycles-frontend   #   10.92% frontend cycles idle     (83.34%)
-     2,867,998,744      stalled-cycles-backend    #    9.51% backend cycles idle      (66.67%)
-    55,061,308,363      instructions              #    1.82  insn per cycle         
+       8507.579793      task-clock (msec)         #    0.999 CPUs utilized          
+               727      context-switches          #    0.085 K/sec                  
+                20      cpu-migrations            #    0.002 K/sec                  
+               427      page-faults               #    0.050 K/sec                  
+    30,298,802,263      cycles                    #    3.561 GHz                      (83.33%)
+     3,435,377,540      stalled-cycles-frontend   #   11.34% frontend cycles idle     (83.32%)
+     2,476,366,060      stalled-cycles-backend    #    8.17% backend cycles idle      (66.65%)
+    55,068,785,813      instructions              #    1.82  insn per cycle         
                                                   #    0.06  stalled cycles per insn  (83.33%)
-    16,245,234,829      branches                  # 1940.230 M/sec                    (83.35%)
-       312,414,082      branch-misses             #    1.92% of all branches          (83.31%)
+    16,243,352,957      branches                  # 1909.280 M/sec                    (83.36%)
+       312,278,652      branch-misses             #    1.92% of all branches          (83.34%)
 
-       8.379927285 seconds time elapsed
+       8.514407084 seconds time elapsed
 

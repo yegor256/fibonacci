@@ -3,17 +3,17 @@ Total is 28196624
 
  Performance counter stats for 'bin/haskell-polymorphic_recursion.bin 32 8':
 
-      17044.890415      task-clock (msec)         #    0.999 CPUs utilized          
-             1,442      context-switches          #    0.085 K/sec                  
+      17572.439592      task-clock (msec)         #    0.999 CPUs utilized          
+             1,481      context-switches          #    0.084 K/sec                  
                 18      cpu-migrations            #    0.001 K/sec                  
-               943      page-faults               #    0.055 K/sec                  
-    61,493,287,157      cycles                    #    3.608 GHz                      (83.32%)
-    12,549,816,987      stalled-cycles-frontend   #   20.41% frontend cycles idle     (83.33%)
-    15,559,644,267      stalled-cycles-backend    #   25.30% backend cycles idle      (66.66%)
-    98,921,746,342      instructions              #    1.61  insn per cycle         
-                                                  #    0.16  stalled cycles per insn  (83.32%)
-    23,379,739,978      branches                  # 1371.657 M/sec                    (83.35%)
-       832,015,782      branch-misses             #    3.56% of all branches          (83.34%)
+               944      page-faults               #    0.054 K/sec                  
+    63,383,348,786      cycles                    #    3.607 GHz                      (83.33%)
+    15,531,644,298      stalled-cycles-frontend   #   24.50% frontend cycles idle     (83.33%)
+    13,044,974,742      stalled-cycles-backend    #   20.58% backend cycles idle      (66.66%)
+    98,917,863,612      instructions              #    1.56  insn per cycle         
+                                                  #    0.16  stalled cycles per insn  (83.33%)
+    23,382,040,156      branches                  # 1330.609 M/sec                    (83.33%)
+       848,451,568      branch-misses             #    3.63% of all branches          (83.35%)
 
-      17.060669400 seconds time elapsed
+      17.587562825 seconds time elapsed
 

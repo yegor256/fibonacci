@@ -1,9 +1,9 @@
 bin/lisp-recursion.bin:
-CPU ticks: 62300078202
-CPU ticks per cycle: 243359680
+CPU ticks: 62451858777
+CPU ticks per cycle: 243952573
 Instructions: 1
 Cycles: 256
-Total Time: 17.31
-Time per cycle: .0676171875000000
-Ticks: 62300078202
-Ticks per cycle: 243359680
+Total Time: 17.19
+Time per cycle: .0671484375000000
+Ticks: 62451858777
+Ticks per cycle: 243952573

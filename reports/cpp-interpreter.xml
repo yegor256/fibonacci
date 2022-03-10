@@ -1,1 +1,1 @@
-<program> 	<file>cpp/interpreter.cpp</file> 	<name>cpp-interpreter</name> 	<instructions>3125</instructions> 	<cycles>8192</cycles> 	<time>1.83</time> 	<time_per_cycle>.0002233886718750</time_per_cycle> 	<ticks>6904753931</ticks> 	<ticks_per_cycle>842865</ticks_per_cycle> 	</program>
+<program> 	<file>cpp/interpreter.cpp</file> 	<name>cpp-interpreter</name> 	<instructions>3125</instructions> 	<cycles>8192</cycles> 	<time>1.93</time> 	<time_per_cycle>.0002355957031250</time_per_cycle> 	<ticks>6828786270</ticks> 	<ticks_per_cycle>833592</ticks_per_cycle> 	</program>

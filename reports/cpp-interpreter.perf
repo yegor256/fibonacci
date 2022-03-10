@@ -3,17 +3,17 @@ Total is -1191428096
 
  Performance counter stats for 'bin/cpp-interpreter.bin 32 8192':
 
-       1914.311526      task-clock (msec)         #    0.999 CPUs utilized          
-               168      context-switches          #    0.088 K/sec                  
-                 4      cpu-migrations            #    0.002 K/sec                  
+       1892.808314      task-clock (msec)         #    0.999 CPUs utilized          
+               163      context-switches          #    0.086 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
              2,830      page-faults               #    0.001 M/sec                  
-     6,904,753,931      cycles                    #    3.607 GHz                      (83.28%)
-     2,312,248,926      stalled-cycles-frontend   #   33.49% frontend cycles idle     (83.32%)
-       451,512,048      stalled-cycles-backend    #    6.54% backend cycles idle      (66.57%)
-    10,803,224,964      instructions              #    1.56  insn per cycle         
-                                                  #    0.21  stalled cycles per insn  (83.28%)
-     2,254,872,661      branches                  # 1177.903 M/sec                    (83.38%)
-        35,153,374      branch-misses             #    1.56% of all branches          (83.46%)
+     6,828,786,270      cycles                    #    3.608 GHz                      (83.31%)
+     2,225,512,651      stalled-cycles-frontend   #   32.59% frontend cycles idle     (83.34%)
+       448,685,472      stalled-cycles-backend    #    6.57% backend cycles idle      (66.63%)
+    10,802,237,993      instructions              #    1.58  insn per cycle         
+                                                  #    0.21  stalled cycles per insn  (83.31%)
+     2,256,716,720      branches                  # 1192.258 M/sec                    (83.30%)
+        35,268,009      branch-misses             #    1.56% of all branches          (83.42%)
 
-       1.916490954 seconds time elapsed
+       1.894811976 seconds time elapsed
 

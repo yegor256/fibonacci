@@ -3,17 +3,17 @@ Total is 3524578
 
  Performance counter stats for 'bin/cpp-lambdas.bin 32 1':
 
-      20866.058219      task-clock (msec)         #    0.999 CPUs utilized          
-             1,793      context-switches          #    0.086 K/sec                  
-                50      cpu-migrations            #    0.002 K/sec                  
-             3,529      page-faults               #    0.169 K/sec                  
-    75,018,434,206      cycles                    #    3.595 GHz                      (83.31%)
-    17,532,884,867      stalled-cycles-frontend   #   23.37% frontend cycles idle     (83.34%)
-     4,507,880,915      stalled-cycles-backend    #    6.01% backend cycles idle      (66.67%)
-   175,293,303,315      instructions              #    2.34  insn per cycle         
+      20716.631020      task-clock (msec)         #    0.999 CPUs utilized          
+             1,784      context-switches          #    0.086 K/sec                  
+                52      cpu-migrations            #    0.003 K/sec                  
+             3,530      page-faults               #    0.170 K/sec                  
+    74,487,086,453      cycles                    #    3.596 GHz                      (83.32%)
+    17,028,436,670      stalled-cycles-frontend   #   22.86% frontend cycles idle     (83.34%)
+     4,279,183,446      stalled-cycles-backend    #    5.74% backend cycles idle      (66.66%)
+   175,208,961,666      instructions              #    2.35  insn per cycle         
                                                   #    0.10  stalled cycles per insn  (83.33%)
-    40,010,635,208      branches                  # 1917.498 M/sec                    (83.34%)
-        36,668,921      branch-misses             #    0.09% of all branches          (83.34%)
+    40,018,906,217      branches                  # 1931.728 M/sec                    (83.33%)
+        35,006,686      branch-misses             #    0.09% of all branches          (83.34%)
 
-      20.887036921 seconds time elapsed
+      20.737031681 seconds time elapsed
 

@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/haskell-adt.bin 32 256':
 
-      91199.827250      task-clock (msec)         #    0.999 CPUs utilized          
-             7,688      context-switches          #    0.084 K/sec                  
-                33      cpu-migrations            #    0.000 K/sec                  
+      91732.990351      task-clock (msec)         #    0.999 CPUs utilized          
+             7,693      context-switches          #    0.084 K/sec                  
+                30      cpu-migrations            #    0.000 K/sec                  
                943      page-faults               #    0.010 K/sec                  
-   328,967,768,577      cycles                    #    3.607 GHz                      (83.33%)
-    77,649,245,493      stalled-cycles-frontend   #   23.60% frontend cycles idle     (83.33%)
-    64,820,107,194      stalled-cycles-backend    #   19.70% backend cycles idle      (66.67%)
-   580,644,970,400      instructions              #    1.77  insn per cycle         
-                                                  #    0.13  stalled cycles per insn  (83.34%)
-   121,633,108,883      branches                  # 1333.699 M/sec                    (83.32%)
-     3,359,569,670      branch-misses             #    2.76% of all branches          (83.34%)
+   330,111,817,795      cycles                    #    3.599 GHz                      (83.34%)
+    78,969,843,620      stalled-cycles-frontend   #   23.92% frontend cycles idle     (83.32%)
+    54,890,782,805      stalled-cycles-backend    #   16.63% backend cycles idle      (66.68%)
+   580,336,679,519      instructions              #    1.76  insn per cycle         
+                                                  #    0.14  stalled cycles per insn  (83.34%)
+   121,589,458,188      branches                  # 1325.471 M/sec                    (83.33%)
+     3,358,282,220      branch-misses             #    2.76% of all branches          (83.34%)
 
-      91.278247029 seconds time elapsed
+      91.812047966 seconds time elapsed
 

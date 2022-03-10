@@ -4,17 +4,17 @@ Total is 28196624
 
  Performance counter stats for 'bin/rust-structs.bin 32 8':
 
-      12653.276119      task-clock (msec)         #    0.999 CPUs utilized          
-             1,091      context-switches          #    0.086 K/sec                  
-                49      cpu-migrations            #    0.004 K/sec                  
+      12622.577488      task-clock (msec)         #    0.999 CPUs utilized          
+             1,087      context-switches          #    0.086 K/sec                  
+                37      cpu-migrations            #    0.003 K/sec                  
                 78      page-faults               #    0.006 K/sec                  
-    45,430,626,150      cycles                    #    3.590 GHz                      (83.33%)
-    18,598,817,771      stalled-cycles-frontend   #   40.94% frontend cycles idle     (83.35%)
-     8,507,185,399      stalled-cycles-backend    #   18.73% backend cycles idle      (66.65%)
-    39,492,383,047      instructions              #    0.87  insn per cycle         
-                                                  #    0.47  stalled cycles per insn  (83.33%)
-     7,944,133,233      branches                  #  627.832 M/sec                    (83.35%)
-       771,808,070      branch-misses             #    9.72% of all branches          (83.33%)
+    45,465,969,058      cycles                    #    3.602 GHz                      (83.27%)
+    18,612,989,743      stalled-cycles-frontend   #   40.94% frontend cycles idle     (83.34%)
+     8,883,939,453      stalled-cycles-backend    #   19.54% backend cycles idle      (66.68%)
+    39,500,204,682      instructions              #    0.87  insn per cycle         
+                                                  #    0.47  stalled cycles per insn  (83.31%)
+     7,944,745,129      branches                  #  629.408 M/sec                    (83.37%)
+       771,489,860      branch-misses             #    9.71% of all branches          (83.34%)
 
-      12.668770305 seconds time elapsed
+      12.638235199 seconds time elapsed
 

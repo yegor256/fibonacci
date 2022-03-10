@@ -1,0 +1,19 @@
+32-th Fibonacci number is 3524578
+Total is 7049156
+
+ Performance counter stats for 'bin/pascal-Objects.bin 32 2':
+
+      20486.073808      task-clock (msec)         #    0.999 CPUs utilized          
+             1,746      context-switches          #    0.085 K/sec                  
+                39      cpu-migrations            #    0.002 K/sec                  
+         2,423,825      page-faults               #    0.118 M/sec                  
+    73,558,809,993      cycles                    #    3.591 GHz                      (83.32%)
+    26,883,067,902      stalled-cycles-frontend   #   36.55% frontend cycles idle     (83.28%)
+    12,232,233,918      stalled-cycles-backend    #   16.63% backend cycles idle      (66.71%)
+    97,581,438,492      instructions              #    1.33  insn per cycle         
+                                                  #    0.28  stalled cycles per insn  (83.33%)
+    21,402,264,552      branches                  # 1044.723 M/sec                    (83.30%)
+       373,973,445      branch-misses             #    1.75% of all branches          (83.39%)
+
+      20.508117329 seconds time elapsed
+

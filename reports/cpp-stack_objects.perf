@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-stack_objects.bin 32 256':
 
-      48647.824548      task-clock (msec)         #    0.999 CPUs utilized          
-             4,147      context-switches          #    0.085 K/sec                  
-               120      cpu-migrations            #    0.002 K/sec                  
+      48830.622656      task-clock (msec)         #    0.999 CPUs utilized          
+             4,189      context-switches          #    0.086 K/sec                  
+               150      cpu-migrations            #    0.003 K/sec                  
              2,748      page-faults               #    0.056 K/sec                  
-   175,212,565,462      cycles                    #    3.602 GHz                      (83.33%)
-    73,641,272,787      stalled-cycles-frontend   #   42.03% frontend cycles idle     (83.33%)
-    10,751,661,249      stalled-cycles-backend    #    6.14% backend cycles idle      (66.66%)
-   232,892,028,445      instructions              #    1.33  insn per cycle         
-                                                  #    0.32  stalled cycles per insn  (83.33%)
-    40,626,042,553      branches                  #  835.105 M/sec                    (83.34%)
-       774,471,704      branch-misses             #    1.91% of all branches          (83.34%)
+   175,532,411,751      cycles                    #    3.595 GHz                      (83.33%)
+    73,879,783,267      stalled-cycles-frontend   #   42.09% frontend cycles idle     (83.33%)
+    11,430,593,247      stalled-cycles-backend    #    6.51% backend cycles idle      (66.66%)
+   232,902,733,282      instructions              #    1.33  insn per cycle         
+                                                  #    0.32  stalled cycles per insn  (83.34%)
+    40,632,617,432      branches                  #  832.113 M/sec                    (83.34%)
+       774,236,259      branch-misses             #    1.91% of all branches          (83.33%)
 
-      48.689999483 seconds time elapsed
+      48.880787452 seconds time elapsed
 
