@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/lisp-recursion.bin 32 256':
 
-      17380.897445      task-clock (msec)         #    0.999 CPUs utilized          
-             1,490      context-switches          #    0.086 K/sec                  
-                52      cpu-migrations            #    0.003 K/sec                  
-               854      page-faults               #    0.049 K/sec                  
-    62,451,858,777      cycles                    #    3.593 GHz                      (83.33%)
-    14,724,745,377      stalled-cycles-frontend   #   23.58% frontend cycles idle     (83.34%)
-     9,826,070,839      stalled-cycles-backend    #   15.73% backend cycles idle      (66.66%)
-    93,064,674,915      instructions              #    1.49  insn per cycle         
+      17336.803497      task-clock (msec)         #    0.999 CPUs utilized          
+             1,526      context-switches          #    0.088 K/sec                  
+                43      cpu-migrations            #    0.002 K/sec                  
+               852      page-faults               #    0.049 K/sec                  
+    62,464,609,907      cycles                    #    3.603 GHz                      (83.34%)
+    14,737,393,379      stalled-cycles-frontend   #   23.59% frontend cycles idle     (83.34%)
+    10,400,282,908      stalled-cycles-backend    #   16.65% backend cycles idle      (66.66%)
+    93,028,427,646      instructions              #    1.49  insn per cycle         
                                                   #    0.16  stalled cycles per insn  (83.33%)
-    28,012,085,891      branches                  # 1611.659 M/sec                    (83.33%)
-       606,305,265      branch-misses             #    2.16% of all branches          (83.35%)
+    28,001,550,651      branches                  # 1615.151 M/sec                    (83.34%)
+       606,286,365      branch-misses             #    2.17% of all branches          (83.33%)
 
-      17.398433365 seconds time elapsed
+      17.353248829 seconds time elapsed
 

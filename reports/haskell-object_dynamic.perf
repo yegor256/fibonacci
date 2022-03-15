@@ -3,17 +3,17 @@ Total is 923946975232
 
  Performance counter stats for 'bin/haskell-object_dynamic.bin 32 262144':
 
-       1721.038724      task-clock (msec)         #    0.999 CPUs utilized          
-               145      context-switches          #    0.084 K/sec                  
-                 1      cpu-migrations            #    0.001 K/sec                  
-            10,937      page-faults               #    0.006 M/sec                  
-     6,158,634,209      cycles                    #    3.578 GHz                      (83.17%)
-     1,202,787,157      stalled-cycles-frontend   #   19.53% frontend cycles idle     (83.26%)
-     1,177,449,233      stalled-cycles-backend    #   19.12% backend cycles idle      (66.63%)
-    10,817,059,687      instructions              #    1.76  insn per cycle         
-                                                  #    0.11  stalled cycles per insn  (83.26%)
-     2,329,906,327      branches                  # 1353.779 M/sec                    (83.50%)
-        70,876,225      branch-misses             #    3.04% of all branches          (83.44%)
+       1712.336872      task-clock (msec)         #    0.999 CPUs utilized          
+               144      context-switches          #    0.084 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+            10,932      page-faults               #    0.006 M/sec                  
+     6,180,810,737      cycles                    #    3.610 GHz                      (83.20%)
+     1,232,671,229      stalled-cycles-frontend   #   19.94% frontend cycles idle     (83.20%)
+     1,132,605,897      stalled-cycles-backend    #   18.32% backend cycles idle      (66.87%)
+    10,808,096,111      instructions              #    1.75  insn per cycle         
+                                                  #    0.11  stalled cycles per insn  (83.42%)
+     2,329,815,294      branches                  # 1360.606 M/sec                    (83.41%)
+        71,165,732      branch-misses             #    3.05% of all branches          (83.32%)
 
-       1.723000441 seconds time elapsed
+       1.713953382 seconds time elapsed
 

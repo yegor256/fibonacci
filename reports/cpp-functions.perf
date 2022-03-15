@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-functions.bin 32 256':
 
-      14718.297845      task-clock (msec)         #    0.999 CPUs utilized          
-             1,252      context-switches          #    0.085 K/sec                  
-                29      cpu-migrations            #    0.002 K/sec                  
-             2,746      page-faults               #    0.187 K/sec                  
-    52,698,788,056      cycles                    #    3.580 GHz                      (83.33%)
-    10,201,827,662      stalled-cycles-frontend   #   19.36% frontend cycles idle     (83.33%)
-     4,243,393,331      stalled-cycles-backend    #    8.05% backend cycles idle      (66.66%)
-    81,253,161,677      instructions              #    1.54  insn per cycle         
+      14666.530062      task-clock (msec)         #    0.999 CPUs utilized          
+             1,256      context-switches          #    0.086 K/sec                  
+                44      cpu-migrations            #    0.003 K/sec                  
+             2,745      page-faults               #    0.187 K/sec                  
+    52,895,804,820      cycles                    #    3.607 GHz                      (83.32%)
+    10,419,526,599      stalled-cycles-frontend   #   19.70% frontend cycles idle     (83.32%)
+     4,338,282,072      stalled-cycles-backend    #    8.20% backend cycles idle      (66.67%)
+    81,237,295,737      instructions              #    1.54  insn per cycle         
                                                   #    0.13  stalled cycles per insn  (83.35%)
-    16,254,580,464      branches                  # 1104.379 M/sec                    (83.35%)
-       316,577,255      branch-misses             #    1.95% of all branches          (83.33%)
+    16,249,456,362      branches                  # 1107.928 M/sec                    (83.35%)
+       316,474,586      branch-misses             #    1.95% of all branches          (83.33%)
 
-      14.730118983 seconds time elapsed
+      14.679833775 seconds time elapsed
 

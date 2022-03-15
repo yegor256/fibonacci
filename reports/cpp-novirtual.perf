@@ -3,17 +3,17 @@ Total is 3524578
 
  Performance counter stats for 'bin/cpp-novirtual.bin 32 1':
 
-     151145.029903      task-clock (msec)         #    0.999 CPUs utilized          
-            12,882      context-switches          #    0.085 K/sec                  
-               258      cpu-migrations            #    0.002 K/sec                  
-         2,646,089      page-faults               #    0.018 M/sec                  
-   542,577,286,728      cycles                    #    3.590 GHz                      (83.35%)
-   487,098,148,430      stalled-cycles-frontend   #   89.77% frontend cycles idle     (83.32%)
-   193,509,120,636      stalled-cycles-backend    #   35.66% backend cycles idle      (66.67%)
-   124,498,848,791      instructions              #    0.23  insn per cycle         
-                                                  #    3.91  stalled cycles per insn  (83.35%)
-    24,518,534,471      branches                  #  162.219 M/sec                    (83.33%)
-       710,663,980      branch-misses             #    2.90% of all branches          (83.33%)
+     151755.133923      task-clock (msec)         #    0.999 CPUs utilized          
+            13,009      context-switches          #    0.086 K/sec                  
+               366      cpu-migrations            #    0.002 K/sec                  
+         2,646,090      page-faults               #    0.017 M/sec                  
+   544,504,748,259      cycles                    #    3.588 GHz                      (83.34%)
+   488,899,291,434      stalled-cycles-frontend   #   89.79% frontend cycles idle     (83.32%)
+   190,968,533,797      stalled-cycles-backend    #   35.07% backend cycles idle      (66.68%)
+   124,561,213,348      instructions              #    0.23  insn per cycle         
+                                                  #    3.92  stalled cycles per insn  (83.34%)
+    24,531,062,758      branches                  #  161.649 M/sec                    (83.32%)
+       714,718,128      branch-misses             #    2.91% of all branches          (83.35%)
 
-     151.324511604 seconds time elapsed
+     151.943901574 seconds time elapsed
 

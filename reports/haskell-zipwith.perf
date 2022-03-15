@@ -3,17 +3,17 @@ Total is 7391575801856
 
  Performance counter stats for 'bin/haskell-zipwith.bin 32 2097152':
 
-       1105.574113      task-clock (msec)         #    0.999 CPUs utilized          
-                96      context-switches          #    0.087 K/sec                  
-                 2      cpu-migrations            #    0.002 K/sec                  
-            81,078      page-faults               #    0.073 M/sec                  
-     3,897,236,462      cycles                    #    3.525 GHz                      (83.29%)
-     1,164,139,449      stalled-cycles-frontend   #   29.87% frontend cycles idle     (83.36%)
-       695,284,993      stalled-cycles-backend    #   17.84% backend cycles idle      (66.80%)
-     7,329,286,008      instructions              #    1.88  insn per cycle         
-                                                  #    0.16  stalled cycles per insn  (83.40%)
-     1,443,799,306      branches                  # 1305.927 M/sec                    (83.35%)
-         3,119,731      branch-misses             #    0.22% of all branches          (83.20%)
+       1056.166406      task-clock (msec)         #    0.999 CPUs utilized          
+                89      context-switches          #    0.084 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+            81,080      page-faults               #    0.077 M/sec                  
+     3,791,059,343      cycles                    #    3.589 GHz                      (83.33%)
+     1,064,771,236      stalled-cycles-frontend   #   28.09% frontend cycles idle     (83.37%)
+       939,428,594      stalled-cycles-backend    #   24.78% backend cycles idle      (66.69%)
+     7,351,780,463      instructions              #    1.94  insn per cycle         
+                                                  #    0.14  stalled cycles per insn  (83.36%)
+     1,444,278,871      branches                  # 1367.473 M/sec                    (83.34%)
+         1,778,138      branch-misses             #    0.12% of all branches          (83.26%)
 
-       1.107136930 seconds time elapsed
+       1.057463543 seconds time elapsed
 

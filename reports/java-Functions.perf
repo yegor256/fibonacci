@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/java-Functions.bin 32 256':
 
-       8507.579793      task-clock (msec)         #    0.999 CPUs utilized          
-               727      context-switches          #    0.085 K/sec                  
-                20      cpu-migrations            #    0.002 K/sec                  
-               427      page-faults               #    0.050 K/sec                  
-    30,298,802,263      cycles                    #    3.561 GHz                      (83.33%)
-     3,435,377,540      stalled-cycles-frontend   #   11.34% frontend cycles idle     (83.32%)
-     2,476,366,060      stalled-cycles-backend    #    8.17% backend cycles idle      (66.65%)
-    55,068,785,813      instructions              #    1.82  insn per cycle         
-                                                  #    0.06  stalled cycles per insn  (83.33%)
-    16,243,352,957      branches                  # 1909.280 M/sec                    (83.36%)
-       312,278,652      branch-misses             #    1.92% of all branches          (83.34%)
+       9105.127959      task-clock (msec)         #    0.999 CPUs utilized          
+               785      context-switches          #    0.086 K/sec                  
+                39      cpu-migrations            #    0.004 K/sec                  
+               427      page-faults               #    0.047 K/sec                  
+    32,722,753,138      cycles                    #    3.594 GHz                      (83.32%)
+     6,846,496,809      stalled-cycles-frontend   #   20.92% frontend cycles idle     (83.32%)
+     3,010,100,643      stalled-cycles-backend    #    9.20% backend cycles idle      (66.64%)
+    55,086,576,858      instructions              #    1.68  insn per cycle         
+                                                  #    0.12  stalled cycles per insn  (83.31%)
+    16,240,838,938      branches                  # 1783.702 M/sec                    (83.38%)
+       324,820,017      branch-misses             #    2.00% of all branches          (83.34%)
 
-       8.514407084 seconds time elapsed
+       9.113871474 seconds time elapsed
 

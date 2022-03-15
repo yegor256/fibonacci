@@ -1,1 +1,1 @@
-<program> 	<file>cpp/novirtual.cpp</file> 	<name>cpp-novirtual</name> 	<instructions>419</instructions> 	<cycles>1</cycles> 	<time>153.35</time> 	<time_per_cycle>153.3500000000000000</time_per_cycle> 	<ticks>542577286728</ticks> 	<ticks_per_cycle>542577286728</ticks_per_cycle> 	</program>
+<program> 	<file>cpp/novirtual.cpp</file> 	<name>cpp-novirtual</name> 	<instructions>419</instructions> 	<cycles>1</cycles> 	<time>151.29</time> 	<time_per_cycle>151.2900000000000000</time_per_cycle> 	<ticks>544504748259</ticks> 	<ticks_per_cycle>544504748259</ticks_per_cycle> 	</program>

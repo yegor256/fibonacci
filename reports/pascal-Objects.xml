@@ -1,1 +1,1 @@
-<program> 	<file>pascal/Objects.pp</file> 	<name>pascal-Objects</name> 	<instructions>1</instructions> 	<cycles>2</cycles> 	<time>20.56</time> 	<time_per_cycle>10.2800000000000000</time_per_cycle> 	<ticks>73558809993</ticks> 	<ticks_per_cycle>36779404996</ticks_per_cycle> 	</program>
+<program> 	<file>pascal/Objects.pp</file> 	<name>pascal-Objects</name> 	<instructions>1</instructions> 	<cycles>2</cycles> 	<time>20.18</time> 	<time_per_cycle>10.0900000000000000</time_per_cycle> 	<ticks>73312217224</ticks> 	<ticks_per_cycle>36656108612</ticks_per_cycle> 	</program>

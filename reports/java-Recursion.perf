@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/java-Recursion.bin 32 256':
 
-       3640.416795      task-clock (msec)         #    0.999 CPUs utilized          
-               313      context-switches          #    0.086 K/sec                  
-                10      cpu-migrations            #    0.003 K/sec                  
-               431      page-faults               #    0.118 K/sec                  
-    13,046,553,345      cycles                    #    3.584 GHz                      (83.31%)
-       947,438,612      stalled-cycles-frontend   #    7.26% frontend cycles idle     (83.31%)
-       372,386,272      stalled-cycles-backend    #    2.85% backend cycles idle      (66.63%)
-    28,888,357,794      instructions              #    2.21  insn per cycle         
-                                                  #    0.03  stalled cycles per insn  (83.31%)
-     9,037,857,014      branches                  # 2482.643 M/sec                    (83.33%)
-        28,508,511      branch-misses             #    0.32% of all branches          (83.41%)
+       3483.874286      task-clock (msec)         #    0.999 CPUs utilized          
+               298      context-switches          #    0.086 K/sec                  
+                 8      cpu-migrations            #    0.002 K/sec                  
+               429      page-faults               #    0.123 K/sec                  
+    12,605,640,366      cycles                    #    3.618 GHz                      (83.25%)
+       488,008,767      stalled-cycles-frontend   #    3.87% frontend cycles idle     (83.31%)
+       486,545,314      stalled-cycles-backend    #    3.86% backend cycles idle      (66.73%)
+    28,868,285,999      instructions              #    2.29  insn per cycle         
+                                                  #    0.02  stalled cycles per insn  (83.37%)
+     9,027,926,795      branches                  # 2591.347 M/sec                    (83.37%)
+        26,713,912      branch-misses             #    0.30% of all branches          (83.35%)
 
-       3.644032266 seconds time elapsed
+       3.486839638 seconds time elapsed
 

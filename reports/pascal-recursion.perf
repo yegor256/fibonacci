@@ -3,17 +3,17 @@ Total is 1536
 
  Performance counter stats for 'bin/pascal-recursion.bin 32 256':
 
-       6486.396253      task-clock (msec)         #    0.999 CPUs utilized          
-               554      context-switches          #    0.085 K/sec                  
-                14      cpu-migrations            #    0.002 K/sec                  
+       6470.077940      task-clock (msec)         #    0.999 CPUs utilized          
+               556      context-switches          #    0.086 K/sec                  
+                24      cpu-migrations            #    0.004 K/sec                  
                 52      page-faults               #    0.008 K/sec                  
-    23,228,183,853      cycles                    #    3.581 GHz                      (83.31%)
-    11,536,275,176      stalled-cycles-frontend   #   49.66% frontend cycles idle     (83.31%)
-     6,652,386,386      stalled-cycles-backend    #   28.64% backend cycles idle      (66.68%)
-    21,205,592,325      instructions              #    0.91  insn per cycle         
-                                                  #    0.54  stalled cycles per insn  (83.38%)
-     4,464,855,139      branches                  #  688.341 M/sec                    (83.37%)
-        72,824,075      branch-misses             #    1.63% of all branches          (83.33%)
+    23,229,688,317      cycles                    #    3.590 GHz                      (83.34%)
+    11,534,172,422      stalled-cycles-frontend   #   49.65% frontend cycles idle     (83.33%)
+     6,650,851,090      stalled-cycles-backend    #   28.63% backend cycles idle      (66.67%)
+    21,200,294,537      instructions              #    0.91  insn per cycle         
+                                                  #    0.54  stalled cycles per insn  (83.35%)
+     4,463,131,182      branches                  #  689.811 M/sec                    (83.32%)
+        72,969,656      branch-misses             #    1.63% of all branches          (83.35%)
 
-       6.493545964 seconds time elapsed
+       6.478010529 seconds time elapsed
 

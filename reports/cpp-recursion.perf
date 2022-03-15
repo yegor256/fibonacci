@@ -3,17 +3,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-recursion.bin 32 256':
 
-       5543.808185      task-clock (msec)         #    0.999 CPUs utilized          
-               479      context-switches          #    0.086 K/sec                  
-                18      cpu-migrations            #    0.003 K/sec                  
-             2,746      page-faults               #    0.495 K/sec                  
-    19,983,570,131      cycles                    #    3.605 GHz                      (83.30%)
-     6,716,517,465      stalled-cycles-frontend   #   33.61% frontend cycles idle     (83.36%)
-     1,336,659,741      stalled-cycles-backend    #    6.69% backend cycles idle      (66.69%)
-    29,811,834,469      instructions              #    1.49  insn per cycle         
-                                                  #    0.23  stalled cycles per insn  (83.35%)
-     6,326,753,381      branches                  # 1141.229 M/sec                    (83.34%)
-       108,324,508      branch-misses             #    1.71% of all branches          (83.31%)
+       5506.043055      task-clock (msec)         #    0.999 CPUs utilized          
+               478      context-switches          #    0.087 K/sec                  
+                23      cpu-migrations            #    0.004 K/sec                  
+             2,746      page-faults               #    0.499 K/sec                  
+    19,907,305,720      cycles                    #    3.616 GHz                      (83.30%)
+     6,658,570,504      stalled-cycles-frontend   #   33.45% frontend cycles idle     (83.31%)
+     1,315,462,708      stalled-cycles-backend    #    6.61% backend cycles idle      (66.63%)
+    29,804,984,804      instructions              #    1.50  insn per cycle         
+                                                  #    0.22  stalled cycles per insn  (83.33%)
+     6,326,958,072      branches                  # 1149.093 M/sec                    (83.39%)
+       107,573,409      branch-misses             #    1.70% of all branches          (83.38%)
 
-       5.548859140 seconds time elapsed
+       5.511473729 seconds time elapsed
 

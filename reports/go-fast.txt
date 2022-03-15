@@ -1,9 +1,9 @@
 bin/go-fast.bin:
-CPU ticks: 3851321036
-CPU ticks per cycle: 114
+CPU ticks: 3873447793
+CPU ticks per cycle: 115
 Instructions: 1
 Cycles: 33554432
 Total Time: 1.08
 Time per cycle: .0000000321865081
-Ticks: 3851321036
-Ticks per cycle: 114
+Ticks: 3873447793
+Ticks per cycle: 115
