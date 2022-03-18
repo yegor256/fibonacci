@@ -3,17 +3,17 @@ Total is -503316480
 
  Performance counter stats for 'bin/cpp-loop.bin 32 16777216':
 
-       1263.673284      task-clock (msec)         #    0.999 CPUs utilized          
-               109      context-switches          #    0.086 K/sec                  
-                 3      cpu-migrations            #    0.002 K/sec                  
-             2,747      page-faults               #    0.002 M/sec                  
-     4,505,899,151      cycles                    #    3.566 GHz                      (83.27%)
-     2,545,055,280      stalled-cycles-frontend   #   56.48% frontend cycles idle     (83.21%)
-       213,852,313      stalled-cycles-backend    #    4.75% backend cycles idle      (66.59%)
-     7,780,858,394      instructions              #    1.73  insn per cycle         
-                                                  #    0.33  stalled cycles per insn  (83.39%)
-     1,133,252,593      branches                  #  896.792 M/sec                    (83.55%)
-            55,239      branch-misses             #    0.00% of all branches          (83.39%)
+       1239.629456      task-clock (msec)         #    0.999 CPUs utilized          
+               106      context-switches          #    0.086 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+             2,746      page-faults               #    0.002 M/sec                  
+     4,458,949,373      cycles                    #    3.597 GHz                      (83.25%)
+     2,496,956,993      stalled-cycles-frontend   #   56.00% frontend cycles idle     (83.23%)
+       178,096,940      stalled-cycles-backend    #    3.99% backend cycles idle      (66.62%)
+     7,780,504,219      instructions              #    1.74  insn per cycle         
+                                                  #    0.32  stalled cycles per insn  (83.43%)
+     1,132,985,112      branches                  #  913.971 M/sec                    (83.55%)
+            52,777      branch-misses             #    0.00% of all branches          (83.35%)
 
-       1.265170542 seconds time elapsed
+       1.240891989 seconds time elapsed
 

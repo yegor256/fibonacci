@@ -4,17 +4,17 @@ Total is 902291968
 
  Performance counter stats for 'bin/rust-recursion.bin 32 256':
 
-       9628.193781      task-clock (msec)         #    0.999 CPUs utilized          
-               838      context-switches          #    0.087 K/sec                  
-                49      cpu-migrations            #    0.005 K/sec                  
-                79      page-faults               #    0.008 K/sec                  
-    34,691,939,065      cycles                    #    3.603 GHz                      (83.31%)
-     8,498,306,585      stalled-cycles-frontend   #   24.50% frontend cycles idle     (83.32%)
-     3,025,561,252      stalled-cycles-backend    #    8.72% backend cycles idle      (66.66%)
-    49,177,628,448      instructions              #    1.42  insn per cycle         
+       9681.349150      task-clock (msec)         #    0.999 CPUs utilized          
+               832      context-switches          #    0.086 K/sec                  
+                33      cpu-migrations            #    0.003 K/sec                  
+                76      page-faults               #    0.008 K/sec                  
+    34,570,318,254      cycles                    #    3.571 GHz                      (83.31%)
+     8,386,886,616      stalled-cycles-frontend   #   24.26% frontend cycles idle     (83.32%)
+     3,398,415,843      stalled-cycles-backend    #    9.83% backend cycles idle      (66.67%)
+    49,159,596,985      instructions              #    1.42  insn per cycle         
                                                   #    0.17  stalled cycles per insn  (83.33%)
-    16,459,566,444      branches                  # 1709.518 M/sec                    (83.36%)
-       158,406,149      branch-misses             #    0.96% of all branches          (83.35%)
+    16,456,235,486      branches                  # 1699.787 M/sec                    (83.33%)
+       159,332,976      branch-misses             #    0.97% of all branches          (83.37%)
 
-       9.640731633 seconds time elapsed
+       9.691036350 seconds time elapsed
 

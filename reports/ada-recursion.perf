@@ -1,0 +1,19 @@
+32-th Fibonacci number is 3524578
+Total is 905816546
+
+ Performance counter stats for 'bin/ada-recursion.bin 32 256':
+
+       8032.404897      task-clock (msec)         #    0.999 CPUs utilized          
+               682      context-switches          #    0.085 K/sec                  
+                18      cpu-migrations            #    0.002 K/sec                  
+               106      page-faults               #    0.013 K/sec                  
+    28,847,692,428      cycles                    #    3.591 GHz                      (83.33%)
+     5,112,934,298      stalled-cycles-frontend   #   17.72% frontend cycles idle     (83.33%)
+     2,428,049,418      stalled-cycles-backend    #    8.42% backend cycles idle      (66.65%)
+    50,754,605,312      instructions              #    1.76  insn per cycle         
+                                                  #    0.10  stalled cycles per insn  (83.33%)
+     9,966,662,426      branches                  # 1240.807 M/sec                    (83.34%)
+       227,503,985      branch-misses             #    2.28% of all branches          (83.35%)
+
+       8.039251322 seconds time elapsed
+

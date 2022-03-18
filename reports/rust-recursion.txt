@@ -1,9 +1,9 @@
 bin/rust-recursion.bin:
-CPU ticks: 34691939065
-CPU ticks per cycle: 135515386
+CPU ticks: 34570318254
+CPU ticks per cycle: 135040305
 Instructions: 3998
 Cycles: 256
-Total Time: 9.55
-Time per cycle: .0373046875000000
-Ticks: 34691939065
-Ticks per cycle: 135515386
+Total Time: 9.54
+Time per cycle: .0372656250000000
+Ticks: 34570318254
+Ticks per cycle: 135040305

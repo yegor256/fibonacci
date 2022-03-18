@@ -3,17 +3,17 @@ Total is 3524578
 
  Performance counter stats for 'bin/cpp-novirtual.bin 32 1':
 
-     151755.133923      task-clock (msec)         #    0.999 CPUs utilized          
-            13,009      context-switches          #    0.086 K/sec                  
-               366      cpu-migrations            #    0.002 K/sec                  
+     151669.757956      task-clock (msec)         #    0.999 CPUs utilized          
+            12,935      context-switches          #    0.085 K/sec                  
+               276      cpu-migrations            #    0.002 K/sec                  
          2,646,090      page-faults               #    0.017 M/sec                  
-   544,504,748,259      cycles                    #    3.588 GHz                      (83.34%)
-   488,899,291,434      stalled-cycles-frontend   #   89.79% frontend cycles idle     (83.32%)
-   190,968,533,797      stalled-cycles-backend    #   35.07% backend cycles idle      (66.68%)
-   124,561,213,348      instructions              #    0.23  insn per cycle         
-                                                  #    3.92  stalled cycles per insn  (83.34%)
-    24,531,062,758      branches                  #  161.649 M/sec                    (83.32%)
-       714,718,128      branch-misses             #    2.91% of all branches          (83.35%)
+   544,414,284,349      cycles                    #    3.589 GHz                      (83.33%)
+   488,814,809,329      stalled-cycles-frontend   #   89.79% frontend cycles idle     (83.34%)
+   173,818,586,310      stalled-cycles-backend    #   31.93% backend cycles idle      (66.66%)
+   124,517,996,604      instructions              #    0.23  insn per cycle         
+                                                  #    3.93  stalled cycles per insn  (83.33%)
+    24,519,034,743      branches                  #  161.661 M/sec                    (83.34%)
+       713,961,783      branch-misses             #    2.91% of all branches          (83.33%)
 
-     151.943901574 seconds time elapsed
+     151.852931096 seconds time elapsed
 

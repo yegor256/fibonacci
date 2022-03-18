@@ -3,17 +3,17 @@ Total is 7049156
 
  Performance counter stats for 'bin/pascal-Objects.bin 32 2':
 
-      20342.111542      task-clock (msec)         #    0.999 CPUs utilized          
-             1,722      context-switches          #    0.085 K/sec                  
-                 6      cpu-migrations            #    0.000 K/sec                  
-         2,423,825      page-faults               #    0.119 M/sec                  
-    73,312,217,224      cycles                    #    3.604 GHz                      (83.29%)
-    26,781,063,021      stalled-cycles-frontend   #   36.53% frontend cycles idle     (83.34%)
-    13,487,495,454      stalled-cycles-backend    #   18.40% backend cycles idle      (66.67%)
-    97,590,713,215      instructions              #    1.33  insn per cycle         
-                                                  #    0.27  stalled cycles per insn  (83.31%)
-    21,388,692,309      branches                  # 1051.449 M/sec                    (83.35%)
-       375,666,783      branch-misses             #    1.76% of all branches          (83.35%)
+      21583.627238      task-clock (msec)         #    0.999 CPUs utilized          
+             1,869      context-switches          #    0.087 K/sec                  
+                18      cpu-migrations            #    0.001 K/sec                  
+         2,423,826      page-faults               #    0.112 M/sec                  
+    76,199,385,946      cycles                    #    3.530 GHz                      (83.32%)
+    29,820,518,298      stalled-cycles-frontend   #   39.13% frontend cycles idle     (83.32%)
+    10,806,807,190      stalled-cycles-backend    #   14.18% backend cycles idle      (66.69%)
+    97,559,539,006      instructions              #    1.28  insn per cycle         
+                                                  #    0.31  stalled cycles per insn  (83.34%)
+    21,380,441,632      branches                  #  990.586 M/sec                    (83.34%)
+       376,981,803      branch-misses             #    1.76% of all branches          (83.33%)
 
-      20.361240126 seconds time elapsed
+      21.608652527 seconds time elapsed
 

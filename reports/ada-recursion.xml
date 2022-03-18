@@ -1,0 +1,1 @@
+<program> 	<file>ada/recursion.adb</file> 	<name>ada-recursion</name> 	<instructions>1</instructions> 	<cycles>256</cycles> 	<time>7.92</time> 	<time_per_cycle>.0309375000000000</time_per_cycle> 	<ticks>28847692428</ticks> 	<ticks_per_cycle>112686298</ticks_per_cycle> 	</program>
