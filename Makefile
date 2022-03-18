@@ -29,6 +29,8 @@ WANTED = 8
 
 CC = clang++
 CCFLAGS = -mllvm --x86-asm-syntax=intel -O0 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
+GNAT = gnat
+GNATFLAGS = -O0
 GO = go
 GOFLAGS = -gcflags '-N -l'
 RUSTC = rustc
@@ -42,7 +44,7 @@ HCLIBS = $(wildcard $(HCLIBDIR)/*.hs)
 NIFLAGS = -H:Optimize=0
 SAXON = "/usr/local/opt/Saxon.jar"
 
-DIRS = asm bin reports
+DIRS = asm bin reports tmp
 CPPS = $(wildcard cpp/*.cpp)
 RUSTS = $(wildcard rust/*.rs)
 PASCALS = $(wildcard pascal/*.pp)
@@ -52,7 +54,8 @@ JAVAS = $(wildcard java/*.java)
 # Eiffel doesn't work, this may help: https://github.com/eiffel-docker/eiffel/issues/3
 # EIFFELS = eiffel/application.e
 GOS = $(wildcard go/cmd/*/main.go)
-ASMS = $(subst pascal/,asm/pascal-,$(subst eiffel/,asm/eiffel-,$(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm} ${JAVAS:.java=.asm} ${EIFFELS:.e=.asm} ${PASCALS:.pp=.asm}))))))))
+ADAS = $(wildcard ada/*.adb)
+ASMS = $(subst ada/,asm/ada-,$(subst pascal/,asm/pascal-,$(subst eiffel/,asm/eiffel-,$(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm} ${JAVAS:.java=.asm} ${EIFFELS:.e=.asm} ${PASCALS:.pp=.asm} ${ADAS:.adb=.asm})))))))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 
@@ -123,6 +126,9 @@ asm/rust-%.asm: rust/%.rs | asm
 asm/lisp-%.asm: lisp/%.lisp | asm
 	echo " no asm here" > "$@"
 
+asm/ada-%.asm: ada/%.adb | asm
+	echo " no asm here" > "$@"
+
 asm/pascal-%.asm: pascal/%.pp | asm
 	echo " no asm here" > "$@"
 
@@ -144,6 +150,11 @@ asm/java-%.asm: java/%.java | asm
 
 bin/cpp-%.bin: cpp/%.cpp | bin
 	$(CC) $(CCFLAGS) -o "$@" "$<"
+
+bin/ada-%.bin: ada/%.adb | bin tmp
+	$(GNAT) make $(GNATFLAGS) -o "$@" "$<"
+	rm *.o
+	rm *.ali
 
 bin/rust-%.bin: rust/%.rs | bin
 	$(RUSTC) $(RUSTFLAGS) -o "$@" "$<"
