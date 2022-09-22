@@ -1,3 +1,3 @@
 module github.com/yegor256/fibonacci/go
 
-go 1.17
+go 1.19
