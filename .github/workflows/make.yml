@@ -26,7 +26,7 @@ jobs:
           sudo wget --no-verbose -O /usr/local/opt/Saxon.jar https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar
       - run: sudo apt-get update -y
       - run: sudo apt-get install -y lsb-release
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
       - uses: actions-rs/toolchain@v1
