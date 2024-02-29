@@ -20,7 +20,7 @@
 
 .ONESHELL:
 .SHELLFLAGS: -e -o pipefail -c
-.PHONY: clean sa env lint
+.PHONY: clean sa env lint all test
 
 SHELL = bash
 
