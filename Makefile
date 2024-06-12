@@ -18,11 +18,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-.ONESHELL:
-.SHELLFLAGS: -e -o pipefail -c
 .PHONY: clean sa env lint all test
-
-SHELL = bash
+.ONESHELL:
+.SHELLFLAGS := -e -o pipefail -c
+SHELL := bash
 
 INPUT = 32
 WANTED = 8
