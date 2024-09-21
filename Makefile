@@ -94,12 +94,17 @@ index.xml: $(DIRS) $(REPORTS) Makefile
 index.html: index.xml main.xsl Makefile
 	java -jar $(SAXON) "-s:index.xml" -xsl:main.xsl "-o:index.html"
 
+install:
+	if [[ ! "$${OSTYPE}" == "darwin"* ]]; then echo "This is not macOS, can't install"; exit 1; fi
+	brew install fpc cppcheck sbcl go
+
 env:
+	set -x
 	$(CC) --version
 	$(RUSTC) --version
 	$(MAKE) -version
 	$(HC) --version
-	$(FPC) -version
+	$(FPC) -h >/dev/null
 	cppcheck --version
 	cpplint --version
 	javac --version
