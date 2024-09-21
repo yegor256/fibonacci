@@ -1,4 +1,5 @@
 -- Copyright (c) 2022 Konstantin Gorshkov
+-- Copyright (c) 2022 Yegor Bugayenko
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy
 -- of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +28,7 @@ data Fibo = First | Second | Other Fibo Fibo
 get :: Fibo -> Int
 get First       = 1
 get Second      = 1
-get (Other a b) = get a + get b 
+get (Other a b) = get a + get b
 
 newFibo :: Int -> Fibo
 newFibo 0 = First
