@@ -20,28 +20,31 @@
 
 .PHONY: clean sa env lint all test
 .ONESHELL:
-.SHELLFLAGS := -e -o pipefail -c
+.SHELLFLAGS := -ex -o pipefail -c
 SHELL := bash
 
 INPUT = 32
 WANTED = 8
 
 CC = clang++
-CCFLAGS = -mllvm --x86-asm-syntax=intel -O0 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
+CCFLAGS = -mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
 GNAT = gnat
-GNATFLAGS = -O0
+GNATFLAGS = -O3
 GO = go
 GOFLAGS = -gcflags '-N -l'
 RUSTC = rustc
-RUSTFLAGS = -C opt-level=0
+RUSTFLAGS = -C opt-level=3
 FPC = fpc
-FPCFLAGS = -O-
+FPCFLAGS = -O3
 HC = ghc
-HCFLAGS = -dynamic -Wall -Werror -O0
+EC = ec
+JAVAC = javac
+HCFLAGS = -dynamic -Wall -Werror -O3
 HCLIBDIR = haskell/Mainlib
 HCLIBS = $(wildcard $(HCLIBDIR)/*.hs)
-NIFLAGS = -H:Optimize=0
+NIFLAGS = -H:Optimize=3
 SAXON = "/usr/local/opt/Saxon.jar"
+GRAAL_PATH = "/Library/Java/JavaVirtualMachines/graalvm-23.jdk/Contents/Home/bin"
 
 DIRS = asm bin reports tmp
 CPPS = $(wildcard cpp/*.cpp)
@@ -53,7 +56,8 @@ JAVAS = $(wildcard java/*.java)
 # Eiffel doesn't work, this may help: https://github.com/eiffel-docker/eiffel/issues/3
 # EIFFELS = eiffel/application.e
 GOS = $(wildcard go/cmd/*/main.go)
-ADAS = $(wildcard ada/*.adb)
+# I can't figure out how to install Ada on macOS with Homebrew :(
+# ADAS = $(wildcard ada/*.adb)
 ASMS = $(subst ada/,asm/ada-,$(subst pascal/,asm/pascal-,$(subst eiffel/,asm/eiffel-,$(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm} ${JAVAS:.java=.asm} ${EIFFELS:.e=.asm} ${PASCALS:.pp=.asm} ${ADAS:.adb=.asm})))))))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
@@ -97,9 +101,9 @@ index.html: index.xml main.xsl Makefile
 install:
 	if [[ ! "$${OSTYPE}" == "darwin"* ]]; then echo "This is not macOS, can't install"; exit 1; fi
 	brew install fpc cppcheck sbcl go
+	brew install --cask graalvm/tap/graalvm-ce-lts-java11
 
 env:
-	set -x
 	$(CC) --version
 	$(RUSTC) --version
 	$(MAKE) -version
@@ -107,8 +111,10 @@ env:
 	$(FPC) -h >/dev/null
 	cppcheck --version
 	cpplint --version
-	javac --version
+	$(JAVAC) --version
 	sbcl --version
+	if [ -n "$(EIFFELS)" ]; then $(EC) --version; fi
+	if [ -n "$(ADAS)" ]; then $(GNAT) --version; fi
 	$(GO) version
 
 sa: Makefile
@@ -167,7 +173,7 @@ bin/lisp-%.bin: lisp/%.lisp | bin
 	sbcl --load "$<"
 
 bin/eiffel-%.bin: eiffel/%.e | bin
-	ec "$<" -batch
+	$(EC) "$<" -batch
 	mv application "$@"
 	chmod a+x "$@"
 
@@ -190,13 +196,13 @@ bin/haskell-%.bin: haskell/%.hs $(HCLIBS) | bin
 bin/java-%.bin: java/%.java | bin
 	name=$(subst java/,,$(<:.java=))
 	mkdir -p "tmp/$${name}"
-	javac -d "tmp/$${name}" "$<"
+	$(JAVAC) -d "tmp/$${name}" "$<"
 	if [ "$$(uname)" == "Darwin" ]; then
 		jar -c -e "$${name}" -f "tmp/$${name}.jar" -C "tmp/$${name}" .
 	else
 		jar cfe "tmp/$${name}.jar" "$${name}" -C "tmp/$${name}" .
 	fi
-		native-image $(NIFLAGS) -jar "tmp/$${name}.jar" "$@"
+		$(GRAAL_PATH)/native-image $(NIFLAGS) -jar "tmp/$${name}.jar" "$@"
 
 reports/%.txt: bin/%.bin asm/%.asm | reports
 	"$<" 7 1

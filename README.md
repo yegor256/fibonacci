@@ -1,17 +1,19 @@
+# Fibonacci Algorithm in a Few Languages
+
 <img src="https://raw.githubusercontent.com/yegor256/fibonacci/master/logo.svg" height="92px"/>
 
 [![new](https://github.com/yegor256/fibonacci/actions/workflows/make.yml/badge.svg)](https://github.com/yegor256/fibonacci/actions/workflows/make.yml)
 
-Here we compare [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_number) 
-algorithm implemented in C++, Rust, Lisp, Haskell, Eiffel, and some other 
+Here we compare [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_number)
+algorithm implemented in C++, Rust, Lisp, Haskell, Eiffel, and some other
 [compiled](https://en.wikipedia.org/wiki/Compiled_language) programing languages
 in different programming styles, like object-oriented, procedural, functional,
 etc. We are trying to understand which style compiles to shorter binary code and
 works faster. If you can imagine some other way how this algorithm
-could be implemented in C++ or other languages, 
+could be implemented in C++ or other languages,
 don't hesitate to submit a pull request.
 
-Recent results are published here: 
+Recent results are published here:
 
 * [32nd Fibonacci number](https://yegor256.github.io/fibonacci/index.html)
 * [16th](https://yegor256.github.io/fibonacci/sixteen.html)
@@ -49,7 +51,7 @@ dependencies.
 
 ## How to Setup
 
-If you want this code to run on your own machine, you will 
+If you want this code to run on your own machine, you will
 need to configure a self-hosted runner, as it's done in this repo.
 Just rent a server with at least 8Gb RAM (not Docker!) and then login there
 as `root`:
