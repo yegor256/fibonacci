@@ -45,7 +45,7 @@ jobs:
             && sudo chown $(whoami) /opt/hostedtoolcache
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.6
+          ruby-version: 3.2
           bundler-cache: false
       - run: gem install xcop
       - run: |
