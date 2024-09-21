@@ -1,4 +1,5 @@
 -- Copyright (c) 2022 Konstantin Gorshkov
+-- Copyright (c) 2022 Yegor Bugayenko
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy
 -- of this software and associated documentation files (the "Software"), to deal
@@ -18,10 +19,8 @@
 -- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 -- SOFTWARE.
 
-
 module Main where
 import Mainlib.Report (run)
-
 
 fibs :: [Int]
 fibs = 1:1:zipWith (+) fibs (tail fibs)
@@ -31,5 +30,3 @@ fibo = (fibs !!)
 
 main :: IO ()
 main = run fibo
-
-

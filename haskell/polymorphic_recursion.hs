@@ -1,4 +1,5 @@
 -- Copyright (c) 2022 Konstantin Gorshkov
+-- Copyright (c) 2022 Yegor Bugayenko
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy
 -- of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +39,7 @@ instance Ord a => Ord (Number a) where
     a <= b = getNumber a <= getNumber b
 
 fibo :: (Ord a, Num a) => a -> a
-fibo n 
+fibo n
     | n <= fromInteger 1 = fromInteger 1
     | otherwise          = fibo (n - fromInteger 1) + fibo (n - fromInteger 2)
 

@@ -1,4 +1,5 @@
 -- Copyright (c) 2022 Konstantin Gorshkov
+-- Copyright (c) 2022 Yegor Bugayenko
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy
 -- of this software and associated documentation files (the "Software"), to deal
@@ -48,10 +49,10 @@ report (input, answer, total) = do
     print answer
     putStr $ "Total is "
     print total
-    
+
 usage :: IO ()
 usage = do
     putStrLn "Usage:"
     name <- getProgName
-    putStrLn $ name ++ " INPUT CYCLES" 
+    putStrLn $ name ++ " INPUT CYCLES"
 

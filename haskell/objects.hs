@@ -1,4 +1,5 @@
 -- Copyright (c) 2022 Konstantin Gorshkov
+-- Copyright (c) 2022 Yegor Bugayenko
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy
 -- of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +27,7 @@ import Mainlib.Objects
 fibo :: Object Int -> Object Int
 fibo x =
     oIf (oLt x $ oInt 2)
-        (oInt 1)      
+        (oInt 1)
         (oAdd (fibo $ oSub x $ oInt 1)
               (fibo $ oSub x $ oInt 2))
 

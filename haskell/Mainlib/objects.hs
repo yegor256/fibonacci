@@ -1,4 +1,5 @@
 -- Copyright (c) 2022 Konstantin Gorshkov
+-- Copyright (c) 2022 Yegor Bugayenko
 --
 -- Permission is hereby granted, free of charge, to any person obtaining a copy
 -- of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +25,7 @@ module Mainlib.Objects (Object, oInt, oIf, oLt, oAdd, oSub, get) where
 data Object a = Object { get :: a }
 
 oInt :: Int -> Object Int
-oInt = Object 
+oInt = Object
 
 oIf :: Object Bool -> Object a -> Object a -> Object a
 oIf p a b = Object $ if get p then get a else get b
