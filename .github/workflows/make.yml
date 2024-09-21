@@ -29,9 +29,9 @@ concurrency:
   cancel-in-progress: true
 jobs:
   build:
-    runs-on: self-hosted
-    env:
-      ImageOS: ubuntu18
+    # runs-on: self-hosted
+    # env:
+    #   ImageOS: ubuntu18
     steps:
       - run: sudo apt-get update -y
       - run: |
