@@ -30,7 +30,7 @@ jobs:
           ruby-version: 2.6
           bundler-cache: true
       - run: gem install xcop
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
       - uses: actions/setup-go@v5
