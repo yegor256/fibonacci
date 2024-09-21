@@ -1,6 +1,6 @@
 # Fibonacci Algorithm in a Few Languages
 
-<img src="https://raw.githubusercontent.com/yegor256/fibonacci/master/logo.svg" height="92px"/>
+![mr. Fibonacci](https://raw.githubusercontent.com/yegor256/fibonacci/master/logo.svg)
 
 [![new](https://github.com/yegor256/fibonacci/actions/workflows/make.yml/badge.svg)](https://github.com/yegor256/fibonacci/actions/workflows/make.yml)
 
