@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Viktar Makouski
+// Copyright (c) 2022 Yegor Bugayenko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@ int __attribute__((noinline)) fibo_impl(int const * const px, int const * const 
     return *p1;
   }
   return op(add_impl,
-    fibo(op(sub_impl, *px, *p1)), 
+    fibo(op(sub_impl, *px, *p1)),
       fibo(op(sub_impl, *px, *p2)));
 }
 

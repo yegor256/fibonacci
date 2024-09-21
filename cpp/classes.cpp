@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Viktar Makouski
+// Copyright (c) 2022 Yegor Bugayenko
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -56,7 +56,7 @@ public:
 class Fibo {
 int res;
 public:
-  explicit Fibo(int num) : res(Less(num, 2).get() ? 1 : Add(Fibo(Sub(num, 1).get()).get(), 
+  explicit Fibo(int num) : res(Less(num, 2).get() ? 1 : Add(Fibo(Sub(num, 1).get()).get(),
                                                            Fibo(Sub(num, 2).get()).get()).get()) {}
   int get() const {
     return res;
