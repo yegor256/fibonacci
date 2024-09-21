@@ -1,8 +1,10 @@
-Go fibonacci implementations:
+# Go Fibonacci Implementations
 
-- Recursive standard implementation
-- Fast implementation with loop
-- Implementation using `struct`s and `interface`s
+There are three implementations:
+
+* Recursive standard implementation
+* Fast implementation with loop
+* Implementation using `struct`s and `interface`s
 
 Known issues: `struct`s implementation has interfaces as struct fields,
 this mean its fields' memory will be allocated in heap instead of stack,
