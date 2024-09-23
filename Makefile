@@ -116,9 +116,6 @@ install:
             libyaml-dev libxml2-dev autoconf libc6-dev ncurses-dev \
             automake libtool lsb-release \
       		gnat jq cppcheck bc fpc
-		add-apt-repository ppa:eiffelstudio-team/ppa \
-			&& apt-get -y update \
-			&& apt-get install -y eiffelstudio
 		apt-get clean
 		pip install cpplint
 		snap install powershell --classic
