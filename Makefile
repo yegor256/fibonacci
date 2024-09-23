@@ -18,7 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-.PHONY: clean sa env lint all test
+.PHONY: clean sa env lint all test install
 .ONESHELL:
 .SHELLFLAGS := -ex -o pipefail -c
 SHELL := bash
@@ -107,66 +107,60 @@ index.xml: $(DIRS) $(REPORTS) Makefile
 index.html: index.xml main.xsl Makefile
 	java -jar $(SAXON) "-s:index.xml" -xsl:main.xsl "-o:index.html"
 
-install:
-	{
-		if [[ "$${OSTYPE}" == "darwin"* ]]; then
-			echo "This is macOS, installing necessary components:"
-			brew install fpc cppcheck sbcl go
-			brew install --cask graalvm/tap/graalvm-ce-lts-java11
-		elif [[ "$${OSTYPE}" == "linux-gnu"* ]]; then
-			echo "This is Linux, installing necessary components:"
-			apt-get -y update --fix-missing
-			apt-get -y install --no-install-recommends \
-				clang clang-tidy clang-format \
-				rustc ghc sbcl golang build-essential \
-	            curl wget git-core zlib1g zlib1g-dev libssl-dev \
-	            snapd python3 python3-pip \
-	            libyaml-dev libxml2-dev autoconf libc6-dev ncurses-dev \
-	            automake libtool lsb-release \
-	      		gnat jq cppcheck bc fpc linux-tools-generic
-			apt-get clean
-			# see https://stackoverflow.com/a/76641565/187141
-			rm -f /usr/lib/python3.*/EXTERNALLY-MANAGED
-			pip install cpplint
-			snap install powershell --classic
-			if [ ! -e /usr/bin/perf ]; then
-				ln -s "$(ls /usr/lib/linux-tools/*/perf | head -1)" /usr/bin/perf
-			fi
-		else
-			echo "This is neither macOS nor Liux, can't install :("
-			exit 1
+install: Makefile
+	if [[ "$${OSTYPE}" == "darwin"* ]]; then
+		echo "This is macOS, installing necessary components:"
+		brew install fpc cppcheck sbcl go
+		brew install --cask graalvm/tap/graalvm-ce-lts-java11
+	elif [[ "$${OSTYPE}" == "linux-gnu"* ]]; then
+		echo "This is Linux, installing necessary components:"
+		apt-get -y update --fix-missing
+		apt-get -y install --no-install-recommends \
+			clang clang-tidy clang-format \
+			rustc ghc sbcl golang build-essential \
+            curl wget git-core zlib1g zlib1g-dev libssl-dev \
+            snapd python3 python3-pip \
+            libyaml-dev libxml2-dev autoconf libc6-dev ncurses-dev \
+            automake libtool lsb-release \
+      		gnat jq cppcheck bc fpc linux-tools-generic
+		apt-get clean
+		# see https://stackoverflow.com/a/76641565/187141
+		rm -f /usr/lib/python3.*/EXTERNALLY-MANAGED
+		pip install cpplint
+		snap install powershell --classic
+		if [ ! -e /usr/bin/perf ]; then
+			ln -s "$(ls /usr/lib/linux-tools/*/perf | head -1)" /usr/bin/perf
 		fi
-		mkdir -p /usr/local/opt
-		wget --no-verbose -O /usr/local/opt/Saxon.jar https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar
-	}
+	else
+		echo "This is neither macOS nor Liux, can't install :("
+		exit 1
+	fi
+	mkdir -p /usr/local/opt
+	wget --no-verbose -O /usr/local/opt/Saxon.jar https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar
 
-env:
-	{
-		$(CC) --version
-		$(RUSTC) --version
-		$(MAKE) -version
-		$(HC) --version
-		$(FPC) -h >/dev/null
-		cppcheck --version
-		cpplint --version
-		$(JAVAC) --version
-		if [ -n "$(LISPS)" ]; then $(SBCL) --version; fi
-		if [ -n "$(EIFFELS)" ]; then $(EC) --version; fi
-		if [ -n "$(ADAS)" ]; then $(GNAT) --version; fi
-		$(GO) version
-	}
+env: Makefile
+	$(CC) --version
+	$(RUSTC) --version
+	$(MAKE) -version
+	$(HC) --version
+	$(FPC) -h >/dev/null
+	cppcheck --version
+	cpplint --version
+	$(JAVAC) --version
+	if [ -n "$(LISPS)" ]; then $(SBCL) --version; fi
+	if [ -n "$(EIFFELS)" ]; then $(EC) --version; fi
+	if [ -n "$(ADAS)" ]; then $(GNAT) --version; fi
+	$(GO) version
 
 sa: Makefile
-	{
-		diff -u <(cat $(CPPS)) <(clang-format --style=file $(CPPS))
-		cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 --suppress=missingIncludeSystem $(CPPS)
-		cpplint --extensions=cpp --filter=-whitespace/indent $(CPPS)
-		clang-tidy -header-filter=none \
-			'-warnings-as-errors=*' \
-			'-checks=*,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
-			$(CPPS)
-		#xcop *.xsl
-	}
+	diff -u <(cat $(CPPS)) <(clang-format --style=file $(CPPS))
+	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 --suppress=missingIncludeSystem $(CPPS)
+	cpplint --extensions=cpp --filter=-whitespace/indent $(CPPS)
+	clang-tidy -header-filter=none \
+		'-warnings-as-errors=*' \
+		'-checks=*,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
+		$(CPPS)
+	#xcop *.xsl
 
 asm/cpp-%.asm: cpp/%.cpp | asm
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"
