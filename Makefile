@@ -117,6 +117,8 @@ install:
             automake libtool lsb-release \
       		gnat jq cppcheck bc fpc
 		apt-get clean
+		# see https://stackoverflow.com/a/76641565/187141
+		rm /usr/lib/python3.*/EXTERNALLY-MANAGED
 		pip install cpplint
 		snap install powershell --classic
 	else
