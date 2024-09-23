@@ -51,7 +51,7 @@ DIRS = asm bin reports tmp
 CPPS = $(wildcard cpp/*.cpp)
 RUSTS = $(wildcard rust/*.rs)
 PASCALS = $(wildcard pascal/*.pp)
-LISPS = $(wildcard lisp/*.lisp)
+# LISPS = $(wildcard lisp/*.lisp)
 HASKELLS = $(wildcard haskell/*.hs)
 JAVAS = $(wildcard java/*.java)
 # Eiffel doesn't work, this may help: https://github.com/eiffel-docker/eiffel/issues/3
@@ -146,7 +146,7 @@ env:
 	cppcheck --version
 	cpplint --version
 	$(JAVAC) --version
-	$(SBCL) --version
+	if [ -n "$(LISPS)" ]; then $(SBCL) --version; fi
 	if [ -n "$(EIFFELS)" ]; then $(EC) --version; fi
 	if [ -n "$(ADAS)" ]; then $(GNAT) --version; fi
 	$(GO) version
