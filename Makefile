@@ -62,6 +62,7 @@ GOS = $(wildcard go/cmd/*/main.go)
 ASMS = $(subst ada/,asm/ada-,$(subst pascal/,asm/pascal-,$(subst eiffel/,asm/eiffel-,$(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm} ${JAVAS:.java=.asm} ${EIFFELS:.e=.asm} ${PASCALS:.pp=.asm} ${ADAS:.adb=.asm})))))))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
+GOCACHE = /tmp/gocache
 
 export
 
