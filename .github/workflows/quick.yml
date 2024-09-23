@@ -18,16 +18,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 ---
-name: quick make
+name: quick
 'on':
   pull_request:
 jobs:
-  build:
+  quick:
     runs-on: ubuntu-20.04
     steps:
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.6
+          ruby-version: 3.2
           bundler-cache: true
       - run: gem install xcop
       - uses: actions/setup-python@v5
