@@ -18,7 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 ---
-name: markdown-lint
+name: actionlint
 'on':
   push:
     branches:
@@ -26,13 +26,16 @@ name: markdown-lint
   pull_request:
     branches:
       - master
-    paths-ignore: ['paper/**', 'sandbox/**']
-concurrency:
-  group: markdown-lint-${{ github.ref }}
-  cancel-in-progress: true
 jobs:
-  markdown-lint:
+  actionlint:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: articulate/actions-markdownlint@v1
+      - name: Download actionlint
+        id: get_actionlint
+        # yamllint disable-line rule:line-length
+        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+        shell: bash
+      - name: Check workflow files
+        run: ${{ steps.get_actionlint.outputs.executable }} -color
+        shell: bash
