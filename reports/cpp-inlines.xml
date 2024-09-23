@@ -1,1 +1,1 @@
-<program> 	<file>cpp/inlines.cpp</file> 	<name>cpp-inlines</name> 	<instructions>68</instructions> 	<cycles>256</cycles> 	<time>1.33</time> 	<time_per_cycle>.0051953125000000</time_per_cycle> 	<ticks>5165510513</ticks> 	<ticks_per_cycle>20177775</ticks_per_cycle> 	</program>
+<program> 	<file>cpp/inlines.cpp</file> 	<name>cpp-inlines</name> 	<instructions>68</instructions> 	<cycles>256</cycles> 	<time>1.32</time> 	<time_per_cycle>.0051562500000000</time_per_cycle> 	<ticks>5171966196</ticks> 	<ticks_per_cycle>20202992</ticks_per_cycle> 	</program>

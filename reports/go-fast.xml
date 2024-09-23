@@ -1,1 +1,1 @@
-<program> 	<file>go-fast</file> 	<name>go-fast</name> 	<instructions>1</instructions> 	<cycles>134217728</cycles> 	<time>1.60</time> 	<time_per_cycle>.0000000119209289</time_per_cycle> 	<ticks>6247456881</ticks> 	<ticks_per_cycle>46</ticks_per_cycle> 	</program>
+<program> 	<file>go-fast</file> 	<name>go-fast</name> 	<instructions>1</instructions> 	<cycles>134217728</cycles> 	<time>1.61</time> 	<time_per_cycle>.0000000119954347</time_per_cycle> 	<ticks>6269894017</ticks> 	<ticks_per_cycle>46</ticks_per_cycle> 	</program>

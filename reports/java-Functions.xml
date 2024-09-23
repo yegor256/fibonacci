@@ -1,1 +1,1 @@
-<program> 	<file>java/Functions.java</file> 	<name>java-Functions</name> 	<instructions>1</instructions> 	<cycles>256</cycles> 	<time>1.59</time> 	<time_per_cycle>.0062109375000000</time_per_cycle> 	<ticks>6179842073</ticks> 	<ticks_per_cycle>24140008</ticks_per_cycle> 	</program>
+<program> 	<file>java/Functions.java</file> 	<name>java-Functions</name> 	<instructions>1</instructions> 	<cycles>256</cycles> 	<time>1.58</time> 	<time_per_cycle>.0061718750000000</time_per_cycle> 	<ticks>6180838145</ticks> 	<ticks_per_cycle>24143899</ticks_per_cycle> 	</program>
