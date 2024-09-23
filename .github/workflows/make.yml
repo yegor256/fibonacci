@@ -53,8 +53,8 @@ jobs:
       - run: rm -rf ~/.graalvm
       - uses: graalvm/setup-graalvm@v1.2.3
         with:
-          version: '22.0.0.2'
-          java-version: '11'
+          distribution: 'graalvm'
+          java-version: '21'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: |
