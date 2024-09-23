@@ -27,11 +27,11 @@ INPUT = 32
 WANTED = 8
 
 CC = clang++
-CCFLAGS = -mllvm --x86-asm-syntax=intel -O3 $$(if [ ! -f /.dockerenv ]; then echo "-fsanitize=leak"; fi)
+CCFLAGS = -mllvm --x86-asm-syntax=intel -O3
 GNAT = gnat
 GNATFLAGS = -O3
 GO = go
-GOFLAGS = -gcflags '-N -l'
+GO_FLAGS = -gcflags '-N -l'
 RUSTC = rustc
 RUSTFLAGS = -C opt-level=3
 FPC = fpc
@@ -61,6 +61,8 @@ GOS = $(wildcard go/cmd/*/main.go)
 ASMS = $(subst ada/,asm/ada-,$(subst pascal/,asm/pascal-,$(subst eiffel/,asm/eiffel-,$(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm} ${JAVAS:.java=.asm} ${EIFFELS:.e=.asm} ${PASCALS:.pp=.asm} ${ADAS:.adb=.asm})))))))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
+
+export
 
 summary.txt: $(DIRS) $(ASMS) $(BINS) $(REPORTS) Makefile
 	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
@@ -182,7 +184,7 @@ bin/pascal-%.bin: pascal/%.pp | bin
 
 bin/go-%.bin: go/cmd/%/main.go | bin
 	cd go
-	$(GO) build $(GOFLAGS) -o "../$@" "$(subst go/,./,${<:/main.go=})"
+	$(GO) build $(GO_FLAGS) -o "../$@" "$(subst go/,./,${<:/main.go=})"
 
 bin/haskell-%.bin: haskell/%.hs $(HCLIBS) | bin
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
@@ -209,7 +211,8 @@ reports/%.txt: bin/%.bin asm/%.asm | reports
 	cycles=1
 	attempt=1
 	while true; do
-		time=$$({ time -p "$<" $(INPUT) $${cycles} | tail -n +1 | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
+		time=$$(set +x; { time -p "$<" $(INPUT) $${cycles} | tail -n +1 | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
+		echo "$${time}"
 		if [[ ! "$${time}" =~ ^[0-9.]+$$ ]]; then
 			time -p "$<" $(INPUT) $${cycles} 2>&1
 			echo "For some reason, \$$time is not an integer: $${time}"
