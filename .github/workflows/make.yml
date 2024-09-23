@@ -29,7 +29,6 @@ concurrency:
   cancel-in-progress: true
 jobs:
   start-instance:
-    permissions: write-all
     runs-on: ubuntu-24.04
     outputs:
       label: ${{ steps.start.outputs.label }}
@@ -44,7 +43,7 @@ jobs:
         uses: machulav/ec2-github-runner@v2
         with:
           mode: start
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GH_PAT }}
           ec2-image-id: ami-0a4d66b921e31d780
           ec2-instance-type: t1.small
           subnet-id: subnet-0f80650e7db6e041e
@@ -75,7 +74,7 @@ jobs:
           distribution: 'graalvm'
           java-version: '21'
           components: 'native-image'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GH_PAT }}
       - run: |
           if [ ! -e /usr/bin/perf ]; then
             sudo apt-get install -y linux-tools-generic
@@ -101,7 +100,6 @@ jobs:
           folder: www
           clean: false
   terminate-instance:
-    permissions: write-all
     needs:
       - start-instance
       - build
@@ -116,6 +114,6 @@ jobs:
       - uses: machulav/ec2-github-runner@v2
         with:
           mode: stop
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GH_PAT }}
           label: ${{ needs.start-instance.outputs.label }}
           ec2-instance-id: ${{ needs.start-instance.outputs.ec2-instance-id }}
