@@ -36,6 +36,7 @@ RUSTC = rustc
 RUSTFLAGS = -C opt-level=3
 FPC = fpc
 FPCFLAGS = -O3
+SBCL = sbcl
 HC = ghc
 EC = ec
 JAVAC = javac
@@ -135,7 +136,7 @@ env:
 	cppcheck --version
 	cpplint --version
 	$(JAVAC) --version
-	sbcl --version
+	$(SBCL) --version
 	if [ -n "$(EIFFELS)" ]; then $(EC) --version; fi
 	if [ -n "$(ADAS)" ]; then $(GNAT) --version; fi
 	$(GO) version
@@ -193,7 +194,7 @@ bin/rust-%.bin: rust/%.rs | bin
 	$(RUSTC) $(RUSTFLAGS) -o "$@" "$<"
 
 bin/lisp-%.bin: lisp/%.lisp | bin
-	sbcl --load "$<"
+	$(SBCL) --dynamic-space-start 0x800000000 --load "$<"
 
 bin/eiffel-%.bin: eiffel/%.e | bin
 	$(EC) "$<" -batch
