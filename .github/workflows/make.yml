@@ -44,7 +44,7 @@ jobs:
         with:
           mode: start
           github-token: ${{ secrets.GH_PAT }}
-          ec2-image-id: ami-07ab9a983b3aad06d
+          ec2-image-id: ami-06fa1e78be40ec6ed
           ec2-instance-type: t2.small
           subnet-id: subnet-0f80650e7db6e041e
           security-group-id: sg-0ffb312e3a7d40ed3
