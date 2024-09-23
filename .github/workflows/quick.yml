@@ -36,7 +36,6 @@ jobs:
       - uses: actions/setup-go@v5
       - uses: graalvm/setup-graalvm@v1
         with:
-          version: '22.3.2'
           distribution: 'graalvm'
           java-version: '21'
           components: 'native-image'
