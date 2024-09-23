@@ -120,6 +120,7 @@ install:
 			&& apt-get -y update \
 			&& apt-get install -y eiffelstudio
 		apt-get clean
+		pip install cpplint
 		snap install powershell --classic
 	else
 		echo "This is neither macOS nor Liux, can't install :("

@@ -41,7 +41,6 @@ jobs:
           java-version: '21'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: pip install cpplint
       - run: make env
       - run: make sa
       - run: sudo make FAST=1 INPUT=7

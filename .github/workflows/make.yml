@@ -57,7 +57,6 @@ jobs:
           java-version: '11'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: pip install cpplint
       - run: |
           if [ ! -e /usr/bin/perf ]; then
             sudo apt-get install -y linux-tools-generic
