@@ -101,9 +101,30 @@ index.html: index.xml main.xsl Makefile
 	java -jar $(SAXON) "-s:index.xml" -xsl:main.xsl "-o:index.html"
 
 install:
-	if [[ ! "$${OSTYPE}" == "darwin"* ]]; then echo "This is not macOS, can't install"; exit 1; fi
-	brew install fpc cppcheck sbcl go
-	brew install --cask graalvm/tap/graalvm-ce-lts-java11
+	if [[ "$${OSTYPE}" == "darwin"* ]]; then
+		echo "This is macOS, installing necessary components:"
+		brew install fpc cppcheck sbcl go
+		brew install --cask graalvm/tap/graalvm-ce-lts-java11
+	elif [[ "$${OSTYPE}" == "linux-gnu"* ]]; then
+		echo "This is Linux, installing necessary components:"
+		apt-get -y update --fix-missing
+		apt-get -y install --no-install-recommends \
+			clang clang-tidy-13 clang-format-13 \
+			rustc ghc sbcl golang build-essential \
+            curl wget git-core zlib1g zlib1g-dev libssl-dev \
+            snapd python3 python3-pip \
+            libyaml-dev libxml2-dev autoconf libc6-dev ncurses-dev \
+            automake libtool lsb-release \
+      		gnat jq cppcheck bc fpc
+		add-apt-repository ppa:eiffelstudio-team/ppa \
+			&& apt-get -y update \
+			&& apt-get install -y eiffelstudio
+		apt-get clean
+		snap install powershell --classic
+	else
+		echo "This is neither macOS nor Liux, can't install :("
+		exit 1
+	fi
 
 env:
 	$(CC) --version
