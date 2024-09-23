@@ -20,14 +20,14 @@
 
 package fibo
 
-type int32number int32
+type int64number int64
 
-func (n int32number) intVal() int32 {
-	return int32(n)
+func (n int64number) intVal() int64 {
+	return int64(n)
 }
 
 type number interface {
-	intVal() int32
+	intVal() int64
 }
 
 type boolean interface {
@@ -46,7 +46,7 @@ type sub struct {
 	left, right number
 }
 
-func (s sub) intVal() int32 {
+func (s sub) intVal() int64 {
 	return s.left.intVal() - s.right.intVal()
 }
 
@@ -54,7 +54,7 @@ type add struct {
 	left, right number
 }
 
-func (a add) intVal() int32 {
+func (a add) intVal() int64 {
 	return a.left.intVal() + a.right.intVal()
 }
 
@@ -63,7 +63,7 @@ type condition struct {
 	yes, no number
 }
 
-func (c condition) intVal() int32 {
+func (c condition) intVal() int64 {
 	if c.pred.boolVal() {
 		return c.yes.intVal()
 	}
@@ -71,10 +71,10 @@ func (c condition) intVal() int32 {
 }
 
 
-func (f Fibo) intVal() int32 {
+func (f Fibo) intVal() int64 {
 	const (
-		one = int32number(1)
-		two = int32number(2)
+		one = int64number(1)
+		two = int64number(2)
 	)
 	cnd := condition{
 		pred: less{f.n, two},
@@ -93,11 +93,11 @@ type Fibo struct {
 }
 
 // Value of fibonacci
-func (f Fibo) Value() int32 {
+func (f Fibo) Value() int64 {
 	return f.intVal()
 }
 
 // New fibonacci number
-func New(inp int32) Fibo {
-	return Fibo{int32number(inp)}
+func New(inp int64) Fibo {
+	return Fibo{int64number(inp)}
 }

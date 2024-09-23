@@ -161,7 +161,7 @@ SOFTWARE.
         <xsl:apply-templates select="programs"/>
         <xsl:apply-templates select="headers"/>
         <p>
-          <xsl:text>Optimization is disabled in all compilers.</xsl:text>
+          <xsl:text>Maximum optimization is enabled in all compilers.</xsl:text>
         </p>
         <p>
           <xsl:text>If you want to add another program to the list, just submit a pull request to </xsl:text>

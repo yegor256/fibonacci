@@ -37,9 +37,11 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	var sum int32
+	var sum int64
+	var r int64
 	for i := 0; i < cycles; i++ {
-		sum += fibo.New(int32(inp)).Value()
+		r = fibo.New(int64(inp)).Value()
+		sum += r
 	}
-	fmt.Printf("%d-th Fibonacci number is %d", inp, sum)
+	fmt.Printf("%d-th Fibonacci number is %d\nTotal is %d\n", inp, r, sum)
 }

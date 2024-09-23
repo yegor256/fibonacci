@@ -54,32 +54,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: sudo make install
-      - run: |
-          sudo mkdir -p /opt/hostedtoolcache \
-            && sudo chown $(whoami) /opt/hostedtoolcache
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2
           bundler-cache: false
       - run: gem install xcop
-      - run: |
-          sudo mkdir -p /usr/local/opt
-          sudo wget --no-verbose -O /usr/local/opt/Saxon.jar https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-      - run: rm -rf ~/.graalvm
       - uses: graalvm/setup-graalvm@v1.2.3
         with:
           distribution: 'graalvm'
           java-version: '21'
           components: 'native-image'
           github-token: ${{ secrets.GH_PAT }}
-      - run: |
-          if [ ! -e /usr/bin/perf ]; then
-            sudo apt-get install -y linux-tools-generic
-            sudo ln -s "$(ls /usr/lib/linux-tools/*/perf | head -1)" /usr/bin/perf
-          fi
       - run: make env
       - run: make clean
       - run: mkdir www

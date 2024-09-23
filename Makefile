@@ -66,7 +66,12 @@ REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 export
 
 summary.txt: $(DIRS) $(ASMS) $(BINS) $(REPORTS) Makefile
-	[ $$({ for r in $(REPORTS:.txt=.stdout); do cat $${r}; done ; } | uniq | wc -l) == 1 ]
+	if [ ! $$( { for r in $(REPORTS:.txt=.stdout); do cat "$${r}"; done ; } | uniq | wc -l) == 1 ]; then
+		set +x
+		echo "Not all reports are the same"
+		for r in $(REPORTS:.txt=.stdout); do echo "$${r}"; cat "$${r}"; done
+		exit 1
+	fi
 	{
 		date
 		$(CC) --version | head -1
@@ -116,16 +121,21 @@ install:
             snapd python3 python3-pip \
             libyaml-dev libxml2-dev autoconf libc6-dev ncurses-dev \
             automake libtool lsb-release \
-      		gnat jq cppcheck bc fpc
+      		gnat jq cppcheck bc fpc linux-tools-generic
 		apt-get clean
 		# see https://stackoverflow.com/a/76641565/187141
 		rm -f /usr/lib/python3.*/EXTERNALLY-MANAGED
 		pip install cpplint
 		snap install powershell --classic
+		if [ ! -e /usr/bin/perf ]; then
+			ln -s "$(ls /usr/lib/linux-tools/*/perf | head -1)" /usr/bin/perf
+		fi
 	else
 		echo "This is neither macOS nor Liux, can't install :("
 		exit 1
 	fi
+	mkdir -p /usr/local/opt
+	wget --no-verbose -O /usr/local/opt/Saxon.jar https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar
 
 env:
 	$(CC) --version
@@ -194,7 +204,7 @@ bin/rust-%.bin: rust/%.rs | bin
 	$(RUSTC) $(RUSTFLAGS) -o "$@" "$<"
 
 bin/lisp-%.bin: lisp/%.lisp | bin
-	$(SBCL) --dynamic-space-start 0x800000000 --load "$<"
+	$(SBCL) --load "$<" --dynamic-space-start=0x800000000
 
 bin/eiffel-%.bin: eiffel/%.e | bin
 	$(EC) "$<" -batch
@@ -234,7 +244,6 @@ reports/%.txt: bin/%.bin asm/%.asm | reports
 	attempt=1
 	while true; do
 		time=$$(set +x; { time -p "$<" $(INPUT) $${cycles} | tail -n +1 | head -1 > "${@:.txt=.stdout}" ; } 2>&1 | head -1 | cut -f2 -d' ')
-		echo "$${time}"
 		if [[ ! "$${time}" =~ ^[0-9.]+$$ ]]; then
 			time -p "$<" $(INPUT) $${cycles} 2>&1
 			echo "For some reason, \$$time is not an integer: $${time}"
@@ -256,7 +265,7 @@ reports/%.txt: bin/%.bin asm/%.asm | reports
 	else
 		sudo perf stat "$<" $(INPUT) $${cycles} > "${@:.txt=.perf}" 2>&1
 	fi
-	ticks=$$(cat "${@:.txt=.perf}" | sed 's/ \+/ /g' | grep ' cycles #' | cut -f 2 -d ' ' | tr -d ,)
+	ticks=$$(cat "${@:.txt=.perf}" | sed 's/ \+/ /g' | (grep ' cycles #' || echo 0) | cut -f 2 -d ' ' | tr -d ,)
 	if [[ ! "$${ticks}" =~ ^[0-9.]+$$ ]]; then
 		ticks=1
 	fi
@@ -276,7 +285,7 @@ reports/%.txt: bin/%.bin asm/%.asm | reports
 	} > "$@"
 	echo "${subst bin/,,$<},$${instructions},$${ticks_per_cycle},$${cycles},$${time},$${time_per_cycle}" > "${@:.txt=.csv}"
 	name=$(subst bin/,,${<:.bin=})
-	file=$$(ls $$(echo $${name} | cut -f1 -d-)/$$(echo $${name} | cut -f2- -d-).*)
+	file=$$(ls $$(echo $${name} | cut -f1 -d-)/$$(echo $${name} | cut -f2- -d-).* || echo $${name})
 	echo "<program> \
 		<file>$$(echo $${file} | jq -Rr @html)</file> \
 		<name>$$(echo $${name} | jq -Rr @html)</name> \
