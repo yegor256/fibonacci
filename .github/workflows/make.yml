@@ -63,7 +63,7 @@ jobs:
         with:
           go-version: '1.16.1'
       - run: rm -rf ~/.graalvm
-      - uses: graalvm/setup-graalvm@v1.2.2
+      - uses: graalvm/setup-graalvm@v1.2.3
         with:
           version: '22.0.0.2'
           java-version: '11'
