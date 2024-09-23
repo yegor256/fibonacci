@@ -29,6 +29,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   start-instance:
+    permissions: write-all
     runs-on: ubuntu-24.04
     outputs:
       label: ${{ steps.start.outputs.label }}
@@ -100,6 +101,7 @@ jobs:
           folder: www
           clean: false
   terminate-instance:
+    permissions: write-all
     needs:
       - start-instance
       - build

@@ -23,7 +23,7 @@ name: quick
   pull_request:
 jobs:
   quick:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - run: sudo make install
