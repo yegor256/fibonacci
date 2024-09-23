@@ -109,7 +109,7 @@ install:
 		echo "This is Linux, installing necessary components:"
 		apt-get -y update --fix-missing
 		apt-get -y install --no-install-recommends \
-			clang clang-tidy-13 clang-format-13 \
+			clang clang-tidy clang-format \
 			rustc ghc sbcl golang build-essential \
             curl wget git-core zlib1g zlib1g-dev libssl-dev \
             snapd python3 python3-pip \
