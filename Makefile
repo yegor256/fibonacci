@@ -45,7 +45,7 @@ HCLIBDIR = haskell/Mainlib
 HCLIBS = $(wildcard $(HCLIBDIR)/*.hs)
 NIFLAGS = -H:Optimize=3
 SAXON = "/usr/local/opt/Saxon.jar"
-GRAAL_PATH = "/Library/Java/JavaVirtualMachines/graalvm-23.jdk/Contents/Home/bin"
+GRAAL_PATH = "/Library/Java/JavaVirtualMachines/graalvm-23.jdk/Contents/Home/bin/"
 
 DIRS = asm bin reports tmp
 CPPS = $(wildcard cpp/*.cpp)
@@ -237,7 +237,7 @@ bin/java-%.bin: java/%.java | bin
 	else
 		jar cfe "tmp/$${name}.jar" "$${name}" -C "tmp/$${name}" .
 	fi
-		$(GRAAL_PATH)/native-image $(NIFLAGS) -jar "tmp/$${name}.jar" "$@"
+		$(GRAAL_PATH)native-image $(NIFLAGS) -jar "tmp/$${name}.jar" "$@"
 
 reports/%.txt: bin/%.bin asm/%.asm | reports
 	"$<" 7 1

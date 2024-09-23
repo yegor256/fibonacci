@@ -51,6 +51,8 @@ jobs:
   build:
     needs: start-instance
     runs-on: ${{ needs.start-instance.outputs.label }}
+    env:
+      GRAAL_PATH: ''
     steps:
       - uses: actions/checkout@v4
       - run: sudo make install
@@ -68,13 +70,13 @@ jobs:
       - run: make env
       - run: make clean
       - run: mkdir www
-      - run: make WANTED=256 INPUT=7 index.html
+      - run: make -e WANTED=256 INPUT=7 index.html
       - run: mv index.html www/seven.html
       - run: rm -rf reports
-      - run: make WANTED=256 INPUT=16 index.html
+      - run: make -e WANTED=256 INPUT=16 index.html
       - run: mv index.html www/sixteen.html
       - run: rm -rf reports
-      - run: make WANTED=256 index.html
+      - run: make -e WANTED=256 index.html
       - run: cp index.html www
       - run: cp index.xml www
       - run: cp -r reports www
