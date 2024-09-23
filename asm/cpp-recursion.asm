@@ -9,63 +9,71 @@ main:                                   # @main
 # %bb.0:
 	push	rbp
 	.cfi_def_cfa_offset 16
+	push	r15
+	.cfi_def_cfa_offset 24
+	push	r14
+	.cfi_def_cfa_offset 32
+	push	rbx
+	.cfi_def_cfa_offset 40
+	push	rax
+	.cfi_def_cfa_offset 48
+	.cfi_offset rbx, -40
+	.cfi_offset r14, -32
+	.cfi_offset r15, -24
 	.cfi_offset rbp, -16
-	mov	rbp, rsp
-	.cfi_def_cfa_register rbp
-	sub	rsp, 48
-	mov	dword ptr [rbp - 4], 0
-	mov	dword ptr [rbp - 8], edi
-	mov	qword ptr [rbp - 16], rsi
-	cmp	dword ptr [rbp - 8], 3
-	je	.LBB0_2
-# %bb.1:
-	movabs	rdi, offset .L.str
-	mov	al, 0
-	call	printf
-	mov	dword ptr [rbp - 4], 1
-	jmp	.LBB0_7
-.LBB0_2:
-	mov	dword ptr [rbp - 20], 0
-	mov	dword ptr [rbp - 24], 0
-	mov	rax, qword ptr [rbp - 16]
-	mov	rdi, qword ptr [rax + 8]
-	call	atoi
-	mov	dword ptr [rbp - 28], eax
-	mov	rax, qword ptr [rbp - 16]
-	mov	rdi, qword ptr [rax + 16]
-	call	atoi
-	mov	dword ptr [rbp - 32], eax
-	mov	dword ptr [rbp - 36], 0
-.LBB0_3:                                # =>This Inner Loop Header: Depth=1
-	mov	eax, dword ptr [rbp - 36]
-	cmp	eax, dword ptr [rbp - 32]
-	jge	.LBB0_6
-# %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
-	mov	edi, dword ptr [rbp - 28]
-	mov	eax, dword ptr [dummy]
-	add	edi, eax
+	cmp	edi, 3
+	jne	.LBB0_1
+# %bb.2:
+	mov	rbx, rsi
+	mov	rdi, qword ptr [rsi + 8]
+	xor	r14d, r14d
+	xor	esi, esi
+	mov	edx, 10
+	call	strtol@PLT
+	mov	r15, rax
+	mov	rdi, qword ptr [rbx + 16]
+	xor	esi, esi
+	mov	edx, 10
+	call	strtol@PLT
+	mov	rbx, rax
+	mov	eax, 0
+	mov	ebp, 0
+	test	ebx, ebx
+	jle	.LBB0_5
+# %bb.3:
+	xor	ebp, ebp
+	.p2align	4, 0x90
+.LBB0_4:                                # =>This Inner Loop Header: Depth=1
+	mov	edi, dword ptr [rip + dummy]
+	add	edi, r15d
 	call	_Z4calci
-	mov	dword ptr [rbp - 24], eax
-	mov	eax, dword ptr [rbp - 24]
-	add	eax, dword ptr [rbp - 20]
-	mov	dword ptr [rbp - 20], eax
-# %bb.5:                                #   in Loop: Header=BB0_3 Depth=1
-	mov	eax, dword ptr [rbp - 36]
-	add	eax, 1
-	mov	dword ptr [rbp - 36], eax
-	jmp	.LBB0_3
+	add	ebp, eax
+	add	ebx, -1
+	jne	.LBB0_4
+.LBB0_5:
+	lea	rdi, [rip + .L.str.1]
+	mov	esi, r15d
+	mov	edx, eax
+	mov	ecx, ebp
+	xor	eax, eax
+	call	printf@PLT
+	jmp	.LBB0_6
+.LBB0_1:
+	lea	rdi, [rip + .Lstr]
+	call	puts@PLT
+	mov	r14d, 1
 .LBB0_6:
-	mov	esi, dword ptr [rbp - 28]
-	mov	edx, dword ptr [rbp - 24]
-	mov	ecx, dword ptr [rbp - 20]
-	movabs	rdi, offset .L.str.1
-	mov	al, 0
-	call	printf
-.LBB0_7:
-	mov	eax, dword ptr [rbp - 4]
-	add	rsp, 48
+	mov	eax, r14d
+	add	rsp, 8
+	.cfi_def_cfa_offset 40
+	pop	rbx
+	.cfi_def_cfa_offset 32
+	pop	r14
+	.cfi_def_cfa_offset 24
+	pop	r15
+	.cfi_def_cfa_offset 16
 	pop	rbp
-	.cfi_def_cfa rsp, 8
+	.cfi_def_cfa_offset 8
 	ret
 .Lfunc_end0:
 	.size	main, .Lfunc_end0-main
@@ -79,33 +87,37 @@ _Z4calci:                               # @_Z4calci
 # %bb.0:
 	push	rbp
 	.cfi_def_cfa_offset 16
+	push	rbx
+	.cfi_def_cfa_offset 24
+	push	rax
+	.cfi_def_cfa_offset 32
+	.cfi_offset rbx, -24
 	.cfi_offset rbp, -16
-	mov	rbp, rsp
-	.cfi_def_cfa_register rbp
-	sub	rsp, 16
-	mov	dword ptr [rbp - 8], edi
-	cmp	dword ptr [rbp - 8], 2
-	jge	.LBB1_2
+	mov	ebp, 1
+	cmp	edi, 2
+	jl	.LBB1_4
 # %bb.1:
-	mov	dword ptr [rbp - 4], 1
-	jmp	.LBB1_3
-.LBB1_2:
-	mov	edi, dword ptr [rbp - 8]
-	sub	edi, 1
+	mov	ebx, edi
+	add	ebx, 2
+	xor	ebp, ebp
+	.p2align	4, 0x90
+.LBB1_2:                                # =>This Inner Loop Header: Depth=1
+	lea	edi, [rbx - 3]
 	call	_Z4calci
-	mov	dword ptr [rbp - 12], eax       # 4-byte Spill
-	mov	edi, dword ptr [rbp - 8]
-	sub	edi, 2
-	call	_Z4calci
-	mov	ecx, eax
-	mov	eax, dword ptr [rbp - 12]       # 4-byte Reload
-	add	eax, ecx
-	mov	dword ptr [rbp - 4], eax
-.LBB1_3:
-	mov	eax, dword ptr [rbp - 4]
-	add	rsp, 16
+	add	ebp, eax
+	add	ebx, -2
+	cmp	ebx, 3
+	ja	.LBB1_2
+# %bb.3:
+	add	ebp, 1
+.LBB1_4:
+	mov	eax, ebp
+	add	rsp, 8
+	.cfi_def_cfa_offset 24
+	pop	rbx
+	.cfi_def_cfa_offset 16
 	pop	rbp
-	.cfi_def_cfa rsp, 8
+	.cfi_def_cfa_offset 8
 	ret
 .Lfunc_end1:
 	.size	_Z4calci, .Lfunc_end1-_Z4calci
@@ -119,21 +131,18 @@ dummy:
 	.long	0                               # 0x0
 	.size	dummy, 4
 
-	.type	.L.str,@object                  # @.str
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.L.str:
-	.asciz	"Two args required: INPUT and CYCLES\n"
-	.size	.L.str, 37
-
 	.type	.L.str.1,@object                # @.str.1
+	.section	.rodata.str1.1,"aMS",@progbits,1
 .L.str.1:
 	.asciz	"%d-th Fibonacci number is %d\nTotal is %d\n"
 	.size	.L.str.1, 42
 
-	.ident	"Ubuntu clang version 13.0.1-++20220120110844+75e33f71c2da-1~exp1~20220120230854.66"
+	.type	.Lstr,@object                   # @str
+.Lstr:
+	.asciz	"Two args required: INPUT and CYCLES"
+	.size	.Lstr, 36
+
+	.ident	"Ubuntu clang version 14.0.0-1ubuntu1.1"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
-	.addrsig_sym printf
-	.addrsig_sym atoi
-	.addrsig_sym _Z4calci
 	.addrsig_sym dummy

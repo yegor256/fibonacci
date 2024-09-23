@@ -1,1 +1,1 @@
-<program> 	<file>cpp/functions.cpp</file> 	<name>cpp-functions</name> 	<instructions>116</instructions> 	<cycles>256</cycles> 	<time>14.76</time> 	<time_per_cycle>.0576562500000000</time_per_cycle> 	<ticks>53047377262</ticks> 	<ticks_per_cycle>207216317</ticks_per_cycle> 	</program>
+<program> 	<file>cpp/functions.cpp</file> 	<name>cpp-functions</name> 	<instructions>86</instructions> 	<cycles>256</cycles> 	<time>6.16</time> 	<time_per_cycle>.0240625000000000</time_per_cycle> 	<ticks>24005997783</ticks> 	<ticks_per_cycle>93773428</ticks_per_cycle> 	</program>

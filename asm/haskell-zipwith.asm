@@ -1,82 +1,127 @@
+.section .rodata.str,"aMS",@progbits,1
+.align 1
+.align 1
+.globl Main_zdtrModule4_bytes
+.type Main_zdtrModule4_bytes, @object
+Main_zdtrModule4_bytes:
+	.asciz "main"
 .section .data
 .align 8
 .align 1
-.globl __stginit_Main
-.type __stginit_Main, @object
-__stginit_Main:
-.section .rodata
-.align 8
+.globl Main_zdtrModule3_closure
+.type Main_zdtrModule3_closure, @object
+Main_zdtrModule3_closure:
+	.quad	ghczmprim_GHCziTypes_TrNameS_con_info
+	.quad	Main_zdtrModule4_bytes
+.section .rodata.str,"aMS",@progbits,1
 .align 1
-c2Lw_str:
-	.byte	109
-	.byte	97
-	.byte	105
-	.byte	110
-	.byte	0
+.align 1
+.globl Main_zdtrModule2_bytes
+.type Main_zdtrModule2_bytes, @object
+Main_zdtrModule2_bytes:
+	.asciz "Main"
 .section .data
 .align 8
 .align 1
-r2L6_closure:
-	.quad	ghczmprim_GHCziTypes_TrNameS_static_info
-	.quad	c2Lw_str
-.section .rodata
-.align 8
-.align 1
-c2LA_str:
-	.byte	77
-	.byte	97
-	.byte	105
-	.byte	110
-	.byte	0
-.section .data
-.align 8
-.align 1
-r2Lk_closure:
-	.quad	ghczmprim_GHCziTypes_TrNameS_static_info
-	.quad	c2LA_str
+.globl Main_zdtrModule1_closure
+.type Main_zdtrModule1_closure, @object
+Main_zdtrModule1_closure:
+	.quad	ghczmprim_GHCziTypes_TrNameS_con_info
+	.quad	Main_zdtrModule2_bytes
 .section .data
 .align 8
 .align 1
 .globl Main_zdtrModule_closure
 .type Main_zdtrModule_closure, @object
 Main_zdtrModule_closure:
-	.quad	ghczmprim_GHCziTypes_Module_static_info
-	.quad	r2L6_closure+1
-	.quad	r2Lk_closure+1
+	.quad	ghczmprim_GHCziTypes_Module_con_info
+	.quad	Main_zdtrModule3_closure+1
+	.quad	Main_zdtrModule1_closure+1
 	.quad	3
 .section .data
 .align 8
 .align 1
-r2Ll_closure:
-	.quad	ghczmprim_GHCziTypes_Izh_static_info
+.globl Main_fibs4_closure
+.type Main_fibs4_closure, @object
+Main_fibs4_closure:
+	.quad	ghczmprim_GHCziTypes_Izh_con_info
 	.quad	1
-.section .data
-.align 8
-.align 1
-r2Lm_closure:
-	.quad	ghczmprim_GHCziTypes_Izh_static_info
-	.quad	1
-.section .data
-.align 8
-.align 1
-s2Lu_closure:
-	.quad	s2Lu_info
-	.quad	0
-	.quad	0
-	.quad	0
 .section .text
 .align 8
 .align 8
-	.long	S2Mg_srt-(s2Lu_info)+0
-	.long	0
+	.quad	8589934605
 	.quad	0
-	.quad	12884901910
-s2Lu_info:
-.Lc2LV:
+	.long	14
+	.long	0
+.Lr61h_info:
+.Lc620:
 	leaq -16(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc2LW
-.Lc2LX:
+	jae .Lc61Q
+.Lc621:
+	leaq .Lr61h_closure(%rip),%rbx
+	jmp *-8(%r13)
+.align 8
+	.quad	65
+	.long	30
+	.long	0
+.Lc61T_info:
+.Lc61T:
+	movq %rbx,%rax
+	andl $7,%eax
+	cmpq $1,%rax
+	jne .Lc61Y
+.Lc61X:
+	movq ghczmprim_GHCziTypes_ZMZN_closure@gotpcrel(%rip),%rax
+	leaq 1(%rax),%rbx
+	addq $16,%rbp
+	jmp *(%rbp)
+.Lc61Y:
+	movq 14(%rbx),%rax
+	movq 8(%rbp),%rbx
+	cmpq $1,%rbx
+	je .Lc62c
+.Lc62b:
+	addq $16,%rbp
+	decq %rbx
+.Ln62o:
+	movq %rax,%rsi
+	movq %rbx,%r14
+.Lc61Q:
+	leaq .Lc61T_info(%rip),%rax
+	movq %rax,-16(%rbp)
+	movq %rsi,%rbx
+	movq %r14,-8(%rbp)
+	addq $-16,%rbp
+	testb $7,%bl
+	jne .Lc61T
+.Lc61U:
+	jmp *(%rbx)
+.Lc62c:
+	movq %rax,%rbx
+	andq $-8,%rbx
+	addq $16,%rbp
+	jmp *(%rbx)
+	.size .Lr61h_info, .-.Lr61h_info
+.section .data
+.align 8
+.align 1
+.Lr61h_closure:
+	.quad	.Lr61h_info
+.section .text
+.align 8
+.align 8
+	.quad	0
+	.long	21
+	.long	Main_fibs3_closure-(Main_fibs2_info)+0
+.globl Main_fibs2_info
+.type Main_fibs2_info, @function
+Main_fibs2_info:
+.Lc62w:
+	leaq -16(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc62x
+.Lc62y:
 	subq $8,%rsp
 	movq %r13,%rax
 	movq %rbx,%rsi
@@ -85,69 +130,41 @@ s2Lu_info:
 	call newCAF@plt
 	addq $8,%rsp
 	testq %rax,%rax
-	je .Lc2LU
-.Lc2LT:
+	je .Lc62v
+.Lc62u:
 	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
 	movq %rbx,-16(%rbp)
 	movq %rax,-8(%rbp)
-	leaq Main_fibs_closure+2(%rip),%r14
-	movq base_GHCziList_tail_closure@gotpcrel(%rip),%rbx
+	movq ghczmprim_GHCziTypes_ZMZN_closure@gotpcrel(%rip),%rax
+	leaq 1(%rax),%rsi
+	movq ghczmprim_GHCziTypes_ZC_closure@gotpcrel(%rip),%rax
+	leaq 2(%rax),%r14
 	addq $-16,%rbp
-	jmp *stg_ap_p_fast@gotpcrel(%rip)
-.Lc2LU:
+	jmp Main_fibs3_info
+.Lc62v:
 	jmp *(%rbx)
-.Lc2LW:
+.Lc62x:
 	jmp *-16(%r13)
-	.size s2Lu_info, .-s2Lu_info
+	.size Main_fibs2_info, .-Main_fibs2_info
 .section .data
 .align 8
 .align 1
-s2Lt_closure:
-	.quad	s2Lt_info
+.globl Main_fibs2_closure
+.type Main_fibs2_closure, @object
+Main_fibs2_closure:
+	.quad	Main_fibs2_info
 	.quad	0
 	.quad	0
 	.quad	0
-.section .text
-.align 8
-.align 8
-	.long	S2Mg_srt-(s2Lt_info)+16
-	.long	0
-	.quad	0
-	.quad	4294967318
-s2Lt_info:
-.Lc2M4:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2M5
-.Lc2M6:
-	subq $8,%rsp
-	movq %r13,%rax
-	movq %rbx,%rsi
-	movq %rax,%rdi
-	xorl %eax,%eax
-	call newCAF@plt
-	addq $8,%rsp
-	testq %rax,%rax
-	je .Lc2M3
-.Lc2M2:
-	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
-	movq %rbx,-16(%rbp)
-	movq %rax,-8(%rbp)
-	movq base_GHCziNum_zdfNumInt_closure@gotpcrel(%rip),%r14
-	addq $-16,%rbp
-	jmp *base_GHCziNum_zp_info@gotpcrel(%rip)
-.Lc2M3:
-	jmp *(%rbx)
-.Lc2M5:
-	jmp *-16(%r13)
-	.size s2Lt_info, .-s2Lt_info
 .section .data
 .align 8
 .align 1
-r2Ln_closure:
-	.quad	ghczmprim_GHCziTypes_ZC_static_info
-	.quad	r2Ll_closure+1
-	.quad	r2Lo_closure
+.globl Main_fibs1_closure
+.type Main_fibs1_closure, @object
+Main_fibs1_closure:
+	.quad	ghczmprim_GHCziTypes_ZC_con_info
+	.quad	Main_fibs4_closure+1
+	.quad	Main_fibs2_closure
 	.quad	0
 .section .data
 .align 8
@@ -155,31 +172,22 @@ r2Ln_closure:
 .globl Main_fibs_closure
 .type Main_fibs_closure, @object
 Main_fibs_closure:
-	.quad	ghczmprim_GHCziTypes_ZC_static_info
-	.quad	r2Lm_closure+1
-	.quad	r2Ln_closure+2
-	.quad	0
-.section .data
-.align 8
-.align 1
-r2Lo_closure:
-	.quad	r2Lo_info
-	.quad	0
-	.quad	0
+	.quad	ghczmprim_GHCziTypes_ZC_con_info
+	.quad	Main_fibs4_closure+1
+	.quad	Main_fibs1_closure+2
 	.quad	0
 .section .text
 .align 8
 .align 8
-	.long	S2Mg_srt-(r2Lo_info)+8
-	.long	0
 	.quad	0
-	.quad	124554051606
-r2Lo_info:
-.Lc2Md:
+	.long	21
+	.long	Main_fibs_closure-(.Lr61i_info)+0
+.Lr61i_info:
+.Lc62F:
 	leaq -16(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc2Me
-.Lc2Mf:
+	jb .Lc62G
+.Lc62H:
 	subq $8,%rsp
 	movq %r13,%rax
 	movq %rbx,%rsi
@@ -188,22 +196,257 @@ r2Lo_info:
 	call newCAF@plt
 	addq $8,%rsp
 	testq %rax,%rax
-	je .Lc2Mc
-.Lc2Mb:
+	je .Lc62E
+.Lc62D:
 	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
 	movq %rbx,-16(%rbp)
 	movq %rax,-8(%rbp)
-	leaq s2Lu_closure(%rip),%rdi
 	leaq Main_fibs_closure+2(%rip),%rsi
-	leaq s2Lt_closure(%rip),%r14
-	movq base_GHCziList_zzipWith_closure@gotpcrel(%rip),%rbx
+	movl $1,%r14d
 	addq $-16,%rbp
-	jmp *stg_ap_ppp_fast@gotpcrel(%rip)
-.Lc2Mc:
+	jmp .Lr61h_info
+.Lc62E:
 	jmp *(%rbx)
-.Lc2Me:
+.Lc62G:
 	jmp *-16(%r13)
-	.size r2Lo_info, .-r2Lo_info
+	.size .Lr61i_info, .-.Lr61i_info
+.section .data
+.align 8
+.align 1
+.Lr61i_closure:
+	.quad	.Lr61i_info
+	.quad	0
+	.quad	0
+	.quad	0
+.section .text
+.align 8
+.align 8
+	.quad	3
+	.long	15
+	.long	0
+.Ls61F_info:
+.Lc637:
+	leaq -16(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc638
+.Lc639:
+	movq stg_upd_frame_info@gotpcrel(%rip),%rax
+	movq %rax,-16(%rbp)
+	movq %rbx,-8(%rbp)
+	movq 24(%rbx),%rsi
+	movq 16(%rbx),%r14
+	movq 32(%rbx),%rbx
+	addq $-16,%rbp
+	jmp .Ls61v_info
+.Lc638:
+	jmp *-16(%r13)
+	.size .Ls61F_info, .-.Ls61F_info
+.section .text
+.align 8
+.align 8
+	.quad	2
+	.long	18
+	.long	0
+.Ls61E_info:
+.Lc63e:
+	leaq -16(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc63f
+.Lc63g:
+	movq stg_upd_frame_info@gotpcrel(%rip),%rax
+	movq %rax,-16(%rbp)
+	movq %rbx,-8(%rbp)
+	movq 24(%rbx),%rsi
+	movq 16(%rbx),%r14
+	addq $-16,%rbp
+	jmp *base_GHCziNum_zdfNumIntzuzdczp_info@gotpcrel(%rip)
+.Lc63f:
+	jmp *-16(%r13)
+	.size .Ls61E_info, .-.Ls61E_info
+.section .text
+.align 8
+.align 8
+	.quad	8589934607
+	.quad	2
+	.long	11
+	.long	0
+.Ls61v_info:
+.Lc63l:
+	leaq -48(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc63m
+.Lc63n:
+	leaq .Lc62R_info(%rip),%rax
+	movq %rax,-40(%rbp)
+	movq %rbx,%rax
+	movq 6(%rbx),%rcx
+	movq 14(%rbx),%rbx
+	movq %rbx,%rdx
+	movq %r14,%rbx
+	movq %rcx,-32(%rbp)
+	movq %rdx,-24(%rbp)
+	movq %rax,-16(%rbp)
+	movq %rsi,-8(%rbp)
+	addq $-40,%rbp
+	testb $7,%bl
+	jne .Lc62R
+.Lc62S:
+	jmp *(%rbx)
+.align 8
+	.quad	4
+	.long	30
+	.long	0
+.Lc62R_info:
+.Lc62R:
+	movq 16(%rbp),%rax
+	movq %rbx,%rcx
+	andl $7,%ecx
+	cmpq $1,%rcx
+	je .Lc63i
+.Lc63j:
+	leaq .Lc62X_info(%rip),%rax
+	movq %rax,-8(%rbp)
+	movq 6(%rbx),%rax
+	movq 14(%rbx),%rbx
+	movq %rbx,%rcx
+	movq 32(%rbp),%rbx
+	movq %rcx,(%rbp)
+	movq %rax,32(%rbp)
+	addq $-8,%rbp
+	testb $7,%bl
+	jne .Lc62X
+.Lc62Y:
+	jmp *(%rbx)
+.align 8
+	.quad	5
+	.long	30
+	.long	0
+.Lc62X_info:
+.Lc62X:
+	movq %rbx,%rax
+	andl $7,%eax
+	cmpq $1,%rax
+	je .Lu63A
+.Lc63v:
+	addq $72,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc63y
+.Lc63x:
+	movq 6(%rbx),%rax
+	movq 14(%rbx),%rbx
+	leaq .Ls61F_info(%rip),%rcx
+	movq %rcx,-64(%r12)
+	movq 8(%rbp),%rcx
+	movq %rcx,-48(%r12)
+	movq %rbx,-40(%r12)
+	movq 32(%rbp),%rbx
+	movq %rbx,-32(%r12)
+	leaq .Ls61E_info(%rip),%rbx
+	movq %rbx,-24(%r12)
+	movq 40(%rbp),%rbx
+	movq %rbx,-8(%r12)
+	movq %rax,(%r12)
+	leaq -64(%r12),%rsi
+	leaq -24(%r12),%r14
+	movq 16(%rbp),%rbx
+	addq $48,%rbp
+	jmp *stg_ap_pp_fast@gotpcrel(%rip)
+.Lc63y:
+	movq $72,904(%r13)
+	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
+.Lu63A:
+	movq 24(%rbp),%rax
+	addq $8,%rbp
+.Lc63i:
+	movq %rax,%rbx
+	addq $40,%rbp
+	jmp *stg_ap_0_fast@gotpcrel(%rip)
+.Lc63m:
+	jmp *-8(%r13)
+	.size .Ls61v_info, .-.Ls61v_info
+.section .text
+.align 8
+.align 8
+	.quad	8589934607
+	.quad	2
+	.long	14
+	.long	0
+.globl Main_fibs3_info
+.type Main_fibs3_info, @function
+Main_fibs3_info:
+.Lc63B:
+	addq $24,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc63F
+.Lc63E:
+	leaq .Ls61v_info(%rip),%rax
+	movq %rax,-16(%r12)
+	movq %r14,-8(%r12)
+	movq %rsi,(%r12)
+	leaq .Lr61i_closure(%rip),%rsi
+	leaq Main_fibs_closure+2(%rip),%r14
+	leaq -14(%r12),%rbx
+	jmp .Ls61v_info
+.Lc63F:
+	movq $24,904(%r13)
+	leaq Main_fibs3_closure(%rip),%rbx
+	jmp *-8(%r13)
+	.size Main_fibs3_info, .-Main_fibs3_info
+.section .data
+.align 8
+.align 1
+.globl Main_fibs3_closure
+.type Main_fibs3_closure, @object
+Main_fibs3_closure:
+	.quad	Main_fibs3_info
+	.quad	Main_fibs_closure
+	.quad	.Lr61i_closure
+	.quad	0
+.section .data
+.align 8
+.align 1
+.Lu64z_srt:
+	.quad	stg_SRT_2_info
+	.quad	base_GHCziList_zdwznzn_closure
+	.quad	Main_fibs_closure
+	.quad	0
+.section .text
+.align 8
+.align 8
+	.quad	4294967301
+	.quad	0
+	.long	14
+	.long	.Lu64z_srt-(Main_fibo_info)+0
+.globl Main_fibo_info
+.type Main_fibo_info, @function
+Main_fibo_info:
+.Lc64t:
+	leaq -8(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc64u
+.Lc64v:
+	leaq .Lc64q_info(%rip),%rax
+	movq %rax,-8(%rbp)
+	movq %r14,%rbx
+	addq $-8,%rbp
+	testb $7,%bl
+	jne .Lc64q
+.Lc64r:
+	jmp *(%rbx)
+.align 8
+	.quad	0
+	.long	30
+	.long	.Lu64z_srt-(.Lc64q_info)+0
+.Lc64q_info:
+.Lc64q:
+	movq 7(%rbx),%rsi
+	leaq Main_fibs_closure+2(%rip),%r14
+	addq $8,%rbp
+	jmp *base_GHCziList_zdwznzn_info@gotpcrel(%rip)
+.Lc64u:
+	leaq Main_fibo_closure(%rip),%rbx
+	jmp *-8(%r13)
+	.size Main_fibo_info, .-Main_fibo_info
 .section .data
 .align 8
 .align 1
@@ -212,45 +455,43 @@ r2Lo_info:
 Main_fibo_closure:
 	.quad	Main_fibo_info
 	.quad	0
-	.quad	0
+.section .text
+.align 8
+.align 8
+	.quad	4294967299
+	.quad	2
+	.long	14
+	.long	0
+.globl Main_main1_info
+.type Main_main1_info, @function
+Main_main1_info:
+.Lc64K:
+	leaq Main_fibo_closure+1(%rip),%r14
+	jmp *MainlibziReport_run1_info@gotpcrel(%rip)
+	.size Main_main1_info, .-Main_main1_info
+.section .data
+.align 8
+.align 1
+.globl Main_main1_closure
+.type Main_main1_closure, @object
+Main_main1_closure:
+	.quad	Main_main1_info
+	.quad	MainlibziReport_run1_closure
+	.quad	Main_fibo_closure
 	.quad	0
 .section .text
 .align 8
 .align 8
-	.long	S2Mg_srt-(Main_fibo_info)+8
-	.long	0
+	.quad	4294967299
 	.quad	0
-	.quad	141733920790
-.globl Main_fibo_info
-.type Main_fibo_info, @object
-Main_fibo_info:
-.Lc2MI:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2MJ
-.Lc2MK:
-	subq $8,%rsp
-	movq %r13,%rax
-	movq %rbx,%rsi
-	movq %rax,%rdi
-	xorl %eax,%eax
-	call newCAF@plt
-	addq $8,%rsp
-	testq %rax,%rax
-	je .Lc2MH
-.Lc2MG:
-	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
-	movq %rbx,-16(%rbp)
-	movq %rax,-8(%rbp)
-	leaq Main_fibs_closure+2(%rip),%r14
-	movq base_GHCziList_znzn_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_p_fast@gotpcrel(%rip)
-.Lc2MH:
-	jmp *(%rbx)
-.Lc2MJ:
-	jmp *-16(%r13)
-	.size Main_fibo_info, .-Main_fibo_info
+	.long	14
+	.long	Main_main1_closure-(Main_main_info)+0
+.globl Main_main_info
+.type Main_main_info, @function
+Main_main_info:
+.Lc64U:
+	jmp Main_main1_info
+	.size Main_main_info, .-Main_main_info
 .section .data
 .align 8
 .align 1
@@ -259,45 +500,43 @@ Main_fibo_info:
 Main_main_closure:
 	.quad	Main_main_info
 	.quad	0
-	.quad	0
+.section .text
+.align 8
+.align 8
+	.quad	4294967299
+	.quad	2
+	.long	14
+	.long	0
+.globl Main_main2_info
+.type Main_main2_info, @function
+Main_main2_info:
+.Lc654:
+	leaq Main_main1_closure+1(%rip),%r14
+	jmp *base_GHCziTopHandler_runMainIO1_info@gotpcrel(%rip)
+	.size Main_main2_info, .-Main_main2_info
+.section .data
+.align 8
+.align 1
+.globl Main_main2_closure
+.type Main_main2_closure, @object
+Main_main2_closure:
+	.quad	Main_main2_info
+	.quad	base_GHCziTopHandler_runMainIO1_closure
+	.quad	Main_main1_closure
 	.quad	0
 .section .text
 .align 8
 .align 8
-	.long	S2Mg_srt-(Main_main_info)+56
-	.long	0
+	.quad	4294967299
 	.quad	0
-	.quad	12884901910
-.globl Main_main_info
-.type Main_main_info, @object
-Main_main_info:
-.Lc2MY:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2MZ
-.Lc2N0:
-	subq $8,%rsp
-	movq %r13,%rax
-	movq %rbx,%rsi
-	movq %rax,%rdi
-	xorl %eax,%eax
-	call newCAF@plt
-	addq $8,%rsp
-	testq %rax,%rax
-	je .Lc2MX
-.Lc2MW:
-	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
-	movq %rbx,-16(%rbp)
-	movq %rax,-8(%rbp)
-	leaq Main_fibo_closure(%rip),%r14
-	movq MainlibziReport_run_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_p_fast@gotpcrel(%rip)
-.Lc2MX:
-	jmp *(%rbx)
-.Lc2MZ:
-	jmp *-16(%r13)
-	.size Main_main_info, .-Main_main_info
+	.long	14
+	.long	Main_main2_closure-(ZCMain_main_info)+0
+.globl ZCMain_main_info
+.type ZCMain_main_info, @function
+ZCMain_main_info:
+.Lc65e:
+	jmp Main_main2_info
+	.size ZCMain_main_info, .-ZCMain_main_info
 .section .data
 .align 8
 .align 1
@@ -306,69 +545,46 @@ Main_main_info:
 ZCMain_main_closure:
 	.quad	ZCMain_main_info
 	.quad	0
-	.quad	0
-	.quad	0
+.section .note.GNU-stack,"",@progbits
+.ident "GHC 8.8.4"
+
+
 .section .text
 .align 8
 .align 8
-	.long	S2Mg_srt-(ZCMain_main_info)+72
-	.long	0
+	.quad	4294967301
 	.quad	0
-	.quad	12884901910
-.globl ZCMain_main_info
-.type ZCMain_main_info, @object
-ZCMain_main_info:
-.Lc2Ne:
-	leaq -16(%rbp),%rax
+	.long	14
+	.long	0
+.globl MainlibziObjects_get_info
+.type MainlibziObjects_get_info, @function
+MainlibziObjects_get_info:
+.Lc2sq:
+	leaq -8(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc2Nf
-.Lc2Ng:
-	subq $8,%rsp
-	movq %r13,%rax
-	movq %rbx,%rsi
-	movq %rax,%rdi
-	xorl %eax,%eax
-	call newCAF@plt
-	addq $8,%rsp
-	testq %rax,%rax
-	je .Lc2Nd
-.Lc2Nc:
-	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
-	movq %rbx,-16(%rbp)
+	jb .Lc2sr
+.Lc2ss:
+	leaq .Lc2sn_info(%rip),%rax
 	movq %rax,-8(%rbp)
-	leaq Main_main_closure(%rip),%r14
-	movq base_GHCziTopHandler_runMainIO_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_p_fast@gotpcrel(%rip)
-.Lc2Nd:
+	movq %r14,%rbx
+	addq $-8,%rbp
+	testb $7,%bl
+	jne .Lc2sn
+.Lc2so:
 	jmp *(%rbx)
-.Lc2Nf:
-	jmp *-16(%r13)
-	.size ZCMain_main_info, .-ZCMain_main_info
-.section .data.rel.ro
 .align 8
-.align 1
-S2Mg_srt:
-	.quad	base_GHCziList_tail_closure
-	.quad	Main_fibs_closure
-	.quad	base_GHCziNum_zdfNumInt_closure
-	.quad	base_GHCziList_zzipWith_closure
-	.quad	s2Lt_closure
-	.quad	s2Lu_closure
-	.quad	base_GHCziList_znzn_closure
-	.quad	MainlibziReport_run_closure
-	.quad	Main_fibo_closure
-	.quad	base_GHCziTopHandler_runMainIO_closure
-	.quad	Main_main_closure
-.section .note.GNU-stack,"",@progbits
-.ident "GHC 8.0.2"
-
-.section .data
-.align 8
-.align 1
-.globl __stginit_MainlibziObjects
-.type __stginit_MainlibziObjects, @object
-__stginit_MainlibziObjects:
+	.quad	0
+	.long	30
+	.long	0
+.Lc2sn_info:
+.Lc2sn:
+	movq 7(%rbx),%rbx
+	addq $8,%rbp
+	jmp *stg_ap_0_fast@gotpcrel(%rip)
+.Lc2sr:
+	leaq MainlibziObjects_get_closure(%rip),%rbx
+	jmp *-8(%r13)
+	.size MainlibziObjects_get_info, .-MainlibziObjects_get_info
 .section .data
 .align 8
 .align 1
@@ -381,36 +597,26 @@ MainlibziObjects_get_closure:
 .align 8
 	.quad	4294967301
 	.quad	0
-	.quad	15
-.globl MainlibziObjects_get_info
-.type MainlibziObjects_get_info, @object
-MainlibziObjects_get_info:
-.Lc2Bt:
-	leaq -8(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2Bu
-.Lc2Bv:
-	leaq c2Bq_info(%rip),%rax
-	movq %rax,-8(%rbp)
-	movq %r14,%rbx
-	addq $-8,%rbp
-	testb $7,%bl
-	jne .Lc2Bq
-.Lc2Br:
-	jmp *(%rbx)
-.align 8
-	.quad	0
-	.quad	32
-c2Bq_info:
-.Lc2Bq:
-	movq 7(%rbx),%rax
-	movq %rax,%rbx
-	addq $8,%rbp
-	jmp *stg_ap_0_fast@gotpcrel(%rip)
-.Lc2Bu:
-	leaq MainlibziObjects_get_closure(%rip),%rbx
+	.long	14
+	.long	0
+.globl MainlibziObjects_oInt_info
+.type MainlibziObjects_oInt_info, @function
+MainlibziObjects_oInt_info:
+.Lc2sG:
+	addq $16,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc2sK
+.Lc2sJ:
+	leaq MainlibziObjects_Object_con_info(%rip),%rax
+	movq %rax,-8(%r12)
+	movq %r14,(%r12)
+	leaq -7(%r12),%rbx
+	jmp *(%rbp)
+.Lc2sK:
+	movq $16,904(%r13)
+	leaq MainlibziObjects_oInt_closure(%rip),%rbx
 	jmp *-8(%r13)
-	.size MainlibziObjects_get_info, .-MainlibziObjects_get_info
+	.size MainlibziObjects_oInt_info, .-MainlibziObjects_oInt_info
 .section .data
 .align 8
 .align 1
@@ -421,30 +627,123 @@ MainlibziObjects_oInt_closure:
 .section .text
 .align 8
 .align 8
-	.quad	4294967301
+	.quad	3
+	.long	15
+	.long	0
+.Ls2rO_info:
+.Lc2t0:
+	leaq -40(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc2t1
+.Lc2t2:
+	movq stg_upd_frame_info@gotpcrel(%rip),%rax
+	movq %rax,-16(%rbp)
+	movq %rbx,-8(%rbp)
+	leaq .Lc2sX_info(%rip),%rax
+	movq %rax,-40(%rbp)
+	movq 16(%rbx),%rax
+	movq 24(%rbx),%rcx
+	movq 32(%rbx),%rbx
+	movq %rax,-32(%rbp)
+	movq %rcx,-24(%rbp)
+	addq $-40,%rbp
+	testb $7,%bl
+	jne .Lc2sX
+.Lc2sY:
+	jmp *(%rbx)
+.align 8
+	.quad	2
+	.long	30
+	.long	0
+.Lc2sX_info:
+.Lc2sX:
+	leaq .Lc2t5_info(%rip),%rax
+	movq %rax,(%rbp)
+	movq 7(%rbx),%rbx
+	testb $7,%bl
+	jne .Lc2t5
+.Lc2t7:
+	jmp *(%rbx)
+.align 8
+	.quad	2
+	.long	30
+	.long	0
+.Lc2t5_info:
+.Lc2t5:
+	andl $7,%ebx
+	cmpq $1,%rbx
+	jne .Lc2to
+.Lc2te:
+	movq 16(%rbp),%rax
+	leaq .Lc2tb_info(%rip),%rbx
+	movq %rbx,16(%rbp)
+	movq %rax,%rbx
+	addq $16,%rbp
+	testb $7,%bl
+	jne .Lc2tb
+.Lc2tf:
+	jmp *(%rbx)
+.align 8
 	.quad	0
-	.quad	15
-.globl MainlibziObjects_oInt_info
-.type MainlibziObjects_oInt_info, @object
-MainlibziObjects_oInt_info:
-.Lc2BK:
-.Lc2BM:
-	addq $16,%r12
+	.long	30
+	.long	0
+.Lc2tb_info:
+.Lc2tb:
+	movq 7(%rbx),%rbx
+	addq $8,%rbp
+	jmp *stg_ap_0_fast@gotpcrel(%rip)
+.Lc2t1:
+	jmp *-16(%r13)
+.Lc2to:
+	leaq .Lc2tm_info(%rip),%rax
+	movq %rax,16(%rbp)
+	movq 8(%rbp),%rbx
+	addq $16,%rbp
+	testb $7,%bl
+	jne .Lc2tm
+.Lc2tp:
+	jmp *(%rbx)
+.align 8
+	.quad	0
+	.long	30
+	.long	0
+.Lc2tm_info:
+.Lc2tm:
+	movq 7(%rbx),%rbx
+	addq $8,%rbp
+	jmp *stg_ap_0_fast@gotpcrel(%rip)
+	.size .Ls2rO_info, .-.Ls2rO_info
+.section .text
+.align 8
+.align 8
+	.quad	12884901911
+	.quad	0
+	.long	14
+	.long	0
+.globl MainlibziObjects_oIf_info
+.type MainlibziObjects_oIf_info, @function
+MainlibziObjects_oIf_info:
+.Lc2tw:
+	addq $56,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc2BO
-.Lc2BN:
+	ja .Lc2tA
+.Lc2tz:
+	leaq .Ls2rO_info(%rip),%rax
+	movq %rax,-48(%r12)
+	movq %rsi,-32(%r12)
+	movq %rdi,-24(%r12)
+	movq %r14,-16(%r12)
 	leaq MainlibziObjects_Object_con_info(%rip),%rax
 	movq %rax,-8(%r12)
-	movq %r14,(%r12)
-	leaq -7(%r12),%rax
-	movq %rax,%rbx
+	leaq -48(%r12),%rax
+	movq %rax,(%r12)
+	leaq -7(%r12),%rbx
 	jmp *(%rbp)
-.Lc2BO:
-	movq $16,904(%r13)
-.Lc2BL:
-	leaq MainlibziObjects_oInt_closure(%rip),%rbx
+.Lc2tA:
+	movq $56,904(%r13)
+	leaq MainlibziObjects_oIf_closure(%rip),%rbx
 	jmp *-8(%r13)
-	.size MainlibziObjects_oInt_info, .-MainlibziObjects_oInt_info
+	.size MainlibziObjects_oIf_info, .-MainlibziObjects_oIf_info
 .section .data
 .align 8
 .align 1
@@ -456,127 +755,75 @@ MainlibziObjects_oIf_closure:
 .align 8
 .align 8
 	.quad	3
-	.quad	16
-s2AO_info:
-.Lc2Cj:
+	.long	15
+	.long	0
+.Ls2rY_info:
+.Lc2u1:
 	leaq -40(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc2Ck
-.Lc2Cl:
+	jb .Lc2u2
+.Lc2u3:
+	addq $48,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc2u5
+.Lc2u4:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
 	movq 16(%rbx),%rax
 	movq 24(%rbx),%rcx
 	movq 32(%rbx),%rbx
-	leaq c2Cg_info(%rip),%rdx
-	movq %rdx,-40(%rbp)
-	movq %rbx,%rdx
-	movq %rax,%rbx
-	movq %rcx,-32(%rbp)
-	movq %rdx,-24(%rbp)
+	movq stg_sel_0_upd_info@gotpcrel(%rip),%rdx
+	movq %rdx,-40(%r12)
+	movq %rbx,-24(%r12)
+	movq stg_sel_0_upd_info@gotpcrel(%rip),%rbx
+	movq %rbx,-16(%r12)
+	movq %rcx,(%r12)
+	movq %rax,%r14
+	movq stg_ap_pp_info@gotpcrel(%rip),%rax
+	movq %rax,-40(%rbp)
+	leaq -16(%r12),%rax
+	movq %rax,-32(%rbp)
+	leaq -40(%r12),%rax
+	movq %rax,-24(%rbp)
 	addq $-40,%rbp
-	testb $7,%bl
-	jne .Lc2Cg
-.Lc2Ch:
-	jmp *(%rbx)
-.align 8
-	.quad	2
-	.quad	32
-c2Cg_info:
-.Lc2Cg:
-	movq 8(%rbp),%rax
-	movq 16(%rbp),%rax
-	movq 7(%rbx),%rax
-	leaq c2Co_info(%rip),%rbx
-	movq %rbx,(%rbp)
-	movq %rax,%rbx
-	testb $7,%bl
-	jne .Lc2Co
-.Lc2Cq:
-	jmp *(%rbx)
-.Lc2Ck:
+	jmp *ghczmprim_GHCziClasses_zl_info@gotpcrel(%rip)
+.Lc2u5:
+	movq $48,904(%r13)
+.Lc2u2:
 	jmp *-16(%r13)
-.align 8
-	.quad	2
-	.quad	32
-c2Co_info:
-.Lc2Co:
-	movq 8(%rbp),%rax
-	movq 16(%rbp),%rcx
-	andl $7,%ebx
-	cmpq $1,%rbx
-	jne .Lc2CH
-.Lc2Cx:
-	leaq c2Cu_info(%rip),%rax
-	movq %rax,16(%rbp)
-	movq %rcx,%rbx
-	addq $16,%rbp
-	testb $7,%bl
-	jne .Lc2Cu
-.Lc2Cy:
-	jmp *(%rbx)
-.align 8
-	.quad	0
-	.quad	32
-c2Cu_info:
-.Lc2Cu:
-	movq 7(%rbx),%rax
-	movq %rax,%rbx
-	addq $8,%rbp
-	jmp *stg_ap_0_fast@gotpcrel(%rip)
-.Lc2CH:
-	leaq c2CF_info(%rip),%rbx
-	movq %rbx,16(%rbp)
-	movq %rax,%rbx
-	addq $16,%rbp
-	testb $7,%bl
-	jne .Lc2CF
-.Lc2CI:
-	jmp *(%rbx)
-.align 8
-	.quad	0
-	.quad	32
-c2CF_info:
-.Lc2CF:
-	movq 7(%rbx),%rax
-	movq %rax,%rbx
-	addq $8,%rbp
-	jmp *stg_ap_0_fast@gotpcrel(%rip)
-	.size s2AO_info, .-s2AO_info
+	.size .Ls2rY_info, .-.Ls2rY_info
 .section .text
 .align 8
 .align 8
 	.quad	12884901911
 	.quad	0
-	.quad	15
-.globl MainlibziObjects_oIf_info
-.type MainlibziObjects_oIf_info, @object
-MainlibziObjects_oIf_info:
-.Lc2CP:
-.Lc2CR:
+	.long	14
+	.long	0
+.globl MainlibziObjects_oLt_info
+.type MainlibziObjects_oLt_info, @function
+MainlibziObjects_oLt_info:
+.Lc2u7:
 	addq $56,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc2CT
-.Lc2CS:
-	leaq s2AO_info(%rip),%rax
+	ja .Lc2ub
+.Lc2ua:
+	leaq .Ls2rY_info(%rip),%rax
 	movq %rax,-48(%r12)
 	movq %r14,-32(%r12)
 	movq %rsi,-24(%r12)
 	movq %rdi,-16(%r12)
+	leaq MainlibziObjects_Object_con_info(%rip),%rax
+	movq %rax,-8(%r12)
 	leaq -48(%r12),%rax
-	leaq MainlibziObjects_Object_con_info(%rip),%rbx
-	movq %rbx,-8(%r12)
 	movq %rax,(%r12)
-	leaq -7(%r12),%rax
-	movq %rax,%rbx
+	leaq -7(%r12),%rbx
 	jmp *(%rbp)
-.Lc2CT:
+.Lc2ub:
 	movq $56,904(%r13)
-.Lc2CQ:
-	leaq MainlibziObjects_oIf_closure(%rip),%rbx
+	leaq MainlibziObjects_oLt_closure(%rip),%rbx
 	jmp *-8(%r13)
-	.size MainlibziObjects_oIf_info, .-MainlibziObjects_oIf_info
+	.size MainlibziObjects_oLt_info, .-MainlibziObjects_oLt_info
 .section .data
 .align 8
 .align 1
@@ -588,17 +835,18 @@ MainlibziObjects_oLt_closure:
 .align 8
 .align 8
 	.quad	3
-	.quad	16
-s2AY_info:
-.Lc2Ds:
+	.long	15
+	.long	0
+.Ls2s8_info:
+.Lc2uB:
 	leaq -40(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc2Dt
-.Lc2Du:
+	jb .Lc2uC
+.Lc2uD:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc2Dw
-.Lc2Dv:
+	ja .Lc2uF
+.Lc2uE:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
@@ -608,56 +856,54 @@ s2AY_info:
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rdx
 	movq %rdx,-40(%r12)
 	movq %rbx,-24(%r12)
-	leaq -40(%r12),%rbx
-	movq stg_sel_0_upd_info@gotpcrel(%rip),%rdx
-	movq %rdx,-16(%r12)
+	movq stg_sel_0_upd_info@gotpcrel(%rip),%rbx
+	movq %rbx,-16(%r12)
 	movq %rcx,(%r12)
-	leaq -16(%r12),%rcx
 	movq %rax,%r14
 	movq stg_ap_pp_info@gotpcrel(%rip),%rax
 	movq %rax,-40(%rbp)
-	movq %rcx,-32(%rbp)
-	movq %rbx,-24(%rbp)
+	leaq -16(%r12),%rax
+	movq %rax,-32(%rbp)
+	leaq -40(%r12),%rax
+	movq %rax,-24(%rbp)
 	addq $-40,%rbp
-	jmp *ghczmprim_GHCziClasses_zl_info@gotpcrel(%rip)
-.Lc2Dw:
+	jmp *base_GHCziNum_zp_info@gotpcrel(%rip)
+.Lc2uF:
 	movq $48,904(%r13)
-.Lc2Dt:
+.Lc2uC:
 	jmp *-16(%r13)
-	.size s2AY_info, .-s2AY_info
+	.size .Ls2s8_info, .-.Ls2s8_info
 .section .text
 .align 8
 .align 8
 	.quad	12884901911
 	.quad	0
-	.quad	15
-.globl MainlibziObjects_oLt_info
-.type MainlibziObjects_oLt_info, @object
-MainlibziObjects_oLt_info:
-.Lc2Dy:
-.Lc2DA:
+	.long	14
+	.long	0
+.globl MainlibziObjects_oAdd_info
+.type MainlibziObjects_oAdd_info, @function
+MainlibziObjects_oAdd_info:
+.Lc2uH:
 	addq $56,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc2DC
-.Lc2DB:
-	leaq s2AY_info(%rip),%rax
+	ja .Lc2uL
+.Lc2uK:
+	leaq .Ls2s8_info(%rip),%rax
 	movq %rax,-48(%r12)
 	movq %r14,-32(%r12)
 	movq %rsi,-24(%r12)
 	movq %rdi,-16(%r12)
+	leaq MainlibziObjects_Object_con_info(%rip),%rax
+	movq %rax,-8(%r12)
 	leaq -48(%r12),%rax
-	leaq MainlibziObjects_Object_con_info(%rip),%rbx
-	movq %rbx,-8(%r12)
 	movq %rax,(%r12)
-	leaq -7(%r12),%rax
-	movq %rax,%rbx
+	leaq -7(%r12),%rbx
 	jmp *(%rbp)
-.Lc2DC:
+.Lc2uL:
 	movq $56,904(%r13)
-.Lc2Dz:
-	leaq MainlibziObjects_oLt_closure(%rip),%rbx
+	leaq MainlibziObjects_oAdd_closure(%rip),%rbx
 	jmp *-8(%r13)
-	.size MainlibziObjects_oLt_info, .-MainlibziObjects_oLt_info
+	.size MainlibziObjects_oAdd_info, .-MainlibziObjects_oAdd_info
 .section .data
 .align 8
 .align 1
@@ -669,17 +915,18 @@ MainlibziObjects_oAdd_closure:
 .align 8
 .align 8
 	.quad	3
-	.quad	16
-s2B8_info:
-.Lc2E9:
+	.long	15
+	.long	0
+.Ls2si_info:
+.Lc2vb:
 	leaq -40(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc2Ea
-.Lc2Eb:
+	jb .Lc2vc
+.Lc2vd:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc2Ed
-.Lc2Ec:
+	ja .Lc2vf
+.Lc2ve:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
@@ -689,56 +936,54 @@ s2B8_info:
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rdx
 	movq %rdx,-40(%r12)
 	movq %rbx,-24(%r12)
-	leaq -40(%r12),%rbx
-	movq stg_sel_0_upd_info@gotpcrel(%rip),%rdx
-	movq %rdx,-16(%r12)
+	movq stg_sel_0_upd_info@gotpcrel(%rip),%rbx
+	movq %rbx,-16(%r12)
 	movq %rcx,(%r12)
-	leaq -16(%r12),%rcx
 	movq %rax,%r14
 	movq stg_ap_pp_info@gotpcrel(%rip),%rax
 	movq %rax,-40(%rbp)
-	movq %rcx,-32(%rbp)
-	movq %rbx,-24(%rbp)
+	leaq -16(%r12),%rax
+	movq %rax,-32(%rbp)
+	leaq -40(%r12),%rax
+	movq %rax,-24(%rbp)
 	addq $-40,%rbp
-	jmp *base_GHCziNum_zp_info@gotpcrel(%rip)
-.Lc2Ed:
+	jmp *base_GHCziNum_zm_info@gotpcrel(%rip)
+.Lc2vf:
 	movq $48,904(%r13)
-.Lc2Ea:
+.Lc2vc:
 	jmp *-16(%r13)
-	.size s2B8_info, .-s2B8_info
+	.size .Ls2si_info, .-.Ls2si_info
 .section .text
 .align 8
 .align 8
 	.quad	12884901911
 	.quad	0
-	.quad	15
-.globl MainlibziObjects_oAdd_info
-.type MainlibziObjects_oAdd_info, @object
-MainlibziObjects_oAdd_info:
-.Lc2Ef:
-.Lc2Eh:
+	.long	14
+	.long	0
+.globl MainlibziObjects_oSub_info
+.type MainlibziObjects_oSub_info, @function
+MainlibziObjects_oSub_info:
+.Lc2vh:
 	addq $56,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc2Ej
-.Lc2Ei:
-	leaq s2B8_info(%rip),%rax
+	ja .Lc2vl
+.Lc2vk:
+	leaq .Ls2si_info(%rip),%rax
 	movq %rax,-48(%r12)
 	movq %r14,-32(%r12)
 	movq %rsi,-24(%r12)
 	movq %rdi,-16(%r12)
+	leaq MainlibziObjects_Object_con_info(%rip),%rax
+	movq %rax,-8(%r12)
 	leaq -48(%r12),%rax
-	leaq MainlibziObjects_Object_con_info(%rip),%rbx
-	movq %rbx,-8(%r12)
 	movq %rax,(%r12)
-	leaq -7(%r12),%rax
-	movq %rax,%rbx
+	leaq -7(%r12),%rbx
 	jmp *(%rbp)
-.Lc2Ej:
+.Lc2vl:
 	movq $56,904(%r13)
-.Lc2Eg:
-	leaq MainlibziObjects_oAdd_closure(%rip),%rbx
+	leaq MainlibziObjects_oSub_closure(%rip),%rbx
 	jmp *-8(%r13)
-	.size MainlibziObjects_oAdd_info, .-MainlibziObjects_oAdd_info
+	.size MainlibziObjects_oSub_info, .-MainlibziObjects_oSub_info
 .section .data
 .align 8
 .align 1
@@ -746,190 +991,159 @@ MainlibziObjects_oAdd_info:
 .type MainlibziObjects_oSub_closure, @object
 MainlibziObjects_oSub_closure:
 	.quad	MainlibziObjects_oSub_info
-.section .text
-.align 8
-.align 8
-	.quad	3
-	.quad	16
-s2Bi_info:
-.Lc2EQ:
-	leaq -40(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2ER
-.Lc2ES:
-	addq $48,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2EU
-.Lc2ET:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	movq 24(%rbx),%rcx
-	movq 32(%rbx),%rbx
-	movq stg_sel_0_upd_info@gotpcrel(%rip),%rdx
-	movq %rdx,-40(%r12)
-	movq %rbx,-24(%r12)
-	leaq -40(%r12),%rbx
-	movq stg_sel_0_upd_info@gotpcrel(%rip),%rdx
-	movq %rdx,-16(%r12)
-	movq %rcx,(%r12)
-	leaq -16(%r12),%rcx
-	movq %rax,%r14
-	movq stg_ap_pp_info@gotpcrel(%rip),%rax
-	movq %rax,-40(%rbp)
-	movq %rcx,-32(%rbp)
-	movq %rbx,-24(%rbp)
-	addq $-40,%rbp
-	jmp *base_GHCziNum_zm_info@gotpcrel(%rip)
-.Lc2EU:
-	movq $48,904(%r13)
-.Lc2ER:
-	jmp *-16(%r13)
-	.size s2Bi_info, .-s2Bi_info
-.section .text
-.align 8
-.align 8
-	.quad	12884901911
-	.quad	0
-	.quad	15
-.globl MainlibziObjects_oSub_info
-.type MainlibziObjects_oSub_info, @object
-MainlibziObjects_oSub_info:
-.Lc2EW:
-.Lc2EY:
-	addq $56,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2F0
-.Lc2EZ:
-	leaq s2Bi_info(%rip),%rax
-	movq %rax,-48(%r12)
-	movq %r14,-32(%r12)
-	movq %rsi,-24(%r12)
-	movq %rdi,-16(%r12)
-	leaq -48(%r12),%rax
-	leaq MainlibziObjects_Object_con_info(%rip),%rbx
-	movq %rbx,-8(%r12)
-	movq %rax,(%r12)
-	leaq -7(%r12),%rax
-	movq %rax,%rbx
-	jmp *(%rbp)
-.Lc2F0:
-	movq $56,904(%r13)
-.Lc2EX:
-	leaq MainlibziObjects_oSub_closure(%rip),%rbx
-	jmp *-8(%r13)
-	.size MainlibziObjects_oSub_info, .-MainlibziObjects_oSub_info
-.section .rodata
-.align 8
+.section .rodata.str,"aMS",@progbits,1
 .align 1
-c2Ff_str:
-	.byte	109
-	.byte	97
-	.byte	105
-	.byte	110
-	.byte	0
+.align 1
+.globl MainlibziObjects_zdtrModule4_bytes
+.type MainlibziObjects_zdtrModule4_bytes, @object
+MainlibziObjects_zdtrModule4_bytes:
+	.asciz "main"
 .section .data
 .align 8
 .align 1
-r2zP_closure:
-	.quad	ghczmprim_GHCziTypes_TrNameS_static_info
-	.quad	c2Ff_str
-.section .rodata
-.align 8
+.globl MainlibziObjects_zdtrModule3_closure
+.type MainlibziObjects_zdtrModule3_closure, @object
+MainlibziObjects_zdtrModule3_closure:
+	.quad	ghczmprim_GHCziTypes_TrNameS_con_info
+	.quad	MainlibziObjects_zdtrModule4_bytes
+.section .rodata.str,"aMS",@progbits,1
 .align 1
-c2Fj_str:
-	.byte	77
-	.byte	97
-	.byte	105
-	.byte	110
-	.byte	108
-	.byte	105
-	.byte	98
-	.byte	46
-	.byte	79
-	.byte	98
-	.byte	106
-	.byte	101
-	.byte	99
-	.byte	116
-	.byte	115
-	.byte	0
+.align 1
+.globl MainlibziObjects_zdtrModule2_bytes
+.type MainlibziObjects_zdtrModule2_bytes, @object
+MainlibziObjects_zdtrModule2_bytes:
+	.asciz "Mainlib.Objects"
 .section .data
 .align 8
 .align 1
-r2Au_closure:
-	.quad	ghczmprim_GHCziTypes_TrNameS_static_info
-	.quad	c2Fj_str
+.globl MainlibziObjects_zdtrModule1_closure
+.type MainlibziObjects_zdtrModule1_closure, @object
+MainlibziObjects_zdtrModule1_closure:
+	.quad	ghczmprim_GHCziTypes_TrNameS_con_info
+	.quad	MainlibziObjects_zdtrModule2_bytes
 .section .data
 .align 8
 .align 1
 .globl MainlibziObjects_zdtrModule_closure
 .type MainlibziObjects_zdtrModule_closure, @object
 MainlibziObjects_zdtrModule_closure:
-	.quad	ghczmprim_GHCziTypes_Module_static_info
-	.quad	r2zP_closure+1
-	.quad	r2Au_closure+1
+	.quad	ghczmprim_GHCziTypes_Module_con_info
+	.quad	MainlibziObjects_zdtrModule3_closure+1
+	.quad	MainlibziObjects_zdtrModule1_closure+1
 	.quad	3
-.section .rodata
-.align 8
-.align 1
-c2Fp_str:
-	.byte	39
-	.byte	79
-	.byte	98
-	.byte	106
-	.byte	101
-	.byte	99
-	.byte	116
-	.byte	0
 .section .data
 .align 8
 .align 1
-r2Av_closure:
-	.quad	ghczmprim_GHCziTypes_TrNameS_static_info
-	.quad	c2Fp_str
+.Lr2rv_closure:
+	.quad	ghczmprim_GHCziTypes_KindRepVar_con_info
+	.quad	0
+.section .rodata.str,"aMS",@progbits,1
+.align 1
+.align 1
+.globl MainlibziObjects_zdtcObject2_bytes
+.type MainlibziObjects_zdtcObject2_bytes, @object
+MainlibziObjects_zdtcObject2_bytes:
+	.asciz "Object"
 .section .data
 .align 8
 .align 1
-.globl MainlibziObjects_zdtczqObject_closure
-.type MainlibziObjects_zdtczqObject_closure, @object
-MainlibziObjects_zdtczqObject_closure:
-	.quad	ghczmprim_GHCziTypes_TyCon_static_info
-	.quad	MainlibziObjects_zdtrModule_closure+1
-	.quad	r2Av_closure+1
-	.quad	379165515093595900
-	.quad	8109221126674768881
-	.quad	3
-.section .rodata
-.align 8
-.align 1
-c2Fv_str:
-	.byte	79
-	.byte	98
-	.byte	106
-	.byte	101
-	.byte	99
-	.byte	116
-	.byte	0
-.section .data
-.align 8
-.align 1
-r2Aw_closure:
-	.quad	ghczmprim_GHCziTypes_TrNameS_static_info
-	.quad	c2Fv_str
+.globl MainlibziObjects_zdtcObject1_closure
+.type MainlibziObjects_zdtcObject1_closure, @object
+MainlibziObjects_zdtcObject1_closure:
+	.quad	ghczmprim_GHCziTypes_TrNameS_con_info
+	.quad	MainlibziObjects_zdtcObject2_bytes
 .section .data
 .align 8
 .align 1
 .globl MainlibziObjects_zdtcObject_closure
 .type MainlibziObjects_zdtcObject_closure, @object
 MainlibziObjects_zdtcObject_closure:
-	.quad	ghczmprim_GHCziTypes_TyCon_static_info
+	.quad	ghczmprim_GHCziTypes_TyCon_con_info
 	.quad	MainlibziObjects_zdtrModule_closure+1
-	.quad	r2Aw_closure+1
-	.quad	-3615268860304316107
-	.quad	8352424090015196655
+	.quad	MainlibziObjects_zdtcObject1_closure+1
+	.quad	ghczmprim_GHCziTypes_krepzdztArrzt_closure
+	.quad	7833722005857372332
+	.quad	3068040968444460070
+	.quad	0
 	.quad	3
+.section .data
+.align 8
+.align 1
+.Lr2rw_closure:
+	.quad	ghczmprim_GHCziTypes_ZC_con_info
+	.quad	.Lr2rv_closure+2
+	.quad	ghczmprim_GHCziTypes_ZMZN_closure+1
+	.quad	3
+.section .data
+.align 8
+.align 1
+.Lr2rx_closure:
+	.quad	ghczmprim_GHCziTypes_KindRepTyConApp_con_info
+	.quad	MainlibziObjects_zdtcObject_closure+1
+	.quad	.Lr2rw_closure+2
+	.quad	3
+.section .data
+.align 8
+.align 1
+.globl MainlibziObjects_zdtczqObject1_closure
+.type MainlibziObjects_zdtczqObject1_closure, @object
+MainlibziObjects_zdtczqObject1_closure:
+	.quad	ghczmprim_GHCziTypes_KindRepFun_con_info
+	.quad	.Lr2rv_closure+2
+	.quad	.Lr2rx_closure+1
+	.quad	3
+.section .rodata.str,"aMS",@progbits,1
+.align 1
+.align 1
+.globl MainlibziObjects_zdtczqObject3_bytes
+.type MainlibziObjects_zdtczqObject3_bytes, @object
+MainlibziObjects_zdtczqObject3_bytes:
+	.asciz "'Object"
+.section .data
+.align 8
+.align 1
+.globl MainlibziObjects_zdtczqObject2_closure
+.type MainlibziObjects_zdtczqObject2_closure, @object
+MainlibziObjects_zdtczqObject2_closure:
+	.quad	ghczmprim_GHCziTypes_TrNameS_con_info
+	.quad	MainlibziObjects_zdtczqObject3_bytes
+.section .data
+.align 8
+.align 1
+.globl MainlibziObjects_zdtczqObject_closure
+.type MainlibziObjects_zdtczqObject_closure, @object
+MainlibziObjects_zdtczqObject_closure:
+	.quad	ghczmprim_GHCziTypes_TyCon_con_info
+	.quad	MainlibziObjects_zdtrModule_closure+1
+	.quad	MainlibziObjects_zdtczqObject2_closure+1
+	.quad	MainlibziObjects_zdtczqObject1_closure+4
+	.quad	8234296623187572678
+	.quad	-3648374584277905517
+	.quad	1
+	.quad	3
+.section .text
+.align 8
+.align 8
+	.quad	4294967301
+	.quad	0
+	.long	14
+	.long	0
+MainlibziObjects_Object_info:
+.Lc2vV:
+	addq $16,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc2vZ
+.Lc2vY:
+	leaq MainlibziObjects_Object_con_info(%rip),%rax
+	movq %rax,-8(%r12)
+	movq %r14,(%r12)
+	leaq -7(%r12),%rbx
+	jmp *(%rbp)
+.Lc2vZ:
+	movq $16,904(%r13)
+	leaq MainlibziObjects_Object_closure(%rip),%rbx
+	jmp *-8(%r13)
+	.size MainlibziObjects_Object_info, .-MainlibziObjects_Object_info
 .section .data
 .align 8
 .align 1
@@ -937,1267 +1151,1010 @@ MainlibziObjects_zdtcObject_closure:
 .type MainlibziObjects_Object_closure, @object
 MainlibziObjects_Object_closure:
 	.quad	MainlibziObjects_Object_info
-.section .text
-.align 8
-.align 8
-	.quad	4294967301
-	.quad	0
-	.quad	15
-MainlibziObjects_Object_info:
-.Lc2FF:
-.Lc2FH:
-	addq $16,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2FJ
-.Lc2FI:
-	leaq MainlibziObjects_Object_con_info(%rip),%rax
-	movq %rax,-8(%r12)
-	movq %r14,(%r12)
-	leaq -7(%r12),%rax
-	movq %rax,%rbx
-	jmp *(%rbp)
-.Lc2FJ:
-	movq $16,904(%r13)
-.Lc2FG:
-	leaq MainlibziObjects_Object_closure(%rip),%rbx
-	jmp *-8(%r13)
-	.size MainlibziObjects_Object_info, .-MainlibziObjects_Object_info
-.section .rodata
-.align 8
+.section .rodata.str,"aMS",@progbits,1
 .align 1
-i2FR_str:
-	.byte	109
-	.byte	97
-	.byte	105
-	.byte	110
-	.byte	58
-	.byte	77
-	.byte	97
-	.byte	105
-	.byte	110
-	.byte	108
-	.byte	105
-	.byte	98
-	.byte	46
-	.byte	79
-	.byte	98
-	.byte	106
-	.byte	101
-	.byte	99
-	.byte	116
-	.byte	115
-	.byte	46
-	.byte	79
-	.byte	98
-	.byte	106
-	.byte	101
-	.byte	99
-	.byte	116
-	.byte	0
+.align 1
+i2w5_str:
+	.asciz "main:Mainlib.Objects.Object"
 .section .text
 .align 8
 .align 8
-	.long	i2FR_str-(MainlibziObjects_Object_con_info)+0
+	.long	i2w5_str-(MainlibziObjects_Object_con_info)+0
 	.long	0
 	.quad	1
-	.quad	2
+	.long	2
+	.long	0
 .globl MainlibziObjects_Object_con_info
 .type MainlibziObjects_Object_con_info, @object
 MainlibziObjects_Object_con_info:
-.Lc2FP:
+.Lc2w4:
 	incq %rbx
 	jmp *(%rbp)
 	.size MainlibziObjects_Object_con_info, .-MainlibziObjects_Object_con_info
-.section .rodata
-.align 8
-.align 1
-i2FS_str:
-	.byte	109
-	.byte	97
-	.byte	105
-	.byte	110
-	.byte	58
-	.byte	77
-	.byte	97
-	.byte	105
-	.byte	110
-	.byte	108
-	.byte	105
-	.byte	98
-	.byte	46
-	.byte	79
-	.byte	98
-	.byte	106
-	.byte	101
-	.byte	99
-	.byte	116
-	.byte	115
-	.byte	46
-	.byte	79
-	.byte	98
-	.byte	106
-	.byte	101
-	.byte	99
-	.byte	116
-	.byte	0
-.section .text
-.align 8
-.align 8
-	.long	i2FS_str-(MainlibziObjects_Object_static_info)+0
-	.long	0
-	.quad	1
-	.quad	7
-.globl MainlibziObjects_Object_static_info
-.type MainlibziObjects_Object_static_info, @object
-MainlibziObjects_Object_static_info:
-.Lc2FQ:
-	incq %rbx
-	jmp *(%rbp)
-	.size MainlibziObjects_Object_static_info, .-MainlibziObjects_Object_static_info
-.section .data.rel.ro
-.align 8
-.align 1
-S2G0_srt:
 .section .note.GNU-stack,"",@progbits
-.ident "GHC 8.0.2"
+.ident "GHC 8.8.4"
 
+
+.section .rodata.str,"aMS",@progbits,1
+.align 1
+.align 1
+.globl MainlibziReport_zdtrModule4_bytes
+.type MainlibziReport_zdtrModule4_bytes, @object
+MainlibziReport_zdtrModule4_bytes:
+	.asciz "main"
 .section .data
 .align 8
 .align 1
-.globl __stginit_MainlibziReport
-.type __stginit_MainlibziReport, @object
-__stginit_MainlibziReport:
-.section .rodata
-.align 8
+.globl MainlibziReport_zdtrModule3_closure
+.type MainlibziReport_zdtrModule3_closure, @object
+MainlibziReport_zdtrModule3_closure:
+	.quad	ghczmprim_GHCziTypes_TrNameS_con_info
+	.quad	MainlibziReport_zdtrModule4_bytes
+.section .rodata.str,"aMS",@progbits,1
 .align 1
-c2mO_str:
-	.byte	109
-	.byte	97
-	.byte	105
-	.byte	110
-	.byte	0
+.align 1
+.globl MainlibziReport_zdtrModule2_bytes
+.type MainlibziReport_zdtrModule2_bytes, @object
+MainlibziReport_zdtrModule2_bytes:
+	.asciz "Mainlib.Report"
 .section .data
 .align 8
 .align 1
-r2jH_closure:
-	.quad	ghczmprim_GHCziTypes_TrNameS_static_info
-	.quad	c2mO_str
-.section .rodata
-.align 8
-.align 1
-c2mS_str:
-	.byte	77
-	.byte	97
-	.byte	105
-	.byte	110
-	.byte	108
-	.byte	105
-	.byte	98
-	.byte	46
-	.byte	82
-	.byte	101
-	.byte	112
-	.byte	111
-	.byte	114
-	.byte	116
-	.byte	0
-.section .data
-.align 8
-.align 1
-r2lx_closure:
-	.quad	ghczmprim_GHCziTypes_TrNameS_static_info
-	.quad	c2mS_str
+.globl MainlibziReport_zdtrModule1_closure
+.type MainlibziReport_zdtrModule1_closure, @object
+MainlibziReport_zdtrModule1_closure:
+	.quad	ghczmprim_GHCziTypes_TrNameS_con_info
+	.quad	MainlibziReport_zdtrModule2_bytes
 .section .data
 .align 8
 .align 1
 .globl MainlibziReport_zdtrModule_closure
 .type MainlibziReport_zdtrModule_closure, @object
 MainlibziReport_zdtrModule_closure:
-	.quad	ghczmprim_GHCziTypes_Module_static_info
-	.quad	r2jH_closure+1
-	.quad	r2lx_closure+1
+	.quad	ghczmprim_GHCziTypes_Module_con_info
+	.quad	MainlibziReport_zdtrModule3_closure+1
+	.quad	MainlibziReport_zdtrModule1_closure+1
 	.quad	3
 .section .data
 .align 8
 .align 1
-roI_closure:
-	.quad	roI_info
+.Lu4UB_srt:
+	.quad	stg_SRT_2_info
+	.quad	base_GHCziRead_zdfReadIntzuzdsreadNumber_closure
+	.quad	base_GHCziRead_zdfReadInt2_closure
 	.quad	0
 .section .text
 .align 8
 .align 8
-	.long	S2ol_srt-(roI_info)+0
-	.long	0
-	.quad	4294967301
 	.quad	0
-	.quad	64424509455
-roI_info:
-.Lc2nr:
-	leaq -48(%rbp),%rax
+	.long	21
+	.long	.Lu4UB_srt-(.Lr4SQ_info)+0
+.Lr4SQ_info:
+.Lc4Uy:
+	leaq -16(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc2ns
-.Lc2nt:
-	leaq c2nl_info(%rip),%rax
+	jb .Lc4Uz
+.Lc4UA:
+	subq $8,%rsp
+	movq %r13,%rax
+	movq %rbx,%rsi
+	movq %rax,%rdi
+	xorl %eax,%eax
+	call newCAF@plt
+	addq $8,%rsp
+	testq %rax,%rax
+	je .Lc4Ux
+.Lc4Uw:
+	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
+	movq %rbx,-16(%rbp)
 	movq %rax,-8(%rbp)
-	movq %r14,%rsi
-	movq base_GHCziRead_zdfReadInt_closure@gotpcrel(%rip),%r14
-	movq base_TextziRead_reads_closure@gotpcrel(%rip),%rbx
-	addq $-8,%rbp
-	jmp *stg_ap_pp_fast@gotpcrel(%rip)
+	movq base_TextziParserCombinatorsziReadP_zdfApplicativePzuzdcpure_closure@gotpcrel(%rip),%rax
+	leaq 1(%rax),%rdi
+	movq base_TextziParserCombinatorsziReadPrec_minPrec_closure@gotpcrel(%rip),%rsi
+	movq base_GHCziRead_zdfReadInt2_closure@gotpcrel(%rip),%rax
+	leaq 1(%rax),%r14
+	addq $-16,%rbp
+	jmp *base_GHCziRead_zdfReadIntzuzdsreadNumber_info@gotpcrel(%rip)
+.Lc4Ux:
+	jmp *(%rbx)
+.Lc4Uz:
+	jmp *-16(%r13)
+	.size .Lr4SQ_info, .-.Lr4SQ_info
+.section .data
 .align 8
-	.long	S2ol_srt-(c2nl_info)+0
-	.long	0
+.align 1
+.Lr4SQ_closure:
+	.quad	.Lr4SQ_info
 	.quad	0
-	.quad	4294967328
-c2nl_info:
-.Lc2nl:
+	.quad	0
+	.quad	0
+.section .text
+.align 8
+.Lr4SR_slow:
+.Lc4UM:
+	movq 32(%rbp),%r9
+	movq 24(%rbp),%r8
+	movq 16(%rbp),%rdi
+	movq 8(%rbp),%rsi
+	movq (%rbp),%r14
+	addq $40,%rbp
+	jmp .Lr4SR_info
+	.size .Lr4SR_slow, .-.Lr4SR_slow
+.section .text
+.align 8
+.align 8
+	.quad	2
+	.long	18
+	.long	0
+.Ls4Tc_info:
+.Lc4V0:
+	leaq -16(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc4V1
+.Lc4V2:
+	movq stg_upd_frame_info@gotpcrel(%rip),%rax
+	movq %rax,-16(%rbp)
+	movq %rbx,-8(%rbp)
+	movq 24(%rbx),%rsi
+	movq 16(%rbx),%r14
+	addq $-16,%rbp
+	jmp *base_GHCziNum_zdfNumIntzuzdczp_info@gotpcrel(%rip)
+.Lc4V1:
+	jmp *-16(%r13)
+	.size .Ls4Tc_info, .-.Ls4Tc_info
+.section .text
+.align 8
+.align 8
+	.long	.Lr4SR_slow-(.Lr4SR_info)+0
+	.long	0
+	.quad	1029
+	.quad	21474836480
+	.quad	0
+	.long	14
+	.long	0
+.Lr4SR_info:
+.Lc4V6:
+.Lc4UN:
+	addq $64,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc4Va
+.Lc4V9:
+	testq %r9,%r9
+	je .Lc4V5
+.Lc4V4:
+	movq stg_ap_2_upd_info@gotpcrel(%rip),%rax
+	movq %rax,-56(%r12)
+	movq %r14,-40(%r12)
+	movq %r8,-32(%r12)
+	leaq .Ls4Tc_info(%rip),%rax
+	movq %rax,-24(%r12)
+	leaq -56(%r12),%rax
+	movq %rax,-8(%r12)
+	movq %rdi,(%r12)
+	decq %r9
+	leaq -24(%r12),%rbx
+.Ln4Vl:
+	movq %rbx,%rdi
+	movq %rax,%rsi
+	jmp .Lc4UN
+.Lc4V5:
+	addq $-64,%r12
+	movq %rsi,%rax
+	movq %rdi,%rsi
+	movq %rax,%r14
+	movq %r8,%rbx
+	jmp *(%rbp)
+.Lc4Va:
+	movq $64,904(%r13)
+	leaq .Lr4SR_closure(%rip),%rbx
+	movq %r14,-40(%rbp)
+	movq %rsi,-32(%rbp)
+	movq %rdi,-24(%rbp)
+	movq %r8,-16(%rbp)
+	movq %r9,-8(%rbp)
+	addq $-40,%rbp
+	jmp *-8(%r13)
+	.size .Lr4SR_info, .-.Lr4SR_info
+.section .data
+.align 8
+.align 1
+.Lr4SR_closure:
+	.quad	.Lr4SR_info
+.section .rodata.str,"aMS",@progbits,1
+.align 1
+.align 1
+.Lr4SS_bytes:
+	.asciz " INPUT CYCLES"
+.section .text
+.align 8
+.align 8
+	.quad	0
+	.long	21
+	.long	0
+.Lr4ST_info:
+.Lc4Vu:
+	leaq -16(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc4Vv
+.Lc4Vw:
+	subq $8,%rsp
+	movq %r13,%rax
+	movq %rbx,%rsi
+	movq %rax,%rdi
+	xorl %eax,%eax
+	call newCAF@plt
+	addq $8,%rsp
+	testq %rax,%rax
+	je .Lc4Vt
+.Lc4Vs:
+	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
+	movq %rbx,-16(%rbp)
+	movq %rax,-8(%rbp)
+	leaq .Lr4SS_bytes(%rip),%r14
+	addq $-16,%rbp
+	jmp *ghczmprim_GHCziCString_unpackCStringzh_info@gotpcrel(%rip)
+.Lc4Vt:
+	jmp *(%rbx)
+.Lc4Vv:
+	jmp *-16(%r13)
+	.size .Lr4ST_info, .-.Lr4ST_info
+.section .data
+.align 8
+.align 1
+.Lr4ST_closure:
+	.quad	.Lr4ST_info
+	.quad	0
+	.quad	0
+	.quad	0
+.section .rodata.str,"aMS",@progbits,1
+.align 1
+.align 1
+.Lr4SU_bytes:
+	.asciz "Usage:"
+.section .text
+.align 8
+.align 8
+	.quad	0
+	.long	21
+	.long	0
+.Lr4SV_info:
+.Lc4VK:
+	leaq -16(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc4VL
+.Lc4VM:
+	subq $8,%rsp
+	movq %r13,%rax
+	movq %rbx,%rsi
+	movq %rax,%rdi
+	xorl %eax,%eax
+	call newCAF@plt
+	addq $8,%rsp
+	testq %rax,%rax
+	je .Lc4VJ
+.Lc4VI:
+	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
+	movq %rbx,-16(%rbp)
+	movq %rax,-8(%rbp)
+	leaq .Lr4SU_bytes(%rip),%r14
+	addq $-16,%rbp
+	jmp *ghczmprim_GHCziCString_unpackCStringzh_info@gotpcrel(%rip)
+.Lc4VJ:
+	jmp *(%rbx)
+.Lc4VL:
+	jmp *-16(%r13)
+	.size .Lr4SV_info, .-.Lr4SV_info
+.section .data
+.align 8
+.align 1
+.Lr4SV_closure:
+	.quad	.Lr4SV_info
+	.quad	0
+	.quad	0
+	.quad	0
+.section .data
+.align 8
+.align 1
+.Lu4Wf_srt:
+	.quad	stg_SRT_3_info
+	.quad	base_GHCziIOziHandleziFD_stdout_closure
+	.quad	base_GHCziIOziHandleziText_hPutStrzq_closure
+	.quad	.Lr4ST_closure
+	.quad	0
+.section .data
+.align 8
+.align 1
+.Lu4Wg_srt:
+	.quad	stg_SRT_2_info
+	.quad	base_SystemziEnvironment_getProgName1_closure
+	.quad	.Lu4Wf_srt
+	.quad	0
+.section .text
+.align 8
+.align 8
+	.quad	1
+	.long	16
+	.long	.Lr4ST_closure-(.Ls4Tl_info)+0
+.Ls4Tl_info:
+.Lc4W5:
+	leaq .Lr4ST_closure(%rip),%rsi
+	movq 16(%rbx),%r14
+	jmp *base_GHCziBase_zpzp_info@gotpcrel(%rip)
+	.size .Ls4Tl_info, .-.Ls4Tl_info
+.section .text
+.align 8
+.align 8
+	.quad	4294967299
+	.quad	2
+	.long	14
+	.long	0
+.Lr4SW_info:
+.Lc4W8:
+	leaq -8(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc4W9
+.Lc4Wa:
+	leaq .Lc4VX_info(%rip),%rax
+	movq %rax,-8(%rbp)
+	movq ghczmprim_GHCziTypes_True_closure@gotpcrel(%rip),%rax
+	leaq 2(%rax),%rdi
+	leaq .Lr4SV_closure(%rip),%rsi
+	movq base_GHCziIOziHandleziFD_stdout_closure@gotpcrel(%rip),%r14
+	addq $-8,%rbp
+	jmp *base_GHCziIOziHandleziText_hPutStrzq_info@gotpcrel(%rip)
+.Lc4W9:
+	leaq .Lr4SW_closure(%rip),%rbx
+	jmp *-8(%r13)
+.align 8
+	.quad	0
+	.long	30
+	.long	.Lu4Wg_srt-(.Lc4VX_info)+0
+.Lc4VX_info:
+.Lc4VX:
+	leaq .Lc4VZ_info(%rip),%rax
+	movq %rax,(%rbp)
+	movq base_SystemziEnvironment_getProgName1_closure@gotpcrel(%rip),%rax
+	leaq 2(%rax),%rdi
+	movq base_ForeignziStorable_zdfStorableBool7_closure@gotpcrel(%rip),%rsi
+	movq base_ForeignziStorable_zdfStorableBool7_closure@gotpcrel(%rip),%r14
+	jmp *base_ForeignziMarshalziAlloc_allocaBytesAligned_info@gotpcrel(%rip)
+.align 8
+	.quad	0
+	.long	30
+	.long	.Lu4Wf_srt-(.Lc4VZ_info)+0
+.Lc4VZ_info:
+.Lc4VZ:
+	addq $24,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc4We
+.Lc4Wd:
+	leaq .Ls4Tl_info(%rip),%rax
+	movq %rax,-16(%r12)
+	movq %rbx,(%r12)
+	movq ghczmprim_GHCziTypes_True_closure@gotpcrel(%rip),%rax
+	leaq 2(%rax),%rdi
+	leaq -16(%r12),%rsi
+	movq base_GHCziIOziHandleziFD_stdout_closure@gotpcrel(%rip),%r14
+	addq $8,%rbp
+	jmp *base_GHCziIOziHandleziText_hPutStrzq_info@gotpcrel(%rip)
+.Lc4We:
+	movq $24,904(%r13)
+	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
+	.size .Lr4SW_info, .-.Lr4SW_info
+.section .data
+.align 8
+.align 1
+.Lr4SW_closure:
+	.quad	.Lr4SW_info
+	.quad	.Lr4SV_closure
+	.quad	.Lu4Wg_srt
+	.quad	0
+.section .rodata.str,"aMS",@progbits,1
+.align 1
+.align 1
+.Lr4SX_bytes:
+	.asciz "Total is "
+.section .text
+.align 8
+.align 8
+	.quad	0
+	.long	21
+	.long	0
+.Lr4SY_info:
+.Lc4WC:
+	leaq -16(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc4WD
+.Lc4WE:
+	subq $8,%rsp
+	movq %r13,%rax
+	movq %rbx,%rsi
+	movq %rax,%rdi
+	xorl %eax,%eax
+	call newCAF@plt
+	addq $8,%rsp
+	testq %rax,%rax
+	je .Lc4WB
+.Lc4WA:
+	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
+	movq %rbx,-16(%rbp)
+	movq %rax,-8(%rbp)
+	leaq .Lr4SX_bytes(%rip),%r14
+	addq $-16,%rbp
+	jmp *ghczmprim_GHCziCString_unpackCStringzh_info@gotpcrel(%rip)
+.Lc4WB:
+	jmp *(%rbx)
+.Lc4WD:
+	jmp *-16(%r13)
+	.size .Lr4SY_info, .-.Lr4SY_info
+.section .data
+.align 8
+.align 1
+.Lr4SY_closure:
+	.quad	.Lr4SY_info
+	.quad	0
+	.quad	0
+	.quad	0
+.section .rodata.str,"aMS",@progbits,1
+.align 1
+.align 1
+.Lr4SZ_bytes:
+	.asciz "-th Fibonacci number is "
+.section .text
+.align 8
+.align 8
+	.quad	0
+	.long	21
+	.long	0
+.Lr4T0_info:
+.Lc4WS:
+	leaq -16(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc4WT
+.Lc4WU:
+	subq $8,%rsp
+	movq %r13,%rax
+	movq %rbx,%rsi
+	movq %rax,%rdi
+	xorl %eax,%eax
+	call newCAF@plt
+	addq $8,%rsp
+	testq %rax,%rax
+	je .Lc4WR
+.Lc4WQ:
+	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
+	movq %rbx,-16(%rbp)
+	movq %rax,-8(%rbp)
+	leaq .Lr4SZ_bytes(%rip),%r14
+	addq $-16,%rbp
+	jmp *ghczmprim_GHCziCString_unpackCStringzh_info@gotpcrel(%rip)
+.Lc4WR:
+	jmp *(%rbx)
+.Lc4WT:
+	jmp *-16(%r13)
+	.size .Lr4T0_info, .-.Lr4T0_info
+.section .data
+.align 8
+.align 1
+.Lr4T0_closure:
+	.quad	.Lr4T0_info
+	.quad	0
+	.quad	0
+	.quad	0
+.section .data
+.align 8
+.align 1
+.Lr4T1_closure:
+	.quad	ghczmprim_GHCziTypes_Izh_con_info
+	.quad	0
+.section .data
+.align 8
+.align 1
+.Lu50v_srt:
+	.quad	stg_SRT_2_info
+	.quad	base_GHCziIOziHandleziFD_stdout_closure
+	.quad	base_GHCziIOziHandleziText_hPutStrzq_closure
+	.quad	0
+.section .data
+.align 8
+.align 1
+.Lu50w_srt:
+	.quad	stg_SRT_2_info
+	.quad	.Lr4SY_closure
+	.quad	.Lu50v_srt
+	.quad	0
+.section .data
+.align 8
+.align 1
+.Lu50x_srt:
+	.quad	stg_SRT_2_info
+	.quad	.Lr4T0_closure
+	.quad	.Lu50w_srt
+	.quad	0
+.section .data
+.align 8
+.align 1
+.Lu50y_srt:
+	.quad	stg_SRT_2_info
+	.quad	.Lr4SW_closure
+	.quad	.Lu50x_srt
+	.quad	0
+.section .data
+.align 8
+.align 1
+.Lu50z_srt:
+	.quad	stg_SRT_2_info
+	.quad	.Lr4SQ_closure
+	.quad	.Lu50y_srt
+	.quad	0
+.section .text
+.align 8
+.align 8
+	.quad	1
+	.long	16
+	.long	0
+.Ls4TY_info:
+.Lc4Yr:
+	movq 16(%rbx),%r14
+	jmp *base_GHCziShow_zdfShowIntzuzdcshow_info@gotpcrel(%rip)
+	.size .Ls4TY_info, .-.Ls4TY_info
+.section .text
+.align 8
+.align 8
+	.quad	1
+	.long	16
+	.long	0
+.Ls4U5_info:
+.Lc4YC:
+	movq 16(%rbx),%r14
+	jmp *base_GHCziShow_zdfShowIntzuzdcshow_info@gotpcrel(%rip)
+	.size .Ls4U5_info, .-.Ls4U5_info
+.section .text
+.align 8
+.align 8
+	.quad	1
+	.long	16
+	.long	0
+.Ls4Uc_info:
+.Lc4YN:
+	movq 16(%rbx),%r14
+	jmp *base_GHCziShow_zdfShowIntzuzdcshow_info@gotpcrel(%rip)
+	.size .Ls4Uc_info, .-.Ls4Uc_info
+.section .text
+.align 8
+.align 8
+	.quad	8589934597
+	.quad	2
+	.long	14
+	.long	0
+.globl MainlibziReport_run1_info
+.type MainlibziReport_run1_info, @function
+MainlibziReport_run1_info:
+.Lc4YU:
+	leaq -40(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc4YV
+.Lc4YW:
+	leaq .Lc4X6_info(%rip),%rax
+	movq %rax,-16(%rbp)
+	movq base_SystemziEnvironment_getArgs1_closure@gotpcrel(%rip),%rax
+	leaq 2(%rax),%rdi
+	movq base_ForeignziStorable_zdfStorableBool7_closure@gotpcrel(%rip),%rsi
+	movq %r14,%rax
+	movq base_ForeignziStorable_zdfStorableBool7_closure@gotpcrel(%rip),%r14
+	movq %rax,-8(%rbp)
+	addq $-16,%rbp
+	jmp *base_ForeignziMarshalziAlloc_allocaBytesAligned_info@gotpcrel(%rip)
+.Lc4YV:
+	leaq MainlibziReport_run1_closure(%rip),%rbx
+	jmp *-8(%r13)
+.align 8
+	.quad	2
+	.long	30
+	.long	.Lu50x_srt-(.Lc4Yu_info)+0
+.Lc4Yu_info:
+.Lc4Yu:
+	leaq .Lc4Yw_info(%rip),%rax
+	movq %rax,(%rbp)
+	movq ghczmprim_GHCziTypes_False_closure@gotpcrel(%rip),%rax
+	leaq 1(%rax),%rdi
+	leaq .Lr4T0_closure(%rip),%rsi
+	movq base_GHCziIOziHandleziFD_stdout_closure@gotpcrel(%rip),%r14
+	jmp *base_GHCziIOziHandleziText_hPutStrzq_info@gotpcrel(%rip)
+.align 8
+	.quad	130
+	.long	30
+	.long	.Lu50w_srt-(.Lc4YF_info)+0
+.Lc4YF_info:
+.Lc4YF:
+	leaq .Lc4YH_info(%rip),%rax
+	movq %rax,(%rbp)
+	movq ghczmprim_GHCziTypes_False_closure@gotpcrel(%rip),%rax
+	leaq 1(%rax),%rdi
+	leaq .Lr4SY_closure(%rip),%rsi
+	movq base_GHCziIOziHandleziFD_stdout_closure@gotpcrel(%rip),%r14
+	jmp *base_GHCziIOziHandleziText_hPutStrzq_info@gotpcrel(%rip)
+.align 8
+	.quad	1
+	.long	30
+	.long	.Lu50z_srt-(.Lc4X6_info)+0
+.Lc4X6_info:
+.Lc4X6:
+	leaq .Lc4X8_info(%rip),%rax
+	movq %rax,(%rbp)
+	testb $7,%bl
+	jne .Lc4X8
+.Lc4X9:
+	jmp *(%rbx)
+.align 8
+	.quad	1
+	.long	30
+	.long	.Lu50z_srt-(.Lc4X8_info)+0
+.Lc4X8_info:
+.Lc4X8:
 	movq %rbx,%rax
 	andl $7,%eax
 	cmpq $1,%rax
-	jne .Lc2np
-.Lc2no:
-	movq base_GHCziBase_Nothing_closure@gotpcrel(%rip),%rax
-	leaq 1(%rax),%rbx
-	addq $8,%rbp
-	jmp *(%rbp)
-.Lc2np:
+	je .Lc4YR
+.Lc4YS:
+	leaq .Lc4Xe_info(%rip),%rax
+	movq %rax,-8(%rbp)
 	movq 6(%rbx),%rax
 	movq 14(%rbx),%rbx
-	leaq c2nz_info(%rip),%rcx
-	movq %rcx,-8(%rbp)
-	movq %rbx,%rcx
-	movq %rax,%rbx
-	movq %rcx,(%rbp)
-	addq $-8,%rbp
-	testb $7,%bl
-	jne .Lc2nz
-.Lc2nB:
-	jmp *(%rbx)
-.Lc2ns:
-	leaq roI_closure(%rip),%rbx
-	jmp *-8(%r13)
-.align 8
-	.long	S2ol_srt-(c2nz_info)+0
-	.long	0
-	.quad	1
-	.quad	4294967328
-c2nz_info:
-.Lc2nz:
-	movq 8(%rbp),%rax
-	movq 7(%rbx),%rax
-	movq 15(%rbx),%rbx
-	leaq c2nF_info(%rip),%rcx
-	movq %rcx,-8(%rbp)
 	movq %rax,(%rbp)
 	addq $-8,%rbp
 	testb $7,%bl
-	jne .Lc2nF
-.Lc2nH:
+	jne .Lc4Xe
+.Lc4Xf:
 	jmp *(%rbx)
 .align 8
-	.long	S2ol_srt-(c2nF_info)+0
-	.long	0
 	.quad	2
-	.quad	4294967328
-c2nF_info:
-.Lc2nF:
-	movq 16(%rbp),%rax
-	movq 8(%rbp),%rcx
-	movq %rbx,%rcx
-	andl $7,%ecx
-	cmpq $1,%rcx
-	jne .Lc2oh
-.Lc2nO:
-	leaq c2nL_info(%rip),%rbx
-	movq %rbx,(%rbp)
-	movq %rax,%rbx
-	testb $7,%bl
-	jne .Lc2nL
-.Lc2nP:
-	jmp *(%rbx)
-.align 8
-	.long	S2ol_srt-(c2nL_info)+0
-	.long	0
-	.quad	130
-	.quad	4294967328
-c2nL_info:
-.Lc2nL:
-	movq 8(%rbp),%rax
-	movq %rbx,%rcx
-	andl $7,%ecx
-	cmpq $1,%rcx
-	jne .Lc2od
-.Lc2nW:
-	leaq c2nT_info(%rip),%rbx
-	movq %rbx,(%rbp)
-	movq ghczmprim_GHCziClasses_zdfOrdInt_closure@gotpcrel(%rip),%r14
-	movq stg_ap_pp_info@gotpcrel(%rip),%rbx
-	movq %rbx,-24(%rbp)
-	movq %rax,-16(%rbp)
-	movq stg_INTLIKE_closure@gotpcrel(%rip),%rax
-	addq $257,%rax
+	.long	30
+	.long	.Lu50z_srt-(.Lc4Xe_info)+0
+.Lc4Xe_info:
+.Lc4Xe:
+	movq %rbx,%rax
+	andl $7,%eax
+	cmpq $1,%rax
+	je .Lu50l
+.Lc4Z6:
+	leaq .Lc4Xk_info(%rip),%rax
 	movq %rax,-8(%rbp)
-	addq $-24,%rbp
-	jmp *ghczmprim_GHCziClasses_zgze_info@gotpcrel(%rip)
-.align 8
-	.quad	130
-	.quad	32
-c2nT_info:
-.Lc2nT:
-	movq 8(%rbp),%rax
-	movq %rbx,%rcx
-	andl $7,%ecx
-	cmpq $1,%rcx
-	jne .Lc2o6
-.Lc2o2:
-	movq base_GHCziBase_Nothing_closure@gotpcrel(%rip),%rax
-	leaq 1(%rax),%rbx
-	addq $24,%rbp
-	jmp *(%rbp)
-.Lc2o6:
-	addq $16,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2o9
-.Lc2o8:
-	movq base_GHCziBase_Just_con_info@gotpcrel(%rip),%rbx
-	movq %rbx,-8(%r12)
-	movq %rax,(%r12)
-	leaq -6(%r12),%rax
-	movq %rax,%rbx
-	addq $24,%rbp
-	jmp *(%rbp)
-.Lc2o9:
-	movq $16,904(%r13)
-	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
-.Lc2od:
 	movq 6(%rbx),%rax
-	movq 14(%rbx),%rax
-	movq base_GHCziBase_Nothing_closure@gotpcrel(%rip),%rax
-	leaq 1(%rax),%rbx
-	addq $24,%rbp
-	jmp *(%rbp)
-.Lc2oh:
-	movq 6(%rbx),%rax
-	movq 14(%rbx),%rax
-	movq base_GHCziBase_Nothing_closure@gotpcrel(%rip),%rax
-	leaq 1(%rax),%rbx
-	addq $24,%rbp
-	jmp *(%rbp)
-	.size roI_info, .-roI_info
-.section .data
-.align 8
-.align 1
-rqB_closure:
-	.quad	rqB_info
-	.quad	0
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2m4_info)+32
-	.long	0
-	.quad	1
-	.quad	4294967313
-s2m4_info:
-.Lc2pf:
-	leaq -40(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2pg
-.Lc2ph:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	movq base_GHCziNum_zdfNumInt_closure@gotpcrel(%rip),%r14
-	movq stg_ap_pp_info@gotpcrel(%rip),%rbx
-	movq %rbx,-40(%rbp)
-	movq %rax,-32(%rbp)
-	movq stg_INTLIKE_closure@gotpcrel(%rip),%rax
-	addq $273,%rax
-	movq %rax,-24(%rbp)
-	addq $-40,%rbp
-	jmp *base_GHCziNum_zm_info@gotpcrel(%rip)
-.Lc2pg:
-	jmp *-16(%r13)
-	.size s2m4_info, .-s2m4_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2m2_info)+32
-	.long	0
-	.quad	2
-	.quad	4294967315
-s2m2_info:
-.Lc2pn:
-	leaq -40(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2po
-.Lc2pp:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	movq 24(%rbx),%rbx
-	movq base_GHCziNum_zdfNumInt_closure@gotpcrel(%rip),%r14
-	movq stg_ap_pp_info@gotpcrel(%rip),%rcx
-	movq %rcx,-40(%rbp)
-	movq %rbx,-32(%rbp)
-	movq %rax,-24(%rbp)
-	addq $-40,%rbp
-	jmp *base_GHCziNum_zp_info@gotpcrel(%rip)
-.Lc2po:
-	jmp *-16(%r13)
-	.size s2m2_info, .-s2m2_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(rqB_info)+32
-	.long	0
-	.quad	17179869208
-	.quad	0
-	.quad	12884901903
-rqB_info:
-.Lc2pq:
-	leaq -40(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2pr
-.Lc2ps:
-	leaq c2oY_info(%rip),%rax
-	movq %rax,-32(%rbp)
-	movq %r8,%rbx
-	movq %r14,-24(%rbp)
-	movq %rsi,-16(%rbp)
-	movq %rdi,-8(%rbp)
-	addq $-32,%rbp
+	movq 14(%rbx),%rbx
+	movq %rax,(%rbp)
+	addq $-8,%rbp
 	testb $7,%bl
-	jne .Lc2oY
-.Lc2oZ:
+	jne .Lc4Xk
+.Lc4Xl:
 	jmp *(%rbx)
 .align 8
-	.long	S2ol_srt-(c2oY_info)+32
-	.long	0
 	.quad	3
-	.quad	12884901920
-c2oY_info:
-.Lc2oY:
-	movq 8(%rbp),%rax
-	movq 16(%rbp),%rax
-	movq 24(%rbp),%rax
+	.long	30
+	.long	.Lu50z_srt-(.Lc4Xk_info)+0
+.Lc4Xk_info:
+.Lc4Xk:
+	andl $7,%ebx
+	cmpq $1,%rbx
+	jne .Lu50m
+.Lc4Z9:
+	leaq .Lc4Xp_info(%rip),%rax
+	movq %rax,(%rbp)
+	movq 16(%rbp),%rsi
+	leaq .Lr4SQ_closure(%rip),%r14
+	jmp *base_TextziParserCombinatorsziReadP_run_info@gotpcrel(%rip)
+.Lu50m:
+	addq $16,%rbp
+	jmp .Lc4YR
+.Lu50l:
+	addq $8,%rbp
+.Lc4YR:
+	addq $16,%rbp
+	jmp .Lr4SW_info
+.align 8
+	.quad	131
+	.long	30
+	.long	.Lu50z_srt-(.Lc4Xp_info)+0
+.Lc4Xp_info:
+.Lc4Xp:
+	movq %rbx,%rax
+	andl $7,%eax
+	cmpq $1,%rax
+	je .Lu50n
+.Lc4Zf:
+	leaq .Lc4Xu_info(%rip),%rax
+	movq %rax,(%rbp)
+	movq 14(%rbx),%rax
+	movq 6(%rbx),%rbx
+	movq %rax,16(%rbp)
+	testb $7,%bl
+	jne .Lc4Xu
+.Lc4Xv:
+	jmp *(%rbx)
+.align 8
+	.quad	3
+	.long	30
+	.long	.Lu50z_srt-(.Lc4Xu_info)+0
+.Lc4Xu_info:
+.Lc4Xu:
+	leaq .Lc4Xz_info(%rip),%rax
+	movq %rax,-8(%rbp)
 	movq 7(%rbx),%rax
 	movq 15(%rbx),%rbx
-	leaq c2p3_info(%rip),%rcx
-	movq %rcx,-8(%rbp)
 	movq %rax,(%rbp)
 	addq $-8,%rbp
 	testb $7,%bl
-	jne .Lc2p3
-.Lc2p4:
+	jne .Lc4Xz
+.Lc4XA:
 	jmp *(%rbx)
 .align 8
-	.long	S2ol_srt-(c2p3_info)+32
-	.long	0
 	.quad	4
-	.quad	12884901920
-c2p3_info:
-.Lc2p3:
-	movq 16(%rbp),%rax
-	movq 24(%rbp),%rcx
-	movq 32(%rbp),%rdx
-	movq 8(%rbp),%rsi
-	addq $112,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2pw
-.Lc2pv:
-	movq 7(%rbx),%rdi
-	testq %rdi,%rdi
-	jne .Lc2py
-.Lc2pB:
-	movq ghczmprim_GHCziTuple_Z3T_con_info@gotpcrel(%rip),%rax
-	movq %rax,-104(%r12)
-	movq %rsi,-96(%r12)
-	movq %rcx,-88(%r12)
-	movq %rdx,-80(%r12)
-	leaq -103(%r12),%rax
-	addq $-80,%r12
+	.long	30
+	.long	.Lu50z_srt-(.Lc4Xz_info)+0
+.Lc4Xz_info:
+.Lc4Xz:
+	andl $7,%ebx
+	cmpq $1,%rbx
+	jne .Lu50o
+.Lc4Zj:
+	leaq .Lc4XE_info(%rip),%rax
+	movq %rax,(%rbp)
+	movq 24(%rbp),%rbx
+	testb $7,%bl
+	jne .Lc4XE
+.Lc4XF:
+	jmp *(%rbx)
+.align 8
+	.quad	260
+	.long	30
+	.long	.Lu50z_srt-(.Lc4XE_info)+0
+.Lc4XE_info:
+.Lc4XE:
+	andl $7,%ebx
+	cmpq $1,%rbx
+	jne .Lu50p
+.Lc4Zm:
+	movq 8(%rbp),%rax
+	leaq .Lc4XJ_info(%rip),%rbx
+	movq %rbx,8(%rbp)
 	movq %rax,%rbx
-	addq $40,%rbp
-	jmp *(%rbp)
-.Lc2pr:
-	leaq rqB_closure(%rip),%rbx
-	jmp *-8(%r13)
-.Lc2pw:
-	movq $112,904(%r13)
-	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
-.Lc2py:
-	movq stg_ap_2_upd_info@gotpcrel(%rip),%rcx
-	movq %rcx,-104(%r12)
-	movq %rax,-88(%r12)
-	movq %rsi,-80(%r12)
-	leaq -104(%r12),%rcx
-	leaq s2m4_info(%rip),%rdi
-	movq %rdi,-72(%r12)
-	movq %rbx,-56(%r12)
-	leaq -72(%r12),%rbx
-	movq ghczmprim_GHCziTuple_Z2T_con_info@gotpcrel(%rip),%rdi
-	movq %rdi,-48(%r12)
-	movq %rsi,-40(%r12)
-	movq %rbx,-32(%r12)
-	leaq -47(%r12),%rbx
-	leaq s2m2_info(%rip),%rsi
-	movq %rsi,-24(%r12)
-	movq %rdx,-8(%r12)
-	movq %rcx,(%r12)
-	leaq -24(%r12),%rdx
-	movq %rbx,%r8
-	movq %rdx,%rdi
-	movq %rcx,%rsi
-	movq %rax,%r14
-	addq $40,%rbp
-	jmp rqB_info
-	.size rqB_info, .-rqB_info
-.section .data
-.align 8
-.align 1
-s2mc_closure:
-	.quad	s2mc_info
-	.quad	0
-	.quad	0
-	.quad	0
-.section .rodata
-.align 8
-.align 1
-c2qj_str:
-	.byte	32
-	.byte	73
-	.byte	78
-	.byte	80
-	.byte	85
-	.byte	84
-	.byte	32
-	.byte	67
-	.byte	89
-	.byte	67
-	.byte	76
-	.byte	69
-	.byte	83
-	.byte	0
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2m9_info)+48
-	.long	0
-	.quad	0
-	.quad	4294967312
-s2m9_info:
-.Lc2qk:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2ql
-.Lc2qm:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	leaq c2qj_str(%rip),%r14
-	movq ghczmprim_GHCziCString_unpackCStringzh_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_n_fast@gotpcrel(%rip)
-.Lc2ql:
-	jmp *-16(%r13)
-	.size s2m9_info, .-s2m9_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2ma_info)+48
-	.long	0
-	.quad	1
-	.quad	12884901905
-s2ma_info:
-.Lc2qn:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2qo
-.Lc2qp:
-	addq $16,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2qr
-.Lc2qq:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	leaq s2m9_info(%rip),%rbx
-	movq %rbx,-8(%r12)
-	leaq -8(%r12),%rbx
-	movq %rbx,%rsi
-	movq %rax,%r14
-	movq base_GHCziBase_zpzp_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc2qr:
-	movq $16,904(%r13)
-.Lc2qo:
-	jmp *-16(%r13)
-	.size s2ma_info, .-s2ma_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mb_info)+48
-	.long	0
-	.quad	4294967301
-	.quad	4294967296
-	.quad	30064771083
-s2mb_info:
-.Lc2qs:
-.Lc2qu:
-	addq $24,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2qw
-.Lc2qv:
-	leaq s2ma_info(%rip),%rax
-	movq %rax,-16(%r12)
-	movq %r14,(%r12)
-	leaq -16(%r12),%rax
-	movq %rax,%r14
-	movq base_SystemziIO_putStrLn_closure@gotpcrel(%rip),%rbx
-	jmp *stg_ap_p_fast@gotpcrel(%rip)
-.Lc2qw:
-	movq $24,904(%r13)
-.Lc2qt:
-	jmp *-8(%r13)
-	.size s2mb_info, .-s2mb_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mc_info)+48
-	.long	0
-	.quad	0
-	.quad	133143986198
-s2mc_info:
-.Lc2qx:
-	leaq -40(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2qy
-.Lc2qz:
-	addq $16,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2qB
-.Lc2qA:
-	subq $8,%rsp
-	movq %r13,%rax
-	movq %rbx,%rsi
-	movq %rax,%rdi
-	xorl %eax,%eax
-	call newCAF@plt
-	addq $8,%rsp
-	testq %rax,%rax
-	je .Lc2q5
-.Lc2q4:
-	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
-	movq %rbx,-16(%rbp)
-	movq %rax,-8(%rbp)
-	leaq s2mb_info(%rip),%rax
-	movq %rax,-8(%r12)
-	leaq -7(%r12),%rax
-	movq base_GHCziBase_zdfMonadIO_closure@gotpcrel(%rip),%r14
-	movq stg_ap_pp_info@gotpcrel(%rip),%rbx
-	movq %rbx,-40(%rbp)
-	movq base_SystemziEnvironment_getProgName_closure@gotpcrel(%rip),%rbx
-	movq %rbx,-32(%rbp)
-	movq %rax,-24(%rbp)
-	addq $-40,%rbp
-	jmp *base_GHCziBase_zgzgze_info@gotpcrel(%rip)
-.Lc2q5:
+	addq $8,%rbp
+	testb $7,%bl
+	jne .Lc4XJ
+.Lc4XK:
 	jmp *(%rbx)
-.Lc2qB:
-	movq $16,904(%r13)
-.Lc2qy:
-	jmp *-16(%r13)
-	.size s2mc_info, .-s2mc_info
-.section .data
 .align 8
-.align 1
-s2m7_closure:
-	.quad	s2m7_info
-	.quad	0
-	.quad	0
-	.quad	0
-.section .rodata
-.align 8
-.align 1
-c2r9_str:
-	.byte	85
-	.byte	115
-	.byte	97
-	.byte	103
-	.byte	101
-	.byte	58
-	.byte	0
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2m6_info)+48
-	.long	0
-	.quad	0
-	.quad	4294967312
-s2m6_info:
-.Lc2ra:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2rb
-.Lc2rc:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	leaq c2r9_str(%rip),%r14
-	movq ghczmprim_GHCziCString_unpackCStringzh_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_n_fast@gotpcrel(%rip)
-.Lc2rb:
-	jmp *-16(%r13)
-	.size s2m6_info, .-s2m6_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2m7_info)+48
-	.long	0
-	.quad	0
-	.quad	21474836502
-s2m7_info:
-.Lc2rd:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2re
-.Lc2rf:
-	addq $16,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2rh
-.Lc2rg:
-	subq $8,%rsp
-	movq %r13,%rax
-	movq %rbx,%rsi
-	movq %rax,%rdi
-	xorl %eax,%eax
-	call newCAF@plt
-	addq $8,%rsp
-	testq %rax,%rax
-	je .Lc2r4
-.Lc2r3:
-	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
-	movq %rbx,-16(%rbp)
-	movq %rax,-8(%rbp)
-	leaq s2m6_info(%rip),%rax
-	movq %rax,-8(%r12)
-	leaq -8(%r12),%rax
-	movq %rax,%r14
-	movq base_SystemziIO_putStrLn_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_p_fast@gotpcrel(%rip)
-.Lc2r4:
-	jmp *(%rbx)
-.Lc2rh:
-	movq $16,904(%r13)
-.Lc2re:
-	jmp *-16(%r13)
-	.size s2m7_info, .-s2m7_info
-.section .data
-.align 8
-.align 1
-rqD_closure:
-	.quad	rqD_info
-	.quad	0
-	.quad	0
-	.quad	0
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(rqD_info)+80
-	.long	0
-	.quad	0
-	.quad	30064771094
-rqD_info:
-.Lc2rB:
-	leaq -40(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2rC
-.Lc2rD:
-	subq $8,%rsp
-	movq %r13,%rax
-	movq %rbx,%rsi
-	movq %rax,%rdi
-	xorl %eax,%eax
-	call newCAF@plt
-	addq $8,%rsp
-	testq %rax,%rax
-	je .Lc2rA
-.Lc2rz:
-	movq stg_bh_upd_frame_info@gotpcrel(%rip),%rbx
-	movq %rbx,-16(%rbp)
-	movq %rax,-8(%rbp)
-	movq base_GHCziBase_zdfMonadIO_closure@gotpcrel(%rip),%r14
-	movq stg_ap_pp_info@gotpcrel(%rip),%rax
-	movq %rax,-40(%rbp)
-	leaq s2m7_closure(%rip),%rax
-	movq %rax,-32(%rbp)
-	leaq s2mc_closure(%rip),%rax
-	movq %rax,-24(%rbp)
-	addq $-40,%rbp
-	jmp *base_GHCziBase_zgzg_info@gotpcrel(%rip)
-.Lc2rA:
-	jmp *(%rbx)
-.Lc2rC:
-	jmp *-16(%r13)
-	.size rqD_info, .-rqD_info
-.section .data
-.align 8
-.align 1
-rqC_closure:
-	.quad	rqC_info
-	.quad	0
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mp_info)+104
-	.long	0
-	.quad	1
-	.quad	12884901905
-s2mp_info:
-.Lc2sg:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2sh
-.Lc2si:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
+	.quad	131
+	.long	30
+	.long	.Lu50z_srt-(.Lc4XJ_info)+0
+.Lc4XJ_info:
+.Lc4XJ:
+	cmpq $0,7(%rbx)
+	jl .Lu50q
+.Lc4Zq:
+	movq 8(%rbp),%rax
+	leaq .Lc4XS_info(%rip),%rcx
+	movq %rcx,8(%rbp)
 	movq %rax,%rsi
-	movq base_GHCziShow_zdfShowInt_closure@gotpcrel(%rip),%r14
-	movq base_SystemziIO_print_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc2sh:
-	jmp *-16(%r13)
-	.size s2mp_info, .-s2mp_info
-.section .rodata
+	leaq .Lr4SQ_closure(%rip),%r14
+	movq %rbx,16(%rbp)
+	addq $8,%rbp
+	jmp *base_TextziParserCombinatorsziReadP_run_info@gotpcrel(%rip)
+.Lu50q:
+	addq $16,%rbp
+	jmp .Lc4YR
 .align 8
-.align 1
-c2sr_str:
-	.byte	84
-	.byte	111
-	.byte	116
-	.byte	97
-	.byte	108
-	.byte	32
-	.byte	105
-	.byte	115
-	.byte	32
-	.byte	0
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mn_info)+48
-	.long	0
-	.quad	0
-	.quad	4294967312
-s2mn_info:
-.Lc2ss:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2st
-.Lc2su:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	leaq c2sr_str(%rip),%r14
-	movq ghczmprim_GHCziCString_unpackCStringzh_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_n_fast@gotpcrel(%rip)
-.Lc2st:
-	jmp *-16(%r13)
-	.size s2mn_info, .-s2mn_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mo_info)+48
-	.long	0
-	.quad	0
-	.quad	2203318222864
-s2mo_info:
-.Lc2sv:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2sw
-.Lc2sx:
-	addq $16,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2sz
-.Lc2sy:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	leaq s2mn_info(%rip),%rax
-	movq %rax,-8(%r12)
-	leaq -8(%r12),%rax
-	movq %rax,%r14
-	movq base_SystemziIO_putStr_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_p_fast@gotpcrel(%rip)
-.Lc2sz:
-	movq $16,904(%r13)
-.Lc2sw:
-	jmp *-16(%r13)
-	.size s2mo_info, .-s2mo_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mq_info)+48
-	.long	0
-	.quad	1
-	.quad	3921305141265
-s2mq_info:
-.Lc2sA:
-	leaq -40(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2sB
-.Lc2sC:
-	addq $40,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2sE
-.Lc2sD:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	leaq s2mp_info(%rip),%rbx
-	movq %rbx,-32(%r12)
-	movq %rax,-16(%r12)
-	leaq -32(%r12),%rax
-	leaq s2mo_info(%rip),%rbx
-	movq %rbx,-8(%r12)
-	leaq -8(%r12),%rbx
-	movq base_GHCziBase_zdfMonadIO_closure@gotpcrel(%rip),%r14
-	movq stg_ap_pp_info@gotpcrel(%rip),%rcx
-	movq %rcx,-40(%rbp)
-	movq %rbx,-32(%rbp)
-	movq %rax,-24(%rbp)
-	addq $-40,%rbp
-	jmp *base_GHCziBase_zgzg_info@gotpcrel(%rip)
-.Lc2sE:
-	movq $40,904(%r13)
-.Lc2sB:
-	jmp *-16(%r13)
-	.size s2mq_info, .-s2mq_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mm_info)+104
-	.long	0
-	.quad	1
-	.quad	12884901905
-s2mm_info:
-.Lc2sJ:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2sK
-.Lc2sL:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	movq %rax,%rsi
-	movq base_GHCziShow_zdfShowInt_closure@gotpcrel(%rip),%r14
-	movq base_SystemziIO_print_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc2sK:
-	jmp *-16(%r13)
-	.size s2mm_info, .-s2mm_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mr_info)+48
-	.long	0
 	.quad	2
-	.quad	3921305141267
-s2mr_info:
-.Lc2sM:
-	leaq -40(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2sN
-.Lc2sO:
-	addq $48,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2sQ
-.Lc2sP:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	movq 24(%rbx),%rbx
-	leaq s2mq_info(%rip),%rcx
-	movq %rcx,-40(%r12)
-	movq %rbx,-24(%r12)
-	leaq -40(%r12),%rbx
-	leaq s2mm_info(%rip),%rcx
-	movq %rcx,-16(%r12)
-	movq %rax,(%r12)
-	leaq -16(%r12),%rax
-	movq base_GHCziBase_zdfMonadIO_closure@gotpcrel(%rip),%r14
-	movq stg_ap_pp_info@gotpcrel(%rip),%rcx
-	movq %rcx,-40(%rbp)
-	movq %rax,-32(%rbp)
-	movq %rbx,-24(%rbp)
-	addq $-40,%rbp
-	jmp *base_GHCziBase_zgzg_info@gotpcrel(%rip)
-.Lc2sQ:
-	movq $48,904(%r13)
-.Lc2sN:
-	jmp *-16(%r13)
-	.size s2mr_info, .-s2mr_info
-.section .rodata
-.align 8
-.align 1
-c2sZ_str:
-	.byte	45
-	.byte	116
-	.byte	104
-	.byte	32
-	.byte	70
-	.byte	105
-	.byte	98
-	.byte	111
-	.byte	110
-	.byte	97
-	.byte	99
-	.byte	99
-	.byte	105
-	.byte	32
-	.byte	110
-	.byte	117
-	.byte	109
-	.byte	98
-	.byte	101
-	.byte	114
-	.byte	32
-	.byte	105
-	.byte	115
-	.byte	32
-	.byte	0
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mk_info)+48
-	.long	0
-	.quad	0
-	.quad	4294967312
-s2mk_info:
-.Lc2t0:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2t1
-.Lc2t2:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	leaq c2sZ_str(%rip),%r14
-	movq ghczmprim_GHCziCString_unpackCStringzh_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_n_fast@gotpcrel(%rip)
-.Lc2t1:
-	jmp *-16(%r13)
-	.size s2mk_info, .-s2mk_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2ml_info)+48
-	.long	0
-	.quad	0
-	.quad	2203318222864
-s2ml_info:
-.Lc2t3:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2t4
-.Lc2t5:
-	addq $16,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2t7
-.Lc2t6:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	leaq s2mk_info(%rip),%rax
-	movq %rax,-8(%r12)
-	leaq -8(%r12),%rax
-	movq %rax,%r14
-	movq base_SystemziIO_putStr_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_p_fast@gotpcrel(%rip)
-.Lc2t7:
-	movq $16,904(%r13)
-.Lc2t4:
-	jmp *-16(%r13)
-	.size s2ml_info, .-s2ml_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2ms_info)+48
-	.long	0
-	.quad	2
-	.quad	3921305141267
-s2ms_info:
-.Lc2t8:
-	leaq -40(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2t9
-.Lc2ta:
-	addq $48,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2tc
-.Lc2tb:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	movq 24(%rbx),%rbx
-	leaq s2mr_info(%rip),%rcx
-	movq %rcx,-40(%r12)
-	movq %rax,-24(%r12)
-	movq %rbx,-16(%r12)
-	leaq -40(%r12),%rax
-	leaq s2ml_info(%rip),%rbx
-	movq %rbx,-8(%r12)
-	leaq -8(%r12),%rbx
-	movq base_GHCziBase_zdfMonadIO_closure@gotpcrel(%rip),%r14
-	movq stg_ap_pp_info@gotpcrel(%rip),%rcx
-	movq %rcx,-40(%rbp)
-	movq %rbx,-32(%rbp)
-	movq %rax,-24(%rbp)
-	addq $-40,%rbp
-	jmp *base_GHCziBase_zgzg_info@gotpcrel(%rip)
-.Lc2tc:
-	movq $48,904(%r13)
-.Lc2t9:
-	jmp *-16(%r13)
-	.size s2ms_info, .-s2ms_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mi_info)+112
-	.long	0
-	.quad	1
-	.quad	4294967313
-s2mi_info:
-.Lc2tl:
-	leaq -32(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2tm
-.Lc2tn:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	movq base_GHCziShow_zdfShowInt_closure@gotpcrel(%rip),%r14
-	movq stg_ap_p_info@gotpcrel(%rip),%rbx
-	movq %rbx,-32(%rbp)
-	movq %rax,-24(%rbp)
-	addq $-32,%rbp
-	jmp *base_GHCziShow_show_info@gotpcrel(%rip)
-.Lc2tm:
-	jmp *-16(%r13)
-	.size s2mi_info, .-s2mi_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mj_info)+112
-	.long	0
-	.quad	1
-	.quad	12884901905
-s2mj_info:
-.Lc2to:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2tp
-.Lc2tq:
-	addq $24,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2ts
-.Lc2tr:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	leaq s2mi_info(%rip),%rbx
-	movq %rbx,-16(%r12)
-	movq %rax,(%r12)
-	leaq -16(%r12),%rax
-	movq %rax,%r14
-	movq base_SystemziIO_putStr_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_p_fast@gotpcrel(%rip)
-.Lc2ts:
-	movq $24,904(%r13)
-.Lc2tp:
-	jmp *-16(%r13)
-	.size s2mj_info, .-s2mj_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(rqC_info)+48
-	.long	0
-	.quad	4294967301
-	.quad	0
-	.quad	8319351652367
-rqC_info:
-.Lc2tt:
-	leaq -24(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2tu
-.Lc2tv:
-	leaq c2rV_info(%rip),%rax
+	.long	30
+	.long	.Lu50y_srt-(.Lc4XS_info)+0
+.Lc4XS_info:
+.Lc4XS:
+	movq %rbx,%rax
+	andl $7,%eax
+	cmpq $1,%rax
+	je .Lu50r
+.Lc4Zw:
+	leaq .Lc4XX_info(%rip),%rax
 	movq %rax,-8(%rbp)
-	movq %r14,%rbx
+	movq 14(%rbx),%rax
+	movq 6(%rbx),%rbx
+	movq %rax,(%rbp)
 	addq $-8,%rbp
 	testb $7,%bl
-	jne .Lc2rV
-.Lc2rW:
+	jne .Lc4XX
+.Lc4XY:
 	jmp *(%rbx)
 .align 8
-	.long	S2ol_srt-(c2rV_info)+48
-	.long	0
-	.quad	0
-	.quad	3921305141280
-c2rV_info:
-.Lc2rV:
-	addq $56,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2ty
-.Lc2tx:
+	.quad	3
+	.long	30
+	.long	.Lu50y_srt-(.Lc4XX_info)+0
+.Lc4XX_info:
+.Lc4XX:
+	leaq .Lc4Y2_info(%rip),%rax
+	movq %rax,-8(%rbp)
 	movq 7(%rbx),%rax
-	movq 15(%rbx),%rcx
-	movq 23(%rbx),%rbx
-	leaq s2ms_info(%rip),%rdx
-	movq %rdx,-48(%r12)
-	movq %rcx,-32(%r12)
-	movq %rbx,-24(%r12)
-	leaq -48(%r12),%rbx
-	leaq s2mj_info(%rip),%rcx
-	movq %rcx,-16(%r12)
-	movq %rax,(%r12)
-	leaq -16(%r12),%rax
-	movq base_GHCziBase_zdfMonadIO_closure@gotpcrel(%rip),%r14
-	movq stg_ap_pp_info@gotpcrel(%rip),%rcx
-	movq %rcx,-16(%rbp)
+	movq 15(%rbx),%rbx
+	movq %rax,(%rbp)
+	addq $-8,%rbp
+	testb $7,%bl
+	jne .Lc4Y2
+.Lc4Y3:
+	jmp *(%rbx)
+.align 8
+	.quad	4
+	.long	30
+	.long	.Lu50y_srt-(.Lc4Y2_info)+0
+.Lc4Y2_info:
+.Lc4Y2:
+	andl $7,%ebx
+	cmpq $1,%rbx
+	jne .Lu50s
+.Lc4ZA:
+	leaq .Lc4Y7_info(%rip),%rax
+	movq %rax,(%rbp)
+	movq 16(%rbp),%rbx
+	testb $7,%bl
+	jne .Lc4Y7
+.Lc4Y8:
+	jmp *(%rbx)
+.align 8
+	.quad	132
+	.long	30
+	.long	.Lu50y_srt-(.Lc4Y7_info)+0
+.Lc4Y7_info:
+.Lc4Y7:
+	andl $7,%ebx
+	cmpq $1,%rbx
+	jne .Lu50t
+.Lc4ZD:
+	leaq .Lc4Yc_info(%rip),%rax
+	movq %rax,16(%rbp)
+	movq 8(%rbp),%rbx
+	addq $16,%rbp
+	testb $7,%bl
+	jne .Lc4Yc
+.Lc4Yd:
+	jmp *(%rbx)
+.align 8
+	.quad	2
+	.long	30
+	.long	.Lu50y_srt-(.Lc4Yc_info)+0
+.Lc4Yc_info:
+.Lc4Yc:
+	movq 7(%rbx),%rax
+	testq %rax,%rax
+	jl .Lu50u
+.Lc4ZH:
+	movq 16(%rbp),%rbx
+	leaq .Lc4Yl_info(%rip),%rcx
+	movq %rcx,16(%rbp)
+	movq %rax,%r9
+	movq 8(%rbp),%r8
+	leaq .Lr4T1_closure+1(%rip),%rdi
+	leaq .Lr4T1_closure+1(%rip),%rsi
+	movq %rbx,%r14
+	addq $16,%rbp
+	jmp .Lr4SR_info
+.Lu50u:
+	addq $8,%rbp
+	jmp .Lc4YR
+.align 8
+	.quad	0
+	.long	30
+	.long	.Lu50x_srt-(.Lc4Yl_info)+0
+.Lc4Yl_info:
+.Lc4Yl:
+	addq $24,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc4ZK
+.Lc4ZJ:
+	leaq .Ls4TY_info(%rip),%rax
+	movq %rax,-16(%r12)
+	movq %rbx,(%r12)
+	leaq .Lc4Yu_info(%rip),%rax
+	movq %rax,-16(%rbp)
+	movq ghczmprim_GHCziTypes_False_closure@gotpcrel(%rip),%rax
+	leaq 1(%rax),%rdi
+	movq %rsi,%rax
+	leaq -16(%r12),%rsi
+	movq %r14,%rbx
+	movq base_GHCziIOziHandleziFD_stdout_closure@gotpcrel(%rip),%r14
 	movq %rax,-8(%rbp)
 	movq %rbx,(%rbp)
 	addq $-16,%rbp
-	jmp *base_GHCziBase_zgzg_info@gotpcrel(%rip)
-.Lc2tu:
-	leaq rqC_closure(%rip),%rbx
-	jmp *-8(%r13)
-.Lc2ty:
-	movq $56,904(%r13)
+	jmp *base_GHCziIOziHandleziText_hPutStrzq_info@gotpcrel(%rip)
+.Lc4ZK:
+	movq $24,904(%r13)
+	jmp *stg_gc_ppp@gotpcrel(%rip)
+.align 8
+	.quad	2
+	.long	30
+	.long	.Lu50w_srt-(.Lc4Yw_info)+0
+.Lc4Yw_info:
+.Lc4Yw:
+	addq $24,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc4ZO
+.Lc4ZN:
+	leaq .Ls4U5_info(%rip),%rax
+	movq %rax,-16(%r12)
+	movq 16(%rbp),%rax
+	movq %rax,(%r12)
+	leaq .Lc4YF_info(%rip),%rax
+	movq %rax,(%rbp)
+	movq ghczmprim_GHCziTypes_True_closure@gotpcrel(%rip),%rax
+	leaq 2(%rax),%rdi
+	leaq -16(%r12),%rsi
+	movq base_GHCziIOziHandleziFD_stdout_closure@gotpcrel(%rip),%r14
+	jmp *base_GHCziIOziHandleziText_hPutStrzq_info@gotpcrel(%rip)
+.Lc4ZO:
+	movq $24,904(%r13)
 	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
-	.size rqC_info, .-rqC_info
+.align 8
+	.quad	130
+	.long	30
+	.long	.Lu50v_srt-(.Lc4YH_info)+0
+.Lc4YH_info:
+.Lc4YH:
+	addq $24,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc4ZS
+.Lc4ZR:
+	leaq .Ls4Uc_info(%rip),%rax
+	movq %rax,-16(%r12)
+	movq 8(%rbp),%rax
+	movq %rax,(%r12)
+	movq ghczmprim_GHCziTypes_True_closure@gotpcrel(%rip),%rax
+	leaq 2(%rax),%rdi
+	leaq -16(%r12),%rsi
+	movq base_GHCziIOziHandleziFD_stdout_closure@gotpcrel(%rip),%r14
+	addq $24,%rbp
+	jmp *base_GHCziIOziHandleziText_hPutStrzq_info@gotpcrel(%rip)
+.Lc4ZS:
+	movq $24,904(%r13)
+	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
+.Lu50n:
+	addq $16,%rbp
+	jmp .Lc4YR
+.Lu50o:
+	addq $24,%rbp
+	jmp .Lc4YR
+.Lu50p:
+	addq $24,%rbp
+	jmp .Lc4YR
+.Lu50r:
+	addq $8,%rbp
+	jmp .Lc4YR
+.Lu50s:
+	addq $24,%rbp
+	jmp .Lc4YR
+.Lu50t:
+	addq $24,%rbp
+	jmp .Lc4YR
+	.size MainlibziReport_run1_info, .-MainlibziReport_run1_info
+.section .data
+.align 8
+.align 1
+.globl MainlibziReport_run1_closure
+.type MainlibziReport_run1_closure, @object
+MainlibziReport_run1_closure:
+	.quad	MainlibziReport_run1_info
+	.quad	base_SystemziEnvironment_getArgs1_closure
+	.quad	.Lu50z_srt
+	.quad	0
+.section .text
+.align 8
+.align 8
+	.quad	8589934597
+	.quad	0
+	.long	14
+	.long	MainlibziReport_run1_closure-(MainlibziReport_run_info)+0
+.globl MainlibziReport_run_info
+.type MainlibziReport_run_info, @function
+MainlibziReport_run_info:
+.Lc51F:
+	jmp MainlibziReport_run1_info
+	.size MainlibziReport_run_info, .-MainlibziReport_run_info
 .section .data
 .align 8
 .align 1
@@ -2206,376 +2163,7 @@ c2rV_info:
 MainlibziReport_run_closure:
 	.quad	MainlibziReport_run_info
 	.quad	0
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mI_info)+16
-	.long	0
-	.quad	1
-	.quad	4294967313
-s2mI_info:
-.Lc2vr:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2vs
-.Lc2vt:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	movq %rax,%r14
-	addq $-16,%rbp
-	jmp roI_info
-.Lc2vs:
-	jmp *-16(%r13)
-	.size s2mI_info, .-s2mI_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mG_info)+16
-	.long	0
-	.quad	1
-	.quad	4294967313
-s2mG_info:
-.Lc2vC:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2vD
-.Lc2vE:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	movq %rax,%r14
-	addq $-16,%rbp
-	jmp roI_info
-.Lc2vD:
-	jmp *-16(%r13)
-	.size s2mG_info, .-s2mG_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mH_info)+16
-	.long	0
-	.quad	1
-	.quad	422216760033297
-s2mH_info:
-.Lc2vF:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2vG
-.Lc2vH:
-	addq $24,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2vJ
-.Lc2vI:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	leaq s2mG_info(%rip),%rbx
-	movq %rbx,-16(%r12)
-	movq %rax,(%r12)
-	leaq -16(%r12),%rax
-	movq %rax,%rdi
-	movq ghczmprim_GHCziTuple_Z2T_closure@gotpcrel(%rip),%rax
-	leaq 2(%rax),%rsi
-	movq base_GHCziBase_zdfFunctorMaybe_closure@gotpcrel(%rip),%r14
-	movq base_DataziFunctor_zlzdzg_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_ppp_fast@gotpcrel(%rip)
-.Lc2vJ:
-	movq $24,904(%r13)
-.Lc2vG:
-	jmp *-16(%r13)
-	.size s2mH_info, .-s2mH_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mL_info)+16
-	.long	0
-	.quad	1
-	.quad	985166713454609
-s2mL_info:
-.Lc2vO:
-	leaq -40(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2vP
-.Lc2vQ:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	leaq c2v6_info(%rip),%rbx
-	movq %rbx,-24(%rbp)
-	movq %rax,%rbx
-	addq $-24,%rbp
-	testb $7,%bl
-	jne .Lc2v6
-.Lc2v7:
-	jmp *(%rbx)
-.align 8
-	.long	S2ol_srt-(c2v6_info)+16
-	.long	0
-	.quad	0
-	.quad	985166713454624
-c2v6_info:
-.Lc2v6:
-	movq %rbx,%rax
-	andl $7,%eax
-	cmpq $1,%rax
-	jne .Lc2vM
-.Lc2vL:
-	movq base_GHCziBase_Nothing_closure@gotpcrel(%rip),%rax
-	leaq 1(%rax),%rbx
-	addq $8,%rbp
-	jmp *(%rbp)
-.Lc2vM:
-	movq 6(%rbx),%rax
-	movq 14(%rbx),%rbx
-	leaq c2vc_info(%rip),%rcx
-	movq %rcx,-8(%rbp)
-	movq %rax,(%rbp)
-	addq $-8,%rbp
-	testb $7,%bl
-	jne .Lc2vc
-.Lc2vd:
-	jmp *(%rbx)
-.align 8
-	.long	S2ol_srt-(c2vc_info)+16
-	.long	0
-	.quad	1
-	.quad	985166713454624
-c2vc_info:
-.Lc2vc:
-	movq 8(%rbp),%rax
-	movq %rbx,%rax
-	andl $7,%eax
-	cmpq $1,%rax
-	jne .Lc2vZ
-.Lc2vX:
-	movq base_GHCziBase_Nothing_closure@gotpcrel(%rip),%rax
-	leaq 1(%rax),%rbx
-	addq $16,%rbp
-	jmp *(%rbp)
-.Lc2vZ:
-	movq 6(%rbx),%rax
-	movq 14(%rbx),%rbx
-	leaq c2vi_info(%rip),%rcx
-	movq %rcx,-8(%rbp)
-	movq %rax,(%rbp)
-	addq $-8,%rbp
-	testb $7,%bl
-	jne .Lc2vi
-.Lc2vj:
-	jmp *(%rbx)
-.align 8
-	.long	S2ol_srt-(c2vi_info)+16
-	.long	0
-	.quad	2
-	.quad	985166713454624
-c2vi_info:
-.Lc2vi:
-	movq 16(%rbp),%rax
-	movq 8(%rbp),%rcx
-	movq %rbx,%rdx
-	andl $7,%edx
-	cmpq $1,%rdx
-	jne .Lc2w8
-.Lc2w1:
-	addq $48,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2w4
-.Lc2w3:
-	leaq s2mI_info(%rip),%rbx
-	movq %rbx,-40(%r12)
-	movq %rcx,-24(%r12)
-	leaq -40(%r12),%rbx
-	leaq s2mH_info(%rip),%rcx
-	movq %rcx,-16(%r12)
-	movq %rax,(%r12)
-	leaq -16(%r12),%rax
-	movq base_GHCziBase_zdfApplicativeMaybe_closure@gotpcrel(%rip),%r14
-	movq stg_ap_pp_info@gotpcrel(%rip),%rcx
-	movq %rcx,(%rbp)
-	movq %rax,8(%rbp)
-	movq %rbx,16(%rbp)
-	jmp *base_GHCziBase_zlztzg_info@gotpcrel(%rip)
-.Lc2vP:
-	jmp *-16(%r13)
-.Lc2w4:
-	movq $48,904(%r13)
-	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
-.Lc2w8:
-	movq 6(%rbx),%rax
-	movq 14(%rbx),%rax
-	movq base_GHCziBase_Nothing_closure@gotpcrel(%rip),%rax
-	leaq 1(%rax),%rbx
-	addq $24,%rbp
-	jmp *(%rbp)
-	.size s2mL_info, .-s2mL_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mx_info)+40
-	.long	0
-	.quad	4294967301
-	.quad	3
-	.quad	4294967305
-s2mx_info:
-.Lc2wk:
-.Lc2wm:
-	movq 7(%rbx),%rax
-	movq 15(%rbx),%rcx
-	movq 23(%rbx),%rbx
-	movq %r14,%r8
-	movq %rbx,%rdi
-	movq %rcx,%rsi
-	movq %rax,%r14
-	jmp rqB_info
-	.size s2mx_info, .-s2mx_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2my_info)+40
-	.long	0
-	.quad	1
-	.quad	149537876344849
-s2my_info:
-.Lc2wn:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2wo
-.Lc2wp:
-	addq $32,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2wr
-.Lc2wq:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	leaq s2mx_info(%rip),%rbx
-	movq %rbx,-24(%r12)
-	movq %rax,-16(%r12)
-	movq stg_INTLIKE_closure@gotpcrel(%rip),%rax
-	addq $257,%rax
-	movq %rax,-8(%r12)
-	movq stg_INTLIKE_closure@gotpcrel(%rip),%rax
-	addq $257,%rax
-	movq %rax,(%r12)
-	leaq -23(%r12),%rax
-	movq %rax,%rsi
-	leaq rqC_closure+1(%rip),%r14
-	movq base_GHCziBase_zi_closure@gotpcrel(%rip),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc2wr:
-	movq $32,904(%r13)
-.Lc2wo:
-	jmp *-16(%r13)
-	.size s2my_info, .-s2my_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(s2mM_info)+16
-	.long	0
-	.quad	4294967301
-	.quad	1
-	.quad	8936869165269002
-s2mM_info:
-.Lc2ws:
-.Lc2wu:
-	addq $48,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2ww
-.Lc2wv:
-	movq 7(%rbx),%rax
-	leaq s2mL_info(%rip),%rbx
-	movq %rbx,-40(%r12)
-	movq %r14,-24(%r12)
-	leaq -40(%r12),%rbx
-	leaq s2my_info(%rip),%rcx
-	movq %rcx,-16(%r12)
-	movq %rax,(%r12)
-	leaq -16(%r12),%rax
-	movq %rbx,%rdi
-	movq %rax,%rsi
-	leaq rqD_closure(%rip),%r14
-	movq base_DataziMaybe_maybe_closure@gotpcrel(%rip),%rbx
-	jmp *stg_ap_ppp_fast@gotpcrel(%rip)
-.Lc2ww:
-	movq $48,904(%r13)
-.Lc2wt:
-	jmp *-8(%r13)
-	.size s2mM_info, .-s2mM_info
-.section .text
-.align 8
-.align 8
-	.long	S2ol_srt-(MainlibziReport_run_info)+16
-	.long	0
-	.quad	4294967301
-	.quad	0
-	.quad	35959566441119759
-.globl MainlibziReport_run_info
-.type MainlibziReport_run_info, @object
-MainlibziReport_run_info:
-.Lc2wx:
-	leaq -24(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc2wy
-.Lc2wz:
-	addq $16,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc2wB
-.Lc2wA:
-	leaq s2mM_info(%rip),%rax
-	movq %rax,-8(%r12)
-	movq %r14,(%r12)
-	leaq -7(%r12),%rax
-	movq base_GHCziBase_zdfMonadIO_closure@gotpcrel(%rip),%r14
-	movq stg_ap_pp_info@gotpcrel(%rip),%rbx
-	movq %rbx,-24(%rbp)
-	movq base_SystemziEnvironment_getArgs_closure@gotpcrel(%rip),%rbx
-	movq %rbx,-16(%rbp)
-	movq %rax,-8(%rbp)
-	addq $-24,%rbp
-	jmp *base_GHCziBase_zgzgze_info@gotpcrel(%rip)
-.Lc2wB:
-	movq $16,904(%r13)
-.Lc2wy:
-	leaq MainlibziReport_run_closure(%rip),%rbx
-	jmp *-8(%r13)
-	.size MainlibziReport_run_info, .-MainlibziReport_run_info
-.section .data.rel.ro
-.align 8
-.align 1
-S2ol_srt:
-	.quad	ghczmprim_GHCziClasses_zdfOrdInt_closure
-	.quad	base_TextziRead_reads_closure
-	.quad	roI_closure
-	.quad	base_GHCziRead_zdfReadInt_closure
-	.quad	base_GHCziNum_zdfNumInt_closure
-	.quad	rqB_closure
-	.quad	ghczmprim_GHCziCString_unpackCStringzh_closure
-	.quad	base_GHCziBase_zpzp_closure
-	.quad	base_SystemziIO_putStrLn_closure
-	.quad	base_SystemziEnvironment_getProgName_closure
-	.quad	base_GHCziBase_zdfMonadIO_closure
-	.quad	s2m7_closure
-	.quad	s2mc_closure
-	.quad	base_SystemziIO_print_closure
-	.quad	base_GHCziShow_zdfShowInt_closure
-	.quad	base_SystemziIO_putStr_closure
-	.quad	rqC_closure
-	.quad	base_DataziFunctor_zlzdzg_closure
-	.quad	base_GHCziBase_zdfFunctorMaybe_closure
-	.quad	base_GHCziBase_zdfApplicativeMaybe_closure
-	.quad	base_GHCziBase_zi_closure
-	.quad	base_DataziMaybe_maybe_closure
-	.quad	rqD_closure
-	.quad	base_SystemziEnvironment_getArgs_closure
-	.quad	MainlibziReport_run_closure
 .section .note.GNU-stack,"",@progbits
-.ident "GHC 8.0.2"
+.ident "GHC 8.8.4"
+
 

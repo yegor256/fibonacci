@@ -1,1 +1,1 @@
-<program> 	<file>cpp/recursion.cpp</file> 	<name>cpp-recursion</name> 	<instructions>72</instructions> 	<cycles>256</cycles> 	<time>5.57</time> 	<time_per_cycle>.0217578125000000</time_per_cycle> 	<ticks>19965043683</ticks> 	<ticks_per_cycle>77988451</ticks_per_cycle> 	</program>
+<program> 	<file>cpp/recursion.cpp</file> 	<name>cpp-recursion</name> 	<instructions>68</instructions> 	<cycles>256</cycles> 	<time>1.33</time> 	<time_per_cycle>.0051953125000000</time_per_cycle> 	<ticks>5165878667</ticks> 	<ticks_per_cycle>20179213</ticks_per_cycle> 	</program>

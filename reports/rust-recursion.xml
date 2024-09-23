@@ -1,1 +1,1 @@
-<program> 	<file>rust/recursion.rs</file> 	<name>rust-recursion</name> 	<instructions>3998</instructions> 	<cycles>256</cycles> 	<time>9.54</time> 	<time_per_cycle>.0372656250000000</time_per_cycle> 	<ticks>34570318254</ticks> 	<ticks_per_cycle>135040305</ticks_per_cycle> 	</program>
+<program> 	<file>rust/recursion.rs</file> 	<name>rust-recursion</name> 	<instructions>602</instructions> 	<cycles>2147483648</cycles> 	<time>0.00</time> 	<time_per_cycle>0</time_per_cycle> 	<ticks>29312594</ticks> 	<ticks_per_cycle>0</ticks_per_cycle> 	</program>

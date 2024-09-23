@@ -1,19 +1,20 @@
 32-th Fibonacci number is 3524578
-Total is 28196624
+Total is 902291968
 
- Performance counter stats for 'bin/java-Objects.bin 32 8':
+ Performance counter stats for 'bin/java-Objects.bin 32 256':
 
-      15038.389656      task-clock (msec)         #    0.999 CPUs utilized          
-             1,263      context-switches          #    0.084 K/sec                  
-                10      cpu-migrations            #    0.001 K/sec                  
-            13,499      page-faults               #    0.898 K/sec                  
-    54,106,302,517      cycles                    #    3.598 GHz                      (83.32%)
-    14,867,945,891      stalled-cycles-frontend   #   27.48% frontend cycles idle     (83.32%)
-     9,912,713,302      stalled-cycles-backend    #   18.32% backend cycles idle      (66.69%)
-    78,796,151,798      instructions              #    1.46  insn per cycle         
-                                                  #    0.19  stalled cycles per insn  (83.33%)
-    18,694,928,124      branches                  # 1243.147 M/sec                    (83.32%)
-       786,024,464      branch-misses             #    4.20% of all branches          (83.34%)
+          76683.94 msec task-clock                       #    1.000 CPUs utilized             
+               143      context-switches                 #    1.865 /sec                      
+                 0      cpu-migrations                   #    0.000 /sec                      
+             23500      page-faults                      #  306.453 /sec                      
+      298761432309      cycles                           #    3.896 GHz                       
+      902678867843      instructions                     #    3.02  insn per cycle            
+      204147998204      branches                         #    2.662 G/sec                     
+         131180637      branch-misses                    #    0.06% of all branches           
 
-      15.052750525 seconds time elapsed
+      76.686859731 seconds time elapsed
+
+      76.654025000 seconds user
+       0.029998000 seconds sys
+
 

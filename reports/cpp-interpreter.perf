@@ -1,19 +1,20 @@
 32-th Fibonacci number is 3524578
-Total is -1191428096
+Total is -941490176
 
- Performance counter stats for 'bin/cpp-interpreter.bin 32 8192':
+ Performance counter stats for 'bin/cpp-interpreter.bin 32 65536':
 
-       1833.679711      task-clock (msec)         #    0.999 CPUs utilized          
-               157      context-switches          #    0.086 K/sec                  
-                 3      cpu-migrations            #    0.002 K/sec                  
-             2,831      page-faults               #    0.002 M/sec                  
-     6,630,889,303      cycles                    #    3.616 GHz                      (83.20%)
-     2,020,290,827      stalled-cycles-frontend   #   30.47% frontend cycles idle     (83.28%)
-       382,489,230      stalled-cycles-backend    #    5.77% backend cycles idle      (66.87%)
-    10,803,115,990      instructions              #    1.63  insn per cycle         
-                                                  #    0.19  stalled cycles per insn  (83.45%)
-     2,256,527,098      branches                  # 1230.600 M/sec                    (83.43%)
-        35,431,057      branch-misses             #    1.57% of all branches          (83.22%)
+           1079.03 msec task-clock                       #    1.000 CPUs utilized             
+                 1      context-switches                 #    0.927 /sec                      
+                 0      cpu-migrations                   #    0.000 /sec                      
+               117      page-faults                      #  108.431 /sec                      
+        4204618501      cycles                           #    3.897 GHz                       
+       13095440338      instructions                     #    3.11  insn per cycle            
+        3063924562      branches                         #    2.840 G/sec                     
+           4065505      branch-misses                    #    0.13% of all branches           
 
-       1.835517237 seconds time elapsed
+       1.079377289 seconds time elapsed
+
+       1.078413000 seconds user
+       0.001000000 seconds sys
+
 

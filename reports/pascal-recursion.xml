@@ -1,1 +1,1 @@
-<program> 	<file>pascal/recursion.pp</file> 	<name>pascal-recursion</name> 	<instructions>1</instructions> 	<cycles>256</cycles> 	<time>6.43</time> 	<time_per_cycle>.0251171875000000</time_per_cycle> 	<ticks>23133420087</ticks> 	<ticks_per_cycle>90364922</ticks_per_cycle> 	</program>
+<program> 	<file>pascal/recursion.pp</file> 	<name>pascal-recursion</name> 	<instructions>1</instructions> 	<cycles>256</cycles> 	<time>3.87</time> 	<time_per_cycle>.0151171875000000</time_per_cycle> 	<ticks>15095086565</ticks> 	<ticks_per_cycle>58965181</ticks_per_cycle> 	</program>

@@ -1,1 +1,1 @@
-<program> 	<file>cpp/loop.cpp</file> 	<name>cpp-loop</name> 	<instructions>73</instructions> 	<cycles>16777216</cycles> 	<time>1.24</time> 	<time_per_cycle>.0000000739097595</time_per_cycle> 	<ticks>4458949373</ticks> 	<ticks_per_cycle>265</ticks_per_cycle> 	</program>
+<program> 	<file>cpp/loop.cpp</file> 	<name>cpp-loop</name> 	<instructions>120</instructions> 	<cycles>268435456</cycles> 	<time>1.58</time> 	<time_per_cycle>.0000000058859586</time_per_cycle> 	<ticks>6174096746</ticks> 	<ticks_per_cycle>23</ticks_per_cycle> 	</program>

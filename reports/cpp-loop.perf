@@ -1,19 +1,20 @@
 32-th Fibonacci number is 3524578
-Total is -503316480
+Total is 536870912
 
- Performance counter stats for 'bin/cpp-loop.bin 32 16777216':
+ Performance counter stats for 'bin/cpp-loop.bin 32 268435456':
 
-       1239.629456      task-clock (msec)         #    0.999 CPUs utilized          
-               106      context-switches          #    0.086 K/sec                  
-                 0      cpu-migrations            #    0.000 K/sec                  
-             2,746      page-faults               #    0.002 M/sec                  
-     4,458,949,373      cycles                    #    3.597 GHz                      (83.25%)
-     2,496,956,993      stalled-cycles-frontend   #   56.00% frontend cycles idle     (83.23%)
-       178,096,940      stalled-cycles-backend    #    3.99% backend cycles idle      (66.62%)
-     7,780,504,219      instructions              #    1.74  insn per cycle         
-                                                  #    0.32  stalled cycles per insn  (83.43%)
-     1,132,985,112      branches                  #  913.971 M/sec                    (83.55%)
-            52,777      branch-misses             #    0.00% of all branches          (83.35%)
+           1584.87 msec task-clock                       #    1.000 CPUs utilized             
+                 2      context-switches                 #    1.262 /sec                      
+                 0      cpu-migrations                   #    0.000 /sec                      
+               114      page-faults                      #   71.930 /sec                      
+        6174096746      cycles                           #    3.896 GHz                       
+       26052071085      instructions                     #    4.22  insn per cycle            
+        4028726391      branches                         #    2.542 G/sec                     
+             36556      branch-misses                    #    0.00% of all branches           
 
-       1.240891989 seconds time elapsed
+       1.585158071 seconds time elapsed
+
+       1.584188000 seconds user
+       0.001000000 seconds sys
+
 

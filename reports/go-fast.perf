@@ -1,17 +1,20 @@
-32-th Fibonacci number is -1006632960
- Performance counter stats for 'bin/go-fast.bin 32 33554432':
+32-th Fibonacci number is 3524578
+Total is 473060851318784
 
-       1076.856333      task-clock (msec)         #    1.001 CPUs utilized          
-               262      context-switches          #    0.243 K/sec                  
-                 6      cpu-migrations            #    0.006 K/sec                  
-               212      page-faults               #    0.197 K/sec                  
-     3,884,785,485      cycles                    #    3.608 GHz                      (83.12%)
-     1,397,671,385      stalled-cycles-frontend   #   35.98% frontend cycles idle     (83.30%)
-       429,081,735      stalled-cycles-backend    #   11.05% backend cycles idle      (66.64%)
-     7,219,745,639      instructions              #    1.86  insn per cycle         
-                                                  #    0.19  stalled cycles per insn  (83.33%)
-     1,308,526,665      branches                  # 1215.136 M/sec                    (83.67%)
-            78,825      branch-misses             #    0.01% of all branches          (83.27%)
+ Performance counter stats for 'bin/go-fast.bin 32 134217728':
 
-       1.076130331 seconds time elapsed
+           1608.59 msec task-clock                       #    1.002 CPUs utilized             
+               227      context-switches                 #  141.118 /sec                      
+                 0      cpu-migrations                   #    0.000 /sec                      
+               568      page-faults                      #  353.105 /sec                      
+        6247456881      cycles                           #    3.884 GHz                       
+       28337728524      instructions                     #    4.54  insn per cycle            
+        5237453869      branches                         #    3.256 G/sec                     
+            217213      branch-misses                    #    0.00% of all branches           
+
+       1.604720129 seconds time elapsed
+
+       1.605410000 seconds user
+       0.004006000 seconds sys
+
 

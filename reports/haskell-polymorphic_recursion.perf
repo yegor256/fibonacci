@@ -1,19 +1,20 @@
 32-th Fibonacci number is 3524578
-Total is 28196624
+Total is 902291968
 
- Performance counter stats for 'bin/haskell-polymorphic_recursion.bin 32 8':
+ Performance counter stats for 'bin/haskell-polymorphic_recursion.bin 32 256':
 
-      17121.252298      task-clock (msec)         #    0.999 CPUs utilized          
-             1,444      context-switches          #    0.084 K/sec                  
-                19      cpu-migrations            #    0.001 K/sec                  
-               943      page-faults               #    0.055 K/sec                  
-    61,763,515,383      cycles                    #    3.607 GHz                      (83.31%)
-    12,830,783,057      stalled-cycles-frontend   #   20.77% frontend cycles idle     (83.35%)
-    13,101,712,536      stalled-cycles-backend    #   21.21% backend cycles idle      (66.66%)
-    98,892,772,615      instructions              #    1.60  insn per cycle         
-                                                  #    0.13  stalled cycles per insn  (83.33%)
-    23,371,601,567      branches                  # 1365.064 M/sec                    (83.33%)
-       872,010,214      branch-misses             #    3.73% of all branches          (83.34%)
+           6711.89 msec task-clock                       #    1.000 CPUs utilized             
+                17      context-switches                 #    2.533 /sec                      
+                 0      cpu-migrations                   #    0.000 /sec                      
+              1200      page-faults                      #  178.787 /sec                      
+       26159638291      cycles                           #    3.898 GHz                       
+       67722578283      instructions                     #    2.59  insn per cycle            
+       14827529487      branches                         #    2.209 G/sec                     
+         164437256      branch-misses                    #    1.11% of all branches           
 
-      17.137020765 seconds time elapsed
+       6.712338960 seconds time elapsed
+
+       6.686345000 seconds user
+       0.026001000 seconds sys
+
 

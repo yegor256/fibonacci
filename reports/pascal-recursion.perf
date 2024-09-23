@@ -1,19 +1,20 @@
-32-th Fibonacci number is 15621
-Total is 1536
+32-th Fibonacci number is 3524578
+Total is 902292224
 
  Performance counter stats for 'bin/pascal-recursion.bin 32 256':
 
-       6447.567114      task-clock (msec)         #    0.999 CPUs utilized          
-               548      context-switches          #    0.085 K/sec                  
-                18      cpu-migrations            #    0.003 K/sec                  
-                52      page-faults               #    0.008 K/sec                  
-    23,133,420,087      cycles                    #    3.588 GHz                      (83.32%)
-    11,444,379,598      stalled-cycles-frontend   #   49.47% frontend cycles idle     (83.32%)
-     6,787,952,142      stalled-cycles-backend    #   29.34% backend cycles idle      (66.66%)
-    21,206,535,327      instructions              #    0.92  insn per cycle         
-                                                  #    0.54  stalled cycles per insn  (83.33%)
-     4,463,077,440      branches                  #  692.211 M/sec                    (83.32%)
-        72,745,152      branch-misses             #    1.63% of all branches          (83.37%)
+           3873.44 msec task-clock                       #    1.000 CPUs utilized             
+                 7      context-switches                 #    1.807 /sec                      
+                 0      cpu-migrations                   #    0.000 /sec                      
+                36      page-faults                      #    9.294 /sec                      
+       15095086565      cycles                           #    3.897 GHz                       
+       32507320589      instructions                     #    2.15  insn per cycle            
+        7222210266      branches                         #    1.865 G/sec                     
+            739114      branch-misses                    #    0.01% of all branches           
 
-       6.453939492 seconds time elapsed
+       3.873776337 seconds time elapsed
+
+       3.873686000 seconds user
+       0.000000000 seconds sys
+
 
