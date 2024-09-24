@@ -49,21 +49,4 @@ and [cpplint](https://github.com/cpplint/cpplint) installed.
 It's better to check [this file][pr] for the full list of
 dependencies.
 
-## How to Setup
-
-If you want this code to run on your own machine, you will
-need to configure a self-hosted runner, as it's done in this repo.
-Just rent a server with at least 8Gb RAM (not Docker!) and then login there
-as `root`:
-
-```bash
-adduser --quiet --disabled-password --force-badname --gecos "" runner
-usermod -aG sudo runner
-echo "runner ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-su - runner
-```
-
-Then, you follow the instructions from [here][runners].
-
-[runners]: https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-runners
 [pr]: https://github.com/yegor256/fibonacci/blob/master/.github/workflows/pr.yml
