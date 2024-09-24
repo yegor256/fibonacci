@@ -38,6 +38,5 @@ jobs:
         with:
           distribution: 'graalvm'
           java-version: '21'
-          components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: make -e env sa FAST=1 INPUT=7

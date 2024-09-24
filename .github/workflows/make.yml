@@ -60,7 +60,6 @@ jobs:
         with:
           distribution: 'graalvm'
           java-version: '21'
-          components: 'native-image'
           github-token: ${{ secrets.GH_PAT }}
       - run: make env sa
       - run: mkdir www
