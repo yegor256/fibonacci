@@ -1,2 +1,5 @@
 [DEFAULT]
 ignore_rules = maxbodylength
+
+[maxbodylength]
+maxBodyLength = 50
