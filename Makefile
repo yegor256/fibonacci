@@ -40,6 +40,7 @@ SBCL = sbcl
 HC = ghc
 EC = ec
 JAVAC = javac
+DOTNET = dotnet
 HCFLAGS = -dynamic -Wall -Werror -O3
 HCLIBDIR = haskell/Mainlib
 HCLIBS = $(wildcard $(HCLIBDIR)/*.hs)
@@ -54,12 +55,13 @@ PASCALS = $(wildcard pascal/*.pp)
 # LISPS = $(wildcard lisp/*.lisp)
 HASKELLS = $(wildcard haskell/*.hs)
 JAVAS = $(wildcard java/*.java)
+CSHARPS = $(subst /Program.cs,.cs,$(wildcard csharp/*/Program.cs))
 # Eiffel doesn't work, this may help: https://github.com/eiffel-docker/eiffel/issues/3
 # EIFFELS = eiffel/application.e
 GOS = $(wildcard go/cmd/*/main.go)
 # I can't figure out how to install Ada on macOS with Homebrew :(
 # ADAS = $(wildcard ada/*.adb)
-ASMS = $(subst ada/,asm/ada-,$(subst pascal/,asm/pascal-,$(subst eiffel/,asm/eiffel-,$(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm} ${JAVAS:.java=.asm} ${EIFFELS:.e=.asm} ${PASCALS:.pp=.asm} ${ADAS:.adb=.asm})))))))))
+ASMS = $(subst csharp/,asm/csharp-,$(subst ada/,asm/ada-,$(subst pascal/,asm/pascal-,$(subst eiffel/,asm/eiffel-,$(subst go/cmd/,asm/go-,$(subst haskell/,asm/haskell-,$(subst java/,asm/java-,$(subst lisp/,asm/lisp-,$(subst rust/,asm/rust-,$(subst cpp/,asm/cpp-,${CPPS:.cpp=.asm} ${RUSTS:.rs=.asm} ${LISPS:.lisp=.asm} ${HASKELLS:.hs=.asm} ${GOS:/main.go=.asm} ${JAVAS:.java=.asm} ${EIFFELS:.e=.asm} ${PASCALS:.pp=.asm} ${ADAS:.adb=.asm} ${CSHARPS:.cs=.asm}))))))))))
 BINS = $(subst asm/,bin/,${ASMS:.asm=.bin})
 REPORTS = $(subst bin/,reports/,${BINS:.bin=.txt})
 GOCACHE = /tmp/gocache
@@ -112,6 +114,7 @@ install: Makefile
 		echo "This is macOS, installing necessary components:"
 		brew install fpc cppcheck sbcl go
 		brew install --cask graalvm/tap/graalvm-ce-lts-java11
+		brew install --cask dotnet-sdk
 	elif [[ "$${OSTYPE}" == "linux-gnu"* ]]; then
 		echo "This is Linux, installing necessary components:"
 		apt-get -y update --fix-missing
@@ -123,7 +126,8 @@ install: Makefile
             libyaml-dev libxml2-dev autoconf libc6-dev ncurses-dev \
             automake libtool lsb-release \
       		gnat jq cppcheck bc fpc linux-tools-generic \
-      		ruby-full
+      		ruby-full \
+      		dotnet-sdk-8.0
 		apt-get clean
 		# see https://stackoverflow.com/a/76641565/187141
 		rm -f /usr/lib/python3.*/EXTERNALLY-MANAGED
@@ -150,6 +154,7 @@ env: Makefile
 	$(HC) --version
 	$(FPC) -h >/dev/null
 	$(JAVAC) --version
+	$(DOTNET) --version
 	if [ -n "$(LISPS)" ]; then $(SBCL) --version; fi
 	if [ -n "$(EIFFELS)" ]; then $(EC) --version; fi
 	if [ -n "$(ADAS)" ]; then $(GNAT) --version; fi
@@ -189,6 +194,9 @@ asm/eiffel-%.asm: eiffel/%.e | asm
 asm/go-%.asm: go/cmd/%/main.go | asm
 	echo " no asm here" > "$@"
 
+asm/csharp-%.asm: csharp/%/Program.cs | asm
+	echo " no asm here" > "$@"
+
 asm/haskell-%.asm: haskell/%.hs $(HCLIBS) | asm
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
 	$(HC) $(HCFLAGS) -S $(HCLIBS) "$<"
@@ -217,6 +225,11 @@ bin/eiffel-%.bin: eiffel/%.e | bin
 	$(EC) "$<" -batch
 	mv application "$@"
 	chmod a+x "$@"
+
+bin/csharp-%.bin: csharp/%/Program.cs | bin
+	cd "$$(dirname "$<")"
+	$(DOTNET) publish -c Release -r osx-x64 --self-contained
+	mv bin/Release/*/*/publish/* "../../$@"
 
 bin/pascal-%.bin: pascal/%.pp | bin
 	fpc "$<" "-FEbin" "-o$@"
@@ -260,11 +273,11 @@ reports/%.txt: bin/%.bin asm/%.asm | reports
 		if [ "$(FAST)" != "" ]; then break; fi
 		seconds=$$(echo $${time} | cut -f1 -d.)
 		if [ "$${seconds}" -gt "10" ]; then break; fi
-		if [ "$${seconds}" -gt "0" -a "$${cycles}" -ge "$(WANTED)" ]; then break; fi
+		if [ "$${seconds}" -gt "0" ] && [ "$${cycles}" -ge "$(WANTED)" ]; then break; fi
 		echo "cycles=$${cycles}; time=$${time} -> too fast, need more cycles (attempt #$${attempt})..."
 		cycles=$$(expr $${cycles} \* 2)
 		if [ "$${cycles}" -gt "2147483647" ]; then break; fi
-		if [ "$${cycles}" -lt "$(WANTED)" -a "$${seconds}" -lt "1" ]; then cycles=$(WANTED); fi
+		if [ "$${cycles}" -lt "$(WANTED)" ] && [ "$${seconds}" -lt "1" ]; then cycles=$(WANTED); fi
 		attempt=$$(expr $${attempt} + 1)
 	done
 	if [ "$$(uname)" == "Darwin" ]; then
