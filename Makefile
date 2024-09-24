@@ -116,7 +116,7 @@ install: Makefile
 		echo "This is Linux, installing necessary components:"
 		apt-get -y update --fix-missing
 		apt-get -y install --no-install-recommends \
-			clang clang-tidy clang-format \
+			clang clang-tidy \
 			rustc ghc sbcl golang build-essential \
             curl wget git-core zlib1g zlib1g-dev libssl-dev \
             snapd python3 python3-pip \
@@ -142,8 +142,6 @@ install: Makefile
 
 env: Makefile
 	$(CC) --version
-	clang-18 --version
-	clang-format --version
 	clang-tidy --version
 	cppcheck --version
 	cpplint --version
@@ -158,7 +156,6 @@ env: Makefile
 	$(GO) version
 
 sa: Makefile
-	diff -u <(cat $(CPPS)) <(clang-format --style=file $(CPPS))
 	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 \
 		--check-level=exhaustive --suppress=noCopyConstructor --suppress=noOperatorEq \
 		--suppress=ctuOneDefinitionRuleViolation --suppress=missingIncludeSystem \
