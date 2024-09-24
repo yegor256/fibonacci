@@ -184,9 +184,9 @@ SOFTWARE.
           <a href="https://www.yegor256.com">
             <xsl:text>@yegor256</xsl:text>
           </a>
-          <xsl:text> at &quot;</xsl:text>
+          <xsl:text> at "</xsl:text>
           <xsl:value-of select="@uname"/>
-          <xsl:text>&quot; machine.</xsl:text>
+          <xsl:text>" machine.</xsl:text>
         </p>
       </body>
     </html>

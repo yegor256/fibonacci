@@ -145,6 +145,10 @@ install: Makefile
 	wget --no-verbose -O /usr/local/opt/Saxon.jar https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar
 
 env: Makefile
+	if [ -z "$${HOME}" ]; then
+		echo "For some reason, the HOME variable is not set"
+		exit 1
+	fi
 	$(CC) --version
 	clang-tidy --version
 	cppcheck --version
@@ -162,6 +166,7 @@ env: Makefile
 
 sa: Makefile
 	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 \
+		--suppress=normalCheckLevelMaxBranches \
 		--suppress=noCopyConstructor --suppress=noOperatorEq \
 		--suppress=ctuOneDefinitionRuleViolation --suppress=missingIncludeSystem \
 		$(CPPS)
@@ -170,7 +175,7 @@ sa: Makefile
 		'-warnings-as-errors=*' \
 		'-checks=*,-modernize-use-nodiscard,-readability-identifier-length,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
 		$(CPPS)
-	#xcop *.xsl
+	xcop $$(find . -name *.xsl)
 	echo "All clean, thanks!"
 
 asm/cpp-%.asm: cpp/%.cpp | asm

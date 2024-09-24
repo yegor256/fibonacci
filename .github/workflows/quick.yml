@@ -61,7 +61,8 @@ jobs:
           java-version: '21'
           github-token: ${{ secrets.GH_PAT }}
       - run: make env sa
-      - run: make -e env sa FAST=1 INPUT=7
+      - run: make -e env sa
+      - run: make -e FAST=1 INPUT=7
   terminate-instance:
     needs:
       - start-instance

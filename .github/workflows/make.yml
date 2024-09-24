@@ -53,6 +53,7 @@ jobs:
     runs-on: ${{ needs.start-instance.outputs.label }}
     env:
       GRAAL_PATH: ''
+      DOTNET_CLI_HOME: '.'
     steps:
       - uses: actions/checkout@v4
       - run: sudo make install
