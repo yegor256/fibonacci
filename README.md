@@ -5,7 +5,7 @@
 [![new](https://github.com/yegor256/fibonacci/actions/workflows/make.yml/badge.svg)](https://github.com/yegor256/fibonacci/actions/workflows/make.yml)
 
 Here we compare [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_number)
-algorithm implemented in C++, Rust, Lisp, Haskell, Eiffel, and some other
+algorithm implemented in C++, Java, Rust, Lisp, Haskell, Eiffel, and some other
 [compiled](https://en.wikipedia.org/wiki/Compiled_language) programing languages
 in different programming styles, like object-oriented, procedural, functional,
 etc. We are trying to understand which style compiles to shorter binary code and
