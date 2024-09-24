@@ -29,7 +29,7 @@ int calc(int);
 // see https://stackoverflow.com/questions/70686140
 volatile int dummy = 0;
 
-int main(int argc, char* argv[]) {
+int main(int argc, const char* argv[]) {
   if (argc != 3) {
     printf("Two args required: INPUT and CYCLES\n");
     return 1;

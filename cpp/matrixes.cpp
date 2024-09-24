@@ -19,6 +19,7 @@
 // SOFTWARE.
 
 #include <array>
+#include <cstddef>
 
 #include "./main.h"
 

@@ -21,23 +21,23 @@
 name: quick
 'on':
   pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
 jobs:
   quick:
     runs-on: ubuntu-24.04
+    env:
+      GRAAL_PATH: ''
     steps:
       - uses: actions/checkout@v4
       - run: sudo make install
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.2
-          bundler-cache: true
-      - run: gem install xcop
       - uses: graalvm/setup-graalvm@v1
         with:
           distribution: 'graalvm'
           java-version: '21'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: make env
-      - run: make sa
-      - run: sudo make FAST=1 INPUT=7
+      - run: make -e env sa FAST=1 INPUT=7

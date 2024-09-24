@@ -33,6 +33,7 @@ public:
   ~Other() override { delete second; }
   int get() override { return first->get() + second->get(); }
   Fibo* next() override { return new Other(second, this); }
+
 private:
   Fibo* first;
   Fibo* second;
@@ -44,6 +45,7 @@ public:
   ~Second() override { delete first; }
   int get() override { return 1; }
   Fibo* next() override { return new Other(first, this); }
+
 private:
   Fibo* first;
 };
@@ -59,7 +61,7 @@ int calc(int x) {
   for (int i = 0; i < x; ++i) {
     f = f->next();
   }
-  int r = f->get();
+  const int r = f->get();
   delete f;
   return r;
 }

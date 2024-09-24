@@ -39,7 +39,7 @@ matrix2on2 binpow(const matrix2on2 &a, int n) {
   } else if (n % 2 == 1) {
     result = mul(binpow(a, n - 1), a);
   } else {
-    matrix2on2 b = binpow(a, n / 2);
+    const matrix2on2 b = binpow(a, n / 2);
     result = mul(b, b);
   }
   return result;
@@ -47,9 +47,9 @@ matrix2on2 binpow(const matrix2on2 &a, int n) {
 // See https://e-maxx.ru/algo/fibonacci_numbers#8
 int calc(int n) {
   n += 1;
-  matrix2on2 factor = {0, 1, 1, 1};
-  matrix2on2 multiplier = binpow(factor, n);
-  matrix2on2 base = {0, 1, 0, 0};
-  int result = mul(base, multiplier)[0];
+  const matrix2on2 factor = {0, 1, 1, 1};
+  const matrix2on2 multiplier = binpow(factor, n);
+  const matrix2on2 base = {0, 1, 0, 0};
+  const int result = mul(base, multiplier)[0];
   return result;
 }

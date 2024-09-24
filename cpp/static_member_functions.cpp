@@ -22,22 +22,22 @@
 
 class Adder {
 public:
-  static int Solve(int a, int b) {return a + b;}
+  static int Solve(int a, int b) { return a + b; }
 };
 
 class Substructor {
 public:
-  static int Solve(int a, int b) {return a - b;}
+  static int Solve(int a, int b) { return a - b; }
 };
 
 class Comparer {
 public:
-  static bool Solve(int a, int b) {return a < b;}
+  static bool Solve(int a, int b) { return a < b; }
 };
 
 class If {
 public:
-  static int Solve(bool term, int a, int b) {return term ? a : b;}
+  static int Solve(bool term, int a, int b) { return term ? a : b; }
 };
 
 class Fibo {
@@ -46,12 +46,9 @@ public:
     if (Comparer::Solve(num, 2)) {
       return 1;
     }
-    return Adder::Solve(
-      Fibo::Solve(Substructor::Solve(num, 1)),
-        Fibo::Solve(Substructor::Solve(num, 2)));
-    }
+    return Adder::Solve(Fibo::Solve(Substructor::Solve(num, 1)),
+      Fibo::Solve(Substructor::Solve(num, 2)));
+  }
 };
 
-int calc(int x) {
-  return Fibo::Solve(x);
-}
+int calc(int x) { return Fibo::Solve(x); }

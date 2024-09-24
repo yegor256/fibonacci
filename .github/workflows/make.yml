@@ -56,19 +56,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: sudo make install
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.2
-          bundler-cache: false
-      - run: gem install xcop
       - uses: graalvm/setup-graalvm@v1.2.3
         with:
           distribution: 'graalvm'
           java-version: '21'
           components: 'native-image'
           github-token: ${{ secrets.GH_PAT }}
-      - run: make env
-      - run: make clean
+      - run: make env sa
       - run: mkdir www
       - run: make -e WANTED=256 INPUT=7 index.html
       - run: mv index.html www/seven.html

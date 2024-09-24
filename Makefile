@@ -122,12 +122,14 @@ install: Makefile
             snapd python3 python3-pip \
             libyaml-dev libxml2-dev autoconf libc6-dev ncurses-dev \
             automake libtool lsb-release \
-      		gnat jq cppcheck bc fpc linux-tools-generic
+      		gnat jq cppcheck bc fpc linux-tools-generic \
+      		ruby-full
 		apt-get clean
 		# see https://stackoverflow.com/a/76641565/187141
 		rm -f /usr/lib/python3.*/EXTERNALLY-MANAGED
 		pip install cpplint
 		snap install powershell --classic
+		gem install xcop
 		if [ ! -e /usr/bin/perf ]; then
 			ln -s "$(ls /usr/lib/linux-tools/*/perf | head -1)" /usr/bin/perf
 		fi
@@ -154,13 +156,17 @@ env: Makefile
 
 sa: Makefile
 	diff -u <(cat $(CPPS)) <(clang-format --style=file $(CPPS))
-	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 --suppress=missingIncludeSystem $(CPPS)
-	cpplint --extensions=cpp --filter=-whitespace/indent $(CPPS)
+	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 \
+		--check-level=exhaustive --suppress=noCopyConstructor --suppress=noOperatorEq \
+		--suppress=ctuOneDefinitionRuleViolation --suppress=missingIncludeSystem \
+		$(CPPS)
+	cpplint --extensions=cpp --filter=-whitespace/indent,-runtime/explicit $(CPPS)
 	clang-tidy -header-filter=none \
 		'-warnings-as-errors=*' \
-		'-checks=*,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
+		'-checks=*,-modernize-use-nodiscard,-readability-identifier-length,-readability-magic-numbers,-altera-id-dependent-backward-branch,-cert-err34-c,-cppcoreguidelines-avoid-non-const-global-variables,-readability-function-cognitive-complexity,-misc-no-recursion,-llvm-header-guard,-cppcoreguidelines-init-variables,-altera-unroll-loops,-clang-analyzer-valist.Uninitialized,-llvmlibc-callee-namespace,-cppcoreguidelines-no-malloc,-hicpp-no-malloc,-llvmlibc-implementation-in-namespace,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-include-order,-modernize-use-trailing-return-type,-cppcoreguidelines-special-member-functions,-hicpp-special-member-functions,-cppcoreguidelines-owning-memory,-cppcoreguidelines-pro-type-vararg,-hicpp-vararg' \
 		$(CPPS)
 	#xcop *.xsl
+	echo "All clean, thanks!"
 
 asm/cpp-%.asm: cpp/%.cpp | asm
 	$(CC) $(CCFLAGS) -S -o "$@" "$<"

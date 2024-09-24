@@ -32,9 +32,11 @@ public:
     return std::shared_ptr<Computation<T>>(this);
   }
   T result() { return m_result; }
+
 protected:
   Computation() = default;
   explicit Computation(T res) : m_result(res), m_finished(true) {}
+
 private:
   T m_result = T();
   bool m_finished = false;
@@ -61,6 +63,7 @@ public:
     }
     return (*cur).result();
   }
+
 private:
   typename Computation<T>::ptr entrypoint;
 };
@@ -73,6 +76,7 @@ public:
   typename Computation<T>::ptr eval() override {
     return cptr(new Value(m_val));
   };
+
 private:
   T m_val;
 };
@@ -115,6 +119,7 @@ public:
     return res;
   };
   ~If() override = default;
+
 private:
   Computation<bool>::ptr m_pred;
   typename Computation<T>::ptr m_thn;
@@ -128,11 +133,13 @@ public:
   typename Computation<B>::ptr eval() override {
     return cptr<B>(op(Force<A>(m_left).get(), Force<A>(m_right).get()));
   }
+
 protected:
   BinaryOp(
     typename Computation<A>::ptr left, typename Computation<A>::ptr right)
     : m_left(std::move(left)), m_right(std::move(right)), Computation<B>() {}
   virtual Computation<B> *op(A /* l */, A /* r */) { return nullptr; }
+
 private:
   typename Computation<A>::ptr m_left;
   typename Computation<A>::ptr m_right;
@@ -143,6 +150,7 @@ class LT : public BinaryOp<T, bool> {
 public:
   LT(typename Computation<T>::ptr left, typename Computation<T>::ptr right)
     : BinaryOp<T, bool>(left, right) {}
+
 protected:
   Bool *op(T l, T r) override { return new Bool(l < r); }
 };
@@ -152,6 +160,7 @@ class Sum : public BinaryOp<T, T> {
 public:
   Sum(typename Computation<T>::ptr left, typename Computation<T>::ptr right)
     : BinaryOp<T, T>(left, right) {}
+
 protected:
   Value<T> *op(T l, T r) override { return new Value<T>(l + r); };
 };
@@ -167,6 +176,7 @@ public:
         m_b, Force<int>(new Sum<int>(m_a, m_b)).ptr()))));
   }
   ~FiboDyn() override = default;
+
 private:
   Computation<int>::ptr m_n;
   Computation<int>::ptr m_a;
@@ -180,6 +190,7 @@ public:
     return cptr(new FiboDyn(m_n, cptr(new Int(0)), cptr(new Int(1))));
   };
   ~Fibo() override = default;
+
 private:
   Computation<int>::ptr m_n;
 };

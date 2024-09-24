@@ -38,6 +38,7 @@ public:
   explicit Integer(Int* i) : value(i->get()) {}
   ~Integer() override = default;
   int get() override { return value; }
+
 private:
   int value;
 };
@@ -50,6 +51,7 @@ public:
     delete right;
   }
   bool get() override { return left->get() < right->get(); }
+
 private:
   Int* left;
   Int* right;
@@ -63,6 +65,7 @@ public:
     delete right;
   }
   int get() override { return left->get() + right->get(); }
+
 private:
   Int* left;
   Int* right;
@@ -76,6 +79,7 @@ public:
     delete right;
   }
   int get() override { return left->get() - right->get(); }
+
 private:
   Int* left;
   Int* right;
@@ -95,6 +99,7 @@ public:
     }
     return right->get();
   }
+
 private:
   Bool* term;
   Int* left;
@@ -110,17 +115,18 @@ public:
       new If(new Less(new Integer(value), new Integer(2)), new Integer(1),
         new Add(new Fibo(new Sub(new Integer(value), new Integer(1))),
           new Fibo(new Sub(new Integer(value), new Integer(2)))));
-    int result = iff->get();
+    const int result = iff->get();
     delete iff;
     return result;
   }
+
 private:
   Int* value;
 };
 
 int calc(int x) {
   Int* fibo = new Fibo(new Integer(x));
-  int f = fibo->get();
+  const int f = fibo->get();
   delete fibo;
   return f;
 }
