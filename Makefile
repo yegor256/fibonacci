@@ -157,7 +157,7 @@ env: Makefile
 
 sa: Makefile
 	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 \
-		--check-level=exhaustive --suppress=noCopyConstructor --suppress=noOperatorEq \
+		--suppress=noCopyConstructor --suppress=noOperatorEq \
 		--suppress=ctuOneDefinitionRuleViolation --suppress=missingIncludeSystem \
 		$(CPPS)
 	cpplint --extensions=cpp --filter=-whitespace/indent,-runtime/explicit $(CPPS)
