@@ -227,8 +227,16 @@ bin/eiffel-%.bin: eiffel/%.e | bin
 	chmod a+x "$@"
 
 bin/csharp-%.bin: csharp/%/Program.cs | bin
+	if [[ "$${OSTYPE}" == "darwin"* ]]; then
+		arch=osx-x64
+	elif [[ "$${OSTYPE}" == "linux-gnu"* ]]; then
+		arch=linux-x64
+	else
+		echo "This is neither macOS nor Liux, can't build .Net binary :("
+		exit 1
+	fi
 	cd "$$(dirname "$<")"
-	$(DOTNET) publish -c Release -r osx-x64 --self-contained
+	$(DOTNET) publish -c Release -r "$${arch}" --self-contained
 	mv bin/Release/*/*/publish/* "../../$@"
 
 bin/pascal-%.bin: pascal/%.pp | bin
