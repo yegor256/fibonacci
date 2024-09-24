@@ -19,7 +19,7 @@
 # SOFTWARE.
 ---
 name: make
-on:
+'on':
   push:
     branches:
       - master
@@ -48,7 +48,7 @@ jobs:
           ec2-instance-type: c5.metal # it must be "metal", otherwise won't work
           subnet-id: subnet-0f80650e7db6e041e
           security-group-id: sg-0ffb312e3a7d40ed3
-  build:
+  make:
     needs: start-instance
     runs-on: ${{ needs.start-instance.outputs.label }}
     env:
@@ -82,7 +82,7 @@ jobs:
   terminate-instance:
     needs:
       - start-instance
-      - build
+      - make
     runs-on: ubuntu-24.04
     if: ${{ always() }}
     steps:

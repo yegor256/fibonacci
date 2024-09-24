@@ -142,12 +142,15 @@ install: Makefile
 
 env: Makefile
 	$(CC) --version
+	clang-18 --version
+	clang-format --version
+	clang-tidy --version
+	cppcheck --version
+	cpplint --version
 	$(RUSTC) --version
 	$(MAKE) -version
 	$(HC) --version
 	$(FPC) -h >/dev/null
-	cppcheck --version
-	cpplint --version
 	$(JAVAC) --version
 	if [ -n "$(LISPS)" ]; then $(SBCL) --version; fi
 	if [ -n "$(EIFFELS)" ]; then $(EC) --version; fi
