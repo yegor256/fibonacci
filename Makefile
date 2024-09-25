@@ -299,7 +299,7 @@ bin/java-%.bin: java/%.java | bin
 	else
 		jar cfe "tmp/$${name}.jar" "$${name}" -C "tmp/$${name}" .
 	fi
-		"$${nimage}" $(NIFLAGS) -jar "tmp/$${name}.jar" "$@"
+	"$${nimage}" $(NIFLAGS) -jar "tmp/$${name}.jar" "$@"
 
 reports/%.txt: bin/%.bin asm/%.asm | reports
 	"$<" 7 1
