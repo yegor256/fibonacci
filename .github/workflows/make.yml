@@ -51,9 +51,6 @@ jobs:
   make:
     needs: start-instance
     runs-on: ${{ needs.start-instance.outputs.label }}
-    env:
-      GRAAL_PATH: ''
-      HOME: '.'
     steps:
       - uses: actions/checkout@v4
       - run: sudo make install

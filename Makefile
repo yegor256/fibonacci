@@ -159,10 +159,6 @@ install: Makefile
 	fi
 
 env: Makefile
-	if [ -z "$${HOME}" ]; then
-		echo "For some reason, the HOME variable is not set"
-		exit 1
-	fi
 	$(CC) --version
 	clang-tidy --version
 	cpplint --version
@@ -240,6 +236,10 @@ bin/eiffel-%.bin: eiffel/%.e | bin
 	chmod a+x "$@"
 
 bin/csharp-%.bin: csharp/%/Program.cs | bin
+	if [ -z "${HOME}" ]; then
+		HOME=$$(pwd)
+		export HOME
+	fi
 	if [[ "$${OSTYPE}" == "darwin"* ]]; then
 		arch=osx-x64
 	elif [[ "$${OSTYPE}" == "linux-gnu"* ]]; then
@@ -251,7 +251,7 @@ bin/csharp-%.bin: csharp/%/Program.cs | bin
 	cd "$$(dirname "$<")"
 	$(DOTNET) publish -c Release -r "$${arch}" --self-contained --output bins --nologo
 	bin=$$(basename "$$(dirname "$<")")
-	mv "bins/$${bin}" "../../$@"
+	ln -s "$$(realpath "bins/$${bin}")" "$$(realpath "../../$@")"
 
 bin/pascal-%.bin: pascal/%.pp | bin
 	fpc "$<" "-FEbin" "-o$@"
@@ -279,7 +279,7 @@ bin/java-%.bin: java/%.java | bin
 		nimage=/usr/local/graalvm/bin/native-image
 	fi
 	if ! "$${nimage}" --version; then
-		nimage=/Library/Java/JavaVirtualMachines/*/Contents/Home/bin/native-image
+		nimage=$$(realpath /Library/Java/JavaVirtualMachines/*/Contents/Home/bin/native-image)
 	fi
 	if ! "$${nimage}" --version; then
 		echo "Most probably you don't have GraalVM installed"

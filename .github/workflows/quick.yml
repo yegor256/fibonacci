@@ -44,15 +44,12 @@ jobs:
           mode: start
           github-token: ${{ secrets.GH_PAT }}
           ec2-image-id: ${{ secrets.AWS_AMI }}
-          ec2-instance-type: t2.small
+          ec2-instance-type: t2.medium
           subnet-id: ${{ secrets.AWS_SUBNET }}
           security-group-id: ${{ secrets.AWS_SGROUP }}
   make:
     needs: start-instance
     runs-on: ${{ needs.start-instance.outputs.label }}
-    env:
-      GRAAL_PATH: ''
-      HOME: '.'
     steps:
       - uses: actions/checkout@v4
       - run: sudo make install
