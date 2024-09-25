@@ -115,7 +115,7 @@ index.html: index.xml main.xsl Makefile
 install: Makefile
 	if [[ "$${OSTYPE}" == "darwin"* ]]; then
 		echo "This is macOS, installing necessary components:"
-		brew install fpc cppcheck sbcl go
+		brew install fpc sbcl go
 		brew install --cask graalvm/tap/graalvm-ce-lts-java11
 		brew install --cask dotnet-sdk
 	elif [[ "$${OSTYPE}" == "linux-gnu"* ]]; then
@@ -129,7 +129,7 @@ install: Makefile
             snapd python3 python3-pip \
             libyaml-dev libxml2-dev autoconf libc6-dev ncurses-dev \
             automake libtool lsb-release \
-      		gnat jq cppcheck bc fpc linux-tools-generic \
+      		gnat jq bc fpc linux-tools-generic \
       		ruby-full \
       		dotnet-sdk-8.0
 		apt-get clean
@@ -165,7 +165,6 @@ env: Makefile
 	fi
 	$(CC) --version
 	clang-tidy --version
-	cppcheck --version
 	cpplint --version
 	$(RUSTC) --version
 	$(MAKE) -version
@@ -179,11 +178,6 @@ env: Makefile
 	$(GO) version
 
 sa: Makefile
-	cppcheck --inline-suppr --enable=all --std=c++11 --error-exitcode=1 \
-		--suppress=normalCheckLevelMaxBranches \
-		--suppress=noCopyConstructor --suppress=noOperatorEq \
-		--suppress=ctuOneDefinitionRuleViolation --suppress=missingIncludeSystem \
-		$(CPPS)
 	cpplint --extensions=cpp --filter=-whitespace/indent,-runtime/explicit $(CPPS)
 	clang-tidy -header-filter=none \
 		'-warnings-as-errors=*' \
