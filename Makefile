@@ -134,10 +134,14 @@ install: Makefile
       		dotnet-sdk-8.0
 		apt-get clean
 		if ! native-image --version; then
-			wget https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-23.0.0/graalvm-community-jdk-23.0.0_linux-x64_bin.tar.gz
-			tar xzf graalvm-community-jdk-23.0.0_linux-x64_bin.tar.gz
-			cp graalvm-community-openjdk-23+37.1/bin/native-image /usr/local/bin
-			rm graalvm-community-jdk-23.0.0_linux-x64_bin.tar.gz
+			tgz=graalvm-community-jdk-23.0.0_linux-x64_bin.tar.gz
+			wget "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-23.0.0/$${tgz}"
+			tar xzf "$${tgz}"
+			dir=graalvm-community-openjdk-23+37.1
+			cp "$${dir}/bin/native-image" /usr/local/bin
+			cp -R "$${dir}/lib/truffle" /usr/local/lib
+			cp -R "$${dir}/lib/svm" /usr/local/lib
+			rm "$${tgz}"
 		fi
 		# see https://stackoverflow.com/a/76641565/187141
 		rm -f /usr/lib/python3.*/EXTERNALLY-MANAGED
@@ -274,6 +278,10 @@ bin/haskell-%.bin: haskell/%.hs $(HCLIBS) | bin
 	rm $(HCLIBDIR)/*.hi
 
 bin/java-%.bin: java/%.java | bin
+	if [ -z "${JAVA_HOME}" ]; then
+		JAVA_HOME=$$(find /usr/lib/jvm -name 'java-*' | head -1)
+		export JAVA_HOME
+	fi
 	name=$(subst java/,,$(<:.java=))
 	mkdir -p "tmp/$${name}"
 	$(JAVAC) -d "tmp/$${name}" "$<"
