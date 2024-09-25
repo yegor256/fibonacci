@@ -56,8 +56,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: sudo make install
-      - run: make env sa
-      - run: make -e env
+      - run: make env
       - run: make -e FAST=1 INPUT=7
   terminate-instance:
     needs:

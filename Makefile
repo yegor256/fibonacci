@@ -114,12 +114,12 @@ index.html: index.xml main.xsl Makefile
 
 install: Makefile
 	if [[ "$${OSTYPE}" == "darwin"* ]]; then
-		echo "This is macOS, installing necessary components:"
+		echo "This is macOS, installing necessary components (not all of them):"
 		brew install fpc sbcl go
 		brew install --cask graalvm/tap/graalvm-ce-lts-java11
 		brew install --cask dotnet-sdk
 	elif [[ "$${OSTYPE}" == "linux-gnu"* ]]; then
-		echo "This is Linux, installing necessary components:"
+		echo "This is Linux, installing all necessary components:"
 		apt-get -y update --fix-missing
 		apt-get -y install --no-install-recommends \
 			clang clang-tidy \
