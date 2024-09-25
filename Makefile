@@ -138,9 +138,7 @@ install: Makefile
 			wget "https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-23.0.0/$${tgz}"
 			tar xzf "$${tgz}"
 			dir=graalvm-community-openjdk-23+37.1
-			cp "$${dir}/bin/native-image" /usr/local/bin
-			cp -R "$${dir}/lib/truffle" /usr/local/lib
-			cp -R "$${dir}/lib/svm" /usr/local/lib
+			cp -R "$${dir}" /usr/local/graalvm
 			rm "$${tgz}"
 		fi
 		# see https://stackoverflow.com/a/76641565/187141
@@ -282,6 +280,14 @@ bin/java-%.bin: java/%.java | bin
 		JAVA_HOME=$$(find /usr/lib/jvm -name 'java-*' | head -1)
 		export JAVA_HOME
 	fi
+	nimage=$(NI)
+	if ! $${nimage} --version; then
+		nimage=/usr/local/graalvm/bin/native-image
+	fi
+	if ! $${nimage} --version; then
+		echo "Most probably you don't have GraalVM installed"
+		exit 1
+	fi
 	name=$(subst java/,,$(<:.java=))
 	mkdir -p "tmp/$${name}"
 	$(JAVAC) -d "tmp/$${name}" "$<"
@@ -290,7 +296,7 @@ bin/java-%.bin: java/%.java | bin
 	else
 		jar cfe "tmp/$${name}.jar" "$${name}" -C "tmp/$${name}" .
 	fi
-		$(NI) $(NIFLAGS) -jar "tmp/$${name}.jar" "$@"
+		$${nimage} $(NIFLAGS) -jar "tmp/$${name}.jar" "$@"
 
 reports/%.txt: bin/%.bin asm/%.asm | reports
 	"$<" 7 1
