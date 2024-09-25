@@ -281,22 +281,25 @@ bin/java-%.bin: java/%.java | bin
 		export JAVA_HOME
 	fi
 	nimage=$(NI)
-	if ! $${nimage} --version; then
+	if ! "$${nimage}" --version; then
 		nimage=/usr/local/graalvm/bin/native-image
 	fi
-	if ! $${nimage} --version; then
+	if ! "$${nimage}" --version; then
+		nimage=/Library/Java/JavaVirtualMachines/*/Contents/Home/bin/native-image
+	fi
+	if ! "$${nimage}" --version; then
 		echo "Most probably you don't have GraalVM installed"
 		exit 1
 	fi
 	name=$(subst java/,,$(<:.java=))
 	mkdir -p "tmp/$${name}"
-	$(JAVAC) -d "tmp/$${name}" "$<"
+	"$(JAVAC)" -d "tmp/$${name}" "$<"
 	if [ "$$(uname)" == "Darwin" ]; then
 		jar -c -e "$${name}" -f "tmp/$${name}.jar" -C "tmp/$${name}" .
 	else
 		jar cfe "tmp/$${name}.jar" "$${name}" -C "tmp/$${name}" .
 	fi
-		$${nimage} $(NIFLAGS) -jar "tmp/$${name}.jar" "$@"
+		"$${nimage}" $(NIFLAGS) -jar "tmp/$${name}.jar" "$@"
 
 reports/%.txt: bin/%.bin asm/%.asm | reports
 	"$<" 7 1
