@@ -56,11 +56,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: sudo make install
-      - uses: graalvm/setup-graalvm@v1.2.3
-        with:
-          distribution: 'graalvm'
-          java-version: '21'
-          github-token: ${{ secrets.GH_PAT }}
       - run: make env sa
       - run: make -e env
       - run: make -e FAST=1 INPUT=7

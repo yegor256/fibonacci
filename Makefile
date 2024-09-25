@@ -133,6 +133,12 @@ install: Makefile
       		ruby-full \
       		dotnet-sdk-8.0
 		apt-get clean
+		if ! native-image --version; then
+			wget https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-23.0.0/graalvm-community-jdk-23.0.0_linux-x64_bin.tar.gz
+			tar xzf graalvm-community-jdk-23.0.0_linux-x64_bin.tar.gz
+			cp graalvm-community-openjdk-23+37.1/bin/native-image /usr/local/bin
+			rm graalvm-community-jdk-23.0.0_linux-x64_bin.tar.gz
+		fi
 		# see https://stackoverflow.com/a/76641565/187141
 		rm -f /usr/lib/python3.*/EXTERNALLY-MANAGED
 		if ! cpplint --version; then pip install cpplint; fi
