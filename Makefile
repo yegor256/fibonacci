@@ -134,9 +134,9 @@ install: Makefile
 		apt-get clean
 		# see https://stackoverflow.com/a/76641565/187141
 		rm -f /usr/lib/python3.*/EXTERNALLY-MANAGED
-		pip install cpplint
+		if ! cpplint --version; then pip install cpplint; fi
 		snap install powershell --classic
-		gem install xcop
+		if ! xcop --version; then gem install xcop; fi
 		if [ ! -e /usr/bin/perf ]; then
 			ln -s "$(ls /usr/lib/linux-tools/*/perf | head -1)" /usr/bin/perf
 		fi
