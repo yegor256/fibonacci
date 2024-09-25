@@ -244,9 +244,9 @@ bin/csharp-%.bin: csharp/%/Program.cs | bin
 		exit 1
 	fi
 	cd "$$(dirname "$<")"
-	$(DOTNET) publish -c Release -r "$${arch}" --self-contained
+	$(DOTNET) publish -c Release -r "$${arch}" --self-contained --output bins --nologo
 	bin=$$(basename "$$(dirname "$<")")
-	mv bin/Release/*/*/native/"$${bin}" "../../$@"
+	mv "bins/$${bin}" "../../$@"
 
 bin/pascal-%.bin: pascal/%.pp | bin
 	fpc "$<" "-FEbin" "-o$@"
