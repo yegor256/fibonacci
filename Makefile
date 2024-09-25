@@ -110,7 +110,7 @@ index.xml: $(DIRS) $(REPORTS) Makefile
 	} > index.xml
 
 index.html: index.xml main.xsl Makefile
-	java -jar $(SAXON) "-s:index.xml" -xsl:main.xsl "-o:index.html"
+	java -jar $(SAXON) '-s:index.xml' -xsl:main.xsl '-o:index.html'
 
 install: Makefile
 	if [[ "$${OSTYPE}" == "darwin"* ]]; then
