@@ -30,75 +30,77 @@ main:                                   # @main
 	cmp	edi, 3
 	jne	.LBB0_1
 # %bb.2:
-	mov	rbx, rsi
 	mov	rdi, qword ptr [rsi + 8]
 	xor	r14d, r14d
+	mov	rbx, rsi
 	xor	esi, esi
 	mov	edx, 10
-	call	strtol@PLT
-	mov	r15, rax
+	call	__isoc23_strtol@PLT
+	mov	qword ptr [rsp], rax            # 8-byte Spill
 	mov	rdi, qword ptr [rbx + 16]
 	xor	esi, esi
 	mov	edx, 10
-	call	strtol@PLT
-	mov	r12, rax
+	call	__isoc23_strtol@PLT
+	mov	r15, rax
+	mov	r12d, 0
 	mov	ebp, 0
-	mov	r13d, 0
-	test	r12d, r12d
-	jle	.LBB0_8
+	test	r15d, r15d
+	jle	.LBB0_9
 # %bb.3:
-	xor	r14d, r14d
-	xor	r13d, r13d
+	xor	ebx, ebx
+	lea	r14, [rip + _ZTV5First+16]
+	xor	ebp, ebp
 	jmp	.LBB0_4
 	.p2align	4, 0x90
-.LBB0_6:                                #   in Loop: Header=BB0_4 Depth=1
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
-	mov	ebp, eax
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
+.LBB0_7:                                #   in Loop: Header=BB0_4 Depth=1
+	mov	rdi, rax
+	mov	r13, rax
+	call	qword ptr [rcx + 16]
+	mov	r12d, eax
+	mov	rax, qword ptr [r13]
+	mov	rdi, r13
 	call	qword ptr [rax + 8]
-	add	r13d, ebp
-	add	r14d, 1
-	cmp	r14d, r12d
-	je	.LBB0_7
+	add	ebp, r12d
+	inc	ebx
+	cmp	ebx, r15d
+	je	.LBB0_8
 .LBB0_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_5 Depth 2
-	mov	ebp, dword ptr [rip + dummy]
-	add	ebp, r15d
+	mov	r12d, dword ptr [rip + dummy]
+	add	r12d, dword ptr [rsp]           # 4-byte Folded Reload
 	mov	edi, 8
 	call	_Znwm@PLT
-	mov	rbx, rax
-	lea	rax, [rip + _ZTV5First+16]
-	mov	qword ptr [rbx], rax
-	test	ebp, ebp
-	jle	.LBB0_6
+	mov	qword ptr [rax], r14
+	mov	rcx, r14
+	test	r12d, r12d
+	jle	.LBB0_7
 	.p2align	4, 0x90
 .LBB0_5:                                #   Parent Loop BB0_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-	mov	rbx, rax
-	add	ebp, -1
+	mov	rcx, qword ptr [rax]
+	mov	rdi, rax
+	call	qword ptr [rcx + 24]
+	dec	r12d
 	jne	.LBB0_5
-	jmp	.LBB0_6
+# %bb.6:                                #   in Loop: Header=BB0_4 Depth=1
+	mov	rcx, qword ptr [rax]
+	jmp	.LBB0_7
 .LBB0_1:
 	lea	rdi, [rip + .Lstr]
 	call	puts@PLT
 	mov	r14d, 1
-	jmp	.LBB0_9
-.LBB0_7:
-	xor	r14d, r14d
+	jmp	.LBB0_10
 .LBB0_8:
+	xor	r14d, r14d
+.LBB0_9:
 	lea	rdi, [rip + .L.str.1]
-	mov	esi, r15d
-	mov	edx, ebp
-	mov	ecx, r13d
+	mov	rsi, qword ptr [rsp]            # 8-byte Reload
+                                        # kill: def $esi killed $esi killed $rsi
+	mov	edx, r12d
+	mov	ecx, ebp
 	xor	eax, eax
 	call	printf@PLT
-.LBB0_9:
+.LBB0_10:
 	mov	eax, r14d
 	add	rsp, 8
 	.cfi_def_cfa_offset 56
@@ -133,26 +135,26 @@ _Z4calci:                               # @_Z4calci
 	.cfi_def_cfa_offset 32
 	.cfi_offset rbx, -24
 	.cfi_offset rbp, -16
-	mov	ebp, edi
+	mov	ebx, edi
 	mov	edi, 8
 	call	_Znwm@PLT
-	mov	rbx, rax
-	lea	rax, [rip + _ZTV5First+16]
-	mov	qword ptr [rbx], rax
-	test	ebp, ebp
-	jle	.LBB1_2
+	lea	rcx, [rip + _ZTV5First+16]
+	mov	qword ptr [rax], rcx
+	test	ebx, ebx
+	jle	.LBB1_3
 	.p2align	4, 0x90
 .LBB1_1:                                # =>This Inner Loop Header: Depth=1
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 24]
-	mov	rbx, rax
-	add	ebp, -1
+	mov	rcx, qword ptr [rax]
+	mov	rdi, rax
+	call	qword ptr [rcx + 24]
+	dec	ebx
 	jne	.LBB1_1
-.LBB1_2:
-	mov	rax, qword ptr [rbx]
-	mov	rdi, rbx
-	call	qword ptr [rax + 16]
+# %bb.2:
+	mov	rcx, qword ptr [rax]
+.LBB1_3:
+	mov	rdi, rax
+	mov	rbx, rax
+	call	qword ptr [rcx + 16]
 	mov	ebp, eax
 	mov	rax, qword ptr [rbx]
 	mov	rdi, rbx
@@ -169,6 +171,18 @@ _Z4calci:                               # @_Z4calci
 	.size	_Z4calci, .Lfunc_end1-_Z4calci
 	.cfi_endproc
                                         # -- End function
+	.section	.text._ZN4FiboD2Ev,"axG",@progbits,_ZN4FiboD2Ev,comdat
+	.weak	_ZN4FiboD2Ev                    # -- Begin function _ZN4FiboD2Ev
+	.p2align	4, 0x90
+	.type	_ZN4FiboD2Ev,@function
+_ZN4FiboD2Ev:                           # @_ZN4FiboD2Ev
+	.cfi_startproc
+# %bb.0:
+	ret
+.Lfunc_end2:
+	.size	_ZN4FiboD2Ev, .Lfunc_end2-_ZN4FiboD2Ev
+	.cfi_endproc
+                                        # -- End function
 	.section	.text._ZN5FirstD0Ev,"axG",@progbits,_ZN5FirstD0Ev,comdat
 	.weak	_ZN5FirstD0Ev                   # -- Begin function _ZN5FirstD0Ev
 	.p2align	4, 0x90
@@ -177,8 +191,8 @@ _ZN5FirstD0Ev:                          # @_ZN5FirstD0Ev
 	.cfi_startproc
 # %bb.0:
 	jmp	_ZdlPv@PLT                      # TAILCALL
-.Lfunc_end2:
-	.size	_ZN5FirstD0Ev, .Lfunc_end2-_ZN5FirstD0Ev
+.Lfunc_end3:
+	.size	_ZN5FirstD0Ev, .Lfunc_end3-_ZN5FirstD0Ev
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN5First3getEv,"axG",@progbits,_ZN5First3getEv,comdat
@@ -190,8 +204,8 @@ _ZN5First3getEv:                        # @_ZN5First3getEv
 # %bb.0:
 	mov	eax, 1
 	ret
-.Lfunc_end3:
-	.size	_ZN5First3getEv, .Lfunc_end3-_ZN5First3getEv
+.Lfunc_end4:
+	.size	_ZN5First3getEv, .Lfunc_end4-_ZN5First3getEv
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN5First4nextEv,"axG",@progbits,_ZN5First4nextEv,comdat
@@ -213,20 +227,8 @@ _ZN5First4nextEv:                       # @_ZN5First4nextEv
 	pop	rbx
 	.cfi_def_cfa_offset 8
 	ret
-.Lfunc_end4:
-	.size	_ZN5First4nextEv, .Lfunc_end4-_ZN5First4nextEv
-	.cfi_endproc
-                                        # -- End function
-	.section	.text._ZN4FiboD2Ev,"axG",@progbits,_ZN4FiboD2Ev,comdat
-	.weak	_ZN4FiboD2Ev                    # -- Begin function _ZN4FiboD2Ev
-	.p2align	4, 0x90
-	.type	_ZN4FiboD2Ev,@function
-_ZN4FiboD2Ev:                           # @_ZN4FiboD2Ev
-	.cfi_startproc
-# %bb.0:
-	ret
 .Lfunc_end5:
-	.size	_ZN4FiboD2Ev, .Lfunc_end5-_ZN4FiboD2Ev
+	.size	_ZN5First4nextEv, .Lfunc_end5-_ZN5First4nextEv
 	.cfi_endproc
                                         # -- End function
 	.section	.text._ZN6SecondD2Ev,"axG",@progbits,_ZN6SecondD2Ev,comdat
@@ -257,22 +259,23 @@ _ZN6SecondD2Ev:                         # @_ZN6SecondD2Ev
 _ZN6SecondD0Ev:                         # @_ZN6SecondD0Ev
 	.cfi_startproc
 # %bb.0:
+	lea	rax, [rip + _ZTV6Second+16]
+	mov	qword ptr [rdi], rax
+	mov	rax, qword ptr [rdi + 8]
+	test	rax, rax
+	je	_ZdlPv@PLT                      # TAILCALL
+# %bb.1:
 	push	rbx
 	.cfi_def_cfa_offset 16
 	.cfi_offset rbx, -16
+	mov	rcx, qword ptr [rax]
 	mov	rbx, rdi
-	lea	rax, [rip + _ZTV6Second+16]
-	mov	qword ptr [rdi], rax
-	mov	rdi, qword ptr [rdi + 8]
-	test	rdi, rdi
-	je	.LBB7_2
-# %bb.1:
-	mov	rax, qword ptr [rdi]
-	call	qword ptr [rax + 8]
-.LBB7_2:
+	mov	rdi, rax
+	call	qword ptr [rcx + 8]
 	mov	rdi, rbx
 	pop	rbx
 	.cfi_def_cfa_offset 8
+	.cfi_restore rbx
 	jmp	_ZdlPv@PLT                      # TAILCALL
 .Lfunc_end7:
 	.size	_ZN6SecondD0Ev, .Lfunc_end7-_ZN6SecondD0Ev
@@ -344,22 +347,23 @@ _ZN5OtherD2Ev:                          # @_ZN5OtherD2Ev
 _ZN5OtherD0Ev:                          # @_ZN5OtherD0Ev
 	.cfi_startproc
 # %bb.0:
+	lea	rax, [rip + _ZTV5Other+16]
+	mov	qword ptr [rdi], rax
+	mov	rax, qword ptr [rdi + 16]
+	test	rax, rax
+	je	_ZdlPv@PLT                      # TAILCALL
+# %bb.1:
 	push	rbx
 	.cfi_def_cfa_offset 16
 	.cfi_offset rbx, -16
+	mov	rcx, qword ptr [rax]
 	mov	rbx, rdi
-	lea	rax, [rip + _ZTV5Other+16]
-	mov	qword ptr [rdi], rax
-	mov	rdi, qword ptr [rdi + 16]
-	test	rdi, rdi
-	je	.LBB11_2
-# %bb.1:
-	mov	rax, qword ptr [rdi]
-	call	qword ptr [rax + 8]
-.LBB11_2:
+	mov	rdi, rax
+	call	qword ptr [rcx + 8]
 	mov	rdi, rbx
 	pop	rbx
 	.cfi_def_cfa_offset 8
+	.cfi_restore rbx
 	jmp	_ZdlPv@PLT                      # TAILCALL
 .Lfunc_end11:
 	.size	_ZN5OtherD0Ev, .Lfunc_end11-_ZN5OtherD0Ev
@@ -428,7 +432,7 @@ _ZN5Other4nextEv:                       # @_ZN5Other4nextEv
 	.type	dummy,@object                   # @dummy
 	.bss
 	.globl	dummy
-	.p2align	2
+	.p2align	2, 0x0
 dummy:
 	.long	0                               # 0x0
 	.size	dummy, 4
@@ -440,9 +444,9 @@ dummy:
 	.size	.L.str.1, 42
 
 	.type	_ZTV5First,@object              # @_ZTV5First
-	.section	.data.rel.ro._ZTV5First,"aGw",@progbits,_ZTV5First,comdat
+	.section	.data.rel.ro._ZTV5First,"awG",@progbits,_ZTV5First,comdat
 	.weak	_ZTV5First
-	.p2align	3
+	.p2align	3, 0x0
 _ZTV5First:
 	.quad	0
 	.quad	_ZTI5First
@@ -467,18 +471,18 @@ _ZTS4Fibo:
 	.size	_ZTS4Fibo, 6
 
 	.type	_ZTI4Fibo,@object               # @_ZTI4Fibo
-	.section	.data.rel.ro._ZTI4Fibo,"aGw",@progbits,_ZTI4Fibo,comdat
+	.section	.data.rel.ro._ZTI4Fibo,"awG",@progbits,_ZTI4Fibo,comdat
 	.weak	_ZTI4Fibo
-	.p2align	3
+	.p2align	3, 0x0
 _ZTI4Fibo:
 	.quad	_ZTVN10__cxxabiv117__class_type_infoE+16
 	.quad	_ZTS4Fibo
 	.size	_ZTI4Fibo, 16
 
 	.type	_ZTI5First,@object              # @_ZTI5First
-	.section	.data.rel.ro._ZTI5First,"aGw",@progbits,_ZTI5First,comdat
+	.section	.data.rel.ro._ZTI5First,"awG",@progbits,_ZTI5First,comdat
 	.weak	_ZTI5First
-	.p2align	3
+	.p2align	3, 0x0
 _ZTI5First:
 	.quad	_ZTVN10__cxxabiv120__si_class_type_infoE+16
 	.quad	_ZTS5First
@@ -486,9 +490,9 @@ _ZTI5First:
 	.size	_ZTI5First, 24
 
 	.type	_ZTV6Second,@object             # @_ZTV6Second
-	.section	.data.rel.ro._ZTV6Second,"aGw",@progbits,_ZTV6Second,comdat
+	.section	.data.rel.ro._ZTV6Second,"awG",@progbits,_ZTV6Second,comdat
 	.weak	_ZTV6Second
-	.p2align	3
+	.p2align	3, 0x0
 _ZTV6Second:
 	.quad	0
 	.quad	_ZTI6Second
@@ -506,9 +510,9 @@ _ZTS6Second:
 	.size	_ZTS6Second, 8
 
 	.type	_ZTI6Second,@object             # @_ZTI6Second
-	.section	.data.rel.ro._ZTI6Second,"aGw",@progbits,_ZTI6Second,comdat
+	.section	.data.rel.ro._ZTI6Second,"awG",@progbits,_ZTI6Second,comdat
 	.weak	_ZTI6Second
-	.p2align	3
+	.p2align	3, 0x0
 _ZTI6Second:
 	.quad	_ZTVN10__cxxabiv120__si_class_type_infoE+16
 	.quad	_ZTS6Second
@@ -516,9 +520,9 @@ _ZTI6Second:
 	.size	_ZTI6Second, 24
 
 	.type	_ZTV5Other,@object              # @_ZTV5Other
-	.section	.data.rel.ro._ZTV5Other,"aGw",@progbits,_ZTV5Other,comdat
+	.section	.data.rel.ro._ZTV5Other,"awG",@progbits,_ZTV5Other,comdat
 	.weak	_ZTV5Other
-	.p2align	3
+	.p2align	3, 0x0
 _ZTV5Other:
 	.quad	0
 	.quad	_ZTI5Other
@@ -536,9 +540,9 @@ _ZTS5Other:
 	.size	_ZTS5Other, 7
 
 	.type	_ZTI5Other,@object              # @_ZTI5Other
-	.section	.data.rel.ro._ZTI5Other,"aGw",@progbits,_ZTI5Other,comdat
+	.section	.data.rel.ro._ZTI5Other,"awG",@progbits,_ZTI5Other,comdat
 	.weak	_ZTI5Other
-	.p2align	3
+	.p2align	3, 0x0
 _ZTI5Other:
 	.quad	_ZTVN10__cxxabiv120__si_class_type_infoE+16
 	.quad	_ZTS5Other
@@ -551,7 +555,7 @@ _ZTI5Other:
 	.asciz	"Two args required: INPUT and CYCLES"
 	.size	.Lstr, 36
 
-	.ident	"Ubuntu clang version 14.0.0-1ubuntu1.1"
+	.ident	"Ubuntu clang version 18.1.3 (1ubuntu1)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

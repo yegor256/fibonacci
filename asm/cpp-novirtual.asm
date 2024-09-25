@@ -33,37 +33,37 @@ main:                                   # @main
 	cmp	edi, 3
 	jne	.LBB0_1
 # %bb.3:
-	mov	rbx, rsi
 	mov	rdi, qword ptr [rsi + 8]
-	xor	ebp, ebp
+	xor	ebx, ebx
+	mov	r15, rsi
 	xor	esi, esi
 	mov	edx, 10
-	call	strtol@PLT
+	call	__isoc23_strtol@PLT
+	mov	r14, rax
+	mov	rdi, qword ptr [r15 + 16]
+	xor	esi, esi
+	mov	edx, 10
+	call	__isoc23_strtol@PLT
 	mov	r15, rax
-	mov	rdi, qword ptr [rbx + 16]
-	xor	esi, esi
-	mov	edx, 10
-	call	strtol@PLT
-	mov	rbx, rax
 	mov	r13d, 0
-	mov	r14d, 0
-	test	ebx, ebx
-	jle	.LBB0_10
+	mov	ebp, 0
+	test	r15d, r15d
+	jle	.LBB0_9
 # %bb.4:
-	xor	r14d, r14d
+	xor	ebp, ebp
 	mov	r12, rsp
 	jmp	.LBB0_5
 	.p2align	4, 0x90
 .LBB0_8:                                #   in Loop: Header=BB0_5 Depth=1
-	add	r14d, r13d
-	add	ebx, -1
+	add	ebp, r13d
+	dec	r15d
 	je	.LBB0_9
 .LBB0_5:                                # =>This Inner Loop Header: Depth=1
-	mov	ebp, dword ptr [rip + dummy]
-	add	ebp, r15d
+	mov	r13d, dword ptr [rip + dummy]
+	add	r13d, r14d
 	mov	edi, 4
 	call	_Znwm@PLT
-	mov	dword ptr [rax], ebp
+	mov	dword ptr [rax], r13d
 	mov	qword ptr [rsp], rax
 .Ltmp0:
 	mov	rdi, r12
@@ -80,19 +80,17 @@ main:                                   # @main
 .LBB0_1:
 	lea	rdi, [rip + .Lstr]
 	call	puts@PLT
-	mov	ebp, 1
+	mov	ebx, 1
 	jmp	.LBB0_2
 .LBB0_9:
-	xor	ebp, ebp
-.LBB0_10:
 	lea	rdi, [rip + .L.str.1]
-	mov	esi, r15d
+	mov	esi, r14d
 	mov	edx, r13d
-	mov	ecx, r14d
+	mov	ecx, ebp
 	xor	eax, eax
 	call	printf@PLT
 .LBB0_2:
-	mov	eax, ebp
+	mov	eax, ebx
 	add	rsp, 8
 	.cfi_def_cfa_offset 56
 	pop	rbx
@@ -108,23 +106,23 @@ main:                                   # @main
 	pop	rbp
 	.cfi_def_cfa_offset 8
 	ret
-.LBB0_11:
+.LBB0_10:
 	.cfi_def_cfa_offset 64
 .Ltmp2:
 	mov	rbx, rax
 	mov	rdi, qword ptr [rsp]
 	test	rdi, rdi
-	je	.LBB0_13
-# %bb.12:
+	je	.LBB0_12
+# %bb.11:
 	call	_ZdlPv@PLT
-.LBB0_13:
+.LBB0_12:
 	mov	rdi, rbx
 	call	_Unwind_Resume@PLT
 .Lfunc_end0:
 	.size	main, .Lfunc_end0-main
 	.cfi_endproc
 	.section	.gcc_except_table,"a",@progbits
-	.p2align	2
+	.p2align	2, 0x0
 GCC_except_table0:
 .Lexception0:
 	.byte	255                             # @LPStart Encoding = omit
@@ -145,7 +143,7 @@ GCC_except_table0:
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
 .Lcst_end0:
-	.p2align	2
+	.p2align	2, 0x0
                                         # -- End function
 	.text
 	.globl	_Z4calci                        # -- Begin function _Z4calci
@@ -172,14 +170,14 @@ _Z4calci:                               # @_Z4calci
 	call	_ZN4Fibo3getEv
 .Ltmp4:
 # %bb.1:
-	mov	ebx, eax
 	mov	rdi, qword ptr [rsp + 8]
 	test	rdi, rdi
 	je	.LBB1_3
 # %bb.2:
+	mov	ebx, eax
 	call	_ZdlPv@PLT
-.LBB1_3:
 	mov	eax, ebx
+.LBB1_3:
 	add	rsp, 16
 	.cfi_def_cfa_offset 16
 	pop	rbx
@@ -201,7 +199,7 @@ _Z4calci:                               # @_Z4calci
 	.size	_Z4calci, .Lfunc_end1-_Z4calci
 	.cfi_endproc
 	.section	.gcc_except_table,"a",@progbits
-	.p2align	2
+	.p2align	2, 0x0
 GCC_except_table1:
 .Lexception1:
 	.byte	255                             # @LPStart Encoding = omit
@@ -222,7 +220,7 @@ GCC_except_table1:
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
 .Lcst_end1:
-	.p2align	2
+	.p2align	2, 0x0
                                         # -- End function
 	.section	.text._ZN4Fibo3getEv,"axG",@progbits,_ZN4Fibo3getEv,comdat
 	.weak	_ZN4Fibo3getEv                  # -- Begin function _ZN4Fibo3getEv
@@ -256,19 +254,19 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 	.cfi_offset rbp, -16
 	mov	rax, qword ptr [rdi]
 	mov	ebp, dword ptr [rax]
-	mov	ebx, 1
+	mov	r12d, 1
 	cmp	ebp, 2
 	jl	.LBB2_12
 # %bb.1:
-	mov	r13, rdi
+	mov	r15, rdi
 	mov	edi, 4
 	call	_Znwm@PLT
-	mov	r14, rax
+	mov	rbx, rax
 	mov	dword ptr [rax], ebp
 	mov	qword ptr [rsp + 40], rax
 	mov	edi, 4
 	call	_Znwm@PLT
-	mov	r12, rax
+	mov	r14, rax
 	mov	dword ptr [rax], 1
 	mov	qword ptr [rsp + 48], rax
 .Ltmp6:
@@ -276,7 +274,7 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 	call	_Znwm@PLT
 .Ltmp7:
 # %bb.2:
-	add	ebp, -1
+	dec	ebp
 	mov	dword ptr [rax], ebp
 	mov	qword ptr [rsp + 16], rax
 .Ltmp9:
@@ -284,23 +282,23 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 	call	_ZN4Fibo3getEv
 .Ltmp10:
 # %bb.3:
-	mov	r15d, eax
-	mov	rax, qword ptr [r13]
-	mov	ebx, dword ptr [rax]
+	mov	ebp, eax
+	mov	rax, qword ptr [r15]
+	mov	r12d, dword ptr [rax]
 .Ltmp12:
 	mov	edi, 4
 	call	_Znwm@PLT
 .Ltmp13:
 # %bb.4:
-	mov	r13, rax
-	mov	dword ptr [rax], ebx
+	mov	r15, rax
+	mov	dword ptr [rax], r12d
 	mov	qword ptr [rsp + 24], rax
 .Ltmp14:
 	mov	edi, 4
 	call	_Znwm@PLT
 .Ltmp15:
 # %bb.5:
-	mov	rbp, rax
+	mov	r13, rax
 	mov	dword ptr [rax], 2
 	mov	qword ptr [rsp + 32], rax
 .Ltmp17:
@@ -308,24 +306,24 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 	call	_Znwm@PLT
 .Ltmp18:
 # %bb.6:
-	add	ebx, -2
-	mov	dword ptr [rax], ebx
+	add	r12d, -2
+	mov	dword ptr [rax], r12d
 	mov	qword ptr [rsp + 8], rax
 .Ltmp20:
 	lea	rdi, [rsp + 8]
 	call	_ZN4Fibo3getEv
 .Ltmp21:
 # %bb.7:
-	mov	ebx, eax
+	mov	r12d, eax
 	mov	rdi, qword ptr [rsp + 8]
 	test	rdi, rdi
 	je	.LBB2_9
 # %bb.8:
 	call	_ZdlPv@PLT
 .LBB2_9:
-	mov	rdi, r13
+	mov	rdi, r15
 	call	_ZdlPv@PLT
-	mov	rdi, rbp
+	mov	rdi, r13
 	call	_ZdlPv@PLT
 	mov	rdi, qword ptr [rsp + 16]
 	test	rdi, rdi
@@ -333,13 +331,13 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 # %bb.10:
 	call	_ZdlPv@PLT
 .LBB2_11:
-	add	ebx, r15d
+	add	r12d, ebp
+	mov	rdi, rbx
+	call	_ZdlPv@PLT
 	mov	rdi, r14
 	call	_ZdlPv@PLT
-	mov	rdi, r12
-	call	_ZdlPv@PLT
 .LBB2_12:
-	mov	eax, ebx
+	mov	eax, r12d
 	add	rsp, 56
 	.cfi_def_cfa_offset 56
 	pop	rbx
@@ -378,7 +376,10 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 .LBB2_18:
 .Ltmp8:
 	mov	rbx, rax
-	jmp	.LBB2_23
+	lea	rdi, [rsp + 40]
+	call	_ZN3SubD2Ev
+	mov	rdi, rbx
+	call	_Unwind_Resume@PLT
 .LBB2_19:
 .Ltmp16:
 .LBB2_20:
@@ -398,7 +399,7 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 	.size	_ZN4Fibo3getEv, .Lfunc_end2-_ZN4Fibo3getEv
 	.cfi_endproc
 	.section	.gcc_except_table._ZN4Fibo3getEv,"aG",@progbits,_ZN4Fibo3getEv,comdat
-	.p2align	2
+	.p2align	2, 0x0
 GCC_except_table2:
 .Lexception2:
 	.byte	255                             # @LPStart Encoding = omit
@@ -435,7 +436,7 @@ GCC_except_table2:
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
 .Lcst_end2:
-	.p2align	2
+	.p2align	2, 0x0
                                         # -- End function
 	.section	.text._ZN3SubD2Ev,"axG",@progbits,_ZN3SubD2Ev,comdat
 	.weak	_ZN3SubD2Ev                     # -- Begin function _ZN3SubD2Ev
@@ -473,7 +474,7 @@ _ZN3SubD2Ev:                            # @_ZN3SubD2Ev
 	.type	dummy,@object                   # @dummy
 	.bss
 	.globl	dummy
-	.p2align	2
+	.p2align	2, 0x0
 dummy:
 	.long	0                               # 0x0
 	.size	dummy, 4
@@ -491,13 +492,13 @@ dummy:
 
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
-	.section	.data.DW.ref.__gxx_personality_v0,"aGw",@progbits,DW.ref.__gxx_personality_v0,comdat
-	.p2align	3
+	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat
+	.p2align	3, 0x0
 	.type	DW.ref.__gxx_personality_v0,@object
 	.size	DW.ref.__gxx_personality_v0, 8
 DW.ref.__gxx_personality_v0:
 	.quad	__gxx_personality_v0
-	.ident	"Ubuntu clang version 14.0.0-1ubuntu1.1"
+	.ident	"Ubuntu clang version 18.1.3 (1ubuntu1)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

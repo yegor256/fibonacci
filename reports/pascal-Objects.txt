@@ -1,9 +1,9 @@
 bin/pascal-Objects.bin:
-CPU ticks: 65331424746
-CPU ticks per cycle: 32665712373
+CPU ticks: 65843068923
+CPU ticks per cycle: 32921534461
 Instructions: 1
 Cycles: 2
-Total Time: 16.75
-Time per cycle: 8.3750000000000000
-Ticks: 65331424746
-Ticks per cycle: 32665712373
+Total Time: 16.77
+Time per cycle: 8.3850000000000000
+Ticks: 65843068923
+Ticks per cycle: 32921534461

@@ -24,35 +24,35 @@ main:                                   # @main
 	cmp	edi, 3
 	jne	.LBB0_1
 # %bb.2:
-	mov	rbx, rsi
 	mov	rdi, qword ptr [rsi + 8]
-	xor	r14d, r14d
+	xor	ebx, ebx
+	mov	r15, rsi
 	xor	esi, esi
 	mov	edx, 10
-	call	strtol@PLT
+	call	__isoc23_strtol@PLT
+	mov	r14, rax
+	mov	rdi, qword ptr [r15 + 16]
+	xor	esi, esi
+	mov	edx, 10
+	call	__isoc23_strtol@PLT
 	mov	r15, rax
-	mov	rdi, qword ptr [rbx + 16]
-	xor	esi, esi
-	mov	edx, 10
-	call	strtol@PLT
-	mov	rbx, rax
 	mov	eax, 0
 	mov	ebp, 0
-	test	ebx, ebx
+	test	r15d, r15d
 	jle	.LBB0_5
 # %bb.3:
 	xor	ebp, ebp
 	.p2align	4, 0x90
 .LBB0_4:                                # =>This Inner Loop Header: Depth=1
 	mov	edi, dword ptr [rip + dummy]
-	add	edi, r15d
+	add	edi, r14d
 	call	_Z4calci
 	add	ebp, eax
-	add	ebx, -1
+	dec	r15d
 	jne	.LBB0_4
 .LBB0_5:
 	lea	rdi, [rip + .L.str.1]
-	mov	esi, r15d
+	mov	esi, r14d
 	mov	edx, eax
 	mov	ecx, ebp
 	xor	eax, eax
@@ -61,9 +61,9 @@ main:                                   # @main
 .LBB0_1:
 	lea	rdi, [rip + .Lstr]
 	call	puts@PLT
-	mov	r14d, 1
+	mov	ebx, 1
 .LBB0_6:
-	mov	eax, r14d
+	mov	eax, ebx
 	add	rsp, 8
 	.cfi_def_cfa_offset 40
 	pop	rbx
@@ -85,38 +85,38 @@ main:                                   # @main
 _Z4calci:                               # @_Z4calci
 	.cfi_startproc
 # %bb.0:
-	push	rbp
+	push	r14
 	.cfi_def_cfa_offset 16
 	push	rbx
 	.cfi_def_cfa_offset 24
 	push	rax
 	.cfi_def_cfa_offset 32
 	.cfi_offset rbx, -24
-	.cfi_offset rbp, -16
-	mov	ebp, 1
+	.cfi_offset r14, -16
+	mov	ebx, 1
 	cmp	edi, 2
 	jl	.LBB1_4
 # %bb.1:
-	mov	ebx, edi
-	add	ebx, 2
-	xor	ebp, ebp
+	mov	r14d, edi
+	add	r14d, 2
+	xor	ebx, ebx
 	.p2align	4, 0x90
 .LBB1_2:                                # =>This Inner Loop Header: Depth=1
-	lea	edi, [rbx - 3]
+	lea	edi, [r14 - 3]
 	call	_Z4calci
-	add	ebp, eax
-	add	ebx, -2
-	cmp	ebx, 3
+	add	ebx, eax
+	add	r14d, -2
+	cmp	r14d, 3
 	ja	.LBB1_2
 # %bb.3:
-	add	ebp, 1
+	inc	ebx
 .LBB1_4:
-	mov	eax, ebp
+	mov	eax, ebx
 	add	rsp, 8
 	.cfi_def_cfa_offset 24
 	pop	rbx
 	.cfi_def_cfa_offset 16
-	pop	rbp
+	pop	r14
 	.cfi_def_cfa_offset 8
 	ret
 .Lfunc_end1:
@@ -126,7 +126,7 @@ _Z4calci:                               # @_Z4calci
 	.type	dummy,@object                   # @dummy
 	.bss
 	.globl	dummy
-	.p2align	2
+	.p2align	2, 0x0
 dummy:
 	.long	0                               # 0x0
 	.size	dummy, 4
@@ -142,7 +142,7 @@ dummy:
 	.asciz	"Two args required: INPUT and CYCLES"
 	.size	.Lstr, 36
 
-	.ident	"Ubuntu clang version 14.0.0-1ubuntu1.1"
+	.ident	"Ubuntu clang version 18.1.3 (1ubuntu1)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym dummy

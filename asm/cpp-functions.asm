@@ -24,35 +24,35 @@ main:                                   # @main
 	cmp	edi, 3
 	jne	.LBB0_1
 # %bb.2:
-	mov	rbx, rsi
 	mov	rdi, qword ptr [rsi + 8]
-	xor	r14d, r14d
+	xor	ebx, ebx
+	mov	r15, rsi
 	xor	esi, esi
 	mov	edx, 10
-	call	strtol@PLT
+	call	__isoc23_strtol@PLT
+	mov	r14, rax
+	mov	rdi, qword ptr [r15 + 16]
+	xor	esi, esi
+	mov	edx, 10
+	call	__isoc23_strtol@PLT
 	mov	r15, rax
-	mov	rdi, qword ptr [rbx + 16]
-	xor	esi, esi
-	mov	edx, 10
-	call	strtol@PLT
-	mov	rbx, rax
 	mov	eax, 0
 	mov	ebp, 0
-	test	ebx, ebx
+	test	r15d, r15d
 	jle	.LBB0_5
 # %bb.3:
 	xor	ebp, ebp
 	.p2align	4, 0x90
 .LBB0_4:                                # =>This Inner Loop Header: Depth=1
 	mov	edi, dword ptr [rip + dummy]
-	add	edi, r15d
+	add	edi, r14d
 	call	_Z4calci
 	add	ebp, eax
-	add	ebx, -1
+	dec	r15d
 	jne	.LBB0_4
 .LBB0_5:
 	lea	rdi, [rip + .L.str.1]
-	mov	esi, r15d
+	mov	esi, r14d
 	mov	edx, eax
 	mov	ecx, ebp
 	xor	eax, eax
@@ -61,9 +61,9 @@ main:                                   # @main
 .LBB0_1:
 	lea	rdi, [rip + .Lstr]
 	call	puts@PLT
-	mov	r14d, 1
+	mov	ebx, 1
 .LBB0_6:
-	mov	eax, r14d
+	mov	eax, ebx
 	add	rsp, 8
 	.cfi_def_cfa_offset 40
 	pop	rbx
@@ -187,7 +187,7 @@ _Z4fiboi:                               # @_Z4fiboi
 	.type	dummy,@object                   # @dummy
 	.bss
 	.globl	dummy
-	.p2align	2
+	.p2align	2, 0x0
 dummy:
 	.long	0                               # 0x0
 	.size	dummy, 4
@@ -203,7 +203,7 @@ dummy:
 	.asciz	"Two args required: INPUT and CYCLES"
 	.size	.Lstr, 36
 
-	.ident	"Ubuntu clang version 14.0.0-1ubuntu1.1"
+	.ident	"Ubuntu clang version 18.1.3 (1ubuntu1)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym dummy

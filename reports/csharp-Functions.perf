@@ -1,0 +1,20 @@
+32-th Fibonacci number is 3524578
+Total is 902291968
+
+ Performance counter stats for 'bin/csharp-Functions.bin 32 256':
+
+           2413.35 msec task-clock                       #    1.004 CPUs utilized             
+                 9      context-switches                 #    3.729 /sec                      
+                 1      cpu-migrations                   #    0.414 /sec                      
+               543      page-faults                      #  224.998 /sec                      
+        9381717651      cycles                           #    3.887 GHz                       
+       26197113265      instructions                     #    2.79  insn per cycle            
+        5419452727      branches                         #    2.246 G/sec                     
+            917010      branch-misses                    #    0.02% of all branches           
+
+       2.403859310 seconds time elapsed
+
+       2.411041000 seconds user
+       0.003000000 seconds sys
+
+

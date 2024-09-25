@@ -27,38 +27,38 @@ main:                                   # @main
 	cmp	edi, 3
 	jne	.LBB0_1
 # %bb.2:
-	mov	rbx, rsi
 	mov	rdi, qword ptr [rsi + 8]
-	xor	r14d, r14d
+	xor	ebx, ebx
+	mov	r15, rsi
 	xor	esi, esi
 	mov	edx, 10
-	call	strtol@PLT
+	call	__isoc23_strtol@PLT
+	mov	r14, rax
+	mov	rdi, qword ptr [r15 + 16]
+	xor	esi, esi
+	mov	edx, 10
+	call	__isoc23_strtol@PLT
 	mov	r15, rax
-	mov	rdi, qword ptr [rbx + 16]
-	xor	esi, esi
-	mov	edx, 10
-	call	strtol@PLT
-	mov	rbx, rax
 	mov	edx, 0
 	mov	ebp, 0
-	test	ebx, ebx
+	test	r15d, r15d
 	jle	.LBB0_5
 # %bb.3:
 	xor	ebp, ebp
-	lea	r12, [rsp + 8]
+	lea	r12, [rsp + 12]
 	.p2align	4, 0x90
 .LBB0_4:                                # =>This Inner Loop Header: Depth=1
 	mov	esi, dword ptr [rip + dummy]
-	add	esi, r15d
+	add	esi, r14d
 	mov	rdi, r12
 	call	_ZN4FiboC2Ei
-	mov	edx, dword ptr [rsp + 8]
+	mov	edx, dword ptr [rsp + 12]
 	add	ebp, edx
-	add	ebx, -1
+	dec	r15d
 	jne	.LBB0_4
 .LBB0_5:
 	lea	rdi, [rip + .L.str.1]
-	mov	esi, r15d
+	mov	esi, r14d
 	mov	ecx, ebp
 	xor	eax, eax
 	call	printf@PLT
@@ -66,9 +66,9 @@ main:                                   # @main
 .LBB0_1:
 	lea	rdi, [rip + .Lstr]
 	call	puts@PLT
-	mov	r14d, 1
+	mov	ebx, 1
 .LBB0_6:
-	mov	eax, r14d
+	mov	eax, ebx
 	add	rsp, 16
 	.cfi_def_cfa_offset 48
 	pop	rbx
@@ -95,9 +95,9 @@ _Z4calci:                               # @_Z4calci
 	push	rax
 	.cfi_def_cfa_offset 16
 	mov	esi, edi
-	mov	rdi, rsp
+	lea	rdi, [rsp + 4]
 	call	_ZN4FiboC2Ei
-	mov	eax, dword ptr [rsp]
+	mov	eax, dword ptr [rsp + 4]
 	pop	rcx
 	.cfi_def_cfa_offset 8
 	ret
@@ -123,23 +123,23 @@ _ZN4FiboC2Ei:                           # @_ZN4FiboC2Ei
 	.cfi_offset rbx, -32
 	.cfi_offset r14, -24
 	.cfi_offset rbp, -16
-	mov	r14, rdi
+	mov	rbx, rdi
 	mov	ebp, 1
 	cmp	esi, 2
 	jl	.LBB2_2
 # %bb.1:
-	mov	ebx, esi
-	lea	esi, [rbx - 1]
+	mov	r14d, esi
+	lea	esi, [r14 - 1]
+	lea	rdi, [rsp + 12]
+	call	_ZN4FiboC2Ei
+	mov	ebp, dword ptr [rsp + 12]
+	add	r14d, -2
 	lea	rdi, [rsp + 8]
+	mov	esi, r14d
 	call	_ZN4FiboC2Ei
-	mov	ebp, dword ptr [rsp + 8]
-	add	ebx, -2
-	mov	rdi, rsp
-	mov	esi, ebx
-	call	_ZN4FiboC2Ei
-	add	ebp, dword ptr [rsp]
+	add	ebp, dword ptr [rsp + 8]
 .LBB2_2:
-	mov	dword ptr [r14], ebp
+	mov	dword ptr [rbx], ebp
 	add	rsp, 16
 	.cfi_def_cfa_offset 32
 	pop	rbx
@@ -156,7 +156,7 @@ _ZN4FiboC2Ei:                           # @_ZN4FiboC2Ei
 	.type	dummy,@object                   # @dummy
 	.bss
 	.globl	dummy
-	.p2align	2
+	.p2align	2, 0x0
 dummy:
 	.long	0                               # 0x0
 	.size	dummy, 4
@@ -172,7 +172,7 @@ dummy:
 	.asciz	"Two args required: INPUT and CYCLES"
 	.size	.Lstr, 36
 
-	.ident	"Ubuntu clang version 14.0.0-1ubuntu1.1"
+	.ident	"Ubuntu clang version 18.1.3 (1ubuntu1)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym dummy

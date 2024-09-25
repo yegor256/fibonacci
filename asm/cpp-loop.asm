@@ -11,116 +11,106 @@ main:                                   # @main
 	.cfi_def_cfa_offset 16
 	push	r14
 	.cfi_def_cfa_offset 24
-	push	r12
-	.cfi_def_cfa_offset 32
 	push	rbx
-	.cfi_def_cfa_offset 40
-	push	rax
-	.cfi_def_cfa_offset 48
-	.cfi_offset rbx, -40
-	.cfi_offset r12, -32
+	.cfi_def_cfa_offset 32
+	.cfi_offset rbx, -32
 	.cfi_offset r14, -24
 	.cfi_offset r15, -16
 	cmp	edi, 3
 	jne	.LBB0_1
 # %bb.3:
-	mov	r15, rsi
 	mov	rdi, qword ptr [rsi + 8]
-	xor	r14d, r14d
+	xor	ebx, ebx
+	mov	r15, rsi
 	xor	esi, esi
 	mov	edx, 10
-	call	strtol@PLT
-	mov	r12, rax
+	call	__isoc23_strtol@PLT
+	mov	r14, rax
 	mov	rdi, qword ptr [r15 + 16]
 	xor	esi, esi
 	mov	edx, 10
-	call	strtol@PLT
+	call	__isoc23_strtol@PLT
 	mov	edx, 0
 	mov	ecx, 0
 	test	eax, eax
 	jle	.LBB0_12
 # %bb.4:
-	lea	r8d, [r12 - 1]
-	lea	r9d, [r12 - 2]
-	xor	r10d, r10d
+	lea	esi, [r14 - 1]
+	lea	edi, [r14 - 2]
+	xor	r8d, r8d
 	xor	ecx, ecx
 	jmp	.LBB0_5
 	.p2align	4, 0x90
 .LBB0_10:                               #   in Loop: Header=BB0_5 Depth=1
-	add	edx, ebx
+	add	edx, r10d
 .LBB0_11:                               #   in Loop: Header=BB0_5 Depth=1
 	add	ecx, edx
-	add	r10d, 1
-	cmp	r10d, eax
+	inc	r8d
+	cmp	r8d, eax
 	je	.LBB0_12
 .LBB0_5:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_14 Depth 2
                                         #     Child Loop BB0_9 Depth 2
-	mov	esi, dword ptr [rip + dummy]
-	lea	edi, [rsi + r12]
+	mov	r10d, dword ptr [rip + dummy]
+	lea	r9d, [r10 + r14]
 	mov	edx, 1
-	cmp	edi, 2
+	cmp	r9d, 2
 	jl	.LBB0_11
 # %bb.6:                                #   in Loop: Header=BB0_5 Depth=1
-	lea	edx, [r8 + rsi]
-	add	esi, r9d
-	mov	edi, edx
-	and	edi, 7
-	cmp	esi, 7
+	lea	r9d, [rsi + r10]
+	add	r10d, edi
+	cmp	r10d, 7
 	jae	.LBB0_13
 # %bb.7:                                #   in Loop: Header=BB0_5 Depth=1
-	mov	ebx, 1
-	xor	esi, esi
+	mov	r10d, 1
+	xor	r11d, r11d
 	jmp	.LBB0_8
 	.p2align	4, 0x90
 .LBB0_13:                               #   in Loop: Header=BB0_5 Depth=1
+	mov	edx, r9d
 	and	edx, -8
-	mov	ebx, 1
-	xor	esi, esi
+	mov	r10d, 1
+	xor	r11d, r11d
 	.p2align	4, 0x90
 .LBB0_14:                               #   Parent Loop BB0_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add	esi, ebx
-	add	ebx, esi
-	add	esi, ebx
-	add	ebx, esi
-	add	esi, ebx
-	add	ebx, esi
-	add	esi, ebx
-	add	ebx, esi
+	add	r11d, r10d
+	add	r10d, r11d
+	add	r11d, r10d
+	add	r10d, r11d
+	add	r11d, r10d
+	add	r10d, r11d
+	add	r11d, r10d
+	add	r10d, r11d
 	add	edx, -8
 	jne	.LBB0_14
 .LBB0_8:                                #   in Loop: Header=BB0_5 Depth=1
-	mov	edx, esi
-	test	edi, edi
+	mov	edx, r11d
+	and	r9d, 7
 	je	.LBB0_10
 	.p2align	4, 0x90
 .LBB0_9:                                #   Parent Loop BB0_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	mov	edx, ebx
-	mov	ebx, esi
-	add	ebx, edx
-	mov	esi, edx
-	add	edi, -1
+	mov	edx, r10d
+	mov	r10d, r11d
+	add	r10d, edx
+	mov	r11d, edx
+	dec	r9d
 	jne	.LBB0_9
 	jmp	.LBB0_10
 .LBB0_1:
 	lea	rdi, [rip + .Lstr]
 	call	puts@PLT
-	mov	r14d, 1
+	mov	ebx, 1
 	jmp	.LBB0_2
 .LBB0_12:
 	lea	rdi, [rip + .L.str.1]
-	mov	esi, r12d
+	mov	esi, r14d
 	xor	eax, eax
 	call	printf@PLT
 .LBB0_2:
-	mov	eax, r14d
-	add	rsp, 8
-	.cfi_def_cfa_offset 40
+	mov	eax, ebx
 	pop	rbx
-	.cfi_def_cfa_offset 32
-	pop	r12
 	.cfi_def_cfa_offset 24
 	pop	r14
 	.cfi_def_cfa_offset 16
@@ -178,7 +168,7 @@ _Z4calci:                               # @_Z4calci
 	mov	edx, esi
 	add	edx, eax
 	mov	esi, eax
-	add	ecx, -1
+	dec	ecx
 	jne	.LBB1_4
 .LBB1_5:
 	add	eax, edx
@@ -191,7 +181,7 @@ _Z4calci:                               # @_Z4calci
 	.type	dummy,@object                   # @dummy
 	.bss
 	.globl	dummy
-	.p2align	2
+	.p2align	2, 0x0
 dummy:
 	.long	0                               # 0x0
 	.size	dummy, 4
@@ -207,7 +197,7 @@ dummy:
 	.asciz	"Two args required: INPUT and CYCLES"
 	.size	.Lstr, 36
 
-	.ident	"Ubuntu clang version 14.0.0-1ubuntu1.1"
+	.ident	"Ubuntu clang version 18.1.3 (1ubuntu1)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym dummy

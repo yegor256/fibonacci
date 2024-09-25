@@ -24,35 +24,35 @@ main:                                   # @main
 	cmp	edi, 3
 	jne	.LBB0_1
 # %bb.2:
-	mov	rbx, rsi
 	mov	rdi, qword ptr [rsi + 8]
-	xor	r14d, r14d
+	xor	ebx, ebx
+	mov	r15, rsi
 	xor	esi, esi
 	mov	edx, 10
-	call	strtol@PLT
+	call	__isoc23_strtol@PLT
+	mov	r14, rax
+	mov	rdi, qword ptr [r15 + 16]
+	xor	esi, esi
+	mov	edx, 10
+	call	__isoc23_strtol@PLT
 	mov	r15, rax
-	mov	rdi, qword ptr [rbx + 16]
-	xor	esi, esi
-	mov	edx, 10
-	call	strtol@PLT
-	mov	rbx, rax
 	mov	eax, 0
 	mov	ebp, 0
-	test	ebx, ebx
+	test	r15d, r15d
 	jle	.LBB0_5
 # %bb.3:
 	xor	ebp, ebp
 	.p2align	4, 0x90
 .LBB0_4:                                # =>This Inner Loop Header: Depth=1
 	mov	edi, dword ptr [rip + dummy]
-	add	edi, r15d
+	add	edi, r14d
 	call	_Z4calci
 	add	ebp, eax
-	add	ebx, -1
+	dec	r15d
 	jne	.LBB0_4
 .LBB0_5:
 	lea	rdi, [rip + .L.str.1]
-	mov	esi, r15d
+	mov	esi, r14d
 	mov	edx, eax
 	mov	ecx, ebp
 	xor	eax, eax
@@ -61,9 +61,9 @@ main:                                   # @main
 .LBB0_1:
 	lea	rdi, [rip + .Lstr]
 	call	puts@PLT
-	mov	r14d, 1
+	mov	ebx, 1
 .LBB0_6:
-	mov	eax, r14d
+	mov	eax, ebx
 	add	rsp, 8
 	.cfi_def_cfa_offset 40
 	pop	rbx
@@ -150,9 +150,9 @@ _Z9fibo_implPKiS0_S0_:                  # @_Z9fibo_implPKiS0_S0_
 	.cfi_offset r14, -32
 	.cfi_offset r15, -24
 	.cfi_offset rbp, -16
-	mov	r14, rdx
+	mov	rbx, rdx
 	mov	r15, rsi
-	mov	rbx, rdi
+	mov	r14, rdi
 	mov	esi, dword ptr [rdi]
 	mov	edx, dword ptr [rdx]
 	lea	rdi, [rip + _Z9less_implPKiS0_]
@@ -174,7 +174,7 @@ _Z9fibo_implPKiS0_S0_:                  # @_Z9fibo_implPKiS0_S0_
 	ret
 .LBB5_2:
 	.cfi_def_cfa_offset 48
-	mov	esi, dword ptr [rbx]
+	mov	esi, dword ptr [r14]
 	mov	edx, dword ptr [r15]
 	lea	r15, [rip + _Z8sub_implPKiS0_]
 	mov	rdi, r15
@@ -182,8 +182,8 @@ _Z9fibo_implPKiS0_S0_:                  # @_Z9fibo_implPKiS0_S0_
 	mov	edi, eax
 	call	_Z4fiboi
 	mov	ebp, eax
-	mov	esi, dword ptr [rbx]
-	mov	edx, dword ptr [r14]
+	mov	esi, dword ptr [r14]
+	mov	edx, dword ptr [rbx]
 	mov	rdi, r15
 	call	_Z2opIPFiPKiS1_EEiT_ii
 	mov	edi, eax
@@ -219,37 +219,38 @@ _Z2opIPFbPKiS1_EEiT_ii:                 # @_Z2opIPFbPKiS1_EEiT_ii
 	.cfi_def_cfa_offset 24
 	push	r14
 	.cfi_def_cfa_offset 32
-	push	rbx
+	push	r12
 	.cfi_def_cfa_offset 40
-	push	rax
+	push	rbx
 	.cfi_def_cfa_offset 48
-	.cfi_offset rbx, -40
+	.cfi_offset rbx, -48
+	.cfi_offset r12, -40
 	.cfi_offset r14, -32
 	.cfi_offset r15, -24
 	.cfi_offset rbp, -16
-	mov	r15d, edx
+	mov	ebx, edx
 	mov	ebp, esi
 	mov	r14, rdi
 	mov	edi, 4
 	call	_Znwm@PLT
-	mov	rbx, rax
+	mov	r15, rax
 	mov	dword ptr [rax], ebp
 	mov	edi, 4
 	call	_Znwm@PLT
-	mov	rbp, rax
-	mov	dword ptr [rax], r15d
-	mov	rdi, rbx
+	mov	r12, rax
+	mov	dword ptr [rax], ebx
+	mov	rdi, r15
 	mov	rsi, rax
 	call	r14
-	mov	r14d, eax
-	mov	rdi, rbx
+	mov	ebx, eax
+	mov	rdi, r15
 	call	_ZdlPv@PLT
-	mov	rdi, rbp
+	mov	rdi, r12
 	call	_ZdlPv@PLT
-	movzx	eax, r14b
-	add	rsp, 8
-	.cfi_def_cfa_offset 40
+	movzx	eax, bl
 	pop	rbx
+	.cfi_def_cfa_offset 40
+	pop	r12
 	.cfi_def_cfa_offset 32
 	pop	r14
 	.cfi_def_cfa_offset 24
@@ -275,37 +276,38 @@ _Z2opIPFiPKiS1_EEiT_ii:                 # @_Z2opIPFiPKiS1_EEiT_ii
 	.cfi_def_cfa_offset 24
 	push	r14
 	.cfi_def_cfa_offset 32
-	push	rbx
+	push	r12
 	.cfi_def_cfa_offset 40
-	push	rax
+	push	rbx
 	.cfi_def_cfa_offset 48
-	.cfi_offset rbx, -40
+	.cfi_offset rbx, -48
+	.cfi_offset r12, -40
 	.cfi_offset r14, -32
 	.cfi_offset r15, -24
 	.cfi_offset rbp, -16
-	mov	r15d, edx
+	mov	ebx, edx
 	mov	ebp, esi
 	mov	r14, rdi
 	mov	edi, 4
 	call	_Znwm@PLT
-	mov	rbx, rax
+	mov	r15, rax
 	mov	dword ptr [rax], ebp
 	mov	edi, 4
 	call	_Znwm@PLT
-	mov	rbp, rax
-	mov	dword ptr [rax], r15d
-	mov	rdi, rbx
+	mov	r12, rax
+	mov	dword ptr [rax], ebx
+	mov	rdi, r15
 	mov	rsi, rax
 	call	r14
-	mov	r14d, eax
-	mov	rdi, rbx
+	mov	ebx, eax
+	mov	rdi, r15
 	call	_ZdlPv@PLT
-	mov	rdi, rbp
+	mov	rdi, r12
 	call	_ZdlPv@PLT
-	mov	eax, r14d
-	add	rsp, 8
-	.cfi_def_cfa_offset 40
+	mov	eax, ebx
 	pop	rbx
+	.cfi_def_cfa_offset 40
+	pop	r12
 	.cfi_def_cfa_offset 32
 	pop	r14
 	.cfi_def_cfa_offset 24
@@ -339,31 +341,31 @@ _Z4fiboi:                               # @_Z4fiboi
 	.cfi_offset r14, -32
 	.cfi_offset r15, -24
 	.cfi_offset rbp, -16
-	mov	ebp, edi
+	mov	ebx, edi
 	mov	edi, 4
 	call	_Znwm@PLT
 	mov	r14, rax
-	mov	dword ptr [rax], ebp
-	mov	edi, 4
-	call	_Znwm@PLT
-	mov	rbp, rax
-	mov	dword ptr [rax], 1
+	mov	dword ptr [rax], ebx
 	mov	edi, 4
 	call	_Znwm@PLT
 	mov	rbx, rax
+	mov	dword ptr [rax], 1
+	mov	edi, 4
+	call	_Znwm@PLT
+	mov	r15, rax
 	mov	dword ptr [rax], 2
 	mov	rdi, r14
-	mov	rsi, rbp
+	mov	rsi, rbx
 	mov	rdx, rax
 	call	_Z9fibo_implPKiS0_S0_
-	mov	r15d, eax
+	mov	ebp, eax
 	mov	rdi, r14
-	call	_ZdlPv@PLT
-	mov	rdi, rbp
 	call	_ZdlPv@PLT
 	mov	rdi, rbx
 	call	_ZdlPv@PLT
-	mov	eax, r15d
+	mov	rdi, r15
+	call	_ZdlPv@PLT
+	mov	eax, ebp
 	add	rsp, 8
 	.cfi_def_cfa_offset 40
 	pop	rbx
@@ -382,7 +384,7 @@ _Z4fiboi:                               # @_Z4fiboi
 	.type	dummy,@object                   # @dummy
 	.bss
 	.globl	dummy
-	.p2align	2
+	.p2align	2, 0x0
 dummy:
 	.long	0                               # 0x0
 	.size	dummy, 4
@@ -398,7 +400,7 @@ dummy:
 	.asciz	"Two args required: INPUT and CYCLES"
 	.size	.Lstr, 36
 
-	.ident	"Ubuntu clang version 14.0.0-1ubuntu1.1"
+	.ident	"Ubuntu clang version 18.1.3 (1ubuntu1)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym _Z9less_implPKiS0_

@@ -30,21 +30,21 @@ main:                                   # @main
 	cmp	edi, 3
 	jne	.LBB0_1
 # %bb.2:
-	mov	rbx, rsi
 	mov	rdi, qword ptr [rsi + 8]
-	xor	r15d, r15d
+	xor	ebx, ebx
+	mov	r15, rsi
 	xor	esi, esi
 	mov	edx, 10
-	call	strtol@PLT
+	call	__isoc23_strtol@PLT
 	mov	r14, rax
-	mov	rdi, qword ptr [rbx + 16]
+	mov	rdi, qword ptr [r15 + 16]
 	xor	esi, esi
 	mov	edx, 10
-	call	strtol@PLT
-	mov	rbx, rax
+	call	__isoc23_strtol@PLT
+	mov	r15, rax
 	mov	edx, 0
 	mov	ebp, 0
-	test	ebx, ebx
+	test	r15d, r15d
 	jle	.LBB0_5
 # %bb.3:
 	lea	r13d, [r14 + 1]
@@ -59,7 +59,7 @@ main:                                   # @main
 	mov	rdi, r12
 	call	_Z6binpowRKSt5arrayIiLm4EEi
 	add	ebp, edx
-	add	ebx, -1
+	dec	r15d
 	jne	.LBB0_4
 .LBB0_5:
 	lea	rdi, [rip + .L.str.1]
@@ -72,9 +72,9 @@ main:                                   # @main
 .LBB0_1:
 	lea	rdi, [rip + .Lstr]
 	call	puts@PLT
-	mov	r15d, 1
+	mov	ebx, 1
 .LBB0_6:
-	mov	eax, r15d
+	mov	eax, ebx
 	add	rsp, 24
 	.cfi_def_cfa_offset 56
 	pop	rbx
@@ -134,17 +134,17 @@ _Z3mulRKSt5arrayIiLm4EES2_:             # @_Z3mulRKSt5arrayIiLm4EES2_
 	imul	eax, ecx
 	add	eax, r11d
 	imul	r8d, r10d
-	mov	r11d, dword ptr [rsi + 12]
-	imul	ecx, r11d
+	mov	esi, dword ptr [rsi + 12]
+	imul	ecx, esi
 	add	ecx, r8d
-	mov	esi, dword ptr [rdi + 8]
-	imul	r9d, esi
+	mov	r8d, dword ptr [rdi + 8]
+	imul	r9d, r8d
 	mov	edi, dword ptr [rdi + 12]
 	imul	edx, edi
 	add	edx, r9d
-	imul	esi, r10d
-	imul	edi, r11d
-	add	edi, esi
+	imul	r8d, r10d
+	imul	edi, esi
+	add	edi, r8d
 	shl	rcx, 32
 	or	rax, rcx
 	shl	rdi, 32
@@ -160,91 +160,88 @@ _Z3mulRKSt5arrayIiLm4EES2_:             # @_Z3mulRKSt5arrayIiLm4EES2_
 _Z6binpowRKSt5arrayIiLm4EEi:            # @_Z6binpowRKSt5arrayIiLm4EEi
 	.cfi_startproc
 # %bb.0:
+	test	esi, esi
+	je	.LBB3_1
+# %bb.3:
 	push	rbx
 	.cfi_def_cfa_offset 16
 	.cfi_offset rbx, -16
-	test	esi, esi
-	je	.LBB3_1
-# %bb.2:
+	mov	eax, esi
+	and	eax, -2147483647
+	cmp	eax, 1
+	jne	.LBB3_5
+# %bb.4:
+	dec	esi
 	mov	rbx, rdi
+	call	_Z6binpowRKSt5arrayIiLm4EEi
+	mov	rcx, rdx
+	mov	edi, dword ptr [rbx]
+	mov	esi, dword ptr [rbx + 4]
+	mov	r9d, edi
+	imul	r9d, eax
+	mov	r10d, esi
+	imul	r10d, eax
+	mov	r8, rax
+	shr	r8, 32
+	mov	edx, dword ptr [rbx + 8]
+	mov	eax, edx
+	imul	eax, r8d
+	add	eax, r9d
+	mov	r9d, dword ptr [rbx + 12]
+	imul	r8d, r9d
+	add	r8d, r10d
+	imul	edi, ecx
+	imul	esi, ecx
+	shr	rcx, 32
+	imul	edx, ecx
+	add	edx, edi
+	imul	r9d, ecx
+	add	r9d, esi
+	shl	r8, 32
+	or	rax, r8
+	shl	r9, 32
+	or	rdx, r9
+	pop	rbx
+	.cfi_def_cfa_offset 8
+	.cfi_restore rbx
+	ret
+.LBB3_1:
+	mov	eax, 1
+	movabs	rdx, 4294967296
+	ret
+.LBB3_5:
+	.cfi_def_cfa_offset 16
+	.cfi_offset rbx, -16
 	mov	eax, esi
 	shr	eax, 31
 	add	eax, esi
-	mov	ecx, eax
-	and	ecx, -2
-	mov	edx, esi
-	sub	edx, ecx
-	cmp	edx, 1
-	jne	.LBB3_4
-# %bb.3:
-	add	esi, -1
-	mov	rdi, rbx
+	sar	eax
+	mov	esi, eax
 	call	_Z6binpowRKSt5arrayIiLm4EEi
-	mov	r8, rdx
-	mov	r10d, dword ptr [rbx]
-	mov	r9d, dword ptr [rbx + 4]
-	mov	esi, r10d
-	imul	esi, eax
-	mov	edi, r9d
-	imul	edi, eax
-	mov	rcx, rax
-	shr	rcx, 32
-	mov	edx, dword ptr [rbx + 8]
-	mov	eax, edx
-	imul	eax, ecx
-	add	eax, esi
-	mov	esi, dword ptr [rbx + 12]
-	imul	ecx, esi
-	add	ecx, edi
-	imul	r10d, r8d
-	imul	r9d, r8d
-	shr	r8, 32
-	imul	edx, r8d
-	add	edx, r10d
-	imul	esi, r8d
-	add	esi, r9d
-	shl	rcx, 32
-	or	rax, rcx
+	mov	rcx, rdx
+	mov	rdi, rax
+	mov	rsi, rdx
+	shr	rsi, 32
+	mov	rdx, rsi
+	add	rdx, rax
+	movabs	r8, -4294967296
+	and	r8, rax
+                                        # kill: def $eax killed $eax killed $rax def $rax
+	imul	eax, eax
+	shr	rdi, 32
+	imul	edi, ecx
+	add	eax, edi
+	imul	r8, rdx
+                                        # kill: def $edx killed $edx killed $rdx def $rdx
+	imul	edx, ecx
+	imul	esi, esi
+	add	esi, edi
+	or	rax, r8
 	shl	rsi, 32
 	or	rdx, rsi
 	pop	rbx
 	.cfi_def_cfa_offset 8
-	ret
-.LBB3_1:
-	.cfi_def_cfa_offset 16
-	mov	eax, 1
-	movabs	rdx, 4294967296
-	pop	rbx
-	.cfi_def_cfa_offset 8
-	ret
-.LBB3_4:
-	.cfi_def_cfa_offset 16
-	sar	eax
-	mov	rdi, rbx
-	mov	esi, eax
-	call	_Z6binpowRKSt5arrayIiLm4EEi
-	mov	rcx, rax
-	mov	rsi, rdx
-	mov	rdi, rdx
-	shr	rdi, 32
-	mov	rdx, rdi
-	add	rdx, rax
-	movabs	rbx, -4294967296
-	and	rbx, rax
-	shr	rcx, 32
-	imul	eax, eax
-	imul	ecx, esi
-	add	eax, ecx
-	imul	rbx, rdx
-                                        # kill: def $edx killed $edx killed $rdx def $rdx
-	imul	edx, esi
-	imul	edi, edi
-	add	edi, ecx
-	or	rax, rbx
-	shl	rdi, 32
-	or	rdx, rdi
-	pop	rbx
-	.cfi_def_cfa_offset 8
+	.cfi_restore rbx
 	ret
 .Lfunc_end3:
 	.size	_Z6binpowRKSt5arrayIiLm4EEi, .Lfunc_end3-_Z6binpowRKSt5arrayIiLm4EEi
@@ -253,7 +250,7 @@ _Z6binpowRKSt5arrayIiLm4EEi:            # @_Z6binpowRKSt5arrayIiLm4EEi
 	.type	dummy,@object                   # @dummy
 	.bss
 	.globl	dummy
-	.p2align	2
+	.p2align	2, 0x0
 dummy:
 	.long	0                               # 0x0
 	.size	dummy, 4
@@ -266,7 +263,7 @@ dummy:
 
 	.type	.L__const._Z4calci.factor,@object # @__const._Z4calci.factor
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	2
+	.p2align	2, 0x0
 .L__const._Z4calci.factor:
 	.long	0                               # 0x0
 	.long	1                               # 0x1
@@ -280,7 +277,7 @@ dummy:
 	.asciz	"Two args required: INPUT and CYCLES"
 	.size	.Lstr, 36
 
-	.ident	"Ubuntu clang version 14.0.0-1ubuntu1.1"
+	.ident	"Ubuntu clang version 18.1.3 (1ubuntu1)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym dummy

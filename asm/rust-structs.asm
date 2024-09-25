@@ -1,9 +1,9 @@
 	.text
 	.file	"structs.59454373b9d3776e-cgu.0"
-	.section	.text._ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h915ffa1cfba8e755E,"ax",@progbits
+	.section	.text._ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h078fc15132f5263cE,"ax",@progbits
 	.p2align	4, 0x90
-	.type	_ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h915ffa1cfba8e755E,@function
-_ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h915ffa1cfba8e755E:
+	.type	_ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h078fc15132f5263cE,@function
+_ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h078fc15132f5263cE:
 	.cfi_startproc
 	pushq	%rax
 	.cfi_def_cfa_offset 16
@@ -14,15 +14,15 @@ _ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h915ffa1cfba8e755E:
 	.cfi_def_cfa_offset 8
 	retq
 .Lfunc_end0:
-	.size	_ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h915ffa1cfba8e755E, .Lfunc_end0-_ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h915ffa1cfba8e755E
+	.size	_ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h078fc15132f5263cE, .Lfunc_end0-_ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h078fc15132f5263cE
 	.cfi_endproc
 
-	.section	.text._ZN3std2rt10lang_start17h06a3bd1c91f60bcdE,"ax",@progbits
-	.hidden	_ZN3std2rt10lang_start17h06a3bd1c91f60bcdE
-	.globl	_ZN3std2rt10lang_start17h06a3bd1c91f60bcdE
+	.section	.text._ZN3std2rt10lang_start17hbf75acd835944f5eE,"ax",@progbits
+	.hidden	_ZN3std2rt10lang_start17hbf75acd835944f5eE
+	.globl	_ZN3std2rt10lang_start17hbf75acd835944f5eE
 	.p2align	4, 0x90
-	.type	_ZN3std2rt10lang_start17h06a3bd1c91f60bcdE,@function
-_ZN3std2rt10lang_start17h06a3bd1c91f60bcdE:
+	.type	_ZN3std2rt10lang_start17hbf75acd835944f5eE,@function
+_ZN3std2rt10lang_start17hbf75acd835944f5eE:
 	.cfi_startproc
 	pushq	%rax
 	.cfi_def_cfa_offset 16
@@ -32,29 +32,29 @@ _ZN3std2rt10lang_start17h06a3bd1c91f60bcdE:
 	movq	%rdi, (%rsp)
 	leaq	.L__unnamed_1(%rip), %rsi
 	movq	%rsp, %rdi
-	callq	*_ZN3std2rt19lang_start_internal17hea207582130b429dE@GOTPCREL(%rip)
+	callq	*_ZN3std2rt19lang_start_internal17h8fc8e9636333b06eE@GOTPCREL(%rip)
 	popq	%rcx
 	.cfi_def_cfa_offset 8
 	retq
 .Lfunc_end1:
-	.size	_ZN3std2rt10lang_start17h06a3bd1c91f60bcdE, .Lfunc_end1-_ZN3std2rt10lang_start17h06a3bd1c91f60bcdE
+	.size	_ZN3std2rt10lang_start17hbf75acd835944f5eE, .Lfunc_end1-_ZN3std2rt10lang_start17hbf75acd835944f5eE
 	.cfi_endproc
 
-	.section	".text._ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17haf20a086cae308d4E","ax",@progbits
+	.section	".text._ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17hd3168705e1de873eE","ax",@progbits
 	.p2align	4, 0x90
-	.type	_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17haf20a086cae308d4E,@function
-_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17haf20a086cae308d4E:
+	.type	_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17hd3168705e1de873eE,@function
+_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17hd3168705e1de873eE:
 	.cfi_startproc
 	pushq	%rax
 	.cfi_def_cfa_offset 16
 	movq	(%rdi), %rdi
-	callq	_ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h915ffa1cfba8e755E
+	callq	_ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h078fc15132f5263cE
 	xorl	%eax, %eax
 	popq	%rcx
 	.cfi_def_cfa_offset 8
 	retq
 .Lfunc_end2:
-	.size	_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17haf20a086cae308d4E, .Lfunc_end2-_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17haf20a086cae308d4E
+	.size	_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17hd3168705e1de873eE, .Lfunc_end2-_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17hd3168705e1de873eE
 	.cfi_endproc
 
 	.section	".text._ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE","ax",@progbits
@@ -76,21 +76,21 @@ _ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE:
 	.size	_ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE, .Lfunc_end3-_ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE
 	.cfi_endproc
 
-	.section	".text._ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17h6a8e0db6c91b56deE","ax",@progbits
+	.section	".text._ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17hcec49e3b2c373155E","ax",@progbits
 	.p2align	4, 0x90
-	.type	_ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17h6a8e0db6c91b56deE,@function
-_ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17h6a8e0db6c91b56deE:
+	.type	_ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17hcec49e3b2c373155E,@function
+_ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17hcec49e3b2c373155E:
 	.cfi_startproc
 	pushq	%rax
 	.cfi_def_cfa_offset 16
 	movq	(%rdi), %rdi
-	callq	_ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h915ffa1cfba8e755E
+	callq	_ZN3std10sys_common9backtrace28__rust_begin_short_backtrace17h078fc15132f5263cE
 	xorl	%eax, %eax
 	popq	%rcx
 	.cfi_def_cfa_offset 8
 	retq
 .Lfunc_end4:
-	.size	_ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17h6a8e0db6c91b56deE, .Lfunc_end4-_ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17h6a8e0db6c91b56deE
+	.size	_ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17hcec49e3b2c373155E, .Lfunc_end4-_ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17hcec49e3b2c373155E
 	.cfi_endproc
 
 	.section	".text._ZN4core3ptr33drop_in_place$LT$structs..Sub$GT$17hdefd6c9deb789766E","ax",@progbits
@@ -123,10 +123,10 @@ _ZN4core3ptr52drop_in_place$LT$core..num..error..ParseIntError$GT$17h24b75c88850
 	.size	_ZN4core3ptr52drop_in_place$LT$core..num..error..ParseIntError$GT$17h24b75c88850f2a14E, .Lfunc_end7-_ZN4core3ptr52drop_in_place$LT$core..num..error..ParseIntError$GT$17h24b75c88850f2a14E
 	.cfi_endproc
 
-	.section	".text._ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17hc7a1f13248498a48E","ax",@progbits
+	.section	".text._ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17he42cc8568956852cE","ax",@progbits
 	.p2align	4, 0x90
-	.type	_ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17hc7a1f13248498a48E,@function
-_ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17hc7a1f13248498a48E:
+	.type	_ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17he42cc8568956852cE,@function
+_ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17he42cc8568956852cE:
 	.cfi_startproc
 	pushq	%r15
 	.cfi_def_cfa_offset 16
@@ -197,13 +197,13 @@ _ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$1
 	.cfi_def_cfa_offset 8
 	retq
 .Lfunc_end8:
-	.size	_ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17hc7a1f13248498a48E, .Lfunc_end8-_ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17hc7a1f13248498a48E
+	.size	_ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17he42cc8568956852cE, .Lfunc_end8-_ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17he42cc8568956852cE
 	.cfi_endproc
 
-	.section	.text._ZN5alloc7raw_vec11finish_grow17h53d58fcba87630b4E,"ax",@progbits
+	.section	.text._ZN5alloc7raw_vec11finish_grow17hc97969a6b9bd64acE,"ax",@progbits
 	.p2align	4, 0x90
-	.type	_ZN5alloc7raw_vec11finish_grow17h53d58fcba87630b4E,@function
-_ZN5alloc7raw_vec11finish_grow17h53d58fcba87630b4E:
+	.type	_ZN5alloc7raw_vec11finish_grow17hc97969a6b9bd64acE,@function
+_ZN5alloc7raw_vec11finish_grow17hc97969a6b9bd64acE:
 	.cfi_startproc
 	pushq	%r15
 	.cfi_def_cfa_offset 16
@@ -268,13 +268,13 @@ _ZN5alloc7raw_vec11finish_grow17h53d58fcba87630b4E:
 	jne	.LBB9_11
 	jmp	.LBB9_4
 .Lfunc_end9:
-	.size	_ZN5alloc7raw_vec11finish_grow17h53d58fcba87630b4E, .Lfunc_end9-_ZN5alloc7raw_vec11finish_grow17h53d58fcba87630b4E
+	.size	_ZN5alloc7raw_vec11finish_grow17hc97969a6b9bd64acE, .Lfunc_end9-_ZN5alloc7raw_vec11finish_grow17hc97969a6b9bd64acE
 	.cfi_endproc
 
-	.section	".text.unlikely._ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hc2fc09f68cfa75edE","ax",@progbits
+	.section	".text.unlikely._ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hb20a7f7a5885ddbcE","ax",@progbits
 	.p2align	4, 0x90
-	.type	_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hc2fc09f68cfa75edE,@function
-_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hc2fc09f68cfa75edE:
+	.type	_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hb20a7f7a5885ddbcE,@function
+_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hb20a7f7a5885ddbcE:
 	.cfi_startproc
 	pushq	%r14
 	.cfi_def_cfa_offset 16
@@ -315,7 +315,7 @@ _ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hc2fc09f6
 .LBB10_4:
 	leaq	32(%rsp), %rdi
 	leaq	8(%rsp), %rcx
-	callq	_ZN5alloc7raw_vec11finish_grow17h53d58fcba87630b4E
+	callq	_ZN5alloc7raw_vec11finish_grow17hc97969a6b9bd64acE
 	cmpq	$0, 32(%rsp)
 	movq	40(%rsp), %rdi
 	je	.LBB10_5
@@ -345,14 +345,14 @@ _ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hc2fc09f6
 	testq	%rdi, %rdi
 	jne	.LBB10_9
 .LBB10_10:
-	callq	*_ZN5alloc7raw_vec17capacity_overflow17hbc32d7f20da4e6a8E@GOTPCREL(%rip)
+	callq	*_ZN5alloc7raw_vec17capacity_overflow17h07f8531201215201E@GOTPCREL(%rip)
 	ud2
 .LBB10_9:
 	movq	48(%rsp), %rsi
-	callq	*_ZN5alloc5alloc18handle_alloc_error17h7e18cad1edeefbceE@GOTPCREL(%rip)
+	callq	*_ZN5alloc5alloc18handle_alloc_error17h36e33f5f4c713b43E@GOTPCREL(%rip)
 	ud2
 .Lfunc_end10:
-	.size	_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hc2fc09f68cfa75edE, .Lfunc_end10-_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hc2fc09f68cfa75edE
+	.size	_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hb20a7f7a5885ddbcE, .Lfunc_end10-_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hb20a7f7a5885ddbcE
 	.cfi_endproc
 
 	.section	".text._ZN68_$LT$core..num..error..ParseIntError$u20$as$u20$core..fmt..Debug$GT$3fmt17h4b3a2caf7db8bbc0E","ax",@progbits
@@ -545,11 +545,11 @@ _ZN7structs4main17h8329e463e882d13dE:
 	.cfi_offset %rbp, -16
 	leaq	128(%rsp), %rbx
 	movq	%rbx, %rdi
-	callq	*_ZN3std3env4args17h06d1945eb31f5fe2E@GOTPCREL(%rip)
+	callq	*_ZN3std3env4args17ha68d7b7f3b38dd11E@GOTPCREL(%rip)
 .Ltmp0:
 	leaq	160(%rsp), %rdi
 	movq	%rbx, %rsi
-	callq	*_ZN73_$LT$std..env..Args$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4next17hde07d2ee37b53d64E@GOTPCREL(%rip)
+	callq	*_ZN73_$LT$std..env..Args$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4next17h6132073fbf698433E@GOTPCREL(%rip)
 .Ltmp1:
 	movq	160(%rsp), %r14
 	testq	%r14, %r14
@@ -559,7 +559,7 @@ _ZN7structs4main17h8329e463e882d13dE:
 .Ltmp3:
 	leaq	64(%rsp), %rdi
 	leaq	128(%rsp), %rsi
-	callq	*_ZN73_$LT$std..env..Args$u20$as$u20$core..iter..traits..iterator..Iterator$GT$9size_hint17hc8fb9d33f383828dE@GOTPCREL(%rip)
+	callq	*_ZN73_$LT$std..env..Args$u20$as$u20$core..iter..traits..iterator..Iterator$GT$9size_hint17h9417c19765810b59E@GOTPCREL(%rip)
 .Ltmp4:
 	movq	64(%rsp), %rax
 	incq	%rax
@@ -586,7 +586,7 @@ _ZN7structs4main17h8329e463e882d13dE:
 .Ltmp5:
 	movl	$8, %edi
 	movq	%rbx, %rsi
-	callq	*_ZN5alloc5alloc18handle_alloc_error17h7e18cad1edeefbceE@GOTPCREL(%rip)
+	callq	*_ZN5alloc5alloc18handle_alloc_error17h36e33f5f4c713b43E@GOTPCREL(%rip)
 .Ltmp6:
 	jmp	.LBB16_16
 .LBB16_18:
@@ -605,7 +605,7 @@ _ZN7structs4main17h8329e463e882d13dE:
 	movl	$1, %ebx
 	movl	$32, %r15d
 	leaq	64(%rsp), %r12
-	movq	_ZN73_$LT$std..env..Args$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4next17hde07d2ee37b53d64E@GOTPCREL(%rip), %rbp
+	movq	_ZN73_$LT$std..env..Args$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4next17h6132073fbf698433E@GOTPCREL(%rip), %rbp
 	jmp	.LBB16_20
 	.p2align	4, 0x90
 .LBB16_25:
@@ -633,7 +633,7 @@ _ZN7structs4main17h8329e463e882d13dE:
 .Ltmp10:
 	leaq	160(%rsp), %rdi
 	movq	%r12, %rsi
-	callq	*_ZN73_$LT$std..env..Args$u20$as$u20$core..iter..traits..iterator..Iterator$GT$9size_hint17hc8fb9d33f383828dE@GOTPCREL(%rip)
+	callq	*_ZN73_$LT$std..env..Args$u20$as$u20$core..iter..traits..iterator..Iterator$GT$9size_hint17h9417c19765810b59E@GOTPCREL(%rip)
 .Ltmp11:
 	movq	160(%rsp), %rdx
 	incq	%rdx
@@ -642,7 +642,7 @@ _ZN7structs4main17h8329e463e882d13dE:
 .Ltmp12:
 	leaq	24(%rsp), %rdi
 	movq	%rbx, %rsi
-	callq	_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hc2fc09f68cfa75edE
+	callq	_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17hb20a7f7a5885ddbcE
 .Ltmp13:
 	jmp	.LBB16_25
 .LBB16_47:
@@ -787,7 +787,7 @@ _ZN7structs4main17h8329e463e882d13dE:
 	movq	$3, 184(%rsp)
 .Ltmp24:
 	leaq	160(%rsp), %rdi
-	callq	*_ZN3std2io5stdio6_print17h0e398db3be30978cE@GOTPCREL(%rip)
+	callq	*_ZN3std2io5stdio6_print17hfdc14195f94a0b4fE@GOTPCREL(%rip)
 .Ltmp25:
 	movq	240(%rsp), %r15
 	leaq	8(%r15), %rbx
@@ -870,7 +870,7 @@ _ZN7structs4main17h8329e463e882d13dE:
 	jmp	.LBB16_10
 .LBB16_15:
 .Ltmp26:
-	callq	*_ZN5alloc7raw_vec17capacity_overflow17hbc32d7f20da4e6a8E@GOTPCREL(%rip)
+	callq	*_ZN5alloc7raw_vec17capacity_overflow17h07f8531201215201E@GOTPCREL(%rip)
 .Ltmp27:
 	jmp	.LBB16_16
 .LBB16_70:
@@ -1060,7 +1060,7 @@ _ZN7structs4main17h8329e463e882d13dE:
 .LBB16_66:
 	movq	%rax, %rbx
 	leaq	208(%rsp), %rdi
-	callq	_ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17hc7a1f13248498a48E
+	callq	_ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17he42cc8568956852cE
 .LBB16_67:
 	movq	%rbx, %rdi
 	callq	_Unwind_Resume@PLT
@@ -1146,7 +1146,7 @@ main:
 	movslq	%edi, %rsi
 	leaq	_ZN7structs4main17h8329e463e882d13dE(%rip), %rdi
 	xorl	%ecx, %ecx
-	jmp	_ZN3std2rt10lang_start17h06a3bd1c91f60bcdE
+	jmp	_ZN3std2rt10lang_start17hbf75acd835944f5eE
 .Lfunc_end17:
 	.size	main, .Lfunc_end17-main
 	.cfi_endproc
@@ -1157,9 +1157,9 @@ main:
 .L__unnamed_1:
 	.quad	_ZN4core3ptr33drop_in_place$LT$structs..Sub$GT$17hdefd6c9deb789766E
 	.asciz	"\b\000\000\000\000\000\000\000\b\000\000\000\000\000\000"
-	.quad	_ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17h6a8e0db6c91b56deE
-	.quad	_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17haf20a086cae308d4E
-	.quad	_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17haf20a086cae308d4E
+	.quad	_ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17hcec49e3b2c373155E
+	.quad	_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17hd3168705e1de873eE
+	.quad	_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17hd3168705e1de873eE
 	.size	.L__unnamed_1, 48
 
 	.type	.L__unnamed_15,@object

@@ -1,9 +1,9 @@
 bin/haskell-polymorphic_recursion.bin:
-CPU ticks: 26163689613
-CPU ticks per cycle: 102201912
-Instructions: 2053
+CPU ticks: 26668966804
+CPU ticks per cycle: 104175651
+Instructions: 2092
 Cycles: 256
-Total Time: 6.67
-Time per cycle: .0260546875000000
-Ticks: 26163689613
-Ticks per cycle: 102201912
+Total Time: 6.85
+Time per cycle: .0267578125000000
+Ticks: 26668966804
+Ticks per cycle: 104175651
