@@ -144,8 +144,10 @@ install: Makefile
 		echo "This is neither macOS nor Liux, can't install :("
 		exit 1
 	fi
-	mkdir -p /usr/local/opt
-	wget --no-verbose -O /usr/local/opt/Saxon.jar https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar
+	if [ ! -e /usr/local/opt/Saxon.jar ]; then
+		mkdir -p /usr/local/opt
+		wget --no-verbose -O /usr/local/opt/Saxon.jar https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar
+	fi
 
 env: Makefile
 	if [ -z "$${HOME}" ]; then
