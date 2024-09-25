@@ -62,7 +62,7 @@ jobs:
           distribution: 'graalvm'
           java-version: '21'
           github-token: ${{ secrets.GH_PAT }}
-      - run: make env sa
+      - run: make env
       - run: mkdir www
       - run: make -e WANTED=256 INPUT=7 index.html
       - run: mv index.html www/seven.html
