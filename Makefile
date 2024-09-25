@@ -23,7 +23,10 @@
 .SHELLFLAGS := -ex -o pipefail -c
 SHELL := bash
 
+# The input to the Fibonacci function:
 INPUT = 32
+
+# How many cycles are needed:
 WANTED = 8
 
 CC = clang++
@@ -242,7 +245,8 @@ bin/csharp-%.bin: csharp/%/Program.cs | bin
 	fi
 	cd "$$(dirname "$<")"
 	$(DOTNET) publish -c Release -r "$${arch}" --self-contained
-	mv bin/Release/*/*/publish/* "../../$@"
+	bin=$$(basename "$$(dirname "$<")")
+	mv bin/Release/*/*/publish/"$${bin}" "../../$@"
 
 bin/pascal-%.bin: pascal/%.pp | bin
 	fpc "$<" "-FEbin" "-o$@"
