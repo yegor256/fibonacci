@@ -71,6 +71,12 @@ GOCACHE = /tmp/gocache
 
 export
 
+all: summary.txt summary.tex
+
+summary.tex: index.xml
+	java -jar $(SAXON) '-s:index.xml' -xsl:latex.xsl '-o:summary.tex'
+	cat summary.tex
+
 summary.txt: $(DIRS) $(ASMS) $(BINS) $(REPORTS) Makefile
 	if [ ! $$( { for r in $(REPORTS:.txt=.stdout); do cat "$${r}"; done ; } | uniq | wc -l) == 1 ]; then
 		set +x
@@ -154,8 +160,8 @@ install: Makefile
 		exit 1
 	fi
 	if [ ! -e /usr/local/opt/Saxon.jar ]; then
-		mkdir -p /usr/local/opt
-		wget --no-verbose -O /usr/local/opt/Saxon.jar https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar
+		sudo mkdir -p /usr/local/opt
+		sudo wget --no-verbose https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar -O /usr/local/opt/Saxon.jar
 	fi
 
 env: Makefile
@@ -344,15 +350,23 @@ reports/%.txt: bin/%.bin asm/%.asm | reports
 	echo "${subst bin/,,$<},$${instructions},$${ticks_per_cycle},$${cycles},$${time},$${time_per_cycle}" > "${@:.txt=.csv}"
 	name=$(subst bin/,,${<:.bin=})
 	file=$$(ls $$(echo $${name} | cut -f1 -d-)/$$(echo $${name} | cut -f2- -d-).* || echo $${name})
+	if [[ "$${name}" =~ /^cpp-/ ]]; then
+		compiler=$$($(CC) | head -1)
+	elif [[ "$${name}" =~ /^java-/ ]]; then
+		compiler=$$($(JAVAC) | head -1)
+	else
+		compiler='unknown'
+	fi
 	echo "<program> \
-		<file>$$(echo $${file} | jq -Rr @html)</file> \
-		<name>$$(echo $${name} | jq -Rr @html)</name> \
-		<instructions>$$(echo $${instructions} | jq -Rr @html)</instructions> \
-		<cycles>$$(echo $${cycles} | jq -Rr @html)</cycles> \
-		<time>$$(echo $${time} | jq -Rr @html)</time> \
-		<time_per_cycle>$$(echo $${time_per_cycle} | jq -Rr @html)</time_per_cycle> \
-		<ticks>$$(echo $${ticks} | jq -Rr @html)</ticks> \
-		<ticks_per_cycle>$$(echo $${ticks_per_cycle} | jq -Rr @html)</ticks_per_cycle> \
+		<file>$$(echo "$${file}" | jq -Rr @html)</file> \
+		<name>$$(echo "$${name}" | jq -Rr @html)</name> \
+		<compiler>$$(echo "$${compiler}")</compiler> \
+		<instructions>$$(echo "$${instructions}" | jq -Rr @html)</instructions> \
+		<cycles>$$(echo "$${cycles}" | jq -Rr @html)</cycles> \
+		<time>$$(echo "$${time}" | jq -Rr @html)</time> \
+		<time_per_cycle>$$(echo "$${time_per_cycle}" | jq -Rr @html)</time_per_cycle> \
+		<ticks>$$(echo "$${ticks}" | jq -Rr @html)</ticks> \
+		<ticks_per_cycle>$$(echo "$${ticks_per_cycle}" | jq -Rr @html)</ticks_per_cycle> \
 		</program>" > "${@:.txt=.xml}"
 
 clean:
