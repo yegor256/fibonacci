@@ -248,10 +248,11 @@ bin/csharp-%.bin: csharp/%/Program.cs | bin
 		echo "This is neither macOS nor Liux, can't build .Net binary :("
 		exit 1
 	fi
-	cd "$$(dirname "$<")"
-	$(DOTNET) publish -c Release -r "$${arch}" --self-contained --output bins --nologo
+	d=$$(dirname "$<")
+	( cd "$${d}" && $(DOTNET) publish -c Release -r "$${arch}" --self-contained --output bins --nologo )
 	bin=$$(basename "$$(dirname "$<")")
-	ln -s "$$(realpath "bins/$${bin}")" "$$(realpath "../../$@")"
+	rm -f "$@"
+	ln -s "$$(realpath "$${d}/bins/$${bin}")" "$@"
 
 bin/pascal-%.bin: pascal/%.pp | bin
 	fpc "$<" "-FEbin" "-o$@"
