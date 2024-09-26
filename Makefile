@@ -31,25 +31,33 @@ WANTED = 8
 
 CC = clang++
 CCFLAGS = -mllvm --x86-asm-syntax=intel -O3
+
 GNAT = gnat
 GNATFLAGS = -O3
+
 GO = go
 GO_FLAGS = -gcflags '-N -l'
+
 RUSTC = rustc
 RUSTFLAGS = -C opt-level=3
+
 FPC = fpc
 FPCFLAGS = -O3
+
 SBCL = sbcl
-HC = ghc
 EC = ec
 JAVAC = javac
 DOTNET = dotnet
-HCFLAGS = -dynamic -Wall -Werror -O3
-HCLIBDIR = haskell/Mainlib
-HCLIBS = $(wildcard $(HCLIBDIR)/*.hs)
+
+GHC = ghc
+GHCFLAGS = -dynamic -Wall -Werror -O3
+GHCLIBDIR = haskell/Mainlib
+GHCLIBS = $(wildcard $(GHCLIBDIR)/*.hs)
+
 NIFLAGS = -H:Optimize=3
-SAXON = "/usr/local/opt/Saxon.jar"
 NI = native-image
+
+SAXON = "/usr/local/opt/Saxon.jar"
 
 DIRS = asm bin reports tmp
 CPPS = $(wildcard cpp/*.cpp)
@@ -170,7 +178,7 @@ env: Makefile
 	cpplint --version
 	$(RUSTC) --version
 	$(MAKE) -version
-	$(HC) --version
+	$(GHC) --version
 	$(FPC) -h >/dev/null
 	$(JAVAC) --version
 	$(DOTNET) --version
@@ -212,12 +220,12 @@ asm/go-%.asm: go/cmd/%/main.go | asm
 asm/csharp-%.asm: csharp/%/Program.cs | asm
 	echo " no asm here" > "$@"
 
-asm/haskell-%.asm: haskell/%.hs $(HCLIBS) | asm
+asm/haskell-%.asm: haskell/%.hs $(GHCLIBS) | asm
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
-	$(HC) $(HCFLAGS) -S $(HCLIBS) "$<"
+	$(GHC) $(GHCFLAGS) -S $(GHCLIBS) "$<"
 	mv $${source}.s "$@"
-	cat $(HCLIBDIR)/*.s >> "$@"
-	rm $(HCLIBDIR)/*.s
+	cat $(GHCLIBDIR)/*.s >> "$@"
+	rm $(GHCLIBDIR)/*.s
 
 asm/java-%.asm: java/%.java | asm
 	echo " no asm here" > "$@"
@@ -267,14 +275,14 @@ bin/go-%.bin: go/cmd/%/main.go | bin
 	cd go
 	$(GO) build $(GO_FLAGS) -o "../$@" "$(subst go/,./,${<:/main.go=})"
 
-bin/haskell-%.bin: haskell/%.hs $(HCLIBS) | bin
+bin/haskell-%.bin: haskell/%.hs $(GHCLIBS) | bin
 	source=$$( echo "$<" | sed 's/\.hs$$//' )
-	$(HC) $(HCFLAGS) $(HCLIBS) "$<"
+	$(GHC) $(GHCFLAGS) $(GHCLIBS) "$<"
 	mv $${source} "$@"
 	rm $${source}.o
 	rm $${source}.hi
-	rm $(HCLIBDIR)/*.o
-	rm $(HCLIBDIR)/*.hi
+	rm $(GHCLIBDIR)/*.o
+	rm $(GHCLIBDIR)/*.hi
 
 bin/java-%.bin: java/%.java | bin
 	if [ -z "${JAVA_HOME}" ]; then
@@ -350,10 +358,20 @@ reports/%.txt: bin/%.bin asm/%.asm | reports
 	echo "${subst bin/,,$<},$${instructions},$${ticks_per_cycle},$${cycles},$${time},$${time_per_cycle}" > "${@:.txt=.csv}"
 	name=$(subst bin/,,${<:.bin=})
 	file=$$(ls $$(echo $${name} | cut -f1 -d-)/$$(echo $${name} | cut -f2- -d-).* || echo $${name})
-	if [[ "$${name}" =~ /^cpp-/ ]]; then
-		compiler=$$($(CC) | head -1)
-	elif [[ "$${name}" =~ /^java-/ ]]; then
-		compiler=$$($(JAVAC) | head -1)
+	if [[ "$${name}" =~ ^cpp- ]]; then
+		compiler=$$($(CC) --version | head -1)
+	elif [[ "$${name}" =~ ^java- ]]; then
+		compiler=$$($(JAVAC) -version | head -1)
+	elif [[ "$${name}" =~ ^csharp- ]]; then
+		compiler=$$($(DOTNET) --version | head -1)
+	elif [[ "$${name}" =~ ^pascal- ]]; then
+		compiler=$$($(FPC) -iV | head -1)
+	elif [[ "$${name}" =~ ^haskell- ]]; then
+		compiler=$$($(GHC) --version | head -1)
+	elif [[ "$${name}" =~ ^rust- ]]; then
+		compiler=$$($(RUSTC) --version | head -1)
+	elif [[ "$${name}" =~ ^go- ]]; then
+		compiler=$$($(GO) version | head -1)
 	else
 		compiler='unknown'
 	fi
