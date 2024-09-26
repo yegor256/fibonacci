@@ -22,8 +22,35 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
+  <xsl:decimal-format name="main" decimal-separator="." grouping-separator="," />
   <xsl:template match="programs">
+    <p>
+      <xsl:text>This is what it takes to calculate the </xsl:text>
+      <strong>
+        <xsl:variable name="i" select="../@input"/>
+        <xsl:value-of select="$i"/>
+        <xsl:choose>
+          <xsl:when test="ends-with($i, '1')">
+            <xsl:text>st</xsl:text>
+          </xsl:when>
+          <xsl:when test="ends-with($i, '2')">
+            <xsl:text>nd</xsl:text>
+          </xsl:when>
+          <xsl:when test="ends-with($i, '3')">
+            <xsl:text>rd</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>th</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </strong>
+      <xsl:text> </xsl:text>
+      <a href="https://en.wikipedia.org/wiki/Fibonacci_number">
+        <xsl:text>Fibonacci number</xsl:text>
+      </a>
+      <xsl:text> using different algorithms:</xsl:text>
+    </p>
     <table id="programs">
       <colgroup>
         <col/>
@@ -122,6 +149,92 @@ SOFTWARE.
       </td>
     </tr>
   </xsl:template>
+  <xsl:template match="programs" mode="compare">
+    <xsl:variable name="this" select="."/>
+    <p>
+      <xsl:text>This is how much faster functions are vs. objects:</xsl:text>
+    </p>
+    <table>
+      <colgroup>
+        <col/>
+        <col/>
+        <col/>
+        <col/>
+        <col/>
+      </colgroup>
+      <thead>
+        <tr>
+          <td/>
+          <td/>
+          <td colspan="2" class="center">
+            <xsl:text>TPC</xsl:text>
+          </td>
+          <td/>
+        </tr>
+        <tr>
+          <th>
+            <xsl:text>Language</xsl:text>
+          </th>
+          <th>
+            <xsl:text>Compiler</xsl:text>
+          </th>
+          <th class="right">
+            <xsl:text>w/functions</xsl:text>
+          </th>
+          <th class="right">
+            <xsl:text>w/objects</xsl:text>
+          </th>
+          <th class="right">
+            <xsl:text>Ratio</xsl:text>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <xsl:for-each select="
+          'Haskell haskell-recursion haskell-objects',
+          'Rust rust-recursion rust-structs',
+          'C# csharp-Functions csharp-Objects',
+          'Java java-Functions java-Objects',
+          'Go go-recursion go-structs',
+          'Pascal pascal-recursion pascal-Objects',
+          'C++ cpp-functions cpp-objects'
+          "
+          >
+          <xsl:variable name="tokens" select="tokenize(., ' ')"/>
+          <xsl:variable name="language" select="xs:string(subsequence($tokens, 1, 1))"/>
+          <xsl:variable name="left" select="xs:string(subsequence($tokens, 2, 1))"/>
+          <xsl:variable name="right" select="xs:string(subsequence($tokens, 3, 1))"/>
+          <xsl:variable name="lp" select="$this/program[name/text() = $left][1]"/>
+          <xsl:variable name="rp" select="$this/program[name/text() = $right][1]"/>
+          <tr>
+            <td>
+              <xsl:value-of select="$language"/>
+            </td>
+            <td>
+              <xsl:value-of select="$lp/compiler"/>
+            </td>
+            <td class="right">
+              <xsl:value-of select="format-number(xs:integer($lp/ticks_per_cycle div 1000000), '###,###', 'main')"/>
+            </td>
+            <td class="right">
+              <xsl:value-of select="format-number(xs:integer($rp/ticks_per_cycle div 1000000), '###,###', 'main')"/>
+            </td>
+            <td class="right">
+              <xsl:choose>
+                <xsl:when test="$lp/ticks_per_cycle &gt; 0">
+                  <xsl:value-of select="xs:integer($rp/ticks_per_cycle div $lp/ticks_per_cycle)"/>
+                  <xsl:text>x</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:text>?</xsl:text>
+                </xsl:otherwise>
+              </xsl:choose>
+            </td>
+          </tr>
+        </xsl:for-each>
+      </tbody>
+    </table>
+  </xsl:template>
   <xsl:template match="fibonacci">
     <html>
       <head>
@@ -130,6 +243,7 @@ SOFTWARE.
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
         <link rel="icon" href="https://raw.githubusercontent.com/yegor256/fibonacci/master/logo.svg" type="image/png"/>
         <link href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css.min.css" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/gh/yegor256/drops@gh-pages/drops.min.css" rel="stylesheet"/>
         <style>
           table { width: auto; font-family: monospace; }
           * { font-size: 14px; }
@@ -147,17 +261,11 @@ SOFTWARE.
       </head>
       <body>
         <p>
-          <xsl:text>This is what it takes to calculate the </xsl:text>
-          <strong>
-            <xsl:value-of select="@input"/>
-            <xsl:text>th</xsl:text>
-          </strong>
-          <xsl:text> </xsl:text>
-          <a href="https://en.wikipedia.org/wiki/Fibonacci_number">
-            <xsl:text>Fibonacci number</xsl:text>
+          <a href="https://github.com/yegor256/fibonacci">
+            <img src="https://raw.githubusercontent.com/yegor256/fibonacci/master/logo.svg" style="width: 8em;"/>
           </a>
-          <xsl:text> using different algorithms:</xsl:text>
         </p>
+        <xsl:apply-templates select="programs" mode="compare"/>
         <xsl:apply-templates select="programs"/>
         <xsl:apply-templates select="headers"/>
         <p>
@@ -175,7 +283,11 @@ SOFTWARE.
           <a href="index.xml">
             <xsl:text>index.xml</xsl:text>
           </a>
-          <xsl:text> with the data.</xsl:text>
+          <xsl:text> with the data. This is TeX </xsl:text>
+          <a href="summary.tex">
+            <xsl:text>summary.tex</xsl:text>
+          </a>
+          <xsl:text>.</xsl:text>
         </p>
         <p>
           <xsl:text>Built on </xsl:text>

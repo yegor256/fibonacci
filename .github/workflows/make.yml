@@ -62,8 +62,9 @@ jobs:
       - run: make -e WANTED=256 INPUT=16 index.html
       - run: mv index.html www/sixteen.html
       - run: rm -rf reports
-      - run: make -e WANTED=256 index.html
+      - run: make -e WANTED=256 index.html summary.tex
       - run: cp index.html www
+      - run: cp summary.tex www
       - run: cp index.xml www
       - run: cp -r reports www
       - run: cp -r asm www
