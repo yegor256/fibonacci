@@ -29,8 +29,9 @@ SOFTWARE.
     <xsl:text>
       \documentclass{article}
       \usepackage{booktabs}
+      \usepackage{tabularx}
       \begin{document}
-      \begin{tabular}{llrrr}
+      \begin{tabularx}{\linewidth}{lXrrr}
       \toprule
         &amp; &amp; \multicolumn{2}{c}{CPU mInstructions} &amp; \\
         Language &amp; Compiler &amp; w/functions &amp; w/objects &amp; Ratio \\
@@ -39,7 +40,7 @@ SOFTWARE.
     <xsl:apply-templates select="programs"/>
     <xsl:text>
       \bottomrule
-      \end{tabular}
+      \end{tabularx}
       \end{document}
     </xsl:text>
   </xsl:template>
