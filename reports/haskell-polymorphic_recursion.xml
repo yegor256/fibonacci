@@ -1,1 +1,2 @@
-<program> 	<file>haskell/polymorphic_recursion.hi haskell/polymorphic_recursion.hs</file> 	<name>haskell-polymorphic_recursion</name> 	<instructions>2092</instructions> 	<cycles>256</cycles> 	<time>6.85</time> 	<time_per_cycle>.0267578125000000</time_per_cycle> 	<ticks>26668966804</ticks> 	<ticks_per_cycle>104175651</ticks_per_cycle> 	</program>
+<program> 	<file>haskell/polymorphic_recursion.hi
+haskell/polymorphic_recursion.hs</file> 	<name>haskell-polymorphic_recursion</name> 	<compiler>The Glorious Glasgow Haskell Compilation System, version 9.4.7</compiler> 	<instructions>2092</instructions> 	<cycles>256</cycles> 	<time>6.80</time> 	<time_per_cycle>.0265625000000000</time_per_cycle> 	<ticks>26673954703</ticks> 	<ticks_per_cycle>104195135</ticks_per_cycle> 	</program>

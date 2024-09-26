@@ -1,1 +1,2 @@
-<program> 	<file>haskell/tail_recursion.hi haskell/tail_recursion.hs</file> 	<name>haskell-tail_recursion</name> 	<instructions>781</instructions> 	<cycles>2097152</cycles> 	<time>1.05</time> 	<time_per_cycle>.0000005006790161</time_per_cycle> 	<ticks>4079266745</ticks> 	<ticks_per_cycle>1945</ticks_per_cycle> 	</program>
+<program> 	<file>haskell/tail_recursion.hi
+haskell/tail_recursion.hs</file> 	<name>haskell-tail_recursion</name> 	<compiler>The Glorious Glasgow Haskell Compilation System, version 9.4.7</compiler> 	<instructions>781</instructions> 	<cycles>2097152</cycles> 	<time>1.05</time> 	<time_per_cycle>.0000005006790161</time_per_cycle> 	<ticks>4062883325</ticks> 	<ticks_per_cycle>1937</ticks_per_cycle> 	</program>

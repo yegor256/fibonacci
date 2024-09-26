@@ -1,9 +1,9 @@
 bin/haskell-adt.bin:
-CPU ticks: 68817316937
-CPU ticks per cycle: 268817644
+CPU ticks: 68726200152
+CPU ticks per cycle: 268461719
 Instructions: 916
 Cycles: 256
-Total Time: 17.57
-Time per cycle: .0686328125000000
-Ticks: 68817316937
-Ticks per cycle: 268817644
+Total Time: 17.61
+Time per cycle: .0687890625000000
+Ticks: 68726200152
+Ticks per cycle: 268461719

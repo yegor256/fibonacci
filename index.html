@@ -5,7 +5,8 @@
       <meta charset="UTF-8">
       <meta content="width=device-width, initial-scale=1.0" name="viewport">
       <link rel="icon" href="https://raw.githubusercontent.com/yegor256/fibonacci/master/logo.svg" type="image/png">
-      <link href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css.min.css" rel="stylesheet"><style>
+      <link href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css.min.css" rel="stylesheet">
+      <link href="https://cdn.jsdelivr.net/gh/yegor256/drops@gh-pages/drops.min.css" rel="stylesheet"><style>
           table { width: auto; font-family: monospace; }
           * { font-size: 14px; }
           .data { text-align: right; }
@@ -17,7 +18,84 @@
           });
         </script></head>
    <body>
-      <p>This is what it takes to calculate the <strong>32th</strong> <a href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci number</a> using different algorithms:
+      <p><a href="https://github.com/yegor256/fibonacci"><img src="https://raw.githubusercontent.com/yegor256/fibonacci/master/logo.svg" style="width: 8em;"></a></p>
+      <p>This is how much faster functions are vs. objects:</p>
+      <table>
+         <colgroup>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+         </colgroup>
+         <thead>
+            <tr>
+               <td></td>
+               <td></td>
+               <td colspan="2" class="center">TPC</td>
+               <td></td>
+            </tr>
+            <tr>
+               <th>Language</th>
+               <th>Compiler</th>
+               <th class="right">w/functions</th>
+               <th class="right">w/objects</th>
+               <th class="right">Ratio</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>Haskell</td>
+               <td>The Glorious Glasgow Haskell Compilation System, version 9.4.7</td>
+               <td class="right">59</td>
+               <td class="right">132</td>
+               <td class="right">2x</td>
+            </tr>
+            <tr>
+               <td>Rust</td>
+               <td>rustc 1.75.0 (82e1608df 2023-12-21) (built from a source tarball)</td>
+               <td class="right">0</td>
+               <td class="right">3,599</td>
+               <td class="right">?</td>
+            </tr>
+            <tr>
+               <td>C#</td>
+               <td>8.0.108</td>
+               <td class="right">36</td>
+               <td class="right">5,785</td>
+               <td class="right">157x</td>
+            </tr>
+            <tr>
+               <td>Java</td>
+               <td>javac 21.0.4</td>
+               <td class="right">41</td>
+               <td class="right">4,589</td>
+               <td class="right">109x</td>
+            </tr>
+            <tr>
+               <td>Go</td>
+               <td>go version go1.22.2 linux/amd64</td>
+               <td class="right">39</td>
+               <td class="right">15,907</td>
+               <td class="right">403x</td>
+            </tr>
+            <tr>
+               <td>Pascal</td>
+               <td>3.2.2</td>
+               <td class="right">59</td>
+               <td class="right">32,804</td>
+               <td class="right">555x</td>
+            </tr>
+            <tr>
+               <td>C++</td>
+               <td>Ubuntu clang version 18.1.3 (1ubuntu1)</td>
+               <td class="right">93</td>
+               <td class="right">7,203</td>
+               <td class="right">76x</td>
+            </tr>
+         </tbody>
+      </table>
+      <p>This is what it takes to calculate the <strong>32nd</strong> <a href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci number</a> using different algorithms:
       </p>
       <table id="programs">
          <colgroup>
@@ -46,7 +124,7 @@
                <td class="data"><span style="color: firebrick" title="2147483648">MAX</span></td>
                <td class="data">0.00</td>
                <td class="data">0</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/rust-recursion.perf">31215025</a></td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/rust-recursion.perf">28059308</a></td>
                <td class="data">0</td>
                <td class="data">NaN</td>
             </tr>
@@ -56,7 +134,7 @@
                <td class="data">268435456</td>
                <td class="data">1.56</td>
                <td class="data">.0000000058114528</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-loop.perf">6094902610</a></td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-loop.perf">6099477485</a></td>
                <td class="data">22</td>
                <td class="data">3.8</td>
             </tr>
@@ -66,7 +144,7 @@
                <td class="data">134217728</td>
                <td class="data">1.35</td>
                <td class="data">.0000000100582838</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-matrixes.perf">5267134284</a></td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-matrixes.perf">5268285221</a></td>
                <td class="data">39</td>
                <td class="data">3.9</td>
             </tr>
@@ -76,7 +154,7 @@
                <td class="data">134217728</td>
                <td class="data">1.59</td>
                <td class="data">.0000000118464231</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/go-fast.perf">6193212172</a></td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/go-fast.perf">6197296349</a></td>
                <td class="data">46</td>
                <td class="data">3.9</td>
             </tr>
@@ -86,58 +164,58 @@
                <td class="data">67108864</td>
                <td class="data">1.34</td>
                <td class="data">.0000000199675559</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-binpow-matrix.perf">5245698882</a></td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-binpow-matrix.perf">5245669731</a></td>
                <td class="data">78</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
-               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/iterate.hi haskell/iterate.hs">haskell/iterate</a></th>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/haskell-iterate.asm">906</a></td>
-               <td class="data">4194304</td>
-               <td class="data">1.42</td>
-               <td class="data">.0000003385543823</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-iterate.perf">5581490882</a></td>
-               <td class="data">1330</td>
-               <td class="data">3.9</td>
-            </tr>
-            <tr>
-               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/zipwith.hi haskell/zipwith.hs">haskell/zipwith</a></th>
+               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/zipwith.hi%0Ahaskell/zipwith.hs">haskell/zipwith</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/haskell-zipwith.asm">985</a></td>
                <td class="data">4194304</td>
-               <td class="data">1.42</td>
-               <td class="data">.0000003385543823</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-zipwith.perf">5520634788</a></td>
-               <td class="data">1316</td>
+               <td class="data">1.40</td>
+               <td class="data">.0000003337860107</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-zipwith.perf">5507379381</a></td>
+               <td class="data">1313</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
-               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/object_dynamic.hi haskell/object_dynamic.hs">haskell/object_dynamic</a></th>
+               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/iterate.hi%0Ahaskell/iterate.hs">haskell/iterate</a></th>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/haskell-iterate.asm">906</a></td>
+               <td class="data">4194304</td>
+               <td class="data">1.41</td>
+               <td class="data">.0000003361701965</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-iterate.perf">5567453856</a></td>
+               <td class="data">1327</td>
+               <td class="data">3.9</td>
+            </tr>
+            <tr>
+               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/object_dynamic.hi%0Ahaskell/object_dynamic.hs">haskell/object_dynamic</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/haskell-object_dynamic.asm">1113</a></td>
                <td class="data">2097152</td>
                <td class="data">1.02</td>
                <td class="data">.0000004863739013</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-object_dynamic.perf">3993785994</a></td>
-               <td class="data">1904</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-object_dynamic.perf">3992485792</a></td>
+               <td class="data">1903</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
-               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/tail_recursion.hi haskell/tail_recursion.hs">haskell/tail_recursion</a></th>
+               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/tail_recursion.hi%0Ahaskell/tail_recursion.hs">haskell/tail_recursion</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/haskell-tail_recursion.asm">781</a></td>
                <td class="data">2097152</td>
                <td class="data">1.05</td>
                <td class="data">.0000005006790161</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-tail_recursion.perf">4079266745</a></td>
-               <td class="data">1945</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-tail_recursion.perf">4062883325</a></td>
+               <td class="data">1937</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/cpp/interpreter.cpp">cpp/interpreter</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/cpp-interpreter.asm">2946</a></td>
                <td class="data">65536</td>
-               <td class="data">1.10</td>
-               <td class="data">.0000167846679687</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-interpreter.perf">4272112281</a></td>
-               <td class="data">65187</td>
+               <td class="data">1.09</td>
+               <td class="data">.0000166320800781</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-interpreter.perf">4255492153</a></td>
+               <td class="data">64933</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
@@ -146,38 +224,38 @@
                <td class="data">256</td>
                <td class="data">1.50</td>
                <td class="data">.0058593750000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-inlines.perf">5865810748</a></td>
-               <td class="data">22913323</td>
-               <td class="data">3.9</td>
-            </tr>
-            <tr>
-               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/cpp/recursion.cpp">cpp/recursion</a></th>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/cpp-recursion.asm">68</a></td>
-               <td class="data">256</td>
-               <td class="data">1.51</td>
-               <td class="data">.0058984375000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-recursion.perf">5865478444</a></td>
-               <td class="data">22912025</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-inlines.perf">5864245320</a></td>
+               <td class="data">22907208</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/cpp/static_member_functions.cpp">cpp/static_member_functions</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/cpp-static_member_functions.asm">69</a></td>
                <td class="data">256</td>
-               <td class="data">1.51</td>
-               <td class="data">.0058984375000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-static_member_functions.perf">5868966524</a></td>
-               <td class="data">22925650</td>
+               <td class="data">1.50</td>
+               <td class="data">.0058593750000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-static_member_functions.perf">5881335996</a></td>
+               <td class="data">22973968</td>
                <td class="data">3.9</td>
+            </tr>
+            <tr>
+               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/cpp/recursion.cpp">cpp/recursion</a></th>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/cpp-recursion.asm">68</a></td>
+               <td class="data">256</td>
+               <td class="data">1.53</td>
+               <td class="data">.0059765625000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-recursion.perf">5867150945</a></td>
+               <td class="data">22918558</td>
+               <td class="data">3.8</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/csharp-Functions">csharp/Functions</a></th>
                <td class="data"><span style="color: gray">n/a</span></td>
                <td class="data">256</td>
-               <td class="data">2.40</td>
-               <td class="data">.0093750000000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/csharp-Functions.perf">9381717651</a></td>
-               <td class="data">36647334</td>
+               <td class="data">2.39</td>
+               <td class="data">.0093359375000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/csharp-Functions.perf">9387093401</a></td>
+               <td class="data">36668333</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
@@ -186,8 +264,18 @@
                <td class="data">256</td>
                <td class="data">2.40</td>
                <td class="data">.0093750000000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/csharp-Recursion.perf">9375264016</a></td>
-               <td class="data">36622125</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/csharp-Recursion.perf">9371408311</a></td>
+               <td class="data">36607063</td>
+               <td class="data">3.9</td>
+            </tr>
+            <tr>
+               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/cpp/decorators.cpp">cpp/decorators</a></th>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/cpp-decorators.asm">198</a></td>
+               <td class="data">256</td>
+               <td class="data">2.53</td>
+               <td class="data">.0098828125000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-decorators.perf">9853361004</a></td>
+               <td class="data">38489691</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
@@ -196,38 +284,28 @@
                <td class="data">256</td>
                <td class="data">2.60</td>
                <td class="data">.0101562500000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/go-recursion.perf">10093291717</a></td>
-               <td class="data">39426920</td>
-               <td class="data">3.9</td>
-            </tr>
-            <tr>
-               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/cpp/decorators.cpp">cpp/decorators</a></th>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/cpp-decorators.asm">198</a></td>
-               <td class="data">256</td>
-               <td class="data">2.64</td>
-               <td class="data">.0103125000000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-decorators.perf">9902213605</a></td>
-               <td class="data">38680521</td>
-               <td class="data">3.8</td>
-            </tr>
-            <tr>
-               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/java/Functions.java">java/Functions</a></th>
-               <td class="data"><span style="color: gray">n/a</span></td>
-               <td class="data">256</td>
-               <td class="data">2.73</td>
-               <td class="data">.0106640625000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/java-Functions.perf">10656259552</a></td>
-               <td class="data">41626013</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/go-recursion.perf">10095401287</a></td>
+               <td class="data">39435161</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/java/Recursion.java">java/Recursion</a></th>
                <td class="data"><span style="color: gray">n/a</span></td>
                <td class="data">256</td>
+               <td class="data">2.73</td>
+               <td class="data">.0106640625000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/java-Recursion.perf">10666901114</a></td>
+               <td class="data">41667582</td>
+               <td class="data">3.9</td>
+            </tr>
+            <tr>
+               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/java/Functions.java">java/Functions</a></th>
+               <td class="data"><span style="color: gray">n/a</span></td>
+               <td class="data">256</td>
                <td class="data">2.74</td>
                <td class="data">.0107031250000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/java-Recursion.perf">10659290761</a></td>
-               <td class="data">41637854</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/java-Functions.perf">10700171428</a></td>
+               <td class="data">41797544</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
@@ -236,8 +314,8 @@
                <td class="data">256</td>
                <td class="data">2.85</td>
                <td class="data">.0111328125000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-stack_objects.perf">11128012301</a></td>
-               <td class="data">43468798</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-stack_objects.perf">11129159114</a></td>
+               <td class="data">43473277</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
@@ -246,108 +324,108 @@
                <td class="data">256</td>
                <td class="data">2.86</td>
                <td class="data">.0111718750000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-classes.perf">11125912160</a></td>
-               <td class="data">43460594</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-classes.perf">11130494639</a></td>
+               <td class="data">43478494</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/pascal/recursion.pp">pascal/recursion</a></th>
                <td class="data"><span style="color: gray">n/a</span></td>
                <td class="data">256</td>
-               <td class="data">3.88</td>
-               <td class="data">.0151562500000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/pascal-recursion.perf">15092346468</a></td>
-               <td class="data">58954478</td>
+               <td class="data">3.87</td>
+               <td class="data">.0151171875000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/pascal-recursion.perf">15105176996</a></td>
+               <td class="data">59004597</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
-               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/recursion.hi haskell/recursion.hs">haskell/recursion</a></th>
+               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/recursion.hi%0Ahaskell/recursion.hs">haskell/recursion</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/haskell-recursion.asm">786</a></td>
                <td class="data">256</td>
                <td class="data">3.89</td>
                <td class="data">.0151953125000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-recursion.perf">15124885612</a></td>
-               <td class="data">59081584</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-recursion.perf">15133105321</a></td>
+               <td class="data">59113692</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/cpp/functions.cpp">cpp/functions</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/cpp-functions.asm">86</a></td>
                <td class="data">256</td>
-               <td class="data">6.16</td>
-               <td class="data">.0240625000000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-functions.perf">23992461442</a></td>
-               <td class="data">93720552</td>
+               <td class="data">6.15</td>
+               <td class="data">.0240234375000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-functions.perf">23993686283</a></td>
+               <td class="data">93725337</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
-               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/polymorphic_recursion.hi haskell/polymorphic_recursion.hs">haskell/polymorphic_recursion</a></th>
+               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/polymorphic_recursion.hi%0Ahaskell/polymorphic_recursion.hs">haskell/polymorphic_recursion</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/haskell-polymorphic_recursion.asm">2092</a></td>
                <td class="data">256</td>
-               <td class="data">6.85</td>
-               <td class="data">.0267578125000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-polymorphic_recursion.perf">26668966804</a></td>
-               <td class="data">104175651</td>
+               <td class="data">6.80</td>
+               <td class="data">.0265625000000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-polymorphic_recursion.perf">26673954703</a></td>
+               <td class="data">104195135</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
-               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/objects.hi haskell/objects.hs">haskell/objects</a></th>
+               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/objects.hi%0Ahaskell/objects.hs">haskell/objects</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/haskell-objects.asm">968</a></td>
                <td class="data">256</td>
-               <td class="data">8.03</td>
-               <td class="data">.0313671875000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-objects.perf">31358720107</a></td>
-               <td class="data">122495000</td>
-               <td class="data">3.9</td>
+               <td class="data">8.02</td>
+               <td class="data">.0313281250000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-objects.perf">33896127147</a></td>
+               <td class="data">132406746</td>
+               <td class="data">4.2</td>
             </tr>
             <tr>
-               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/adt.hi haskell/adt.hs">haskell/adt</a></th>
+               <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/haskell/adt.hi%0Ahaskell/adt.hs">haskell/adt</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/haskell-adt.asm">916</a></td>
                <td class="data">256</td>
-               <td class="data">17.57</td>
-               <td class="data">.0686328125000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-adt.perf">68817316937</a></td>
-               <td class="data">268817644</td>
+               <td class="data">17.61</td>
+               <td class="data">.0687890625000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/haskell-adt.perf">68726200152</a></td>
+               <td class="data">268461719</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/cpp/novirtual.cpp">cpp/novirtual</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/cpp-novirtual.asm">211</a></td>
                <td class="data">256</td>
-               <td class="data">86.50</td>
-               <td class="data">.3378906250000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-novirtual.perf">336587732485</a></td>
-               <td class="data">1314795830</td>
+               <td class="data">86.46</td>
+               <td class="data">.3377343750000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-novirtual.perf">336779549379</a></td>
+               <td class="data">1315545114</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/cpp/functions_with_new.cpp">cpp/functions_with_new</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/cpp-functions_with_new.asm">200</a></td>
                <td class="data">256</td>
-               <td class="data">230.08</td>
-               <td class="data">.8987500000000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-functions_with_new.perf">894853448732</a></td>
-               <td class="data">3495521284</td>
+               <td class="data">231.91</td>
+               <td class="data">.9058984375000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-functions_with_new.perf">895186459310</a></td>
+               <td class="data">3496822106</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/rust/structs.rs">rust/structs</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/rust-structs.asm">707</a></td>
                <td class="data">256</td>
-               <td class="data">237.45</td>
-               <td class="data">.9275390625000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/rust-structs.perf">924240089421</a></td>
-               <td class="data">3610312849</td>
+               <td class="data">236.12</td>
+               <td class="data">.9223437500000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/rust-structs.perf">921373149012</a></td>
+               <td class="data">3599113863</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/java/Records.java">java/Records</a></th>
                <td class="data"><span style="color: gray">n/a</span></td>
                <td class="data">16</td>
-               <td class="data">18.09</td>
-               <td class="data">1.1306250000000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/java-Records.perf">70511230573</a></td>
-               <td class="data">4406951910</td>
+               <td class="data">18.12</td>
+               <td class="data">1.1325000000000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/java-Records.perf">70520142379</a></td>
+               <td class="data">4407508898</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
@@ -356,68 +434,68 @@
                <td class="data">16</td>
                <td class="data">18.85</td>
                <td class="data">1.1781250000000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/java-Objects.perf">73384252696</a></td>
-               <td class="data">4586515793</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/java-Objects.perf">73434170692</a></td>
+               <td class="data">4589635668</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/cpp/lambdas.cpp">cpp/lambdas</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/cpp-lambdas.asm">450</a></td>
                <td class="data">16</td>
-               <td class="data">19.31</td>
-               <td class="data">1.2068750000000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-lambdas.perf">75224637119</a></td>
-               <td class="data">4701539819</td>
+               <td class="data">19.26</td>
+               <td class="data">1.2037500000000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-lambdas.perf">74971048793</a></td>
+               <td class="data">4685690549</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/csharp-Objects">csharp/Objects</a></th>
                <td class="data"><span style="color: gray">n/a</span></td>
                <td class="data">8</td>
-               <td class="data">11.78</td>
-               <td class="data">1.4725000000000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/csharp-Objects.perf">46094817086</a></td>
-               <td class="data">5761852135</td>
+               <td class="data">11.82</td>
+               <td class="data">1.4775000000000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/csharp-Objects.perf">46281406639</a></td>
+               <td class="data">5785175829</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/csharp-Structs">csharp/Structs</a></th>
                <td class="data"><span style="color: gray">n/a</span></td>
                <td class="data">8</td>
-               <td class="data">11.97</td>
-               <td class="data">1.4962500000000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/csharp-Structs.perf">46723076496</a></td>
-               <td class="data">5840384562</td>
-               <td class="data">3.9</td>
+               <td class="data">12.02</td>
+               <td class="data">1.5025000000000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/csharp-Structs.perf">47521253815</a></td>
+               <td class="data">5940156726</td>
+               <td class="data">4.0</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/cpp/objects.cpp">cpp/objects</a></th>
                <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/asm/cpp-objects.asm">511</a></td>
                <td class="data">8</td>
-               <td class="data">14.81</td>
-               <td class="data">1.8512500000000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-objects.perf">57878339994</a></td>
-               <td class="data">7234792499</td>
+               <td class="data">14.77</td>
+               <td class="data">1.8462500000000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/cpp-objects.perf">57627517320</a></td>
+               <td class="data">7203439665</td>
                <td class="data">3.9</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/go-structs">go/structs</a></th>
                <td class="data"><span style="color: gray">n/a</span></td>
                <td class="data">4</td>
-               <td class="data">15.96</td>
-               <td class="data">3.9900000000000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/go-structs.perf">63569470232</a></td>
-               <td class="data">15892367558</td>
+               <td class="data">15.86</td>
+               <td class="data">3.9650000000000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/go-structs.perf">63628142358</a></td>
+               <td class="data">15907035589</td>
                <td class="data">4.0</td>
             </tr>
             <tr>
                <th class="left"><a href="https://github.com/yegor256/fibonacci/blob/master/pascal/Objects.pp">pascal/Objects</a></th>
                <td class="data"><span style="color: gray">n/a</span></td>
                <td class="data">2</td>
-               <td class="data">16.77</td>
-               <td class="data">8.3850000000000000</td>
-               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/pascal-Objects.perf">65843068923</a></td>
-               <td class="data">32921534461</td>
+               <td class="data">16.82</td>
+               <td class="data">8.4100000000000000</td>
+               <td class="data"><a href="https://raw.githubusercontent.com/yegor256/fibonacci/gh-pages/reports/pascal-Objects.perf">65609024334</a></td>
+               <td class="data">32804512167</td>
                <td class="data">3.9</td>
             </tr>
          </tbody>
@@ -430,9 +508,9 @@
       <p>Maximum optimization is enabled in all compilers.</p>
       <p>If you want to add another program to the list, just submit a pull request to <a href="https://github.com/yegor256/fibonacci">yegor256/fibonacci</a>.
       </p>
-      <p>Here is <a href="index.xml">index.xml</a> with the data.
+      <p>Here is <a href="index.xml">index.xml</a> with the data. This is TeX <a href="summary.tex">summary.tex</a>.
       </p>
-      <p>Built on 2024-09-25 by <a href="https://www.yegor256.com">@yegor256</a> at "Linux ip-172-31-20-140 6.8.0-1016-aws #17-Ubuntu SMP Mon Sep  2 13:48:07 UTC 2024
+      <p>Built on 2024-09-26 by <a href="https://www.yegor256.com">@yegor256</a> at "Linux ip-172-31-19-125 6.8.0-1016-aws #17-Ubuntu SMP Mon Sep  2 13:48:07 UTC 2024
          x86_64 x86_64 x86_64 GNU/Linux" machine.
       </p>
    </body>
