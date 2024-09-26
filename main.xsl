@@ -188,7 +188,11 @@ SOFTWARE.
           <a href="index.xml">
             <xsl:text>index.xml</xsl:text>
           </a>
-          <xsl:text> with the data.</xsl:text>
+          <xsl:text> with the data. This is TeX </xsl:text>
+          <a href="summary.tex">
+            <xsl:text>summary.tex</xsl:text>
+          </a>
+          <xsl:text>.</xsl:text>
         </p>
         <p>
           <xsl:text>Built on </xsl:text>
