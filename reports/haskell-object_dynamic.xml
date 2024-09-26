@@ -1,2 +1,2 @@
 <program> 	<file>haskell/object_dynamic.hi
-haskell/object_dynamic.hs</file> 	<name>haskell-object_dynamic</name> 	<compiler>The Glorious Glasgow Haskell Compilation System, version 9.4.7</compiler> 	<instructions>1113</instructions> 	<cycles>2097152</cycles> 	<time>1.02</time> 	<time_per_cycle>.0000004863739013</time_per_cycle> 	<ticks>3992485792</ticks> 	<ticks_per_cycle>1903</ticks_per_cycle> 	</program>
+haskell/object_dynamic.hs</file> 	<name>haskell-object_dynamic</name> 	<compiler>The Glorious Glasgow Haskell Compilation System, version 9.4.7</compiler> 	<instructions>1113</instructions> 	<cycles>2097152</cycles> 	<time>1.02</time> 	<time_per_cycle>.0000004863739013</time_per_cycle> 	<ticks>3979030054</ticks> 	<ticks_per_cycle>1897</ticks_per_cycle> 	</program>
