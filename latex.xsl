@@ -24,6 +24,7 @@ SOFTWARE.
 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
   <xsl:output method="text" omit-xml-declaration="yes" indent="no"/>
+  <xsl:decimal-format name="main" decimal-separator="." grouping-separator="," />
   <xsl:template match="fibonacci">
     <xsl:text>
       \documentclass{article}
@@ -64,9 +65,9 @@ SOFTWARE.
       <xsl:text> &amp; </xsl:text>
       <xsl:value-of select="$lp/compiler"/>
       <xsl:text> &amp; </xsl:text>
-      <xsl:value-of select="xs:integer($lp/ticks_per_cycle div 1000000)"/>
+      <xsl:value-of select="format-number(xs:integer($lp/ticks_per_cycle div 1000000), '###,###', 'main')"/>
       <xsl:text> &amp; </xsl:text>
-      <xsl:value-of select="xs:integer($rp/ticks_per_cycle div 1000000)"/>
+      <xsl:value-of select="format-number(xs:integer($rp/ticks_per_cycle div 1000000), '###,###', 'main')"/>
       <xsl:text> &amp; </xsl:text>
       <xsl:choose>
         <xsl:when test="$lp/ticks_per_cycle &gt; 0">
@@ -74,7 +75,7 @@ SOFTWARE.
           <xsl:text>x</xsl:text>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:text>?</xsl:text>
+          <xsl:text>---</xsl:text>
         </xsl:otherwise>
       </xsl:choose>
       <xsl:text> \\&#x0a;</xsl:text>

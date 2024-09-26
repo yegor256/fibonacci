@@ -81,7 +81,7 @@ export
 
 all: summary.txt summary.tex
 
-summary.tex: index.xml
+summary.tex: index.xml latex.xsl
 	java -jar $(SAXON) '-s:index.xml' -xsl:latex.xsl '-o:summary.tex'
 	cat summary.tex
 
