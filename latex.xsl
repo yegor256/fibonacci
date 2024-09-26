@@ -31,7 +31,7 @@ SOFTWARE.
       \begin{document}
       \begin{tabular}{llrrr}
       \toprule
-        &amp; &amp; \multicolumn{2}{c}{CPU Instructions} &amp; \\
+        &amp; &amp; \multicolumn{2}{c}{CPU mInstructions} &amp; \\
         Language &amp; Compiler &amp; w/functions &amp; w/objects &amp; Ratio \\
       \midrule
     </xsl:text>
@@ -64,9 +64,9 @@ SOFTWARE.
       <xsl:text> &amp; </xsl:text>
       <xsl:value-of select="$lp/compiler"/>
       <xsl:text> &amp; </xsl:text>
-      <xsl:value-of select="$lp/ticks_per_cycle"/>
+      <xsl:value-of select="xs:integer($lp/ticks_per_cycle div 1000000)"/>
       <xsl:text> &amp; </xsl:text>
-      <xsl:value-of select="$rp/ticks_per_cycle"/>
+      <xsl:value-of select="xs:integer($rp/ticks_per_cycle div 1000000)"/>
       <xsl:text> &amp; </xsl:text>
       <xsl:choose>
         <xsl:when test="$lp/ticks_per_cycle &gt; 0">
