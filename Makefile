@@ -285,7 +285,7 @@ bin/haskell-%.bin: haskell/%.hs $(GHCLIBS) | bin
 	rm $(GHCLIBDIR)/*.hi
 
 bin/java-%.bin: java/%.java | bin
-	if [ -z "${JAVA_HOME}" ]; then
+	if [ -z "$${JAVA_HOME}" ]; then
 		JAVA_HOME=$$(find /usr/lib/jvm -name 'java-*' | head -1)
 		export JAVA_HOME
 	fi
