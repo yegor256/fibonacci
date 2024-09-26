@@ -150,7 +150,20 @@ SOFTWARE.
           <xsl:text>This is what it takes to calculate the </xsl:text>
           <strong>
             <xsl:value-of select="@input"/>
-            <xsl:text>th</xsl:text>
+            <xsl:choose>
+              <xsl:when test="@input = '1'">
+                <xsl:text>st</xsl:text>
+              </xsl:when>
+              <xsl:when test="@input = '2'">
+                <xsl:text>nd</xsl:text>
+              </xsl:when>
+              <xsl:when test="@input = '3'">
+                <xsl:text>rd</xsl:text>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:text>th</xsl:text>
+              </xsl:otherwise>
+            </xsl:choose>
           </strong>
           <xsl:text> </xsl:text>
           <a href="https://en.wikipedia.org/wiki/Fibonacci_number">
