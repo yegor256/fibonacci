@@ -226,7 +226,7 @@ SOFTWARE.
                   <xsl:text>x</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:text>?</xsl:text>
+                  <xsl:text> </xsl:text>
                 </xsl:otherwise>
               </xsl:choose>
             </td>

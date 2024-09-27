@@ -364,21 +364,24 @@ reports/%.txt: bin/%.bin asm/%.asm | reports
 		compiler=$$($(JAVAC) -version | head -1)
 	elif [[ "$${name}" =~ ^csharp- ]]; then
 		compiler=$$($(DOTNET) --version | head -1)
+		file=$$(echo $${name} | cut -f1 -d-)/$$(echo $${name} | cut -f2- -d-)/Program.cs
 	elif [[ "$${name}" =~ ^pascal- ]]; then
 		compiler=$$($(FPC) -iV | head -1)
 	elif [[ "$${name}" =~ ^haskell- ]]; then
 		compiler=$$($(GHC) --version | head -1)
+		file=$$(echo $${name} | cut -f1 -d-)/$$(echo $${name} | cut -f2- -d-).hs
 	elif [[ "$${name}" =~ ^rust- ]]; then
 		compiler=$$($(RUSTC) --version | head -1)
 	elif [[ "$${name}" =~ ^go- ]]; then
 		compiler=$$($(GO) version | head -1)
+		file=$$(echo $${name} | cut -f1 -d-)/cmd/$$(echo $${name} | cut -f2- -d-)/main.go
 	else
 		compiler='unknown'
 	fi
 	echo "<program> \
 		<file>$$(echo "$${file}" | jq -Rr @html)</file> \
 		<name>$$(echo "$${name}" | jq -Rr @html)</name> \
-		<compiler>$$(echo "$${compiler}")</compiler> \
+		<compiler>$$(echo "$${compiler}" | jq -Rr @html)</compiler> \
 		<instructions>$$(echo "$${instructions}" | jq -Rr @html)</instructions> \
 		<cycles>$$(echo "$${cycles}" | jq -Rr @html)</cycles> \
 		<time>$$(echo "$${time}" | jq -Rr @html)</time> \
