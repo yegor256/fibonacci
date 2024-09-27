@@ -3,18 +3,18 @@ Total is 902291968
 
  Performance counter stats for 'bin/haskell-recursion.bin 32 256':
 
-           3896.19 msec task-clock                       #    1.001 CPUs utilized             
-               396      context-switches                 #  101.638 /sec                      
+           3897.68 msec task-clock                       #    1.001 CPUs utilized             
+               398      context-switches                 #  102.112 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               892      page-faults                      #  228.942 /sec                      
-       15139331812      cycles                           #    3.886 GHz                       
-       30027878192      instructions                     #    1.98  insn per cycle            
-        8684941666      branches                         #    2.229 G/sec                     
-         114150751      branch-misses                    #    1.31% of all branches           
+               895      page-faults                      #  229.624 /sec                      
+       15132667287      cycles                           #    3.882 GHz                       
+       30028059999      instructions                     #    1.98  insn per cycle            
+        8684966901      branches                         #    2.228 G/sec                     
+         114081282      branch-misses                    #    1.31% of all branches           
 
-       3.893115625 seconds time elapsed
+       3.893030502 seconds time elapsed
 
-       3.893810000 seconds user
-       0.002003000 seconds sys
+       3.897439000 seconds user
+       0.002004000 seconds sys
 
 

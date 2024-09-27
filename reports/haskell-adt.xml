@@ -1,2 +1,1 @@
-<program> 	<file>haskell/adt.hi
-haskell/adt.hs</file> 	<name>haskell-adt</name> 	<compiler>The Glorious Glasgow Haskell Compilation System, version 9.4.7</compiler> 	<instructions>916</instructions> 	<cycles>256</cycles> 	<time>17.51</time> 	<time_per_cycle>.0683984375000000</time_per_cycle> 	<ticks>69263101109</ticks> 	<ticks_per_cycle>270558988</ticks_per_cycle> 	</program>
+<program> 	<file>haskell/adt.hs</file> 	<name>haskell-adt</name> 	<compiler>The Glorious Glasgow Haskell Compilation System, version 9.4.7</compiler> 	<instructions>916</instructions> 	<cycles>256</cycles> 	<time>17.77</time> 	<time_per_cycle>.0694140625000000</time_per_cycle> 	<ticks>68805880941</ticks> 	<ticks_per_cycle>268772972</ticks_per_cycle> 	</program>
