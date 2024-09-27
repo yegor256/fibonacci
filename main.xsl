@@ -152,7 +152,7 @@ SOFTWARE.
   <xsl:template match="programs" mode="compare">
     <xsl:variable name="this" select="."/>
     <p>
-      <xsl:text>This is how much faster functions are vs. objects:</xsl:text>
+      <xsl:text>This is how much functions are faster than objects:</xsl:text>
     </p>
     <table>
       <colgroup>
