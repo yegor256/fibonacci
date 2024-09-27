@@ -134,6 +134,7 @@ install: Makefile
 		brew install --cask dotnet-sdk
 	elif [[ "$${OSTYPE}" == "linux-gnu"* ]]; then
 		echo "This is Linux, installing all necessary components:"
+		systemctl stop unattended-upgrades
 		apt-get -y update --fix-missing
 		apt-get -y install --no-install-recommends \
 			clang clang-tidy \
