@@ -166,9 +166,9 @@ SOFTWARE.
         <tr>
           <td/>
           <td/>
-          <td colspan="2" class="center">
+          <th colspan="2" class="center">
             <xsl:text>TPC</xsl:text>
-          </td>
+          </th>
           <td/>
         </tr>
         <tr>
