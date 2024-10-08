@@ -3,18 +3,18 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-decorators.bin 32 256':
 
-           2578.22 msec task-clock                       #    1.000 CPUs utilized             
-                 2      context-switches                 #    0.776 /sec                      
+           2531.22 msec task-clock                       #    1.000 CPUs utilized             
+                 4      context-switches                 #    1.580 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               129      page-faults                      #   50.035 /sec                      
-       10017104348      cycles                           #    3.885 GHz                       
-       16261704911      instructions                     #    1.62  insn per cycle            
-        3612573240      branches                         #    1.401 G/sec                     
-           3451362      branch-misses                    #    0.10% of all branches           
+               129      page-faults                      #   50.964 /sec                      
+        9848593976      cycles                           #    3.891 GHz                       
+       16261421145      instructions                     #    1.65  insn per cycle            
+        3612533181      branches                         #    1.427 G/sec                     
+            655759      branch-misses                    #    0.02% of all branches           
 
-       2.578781399 seconds time elapsed
+       2.531657787 seconds time elapsed
 
-       2.577813000 seconds user
-       0.000999000 seconds sys
+       2.528609000 seconds user
+       0.002998000 seconds sys
 
 
