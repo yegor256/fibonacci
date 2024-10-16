@@ -1,9 +1,9 @@
 bin/java-Functions.bin:
-CPU ticks: 10665410791
-CPU ticks per cycle: 41661760
+CPU ticks: 10717333899
+CPU ticks per cycle: 41864585
 Instructions: 1
 Cycles: 256
 Total Time: 2.74
 Time per cycle: .0107031250000000
-Ticks: 10665410791
-Ticks per cycle: 41661760
+Ticks: 10717333899
+Ticks per cycle: 41864585
