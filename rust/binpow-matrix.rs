@@ -18,8 +18,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-use std::array;
-
 type Matrix2x2 = [i32; 4];
 
 const IDENTITY_MATRIX: Matrix2x2 = [1, 0, 0, 1];
