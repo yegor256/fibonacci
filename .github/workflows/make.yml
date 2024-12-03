@@ -68,7 +68,7 @@ jobs:
       - run: cp index.xml www
       - run: cp -r reports www
       - run: cp -r asm www
-      - uses: JamesIves/github-pages-deploy-action@v4.6.8
+      - uses: JamesIves/github-pages-deploy-action@v4.7.2
         with:
           branch: gh-pages
           folder: www
