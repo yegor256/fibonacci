@@ -3,18 +3,18 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-classes.bin 32 256':
 
-           2860.29 msec task-clock                       #    1.000 CPUs utilized             
-                 8      context-switches                 #    2.797 /sec                      
-                 1      cpu-migrations                   #    0.350 /sec                      
-               128      page-faults                      #   44.751 /sec                      
-       11124311647      cycles                           #    3.889 GHz                       
-       34307193987      instructions                     #    3.08  insn per cycle            
-        5416982783      branches                         #    1.894 G/sec                     
-            729774      branch-misses                    #    0.01% of all branches           
+           2862.09 msec task-clock                       #    1.000 CPUs utilized             
+                 3      context-switches                 #    1.048 /sec                      
+                 0      cpu-migrations                   #    0.000 /sec                      
+               128      page-faults                      #   44.723 /sec                      
+       11124463520      cycles                           #    3.887 GHz                       
+       34307247535      instructions                     #    3.08  insn per cycle            
+        5416988970      branches                         #    1.893 G/sec                     
+            732764      branch-misses                    #    0.01% of all branches           
 
-       2.860770192 seconds time elapsed
+       2.862449532 seconds time elapsed
 
-       2.860668000 seconds user
-       0.000000000 seconds sys
+       2.861428000 seconds user
+       0.000999000 seconds sys
 
 

@@ -3,18 +3,18 @@ Total is 7391575801856
 
  Performance counter stats for 'bin/haskell-object_dynamic.bin 32 2097152':
 
-           1027.02 msec task-clock                       #    1.000 CPUs utilized             
-               103      context-switches                 #  100.290 /sec                      
+           1024.86 msec task-clock                       #    0.998 CPUs utilized             
+               104      context-switches                 #  101.477 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-             86478      page-faults                      #   84.203 K/sec                     
-        3975489264      cycles                           #    3.871 GHz                       
-        9687167739      instructions                     #    2.44  insn per cycle            
-        1735601520      branches                         #    1.690 G/sec                     
-           4586341      branch-misses                    #    0.26% of all branches           
+             86481      page-faults                      #   84.383 K/sec                     
+        3968712974      cycles                           #    3.872 GHz                       
+        9689633611      instructions                     #    2.44  insn per cycle            
+        1735891240      branches                         #    1.694 G/sec                     
+           4583572      branch-misses                    #    0.26% of all branches           
 
-       1.026917236 seconds time elapsed
+       1.026854180 seconds time elapsed
 
-       0.870759000 seconds user
-       0.157137000 seconds sys
+       0.870163000 seconds user
+       0.155386000 seconds sys
 
 
