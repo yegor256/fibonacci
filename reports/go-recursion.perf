@@ -3,18 +3,18 @@ Total is 902291968
 
  Performance counter stats for 'bin/go-recursion.bin 32 256':
 
-           2606.57 msec task-clock                       #    1.004 CPUs utilized             
-               453      context-switches                 #  173.792 /sec                      
-                 0      cpu-migrations                   #    0.000 /sec                      
-               573      page-faults                      #  219.829 /sec                      
-       10091303498      cycles                           #    3.871 GHz                       
-       28901279420      instructions                     #    2.86  insn per cycle            
-        7223090939      branches                         #    2.771 G/sec                     
-            881672      branch-misses                    #    0.01% of all branches           
+           2610.59 msec task-clock                       #    1.004 CPUs utilized             
+               456      context-switches                 #  174.673 /sec                      
+                 2      cpu-migrations                   #    0.766 /sec                      
+               571      page-faults                      #  218.724 /sec                      
+       10097409492      cycles                           #    3.868 GHz                       
+       28901680591      instructions                     #    2.86  insn per cycle            
+        7223156542      branches                         #    2.767 G/sec                     
+            885489      branch-misses                    #    0.01% of all branches           
 
-       2.595303464 seconds time elapsed
+       2.601164846 seconds time elapsed
 
-       2.603377000 seconds user
+       2.607478000 seconds user
        0.005012000 seconds sys
 
 
