@@ -1,9 +1,9 @@
 bin/csharp-Recursion.bin:
-CPU ticks: 8878398538
-CPU ticks per cycle: 34681244
+CPU ticks: 8871586478
+CPU ticks per cycle: 34654634
 Instructions: 1
 Cycles: 256
 Total Time: 2.27
 Time per cycle: .0088671875000000
-Ticks: 8878398538
-Ticks per cycle: 34681244
+Ticks: 8871586478
+Ticks per cycle: 34654634
