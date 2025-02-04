@@ -208,4 +208,3 @@ begin
     WriteLn(IntToStr(input.Get()) + '-th Fibonacci number is ' + IntToStr(f));
     WriteLn('Total is ' + IntToStr(total));
 end.
-

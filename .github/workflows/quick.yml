@@ -25,6 +25,7 @@ name: quick
       - master
 jobs:
   start-instance:
+    timeout-minutes: 15
     runs-on: ubuntu-24.04
     outputs:
       label: ${{ steps.start.outputs.label }}

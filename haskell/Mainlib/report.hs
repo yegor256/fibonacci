@@ -55,4 +55,3 @@ usage = do
     putStrLn "Usage:"
     name <- getProgName
     putStrLn $ name ++ " INPUT CYCLES"
-

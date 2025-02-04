@@ -35,4 +35,3 @@ fibo n = fibo' n (oInt 1) (oInt 1) where
 
 main :: IO ()
 main = run $ get . fibo . oInt
-

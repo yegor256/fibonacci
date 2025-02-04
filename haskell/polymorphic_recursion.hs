@@ -45,5 +45,3 @@ fibo n
 
 main :: IO ()
 main = run $ getNumber . fibo . fromIntegral
-
-

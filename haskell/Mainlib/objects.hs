@@ -38,4 +38,3 @@ oAdd a b = Object $ get a + get b
 
 oSub :: (Num a) => Object a -> Object a -> Object a
 oSub a b = Object $ get a - get b
-

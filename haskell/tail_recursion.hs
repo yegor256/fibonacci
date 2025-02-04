@@ -30,5 +30,3 @@ fibo = fibo' 1 1 where
 
 main :: IO ()
 main = run fibo
-
-

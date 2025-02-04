@@ -31,5 +31,3 @@ fibo n = fst $ iterate step (1, 1) !! n where
 
 main :: IO ()
 main = run fibo
-
-

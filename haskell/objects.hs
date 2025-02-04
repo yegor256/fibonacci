@@ -33,5 +33,3 @@ fibo x =
 
 main :: IO ()
 main = run $ get . fibo . oInt
-
-

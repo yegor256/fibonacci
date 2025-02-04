@@ -37,5 +37,3 @@ newFibo n = Other (newFibo (n - 1)) (newFibo (n - 2))
 
 main :: IO ()
 main = run $ get . newFibo
-
-
