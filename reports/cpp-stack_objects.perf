@@ -3,18 +3,18 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-stack_objects.bin 32 256':
 
-           2857.52 msec task-clock                       #    1.000 CPUs utilized             
-                 6      context-switches                 #    2.100 /sec                      
+           2859.99 msec task-clock                       #    1.000 CPUs utilized             
+                 5      context-switches                 #    1.748 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               130      page-faults                      #   45.494 /sec                      
-       11123892631      cycles                           #    3.893 GHz                       
-       34307202507      instructions                     #    3.08  insn per cycle            
-        5416978562      branches                         #    1.896 G/sec                     
-            733338      branch-misses                    #    0.01% of all branches           
+               129      page-faults                      #   45.105 /sec                      
+       11124732746      cycles                           #    3.890 GHz                       
+       34307194294      instructions                     #    3.08  insn per cycle            
+        5416977951      branches                         #    1.894 G/sec                     
+            731701      branch-misses                    #    0.01% of all branches           
 
-       2.857891504 seconds time elapsed
+       2.860297116 seconds time elapsed
 
-       2.856866000 seconds user
-       0.000999000 seconds sys
+       2.858312000 seconds user
+       0.001999000 seconds sys
 
 
