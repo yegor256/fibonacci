@@ -51,7 +51,7 @@ jobs:
   make:
     needs: start-instance
     runs-on: ${{ needs.start-instance.outputs.label }}
-    timeout-minutes: 30
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - run: sudo make install
