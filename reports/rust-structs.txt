@@ -1,9 +1,9 @@
 bin/rust-structs.bin:
-CPU ticks: 927123127668
-CPU ticks per cycle: 3621574717
+CPU ticks: 925121209791
+CPU ticks per cycle: 3613754725
 Instructions: 707
 Cycles: 256
-Total Time: 236.44
-Time per cycle: .9235937500000000
-Ticks: 927123127668
-Ticks per cycle: 3621574717
+Total Time: 236.60
+Time per cycle: .9242187500000000
+Ticks: 925121209791
+Ticks per cycle: 3613754725
