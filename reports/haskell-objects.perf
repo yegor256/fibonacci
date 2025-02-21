@@ -3,18 +3,18 @@ Total is 902291968
 
  Performance counter stats for 'bin/haskell-objects.bin 32 256':
 
-           8057.60 msec task-clock                       #    1.002 CPUs utilized             
-               818      context-switches                 #  101.519 /sec                      
+           8206.14 msec task-clock                       #    1.001 CPUs utilized             
+               832      context-switches                 #  101.388 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-              5248      page-faults                      #  651.311 /sec                      
-       31314431245      cycles                           #    3.886 GHz                       
-       93071540199      instructions                     #    2.97  insn per cycle            
-       19320498688      branches                         #    2.398 G/sec                     
-         169128270      branch-misses                    #    0.88% of all branches           
+              5254      page-faults                      #  640.253 /sec                      
+       31857695992      cycles                           #    3.882 GHz                       
+       93072567601      instructions                     #    2.92  insn per cycle            
+       19320656545      branches                         #    2.354 G/sec                     
+         187080723      branch-misses                    #    0.97% of all branches           
 
-       8.043902907 seconds time elapsed
+       8.194132014 seconds time elapsed
 
-       8.048667000 seconds user
-       0.009016000 seconds sys
+       8.195646000 seconds user
+       0.013029000 seconds sys
 
 

@@ -4,18 +4,18 @@ Total is 0
 
  Performance counter stats for 'bin/rust-recursion.bin 32 2147483648':
 
-              8.01 msec task-clock                       #    0.970 CPUs utilized             
-                 0      context-switches                 #    0.000 /sec                      
+              8.10 msec task-clock                       #    0.970 CPUs utilized             
+                 1      context-switches                 #  123.393 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-                76      page-faults                      #    9.483 K/sec                     
-          28830235      cycles                           #    3.597 GHz                       
-          66971494      instructions                     #    2.32  insn per cycle            
-          14404117      branches                         #    1.797 G/sec                     
-             95640      branch-misses                    #    0.66% of all branches           
+                76      page-faults                      #    9.378 K/sec                     
+          29815260      cycles                           #    3.679 GHz                       
+          67045879      instructions                     #    2.25  insn per cycle            
+          14416192      branches                         #    1.779 G/sec                     
+            103436      branch-misses                    #    0.72% of all branches           
 
-       0.008259182 seconds time elapsed
+       0.008358148 seconds time elapsed
 
-       0.007374000 seconds user
-       0.000921000 seconds sys
+       0.008390000 seconds user
+       0.000000000 seconds sys
 
 
