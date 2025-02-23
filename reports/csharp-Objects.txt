@@ -1,9 +1,9 @@
 bin/csharp-Objects.bin:
-CPU ticks: 45836464682
-CPU ticks per cycle: 5729558085
+CPU ticks: 45521426530
+CPU ticks per cycle: 5690178316
 Instructions: 1
 Cycles: 8
-Total Time: 11.74
-Time per cycle: 1.4675000000000000
-Ticks: 45836464682
-Ticks per cycle: 5729558085
+Total Time: 11.84
+Time per cycle: 1.4800000000000000
+Ticks: 45521426530
+Ticks per cycle: 5690178316
