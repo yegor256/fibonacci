@@ -3,18 +3,18 @@ Total is 7049156
 
  Performance counter stats for 'bin/pascal-Objects.bin 32 2':
 
-          16804.16 msec task-clock                       #    1.000 CPUs utilized             
-                28      context-switches                 #    1.666 /sec                      
+          16936.88 msec task-clock                       #    1.000 CPUs utilized             
+                39      context-switches                 #    2.303 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-           2423887      page-faults                      #  144.243 K/sec                     
-       65403923079      cycles                           #    3.892 GHz                       
-      108020981631      instructions                     #    1.65  insn per cycle            
-       23488586234      branches                         #    1.398 G/sec                     
-         162870120      branch-misses                    #    0.69% of all branches           
+           2423889      page-faults                      #  143.113 K/sec                     
+       65477345871      cycles                           #    3.866 GHz                       
+      108015964246      instructions                     #    1.65  insn per cycle            
+       23487441090      branches                         #    1.387 G/sec                     
+         162873144      branch-misses                    #    0.69% of all branches           
 
-      16.805011359 seconds time elapsed
+      16.938318949 seconds time elapsed
 
-      12.909533000 seconds user
-       3.894859000 seconds sys
+      12.937759000 seconds user
+       3.999616000 seconds sys
 
 

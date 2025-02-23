@@ -3,18 +3,18 @@ Total is 473060851318784
 
  Performance counter stats for 'bin/go-fast.bin 32 134217728':
 
-           1607.13 msec task-clock                       #    1.004 CPUs utilized             
-               303      context-switches                 #  188.535 /sec                      
+           1604.49 msec task-clock                       #    1.004 CPUs utilized             
+               305      context-switches                 #  190.091 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               571      page-faults                      #  355.291 /sec                      
-        6199073280      cycles                           #    3.857 GHz                       
-       27668058196      instructions                     #    4.46  insn per cycle            
-        5237772428      branches                         #    3.259 G/sec                     
-            583799      branch-misses                    #    0.01% of all branches           
+               581      page-faults                      #  362.109 /sec                      
+        6194110707      cycles                           #    3.860 GHz                       
+       27668280384      instructions                     #    4.47  insn per cycle            
+        5237820516      branches                         #    3.264 G/sec                     
+            187666      branch-misses                    #    0.00% of all branches           
 
-       1.601449253 seconds time elapsed
+       1.598874557 seconds time elapsed
 
-       1.604128000 seconds user
-       0.004007000 seconds sys
+       1.599940000 seconds user
+       0.004999000 seconds sys
 
 
