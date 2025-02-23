@@ -3,18 +3,18 @@ Total is 268435456
 
  Performance counter stats for 'bin/cpp-matrixes.bin 32 134217728':
 
-           1354.27 msec task-clock                       #    1.000 CPUs utilized             
-                 3      context-switches                 #    2.215 /sec                      
+           1352.83 msec task-clock                       #    1.000 CPUs utilized             
+                 2      context-switches                 #    1.478 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               130      page-faults                      #   95.993 /sec                      
-        5266777487      cycles                           #    3.889 GHz                       
-       19204820256      instructions                     #    3.65  insn per cycle            
-        2283608782      branches                         #    1.686 G/sec                     
-             30653      branch-misses                    #    0.00% of all branches           
+               127      page-faults                      #   93.877 /sec                      
+        5267312182      cycles                           #    3.894 GHz                       
+       19204970155      instructions                     #    3.65  insn per cycle            
+        2283654559      branches                         #    1.688 G/sec                     
+             32457      branch-misses                    #    0.00% of all branches           
 
-       1.354615591 seconds time elapsed
+       1.353127271 seconds time elapsed
 
-       1.353588000 seconds user
-       0.000999000 seconds sys
+       1.352103000 seconds user
+       0.001000000 seconds sys
 
 
