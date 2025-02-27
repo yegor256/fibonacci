@@ -3,18 +3,18 @@ Total is 56393248
 
  Performance counter stats for 'bin/java-Records.bin 32 16':
 
-          18064.70 msec task-clock                       #    1.000 CPUs utilized             
-                31      context-switches                 #    1.716 /sec                      
+          18159.64 msec task-clock                       #    1.000 CPUs utilized             
+                31      context-switches                 #    1.707 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-             16881      page-faults                      #  934.474 /sec                      
-       70375311080      cycles                           #    3.896 GHz                       
-       94781774375      instructions                     #    1.35  insn per cycle            
-       20494068946      branches                         #    1.134 G/sec                     
-        1123154227      branch-misses                    #    5.48% of all branches           
+             16880      page-faults                      #  929.534 /sec                      
+       70681287422      cycles                           #    3.892 GHz                       
+       94778550278      instructions                     #    1.34  insn per cycle            
+       20495439160      branches                         #    1.129 G/sec                     
+        1131122802      branch-misses                    #    5.52% of all branches           
 
-      18.066243087 seconds time elapsed
+      18.161024138 seconds time elapsed
 
-      18.035363000 seconds user
-       0.028997000 seconds sys
+      18.133884000 seconds user
+       0.025998000 seconds sys
 
 
