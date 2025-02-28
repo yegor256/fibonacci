@@ -1,9 +1,9 @@
 bin/cpp-stack_objects.bin:
-CPU ticks: 11132047145
-CPU ticks per cycle: 43484559
+CPU ticks: 11131366781
+CPU ticks per cycle: 43481901
 Instructions: 82
 Cycles: 256
 Total Time: 2.86
 Time per cycle: .0111718750000000
-Ticks: 11132047145
-Ticks per cycle: 43484559
+Ticks: 11131366781
+Ticks per cycle: 43481901
