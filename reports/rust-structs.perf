@@ -4,18 +4,18 @@ Total is 902291968
 
  Performance counter stats for 'bin/rust-structs.bin 32 256':
 
-         236386.97 msec task-clock                       #    1.000 CPUs utilized             
-               292      context-switches                 #    1.235 /sec                      
+         235921.80 msec task-clock                       #    1.000 CPUs utilized             
+               315      context-switches                 #    1.335 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-                75      page-faults                      #    0.317 /sec                      
-      921304196293      cycles                           #    3.897 GHz                       
-      841533531784      instructions                     #    0.91  insn per cycle            
-      167402742083      branches                         #  708.172 M/sec                     
-       17524033313      branch-misses                    #   10.47% of all branches           
+                74      page-faults                      #    0.314 /sec                      
+      918820280838      cycles                           #    3.895 GHz                       
+      841488799303      instructions                     #    0.92  insn per cycle            
+      167395094117      branches                         #  709.536 M/sec                     
+       17471313638      branch-misses                    #   10.44% of all branches           
 
-     236.390115425 seconds time elapsed
+     235.924275758 seconds time elapsed
 
-     236.386043000 seconds user
+     235.921130000 seconds user
        0.000999000 seconds sys
 
 
