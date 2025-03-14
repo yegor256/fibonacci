@@ -3,9 +3,9 @@
  * SPDX-FileCopyrightText: Copyright (c) 2022-2025 Yegor Bugayenko
  * SPDX-License-Identifier: MIT
 -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0" exclude-result-prefixes="xs">
   <xsl:output method="text" omit-xml-declaration="yes" indent="no"/>
-  <xsl:decimal-format name="main" decimal-separator="." grouping-separator="," />
+  <xsl:decimal-format name="main" decimal-separator="." grouping-separator=","/>
   <xsl:template match="fibonacci">
     <xsl:text>
       \documentclass{article}
@@ -27,16 +27,7 @@
   </xsl:template>
   <xsl:template match="programs">
     <xsl:variable name="this" select="."/>
-    <xsl:for-each select="
-      'Haskell haskell-recursion haskell-objects',
-      'Rust rust-recursion rust-structs',
-      'C\# csharp-Functions csharp-Objects',
-      'Java java-Functions java-Objects',
-      'Go go-recursion go-structs',
-      'Pascal pascal-recursion pascal-Objects',
-      'C++ cpp-functions cpp-objects'
-      "
-      >
+    <xsl:for-each select="       'Haskell haskell-recursion haskell-objects',       'Rust rust-recursion rust-structs',       'C\# csharp-Functions csharp-Objects',       'Java java-Functions java-Objects',       'Go go-recursion go-structs',       'Pascal pascal-recursion pascal-Objects',       'C++ cpp-functions cpp-objects'       ">
       <xsl:variable name="tokens" select="tokenize(., ' ')"/>
       <xsl:variable name="language" select="xs:string(subsequence($tokens, 1, 1))"/>
       <xsl:variable name="left" select="xs:string(subsequence($tokens, 2, 1))"/>
@@ -60,7 +51,8 @@
           <xsl:text>---</xsl:text>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:text> \\&#x0a;</xsl:text>
+      <xsl:text> \\
+</xsl:text>
     </xsl:for-each>
   </xsl:template>
 </xsl:stylesheet>
