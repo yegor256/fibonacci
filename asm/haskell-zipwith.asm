@@ -194,7 +194,7 @@ Main_fibo6_closure:
 .type Main_fibo5_closure, @object
 Main_fibo5_closure:
 	.quad	ghczmprim_GHCziTypes_Izh_con_info
-	.quad	29
+	.quad	11
 .section .data
 .align 8
 .align 1
@@ -266,9 +266,9 @@ Main_fibo2_closure:
 	.quad	Main_fibo9_closure
 	.quad	Main_fibo8_closure
 	.quad	Main_fibo6_closure
-	.quad	stg_INTLIKE_closure+721
+	.quad	stg_INTLIKE_closure+433
 	.quad	stg_INTLIKE_closure+401
-	.quad	stg_INTLIKE_closure+721
+	.quad	stg_INTLIKE_closure+433
 	.quad	stg_INTLIKE_closure+513
 	.quad	0
 .section .data

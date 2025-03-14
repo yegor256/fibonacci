@@ -1,9 +1,9 @@
 bin/go-recursion.bin:
-CPU ticks: 10091340503
-CPU ticks per cycle: 39419298
+CPU ticks: 10101324393
+CPU ticks per cycle: 39458298
 Instructions: 1
 Cycles: 256
-Total Time: 2.59
-Time per cycle: .0101171875000000
-Ticks: 10091340503
-Ticks per cycle: 39419298
+Total Time: 2.60
+Time per cycle: .0101562500000000
+Ticks: 10101324393
+Ticks per cycle: 39458298

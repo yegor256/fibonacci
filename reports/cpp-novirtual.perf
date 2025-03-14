@@ -3,18 +3,18 @@ Total is 902291968
 
  Performance counter stats for 'bin/cpp-novirtual.bin 32 256':
 
-          91362.72 msec task-clock                       #    1.000 CPUs utilized             
-               132      context-switches                 #    1.445 /sec                      
+          89715.36 msec task-clock                       #    1.000 CPUs utilized             
+                83      context-switches                 #    0.925 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               129      page-faults                      #    1.412 /sec                      
-      355773875652      cycles                           #    3.894 GHz                       
-     1034840468108      instructions                     #    2.91  insn per cycle            
-      223839739884      branches                         #    2.450 G/sec                     
-         268619941      branch-misses                    #    0.12% of all branches           
+               129      page-faults                      #    1.438 /sec                      
+      349244917216      cycles                           #    3.893 GHz                       
+     1013175781932      instructions                     #    2.90  insn per cycle            
+      223838225347      branches                         #    2.495 G/sec                     
+         291061050      branch-misses                    #    0.13% of all branches           
 
-      91.363842217 seconds time elapsed
+      89.717278610 seconds time elapsed
 
-      91.361966000 seconds user
+      89.714899000 seconds user
        0.000999000 seconds sys
 
 
