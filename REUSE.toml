@@ -4,6 +4,8 @@
 version = 1
 [[annotations]]
 path = [
+    ".checkmakerc",
+    ".clang-format",
     "**.csv",
     "**.json",
     "**.md",
