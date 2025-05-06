@@ -1,11 +1,11 @@
+.DS_Store
+.idea/
 *.class
 *.ecf
 *.hi
-.DS_Store
-.idea/
-EIFGENs/
 asm/
 bin/
+EIFGENs/
 index.html
 index.xml
 node_modules/
