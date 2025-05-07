@@ -3,18 +3,18 @@ Total is 28196624
 
  Performance counter stats for 'bin/csharp-Structs.bin 32 8':
 
-          12704.24 msec task-clock                       #    1.001 CPUs utilized             
-                46      context-switches                 #    3.621 /sec                      
-                 1      cpu-migrations                   #    0.079 /sec                      
-             19270      page-faults                      #    1.517 K/sec                     
-       49427439943      cycles                           #    3.891 GHz                       
-       69511548219      instructions                     #    1.41  insn per cycle            
-       20164997699      branches                         #    1.587 G/sec                     
-         549352686      branch-misses                    #    2.72% of all branches           
+          12605.09 msec task-clock                       #    1.001 CPUs utilized             
+                35      context-switches                 #    2.777 /sec                      
+                 2      cpu-migrations                   #    0.159 /sec                      
+             19277      page-faults                      #    1.529 K/sec                     
+       49131950402      cycles                           #    3.898 GHz                       
+       69514070906      instructions                     #    1.41  insn per cycle            
+       20165410624      branches                         #    1.600 G/sec                     
+         548553369      branch-misses                    #    2.72% of all branches           
 
-      12.695089615 seconds time elapsed
+      12.595603022 seconds time elapsed
 
-      12.664698000 seconds user
-       0.039995000 seconds sys
+      12.564465000 seconds user
+       0.040998000 seconds sys
 
 

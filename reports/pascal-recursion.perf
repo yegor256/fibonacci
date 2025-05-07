@@ -3,18 +3,18 @@ Total is 902292224
 
  Performance counter stats for 'bin/pascal-recursion.bin 32 256':
 
-           3876.08 msec task-clock                       #    1.000 CPUs utilized             
-                 3      context-switches                 #    0.774 /sec                      
+           3874.95 msec task-clock                       #    1.000 CPUs utilized             
+                 4      context-switches                 #    1.032 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-                35      page-faults                      #    9.030 /sec                      
-       15091008547      cycles                           #    3.893 GHz                       
-       32505803328      instructions                     #    2.15  insn per cycle            
-        7221982993      branches                         #    1.863 G/sec                     
-            743487      branch-misses                    #    0.01% of all branches           
+                36      page-faults                      #    9.290 /sec                      
+       15099983442      cycles                           #    3.897 GHz                       
+       32505792384      instructions                     #    2.15  insn per cycle            
+        7221996544      branches                         #    1.864 G/sec                     
+            738023      branch-misses                    #    0.01% of all branches           
 
-       3.876585471 seconds time elapsed
+       3.875556693 seconds time elapsed
 
-       3.875490000 seconds user
-       0.000999000 seconds sys
+       3.873473000 seconds user
+       0.001999000 seconds sys
 
 
