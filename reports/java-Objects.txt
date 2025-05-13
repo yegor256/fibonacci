@@ -1,9 +1,9 @@
 bin/java-Objects.bin:
-CPU ticks: 73533604872
-CPU ticks per cycle: 4595850304
+CPU ticks: 73669810469
+CPU ticks per cycle: 4604363154
 Instructions: 1
 Cycles: 16
-Total Time: 18.81
-Time per cycle: 1.1756250000000000
-Ticks: 73533604872
-Ticks per cycle: 4595850304
+Total Time: 18.86
+Time per cycle: 1.1787500000000000
+Ticks: 73669810469
+Ticks per cycle: 4604363154

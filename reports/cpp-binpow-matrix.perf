@@ -3,18 +3,18 @@ Total is -2013265920
 
  Performance counter stats for 'bin/cpp-binpow-matrix.bin 32 67108864':
 
-           1347.71 msec task-clock                       #    1.000 CPUs utilized             
-                 1      context-switches                 #    0.742 /sec                      
+           1347.63 msec task-clock                       #    1.000 CPUs utilized             
+                 0      context-switches                 #    0.000 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               128      page-faults                      #   94.976 /sec                      
-        5248120401      cycles                           #    3.894 GHz                       
-       17594145582      instructions                     #    3.35  insn per cycle            
-        2149386370      branches                         #    1.595 G/sec                     
-             27922      branch-misses                    #    0.00% of all branches           
+               130      page-faults                      #   96.466 /sec                      
+        5244910558      cycles                           #    3.892 GHz                       
+       17594115601      instructions                     #    3.35  insn per cycle            
+        2149375249      branches                         #    1.595 G/sec                     
+             29337      branch-misses                    #    0.00% of all branches           
 
-       1.348077597 seconds time elapsed
+       1.348084307 seconds time elapsed
 
-       1.348063000 seconds user
+       1.348066000 seconds user
        0.000000000 seconds sys
 
 
