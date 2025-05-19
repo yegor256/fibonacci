@@ -1,9 +1,9 @@
 bin/haskell-zipwith.bin:
-CPU ticks: 5462748662
-CPU ticks per cycle: 1302
+CPU ticks: 5510038706
+CPU ticks per cycle: 1313
 Instructions: 985
 Cycles: 4194304
-Total Time: 1.39
-Time per cycle: .0000003314018249
-Ticks: 5462748662
-Ticks per cycle: 1302
+Total Time: 1.41
+Time per cycle: .0000003361701965
+Ticks: 5510038706
+Ticks per cycle: 1313

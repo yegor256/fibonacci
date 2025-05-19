@@ -3,18 +3,18 @@ Total is 14783151603712
 
  Performance counter stats for 'bin/haskell-zipwith.bin 32 4194304':
 
-           1413.96 msec task-clock                       #    0.996 CPUs utilized             
-               143      context-switches                 #  101.134 /sec                      
-                 1      cpu-migrations                   #    0.707 /sec                      
-            174658      page-faults                      #  123.524 K/sec                     
-        5462748662      cycles                           #    3.863 GHz                       
-       12671883168      instructions                     #    2.32  insn per cycle            
-        2395173893      branches                         #    1.694 G/sec                     
-           2833268      branch-misses                    #    0.12% of all branches           
+           1423.70 msec task-clock                       #    0.997 CPUs utilized             
+               146      context-switches                 #  102.550 /sec                      
+                 0      cpu-migrations                   #    0.000 /sec                      
+            180837      page-faults                      #  127.019 K/sec                     
+        5510038706      cycles                           #    3.870 GHz                       
+       12690918168      instructions                     #    2.30  insn per cycle            
+        2398620116      branches                         #    1.685 G/sec                     
+           2817756      branch-misses                    #    0.12% of all branches           
 
-       1.420033691 seconds time elapsed
+       1.427531644 seconds time elapsed
 
-       1.138303000 seconds user
-       0.276559000 seconds sys
+       1.132807000 seconds user
+       0.291723000 seconds sys
 
 

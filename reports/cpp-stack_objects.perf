@@ -6,15 +6,15 @@ Total is 902291968
            2857.58 msec task-clock                       #    1.000 CPUs utilized             
                  3      context-switches                 #    1.050 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               128      page-faults                      #   44.793 /sec                      
-       11123653006      cycles                           #    3.893 GHz                       
-       34307337139      instructions                     #    3.08  insn per cycle            
-        5416997504      branches                         #    1.896 G/sec                     
-            728962      branch-misses                    #    0.01% of all branches           
+               129      page-faults                      #   45.143 /sec                      
+       11124074838      cycles                           #    3.893 GHz                       
+       34307141852      instructions                     #    3.08  insn per cycle            
+        5416969922      branches                         #    1.896 G/sec                     
+            728297      branch-misses                    #    0.01% of all branches           
 
-       2.857914918 seconds time elapsed
+       2.857890450 seconds time elapsed
 
-       2.856922000 seconds user
-       0.000999000 seconds sys
+       2.857926000 seconds user
+       0.000000000 seconds sys
 
 

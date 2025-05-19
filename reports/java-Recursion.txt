@@ -1,9 +1,9 @@
 bin/java-Recursion.bin:
-CPU ticks: 10656357826
-CPU ticks per cycle: 41626397
+CPU ticks: 10657668800
+CPU ticks per cycle: 41631518
 Instructions: 1
 Cycles: 256
-Total Time: 2.73
-Time per cycle: .0106640625000000
-Ticks: 10656357826
-Ticks per cycle: 41626397
+Total Time: 2.74
+Time per cycle: .0107031250000000
+Ticks: 10657668800
+Ticks per cycle: 41631518
