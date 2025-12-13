@@ -1,9 +1,9 @@
 bin/cpp-inlines.bin:
-CPU ticks: 5876258467
-CPU ticks per cycle: 22954134
+CPU ticks: 5877473750
+CPU ticks per cycle: 22958881
 Instructions: 68
 Cycles: 256
 Total Time: 1.51
 Time per cycle: .0058984375000000
-Ticks: 5876258467
-Ticks per cycle: 22954134
+Ticks: 5877473750
+Ticks per cycle: 22958881
