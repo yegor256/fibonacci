@@ -33,7 +33,7 @@ jobs:
     needs: start-instance
     runs-on: ${{ needs.start-instance.outputs.label }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: sudo make install
       - run: make env
       - run: make -e FAST=1 INPUT=7
