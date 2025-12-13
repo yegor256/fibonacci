@@ -4,10 +4,10 @@
 #include <cstdlib>
 
 #include "./main.h"
-constexpr size_t PROPER_ALIGMENT = 64;
+constexpr size_t PROPER_ALIGNMENT = 64;
 struct lambda;
 using func = int (*)(struct lambda*);
-struct __attribute__((aligned(PROPER_ALIGMENT))) lambda {
+struct __attribute__((aligned(PROPER_ALIGNMENT))) lambda {
   func body;
   int data;
   struct lambda* first;

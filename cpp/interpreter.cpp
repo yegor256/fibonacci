@@ -87,16 +87,16 @@ public:
 template <class T>
 class If : public Computation<T> {
 public:
-  If(Computation<bool>::ptr pred, typename Computation<T>::ptr thn,
+  If(Computation<bool>::ptr pred, typename Computation<T>::ptr then,
     typename Computation<T>::ptr els)
     : m_pred(std::move(pred)),
-      m_thn(std::move(thn)),
+      m_then(std::move(then)),
       m_els(std::move(els)),
       Computation<T>() {}
   typename Computation<T>::ptr eval() override {
     typename Computation<T>::ptr res;
     if (Force<bool>(m_pred).get()) {
-      res = m_thn;
+      res = m_then;
     } else {
       res = m_els;
     }
@@ -106,7 +106,7 @@ public:
 
 private:
   Computation<bool>::ptr m_pred;
-  typename Computation<T>::ptr m_thn;
+  typename Computation<T>::ptr m_then;
   typename Computation<T>::ptr m_els;
 };
 
