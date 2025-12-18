@@ -3,18 +3,18 @@ Total is 902291968
 
  Performance counter stats for 'bin/csharp-Recursion.bin 32 256':
 
-           2280.75 msec task-clock                       #    1.004 CPUs utilized             
-                 7      context-switches                 #    3.069 /sec                      
+           2282.64 msec task-clock                       #    1.004 CPUs utilized             
+                 9      context-switches                 #    3.943 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               543      page-faults                      #  238.079 /sec                      
-        8871907715      cycles                           #    3.890 GHz                       
-       26196350134      instructions                     #    2.95  insn per cycle            
-        5419323075      branches                         #    2.376 G/sec                     
-            764905      branch-misses                    #    0.01% of all branches           
+               542      page-faults                      #  237.444 /sec                      
+        8870365357      cycles                           #    3.886 GHz                       
+       26196344525      instructions                     #    2.95  insn per cycle            
+        5419345809      branches                         #    2.374 G/sec                     
+            761100      branch-misses                    #    0.01% of all branches           
 
-       2.270900716 seconds time elapsed
+       2.273120478 seconds time elapsed
 
-       2.278075000 seconds user
-       0.002998000 seconds sys
+       2.281239000 seconds user
+       0.002000000 seconds sys
 
 

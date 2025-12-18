@@ -1,9 +1,9 @@
 bin/cpp-binpow-matrix.bin:
-CPU ticks: 5244928989
+CPU ticks: 5244933963
 CPU ticks per cycle: 78
 Instructions: 160
 Cycles: 67108864
 Total Time: 1.35
 Time per cycle: .0000000201165676
-Ticks: 5244928989
+Ticks: 5244933963
 Ticks per cycle: 78
