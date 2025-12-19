@@ -32,6 +32,7 @@ jobs:
           ec2-instance-type: c5.metal # it must be "metal", otherwise won't work
           subnet-id: ${{ secrets.AWS_SUBNET }}
           security-group-id: ${{ secrets.AWS_SGROUP }}
+          aws-resource-tags: '[{"Key": "Name", "Value": "fibonacci"}]'
   make:
     needs: start-instance
     runs-on: ${{ needs.start-instance.outputs.label }}
