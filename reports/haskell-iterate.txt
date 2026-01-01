@@ -1,9 +1,9 @@
 bin/haskell-iterate.bin:
-CPU ticks: 5533721056
-CPU ticks per cycle: 1319
+CPU ticks: 5567472378
+CPU ticks per cycle: 1327
 Instructions: 906
 Cycles: 4194304
-Total Time: 1.42
-Time per cycle: .0000003385543823
-Ticks: 5533721056
-Ticks per cycle: 1319
+Total Time: 1.40
+Time per cycle: .0000003337860107
+Ticks: 5567472378
+Ticks per cycle: 1327

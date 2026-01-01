@@ -3,18 +3,18 @@ Total is 14783151603712
 
  Performance counter stats for 'bin/haskell-iterate.bin 32 4194304':
 
-           1428.05 msec task-clock                       #    0.998 CPUs utilized             
-               143      context-switches                 #  100.137 /sec                      
+           1436.62 msec task-clock                       #    0.997 CPUs utilized             
+               143      context-switches                 #   99.539 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-            180570      page-faults                      #  126.446 K/sec                     
-        5533721056      cycles                           #    3.875 GHz                       
-       12758795200      instructions                     #    2.31  insn per cycle            
-        2410694209      branches                         #    1.688 G/sec                     
-           2831004      branch-misses                    #    0.12% of all branches           
+            184071      page-faults                      #  128.127 K/sec                     
+        5567472378      cycles                           #    3.875 GHz                       
+       12768475450      instructions                     #    2.29  insn per cycle            
+        2412201639      branches                         #    1.679 G/sec                     
+           2815131      branch-misses                    #    0.12% of all branches           
 
-       1.430558991 seconds time elapsed
+       1.440814348 seconds time elapsed
 
-       1.113895000 seconds user
-       0.314535000 seconds sys
+       1.102024000 seconds user
+       0.335616000 seconds sys
 
 

@@ -3,18 +3,18 @@ Total is 14098312
 
  Performance counter stats for 'bin/go-structs.bin 32 4':
 
-          17328.53 msec task-clock                       #    1.074 CPUs utilized             
-             30108      context-switches                 #    1.737 K/sec                     
-                12      cpu-migrations                   #    0.692 /sec                      
-             13715      page-faults                      #  791.470 /sec                      
-       63291392445      cycles                           #    3.652 GHz                       
-      111182171548      instructions                     #    1.76  insn per cycle            
-       24428843625      branches                         #    1.410 G/sec                     
-        1019937635      branch-misses                    #    4.18% of all branches           
+          17159.31 msec task-clock                       #    1.074 CPUs utilized             
+             30753      context-switches                 #    1.792 K/sec                     
+                 3      cpu-migrations                   #    0.175 /sec                      
+             10392      page-faults                      #  605.619 /sec                      
+       63252033322      cycles                           #    3.686 GHz                       
+      111198745322      instructions                     #    1.76  insn per cycle            
+       24433899311      branches                         #    1.424 G/sec                     
+        1019907722      branch-misses                    #    4.17% of all branches           
 
-      16.141822684 seconds time elapsed
+      15.974790515 seconds time elapsed
 
-      16.977005000 seconds user
-       0.412992000 seconds sys
+      16.828187000 seconds user
+       0.393233000 seconds sys
 
 

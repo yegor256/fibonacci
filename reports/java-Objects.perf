@@ -3,18 +3,18 @@ Total is 56393248
 
  Performance counter stats for 'bin/java-Objects.bin 32 16':
 
-          18861.26 msec task-clock                       #    1.000 CPUs utilized             
-                31      context-switches                 #    1.644 /sec                      
+          18874.61 msec task-clock                       #    1.000 CPUs utilized             
+                33      context-switches                 #    1.748 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-             16891      page-faults                      #  895.539 /sec                      
-       73420032460      cycles                           #    3.893 GHz                       
-       94785596089      instructions                     #    1.29  insn per cycle            
-       20492424654      branches                         #    1.086 G/sec                     
-        1218124043      branch-misses                    #    5.94% of all branches           
+             16879      page-faults                      #  894.270 /sec                      
+       73515182892      cycles                           #    3.895 GHz                       
+       94745746382      instructions                     #    1.29  insn per cycle            
+       20484647832      branches                         #    1.085 G/sec                     
+        1221019605      branch-misses                    #    5.96% of all branches           
 
-      18.862855322 seconds time elapsed
+      18.876092788 seconds time elapsed
 
-      18.837497000 seconds user
-       0.023998000 seconds sys
+      18.843935000 seconds user
+       0.030996000 seconds sys
 
 
