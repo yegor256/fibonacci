@@ -3,18 +3,18 @@ Total is 902291968
 
  Performance counter stats for 'bin/java-Recursion.bin 32 256':
 
-           2737.30 msec task-clock                       #    1.000 CPUs utilized             
-                 4      context-switches                 #    1.461 /sec                      
+           2740.89 msec task-clock                       #    1.000 CPUs utilized             
+                 5      context-switches                 #    1.824 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               626      page-faults                      #  228.693 /sec                      
-       10663439169      cycles                           #    3.896 GHz                       
-       28898447647      instructions                     #    2.71  insn per cycle            
-        9027115832      branches                         #    3.298 G/sec                     
-            806899      branch-misses                    #    0.01% of all branches           
+               622      page-faults                      #  226.934 /sec                      
+       10661859470      cycles                           #    3.890 GHz                       
+       28898639582      instructions                     #    2.71  insn per cycle            
+        9027142511      branches                         #    3.294 G/sec                     
+            740358      branch-misses                    #    0.01% of all branches           
 
-       2.737689329 seconds time elapsed
+       2.741263841 seconds time elapsed
 
-       2.734695000 seconds user
-       0.002999000 seconds sys
+       2.739988000 seconds user
+       0.000999000 seconds sys
 
 

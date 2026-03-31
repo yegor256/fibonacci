@@ -3,18 +3,18 @@ Total is 902291968
 
  Performance counter stats for 'bin/haskell-polymorphic_recursion.bin 32 256':
 
-           6894.07 msec task-clock                       #    1.001 CPUs utilized             
-               701      context-switches                 #  101.682 /sec                      
+           7124.66 msec task-clock                       #    1.002 CPUs utilized             
+               725      context-switches                 #  101.759 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-              5200      page-faults                      #  754.272 /sec                      
-       26796175849      cycles                           #    3.887 GHz                       
-       68054560007      instructions                     #    2.54  insn per cycle            
-       14683854291      branches                         #    2.130 G/sec                     
-         163603130      branch-misses                    #    1.11% of all branches           
+              5201      page-faults                      #  730.000 /sec                      
+       27675130523      cycles                           #    3.884 GHz                       
+       68055393655      instructions                     #    2.46  insn per cycle            
+       14683989485      branches                         #    2.061 G/sec                     
+         194460802      branch-misses                    #    1.32% of all branches           
 
-       6.883745999 seconds time elapsed
+       7.113643786 seconds time elapsed
 
-       6.886769000 seconds user
-       0.010021000 seconds sys
+       7.115353000 seconds user
+       0.009018000 seconds sys
 
 
