@@ -1,0 +1,20 @@
+32-th Fibonacci number is 3524578
+Total is 473060851318784
+
+ Performance counter stats for 'bin/java-LowLatency.bin 32 134217728':
+
+           1054.28 msec task-clock                       #    1.000 CPUs utilized             
+                 2      context-switches                 #    1.897 /sec                      
+                 0      cpu-migrations                   #    0.000 /sec                      
+               625      page-faults                      #  592.821 /sec                      
+        4094996355      cycles                           #    3.884 GHz                       
+       16389633904      instructions                     #    4.00  insn per cycle            
+        3760718345      branches                         #    3.567 G/sec                     
+             34828      branch-misses                    #    0.00% of all branches           
+
+       1.054493923 seconds time elapsed
+
+       1.054247000 seconds user
+       0.000000000 seconds sys
+
+

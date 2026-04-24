@@ -1,9 +1,9 @@
 bin/haskell-objects.bin:
-CPU ticks: 31283185432
-CPU ticks per cycle: 122199943
+CPU ticks: 31328234618
+CPU ticks per cycle: 122375916
 Instructions: 968
 Cycles: 256
-Total Time: 8.03
-Time per cycle: .0313671875000000
-Ticks: 31283185432
-Ticks per cycle: 122199943
+Total Time: 8.05
+Time per cycle: .0314453125000000
+Ticks: 31328234618
+Ticks per cycle: 122375916
