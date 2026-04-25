@@ -10,7 +10,7 @@ Uses sysutils;
 Function Fibo(n : Longint) : Longint;
 begin
   if (n < 2) then
-    Fibo := 1
+    Fibo := n
   else
     Fibo := Fibo(n - 1) + Fibo(n - 2);
 end;

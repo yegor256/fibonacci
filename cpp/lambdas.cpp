@@ -71,7 +71,7 @@ int add(struct lambda* arg) { return call(arg->first) + call(arg->second); }
 
 int fibo(struct lambda* arg) {
   const int x = call(arg->first);
-  return call(make(iff, make(less, integer(x), integer(2), nullptr), integer(1),
+  return call(make(iff, make(less, integer(x), integer(2), nullptr), integer(x),
     make(add,
       make(fibo, make(sub, integer(x), integer(1), nullptr), nullptr, nullptr),
       make(fibo, make(sub, integer(x), integer(2), nullptr), nullptr, nullptr),

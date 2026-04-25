@@ -181,6 +181,6 @@ private:
 
 int calc(int x) {
   Interpret<int> result =
-    Interpret<int>(cptr(new Fibo(cptr(new Value<int>(x + 1)))));
+    Interpret<int>(cptr(new Fibo(cptr(new Value<int>(x)))));
   return result.get();
 }

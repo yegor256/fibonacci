@@ -65,7 +65,7 @@ public:
   ~Fibo() { delete value; }
   int get() {
     if (Less(*value, 2).get()) {
-      return 1;
+      return *value;
     }
     return Add(
       Fibo(Sub(*value, 1).get()).get(), Fibo(Sub(*value, 2).get()).get())

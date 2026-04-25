@@ -7,7 +7,7 @@ import Mainlib.Report (run)
 
 
 fibo :: Int -> Int
-fibo n = fst $ iterate step (1, 1) !! n where
+fibo n = fst $ iterate step (0, 1) !! n where
     step (a, b) = (b, a + b)
 
 

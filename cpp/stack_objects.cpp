@@ -30,7 +30,7 @@ public:
 class Fibo : public Operation {
 public:
   explicit Fibo(int num)
-    : Operation(Less(num, 2).get() != 0 ? 1
+    : Operation(Less(num, 2).get() != 0 ? num
                                         : Add(Fibo(Sub(num, 1).get()).get(),
                                             Fibo(Sub(num, 2).get()).get())
                                             .get()) {}

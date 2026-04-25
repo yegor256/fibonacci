@@ -61,7 +61,7 @@ func (f Fibo) intVal() int64 {
 	)
 	cnd := condition{
 		pred: less{f.n, two},
-		yes: one,
+		yes: f.n,
 		no: add{
 			Fibo{sub{f.n, one}},
 			Fibo{sub{f.n, two}},

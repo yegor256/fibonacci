@@ -6,7 +6,7 @@ package fibo
 // Calculate fibonacci for input
 func Calculate(x int64) int64 {
 	if x < 2 {
-		return 1
+		return x
 	}
 	return Calculate(x - 1) + Calculate(x - 2)
 }

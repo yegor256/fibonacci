@@ -7,7 +7,10 @@ final class LowLatency {
     }
 
     public static long fibo(final int x) {
-        final int n = x + 1;
+        if (x < 2) {
+            return x;
+        }
+        final int n = x;
         long a = 1L;
         long b = 1L;
         int bit;

@@ -36,7 +36,7 @@ class Fibo {
 public:
   explicit Fibo(int num)
     : res(Less(num, 2).get()
-            ? 1
+            ? num
             : Add(Fibo(Sub(num, 1).get()).get(), Fibo(Sub(num, 2).get()).get())
                 .get()) {}
   int get() const { return res; }

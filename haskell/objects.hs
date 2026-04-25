@@ -9,7 +9,7 @@ import Mainlib.Objects
 fibo :: Object Int -> Object Int
 fibo x =
     oIf (oLt x $ oInt 2)
-        (oInt 1)
+        x
         (oAdd (fibo $ oSub x $ oInt 1)
               (fibo $ oSub x $ oInt 2))
 

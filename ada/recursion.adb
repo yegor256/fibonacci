@@ -15,7 +15,7 @@ procedure Recursion is
   function Fib(P: Integer) return Integer is
   begin
     if P < 2 then
-      return 1;
+      return P;
     else
       return Fib(P-1) + Fib(P-2);
     end if;
