@@ -48,7 +48,7 @@ RUSTS = $(wildcard rust/*.rs)
 PASCALS = $(wildcard pascal/*.pp)
 # LISPS = $(wildcard lisp/*.lisp)
 HASKELLS = $(wildcard haskell/*.hs)
-JAVAS = $(wildcard java/*.java)
+JAVAS = $(filter-out java/FiboTest.java,$(wildcard java/*.java))
 CSHARPS = $(subst /Program.cs,.cs,$(wildcard csharp/*/Program.cs))
 # Eiffel doesn't work, this may help: https://github.com/eiffel-docker/eiffel/issues/3
 # EIFFELS = eiffel/application.e
@@ -155,6 +155,11 @@ install: Makefile
 		sudo mkdir -p /usr/local/opt
 		sudo wget --no-verbose https://repo.maven.apache.org/maven2/net/sf/saxon/Saxon-HE/9.8.0-5/Saxon-HE-9.8.0-5.jar -O /usr/local/opt/Saxon.jar
 	fi
+
+test: Makefile
+	mkdir -p tmp/test
+	$(JAVAC) -d tmp/test java/*.java
+	cd tmp/test && java FiboTest
 
 env: Makefile
 	$(CC) --version
