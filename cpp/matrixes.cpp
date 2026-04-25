@@ -48,4 +48,4 @@ int fibonacci(unsigned int n) {
   return ret.at(0).at(1);
 }
 
-int calc(int x) { return fibonacci(x + 1); }
+int calc(int x) { return fibonacci(x); }

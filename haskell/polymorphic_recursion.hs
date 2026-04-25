@@ -22,7 +22,7 @@ instance Ord a => Ord (Number a) where
 
 fibo :: (Ord a, Num a) => a -> a
 fibo n
-    | n <= fromInteger 1 = fromInteger 1
+    | n <= fromInteger 1 = n
     | otherwise          = fibo (n - fromInteger 1) + fibo (n - fromInteger 2)
 
 main :: IO ()

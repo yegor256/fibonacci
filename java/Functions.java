@@ -13,7 +13,7 @@ class Functions {
   }
   static int Fibo(int v) {
     if (Less(v, 2)) {
-      return 1;
+      return v;
     }
     return Add(Fibo(Sub(v, 1)), Fibo(Sub(v, 2)));
   }

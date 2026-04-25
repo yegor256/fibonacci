@@ -80,7 +80,7 @@ class Objects {
     public int get() {
       return new If(
         new Less(this.value, new Integer(2)),
-        new Integer(1),
+        this.value,
         new Add(
           new Fibo(new Sub(this.value, new Integer(1))),
           new Fibo(new Sub(this.value, new Integer(2)))

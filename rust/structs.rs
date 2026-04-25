@@ -107,7 +107,7 @@ impl<'a> Int for Fibo<'a> {
 		let sub2 = Sub::new(self.x, &two);
 		let prev2 = Fibo::new(&sub2);
 		let right = Add::new(&prev1, &prev2);
-		let iff = If::new(&less, &one, &right);
+		let iff = If::new(&less, self.x, &right);
 		return iff.get();
 	}
 }

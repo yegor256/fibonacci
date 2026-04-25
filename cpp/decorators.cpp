@@ -35,7 +35,7 @@ private:
 
 class First : public Fibo {
 public:
-  int get() override { return 1; }
+  int get() override { return 0; }
   Fibo* next() override { return new Second(this); }
 };
 

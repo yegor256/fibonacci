@@ -151,7 +151,7 @@ type
     begin
         Result := TIf.Create(
             TLess.Create(value, TInteger.Create(2)),
-                TInteger.Create(1),
+                value,
                 TAdd.Create(
                     TFibo.Create(TSub.Create(value, TInteger.Create(1))),
                     TFibo.Create(TSub.Create(value, TInteger.Create(2))

@@ -31,7 +31,7 @@ int __attribute__((noinline)) fibo(int x);
 int __attribute__((noinline))
 fibo_impl(int const *const px, int const *const p1, int const *const p2) {
   if (op(less_impl, *px, *p2) != 0) {
-    return *p1;
+    return *px;
   }
   return op(
     add_impl, fibo(op(sub_impl, *px, *p1)), fibo(op(sub_impl, *px, *p2)));

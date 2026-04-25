@@ -29,7 +29,6 @@ matrix2on2 binpow(const matrix2on2 &a, int n) {
 }
 // See https://e-maxx.ru/algo/fibonacci_numbers#8
 int calc(int n) {
-  n += 1;
   const matrix2on2 factor = {0, 1, 1, 1};
   const matrix2on2 multiplier = binpow(factor, n);
   const matrix2on2 base = {0, 1, 0, 0};

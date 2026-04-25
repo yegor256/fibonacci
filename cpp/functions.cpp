@@ -11,7 +11,7 @@ int __attribute__((noinline)) add(int a, int b) { return a + b; }
 
 int __attribute__((noinline)) fibo(int x) {
   if (less(x, 2)) {
-    return 1;
+    return x;
   }
   return add(fibo(sub(x, 1)), fibo(sub(x, 2)));
 }

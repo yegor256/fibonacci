@@ -7,7 +7,7 @@ import Mainlib.Report (run)
 import Mainlib.Objects
 
 fibo :: Object Int -> Object Int
-fibo n = fibo' n (oInt 1) (oInt 1) where
+fibo n = fibo' n (oInt 0) (oInt 1) where
     fibo' m a b =
         oIf (oLt m $ oInt 1)
             a

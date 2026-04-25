@@ -4,7 +4,7 @@
 class Recursion {
   public static int fibo(int x) {
     if (x < 2) {
-      return 1;
+      return x;
     }
     return fibo(x - 1) + fibo(x - 2);
   }

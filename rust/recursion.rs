@@ -5,7 +5,7 @@ use std::env;
 
 pub fn fibonacci(input: u32) -> u32 {
 	match input {
-		0 => 1,
+		0 => 0,
 		1 => 1,
 		n => fibonacci(n - 2) + fibonacci(n - 1)
 	}

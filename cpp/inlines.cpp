@@ -11,7 +11,7 @@ inline int add(int a, int b) { return a + b; }
 
 int calc(int x) {
   if (less(x, 2)) {
-    return 1;
+    return x;
   }
   return add(calc(sub(x, 1)), calc(sub(x, 2)));
 }

@@ -5,7 +5,7 @@
 
 int calc(int x) {
   if (x < 2) {
-    return 1;
+    return x;
   }
   return calc(x - 1) + calc(x - 2);
 }

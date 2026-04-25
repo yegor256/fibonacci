@@ -9,7 +9,7 @@ class Program
     {
         if (x < 2)
         {
-            return 1;
+            return x;
         }
         return Fibo(x - 1) + Fibo(x - 2);
     }

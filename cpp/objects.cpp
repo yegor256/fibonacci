@@ -95,7 +95,7 @@ public:
   ~Fibo() override { delete value; }
   int get() override {
     Int* iff =
-      new If(new Less(new Integer(value), new Integer(2)), new Integer(1),
+      new If(new Less(new Integer(value), new Integer(2)), new Integer(value),
         new Add(new Fibo(new Sub(new Integer(value), new Integer(1))),
           new Fibo(new Sub(new Integer(value), new Integer(2)))));
     const int result = iff->get();

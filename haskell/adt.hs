@@ -8,7 +8,7 @@ import Mainlib.Report (run)
 data Fibo = First | Second | Other Fibo Fibo
 
 get :: Fibo -> Int
-get First       = 1
+get First       = 0
 get Second      = 1
 get (Other a b) = get a + get b
 
