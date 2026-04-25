@@ -1,9 +1,9 @@
 bin/java-LowLatency.bin:
-CPU ticks: 4094996355
-CPU ticks per cycle: 30
+CPU ticks: 4273686347
+CPU ticks per cycle: 31
 Instructions: 1
 Cycles: 134217728
-Total Time: 1.05
-Time per cycle: .0000000078231096
-Ticks: 4094996355
-Ticks per cycle: 30
+Total Time: 1.10
+Time per cycle: .0000000081956386
+Ticks: 4273686347
+Ticks per cycle: 31

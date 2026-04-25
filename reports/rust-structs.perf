@@ -1,21 +1,21 @@
-32-th Fibonacci number is 3524578
-Total is 902291968
+32-th Fibonacci number is 2178309
+Total is 34852944
 
 
- Performance counter stats for 'bin/rust-structs.bin 32 256':
+ Performance counter stats for 'bin/rust-structs.bin 32 16':
 
-         223604.59 msec task-clock                       #    1.000 CPUs utilized             
-               481      context-switches                 #    2.151 /sec                      
+          20816.34 msec task-clock                       #    1.000 CPUs utilized             
+                17      context-switches                 #    0.817 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-                76      page-faults                      #    0.340 /sec                      
-      871376777345      cycles                           #    3.897 GHz                       
-      841422709486      instructions                     #    0.97  insn per cycle            
-      167384865334      branches                         #  748.575 M/sec                     
-       17083521226      branch-misses                    #   10.21% of all branches           
+                75      page-faults                      #    3.603 /sec                      
+       81018437738      cycles                           #    3.892 GHz                       
+       77022740411      instructions                     #    0.95  insn per cycle            
+       15579629593      branches                         #  748.433 M/sec                     
+        1550398748      branch-misses                    #    9.95% of all branches           
 
-     223.608430453 seconds time elapsed
+      20.816782018 seconds time elapsed
 
-     223.603939000 seconds user
-       0.000999000 seconds sys
+      20.815752000 seconds user
+       0.001000000 seconds sys
 
 

@@ -1,20 +1,20 @@
-32-th Fibonacci number is 3524578
-Total is 902291968
+32-th Fibonacci number is 2178309
+Total is 557647104
 
  Performance counter stats for 'bin/haskell-adt.bin 32 256':
 
-          17670.46 msec task-clock                       #    1.001 CPUs utilized             
-              1793      context-switches                 #  101.469 /sec                      
+          18086.17 msec task-clock                       #    1.002 CPUs utilized             
+              1858      context-switches                 #  102.730 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-              9888      page-faults                      #  559.578 /sec                      
-       68750006794      cycles                           #    3.891 GHz                       
-      184637313543      instructions                     #    2.69  insn per cycle            
-       39172773868      branches                         #    2.217 G/sec                     
-         342053008      branch-misses                    #    0.87% of all branches           
+              9892      page-faults                      #  546.937 /sec                      
+       70214299024      cycles                           #    3.882 GHz                       
+      186444990463      instructions                     #    2.66  insn per cycle            
+       40075577426      branches                         #    2.216 G/sec                     
+         383856121      branch-misses                    #    0.96% of all branches           
 
-      17.654336787 seconds time elapsed
+      18.053981274 seconds time elapsed
 
-      17.651153000 seconds user
-       0.021032000 seconds sys
+      18.076732000 seconds user
+       0.013028000 seconds sys
 
 

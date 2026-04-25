@@ -1,20 +1,20 @@
-32-th Fibonacci number is 3524578
-Total is 902291968
+32-th Fibonacci number is 2178309
+Total is 557647104
 
  Performance counter stats for 'bin/cpp-decorators.bin 32 256':
 
-           2532.22 msec task-clock                       #    1.000 CPUs utilized             
-                 3      context-switches                 #    1.185 /sec                      
+           2557.11 msec task-clock                       #    1.000 CPUs utilized             
+                 7      context-switches                 #    2.737 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               129      page-faults                      #   50.943 /sec                      
-        9852998735      cycles                           #    3.891 GHz                       
-       16261503704      instructions                     #    1.65  insn per cycle            
-        3612535880      branches                         #    1.427 G/sec                     
-            663055      branch-misses                    #    0.02% of all branches           
+               130      page-faults                      #   50.839 /sec                      
+        9945884926      cycles                           #    3.889 GHz                       
+       16261554742      instructions                     #    1.64  insn per cycle            
+        3612551363      branches                         #    1.413 G/sec                     
+           3472018      branch-misses                    #    0.10% of all branches           
 
-       2.532592981 seconds time elapsed
+       2.557577202 seconds time elapsed
 
-       2.532558000 seconds user
-       0.000000000 seconds sys
+       2.555501000 seconds user
+       0.001999000 seconds sys
 
 

@@ -344,7 +344,7 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 	.cfi_offset r14, -32
 	.cfi_offset r15, -24
 	.cfi_offset rbp, -16
-	mov	qword ptr [rsp + 8], rdi        # 8-byte Spill
+	mov	r12, rdi
 	mov	edi, 32
 	call	_Znwm@PLT
 	mov	rbx, rax
@@ -360,10 +360,9 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 .Ltmp9:
 # %bb.2:
 	mov	r15, rax
-	mov	rax, qword ptr [rsp + 8]        # 8-byte Reload
-	mov	rdi, qword ptr [rax + 8]
-	lea	r12, [rip + _ZTV7Integer+16]
-	mov	qword ptr [r15], r12
+	mov	rdi, qword ptr [r12 + 8]
+	lea	rax, [rip + _ZTV7Integer+16]
+	mov	qword ptr [r15], rax
 	mov	rax, qword ptr [rdi]
 .Ltmp10:
 	call	qword ptr [rax + 16]
@@ -375,7 +374,8 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 	call	_Znwm@PLT
 .Ltmp14:
 # %bb.4:
-	mov	qword ptr [rax], r12
+	lea	rcx, [rip + _ZTV7Integer+16]
+	mov	qword ptr [rax], rcx
 	mov	dword ptr [rax + 8], 2
 	lea	rcx, [rip + _ZTV4Less+16]
 	mov	qword ptr [r14], rcx
@@ -386,113 +386,120 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 	call	_Znwm@PLT
 .Ltmp17:
 # %bb.5:
-	mov	rbp, rax
-	mov	qword ptr [rax], r12
-	mov	dword ptr [rax + 8], 1
-.Ltmp18:
-	mov	edi, 24
-	call	_Znwm@PLT
-	mov	qword ptr [rsp + 16], rax       # 8-byte Spill
-.Ltmp19:
-# %bb.6:
-.Ltmp21:
-	mov	edi, 16
-	call	_Znwm@PLT
-	mov	qword ptr [rsp], rax            # 8-byte Spill
-.Ltmp22:
-# %bb.7:
-.Ltmp23:
-	mov	edi, 24
-	call	_Znwm@PLT
-.Ltmp24:
-# %bb.8:
-.Ltmp26:
-	mov	r12, rax
-	mov	edi, 16
-	call	_Znwm@PLT
-.Ltmp27:
-# %bb.9:
 	mov	r15, rax
-	mov	rax, qword ptr [rsp + 8]        # 8-byte Reload
-	mov	rdi, qword ptr [rax + 8]
+	mov	rdi, qword ptr [r12 + 8]
 	lea	rax, [rip + _ZTV7Integer+16]
 	mov	qword ptr [r15], rax
 	mov	rax, qword ptr [rdi]
-.Ltmp28:
+.Ltmp18:
 	call	qword ptr [rax + 16]
-.Ltmp29:
-# %bb.10:
+.Ltmp19:
+# %bb.6:
 	mov	dword ptr [r15 + 8], eax
-.Ltmp31:
+.Ltmp21:
+	mov	edi, 24
+	call	_Znwm@PLT
+	mov	qword ptr [rsp + 8], rax        # 8-byte Spill
+.Ltmp22:
+# %bb.7:
+.Ltmp24:
+	mov	qword ptr [rsp + 16], r15       # 8-byte Spill
 	mov	edi, 16
 	call	_Znwm@PLT
+	mov	qword ptr [rsp], rax            # 8-byte Spill
+.Ltmp25:
+# %bb.8:
+.Ltmp26:
+	mov	edi, 24
+	call	_Znwm@PLT
+.Ltmp27:
+# %bb.9:
+.Ltmp29:
+	mov	r15, rax
+	mov	edi, 16
+	call	_Znwm@PLT
+.Ltmp30:
+# %bb.10:
+	mov	r13, rax
+	mov	rdi, qword ptr [r12 + 8]
+	lea	rax, [rip + _ZTV7Integer+16]
+	mov	qword ptr [r13], rax
+	mov	rax, qword ptr [rdi]
+.Ltmp31:
+	call	qword ptr [rax + 16]
 .Ltmp32:
 # %bb.11:
-	lea	rcx, [rip + _ZTV7Integer+16]
-	mov	qword ptr [rax], rcx
-	mov	dword ptr [rax + 8], 1
-	lea	rcx, [rip + _ZTV3Sub+16]
-	mov	qword ptr [r12], rcx
-	mov	qword ptr [r12 + 8], r15
-	mov	qword ptr [r12 + 16], rax
-	lea	rcx, [rip + _ZTV4Fibo+16]
-	mov	rax, qword ptr [rsp]            # 8-byte Reload
-	mov	qword ptr [rax], rcx
-	mov	qword ptr [rax + 8], r12
+	mov	dword ptr [r13 + 8], eax
 .Ltmp34:
 	mov	edi, 16
 	call	_Znwm@PLT
 .Ltmp35:
 # %bb.12:
+	lea	rcx, [rip + _ZTV7Integer+16]
+	mov	qword ptr [rax], rcx
+	mov	dword ptr [rax + 8], 1
+	lea	rcx, [rip + _ZTV3Sub+16]
+	mov	qword ptr [r15], rcx
+	mov	qword ptr [r15 + 8], r13
+	mov	qword ptr [r15 + 16], rax
+	lea	rcx, [rip + _ZTV4Fibo+16]
+	mov	rax, qword ptr [rsp]            # 8-byte Reload
+	mov	qword ptr [rax], rcx
+	mov	qword ptr [rax + 8], r15
 .Ltmp37:
-	mov	r12, rax
-	mov	edi, 24
+	mov	edi, 16
 	call	_Znwm@PLT
 .Ltmp38:
 # %bb.13:
 .Ltmp40:
 	mov	r15, rax
-	mov	edi, 16
+	mov	edi, 24
 	call	_Znwm@PLT
 .Ltmp41:
 # %bb.14:
-	mov	r13, rax
-	mov	rax, qword ptr [rsp + 8]        # 8-byte Reload
-	mov	rdi, qword ptr [rax + 8]
-	lea	rax, [rip + _ZTV7Integer+16]
-	mov	qword ptr [r13], rax
-	mov	rax, qword ptr [rdi]
-.Ltmp42:
-	call	qword ptr [rax + 16]
 .Ltmp43:
-# %bb.15:
-	mov	dword ptr [r13 + 8], eax
-.Ltmp45:
+	mov	r13, rax
 	mov	edi, 16
 	call	_Znwm@PLT
+.Ltmp44:
+# %bb.15:
+	mov	rbp, rax
+	mov	rdi, qword ptr [r12 + 8]
+	lea	rax, [rip + _ZTV7Integer+16]
+	mov	qword ptr [rbp], rax
+	mov	rax, qword ptr [rdi]
+.Ltmp45:
+	call	qword ptr [rax + 16]
 .Ltmp46:
 # %bb.16:
+	mov	dword ptr [rbp + 8], eax
+.Ltmp48:
+	mov	edi, 16
+	call	_Znwm@PLT
+.Ltmp49:
+# %bb.17:
 	lea	rcx, [rip + _ZTV7Integer+16]
 	mov	qword ptr [rax], rcx
 	mov	dword ptr [rax + 8], 2
 	lea	rcx, [rip + _ZTV3Sub+16]
-	mov	qword ptr [r15], rcx
-	mov	qword ptr [r15 + 8], r13
-	mov	qword ptr [r15 + 16], rax
+	mov	qword ptr [r13], rcx
+	mov	qword ptr [r13 + 8], rbp
+	mov	qword ptr [r13 + 16], rax
 	lea	rax, [rip + _ZTV4Fibo+16]
-	mov	qword ptr [r12], rax
-	mov	qword ptr [r12 + 8], r15
+	mov	qword ptr [r15], rax
+	mov	qword ptr [r15 + 8], r13
 	lea	rax, [rip + _ZTV3Add+16]
-	mov	rcx, qword ptr [rsp + 16]       # 8-byte Reload
+	mov	rcx, qword ptr [rsp + 8]        # 8-byte Reload
 	mov	qword ptr [rcx], rax
 	mov	rax, qword ptr [rsp]            # 8-byte Reload
 	mov	qword ptr [rcx + 8], rax
-	mov	qword ptr [rcx + 16], r12
+	mov	qword ptr [rcx + 16], r15
 	lea	rax, [rip + _ZTV2If+16]
 	mov	qword ptr [rbx], rax
 	mov	qword ptr [rbx + 8], r14
 	lea	r15, [rbx + 16]
-	mov	qword ptr [rbx + 16], rbp
+	mov	rax, qword ptr [rsp + 16]       # 8-byte Reload
+	mov	qword ptr [rbx + 16], rax
 	mov	r12, rbx
 	add	r12, 24
 	mov	qword ptr [rbx + 24], rcx
@@ -524,76 +531,81 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 	pop	rbp
 	.cfi_def_cfa_offset 8
 	ret
-.LBB7_17:
-	.cfi_def_cfa_offset 80
-.Ltmp44:
-	mov	rbp, rax
-	mov	rdi, r13
-	call	_ZdlPv@PLT
-	jmp	.LBB7_23
 .LBB7_18:
-.Ltmp39:
-	mov	rbp, rax
-	jmp	.LBB7_24
-.LBB7_19:
-.Ltmp30:
-	mov	rbp, rax
-	mov	rdi, r15
+	.cfi_def_cfa_offset 80
+.Ltmp47:
+	mov	r12, rax
+	mov	rdi, rbp
 	call	_ZdlPv@PLT
+	jmp	.LBB7_25
+.LBB7_19:
+.Ltmp42:
+	mov	r12, rax
 	jmp	.LBB7_26
 .LBB7_20:
-.Ltmp25:
-	mov	rbp, rax
-	jmp	.LBB7_27
-.LBB7_21:
-.Ltmp12:
-	mov	rbp, rax
-	mov	rdi, r15
-	call	_ZdlPv@PLT
-	mov	rdi, r14
-	jmp	.LBB7_31
-.LBB7_22:
-.Ltmp47:
-	mov	rbp, rax
-.LBB7_23:
-	mov	rdi, r15
-	call	_ZdlPv@PLT
-.LBB7_24:
-	mov	rdi, r12
-	jmp	.LBB7_28
-.LBB7_25:
 .Ltmp33:
-	mov	rbp, rax
-.LBB7_26:
-	mov	rdi, r12
+	mov	r12, rax
+	mov	rdi, r13
 	call	_ZdlPv@PLT
-.LBB7_27:
-	mov	rdi, qword ptr [rsp]            # 8-byte Reload
-.LBB7_28:
-	call	_ZdlPv@PLT
-	jmp	.LBB7_30
-.LBB7_29:
-.Ltmp36:
-	mov	rbp, rax
-.LBB7_30:
-	mov	rdi, qword ptr [rsp + 16]       # 8-byte Reload
-.LBB7_31:
-	call	_ZdlPv@PLT
-	mov	rdi, rbx
-	call	_ZdlPv@PLT
-	mov	rdi, rbp
-	call	_Unwind_Resume@PLT
-.LBB7_32:
-.Ltmp15:
-	mov	rbp, rax
-	mov	rdi, r14
-	jmp	.LBB7_31
-.LBB7_33:
+	jmp	.LBB7_28
+.LBB7_21:
+.Ltmp28:
+	mov	r12, rax
+	jmp	.LBB7_29
+.LBB7_22:
 .Ltmp20:
-	mov	rbp, rax
+	mov	r12, rax
+	mov	rdi, r15
+	jmp	.LBB7_33
+.LBB7_23:
+.Ltmp12:
+	mov	r12, rax
+	mov	rdi, r15
+	call	_ZdlPv@PLT
+	mov	rdi, r14
+	jmp	.LBB7_33
+.LBB7_24:
+.Ltmp50:
+	mov	r12, rax
+.LBB7_25:
+	mov	rdi, r13
+	call	_ZdlPv@PLT
+.LBB7_26:
+	mov	rdi, r15
+	jmp	.LBB7_30
+.LBB7_27:
+.Ltmp36:
+	mov	r12, rax
+.LBB7_28:
+	mov	rdi, r15
+	call	_ZdlPv@PLT
+.LBB7_29:
+	mov	rdi, qword ptr [rsp]            # 8-byte Reload
+.LBB7_30:
+	call	_ZdlPv@PLT
+	jmp	.LBB7_32
+.LBB7_31:
+.Ltmp39:
+	mov	r12, rax
+.LBB7_32:
+	mov	rdi, qword ptr [rsp + 8]        # 8-byte Reload
+.LBB7_33:
+	call	_ZdlPv@PLT
 	mov	rdi, rbx
 	call	_ZdlPv@PLT
-	mov	rdi, rbp
+	mov	rdi, r12
+	call	_Unwind_Resume@PLT
+.LBB7_34:
+.Ltmp15:
+	mov	r12, rax
+	mov	rdi, r14
+	jmp	.LBB7_33
+.LBB7_35:
+.Ltmp23:
+	mov	r12, rax
+	mov	rdi, rbx
+	call	_ZdlPv@PLT
+	mov	rdi, r12
 	call	_Unwind_Resume@PLT
 .Lfunc_end7:
 	.size	_ZN4Fibo3getEv, .Lfunc_end7-_ZN4Fibo3getEv
@@ -613,7 +625,7 @@ GCC_except_table7:
 	.byte	0                               #   On action: cleanup
 	.uleb128 .Ltmp6-.Lfunc_begin2           # >> Call Site 2 <<
 	.uleb128 .Ltmp7-.Ltmp6                  #   Call between .Ltmp6 and .Ltmp7
-	.uleb128 .Ltmp20-.Lfunc_begin2          #     jumps to .Ltmp20
+	.uleb128 .Ltmp23-.Lfunc_begin2          #     jumps to .Ltmp23
 	.byte	0                               #   On action: cleanup
 	.uleb128 .Ltmp8-.Lfunc_begin2           # >> Call Site 3 <<
 	.uleb128 .Ltmp9-.Ltmp8                  #   Call between .Ltmp8 and .Ltmp9
@@ -628,51 +640,59 @@ GCC_except_table7:
 	.uleb128 .Ltmp15-.Lfunc_begin2          #     jumps to .Ltmp15
 	.byte	0                               #   On action: cleanup
 	.uleb128 .Ltmp16-.Lfunc_begin2          # >> Call Site 6 <<
-	.uleb128 .Ltmp19-.Ltmp16                #   Call between .Ltmp16 and .Ltmp19
+	.uleb128 .Ltmp17-.Ltmp16                #   Call between .Ltmp16 and .Ltmp17
+	.uleb128 .Ltmp23-.Lfunc_begin2          #     jumps to .Ltmp23
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp18-.Lfunc_begin2          # >> Call Site 7 <<
+	.uleb128 .Ltmp19-.Ltmp18                #   Call between .Ltmp18 and .Ltmp19
 	.uleb128 .Ltmp20-.Lfunc_begin2          #     jumps to .Ltmp20
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp21-.Lfunc_begin2          # >> Call Site 7 <<
+	.uleb128 .Ltmp21-.Lfunc_begin2          # >> Call Site 8 <<
 	.uleb128 .Ltmp22-.Ltmp21                #   Call between .Ltmp21 and .Ltmp22
+	.uleb128 .Ltmp23-.Lfunc_begin2          #     jumps to .Ltmp23
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp24-.Lfunc_begin2          # >> Call Site 9 <<
+	.uleb128 .Ltmp25-.Ltmp24                #   Call between .Ltmp24 and .Ltmp25
+	.uleb128 .Ltmp39-.Lfunc_begin2          #     jumps to .Ltmp39
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp26-.Lfunc_begin2          # >> Call Site 10 <<
+	.uleb128 .Ltmp27-.Ltmp26                #   Call between .Ltmp26 and .Ltmp27
+	.uleb128 .Ltmp28-.Lfunc_begin2          #     jumps to .Ltmp28
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp29-.Lfunc_begin2          # >> Call Site 11 <<
+	.uleb128 .Ltmp30-.Ltmp29                #   Call between .Ltmp29 and .Ltmp30
 	.uleb128 .Ltmp36-.Lfunc_begin2          #     jumps to .Ltmp36
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp23-.Lfunc_begin2          # >> Call Site 8 <<
-	.uleb128 .Ltmp24-.Ltmp23                #   Call between .Ltmp23 and .Ltmp24
-	.uleb128 .Ltmp25-.Lfunc_begin2          #     jumps to .Ltmp25
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp26-.Lfunc_begin2          # >> Call Site 9 <<
-	.uleb128 .Ltmp27-.Ltmp26                #   Call between .Ltmp26 and .Ltmp27
-	.uleb128 .Ltmp33-.Lfunc_begin2          #     jumps to .Ltmp33
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp28-.Lfunc_begin2          # >> Call Site 10 <<
-	.uleb128 .Ltmp29-.Ltmp28                #   Call between .Ltmp28 and .Ltmp29
-	.uleb128 .Ltmp30-.Lfunc_begin2          #     jumps to .Ltmp30
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp31-.Lfunc_begin2          # >> Call Site 11 <<
+	.uleb128 .Ltmp31-.Lfunc_begin2          # >> Call Site 12 <<
 	.uleb128 .Ltmp32-.Ltmp31                #   Call between .Ltmp31 and .Ltmp32
 	.uleb128 .Ltmp33-.Lfunc_begin2          #     jumps to .Ltmp33
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp34-.Lfunc_begin2          # >> Call Site 12 <<
+	.uleb128 .Ltmp34-.Lfunc_begin2          # >> Call Site 13 <<
 	.uleb128 .Ltmp35-.Ltmp34                #   Call between .Ltmp34 and .Ltmp35
 	.uleb128 .Ltmp36-.Lfunc_begin2          #     jumps to .Ltmp36
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp37-.Lfunc_begin2          # >> Call Site 13 <<
+	.uleb128 .Ltmp37-.Lfunc_begin2          # >> Call Site 14 <<
 	.uleb128 .Ltmp38-.Ltmp37                #   Call between .Ltmp37 and .Ltmp38
 	.uleb128 .Ltmp39-.Lfunc_begin2          #     jumps to .Ltmp39
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp40-.Lfunc_begin2          # >> Call Site 14 <<
+	.uleb128 .Ltmp40-.Lfunc_begin2          # >> Call Site 15 <<
 	.uleb128 .Ltmp41-.Ltmp40                #   Call between .Ltmp40 and .Ltmp41
-	.uleb128 .Ltmp47-.Lfunc_begin2          #     jumps to .Ltmp47
+	.uleb128 .Ltmp42-.Lfunc_begin2          #     jumps to .Ltmp42
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp42-.Lfunc_begin2          # >> Call Site 15 <<
-	.uleb128 .Ltmp43-.Ltmp42                #   Call between .Ltmp42 and .Ltmp43
-	.uleb128 .Ltmp44-.Lfunc_begin2          #     jumps to .Ltmp44
+	.uleb128 .Ltmp43-.Lfunc_begin2          # >> Call Site 16 <<
+	.uleb128 .Ltmp44-.Ltmp43                #   Call between .Ltmp43 and .Ltmp44
+	.uleb128 .Ltmp50-.Lfunc_begin2          #     jumps to .Ltmp50
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp45-.Lfunc_begin2          # >> Call Site 16 <<
+	.uleb128 .Ltmp45-.Lfunc_begin2          # >> Call Site 17 <<
 	.uleb128 .Ltmp46-.Ltmp45                #   Call between .Ltmp45 and .Ltmp46
 	.uleb128 .Ltmp47-.Lfunc_begin2          #     jumps to .Ltmp47
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp46-.Lfunc_begin2          # >> Call Site 17 <<
-	.uleb128 .Lfunc_end7-.Ltmp46            #   Call between .Ltmp46 and .Lfunc_end7
+	.uleb128 .Ltmp48-.Lfunc_begin2          # >> Call Site 18 <<
+	.uleb128 .Ltmp49-.Ltmp48                #   Call between .Ltmp48 and .Ltmp49
+	.uleb128 .Ltmp50-.Lfunc_begin2          #     jumps to .Ltmp50
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp49-.Lfunc_begin2          # >> Call Site 19 <<
+	.uleb128 .Lfunc_end7-.Ltmp49            #   Call between .Ltmp49 and .Lfunc_end7
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
 .Lcst_end2:

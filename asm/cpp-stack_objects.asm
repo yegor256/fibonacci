@@ -123,12 +123,11 @@ _ZN4FiboC2Ei:                           # @_ZN4FiboC2Ei
 	.cfi_offset rbx, -32
 	.cfi_offset r14, -24
 	.cfi_offset rbp, -16
+	mov	r14d, esi
 	mov	rbx, rdi
-	mov	ebp, 1
 	cmp	esi, 2
 	jl	.LBB2_2
 # %bb.1:
-	mov	r14d, esi
 	lea	esi, [r14 - 1]
 	lea	rdi, [rsp + 12]
 	call	_ZN4FiboC2Ei
@@ -138,8 +137,9 @@ _ZN4FiboC2Ei:                           # @_ZN4FiboC2Ei
 	mov	esi, r14d
 	call	_ZN4FiboC2Ei
 	add	ebp, dword ptr [rsp + 8]
+	mov	r14d, ebp
 .LBB2_2:
-	mov	dword ptr [rbx], ebp
+	mov	dword ptr [rbx], r14d
 	add	rsp, 16
 	.cfi_def_cfa_offset 32
 	pop	rbx

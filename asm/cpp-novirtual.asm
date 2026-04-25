@@ -253,16 +253,15 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 	.cfi_offset r15, -24
 	.cfi_offset rbp, -16
 	mov	rax, qword ptr [rdi]
-	mov	ebp, dword ptr [rax]
-	mov	r12d, 1
-	cmp	ebp, 2
+	mov	r15d, dword ptr [rax]
+	cmp	r15d, 2
 	jl	.LBB2_12
 # %bb.1:
-	mov	r15, rdi
+	mov	r12, rdi
 	mov	edi, 4
 	call	_Znwm@PLT
 	mov	rbx, rax
-	mov	dword ptr [rax], ebp
+	mov	dword ptr [rax], r15d
 	mov	qword ptr [rsp + 40], rax
 	mov	edi, 4
 	call	_Znwm@PLT
@@ -274,8 +273,8 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 	call	_Znwm@PLT
 .Ltmp7:
 # %bb.2:
-	dec	ebp
-	mov	dword ptr [rax], ebp
+	dec	r15d
+	mov	dword ptr [rax], r15d
 	mov	qword ptr [rsp + 16], rax
 .Ltmp9:
 	lea	rdi, [rsp + 16]
@@ -283,15 +282,15 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 .Ltmp10:
 # %bb.3:
 	mov	ebp, eax
-	mov	rax, qword ptr [r15]
-	mov	r12d, dword ptr [rax]
+	mov	rax, qword ptr [r12]
+	mov	r15d, dword ptr [rax]
 .Ltmp12:
 	mov	edi, 4
 	call	_Znwm@PLT
 .Ltmp13:
 # %bb.4:
-	mov	r15, rax
-	mov	dword ptr [rax], r12d
+	mov	r12, rax
+	mov	dword ptr [rax], r15d
 	mov	qword ptr [rsp + 24], rax
 .Ltmp14:
 	mov	edi, 4
@@ -306,22 +305,22 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 	call	_Znwm@PLT
 .Ltmp18:
 # %bb.6:
-	add	r12d, -2
-	mov	dword ptr [rax], r12d
+	add	r15d, -2
+	mov	dword ptr [rax], r15d
 	mov	qword ptr [rsp + 8], rax
 .Ltmp20:
 	lea	rdi, [rsp + 8]
 	call	_ZN4Fibo3getEv
 .Ltmp21:
 # %bb.7:
-	mov	r12d, eax
+	mov	r15d, eax
 	mov	rdi, qword ptr [rsp + 8]
 	test	rdi, rdi
 	je	.LBB2_9
 # %bb.8:
 	call	_ZdlPv@PLT
 .LBB2_9:
-	mov	rdi, r15
+	mov	rdi, r12
 	call	_ZdlPv@PLT
 	mov	rdi, r13
 	call	_ZdlPv@PLT
@@ -331,13 +330,13 @@ _ZN4Fibo3getEv:                         # @_ZN4Fibo3getEv
 # %bb.10:
 	call	_ZdlPv@PLT
 .LBB2_11:
-	add	r12d, ebp
+	add	r15d, ebp
 	mov	rdi, rbx
 	call	_ZdlPv@PLT
 	mov	rdi, r14
 	call	_ZdlPv@PLT
 .LBB2_12:
-	mov	eax, r12d
+	mov	eax, r15d
 	add	rsp, 56
 	.cfi_def_cfa_offset 56
 	pop	rbx

@@ -1,20 +1,20 @@
-32-th Fibonacci number is 3524578
-Total is 902291968
+32-th Fibonacci number is 2178309
+Total is 557647104
 
  Performance counter stats for 'bin/cpp-static_member_functions.bin 32 256':
 
-           1503.73 msec task-clock                       #    1.000 CPUs utilized             
-                 1      context-switches                 #    0.665 /sec                      
+           1768.95 msec task-clock                       #    1.000 CPUs utilized             
+                 5      context-switches                 #    2.827 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               127      page-faults                      #   84.456 /sec                      
-        5847649050      cycles                           #    3.889 GHz                       
-       18139592770      instructions                     #    3.10  insn per cycle            
-        3611189304      branches                         #    2.401 G/sec                     
-          21632590      branch-misses                    #    0.60% of all branches           
+               130      page-faults                      #   73.490 /sec                      
+        6874339289      cycles                           #    3.886 GHz                       
+       19864309943      instructions                     #    2.89  insn per cycle            
+        3956067552      branches                         #    2.236 G/sec                     
+          24541243      branch-misses                    #    0.62% of all branches           
 
-       1.503993531 seconds time elapsed
+       1.769521225 seconds time elapsed
 
-       1.503972000 seconds user
-       0.000000000 seconds sys
+       1.768448000 seconds user
+       0.001000000 seconds sys
 
 

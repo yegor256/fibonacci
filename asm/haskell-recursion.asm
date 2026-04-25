@@ -57,7 +57,10 @@ Main_zdwfibo_info:
 	je .Lc2Pq
 .Lu2PN:
 	cmpq $1,%r14
-	je .Lc2Pq
+	jne .Lc2Pp
+.Lc2Pr:
+	movl $1,%ebx
+	jmp *(%rbp)
 .Lc2Pp:
 	leaq .Lc2Pz_info(%rip),%rax
 	movq %rax,-16(%rbp)
@@ -67,7 +70,7 @@ Main_zdwfibo_info:
 	addq $-16,%rbp
 	jmp Main_zdwfibo_info
 .Lc2Pq:
-	movl $1,%ebx
+	xorl %ebx,%ebx
 	jmp *(%rbp)
 .Lc2Pt:
 	leaq Main_zdwfibo_closure(%rip),%rbx

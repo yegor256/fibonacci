@@ -93,14 +93,14 @@ _ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17hcec49e3
 	.size	_ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17hcec49e3b2c373155E, .Lfunc_end4-_ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17hcec49e3b2c373155E
 	.cfi_endproc
 
-	.section	".text._ZN4core3ptr33drop_in_place$LT$structs..Sub$GT$17hdefd6c9deb789766E","ax",@progbits
+	.section	".text._ZN4core3ptr33drop_in_place$LT$structs..Add$GT$17h63d415f294c30101E","ax",@progbits
 	.p2align	4, 0x90
-	.type	_ZN4core3ptr33drop_in_place$LT$structs..Sub$GT$17hdefd6c9deb789766E,@function
-_ZN4core3ptr33drop_in_place$LT$structs..Sub$GT$17hdefd6c9deb789766E:
+	.type	_ZN4core3ptr33drop_in_place$LT$structs..Add$GT$17h63d415f294c30101E,@function
+_ZN4core3ptr33drop_in_place$LT$structs..Add$GT$17h63d415f294c30101E:
 	.cfi_startproc
 	retq
 .Lfunc_end5:
-	.size	_ZN4core3ptr33drop_in_place$LT$structs..Sub$GT$17hdefd6c9deb789766E, .Lfunc_end5-_ZN4core3ptr33drop_in_place$LT$structs..Sub$GT$17hdefd6c9deb789766E
+	.size	_ZN4core3ptr33drop_in_place$LT$structs..Add$GT$17h63d415f294c30101E, .Lfunc_end5-_ZN4core3ptr33drop_in_place$LT$structs..Add$GT$17h63d415f294c30101E
 	.cfi_endproc
 
 	.section	".text._ZN4core3ptr37drop_in_place$LT$structs..Integer$GT$17h22bf64ecf3961435E","ax",@progbits
@@ -463,52 +463,56 @@ _ZN45_$LT$structs..Add$u20$as$u20$structs..Int$GT$3get17h046fae3f291d8853E:
 	.type	_ZN46_$LT$structs..Fibo$u20$as$u20$structs..Int$GT$3get17h4a357a4e111e7a01E,@function
 _ZN46_$LT$structs..Fibo$u20$as$u20$structs..Int$GT$3get17h4a357a4e111e7a01E:
 	.cfi_startproc
+	pushq	%r14
+	.cfi_def_cfa_offset 16
 	pushq	%rbx
-	.cfi_def_cfa_offset 16
-	subq	$144, %rsp
+	.cfi_def_cfa_offset 24
+	subq	$136, %rsp
 	.cfi_def_cfa_offset 160
-	.cfi_offset %rbx, -16
-	movl	$2, 8(%rsp)
-	movq	(%rdi), %rax
-	movq	8(%rdi), %rcx
-	movl	$1, 12(%rsp)
-	movq	%rax, 48(%rsp)
-	movq	%rcx, 56(%rsp)
-	leaq	12(%rsp), %rbx
-	movq	%rbx, 64(%rsp)
-	leaq	.L__unnamed_5(%rip), %rdx
-	movq	%rdx, 72(%rsp)
-	leaq	48(%rsp), %rsi
-	movq	%rsi, 16(%rsp)
-	leaq	.L__unnamed_6(%rip), %rsi
-	movq	%rsi, 24(%rsp)
-	movq	%rax, 80(%rsp)
-	movq	%rcx, 88(%rsp)
-	leaq	8(%rsp), %rdi
-	movq	%rdi, 96(%rsp)
-	movq	%rdx, 104(%rsp)
-	leaq	80(%rsp), %rdx
-	movq	%rdx, 32(%rsp)
-	movq	%rsi, 40(%rsp)
-	leaq	16(%rsp), %rdx
-	movq	%rdx, 112(%rsp)
-	leaq	.L__unnamed_7(%rip), %rdx
-	movq	%rdx, 120(%rsp)
-	leaq	32(%rsp), %rsi
-	movq	%rsi, 128(%rsp)
-	movq	%rdx, 136(%rsp)
-	movq	%rax, %rdi
-	callq	*24(%rcx)
-	cmpl	8(%rsp), %eax
-	leaq	112(%rsp), %rdi
+	.cfi_offset %rbx, -24
+	.cfi_offset %r14, -16
+	movl	$2, (%rsp)
+	movq	(%rdi), %rbx
+	movq	8(%rdi), %r14
+	movl	$1, 4(%rsp)
+	movq	%rbx, 40(%rsp)
+	movq	%r14, 48(%rsp)
+	leaq	4(%rsp), %rax
+	movq	%rax, 56(%rsp)
+	leaq	.L__unnamed_5(%rip), %rax
+	movq	%rax, 64(%rsp)
+	leaq	40(%rsp), %rcx
+	movq	%rcx, 8(%rsp)
+	leaq	.L__unnamed_6(%rip), %rcx
+	movq	%rcx, 16(%rsp)
+	movq	%rbx, 72(%rsp)
+	movq	%r14, 80(%rsp)
+	movq	%rsp, %rdx
+	movq	%rdx, 88(%rsp)
+	movq	%rax, 96(%rsp)
+	leaq	72(%rsp), %rax
+	movq	%rax, 24(%rsp)
+	movq	%rcx, 32(%rsp)
+	leaq	8(%rsp), %rax
+	movq	%rax, 104(%rsp)
+	leaq	.L__unnamed_7(%rip), %rax
+	movq	%rax, 112(%rsp)
+	leaq	24(%rsp), %rcx
+	movq	%rcx, 120(%rsp)
+	movq	%rax, 128(%rsp)
+	movq	%rbx, %rdi
+	callq	*24(%r14)
+	cmpl	(%rsp), %eax
+	leaq	104(%rsp), %rdi
 	cmovlq	%rbx, %rdi
-	leaq	_ZN49_$LT$structs..Integer$u20$as$u20$structs..Int$GT$3get17h09af00d0c775ae82E(%rip), %rax
-	leaq	_ZN45_$LT$structs..Add$u20$as$u20$structs..Int$GT$3get17h046fae3f291d8853E(%rip), %rcx
-	cmovlq	%rax, %rcx
-	callq	*%rcx
-	addq	$144, %rsp
-	.cfi_def_cfa_offset 16
+	leaq	.L__unnamed_8(%rip), %rax
+	cmovlq	%r14, %rax
+	callq	*24(%rax)
+	addq	$136, %rsp
+	.cfi_def_cfa_offset 24
 	popq	%rbx
+	.cfi_def_cfa_offset 16
+	popq	%r14
 	.cfi_def_cfa_offset 8
 	retq
 .Lfunc_end15:
@@ -726,31 +730,31 @@ _ZN7structs4main17h8329e463e882d13dE:
 	cmovlq	%rax, %rdx
 	movq	%rdx, 248(%rsp)
 	xorl	%ebp, %ebp
-	leaq	.L__unnamed_5(%rip), %r12
-	leaq	.L__unnamed_6(%rip), %r14
+	leaq	.L__unnamed_5(%rip), %r14
+	leaq	.L__unnamed_6(%rip), %r12
 	leaq	.L__unnamed_7(%rip), %r15
 	.p2align	4, 0x90
 .LBB16_79:
-	movl	%ecx, 120(%rsp)
-	movl	$2, 124(%rsp)
-	movl	$1, 20(%rsp)
-	leaq	120(%rsp), %rcx
+	movl	%ecx, 20(%rsp)
+	movl	$2, 120(%rsp)
+	movl	$1, 124(%rsp)
+	leaq	20(%rsp), %rcx
 	movq	%rcx, 264(%rsp)
-	movq	%r12, 272(%rsp)
-	leaq	20(%rsp), %rax
+	movq	%r14, 272(%rsp)
+	leaq	124(%rsp), %rax
 	movq	%rax, 280(%rsp)
-	movq	%r12, 288(%rsp)
+	movq	%r14, 288(%rsp)
 	leaq	264(%rsp), %rax
 	movq	%rax, 296(%rsp)
-	movq	%r14, 304(%rsp)
+	movq	%r12, 304(%rsp)
 	movq	%rcx, 160(%rsp)
-	movq	%r12, 168(%rsp)
-	leaq	124(%rsp), %rax
+	movq	%r14, 168(%rsp)
+	leaq	120(%rsp), %rax
 	movq	%rax, 176(%rsp)
-	movq	%r12, 184(%rsp)
+	movq	%r14, 184(%rsp)
 	leaq	160(%rsp), %rax
 	movq	%rax, 24(%rsp)
-	movq	%r14, 32(%rsp)
+	movq	%r12, 32(%rsp)
 	leaq	296(%rsp), %rax
 	movq	%rax, 64(%rsp)
 	movq	%r15, 72(%rsp)
@@ -778,7 +782,7 @@ _ZN7structs4main17h8329e463e882d13dE:
 	leaq	12(%rsp), %rcx
 	movq	%rcx, 96(%rsp)
 	movq	%rax, 104(%rsp)
-	leaq	.L__unnamed_8(%rip), %rax
+	leaq	.L__unnamed_9(%rip), %rax
 	movq	%rax, 160(%rsp)
 	movq	$4, 168(%rsp)
 	movq	$0, 192(%rsp)
@@ -833,7 +837,7 @@ _ZN7structs4main17h8329e463e882d13dE:
 	retq
 .LBB16_73:
 	.cfi_def_cfa_offset 368
-	leaq	.L__unnamed_9(%rip), %rdx
+	leaq	.L__unnamed_10(%rip), %rdx
 	movl	$2, %edi
 	movl	$2, %r13d
 .LBB16_10:
@@ -864,7 +868,7 @@ _ZN7structs4main17h8329e463e882d13dE:
 	movl	$8, %edx
 	callq	*__rust_dealloc@GOTPCREL(%rip)
 .LBB16_9:
-	leaq	.L__unnamed_10(%rip), %rdx
+	leaq	.L__unnamed_11(%rip), %rdx
 	movl	$1, %edi
 	xorl	%r13d, %r13d
 	jmp	.LBB16_10
@@ -875,15 +879,15 @@ _ZN7structs4main17h8329e463e882d13dE:
 	jmp	.LBB16_16
 .LBB16_70:
 	movb	%ah, 64(%rsp)
-	leaq	.L__unnamed_11(%rip), %r8
+	leaq	.L__unnamed_12(%rip), %r8
 	jmp	.LBB16_71
 .LBB16_76:
 	movb	%bh, 64(%rsp)
-	leaq	.L__unnamed_12(%rip), %r8
+	leaq	.L__unnamed_13(%rip), %r8
 .LBB16_71:
 .Ltmp19:
-	leaq	.L__unnamed_13(%rip), %rdi
-	leaq	.L__unnamed_14(%rip), %rcx
+	leaq	.L__unnamed_14(%rip), %rdi
+	leaq	.L__unnamed_15(%rip), %rcx
 	movl	$43, %esi
 	movq	%r12, %rdx
 	callq	*_ZN4core6result13unwrap_failed17h8393ef8d489acb45E@GOTPCREL(%rip)
@@ -910,7 +914,7 @@ _ZN7structs4main17h8329e463e882d13dE:
 	callq	*%r15
 	jmp	.LBB16_6
 .LBB16_55:
-	leaq	.L__unnamed_10(%rip), %rdx
+	leaq	.L__unnamed_11(%rip), %rdx
 	movl	$1, %edi
 	jmp	.LBB16_10
 .LBB16_56:
@@ -1155,63 +1159,63 @@ main:
 	.section	.data.rel.ro..L__unnamed_1,"aw",@progbits
 	.p2align	3, 0x0
 .L__unnamed_1:
-	.quad	_ZN4core3ptr33drop_in_place$LT$structs..Sub$GT$17hdefd6c9deb789766E
+	.quad	_ZN4core3ptr33drop_in_place$LT$structs..Add$GT$17h63d415f294c30101E
 	.asciz	"\b\000\000\000\000\000\000\000\b\000\000\000\000\000\000"
 	.quad	_ZN4core3ops8function6FnOnce40call_once$u7b$$u7b$vtable.shim$u7d$$u7d$17hcec49e3b2c373155E
 	.quad	_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17hd3168705e1de873eE
 	.quad	_ZN3std2rt10lang_start28_$u7b$$u7b$closure$u7d$$u7d$17hd3168705e1de873eE
 	.size	.L__unnamed_1, 48
 
-	.type	.L__unnamed_15,@object
-	.section	.rodata..L__unnamed_15,"a",@progbits
+	.type	.L__unnamed_16,@object
+	.section	.rodata..L__unnamed_16,"a",@progbits
 	.p2align	3, 0x0
-.L__unnamed_15:
-	.size	.L__unnamed_15, 0
-
-	.type	.L__unnamed_13,@object
-	.section	.rodata..L__unnamed_13,"a",@progbits
-.L__unnamed_13:
-	.ascii	"called `Result::unwrap()` on an `Err` value"
-	.size	.L__unnamed_13, 43
+.L__unnamed_16:
+	.size	.L__unnamed_16, 0
 
 	.type	.L__unnamed_14,@object
-	.section	.data.rel.ro..L__unnamed_14,"aw",@progbits
-	.p2align	3, 0x0
+	.section	.rodata..L__unnamed_14,"a",@progbits
 .L__unnamed_14:
+	.ascii	"called `Result::unwrap()` on an `Err` value"
+	.size	.L__unnamed_14, 43
+
+	.type	.L__unnamed_15,@object
+	.section	.data.rel.ro..L__unnamed_15,"aw",@progbits
+	.p2align	3, 0x0
+.L__unnamed_15:
 	.quad	_ZN4core3ptr52drop_in_place$LT$core..num..error..ParseIntError$GT$17h24b75c88850f2a14E
 	.asciz	"\001\000\000\000\000\000\000\000\001\000\000\000\000\000\000"
 	.quad	_ZN68_$LT$core..num..error..ParseIntError$u20$as$u20$core..fmt..Debug$GT$3fmt17h4b3a2caf7db8bbc0E
-	.size	.L__unnamed_14, 32
-
-	.type	.L__unnamed_16,@object
-	.section	.rodata..L__unnamed_16,"a",@progbits
-.L__unnamed_16:
-	.ascii	"Empty"
-	.size	.L__unnamed_16, 5
+	.size	.L__unnamed_15, 32
 
 	.type	.L__unnamed_17,@object
 	.section	.rodata..L__unnamed_17,"a",@progbits
 .L__unnamed_17:
-	.ascii	"InvalidDigit"
-	.size	.L__unnamed_17, 12
+	.ascii	"Empty"
+	.size	.L__unnamed_17, 5
 
 	.type	.L__unnamed_18,@object
 	.section	.rodata..L__unnamed_18,"a",@progbits
 .L__unnamed_18:
-	.ascii	"PosOverflow"
-	.size	.L__unnamed_18, 11
+	.ascii	"InvalidDigit"
+	.size	.L__unnamed_18, 12
 
 	.type	.L__unnamed_19,@object
 	.section	.rodata..L__unnamed_19,"a",@progbits
 .L__unnamed_19:
-	.ascii	"NegOverflow"
+	.ascii	"PosOverflow"
 	.size	.L__unnamed_19, 11
 
 	.type	.L__unnamed_20,@object
-	.section	.rodata.cst4,"aM",@progbits,4
+	.section	.rodata..L__unnamed_20,"a",@progbits
 .L__unnamed_20:
+	.ascii	"NegOverflow"
+	.size	.L__unnamed_20, 11
+
+	.type	.L__unnamed_21,@object
+	.section	.rodata.cst4,"aM",@progbits,4
+.L__unnamed_21:
 	.ascii	"Zero"
-	.size	.L__unnamed_20, 4
+	.size	.L__unnamed_21, 4
 
 	.type	.L__unnamed_3,@object
 	.section	.rodata..L__unnamed_3,"a",@progbits
@@ -1229,7 +1233,7 @@ main:
 	.section	.data.rel.ro..L__unnamed_2,"aw",@progbits
 	.p2align	3, 0x0
 .L__unnamed_2:
-	.quad	_ZN4core3ptr33drop_in_place$LT$structs..Sub$GT$17hdefd6c9deb789766E
+	.quad	_ZN4core3ptr33drop_in_place$LT$structs..Add$GT$17h63d415f294c30101E
 	.asciz	"\b\000\000\000\000\000\000\000\b\000\000\000\000\000\000"
 	.quad	_ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE
 	.size	.L__unnamed_2, 32
@@ -1247,7 +1251,7 @@ main:
 	.section	.data.rel.ro..L__unnamed_6,"aw",@progbits
 	.p2align	3, 0x0
 .L__unnamed_6:
-	.quad	_ZN4core3ptr33drop_in_place$LT$structs..Sub$GT$17hdefd6c9deb789766E
+	.quad	_ZN4core3ptr33drop_in_place$LT$structs..Add$GT$17h63d415f294c30101E
 	.asciz	" \000\000\000\000\000\000\000\b\000\000\000\000\000\000"
 	.quad	_ZN45_$LT$structs..Sub$u20$as$u20$structs..Int$GT$3get17h27adc8b11f96674eE
 	.size	.L__unnamed_6, 32
@@ -1256,80 +1260,89 @@ main:
 	.section	.data.rel.ro..L__unnamed_7,"aw",@progbits
 	.p2align	3, 0x0
 .L__unnamed_7:
-	.quad	_ZN4core3ptr33drop_in_place$LT$structs..Sub$GT$17hdefd6c9deb789766E
+	.quad	_ZN4core3ptr33drop_in_place$LT$structs..Add$GT$17h63d415f294c30101E
 	.asciz	"\020\000\000\000\000\000\000\000\b\000\000\000\000\000\000"
 	.quad	_ZN46_$LT$structs..Fibo$u20$as$u20$structs..Int$GT$3get17h4a357a4e111e7a01E
 	.size	.L__unnamed_7, 32
-
-	.type	.L__unnamed_21,@object
-	.section	.rodata..L__unnamed_21,"a",@progbits
-.L__unnamed_21:
-	.ascii	"rust/structs.rs"
-	.size	.L__unnamed_21, 15
-
-	.type	.L__unnamed_10,@object
-	.section	.data.rel.ro..L__unnamed_10,"aw",@progbits
-	.p2align	3, 0x0
-.L__unnamed_10:
-	.quad	.L__unnamed_21
-	.asciz	"\017\000\000\000\000\000\000\000u\000\000\000\032\000\000"
-	.size	.L__unnamed_10, 24
-
-	.type	.L__unnamed_11,@object
-	.section	.data.rel.ro..L__unnamed_11,"aw",@progbits
-	.p2align	3, 0x0
-.L__unnamed_11:
-	.quad	.L__unnamed_21
-	.asciz	"\017\000\000\000\000\000\000\000u\000\000\000&\000\000"
-	.size	.L__unnamed_11, 24
-
-	.type	.L__unnamed_9,@object
-	.section	.data.rel.ro..L__unnamed_9,"aw",@progbits
-	.p2align	3, 0x0
-.L__unnamed_9:
-	.quad	.L__unnamed_21
-	.asciz	"\017\000\000\000\000\000\000\000v\000\000\000\033\000\000"
-	.size	.L__unnamed_9, 24
-
-	.type	.L__unnamed_12,@object
-	.section	.data.rel.ro..L__unnamed_12,"aw",@progbits
-	.p2align	3, 0x0
-.L__unnamed_12:
-	.quad	.L__unnamed_21
-	.asciz	"\017\000\000\000\000\000\000\000v\000\000\000'\000\000"
-	.size	.L__unnamed_12, 24
-
-	.type	.L__unnamed_22,@object
-	.section	.rodata..L__unnamed_22,"a",@progbits
-.L__unnamed_22:
-	.ascii	"-th Fibonacci number is "
-	.size	.L__unnamed_22, 24
-
-	.type	.L__unnamed_23,@object
-	.section	.rodata..L__unnamed_23,"a",@progbits
-.L__unnamed_23:
-	.ascii	"\nTotal is "
-	.size	.L__unnamed_23, 10
-
-	.type	.L__unnamed_24,@object
-	.section	.rodata..L__unnamed_24,"a",@progbits
-.L__unnamed_24:
-	.zero	2,10
-	.size	.L__unnamed_24, 2
 
 	.type	.L__unnamed_8,@object
 	.section	.data.rel.ro..L__unnamed_8,"aw",@progbits
 	.p2align	3, 0x0
 .L__unnamed_8:
-	.quad	.L__unnamed_15
-	.zero	8
+	.quad	_ZN4core3ptr33drop_in_place$LT$structs..Add$GT$17h63d415f294c30101E
+	.asciz	" \000\000\000\000\000\000\000\b\000\000\000\000\000\000"
+	.quad	_ZN45_$LT$structs..Add$u20$as$u20$structs..Int$GT$3get17h046fae3f291d8853E
+	.size	.L__unnamed_8, 32
+
+	.type	.L__unnamed_22,@object
+	.section	.rodata..L__unnamed_22,"a",@progbits
+.L__unnamed_22:
+	.ascii	"rust/structs.rs"
+	.size	.L__unnamed_22, 15
+
+	.type	.L__unnamed_11,@object
+	.section	.data.rel.ro..L__unnamed_11,"aw",@progbits
+	.p2align	3, 0x0
+.L__unnamed_11:
 	.quad	.L__unnamed_22
-	.asciz	"\030\000\000\000\000\000\000"
+	.asciz	"\017\000\000\000\000\000\000\000u\000\000\000\032\000\000"
+	.size	.L__unnamed_11, 24
+
+	.type	.L__unnamed_12,@object
+	.section	.data.rel.ro..L__unnamed_12,"aw",@progbits
+	.p2align	3, 0x0
+.L__unnamed_12:
+	.quad	.L__unnamed_22
+	.asciz	"\017\000\000\000\000\000\000\000u\000\000\000&\000\000"
+	.size	.L__unnamed_12, 24
+
+	.type	.L__unnamed_10,@object
+	.section	.data.rel.ro..L__unnamed_10,"aw",@progbits
+	.p2align	3, 0x0
+.L__unnamed_10:
+	.quad	.L__unnamed_22
+	.asciz	"\017\000\000\000\000\000\000\000v\000\000\000\033\000\000"
+	.size	.L__unnamed_10, 24
+
+	.type	.L__unnamed_13,@object
+	.section	.data.rel.ro..L__unnamed_13,"aw",@progbits
+	.p2align	3, 0x0
+.L__unnamed_13:
+	.quad	.L__unnamed_22
+	.asciz	"\017\000\000\000\000\000\000\000v\000\000\000'\000\000"
+	.size	.L__unnamed_13, 24
+
+	.type	.L__unnamed_23,@object
+	.section	.rodata..L__unnamed_23,"a",@progbits
+.L__unnamed_23:
+	.ascii	"-th Fibonacci number is "
+	.size	.L__unnamed_23, 24
+
+	.type	.L__unnamed_24,@object
+	.section	.rodata..L__unnamed_24,"a",@progbits
+.L__unnamed_24:
+	.ascii	"\nTotal is "
+	.size	.L__unnamed_24, 10
+
+	.type	.L__unnamed_25,@object
+	.section	.rodata..L__unnamed_25,"a",@progbits
+.L__unnamed_25:
+	.zero	2,10
+	.size	.L__unnamed_25, 2
+
+	.type	.L__unnamed_9,@object
+	.section	.data.rel.ro..L__unnamed_9,"aw",@progbits
+	.p2align	3, 0x0
+.L__unnamed_9:
+	.quad	.L__unnamed_16
+	.zero	8
 	.quad	.L__unnamed_23
-	.asciz	"\n\000\000\000\000\000\000"
+	.asciz	"\030\000\000\000\000\000\000"
 	.quad	.L__unnamed_24
+	.asciz	"\n\000\000\000\000\000\000"
+	.quad	.L__unnamed_25
 	.asciz	"\002\000\000\000\000\000\000"
-	.size	.L__unnamed_8, 64
+	.size	.L__unnamed_9, 64
 
 	.type	.Lswitch.table._ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE,@object
 	.section	".rodata..Lswitch.table._ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE","a",@progbits
@@ -1346,11 +1359,11 @@ main:
 	.section	".rodata..Lreltable._ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE","a",@progbits
 	.p2align	2, 0x0
 .Lreltable._ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE:
-	.long	.L__unnamed_16-.Lreltable._ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE
 	.long	.L__unnamed_17-.Lreltable._ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE
 	.long	.L__unnamed_18-.Lreltable._ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE
 	.long	.L__unnamed_19-.Lreltable._ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE
 	.long	.L__unnamed_20-.Lreltable._ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE
+	.long	.L__unnamed_21-.Lreltable._ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE
 	.size	.Lreltable._ZN42_$LT$$RF$T$u20$as$u20$core..fmt..Debug$GT$3fmt17h72af02ea11c4aefcE, 20
 
 	.hidden	DW.ref.rust_eh_personality

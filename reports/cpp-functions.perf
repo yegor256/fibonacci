@@ -1,20 +1,20 @@
-32-th Fibonacci number is 3524578
-Total is 902291968
+32-th Fibonacci number is 2178309
+Total is 557647104
 
  Performance counter stats for 'bin/cpp-functions.bin 32 256':
 
-           6170.22 msec task-clock                       #    1.000 CPUs utilized             
-                12      context-switches                 #    1.945 /sec                      
+           6457.75 msec task-clock                       #    0.999 CPUs utilized             
+                15      context-switches                 #    2.323 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               129      page-faults                      #   20.907 /sec                      
-       23997331319      cycles                           #    3.889 GHz                       
-       46959015466      instructions                     #    1.96  insn per cycle            
-       13540685398      branches                         #    2.195 G/sec                     
-           2660397      branch-misses                    #    0.02% of all branches           
+               129      page-faults                      #   19.976 /sec                      
+       25119880321      cycles                           #    3.890 GHz                       
+       46960075900      instructions                     #    1.87  insn per cycle            
+       13540860336      branches                         #    2.097 G/sec                     
+           2671922      branch-misses                    #    0.02% of all branches           
 
-       6.170616386 seconds time elapsed
+       6.462246398 seconds time elapsed
 
-       6.170487000 seconds user
+       6.458147000 seconds user
        0.000000000 seconds sys
 
 

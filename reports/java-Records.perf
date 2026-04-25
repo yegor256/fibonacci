@@ -1,20 +1,20 @@
-32-th Fibonacci number is 3524578
-Total is 56393248
+32-th Fibonacci number is 2178309
+Total is 17426472
 
- Performance counter stats for 'bin/java-Records.bin 32 16':
+ Performance counter stats for 'bin/java-Records.bin 32 8':
 
-          18129.24 msec task-clock                       #    1.000 CPUs utilized             
-                46      context-switches                 #    2.537 /sec                      
+          11845.11 msec task-clock                       #    1.000 CPUs utilized             
+                22      context-switches                 #    1.857 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-             16865      page-faults                      #  930.265 /sec                      
-       70552373606      cycles                           #    3.892 GHz                       
-       94765354290      instructions                     #    1.34  insn per cycle            
-       20490697458      branches                         #    1.130 G/sec                     
-        1130438782      branch-misses                    #    5.52% of all branches           
+             16885      page-faults                      #    1.425 K/sec                     
+       46119112390      cycles                           #    3.894 GHz                       
+       62230700185      instructions                     #    1.35  insn per cycle            
+       14132084298      branches                         #    1.193 G/sec                     
+         874124205      branch-misses                    #    6.19% of all branches           
 
-      18.130776961 seconds time elapsed
+      11.846220150 seconds time elapsed
 
-      18.104573000 seconds user
-       0.024996000 seconds sys
+      11.820488000 seconds user
+       0.024998000 seconds sys
 
 

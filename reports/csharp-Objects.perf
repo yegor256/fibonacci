@@ -1,20 +1,20 @@
-32-th Fibonacci number is 3524578
-Total is 28196624
+32-th Fibonacci number is 2178309
+Total is 17426472
 
  Performance counter stats for 'bin/csharp-Objects.bin 32 8':
 
-          11820.37 msec task-clock                       #    1.001 CPUs utilized             
-                38      context-switches                 #    3.215 /sec                      
-                 0      cpu-migrations                   #    0.000 /sec                      
-             19309      page-faults                      #    1.634 K/sec                     
-       45987001019      cycles                           #    3.890 GHz                       
-       68733834335      instructions                     #    1.49  insn per cycle            
-       18686895795      branches                         #    1.581 G/sec                     
-         559904422      branch-misses                    #    3.00% of all branches           
+          15266.04 msec task-clock                       #    1.001 CPUs utilized             
+                40      context-switches                 #    2.620 /sec                      
+                 1      cpu-migrations                   #    0.066 /sec                      
+             19292      page-faults                      #    1.264 K/sec                     
+       59413637983      cycles                           #    3.892 GHz                       
+       88043719705      instructions                     #    1.48  insn per cycle            
+       24220242787      branches                         #    1.587 G/sec                     
+         765447941      branch-misses                    #    3.16% of all branches           
 
-      11.810855135 seconds time elapsed
+      15.256591731 seconds time elapsed
 
-      11.784678000 seconds user
-       0.035999000 seconds sys
+      15.227389000 seconds user
+       0.039000000 seconds sys
 
 

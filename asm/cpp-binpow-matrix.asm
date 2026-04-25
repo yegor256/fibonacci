@@ -13,17 +13,14 @@ main:                                   # @main
 	.cfi_def_cfa_offset 24
 	push	r14
 	.cfi_def_cfa_offset 32
-	push	r13
-	.cfi_def_cfa_offset 40
 	push	r12
-	.cfi_def_cfa_offset 48
+	.cfi_def_cfa_offset 40
 	push	rbx
-	.cfi_def_cfa_offset 56
-	sub	rsp, 24
-	.cfi_def_cfa_offset 80
-	.cfi_offset rbx, -56
-	.cfi_offset r12, -48
-	.cfi_offset r13, -40
+	.cfi_def_cfa_offset 48
+	sub	rsp, 16
+	.cfi_def_cfa_offset 64
+	.cfi_offset rbx, -48
+	.cfi_offset r12, -40
 	.cfi_offset r14, -32
 	.cfi_offset r15, -24
 	.cfi_offset rbp, -16
@@ -47,13 +44,12 @@ main:                                   # @main
 	test	r15d, r15d
 	jle	.LBB0_5
 # %bb.3:
-	lea	r13d, [r14 + 1]
 	xor	ebp, ebp
 	mov	r12, rsp
 	.p2align	4, 0x90
 .LBB0_4:                                # =>This Inner Loop Header: Depth=1
 	mov	esi, dword ptr [rip + dummy]
-	add	esi, r13d
+	add	esi, r14d
 	movups	xmm0, xmmword ptr [rip + .L__const._Z4calci.factor]
 	movaps	xmmword ptr [rsp], xmm0
 	mov	rdi, r12
@@ -75,13 +71,11 @@ main:                                   # @main
 	mov	ebx, 1
 .LBB0_6:
 	mov	eax, ebx
-	add	rsp, 24
-	.cfi_def_cfa_offset 56
-	pop	rbx
+	add	rsp, 16
 	.cfi_def_cfa_offset 48
-	pop	r12
+	pop	rbx
 	.cfi_def_cfa_offset 40
-	pop	r13
+	pop	r12
 	.cfi_def_cfa_offset 32
 	pop	r14
 	.cfi_def_cfa_offset 24
@@ -102,8 +96,7 @@ _Z4calci:                               # @_Z4calci
 # %bb.0:
 	sub	rsp, 24
 	.cfi_def_cfa_offset 32
-                                        # kill: def $edi killed $edi def $rdi
-	lea	esi, [rdi + 1]
+	mov	esi, edi
 	movups	xmm0, xmmword ptr [rip + .L__const._Z4calci.factor]
 	movaps	xmmword ptr [rsp], xmm0
 	mov	rdi, rsp

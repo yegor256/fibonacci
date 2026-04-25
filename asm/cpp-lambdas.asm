@@ -618,7 +618,7 @@ _Z4fiboP6lambda:                        # @_Z4fiboP6lambda
 	xorps	xmm0, xmm0
 	movaps	xmmword ptr [rax + 16], xmm0
 	mov	qword ptr [rax + 32], 0
-	mov	dword ptr [rax + 8], 1
+	mov	dword ptr [rax + 8], ebp
 	mov	edi, 64
 	call	malloc@PLT
 	mov	r14, rax
@@ -690,7 +690,6 @@ _Z4fiboP6lambda:                        # @_Z4fiboP6lambda
 	mov	qword ptr [r15 + 16], r14
 	mov	qword ptr [r15 + 24], r12
 	mov	qword ptr [r15 + 32], 0
-	mov	r13d, 1
 	cmp	ebp, 2
 	jge	.LBB10_5
 # %bb.4:
@@ -700,7 +699,7 @@ _Z4fiboP6lambda:                        # @_Z4fiboP6lambda
 .LBB10_5:
 	mov	rdi, r14
 	call	_Z4fiboP6lambda
-	mov	ebp, eax
+	mov	r13d, eax
 	mov	rdi, r14
 	call	free@PLT
 	mov	rax, qword ptr [r12]
@@ -709,20 +708,20 @@ _Z4fiboP6lambda:                        # @_Z4fiboP6lambda
 # %bb.7:
 	mov	rdi, r12
 	call	rax
-	mov	r13d, eax
+	mov	ebp, eax
 	jmp	.LBB10_8
 .LBB10_6:
-	mov	r13d, dword ptr [r12 + 8]
+	mov	ebp, dword ptr [r12 + 8]
 .LBB10_8:
 	mov	rdi, r12
 	call	free@PLT
-	add	r13d, ebp
+	add	ebp, r13d
 	mov	rdi, r15
 .LBB10_9:
 	call	free@PLT
 	mov	rdi, rbx
 	call	_Z7releaseP6lambda
-	mov	eax, r13d
+	mov	eax, ebp
 	add	rsp, 8
 	.cfi_def_cfa_offset 56
 	pop	rbx

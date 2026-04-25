@@ -115,7 +115,6 @@ _Z4calci:                               # @_Z4calci
 .Ltmp1:
 # %bb.1:
 	mov	r14, rax
-	inc	ebp
 	mov	dword ptr [rax + 8], ebp
 	mov	byte ptr [rax + 12], 1
 	lea	rax, [rip + _ZTV5ValueIiE+16]

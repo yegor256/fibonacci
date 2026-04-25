@@ -375,35 +375,35 @@ _ZN68_$LT$core..num..error..ParseIntError$u20$as$u20$core..fmt..Debug$GT$3fmt17h
 	.type	_ZN9recursion9fibonacci17ha4c305a10412eff3E,@function
 _ZN9recursion9fibonacci17ha4c305a10412eff3E:
 	.cfi_startproc
-	pushq	%r14
+	pushq	%rbp
 	.cfi_def_cfa_offset 16
 	pushq	%rbx
 	.cfi_def_cfa_offset 24
 	pushq	%rax
 	.cfi_def_cfa_offset 32
 	.cfi_offset %rbx, -24
-	.cfi_offset %r14, -16
-	movl	$1, %ebx
+	.cfi_offset %rbp, -16
+	movl	%edi, %ebx
+	xorl	%ebp, %ebp
 	cmpl	$2, %edi
-	jb	.LBB11_4
-	movl	%edi, %r14d
-	xorl	%ebx, %ebx
+	jb	.LBB11_3
+	xorl	%ebp, %ebp
 	.p2align	4, 0x90
 .LBB11_2:
-	leal	-2(%r14), %edi
+	leal	-2(%rbx), %edi
 	callq	_ZN9recursion9fibonacci17ha4c305a10412eff3E
-	decl	%r14d
-	addl	%eax, %ebx
-	cmpl	$1, %r14d
+	decl	%ebx
+	addl	%eax, %ebp
+	cmpl	$1, %ebx
 	ja	.LBB11_2
-	incl	%ebx
-.LBB11_4:
-	movl	%ebx, %eax
+.LBB11_3:
+	addl	%ebx, %ebp
+	movl	%ebp, %eax
 	addq	$8, %rsp
 	.cfi_def_cfa_offset 24
 	popq	%rbx
 	.cfi_def_cfa_offset 16
-	popq	%r14
+	popq	%rbp
 	.cfi_def_cfa_offset 8
 	retq
 .Lfunc_end11:

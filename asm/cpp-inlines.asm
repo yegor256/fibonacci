@@ -93,24 +93,26 @@ _Z4calci:                               # @_Z4calci
 	.cfi_def_cfa_offset 32
 	.cfi_offset rbx, -24
 	.cfi_offset r14, -16
-	mov	ebx, 1
-	cmp	edi, 2
-	jl	.LBB1_4
-# %bb.1:
 	mov	r14d, edi
-	add	r14d, 2
+	xor	ebx, ebx
+	cmp	edi, 2
+	jge	.LBB1_2
+# %bb.1:
+	mov	ecx, r14d
+	jmp	.LBB1_4
+.LBB1_2:
 	xor	ebx, ebx
 	.p2align	4, 0x90
-.LBB1_2:                                # =>This Inner Loop Header: Depth=1
-	lea	edi, [r14 - 3]
+.LBB1_3:                                # =>This Inner Loop Header: Depth=1
+	lea	edi, [r14 - 1]
 	call	_Z4calci
+	lea	ecx, [r14 - 2]
 	add	ebx, eax
-	add	r14d, -2
 	cmp	r14d, 3
-	ja	.LBB1_2
-# %bb.3:
-	inc	ebx
+	mov	r14d, ecx
+	ja	.LBB1_3
 .LBB1_4:
+	add	ebx, ecx
 	mov	eax, ebx
 	add	rsp, 8
 	.cfi_def_cfa_offset 24

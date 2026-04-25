@@ -18,7 +18,7 @@ main:                                   # @main
 	.cfi_offset r15, -16
 	cmp	edi, 3
 	jne	.LBB0_1
-# %bb.3:
+# %bb.2:
 	mov	rdi, qword ptr [rsi + 8]
 	xor	ebx, ebx
 	mov	r15, rsi
@@ -34,81 +34,77 @@ main:                                   # @main
 	mov	ecx, 0
 	test	eax, eax
 	jle	.LBB0_12
-# %bb.4:
+# %bb.3:
 	lea	esi, [r14 - 1]
-	lea	edi, [r14 - 2]
-	xor	r8d, r8d
+	xor	edi, edi
 	xor	ecx, ecx
-	jmp	.LBB0_5
+	jmp	.LBB0_4
 	.p2align	4, 0x90
-.LBB0_10:                               #   in Loop: Header=BB0_5 Depth=1
-	add	edx, r10d
-.LBB0_11:                               #   in Loop: Header=BB0_5 Depth=1
+.LBB0_11:                               #   in Loop: Header=BB0_4 Depth=1
 	add	ecx, edx
-	inc	r8d
-	cmp	r8d, eax
+	inc	edi
+	cmp	edi, eax
 	je	.LBB0_12
-.LBB0_5:                                # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_14 Depth 2
-                                        #     Child Loop BB0_9 Depth 2
-	mov	r10d, dword ptr [rip + dummy]
-	lea	r9d, [r10 + r14]
-	mov	edx, 1
-	cmp	r9d, 2
-	jl	.LBB0_11
-# %bb.6:                                #   in Loop: Header=BB0_5 Depth=1
-	lea	r9d, [rsi + r10]
-	add	r10d, edi
-	cmp	r10d, 7
-	jae	.LBB0_13
-# %bb.7:                                #   in Loop: Header=BB0_5 Depth=1
-	mov	r10d, 1
-	xor	r11d, r11d
-	jmp	.LBB0_8
+.LBB0_4:                                # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_8 Depth 2
+                                        #     Child Loop BB0_10 Depth 2
+	mov	r9d, dword ptr [rip + dummy]
+	mov	r8d, r9d
+	mov	edx, 0
+	add	r8d, r14d
+	jle	.LBB0_11
+# %bb.5:                                #   in Loop: Header=BB0_4 Depth=1
+	add	r9d, esi
+	cmp	r9d, 7
+	jae	.LBB0_7
+# %bb.6:                                #   in Loop: Header=BB0_4 Depth=1
+	mov	r9d, 1
+	xor	r10d, r10d
+	jmp	.LBB0_9
 	.p2align	4, 0x90
-.LBB0_13:                               #   in Loop: Header=BB0_5 Depth=1
-	mov	edx, r9d
-	and	edx, -8
-	mov	r10d, 1
-	xor	r11d, r11d
+.LBB0_7:                                #   in Loop: Header=BB0_4 Depth=1
+	mov	edx, r8d
+	and	edx, 2147483640
+	mov	r9d, 1
+	xor	r10d, r10d
 	.p2align	4, 0x90
-.LBB0_14:                               #   Parent Loop BB0_5 Depth=1
+.LBB0_8:                                #   Parent Loop BB0_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add	r11d, r10d
-	add	r10d, r11d
-	add	r11d, r10d
-	add	r10d, r11d
-	add	r11d, r10d
-	add	r10d, r11d
-	add	r11d, r10d
-	add	r10d, r11d
+	add	r10d, r9d
+	add	r9d, r10d
+	add	r10d, r9d
+	add	r9d, r10d
+	add	r10d, r9d
+	add	r9d, r10d
+	add	r10d, r9d
+	add	r9d, r10d
 	add	edx, -8
-	jne	.LBB0_14
-.LBB0_8:                                #   in Loop: Header=BB0_5 Depth=1
-	mov	edx, r11d
-	and	r9d, 7
-	je	.LBB0_10
-	.p2align	4, 0x90
-.LBB0_9:                                #   Parent Loop BB0_5 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
+	jne	.LBB0_8
+.LBB0_9:                                #   in Loop: Header=BB0_4 Depth=1
 	mov	edx, r10d
-	mov	r10d, r11d
-	add	r10d, edx
-	mov	r11d, edx
-	dec	r9d
-	jne	.LBB0_9
-	jmp	.LBB0_10
+	and	r8d, 7
+	je	.LBB0_11
+	.p2align	4, 0x90
+.LBB0_10:                               #   Parent Loop BB0_4 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	mov	edx, r9d
+	mov	r9d, r10d
+	add	r9d, edx
+	mov	r10d, edx
+	dec	r8d
+	jne	.LBB0_10
+	jmp	.LBB0_11
 .LBB0_1:
 	lea	rdi, [rip + .Lstr]
 	call	puts@PLT
 	mov	ebx, 1
-	jmp	.LBB0_2
+	jmp	.LBB0_13
 .LBB0_12:
 	lea	rdi, [rip + .L.str.1]
 	mov	esi, r14d
 	xor	eax, eax
 	call	printf@PLT
-.LBB0_2:
+.LBB0_13:
 	mov	eax, ebx
 	pop	rbx
 	.cfi_def_cfa_offset 24
@@ -127,23 +123,22 @@ main:                                   # @main
 _Z4calci:                               # @_Z4calci
 	.cfi_startproc
 # %bb.0:
-                                        # kill: def $edi killed $edi def $rdi
-	mov	eax, 1
-	cmp	edi, 2
-	jl	.LBB1_6
-# %bb.1:
-	lea	eax, [rdi - 1]
-	add	edi, -2
-	mov	ecx, eax
-	and	ecx, 7
-	cmp	edi, 7
-	jae	.LBB1_7
+	test	edi, edi
+	jle	.LBB1_1
 # %bb.2:
+	mov	ecx, edi
+	and	ecx, 7
+	cmp	edi, 8
+	jae	.LBB1_7
+# %bb.3:
 	mov	edx, 1
 	xor	esi, esi
-	jmp	.LBB1_3
+	jmp	.LBB1_4
+.LBB1_1:
+	xor	eax, eax
+	ret
 .LBB1_7:
-	and	eax, -8
+	and	edi, 2147483640
 	mov	edx, 1
 	xor	esi, esi
 	.p2align	4, 0x90
@@ -156,22 +151,20 @@ _Z4calci:                               # @_Z4calci
 	add	edx, esi
 	add	esi, edx
 	add	edx, esi
-	add	eax, -8
+	add	edi, -8
 	jne	.LBB1_8
-.LBB1_3:
+.LBB1_4:
 	mov	eax, esi
 	test	ecx, ecx
-	je	.LBB1_5
+	je	.LBB1_6
 	.p2align	4, 0x90
-.LBB1_4:                                # =>This Inner Loop Header: Depth=1
+.LBB1_5:                                # =>This Inner Loop Header: Depth=1
 	mov	eax, edx
 	mov	edx, esi
 	add	edx, eax
 	mov	esi, eax
 	dec	ecx
-	jne	.LBB1_4
-.LBB1_5:
-	add	eax, edx
+	jne	.LBB1_5
 .LBB1_6:
 	ret
 .Lfunc_end1:

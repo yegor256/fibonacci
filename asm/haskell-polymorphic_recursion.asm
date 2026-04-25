@@ -36,15 +36,15 @@ Main_zdtrModule4_bytes:
 .globl Main_zdfOrdNumberzuzdczlze_info
 .type Main_zdfOrdNumberzuzdczlze_info, @function
 Main_zdfOrdNumberzuzdczlze_info:
-.Lc3zz:
+.Lc3z0:
 	leaq -24(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3zA
-.Lc3zB:
+	jb .Lc3z1
+.Lc3z2:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3zD
-.Lc3zC:
+	ja .Lc3z4
+.Lc3z3:
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-40(%r12)
 	movq %rdi,-24(%r12)
@@ -59,9 +59,9 @@ Main_zdfOrdNumberzuzdczlze_info:
 	movq %rax,-8(%rbp)
 	addq $-24,%rbp
 	jmp *ghczmprim_GHCziClasses_zlze_info@gotpcrel(%rip)
-.Lc3zD:
+.Lc3z4:
 	movq $48,904(%r13)
-.Lc3zA:
+.Lc3z1:
 	leaq Main_zdfOrdNumberzuzdczlze_closure(%rip),%rbx
 	jmp *-8(%r13)
 	.size Main_zdfOrdNumberzuzdczlze_info, .-Main_zdfOrdNumberzuzdczlze_info
@@ -82,15 +82,15 @@ Main_zdfOrdNumberzuzdczlze_closure:
 .globl Main_zdfEqNumberzuzdczeze_info
 .type Main_zdfEqNumberzuzdczeze_info, @function
 Main_zdfEqNumberzuzdczeze_info:
-.Lc3zT:
+.Lc3zk:
 	leaq -24(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3zU
-.Lc3zV:
+	jb .Lc3zl
+.Lc3zm:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3zX
-.Lc3zW:
+	ja .Lc3zo
+.Lc3zn:
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-40(%r12)
 	movq %rdi,-24(%r12)
@@ -105,9 +105,9 @@ Main_zdfEqNumberzuzdczeze_info:
 	movq %rax,-8(%rbp)
 	addq $-24,%rbp
 	jmp *ghczmprim_GHCziClasses_zeze_info@gotpcrel(%rip)
-.Lc3zX:
+.Lc3zo:
 	movq $48,904(%r13)
-.Lc3zU:
+.Lc3zl:
 	leaq Main_zdfEqNumberzuzdczeze_closure(%rip),%rbx
 	jmp *-8(%r13)
 	.size Main_zdfEqNumberzuzdczeze_info, .-Main_zdfEqNumberzuzdczeze_info
@@ -128,22 +128,22 @@ Main_zdfEqNumberzuzdczeze_closure:
 .globl Main_zdfEqNumberzuzdczsze_info
 .type Main_zdfEqNumberzuzdczsze_info, @function
 Main_zdfEqNumberzuzdczsze_info:
-.Lc3Aj:
+.Lc3zK:
 	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3Ak
-.Lc3Al:
+	jb .Lc3zL
+.Lc3zM:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3An
-.Lc3Am:
+	ja .Lc3zO
+.Lc3zN:
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-40(%r12)
 	movq %rdi,-24(%r12)
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%r12)
 	movq %rsi,(%r12)
-	leaq .Lc3Ad_info(%rip),%rax
+	leaq .Lc3zE_info(%rip),%rax
 	movq %rax,-8(%rbp)
 	movq stg_ap_pp_info@gotpcrel(%rip),%rax
 	movq %rax,-32(%rbp)
@@ -153,26 +153,26 @@ Main_zdfEqNumberzuzdczsze_info:
 	movq %rax,-16(%rbp)
 	addq $-32,%rbp
 	jmp *ghczmprim_GHCziClasses_zeze_info@gotpcrel(%rip)
-.Lc3An:
+.Lc3zO:
 	movq $48,904(%r13)
-.Lc3Ak:
+.Lc3zL:
 	leaq Main_zdfEqNumberzuzdczsze_closure(%rip),%rbx
 	jmp *-8(%r13)
 .align 8
 	.quad	0
 	.long	30
 	.long	0
-.Lc3Ad_info:
-.Lc3Ad:
+.Lc3zE_info:
+.Lc3zE:
 	andl $7,%ebx
 	cmpq $1,%rbx
-	je .Lc3Ag
-.Lc3Ah:
+	je .Lc3zH
+.Lc3zI:
 	movq ghczmprim_GHCziTypes_False_closure@gotpcrel(%rip),%rax
 	leaq 1(%rax),%rbx
 	addq $8,%rbp
 	jmp *(%rbp)
-.Lc3Ag:
+.Lc3zH:
 	movq ghczmprim_GHCziTypes_True_closure@gotpcrel(%rip),%rax
 	leaq 2(%rax),%rbx
 	addq $8,%rbp
@@ -192,13 +192,13 @@ Main_zdfEqNumberzuzdczsze_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3uY_info:
-.Lc3AR:
+.Ls3uy_info:
+.Lc3Ai:
 	movq %rsi,%rdi
 	movq %r14,%rsi
 	movq 6(%rbx),%r14
 	jmp Main_zdfEqNumberzuzdczsze_info
-	.size .Ls3uY_info, .-.Ls3uY_info
+	.size .Ls3uy_info, .-.Ls3uy_info
 .section .text
 .align 8
 .align 8
@@ -206,13 +206,13 @@ Main_zdfEqNumberzuzdczsze_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3uX_info:
-.Lc3AZ:
+.Ls3ux_info:
+.Lc3Aq:
 	movq %rsi,%rdi
 	movq %r14,%rsi
 	movq 6(%rbx),%r14
 	jmp Main_zdfEqNumberzuzdczeze_info
-	.size .Ls3uX_info, .-.Ls3uX_info
+	.size .Ls3ux_info, .-.Ls3ux_info
 .section .text
 .align 8
 .align 8
@@ -223,15 +223,15 @@ Main_zdfEqNumberzuzdczsze_closure:
 .globl Main_zdfEqNumber_info
 .type Main_zdfEqNumber_info, @function
 Main_zdfEqNumber_info:
-.Lc3B3:
+.Lc3Au:
 	addq $56,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3B7
-.Lc3B6:
-	leaq .Ls3uY_info(%rip),%rax
+	ja .Lc3Ay
+.Lc3Ax:
+	leaq .Ls3uy_info(%rip),%rax
 	movq %rax,-48(%r12)
 	movq %r14,-40(%r12)
-	leaq .Ls3uX_info(%rip),%rax
+	leaq .Ls3ux_info(%rip),%rax
 	movq %rax,-32(%r12)
 	movq %r14,-24(%r12)
 	movq ghczmprim_GHCziClasses_CZCEq_con_info@gotpcrel(%rip),%rax
@@ -242,7 +242,7 @@ Main_zdfEqNumber_info:
 	movq %rax,(%r12)
 	leaq -15(%r12),%rbx
 	jmp *(%rbp)
-.Lc3B7:
+.Lc3Ay:
 	movq $56,904(%r13)
 	leaq Main_zdfEqNumber_closure(%rip),%rbx
 	jmp *-8(%r13)
@@ -260,21 +260,21 @@ Main_zdfEqNumber_closure:
 	.quad	1
 	.long	16
 	.long	0
-.Ls3v0_info:
-.Lc3Bs:
+.Ls3uA_info:
+.Lc3AT:
 	leaq -16(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3Bt
-.Lc3Bu:
+	jb .Lc3AU
+.Lc3AV:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
 	movq 16(%rbx),%r14
 	addq $-16,%rbp
 	jmp *ghczmprim_GHCziClasses_zdp1Ord_info@gotpcrel(%rip)
-.Lc3Bt:
+.Lc3AU:
 	jmp *-16(%r13)
-	.size .Ls3v0_info, .-.Ls3v0_info
+	.size .Ls3uA_info, .-.Ls3uA_info
 .section .text
 .align 8
 .align 8
@@ -285,17 +285,17 @@ Main_zdfEqNumber_closure:
 .globl Main_zdfOrdNumberzuzdcp1Ord_info
 .type Main_zdfOrdNumberzuzdcp1Ord_info, @function
 Main_zdfOrdNumberzuzdcp1Ord_info:
-.Lc3Bv:
+.Lc3AW:
 	addq $24,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Bz
-.Lc3By:
-	leaq .Ls3v0_info(%rip),%rax
+	ja .Lc3B0
+.Lc3AZ:
+	leaq .Ls3uA_info(%rip),%rax
 	movq %rax,-16(%r12)
 	movq %r14,(%r12)
 	leaq -16(%r12),%r14
 	jmp Main_zdfEqNumber_info
-.Lc3Bz:
+.Lc3B0:
 	movq $24,904(%r13)
 	leaq Main_zdfOrdNumberzuzdcp1Ord_closure(%rip),%rbx
 	jmp *-8(%r13)
@@ -317,22 +317,22 @@ Main_zdfOrdNumberzuzdcp1Ord_closure:
 .globl Main_zdwzdccompare_info
 .type Main_zdwzdccompare_info, @function
 Main_zdwzdccompare_info:
-.Lc3BU:
+.Lc3Bl:
 	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3BV
-.Lc3BW:
+	jb .Lc3Bm
+.Lc3Bn:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3BY
-.Lc3BX:
+	ja .Lc3Bp
+.Lc3Bo:
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-40(%r12)
 	movq %r8,-24(%r12)
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%r12)
 	movq %rdi,(%r12)
-	leaq .Lc3BO_info(%rip),%rax
+	leaq .Lc3Bf_info(%rip),%rax
 	movq %rax,-32(%rbp)
 	movq %rsi,%rax
 	leaq -40(%r12),%rsi
@@ -343,26 +343,26 @@ Main_zdwzdccompare_info:
 	movq %r8,-8(%rbp)
 	addq $-32,%rbp
 	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc3BY:
+.Lc3Bp:
 	movq $48,904(%r13)
-.Lc3BV:
+.Lc3Bm:
 	leaq Main_zdwzdccompare_closure(%rip),%rbx
 	jmp *-8(%r13)
 .align 8
 	.quad	3
 	.long	30
 	.long	0
-.Lc3BO_info:
-.Lc3BO:
+.Lc3Bf_info:
+.Lc3Bf:
 	movq %rbx,%rax
 	andl $7,%eax
 	cmpq $1,%rax
-	jne .Lc3BS
-.Lc3BR:
+	jne .Lc3Bj
+.Lc3Bi:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3C6
-.Lc3C5:
+	ja .Lc3Bx
+.Lc3Bw:
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-40(%r12)
 	movq 24(%rbp),%rax
@@ -371,17 +371,17 @@ Main_zdwzdccompare_info:
 	movq %rax,-16(%r12)
 	movq 16(%rbp),%rax
 	movq %rax,(%r12)
-	leaq .Lc3C3_info(%rip),%rax
+	leaq .Lc3Bu_info(%rip),%rax
 	movq %rax,24(%rbp)
 	leaq -40(%r12),%rsi
 	leaq -16(%r12),%r14
 	movq 8(%rbp),%rbx
 	addq $24,%rbp
 	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc3C6:
+.Lc3Bx:
 	movq $48,904(%r13)
 	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
-.Lc3BS:
+.Lc3Bj:
 	movq ghczmprim_GHCziTypes_EQ_closure@gotpcrel(%rip),%rax
 	leaq 2(%rax),%rbx
 	addq $32,%rbp
@@ -390,17 +390,17 @@ Main_zdwzdccompare_info:
 	.quad	0
 	.long	30
 	.long	0
-.Lc3C3_info:
-.Lc3C3:
+.Lc3Bu_info:
+.Lc3Bu:
 	andl $7,%ebx
 	cmpq $1,%rbx
-	je .Lc3Cc
-.Lc3Cg:
+	je .Lc3BD
+.Lc3BH:
 	movq ghczmprim_GHCziTypes_LT_closure@gotpcrel(%rip),%rax
 	leaq 1(%rax),%rbx
 	addq $8,%rbp
 	jmp *(%rbp)
-.Lc3Cc:
+.Lc3BD:
 	movq ghczmprim_GHCziTypes_GT_closure@gotpcrel(%rip),%rax
 	leaq 3(%rax),%rbx
 	addq $8,%rbp
@@ -423,50 +423,50 @@ Main_zdwzdccompare_closure:
 .globl Main_zdfOrdNumberzuzdccompare_info
 .type Main_zdfOrdNumberzuzdccompare_info, @function
 Main_zdfOrdNumberzuzdccompare_info:
-.Lc3CL:
+.Lc3Cc:
 	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3CP
-.Lc3CQ:
-	leaq .Lc3CI_info(%rip),%rax
+	jb .Lc3Cg
+.Lc3Ch:
+	leaq .Lc3C9_info(%rip),%rax
 	movq %rax,-24(%rbp)
 	movq %r14,%rbx
 	movq %rsi,-16(%rbp)
 	movq %rdi,-8(%rbp)
 	addq $-24,%rbp
 	testb $7,%bl
-	jne .Lc3CI
-.Lc3CJ:
+	jne .Lc3C9
+.Lc3Ca:
 	jmp *(%rbx)
 .align 8
 	.quad	2
 	.long	30
 	.long	0
-.Lc3CI_info:
-.Lc3CI:
-	leaq .Lc3CO_info(%rip),%rax
+.Lc3C9_info:
+.Lc3C9:
+	leaq .Lc3Cf_info(%rip),%rax
 	movq %rax,-8(%rbp)
 	movq 31(%rbx),%rax
 	movq 7(%rbx),%rbx
 	movq %rax,(%rbp)
 	addq $-8,%rbp
 	testb $7,%bl
-	jne .Lc3CO
-.Lc3CS:
+	jne .Lc3Cf
+.Lc3Cj:
 	jmp *(%rbx)
 .align 8
 	.quad	3
 	.long	30
 	.long	0
-.Lc3CO_info:
-.Lc3CO:
+.Lc3Cf_info:
+.Lc3Cf:
 	movq 24(%rbp),%r8
 	movq 16(%rbp),%rdi
 	movq 8(%rbp),%rsi
 	movq 7(%rbx),%r14
 	addq $32,%rbp
 	jmp Main_zdwzdccompare_info
-.Lc3CP:
+.Lc3Cg:
 	leaq Main_zdfOrdNumberzuzdccompare_closure(%rip),%rbx
 	jmp *-8(%r13)
 	.size Main_zdfOrdNumberzuzdccompare_info, .-Main_zdfOrdNumberzuzdccompare_info
@@ -487,22 +487,22 @@ Main_zdfOrdNumberzuzdccompare_closure:
 .globl Main_zdfOrdNumberzuzdcmax_info
 .type Main_zdfOrdNumberzuzdcmax_info, @function
 Main_zdfOrdNumberzuzdcmax_info:
-.Lc3Df:
+.Lc3CG:
 	leaq -48(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3Dg
-.Lc3Dh:
+	jb .Lc3CH
+.Lc3CI:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Dj
-.Lc3Di:
+	ja .Lc3CK
+.Lc3CJ:
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-40(%r12)
 	movq %rdi,-24(%r12)
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%r12)
 	movq %rsi,(%r12)
-	leaq .Lc3D9_info(%rip),%rax
+	leaq .Lc3CA_info(%rip),%rax
 	movq %rax,-24(%rbp)
 	movq stg_ap_pp_info@gotpcrel(%rip),%rax
 	movq %rax,-48(%rbp)
@@ -514,26 +514,26 @@ Main_zdfOrdNumberzuzdcmax_info:
 	movq %rdi,-8(%rbp)
 	addq $-48,%rbp
 	jmp *ghczmprim_GHCziClasses_zlze_info@gotpcrel(%rip)
-.Lc3Dj:
+.Lc3CK:
 	movq $48,904(%r13)
-.Lc3Dg:
+.Lc3CH:
 	leaq Main_zdfOrdNumberzuzdcmax_closure(%rip),%rbx
 	jmp *-8(%r13)
 .align 8
 	.quad	2
 	.long	30
 	.long	0
-.Lc3D9_info:
-.Lc3D9:
+.Lc3CA_info:
+.Lc3CA:
 	andl $7,%ebx
 	cmpq $1,%rbx
-	je .Lc3Dc
-.Lc3Dd:
+	je .Lc3CD
+.Lc3CE:
 	movq 16(%rbp),%rbx
 	andq $-8,%rbx
 	addq $24,%rbp
 	jmp *(%rbx)
-.Lc3Dc:
+.Lc3CD:
 	movq 8(%rbp),%rbx
 	andq $-8,%rbx
 	addq $24,%rbp
@@ -556,47 +556,47 @@ Main_zdfOrdNumberzuzdcmax_closure:
 .globl Main_zdfOrdNumberzuzdczgze_info
 .type Main_zdfOrdNumberzuzdczgze_info, @function
 Main_zdfOrdNumberzuzdczgze_info:
-.Lc3DL:
+.Lc3Dc:
 	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3DP
-.Lc3DQ:
-	leaq .Lc3DI_info(%rip),%rax
+	jb .Lc3Dg
+.Lc3Dh:
+	leaq .Lc3D9_info(%rip),%rax
 	movq %rax,-24(%rbp)
 	movq %r14,%rbx
 	movq %rsi,-16(%rbp)
 	movq %rdi,-8(%rbp)
 	addq $-24,%rbp
 	testb $7,%bl
-	jne .Lc3DI
-.Lc3DJ:
+	jne .Lc3D9
+.Lc3Da:
 	jmp *(%rbx)
 .align 8
 	.quad	2
 	.long	30
 	.long	0
-.Lc3DI_info:
-.Lc3DI:
-	leaq .Lc3DO_info(%rip),%rax
+.Lc3D9_info:
+.Lc3D9:
+	leaq .Lc3Df_info(%rip),%rax
 	movq %rax,-8(%rbp)
 	movq 31(%rbx),%rax
 	movq 7(%rbx),%rbx
 	movq %rax,(%rbp)
 	addq $-8,%rbp
 	testb $7,%bl
-	jne .Lc3DO
-.Lc3DS:
+	jne .Lc3Df
+.Lc3Dj:
 	jmp *(%rbx)
 .align 8
 	.quad	3
 	.long	30
 	.long	0
-.Lc3DO_info:
-.Lc3DO:
+.Lc3Df_info:
+.Lc3Df:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3E1
-.Lc3E0:
+	ja .Lc3Ds
+.Lc3Dr:
 	movq 7(%rbx),%rax
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rbx
 	movq %rbx,-40(%r12)
@@ -606,33 +606,33 @@ Main_zdfOrdNumberzuzdczgze_info:
 	movq %rbx,-16(%r12)
 	movq 16(%rbp),%rbx
 	movq %rbx,(%r12)
-	leaq .Lc3DY_info(%rip),%rbx
+	leaq .Lc3Dp_info(%rip),%rbx
 	movq %rbx,(%rbp)
 	leaq -40(%r12),%rsi
 	leaq -16(%r12),%r14
 	movq %rax,%rbx
 	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc3E1:
+.Lc3Ds:
 	movq $48,904(%r13)
 	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
-.Lc3DP:
+.Lc3Dg:
 	leaq Main_zdfOrdNumberzuzdczgze_closure(%rip),%rbx
 	jmp *-8(%r13)
 .align 8
 	.quad	3
 	.long	30
 	.long	0
-.Lc3DY_info:
-.Lc3DY:
+.Lc3Dp_info:
+.Lc3Dp:
 	movq %rbx,%rax
 	andl $7,%eax
 	cmpq $1,%rax
-	jne .Lc3Ei
-.Lc3E9:
+	jne .Lc3DJ
+.Lc3DA:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Ec
-.Lc3Eb:
+	ja .Lc3DD
+.Lc3DC:
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-40(%r12)
 	movq 24(%rbp),%rax
@@ -641,33 +641,33 @@ Main_zdfOrdNumberzuzdczgze_info:
 	movq %rax,-16(%r12)
 	movq 16(%rbp),%rax
 	movq %rax,(%r12)
-	leaq .Lc3E7_info(%rip),%rax
+	leaq .Lc3Dy_info(%rip),%rax
 	movq %rax,24(%rbp)
 	leaq -40(%r12),%rsi
 	leaq -16(%r12),%r14
 	movq 8(%rbp),%rbx
 	addq $24,%rbp
 	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc3Ec:
+.Lc3DD:
 	movq $48,904(%r13)
 	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
 .align 8
 	.quad	0
 	.long	30
 	.long	0
-.Lc3E7_info:
-.Lc3E7:
+.Lc3Dy_info:
+.Lc3Dy:
 	andl $7,%ebx
 	cmpq $1,%rbx
-	jne .Lc3Em
-.Lu3Et:
+	jne .Lc3DN
+.Lu3DU:
 	addq $-24,%rbp
-.Lc3Ei:
+.Lc3DJ:
 	movq ghczmprim_GHCziTypes_True_closure@gotpcrel(%rip),%rax
 	leaq 2(%rax),%rbx
 	addq $32,%rbp
 	jmp *(%rbp)
-.Lc3Em:
+.Lc3DN:
 	movq ghczmprim_GHCziTypes_False_closure@gotpcrel(%rip),%rax
 	leaq 1(%rax),%rbx
 	addq $8,%rbp
@@ -690,47 +690,47 @@ Main_zdfOrdNumberzuzdczgze_closure:
 .globl Main_zdfOrdNumberzuzdczg_info
 .type Main_zdfOrdNumberzuzdczg_info, @function
 Main_zdfOrdNumberzuzdczg_info:
-.Lc3EX:
+.Lc3Eo:
 	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3F1
-.Lc3F2:
-	leaq .Lc3EU_info(%rip),%rax
+	jb .Lc3Es
+.Lc3Et:
+	leaq .Lc3El_info(%rip),%rax
 	movq %rax,-24(%rbp)
 	movq %r14,%rbx
 	movq %rsi,-16(%rbp)
 	movq %rdi,-8(%rbp)
 	addq $-24,%rbp
 	testb $7,%bl
-	jne .Lc3EU
-.Lc3EV:
+	jne .Lc3El
+.Lc3Em:
 	jmp *(%rbx)
 .align 8
 	.quad	2
 	.long	30
 	.long	0
-.Lc3EU_info:
-.Lc3EU:
-	leaq .Lc3F0_info(%rip),%rax
+.Lc3El_info:
+.Lc3El:
+	leaq .Lc3Er_info(%rip),%rax
 	movq %rax,-8(%rbp)
 	movq 31(%rbx),%rax
 	movq 7(%rbx),%rbx
 	movq %rax,(%rbp)
 	addq $-8,%rbp
 	testb $7,%bl
-	jne .Lc3F0
-.Lc3F4:
+	jne .Lc3Er
+.Lc3Ev:
 	jmp *(%rbx)
 .align 8
 	.quad	3
 	.long	30
 	.long	0
-.Lc3F0_info:
-.Lc3F0:
+.Lc3Er_info:
+.Lc3Er:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Fd
-.Lc3Fc:
+	ja .Lc3EE
+.Lc3ED:
 	movq 7(%rbx),%rax
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rbx
 	movq %rbx,-40(%r12)
@@ -740,33 +740,33 @@ Main_zdfOrdNumberzuzdczg_info:
 	movq %rbx,-16(%r12)
 	movq 16(%rbp),%rbx
 	movq %rbx,(%r12)
-	leaq .Lc3Fa_info(%rip),%rbx
+	leaq .Lc3EB_info(%rip),%rbx
 	movq %rbx,(%rbp)
 	leaq -40(%r12),%rsi
 	leaq -16(%r12),%r14
 	movq %rax,%rbx
 	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc3Fd:
+.Lc3EE:
 	movq $48,904(%r13)
 	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
-.Lc3F1:
+.Lc3Es:
 	leaq Main_zdfOrdNumberzuzdczg_closure(%rip),%rbx
 	jmp *-8(%r13)
 .align 8
 	.quad	3
 	.long	30
 	.long	0
-.Lc3Fa_info:
-.Lc3Fa:
+.Lc3EB_info:
+.Lc3EB:
 	movq %rbx,%rax
 	andl $7,%eax
 	cmpq $1,%rax
-	jne .Lc3Fy
-.Lc3Fl:
+	jne .Lc3EZ
+.Lc3EM:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Fo
-.Lc3Fn:
+	ja .Lc3EP
+.Lc3EO:
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-40(%r12)
 	movq 24(%rbp),%rax
@@ -775,33 +775,33 @@ Main_zdfOrdNumberzuzdczg_info:
 	movq %rax,-16(%r12)
 	movq 16(%rbp),%rax
 	movq %rax,(%r12)
-	leaq .Lc3Fj_info(%rip),%rax
+	leaq .Lc3EK_info(%rip),%rax
 	movq %rax,24(%rbp)
 	leaq -40(%r12),%rsi
 	leaq -16(%r12),%r14
 	movq 8(%rbp),%rbx
 	addq $24,%rbp
 	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc3Fo:
+.Lc3EP:
 	movq $48,904(%r13)
 	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
 .align 8
 	.quad	0
 	.long	30
 	.long	0
-.Lc3Fj_info:
-.Lc3Fj:
+.Lc3EK_info:
+.Lc3EK:
 	andl $7,%ebx
 	cmpq $1,%rbx
-	je .Lc3Fu
-.Lu3FF:
+	je .Lc3EV
+.Lu3F6:
 	addq $-24,%rbp
-.Lc3Fy:
+.Lc3EZ:
 	movq ghczmprim_GHCziTypes_False_closure@gotpcrel(%rip),%rax
 	leaq 1(%rax),%rbx
 	addq $32,%rbp
 	jmp *(%rbp)
-.Lc3Fu:
+.Lc3EV:
 	movq ghczmprim_GHCziTypes_True_closure@gotpcrel(%rip),%rax
 	leaq 2(%rax),%rbx
 	addq $8,%rbp
@@ -824,47 +824,47 @@ Main_zdfOrdNumberzuzdczg_closure:
 .globl Main_zdfOrdNumberzuzdczl_info
 .type Main_zdfOrdNumberzuzdczl_info, @function
 Main_zdfOrdNumberzuzdczl_info:
-.Lc3G9:
+.Lc3FA:
 	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3Gd
-.Lc3Ge:
-	leaq .Lc3G6_info(%rip),%rax
+	jb .Lc3FE
+.Lc3FF:
+	leaq .Lc3Fx_info(%rip),%rax
 	movq %rax,-24(%rbp)
 	movq %r14,%rbx
 	movq %rsi,-16(%rbp)
 	movq %rdi,-8(%rbp)
 	addq $-24,%rbp
 	testb $7,%bl
-	jne .Lc3G6
-.Lc3G7:
+	jne .Lc3Fx
+.Lc3Fy:
 	jmp *(%rbx)
 .align 8
 	.quad	2
 	.long	30
 	.long	0
-.Lc3G6_info:
-.Lc3G6:
-	leaq .Lc3Gc_info(%rip),%rax
+.Lc3Fx_info:
+.Lc3Fx:
+	leaq .Lc3FD_info(%rip),%rax
 	movq %rax,-8(%rbp)
 	movq 31(%rbx),%rax
 	movq 7(%rbx),%rbx
 	movq %rax,(%rbp)
 	addq $-8,%rbp
 	testb $7,%bl
-	jne .Lc3Gc
-.Lc3Gg:
+	jne .Lc3FD
+.Lc3FH:
 	jmp *(%rbx)
 .align 8
 	.quad	3
 	.long	30
 	.long	0
-.Lc3Gc_info:
-.Lc3Gc:
+.Lc3FD_info:
+.Lc3FD:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Gp
-.Lc3Go:
+	ja .Lc3FQ
+.Lc3FP:
 	movq 7(%rbx),%rax
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rbx
 	movq %rbx,-40(%r12)
@@ -874,33 +874,33 @@ Main_zdfOrdNumberzuzdczl_info:
 	movq %rbx,-16(%r12)
 	movq 16(%rbp),%rbx
 	movq %rbx,(%r12)
-	leaq .Lc3Gm_info(%rip),%rbx
+	leaq .Lc3FN_info(%rip),%rbx
 	movq %rbx,(%rbp)
 	leaq -40(%r12),%rsi
 	leaq -16(%r12),%r14
 	movq %rax,%rbx
 	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc3Gp:
+.Lc3FQ:
 	movq $48,904(%r13)
 	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
-.Lc3Gd:
+.Lc3FE:
 	leaq Main_zdfOrdNumberzuzdczl_closure(%rip),%rbx
 	jmp *-8(%r13)
 .align 8
 	.quad	3
 	.long	30
 	.long	0
-.Lc3Gm_info:
-.Lc3Gm:
+.Lc3FN_info:
+.Lc3FN:
 	movq %rbx,%rax
 	andl $7,%eax
 	cmpq $1,%rax
-	jne .Lc3GD
-.Lc3Gw:
+	jne .Lc3G4
+.Lc3FX:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Gz
-.Lc3Gy:
+	ja .Lc3G0
+.Lc3FZ:
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-40(%r12)
 	movq 24(%rbp),%rax
@@ -914,10 +914,10 @@ Main_zdfOrdNumberzuzdczl_info:
 	movq 8(%rbp),%rbx
 	addq $32,%rbp
 	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc3Gz:
+.Lc3G0:
 	movq $48,904(%r13)
 	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
-.Lc3GD:
+.Lc3G4:
 	movq ghczmprim_GHCziTypes_False_closure@gotpcrel(%rip),%rax
 	leaq 1(%rax),%rbx
 	addq $32,%rbp
@@ -940,22 +940,22 @@ Main_zdfOrdNumberzuzdczl_closure:
 .globl Main_zdfOrdNumberzuzdcmin_info
 .type Main_zdfOrdNumberzuzdcmin_info, @function
 Main_zdfOrdNumberzuzdcmin_info:
-.Lc3H9:
+.Lc3GA:
 	leaq -48(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3Ha
-.Lc3Hb:
+	jb .Lc3GB
+.Lc3GC:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Hd
-.Lc3Hc:
+	ja .Lc3GE
+.Lc3GD:
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-40(%r12)
 	movq %rdi,-24(%r12)
 	movq stg_sel_0_upd_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%r12)
 	movq %rsi,(%r12)
-	leaq .Lc3H3_info(%rip),%rax
+	leaq .Lc3Gu_info(%rip),%rax
 	movq %rax,-24(%rbp)
 	movq stg_ap_pp_info@gotpcrel(%rip),%rax
 	movq %rax,-48(%rbp)
@@ -967,26 +967,26 @@ Main_zdfOrdNumberzuzdcmin_info:
 	movq %rdi,-8(%rbp)
 	addq $-48,%rbp
 	jmp *ghczmprim_GHCziClasses_zlze_info@gotpcrel(%rip)
-.Lc3Hd:
+.Lc3GE:
 	movq $48,904(%r13)
-.Lc3Ha:
+.Lc3GB:
 	leaq Main_zdfOrdNumberzuzdcmin_closure(%rip),%rbx
 	jmp *-8(%r13)
 .align 8
 	.quad	2
 	.long	30
 	.long	0
-.Lc3H3_info:
-.Lc3H3:
+.Lc3Gu_info:
+.Lc3Gu:
 	andl $7,%ebx
 	cmpq $1,%rbx
-	je .Lc3H6
-.Lc3H7:
+	je .Lc3Gx
+.Lc3Gy:
 	movq 8(%rbp),%rbx
 	andq $-8,%rbx
 	addq $24,%rbp
 	jmp *(%rbx)
-.Lc3H6:
+.Lc3Gx:
 	movq 16(%rbp),%rbx
 	andq $-8,%rbx
 	addq $24,%rbp
@@ -1006,13 +1006,13 @@ Main_zdfOrdNumberzuzdcmin_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3xo_info:
-.Lc3HH:
+.Ls3wY_info:
+.Lc3H8:
 	movq %rsi,%rdi
 	movq %r14,%rsi
 	movq 6(%rbx),%r14
 	jmp Main_zdfOrdNumberzuzdcmin_info
-	.size .Ls3xo_info, .-.Ls3xo_info
+	.size .Ls3wY_info, .-.Ls3wY_info
 .section .text
 .align 8
 .align 8
@@ -1020,13 +1020,13 @@ Main_zdfOrdNumberzuzdcmin_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3xn_info:
-.Lc3HP:
+.Ls3wX_info:
+.Lc3Hg:
 	movq %rsi,%rdi
 	movq %r14,%rsi
 	movq 6(%rbx),%r14
 	jmp Main_zdfOrdNumberzuzdcmax_info
-	.size .Ls3xn_info, .-.Ls3xn_info
+	.size .Ls3wX_info, .-.Ls3wX_info
 .section .text
 .align 8
 .align 8
@@ -1034,13 +1034,13 @@ Main_zdfOrdNumberzuzdcmin_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3xm_info:
-.Lc3HX:
+.Ls3wW_info:
+.Lc3Ho:
 	movq %rsi,%rdi
 	movq %r14,%rsi
 	movq 6(%rbx),%r14
 	jmp Main_zdfOrdNumberzuzdczgze_info
-	.size .Ls3xm_info, .-.Ls3xm_info
+	.size .Ls3wW_info, .-.Ls3wW_info
 .section .text
 .align 8
 .align 8
@@ -1048,13 +1048,13 @@ Main_zdfOrdNumberzuzdcmin_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3xl_info:
-.Lc3I5:
+.Ls3wV_info:
+.Lc3Hw:
 	movq %rsi,%rdi
 	movq %r14,%rsi
 	movq 6(%rbx),%r14
 	jmp Main_zdfOrdNumberzuzdczg_info
-	.size .Ls3xl_info, .-.Ls3xl_info
+	.size .Ls3wV_info, .-.Ls3wV_info
 .section .text
 .align 8
 .align 8
@@ -1062,13 +1062,13 @@ Main_zdfOrdNumberzuzdcmin_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3xk_info:
-.Lc3Id:
+.Ls3wU_info:
+.Lc3HE:
 	movq %rsi,%rdi
 	movq %r14,%rsi
 	movq 6(%rbx),%r14
 	jmp Main_zdfOrdNumberzuzdczlze_info
-	.size .Ls3xk_info, .-.Ls3xk_info
+	.size .Ls3wU_info, .-.Ls3wU_info
 .section .text
 .align 8
 .align 8
@@ -1076,13 +1076,13 @@ Main_zdfOrdNumberzuzdcmin_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3xj_info:
-.Lc3Il:
+.Ls3wT_info:
+.Lc3HM:
 	movq %rsi,%rdi
 	movq %r14,%rsi
 	movq 6(%rbx),%r14
 	jmp Main_zdfOrdNumberzuzdczl_info
-	.size .Ls3xj_info, .-.Ls3xj_info
+	.size .Ls3wT_info, .-.Ls3wT_info
 .section .text
 .align 8
 .align 8
@@ -1090,34 +1090,34 @@ Main_zdfOrdNumberzuzdcmin_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3xi_info:
-.Lc3It:
+.Ls3wS_info:
+.Lc3HU:
 	movq %rsi,%rdi
 	movq %r14,%rsi
 	movq 6(%rbx),%r14
 	jmp Main_zdfOrdNumberzuzdccompare_info
-	.size .Ls3xi_info, .-.Ls3xi_info
+	.size .Ls3wS_info, .-.Ls3wS_info
 .section .text
 .align 8
 .align 8
 	.quad	1
 	.long	16
 	.long	0
-.Ls3xh_info:
-.Lc3IA:
+.Ls3wR_info:
+.Lc3I1:
 	leaq -16(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3IB
-.Lc3IC:
+	jb .Lc3I2
+.Lc3I3:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
 	movq 16(%rbx),%r14
 	addq $-16,%rbp
 	jmp Main_zdfOrdNumberzuzdcp1Ord_info
-.Lc3IB:
+.Lc3I2:
 	jmp *-16(%r13)
-	.size .Ls3xh_info, .-.Ls3xh_info
+	.size .Ls3wR_info, .-.Ls3wR_info
 .section .text
 .align 8
 .align 8
@@ -1128,33 +1128,33 @@ Main_zdfOrdNumberzuzdcmin_closure:
 .globl Main_zdfOrdNumber_info
 .type Main_zdfOrdNumber_info, @function
 Main_zdfOrdNumber_info:
-.Lc3IE:
+.Lc3I5:
 	addq $208,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3II
-.Lc3IH:
-	leaq .Ls3xo_info(%rip),%rax
+	ja .Lc3I9
+.Lc3I8:
+	leaq .Ls3wY_info(%rip),%rax
 	movq %rax,-200(%r12)
 	movq %r14,-192(%r12)
-	leaq .Ls3xn_info(%rip),%rax
+	leaq .Ls3wX_info(%rip),%rax
 	movq %rax,-184(%r12)
 	movq %r14,-176(%r12)
-	leaq .Ls3xm_info(%rip),%rax
+	leaq .Ls3wW_info(%rip),%rax
 	movq %rax,-168(%r12)
 	movq %r14,-160(%r12)
-	leaq .Ls3xl_info(%rip),%rax
+	leaq .Ls3wV_info(%rip),%rax
 	movq %rax,-152(%r12)
 	movq %r14,-144(%r12)
-	leaq .Ls3xk_info(%rip),%rax
+	leaq .Ls3wU_info(%rip),%rax
 	movq %rax,-136(%r12)
 	movq %r14,-128(%r12)
-	leaq .Ls3xj_info(%rip),%rax
+	leaq .Ls3wT_info(%rip),%rax
 	movq %rax,-120(%r12)
 	movq %r14,-112(%r12)
-	leaq .Ls3xi_info(%rip),%rax
+	leaq .Ls3wS_info(%rip),%rax
 	movq %rax,-104(%r12)
 	movq %r14,-96(%r12)
-	leaq .Ls3xh_info(%rip),%rax
+	leaq .Ls3wR_info(%rip),%rax
 	movq %rax,-88(%r12)
 	movq %r14,-72(%r12)
 	movq ghczmprim_GHCziClasses_CZCOrd_con_info@gotpcrel(%rip),%rax
@@ -1177,7 +1177,7 @@ Main_zdfOrdNumber_info:
 	movq %rax,(%r12)
 	leaq -63(%r12),%rbx
 	jmp *(%rbp)
-.Lc3II:
+.Lc3I9:
 	movq $208,904(%r13)
 	leaq Main_zdfOrdNumber_closure(%rip),%rbx
 	jmp *-8(%r13)
@@ -1195,12 +1195,12 @@ Main_zdfOrdNumber_closure:
 	.quad	2
 	.long	18
 	.long	0
-.Ls3xr_info:
-.Lc3Jt:
+.Ls3x1_info:
+.Lc3IU:
 	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3Ju
-.Lc3Jv:
+	jb .Lc3IV
+.Lc3IW:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
@@ -1211,9 +1211,9 @@ Main_zdfOrdNumber_closure:
 	movq %rax,-24(%rbp)
 	addq $-32,%rbp
 	jmp *base_GHCziNum_fromInteger_info@gotpcrel(%rip)
-.Lc3Ju:
+.Lc3IV:
 	jmp *-16(%r13)
-	.size .Ls3xr_info, .-.Ls3xr_info
+	.size .Ls3x1_info, .-.Ls3x1_info
 .section .text
 .align 8
 .align 8
@@ -1224,12 +1224,12 @@ Main_zdfOrdNumber_closure:
 .globl Main_zdfNumNumberzuzdcfromInteger_info
 .type Main_zdfNumNumberzuzdcfromInteger_info, @function
 Main_zdfNumNumberzuzdcfromInteger_info:
-.Lc3Jx:
+.Lc3IY:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3JB
-.Lc3JA:
-	leaq .Ls3xr_info(%rip),%rax
+	ja .Lc3J2
+.Lc3J1:
+	leaq .Ls3x1_info(%rip),%rax
 	movq %rax,-40(%r12)
 	movq %r14,-24(%r12)
 	movq %rsi,-16(%r12)
@@ -1239,7 +1239,7 @@ Main_zdfNumNumberzuzdcfromInteger_info:
 	movq %rax,(%r12)
 	leaq -7(%r12),%rbx
 	jmp *(%rbp)
-.Lc3JB:
+.Lc3J2:
 	movq $48,904(%r13)
 	leaq Main_zdfNumNumberzuzdcfromInteger_closure(%rip),%rbx
 	jmp *-8(%r13)
@@ -1257,16 +1257,16 @@ Main_zdfNumNumberzuzdcfromInteger_closure:
 	.quad	3
 	.long	15
 	.long	0
-.Ls3xB_info:
-.Lc3JY:
+.Ls3xb_info:
+.Lc3Jp:
 	leaq -40(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3JZ
-.Lc3K0:
+	jb .Lc3Jq
+.Lc3Jr:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3K2
-.Lc3K1:
+	ja .Lc3Jt
+.Lc3Js:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
@@ -1288,11 +1288,11 @@ Main_zdfNumNumberzuzdcfromInteger_closure:
 	movq %rax,-24(%rbp)
 	addq $-40,%rbp
 	jmp *base_GHCziNum_zp_info@gotpcrel(%rip)
-.Lc3K2:
+.Lc3Jt:
 	movq $48,904(%r13)
-.Lc3JZ:
+.Lc3Jq:
 	jmp *-16(%r13)
-	.size .Ls3xB_info, .-.Ls3xB_info
+	.size .Ls3xb_info, .-.Ls3xb_info
 .section .text
 .align 8
 .align 8
@@ -1303,12 +1303,12 @@ Main_zdfNumNumberzuzdcfromInteger_closure:
 .globl Main_zdfNumNumberzuzdczp_info
 .type Main_zdfNumNumberzuzdczp_info, @function
 Main_zdfNumNumberzuzdczp_info:
-.Lc3K4:
+.Lc3Jv:
 	addq $56,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3K8
-.Lc3K7:
-	leaq .Ls3xB_info(%rip),%rax
+	ja .Lc3Jz
+.Lc3Jy:
+	leaq .Ls3xb_info(%rip),%rax
 	movq %rax,-48(%r12)
 	movq %r14,-32(%r12)
 	movq %rsi,-24(%r12)
@@ -1319,7 +1319,7 @@ Main_zdfNumNumberzuzdczp_info:
 	movq %rax,(%r12)
 	leaq -7(%r12),%rbx
 	jmp *(%rbp)
-.Lc3K8:
+.Lc3Jz:
 	movq $56,904(%r13)
 	leaq Main_zdfNumNumberzuzdczp_closure(%rip),%rbx
 	jmp *-8(%r13)
@@ -1337,16 +1337,16 @@ Main_zdfNumNumberzuzdczp_closure:
 	.quad	3
 	.long	15
 	.long	0
-.Ls3xL_info:
-.Lc3Ky:
+.Ls3xl_info:
+.Lc3JZ:
 	leaq -40(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3Kz
-.Lc3KA:
+	jb .Lc3K0
+.Lc3K1:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3KC
-.Lc3KB:
+	ja .Lc3K3
+.Lc3K2:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
@@ -1368,11 +1368,11 @@ Main_zdfNumNumberzuzdczp_closure:
 	movq %rax,-24(%rbp)
 	addq $-40,%rbp
 	jmp *base_GHCziNum_zt_info@gotpcrel(%rip)
-.Lc3KC:
+.Lc3K3:
 	movq $48,904(%r13)
-.Lc3Kz:
+.Lc3K0:
 	jmp *-16(%r13)
-	.size .Ls3xL_info, .-.Ls3xL_info
+	.size .Ls3xl_info, .-.Ls3xl_info
 .section .text
 .align 8
 .align 8
@@ -1383,12 +1383,12 @@ Main_zdfNumNumberzuzdczp_closure:
 .globl Main_zdfNumNumberzuzdczt_info
 .type Main_zdfNumNumberzuzdczt_info, @function
 Main_zdfNumNumberzuzdczt_info:
-.Lc3KE:
+.Lc3K5:
 	addq $56,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3KI
-.Lc3KH:
-	leaq .Ls3xL_info(%rip),%rax
+	ja .Lc3K9
+.Lc3K8:
+	leaq .Ls3xl_info(%rip),%rax
 	movq %rax,-48(%r12)
 	movq %r14,-32(%r12)
 	movq %rsi,-24(%r12)
@@ -1399,7 +1399,7 @@ Main_zdfNumNumberzuzdczt_info:
 	movq %rax,(%r12)
 	leaq -7(%r12),%rbx
 	jmp *(%rbp)
-.Lc3KI:
+.Lc3K9:
 	movq $56,904(%r13)
 	leaq Main_zdfNumNumberzuzdczt_closure(%rip),%rbx
 	jmp *-8(%r13)
@@ -1417,16 +1417,16 @@ Main_zdfNumNumberzuzdczt_closure:
 	.quad	2
 	.long	18
 	.long	0
-.Ls3xR_info:
-.Lc3L7:
+.Ls3xr_info:
+.Lc3Ky:
 	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3L8
-.Lc3L9:
+	jb .Lc3Kz
+.Lc3KA:
 	addq $24,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Lb
-.Lc3La:
+	ja .Lc3KC
+.Lc3KB:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
@@ -1442,11 +1442,11 @@ Main_zdfNumNumberzuzdczt_closure:
 	movq %rax,-24(%rbp)
 	addq $-32,%rbp
 	jmp *base_GHCziNum_negate_info@gotpcrel(%rip)
-.Lc3Lb:
+.Lc3KC:
 	movq $24,904(%r13)
-.Lc3L8:
+.Lc3Kz:
 	jmp *-16(%r13)
-	.size .Ls3xR_info, .-.Ls3xR_info
+	.size .Ls3xr_info, .-.Ls3xr_info
 .section .text
 .align 8
 .align 8
@@ -1457,12 +1457,12 @@ Main_zdfNumNumberzuzdczt_closure:
 .globl Main_zdfNumNumberzuzdcnegate_info
 .type Main_zdfNumNumberzuzdcnegate_info, @function
 Main_zdfNumNumberzuzdcnegate_info:
-.Lc3Ld:
+.Lc3KE:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Lh
-.Lc3Lg:
-	leaq .Ls3xR_info(%rip),%rax
+	ja .Lc3KI
+.Lc3KH:
+	leaq .Ls3xr_info(%rip),%rax
 	movq %rax,-40(%r12)
 	movq %rsi,-24(%r12)
 	movq %r14,-16(%r12)
@@ -1472,7 +1472,7 @@ Main_zdfNumNumberzuzdcnegate_info:
 	movq %rax,(%r12)
 	leaq -7(%r12),%rbx
 	jmp *(%rbp)
-.Lc3Lh:
+.Lc3KI:
 	movq $48,904(%r13)
 	leaq Main_zdfNumNumberzuzdcnegate_closure(%rip),%rbx
 	jmp *-8(%r13)
@@ -1490,16 +1490,16 @@ Main_zdfNumNumberzuzdcnegate_closure:
 	.quad	2
 	.long	18
 	.long	0
-.Ls3xX_info:
-.Lc3LE:
+.Ls3xx_info:
+.Lc3L5:
 	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3LF
-.Lc3LG:
+	jb .Lc3L6
+.Lc3L7:
 	addq $24,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3LI
-.Lc3LH:
+	ja .Lc3L9
+.Lc3L8:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
@@ -1515,11 +1515,11 @@ Main_zdfNumNumberzuzdcnegate_closure:
 	movq %rax,-24(%rbp)
 	addq $-32,%rbp
 	jmp *base_GHCziNum_abs_info@gotpcrel(%rip)
-.Lc3LI:
+.Lc3L9:
 	movq $24,904(%r13)
-.Lc3LF:
+.Lc3L6:
 	jmp *-16(%r13)
-	.size .Ls3xX_info, .-.Ls3xX_info
+	.size .Ls3xx_info, .-.Ls3xx_info
 .section .text
 .align 8
 .align 8
@@ -1530,12 +1530,12 @@ Main_zdfNumNumberzuzdcnegate_closure:
 .globl Main_zdfNumNumberzuzdcabs_info
 .type Main_zdfNumNumberzuzdcabs_info, @function
 Main_zdfNumNumberzuzdcabs_info:
-.Lc3LK:
+.Lc3Lb:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3LO
-.Lc3LN:
-	leaq .Ls3xX_info(%rip),%rax
+	ja .Lc3Lf
+.Lc3Le:
+	leaq .Ls3xx_info(%rip),%rax
 	movq %rax,-40(%r12)
 	movq %rsi,-24(%r12)
 	movq %r14,-16(%r12)
@@ -1545,7 +1545,7 @@ Main_zdfNumNumberzuzdcabs_info:
 	movq %rax,(%r12)
 	leaq -7(%r12),%rbx
 	jmp *(%rbp)
-.Lc3LO:
+.Lc3Lf:
 	movq $48,904(%r13)
 	leaq Main_zdfNumNumberzuzdcabs_closure(%rip),%rbx
 	jmp *-8(%r13)
@@ -1563,16 +1563,16 @@ Main_zdfNumNumberzuzdcabs_closure:
 	.quad	2
 	.long	18
 	.long	0
-.Ls3y3_info:
-.Lc3Mb:
+.Ls3xD_info:
+.Lc3LC:
 	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3Mc
-.Lc3Md:
+	jb .Lc3LD
+.Lc3LE:
 	addq $24,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Mf
-.Lc3Me:
+	ja .Lc3LG
+.Lc3LF:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
@@ -1588,11 +1588,11 @@ Main_zdfNumNumberzuzdcabs_closure:
 	movq %rax,-24(%rbp)
 	addq $-32,%rbp
 	jmp *base_GHCziNum_signum_info@gotpcrel(%rip)
-.Lc3Mf:
+.Lc3LG:
 	movq $24,904(%r13)
-.Lc3Mc:
+.Lc3LD:
 	jmp *-16(%r13)
-	.size .Ls3y3_info, .-.Ls3y3_info
+	.size .Ls3xD_info, .-.Ls3xD_info
 .section .text
 .align 8
 .align 8
@@ -1603,12 +1603,12 @@ Main_zdfNumNumberzuzdcabs_closure:
 .globl Main_zdfNumNumberzuzdcsignum_info
 .type Main_zdfNumNumberzuzdcsignum_info, @function
 Main_zdfNumNumberzuzdcsignum_info:
-.Lc3Mh:
+.Lc3LI:
 	addq $48,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Ml
-.Lc3Mk:
-	leaq .Ls3y3_info(%rip),%rax
+	ja .Lc3LM
+.Lc3LL:
+	leaq .Ls3xD_info(%rip),%rax
 	movq %rax,-40(%r12)
 	movq %rsi,-24(%r12)
 	movq %r14,-16(%r12)
@@ -1618,7 +1618,7 @@ Main_zdfNumNumberzuzdcsignum_info:
 	movq %rax,(%r12)
 	leaq -7(%r12),%rbx
 	jmp *(%rbp)
-.Lc3Ml:
+.Lc3LM:
 	movq $48,904(%r13)
 	leaq Main_zdfNumNumberzuzdcsignum_closure(%rip),%rbx
 	jmp *-8(%r13)
@@ -1636,16 +1636,16 @@ Main_zdfNumNumberzuzdcsignum_closure:
 	.quad	2
 	.long	18
 	.long	0
-.Ls3yd_info:
-.Lc3MM:
+.Ls3xN_info:
+.Lc3Md:
 	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3MN
-.Lc3MO:
+	jb .Lc3Me
+.Lc3Mf:
 	addq $24,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3MQ
-.Lc3MP:
+	ja .Lc3Mh
+.Lc3Mg:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
@@ -1661,34 +1661,34 @@ Main_zdfNumNumberzuzdcsignum_closure:
 	movq %rax,-24(%rbp)
 	addq $-32,%rbp
 	jmp *base_GHCziNum_negate_info@gotpcrel(%rip)
-.Lc3MQ:
+.Lc3Mh:
 	movq $24,904(%r13)
-.Lc3MN:
+.Lc3Me:
 	jmp *-16(%r13)
-	.size .Ls3yd_info, .-.Ls3yd_info
+	.size .Ls3xN_info, .-.Ls3xN_info
 .section .text
 .align 8
 .align 8
 	.quad	3
 	.long	15
 	.long	0
-.Ls3ye_info:
-.Lc3MS:
+.Ls3xO_info:
+.Lc3Mj:
 	leaq -40(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3MT
-.Lc3MU:
+	jb .Lc3Mk
+.Lc3Ml:
 	addq $56,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3MW
-.Lc3MV:
+	ja .Lc3Mn
+.Lc3Mm:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
 	movq 16(%rbx),%rax
 	movq 24(%rbx),%rcx
 	movq 32(%rbx),%rbx
-	leaq .Ls3yd_info(%rip),%rdx
+	leaq .Ls3xN_info(%rip),%rdx
 	movq %rdx,-48(%r12)
 	movq %rbx,-32(%r12)
 	movq %rax,-24(%r12)
@@ -1704,11 +1704,11 @@ Main_zdfNumNumberzuzdcsignum_closure:
 	movq %rax,-24(%rbp)
 	addq $-40,%rbp
 	jmp *base_GHCziNum_zp_info@gotpcrel(%rip)
-.Lc3MW:
+.Lc3Mn:
 	movq $56,904(%r13)
-.Lc3MT:
+.Lc3Mk:
 	jmp *-16(%r13)
-	.size .Ls3ye_info, .-.Ls3ye_info
+	.size .Ls3xO_info, .-.Ls3xO_info
 .section .text
 .align 8
 .align 8
@@ -1719,12 +1719,12 @@ Main_zdfNumNumberzuzdcsignum_closure:
 .globl Main_zdfNumNumberzuzdczm_info
 .type Main_zdfNumNumberzuzdczm_info, @function
 Main_zdfNumNumberzuzdczm_info:
-.Lc3MY:
+.Lc3Mp:
 	addq $56,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3N2
-.Lc3N1:
-	leaq .Ls3ye_info(%rip),%rax
+	ja .Lc3Mt
+.Lc3Ms:
+	leaq .Ls3xO_info(%rip),%rax
 	movq %rax,-48(%r12)
 	movq %r14,-32(%r12)
 	movq %rsi,-24(%r12)
@@ -1735,7 +1735,7 @@ Main_zdfNumNumberzuzdczm_info:
 	movq %rax,(%r12)
 	leaq -7(%r12),%rbx
 	jmp *(%rbp)
-.Lc3N2:
+.Lc3Mt:
 	movq $56,904(%r13)
 	leaq Main_zdfNumNumberzuzdczm_closure(%rip),%rbx
 	jmp *-8(%r13)
@@ -1754,12 +1754,12 @@ Main_zdfNumNumberzuzdczm_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3ym_info:
-.Lc3Ny:
+.Ls3xW_info:
+.Lc3MZ:
 	movq %r14,%rsi
 	movq 7(%rbx),%r14
 	jmp Main_zdfNumNumberzuzdcfromInteger_info
-	.size .Ls3ym_info, .-.Ls3ym_info
+	.size .Ls3xW_info, .-.Ls3xW_info
 .section .text
 .align 8
 .align 8
@@ -1767,12 +1767,12 @@ Main_zdfNumNumberzuzdczm_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3yl_info:
-.Lc3NG:
+.Ls3xV_info:
+.Lc3N7:
 	movq %r14,%rsi
 	movq 7(%rbx),%r14
 	jmp Main_zdfNumNumberzuzdcsignum_info
-	.size .Ls3yl_info, .-.Ls3yl_info
+	.size .Ls3xV_info, .-.Ls3xV_info
 .section .text
 .align 8
 .align 8
@@ -1780,12 +1780,12 @@ Main_zdfNumNumberzuzdczm_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3yk_info:
-.Lc3NO:
+.Ls3xU_info:
+.Lc3Nf:
 	movq %r14,%rsi
 	movq 7(%rbx),%r14
 	jmp Main_zdfNumNumberzuzdcabs_info
-	.size .Ls3yk_info, .-.Ls3yk_info
+	.size .Ls3xU_info, .-.Ls3xU_info
 .section .text
 .align 8
 .align 8
@@ -1793,12 +1793,12 @@ Main_zdfNumNumberzuzdczm_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3yj_info:
-.Lc3NW:
+.Ls3xT_info:
+.Lc3Nn:
 	movq %r14,%rsi
 	movq 7(%rbx),%r14
 	jmp Main_zdfNumNumberzuzdcnegate_info
-	.size .Ls3yj_info, .-.Ls3yj_info
+	.size .Ls3xT_info, .-.Ls3xT_info
 .section .text
 .align 8
 .align 8
@@ -1806,13 +1806,13 @@ Main_zdfNumNumberzuzdczm_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3yi_info:
-.Lc3O4:
+.Ls3xS_info:
+.Lc3Nv:
 	movq %rsi,%rdi
 	movq %r14,%rsi
 	movq 6(%rbx),%r14
 	jmp Main_zdfNumNumberzuzdczt_info
-	.size .Ls3yi_info, .-.Ls3yi_info
+	.size .Ls3xS_info, .-.Ls3xS_info
 .section .text
 .align 8
 .align 8
@@ -1820,13 +1820,13 @@ Main_zdfNumNumberzuzdczm_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3yh_info:
-.Lc3Oc:
+.Ls3xR_info:
+.Lc3ND:
 	movq %rsi,%rdi
 	movq %r14,%rsi
 	movq 6(%rbx),%r14
 	jmp Main_zdfNumNumberzuzdczm_info
-	.size .Ls3yh_info, .-.Ls3yh_info
+	.size .Ls3xR_info, .-.Ls3xR_info
 .section .text
 .align 8
 .align 8
@@ -1834,13 +1834,13 @@ Main_zdfNumNumberzuzdczm_closure:
 	.quad	1
 	.long	9
 	.long	0
-.Ls3yg_info:
-.Lc3Ok:
+.Ls3xQ_info:
+.Lc3NL:
 	movq %rsi,%rdi
 	movq %r14,%rsi
 	movq 6(%rbx),%r14
 	jmp Main_zdfNumNumberzuzdczp_info
-	.size .Ls3yg_info, .-.Ls3yg_info
+	.size .Ls3xQ_info, .-.Ls3xQ_info
 .section .text
 .align 8
 .align 8
@@ -1851,30 +1851,30 @@ Main_zdfNumNumberzuzdczm_closure:
 .globl Main_zdfNumNumber_info
 .type Main_zdfNumNumber_info, @function
 Main_zdfNumNumber_info:
-.Lc3Oo:
+.Lc3NP:
 	addq $176,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Os
-.Lc3Or:
-	leaq .Ls3ym_info(%rip),%rax
+	ja .Lc3NT
+.Lc3NS:
+	leaq .Ls3xW_info(%rip),%rax
 	movq %rax,-168(%r12)
 	movq %r14,-160(%r12)
-	leaq .Ls3yl_info(%rip),%rax
+	leaq .Ls3xV_info(%rip),%rax
 	movq %rax,-152(%r12)
 	movq %r14,-144(%r12)
-	leaq .Ls3yk_info(%rip),%rax
+	leaq .Ls3xU_info(%rip),%rax
 	movq %rax,-136(%r12)
 	movq %r14,-128(%r12)
-	leaq .Ls3yj_info(%rip),%rax
+	leaq .Ls3xT_info(%rip),%rax
 	movq %rax,-120(%r12)
 	movq %r14,-112(%r12)
-	leaq .Ls3yi_info(%rip),%rax
+	leaq .Ls3xS_info(%rip),%rax
 	movq %rax,-104(%r12)
 	movq %r14,-96(%r12)
-	leaq .Ls3yh_info(%rip),%rax
+	leaq .Ls3xR_info(%rip),%rax
 	movq %rax,-88(%r12)
 	movq %r14,-80(%r12)
-	leaq .Ls3yg_info(%rip),%rax
+	leaq .Ls3xQ_info(%rip),%rax
 	movq %rax,-72(%r12)
 	movq %r14,-64(%r12)
 	movq base_GHCziNum_CZCNum_con_info@gotpcrel(%rip),%rax
@@ -1895,7 +1895,7 @@ Main_zdfNumNumber_info:
 	movq %rax,(%r12)
 	leaq -55(%r12),%rbx
 	jmp *(%rbp)
-.Lc3Os:
+.Lc3NT:
 	movq $176,904(%r13)
 	leaq Main_zdfNumNumber_closure(%rip),%rbx
 	jmp *-8(%r13)
@@ -1917,29 +1917,29 @@ Main_zdfNumNumber_closure:
 .globl Main_getNumber_info
 .type Main_getNumber_info, @function
 Main_getNumber_info:
-.Lc3P6:
+.Lc3Ox:
 	leaq -8(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3P7
-.Lc3P8:
-	leaq .Lc3P3_info(%rip),%rax
+	jb .Lc3Oy
+.Lc3Oz:
+	leaq .Lc3Ou_info(%rip),%rax
 	movq %rax,-8(%rbp)
 	movq %r14,%rbx
 	addq $-8,%rbp
 	testb $7,%bl
-	jne .Lc3P3
-.Lc3P4:
+	jne .Lc3Ou
+.Lc3Ov:
 	jmp *(%rbx)
 .align 8
 	.quad	0
 	.long	30
 	.long	0
-.Lc3P3_info:
-.Lc3P3:
+.Lc3Ou_info:
+.Lc3Ou:
 	movq 7(%rbx),%rbx
 	addq $8,%rbp
 	jmp *stg_ap_0_fast@gotpcrel(%rip)
-.Lc3P7:
+.Lc3Oy:
 	leaq Main_getNumber_closure(%rip),%rbx
 	jmp *-8(%r13)
 	.size Main_getNumber_info, .-Main_getNumber_info
@@ -1953,13 +1953,13 @@ Main_getNumber_closure:
 .section .data
 .align 8
 .align 1
-.Lr3uo_closure:
+.Lr3tZ_closure:
 	.quad	ghczmbignum_GHCziNumziInteger_IS_con_info
 	.quad	1
 .section .data
 .align 8
 .align 1
-.Lr3up_closure:
+.Lr3u0_closure:
 	.quad	ghczmbignum_GHCziNumziInteger_IS_con_info
 	.quad	2
 .section .text
@@ -1968,43 +1968,43 @@ Main_getNumber_closure:
 	.quad	4294967296
 	.long	17
 	.long	0
-.Ls3yD_info:
-.Lc3Pw:
+.Ls3yd_info:
+.Lc3OX:
 	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3PT
-.Lc3PU:
+	jb .Lc3Pk
+.Lc3Pl:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
-	leaq .Lc3Py_info(%rip),%rax
+	leaq .Lc3OZ_info(%rip),%rax
 	movq %rax,-32(%rbp)
 	movq 16(%rbx),%rax
 	leaq -1(%rax),%r14
 	movq %rax,-24(%rbp)
 	addq $-32,%rbp
 	jmp Main_zdwzdsfibo_info
-.Lc3PT:
+.Lc3Pk:
 	jmp *-16(%r13)
 .align 8
 	.quad	65
 	.long	30
 	.long	0
-.Lc3Py_info:
-.Lc3Py:
-	leaq .Lc3PA_info(%rip),%rax
+.Lc3OZ_info:
+.Lc3OZ:
+	leaq .Lc3P1_info(%rip),%rax
 	movq %rax,(%rbp)
 	testb $7,%bl
-	jne .Lc3PA
-.Lc3PB:
+	jne .Lc3P1
+.Lc3P2:
 	jmp *(%rbx)
 .align 8
 	.quad	65
 	.long	30
 	.long	0
-.Lc3PA_info:
-.Lc3PA:
-	leaq .Lc3PI_info(%rip),%rax
+.Lc3P1_info:
+.Lc3P1:
+	leaq .Lc3P9_info(%rip),%rax
 	movq %rax,(%rbp)
 	movq 8(%rbp),%rax
 	leaq -2(%rax),%r14
@@ -2015,24 +2015,24 @@ Main_getNumber_closure:
 	.quad	65
 	.long	30
 	.long	0
-.Lc3PI_info:
-.Lc3PI:
-	leaq .Lc3PK_info(%rip),%rax
+.Lc3P9_info:
+.Lc3P9:
+	leaq .Lc3Pb_info(%rip),%rax
 	movq %rax,(%rbp)
 	testb $7,%bl
-	jne .Lc3PK
-.Lc3PL:
+	jne .Lc3Pb
+.Lc3Pc:
 	jmp *(%rbx)
 .align 8
 	.quad	65
 	.long	30
 	.long	0
-.Lc3PK_info:
-.Lc3PK:
+.Lc3Pb_info:
+.Lc3Pb:
 	addq $16,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Q0
-.Lc3PZ:
+	ja .Lc3Pr
+.Lc3Pq:
 	leaq 7(%rbx),%rax
 	movq 8(%rbp),%rbx
 	addq (%rax),%rbx
@@ -2042,10 +2042,10 @@ Main_getNumber_closure:
 	leaq -7(%r12),%rbx
 	addq $16,%rbp
 	jmp *(%rbp)
-.Lc3Q0:
+.Lc3Pr:
 	movq $16,904(%r13)
 	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
-	.size .Ls3yD_info, .-.Ls3yD_info
+	.size .Ls3yd_info, .-.Ls3yd_info
 .section .text
 .align 8
 .align 8
@@ -2056,25 +2056,28 @@ Main_getNumber_closure:
 .globl Main_zdwzdsfibo_info
 .type Main_zdwzdsfibo_info, @function
 Main_zdwzdsfibo_info:
-.Lc3Q4:
+.Lc3Pv:
 	addq $24,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Q8
-.Lc3Q7:
+	ja .Lc3Pz
+.Lc3Py:
 	cmpq $1,%r14
-	jg .Lc3Q2
-.Lc3Q3:
-	addq $-24,%r12
-	movq stg_INTLIKE_closure@gotpcrel(%rip),%rax
-	leaq 273(%rax),%rbx
+	jg .Lc3Pt
+.Lc3Pu:
+	movq ghczmprim_GHCziTypes_Izh_con_info@gotpcrel(%rip),%rax
+	movq %rax,-16(%r12)
+	movq %r14,-8(%r12)
+	leaq -15(%r12),%rax
+	addq $-8,%r12
+	movq %rax,%rbx
 	jmp *(%rbp)
-.Lc3Q2:
-	leaq .Ls3yD_info(%rip),%rax
+.Lc3Pt:
+	leaq .Ls3yd_info(%rip),%rax
 	movq %rax,-16(%r12)
 	movq %r14,(%r12)
 	leaq -16(%r12),%rbx
 	jmp *(%rbp)
-.Lc3Q8:
+.Lc3Pz:
 	movq $24,904(%r13)
 	leaq Main_zdwzdsfibo_closure(%rip),%rbx
 	jmp *-8(%r13)
@@ -2096,62 +2099,62 @@ Main_zdwzdsfibo_closure:
 .globl Main_fibozuzdsfibo_info
 .type Main_fibozuzdsfibo_info, @function
 Main_fibozuzdsfibo_info:
-.Lc3Qy:
+.Lc3Q1:
 	leaq -8(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3QJ
-.Lc3QK:
-	leaq .Lc3Qv_info(%rip),%rax
+	jb .Lc3Qc
+.Lc3Qd:
+	leaq .Lc3PY_info(%rip),%rax
 	movq %rax,-8(%rbp)
 	movq %r14,%rbx
 	addq $-8,%rbp
 	testb $7,%bl
-	jne .Lc3Qv
-.Lc3Qw:
+	jne .Lc3PY
+.Lc3PZ:
 	jmp *(%rbx)
 .align 8
 	.quad	0
 	.long	30
 	.long	0
-.Lc3Qv_info:
-.Lc3Qv:
-	leaq .Lc3QB_info(%rip),%rax
+.Lc3PY_info:
+.Lc3PY:
+	leaq .Lc3Q4_info(%rip),%rax
 	movq %rax,(%rbp)
 	movq 7(%rbx),%rbx
 	testb $7,%bl
-	jne .Lc3QB
-.Lc3QC:
+	jne .Lc3Q4
+.Lc3Q5:
 	jmp *(%rbx)
 .align 8
 	.quad	0
 	.long	30
 	.long	0
-.Lc3QB_info:
-.Lc3QB:
-	leaq .Lc3QG_info(%rip),%rax
+.Lc3Q4_info:
+.Lc3Q4:
+	leaq .Lc3Q9_info(%rip),%rax
 	movq %rax,(%rbp)
 	movq 7(%rbx),%r14
 	jmp Main_zdwzdsfibo_info
-.Lc3QJ:
+.Lc3Qc:
 	leaq Main_fibozuzdsfibo_closure(%rip),%rbx
 	jmp *-8(%r13)
 .align 8
 	.quad	0
 	.long	30
 	.long	0
-.Lc3QG_info:
-.Lc3QG:
+.Lc3Q9_info:
+.Lc3Q9:
 	addq $16,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3QP
-.Lc3QO:
+	ja .Lc3Qi
+.Lc3Qh:
 	leaq Main_Number_con_info(%rip),%rax
 	movq %rax,-8(%r12)
 	movq %rbx,(%r12)
 	leaq -7(%r12),%rbx
 	addq $8,%rbp
 	jmp *(%rbp)
-.Lc3QP:
+.Lc3Qi:
 	movq $16,904(%r13)
 	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
 	.size Main_fibozuzdsfibo_info, .-Main_fibozuzdsfibo_info
@@ -2168,307 +2171,304 @@ Main_fibozuzdsfibo_closure:
 	.quad	1
 	.long	16
 	.long	0
-.Ls3yQ_info:
-.Lc3R6:
-	leaq -16(%rbp),%rax
+.Ls3yp_info:
+.Lc3Qz:
+	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3R7
-.Lc3R8:
+	jb .Lc3QA
+.Lc3QB:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
-	leaq .Lr3uo_closure+1(%rip),%r14
-	movq 16(%rbx),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_p_fast@gotpcrel(%rip)
-.Lc3R7:
+	movq 16(%rbx),%r14
+	movq stg_ap_p_info@gotpcrel(%rip),%rax
+	movq %rax,-32(%rbp)
+	leaq .Lr3tZ_closure+1(%rip),%rax
+	movq %rax,-24(%rbp)
+	addq $-32,%rbp
+	jmp *base_GHCziNum_fromInteger_info@gotpcrel(%rip)
+.Lc3QA:
 	jmp *-16(%r13)
-	.size .Ls3yQ_info, .-.Ls3yQ_info
+	.size .Ls3yp_info, .-.Ls3yp_info
 .section .text
 .align 8
 .align 8
 	.quad	1
 	.long	16
 	.long	0
-.Ls3yV_info:
+.Ls3yu_info:
+.Lc3QS:
+	leaq -32(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc3QT
+.Lc3QU:
+	movq stg_upd_frame_info@gotpcrel(%rip),%rax
+	movq %rax,-16(%rbp)
+	movq %rbx,-8(%rbp)
+	movq 16(%rbx),%r14
+	movq stg_ap_p_info@gotpcrel(%rip),%rax
+	movq %rax,-32(%rbp)
+	leaq .Lr3u0_closure+1(%rip),%rax
+	movq %rax,-24(%rbp)
+	addq $-32,%rbp
+	jmp *base_GHCziNum_fromInteger_info@gotpcrel(%rip)
+.Lc3QT:
+	jmp *-16(%r13)
+	.size .Ls3yu_info, .-.Ls3yu_info
+.section .text
+.align 8
+.align 8
+	.quad	2
+	.long	18
+	.long	0
+.Ls3yv_info:
+.Lc3QV:
+	leaq -40(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc3QW
+.Lc3QX:
+	addq $24,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc3QZ
+.Lc3QY:
+	movq stg_upd_frame_info@gotpcrel(%rip),%rax
+	movq %rax,-16(%rbp)
+	movq %rbx,-8(%rbp)
+	movq 16(%rbx),%rax
+	movq 24(%rbx),%rbx
+	leaq .Ls3yu_info(%rip),%rcx
+	movq %rcx,-16(%r12)
+	movq %rax,(%r12)
+	movq %rax,%r14
+	movq stg_ap_pp_info@gotpcrel(%rip),%rax
+	movq %rax,-40(%rbp)
+	movq %rbx,-32(%rbp)
+	leaq -16(%r12),%rax
+	movq %rax,-24(%rbp)
+	addq $-40,%rbp
+	jmp *base_GHCziNum_zm_info@gotpcrel(%rip)
+.Lc3QZ:
+	movq $24,904(%r13)
+.Lc3QW:
+	jmp *-16(%r13)
+	.size .Ls3yv_info, .-.Ls3yv_info
+.section .text
+.align 8
+.align 8
+	.quad	3
+	.long	15
+	.long	0
+.Ls3yw_info:
+.Lc3R0:
+	leaq -16(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc3R1
+.Lc3R2:
+	addq $32,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc3R4
+.Lc3R3:
+	movq stg_upd_frame_info@gotpcrel(%rip),%rax
+	movq %rax,-16(%rbp)
+	movq %rbx,-8(%rbp)
+	movq 16(%rbx),%rax
+	movq 24(%rbx),%rcx
+	movq 32(%rbx),%rbx
+	leaq .Ls3yv_info(%rip),%rdx
+	movq %rdx,-24(%r12)
+	movq %rax,-8(%r12)
+	movq %rcx,(%r12)
+	leaq -24(%r12),%rdi
+	movq %rax,%rsi
+	movq %rbx,%r14
+	addq $-16,%rbp
+	jmp Main_zdwfibo_info
+.Lc3R4:
+	movq $32,904(%r13)
+.Lc3R1:
+	jmp *-16(%r13)
+	.size .Ls3yw_info, .-.Ls3yw_info
+.section .text
+.align 8
+.align 8
+	.quad	1
+	.long	16
+	.long	0
+.Ls3yr_info:
+.Lc3Rh:
+	leaq -32(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc3Ri
+.Lc3Rj:
+	movq stg_upd_frame_info@gotpcrel(%rip),%rax
+	movq %rax,-16(%rbp)
+	movq %rbx,-8(%rbp)
+	movq 16(%rbx),%r14
+	movq stg_ap_p_info@gotpcrel(%rip),%rax
+	movq %rax,-32(%rbp)
+	leaq .Lr3tZ_closure+1(%rip),%rax
+	movq %rax,-24(%rbp)
+	addq $-32,%rbp
+	jmp *base_GHCziNum_fromInteger_info@gotpcrel(%rip)
+.Lc3Ri:
+	jmp *-16(%r13)
+	.size .Ls3yr_info, .-.Ls3yr_info
+.section .text
+.align 8
+.align 8
+	.quad	2
+	.long	18
+	.long	0
+.Ls3ys_info:
+.Lc3Rk:
+	leaq -40(%rbp),%rax
+	cmpq %r15,%rax
+	jb .Lc3Rl
+.Lc3Rm:
+	addq $24,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc3Ro
+.Lc3Rn:
+	movq stg_upd_frame_info@gotpcrel(%rip),%rax
+	movq %rax,-16(%rbp)
+	movq %rbx,-8(%rbp)
+	movq 16(%rbx),%rax
+	movq 24(%rbx),%rbx
+	leaq .Ls3yr_info(%rip),%rcx
+	movq %rcx,-16(%r12)
+	movq %rax,(%r12)
+	movq %rax,%r14
+	movq stg_ap_pp_info@gotpcrel(%rip),%rax
+	movq %rax,-40(%rbp)
+	movq %rbx,-32(%rbp)
+	leaq -16(%r12),%rax
+	movq %rax,-24(%rbp)
+	addq $-40,%rbp
+	jmp *base_GHCziNum_zm_info@gotpcrel(%rip)
+.Lc3Ro:
+	movq $24,904(%r13)
+.Lc3Rl:
+	jmp *-16(%r13)
+	.size .Ls3ys_info, .-.Ls3ys_info
+.section .text
+.align 8
+.align 8
+	.quad	3
+	.long	15
+	.long	0
+.Ls3yt_info:
 .Lc3Rp:
 	leaq -16(%rbp),%rax
 	cmpq %r15,%rax
 	jb .Lc3Rq
 .Lc3Rr:
+	addq $32,%r12
+	cmpq 856(%r13),%r12
+	ja .Lc3Rt
+.Lc3Rs:
 	movq stg_upd_frame_info@gotpcrel(%rip),%rax
 	movq %rax,-16(%rbp)
 	movq %rbx,-8(%rbp)
-	leaq .Lr3up_closure+1(%rip),%r14
-	movq 16(%rbx),%rbx
+	movq 16(%rbx),%rax
+	movq 24(%rbx),%rcx
+	movq 32(%rbx),%rbx
+	leaq .Ls3ys_info(%rip),%rdx
+	movq %rdx,-24(%r12)
+	movq %rax,-8(%r12)
+	movq %rcx,(%r12)
+	leaq -24(%r12),%rdi
+	movq %rax,%rsi
+	movq %rbx,%r14
 	addq $-16,%rbp
-	jmp *stg_ap_p_fast@gotpcrel(%rip)
+	jmp Main_zdwfibo_info
+.Lc3Rt:
+	movq $32,904(%r13)
 .Lc3Rq:
 	jmp *-16(%r13)
-	.size .Ls3yV_info, .-.Ls3yV_info
+	.size .Ls3yt_info, .-.Ls3yt_info
 .section .text
 .align 8
 .align 8
-	.quad	3
-	.long	15
-	.long	0
-.Ls3yW_info:
-.Lc3Rs:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc3Rt
-.Lc3Ru:
-	addq $24,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc3Rw
-.Lc3Rv:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	movq 24(%rbx),%rcx
-	movq 32(%rbx),%rbx
-	leaq .Ls3yV_info(%rip),%rdx
-	movq %rdx,-16(%r12)
-	movq %rbx,(%r12)
-	leaq -16(%r12),%rsi
-	movq %rax,%r14
-	movq %rcx,%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc3Rw:
-	movq $24,904(%r13)
-.Lc3Rt:
-	jmp *-16(%r13)
-	.size .Ls3yW_info, .-.Ls3yW_info
-.section .text
-.align 8
-.align 8
-	.quad	5
-	.long	15
-	.long	0
-.Ls3yX_info:
-.Lc3Rx:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc3Ry
-.Lc3Rz:
-	addq $40,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc3RB
-.Lc3RA:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	movq 24(%rbx),%rcx
-	movq 32(%rbx),%rdx
-	movq 40(%rbx),%rsi
-	movq 48(%rbx),%rbx
-	leaq .Ls3yW_info(%rip),%rdi
-	movq %rdi,-32(%r12)
-	movq %rbx,-16(%r12)
-	movq %rdx,-8(%r12)
-	movq %rsi,(%r12)
-	leaq -32(%r12),%r9
-	movq %rsi,%r8
-	movq %rdx,%rdi
-	movq %rcx,%rsi
-	movq %rax,%r14
-	addq $-16,%rbp
-	jmp Main_zdwfibo_info
-.Lc3RB:
-	movq $40,904(%r13)
-.Lc3Ry:
-	jmp *-16(%r13)
-	.size .Ls3yX_info, .-.Ls3yX_info
-.section .text
-.align 8
-.align 8
-	.quad	1
-	.long	16
-	.long	0
-.Ls3yS_info:
-.Lc3RO:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc3RP
-.Lc3RQ:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	leaq .Lr3uo_closure+1(%rip),%r14
-	movq 16(%rbx),%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_p_fast@gotpcrel(%rip)
-.Lc3RP:
-	jmp *-16(%r13)
-	.size .Ls3yS_info, .-.Ls3yS_info
-.section .text
-.align 8
-.align 8
-	.quad	3
-	.long	15
-	.long	0
-.Ls3yT_info:
-.Lc3RR:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc3RS
-.Lc3RT:
-	addq $24,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc3RV
-.Lc3RU:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	movq 24(%rbx),%rcx
-	movq 32(%rbx),%rbx
-	leaq .Ls3yS_info(%rip),%rdx
-	movq %rdx,-16(%r12)
-	movq %rbx,(%r12)
-	leaq -16(%r12),%rsi
-	movq %rax,%r14
-	movq %rcx,%rbx
-	addq $-16,%rbp
-	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc3RV:
-	movq $24,904(%r13)
-.Lc3RS:
-	jmp *-16(%r13)
-	.size .Ls3yT_info, .-.Ls3yT_info
-.section .text
-.align 8
-.align 8
-	.quad	5
-	.long	15
-	.long	0
-.Ls3yU_info:
-.Lc3RW:
-	leaq -16(%rbp),%rax
-	cmpq %r15,%rax
-	jb .Lc3RX
-.Lc3RY:
-	addq $40,%r12
-	cmpq 856(%r13),%r12
-	ja .Lc3S0
-.Lc3RZ:
-	movq stg_upd_frame_info@gotpcrel(%rip),%rax
-	movq %rax,-16(%rbp)
-	movq %rbx,-8(%rbp)
-	movq 16(%rbx),%rax
-	movq 24(%rbx),%rcx
-	movq 32(%rbx),%rdx
-	movq 40(%rbx),%rsi
-	movq 48(%rbx),%rbx
-	leaq .Ls3yT_info(%rip),%rdi
-	movq %rdi,-32(%r12)
-	movq %rbx,-16(%r12)
-	movq %rdx,-8(%r12)
-	movq %rsi,(%r12)
-	leaq -32(%r12),%r9
-	movq %rsi,%r8
-	movq %rdx,%rdi
-	movq %rcx,%rsi
-	movq %rax,%r14
-	addq $-16,%rbp
-	jmp Main_zdwfibo_info
-.Lc3S0:
-	movq $40,904(%r13)
-.Lc3RX:
-	jmp *-16(%r13)
-	.size .Ls3yU_info, .-.Ls3yU_info
-.section .text
-.align 8
-.align 8
-	.quad	21474836505
+	.quad	12884901911
 	.quad	0
 	.long	14
 	.long	0
 .globl Main_zdwfibo_info
 .type Main_zdwfibo_info, @function
 Main_zdwfibo_info:
-.Lc3S5:
-	leaq -48(%rbp),%rax
+.Lc3Ry:
+	leaq -32(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3S6
-.Lc3S7:
+	jb .Lc3Rz
+.Lc3RA:
 	addq $24,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3S9
-.Lc3S8:
-	leaq .Ls3yQ_info(%rip),%rax
+	ja .Lc3RC
+.Lc3RB:
+	leaq .Ls3yp_info(%rip),%rax
 	movq %rax,-16(%r12)
-	movq %r8,(%r12)
-	leaq .Lc3R9_info(%rip),%rax
-	movq %rax,-48(%rbp)
+	movq %rsi,(%r12)
+	leaq .Lc3QC_info(%rip),%rax
+	movq %rax,-32(%rbp)
 	movq %rsi,%rax
 	leaq -16(%r12),%rsi
 	movq %r14,%rbx
-	movq %r9,%r14
+	movq %rdi,%r14
 	movq %rbx,%rcx
-	movq %rcx,-40(%rbp)
-	movq %rax,-32(%rbp)
-	movq %rdi,-24(%rbp)
-	movq %r8,-16(%rbp)
-	movq %r9,-8(%rbp)
-	addq $-48,%rbp
+	movq %rcx,-24(%rbp)
+	movq %rax,-16(%rbp)
+	movq %rdi,-8(%rbp)
+	addq $-32,%rbp
 	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc3S9:
+.Lc3RC:
 	movq $24,904(%r13)
-.Lc3S6:
+.Lc3Rz:
 	leaq Main_zdwfibo_closure(%rip),%rbx
 	jmp *-8(%r13)
 .align 8
-	.quad	5
+	.quad	3
 	.long	30
 	.long	0
-.Lc3R9_info:
-.Lc3R9:
-	movq 32(%rbp),%r8
+.Lc3QC_info:
+.Lc3QC:
+	movq 24(%rbp),%rdi
 	movq %rbx,%rax
 	andl $7,%eax
 	cmpq $1,%rax
-	jne .Lc3S3
-.Lc3S2:
-	addq $112,%r12
+	jne .Lc3Rw
+.Lc3Rv:
+	addq $80,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3Sc
-.Lc3Sb:
-	leaq .Ls3yX_info(%rip),%rax
-	movq %rax,-104(%r12)
-	movq 8(%rbp),%r14
-	movq %r14,-88(%r12)
+	ja .Lc3RF
+.Lc3RE:
+	leaq .Ls3yw_info(%rip),%rax
+	movq %rax,-72(%r12)
 	movq 16(%rbp),%rsi
-	movq %rsi,-80(%r12)
-	movq 24(%rbp),%rdi
-	movq %rdi,-72(%r12)
-	movq %r8,-64(%r12)
-	movq 40(%rbp),%r9
-	movq %r9,-56(%r12)
-	leaq .Ls3yU_info(%rip),%rax
-	movq %rax,-48(%r12)
-	movq %r14,-32(%r12)
-	movq %rsi,-24(%r12)
-	movq %rdi,-16(%r12)
-	movq %r8,-8(%r12)
-	movq %r9,(%r12)
-	movq %rsi,%rax
-	leaq -104(%r12),%rsi
-	leaq -48(%r12),%r14
-	movq %rax,%rbx
-	addq $48,%rbp
-	jmp *stg_ap_pp_fast@gotpcrel(%rip)
-.Lc3Sc:
-	movq $112,904(%r13)
+	movq %rsi,-56(%r12)
+	movq %rdi,-48(%r12)
+	movq 8(%rbp),%r14
+	movq %r14,-40(%r12)
+	leaq .Ls3yt_info(%rip),%rax
+	movq %rax,-32(%r12)
+	movq %rsi,-16(%r12)
+	movq %rdi,-8(%r12)
+	movq %r14,(%r12)
+	movq %rsi,%r14
+	movq stg_ap_pp_info@gotpcrel(%rip),%rax
+	movq %rax,8(%rbp)
+	leaq -32(%r12),%rax
+	movq %rax,16(%rbp)
+	leaq -72(%r12),%rax
+	movq %rax,24(%rbp)
+	addq $8,%rbp
+	jmp *base_GHCziNum_zp_info@gotpcrel(%rip)
+.Lc3RF:
+	movq $80,904(%r13)
 	jmp *stg_gc_unpt_r1@gotpcrel(%rip)
-.Lc3S3:
-	leaq .Lr3uo_closure+1(%rip),%r14
-	movq %r8,%rbx
-	addq $48,%rbp
-	jmp *stg_ap_p_fast@gotpcrel(%rip)
+.Lc3Rw:
+	movq %rdi,%rbx
+	addq $32,%rbp
+	jmp *stg_ap_0_fast@gotpcrel(%rip)
 	.size Main_zdwfibo_info, .-Main_zdwfibo_info
 .section .data
 .align 8
@@ -2487,50 +2487,33 @@ Main_zdwfibo_closure:
 .globl Main_fibo_info
 .type Main_fibo_info, @function
 Main_fibo_info:
-.Lc3T3:
+.Lc3SJ:
 	leaq -24(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3T7
-.Lc3T8:
-	leaq .Lc3T0_info(%rip),%rax
+	jb .Lc3SK
+.Lc3SL:
+	leaq .Lc3SG_info(%rip),%rax
 	movq %rax,-24(%rbp)
 	movq %r14,%rbx
 	movq %rsi,-16(%rbp)
 	movq %rdi,-8(%rbp)
 	addq $-24,%rbp
 	testb $7,%bl
-	jne .Lc3T0
-.Lc3T1:
+	jne .Lc3SG
+.Lc3SH:
 	jmp *(%rbx)
 .align 8
 	.quad	2
 	.long	30
 	.long	0
-.Lc3T0_info:
-.Lc3T0:
-	leaq .Lc3T6_info(%rip),%rax
-	movq %rax,(%rbp)
-	movq 31(%rbx),%rax
-	movq 8(%rbp),%rbx
-	movq %rax,8(%rbp)
-	testb $7,%bl
-	jne .Lc3T6
-.Lc3Ta:
-	jmp *(%rbx)
-.align 8
-	.quad	2
-	.long	30
-	.long	0
-.Lc3T6_info:
-.Lc3T6:
-	movq 16(%rbp),%r9
-	movq 55(%rbx),%r8
-	movq 15(%rbx),%rdi
-	movq 7(%rbx),%rsi
-	movq 8(%rbp),%r14
+.Lc3SG_info:
+.Lc3SG:
+	movq 16(%rbp),%rdi
+	movq 8(%rbp),%rsi
+	movq 31(%rbx),%r14
 	addq $24,%rbp
 	jmp Main_zdwfibo_info
-.Lc3T7:
+.Lc3SK:
 	leaq Main_fibo_closure(%rip),%rbx
 	jmp *-8(%r13)
 	.size Main_fibo_info, .-Main_fibo_info
@@ -2570,7 +2553,7 @@ Main_zdtrModule_closure:
 .section .data
 .align 8
 .align 1
-.Lr3ur_closure:
+.Lr3u1_closure:
 	.quad	ghczmprim_GHCziTypes_KindRepVar_con_info
 	.quad	0
 .section .data
@@ -2598,18 +2581,18 @@ Main_zdtcNumber_closure:
 .section .data
 .align 8
 .align 1
-.Lr3us_closure:
+.Lr3u2_closure:
 	.quad	ghczmprim_GHCziTypes_ZC_con_info
-	.quad	.Lr3ur_closure+2
+	.quad	.Lr3u1_closure+2
 	.quad	ghczmprim_GHCziTypes_ZMZN_closure+1
 	.quad	3
 .section .data
 .align 8
 .align 1
-.Lr3ut_closure:
+.Lr3u3_closure:
 	.quad	ghczmprim_GHCziTypes_KindRepTyConApp_con_info
 	.quad	Main_zdtcNumber_closure+1
-	.quad	.Lr3us_closure+2
+	.quad	.Lr3u2_closure+2
 	.quad	3
 .section .data
 .align 8
@@ -2618,8 +2601,8 @@ Main_zdtcNumber_closure:
 .type Main_zdtczqNumber1_closure, @object
 Main_zdtczqNumber1_closure:
 	.quad	ghczmprim_GHCziTypes_KindRepFun_con_info
-	.quad	.Lr3ur_closure+2
-	.quad	.Lr3ut_closure+1
+	.quad	.Lr3u1_closure+2
+	.quad	.Lr3u3_closure+1
 	.quad	3
 .section .data
 .align 8
@@ -2653,38 +2636,38 @@ Main_zdtczqNumber_closure:
 .globl Main_main2_info
 .type Main_main2_info, @function
 Main_main2_info:
-.Lc3TD:
+.Lc3Tc:
 	leaq -8(%rbp),%rax
 	cmpq %r15,%rax
-	jb .Lc3TH
-.Lc3TI:
-	leaq .Lc3TA_info(%rip),%rax
+	jb .Lc3Tg
+.Lc3Th:
+	leaq .Lc3T9_info(%rip),%rax
 	movq %rax,-8(%rbp)
 	movq %r14,%rbx
 	addq $-8,%rbp
 	testb $7,%bl
-	jne .Lc3TA
-.Lc3TB:
+	jne .Lc3T9
+.Lc3Ta:
 	jmp *(%rbx)
 .align 8
 	.quad	0
 	.long	30
 	.long	0
-.Lc3TA_info:
-.Lc3TA:
-	leaq .Lc3TG_info(%rip),%rax
+.Lc3T9_info:
+.Lc3T9:
+	leaq .Lc3Tf_info(%rip),%rax
 	movq %rax,(%rbp)
 	movq 7(%rbx),%r14
 	jmp Main_zdwzdsfibo_info
-.Lc3TH:
+.Lc3Tg:
 	leaq Main_main2_closure(%rip),%rbx
 	jmp *-8(%r13)
 .align 8
 	.quad	0
 	.long	30
 	.long	0
-.Lc3TG_info:
-.Lc3TG:
+.Lc3Tf_info:
+.Lc3Tf:
 	andq $-8,%rbx
 	addq $8,%rbp
 	jmp *(%rbx)
@@ -2706,7 +2689,7 @@ Main_main2_closure:
 .globl Main_main1_info
 .type Main_main1_info, @function
 Main_main1_info:
-.Lc3TX:
+.Lc3Tw:
 	leaq Main_main2_closure+1(%rip),%r14
 	jmp *MainlibziReport_run1_info@gotpcrel(%rip)
 	.size Main_main1_info, .-Main_main1_info
@@ -2729,7 +2712,7 @@ Main_main1_closure:
 .globl Main_main_info
 .type Main_main_info, @function
 Main_main_info:
-.Lc3U7:
+.Lc3TG:
 	jmp Main_main1_info
 	.size Main_main_info, .-Main_main_info
 .section .data
@@ -2750,7 +2733,7 @@ Main_main_closure:
 .globl Main_main3_info
 .type Main_main3_info, @function
 Main_main3_info:
-.Lc3Uh:
+.Lc3TQ:
 	leaq Main_main1_closure+1(%rip),%r14
 	jmp *base_GHCziTopHandler_runMainIO1_info@gotpcrel(%rip)
 	.size Main_main3_info, .-Main_main3_info
@@ -2774,7 +2757,7 @@ Main_main3_closure:
 .globl ZCMain_main_info
 .type ZCMain_main_info, @function
 ZCMain_main_info:
-.Lc3Ur:
+.Lc3U0:
 	jmp Main_main3_info
 	.size ZCMain_main_info, .-ZCMain_main_info
 .section .data
@@ -2795,17 +2778,17 @@ ZCMain_main_closure:
 .globl Main_Number_info
 .type Main_Number_info, @function
 Main_Number_info:
-.Lc3UC:
+.Lc3Ub:
 	addq $16,%r12
 	cmpq 856(%r13),%r12
-	ja .Lc3UG
-.Lc3UF:
+	ja .Lc3Uf
+.Lc3Ue:
 	leaq Main_Number_con_info(%rip),%rax
 	movq %rax,-8(%r12)
 	movq %r14,(%r12)
 	leaq -7(%r12),%rbx
 	jmp *(%rbp)
-.Lc3UG:
+.Lc3Uf:
 	movq $16,904(%r13)
 	leaq Main_Number_closure(%rip),%rbx
 	jmp *-8(%r13)
@@ -2820,12 +2803,12 @@ Main_Number_closure:
 .section .rodata.str,"aMS",@progbits,1
 .align 1
 .align 1
-i3UM_str:
+i3Ul_str:
 	.string "main:Main.Number"
 .section .text
 .align 8
 .align 8
-	.long	i3UM_str-(Main_Number_con_info)+0
+	.long	i3Ul_str-(Main_Number_con_info)+0
 	.long	0
 	.quad	1
 	.long	2
@@ -2833,7 +2816,7 @@ i3UM_str:
 .globl Main_Number_con_info
 .type Main_Number_con_info, @object
 Main_Number_con_info:
-.Lc3UL:
+.Lc3Uk:
 	incq %rbx
 	jmp *(%rbp)
 	.size Main_Number_con_info, .-Main_Number_con_info

@@ -157,10 +157,11 @@ _Z9fibo_implPKiS0_S0_:                  # @_Z9fibo_implPKiS0_S0_
 	mov	edx, dword ptr [rdx]
 	lea	rdi, [rip + _Z9less_implPKiS0_]
 	call	_Z2opIPFbPKiS1_EEiT_ii
-	test	eax, eax
+	mov	ecx, eax
+	mov	eax, dword ptr [r14]
+	test	ecx, ecx
 	je	.LBB5_2
 # %bb.1:
-	mov	eax, dword ptr [r15]
 	add	rsp, 8
 	.cfi_def_cfa_offset 40
 	pop	rbx
@@ -174,10 +175,10 @@ _Z9fibo_implPKiS0_S0_:                  # @_Z9fibo_implPKiS0_S0_
 	ret
 .LBB5_2:
 	.cfi_def_cfa_offset 48
-	mov	esi, dword ptr [r14]
 	mov	edx, dword ptr [r15]
 	lea	r15, [rip + _Z8sub_implPKiS0_]
 	mov	rdi, r15
+	mov	esi, eax
 	call	_Z2opIPFiPKiS1_EEiT_ii
 	mov	edi, eax
 	call	_Z4fiboi

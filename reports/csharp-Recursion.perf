@@ -1,20 +1,20 @@
-32-th Fibonacci number is 3524578
-Total is 902291968
+32-th Fibonacci number is 2178309
+Total is 557647104
 
  Performance counter stats for 'bin/csharp-Recursion.bin 32 256':
 
-           2283.32 msec task-clock                       #    1.004 CPUs utilized             
-                 6      context-switches                 #    2.628 /sec                      
-                 1      cpu-migrations                   #    0.438 /sec                      
-               543      page-faults                      #  237.811 /sec                      
-        8870936419      cycles                           #    3.885 GHz                       
-       26196313503      instructions                     #    2.95  insn per cycle            
-        5419338416      branches                         #    2.373 G/sec                     
-            760966      branch-misses                    #    0.01% of all branches           
+           2390.53 msec task-clock                       #    1.004 CPUs utilized             
+                 6      context-switches                 #    2.510 /sec                      
+                 1      cpu-migrations                   #    0.418 /sec                      
+               542      page-faults                      #  226.728 /sec                      
+        9302059415      cycles                           #    3.891 GHz                       
+       26196844765      instructions                     #    2.82  insn per cycle            
+        5419410505      branches                         #    2.267 G/sec                     
+            764345      branch-misses                    #    0.01% of all branches           
 
-       2.273476128 seconds time elapsed
+       2.380988297 seconds time elapsed
 
-       2.281579000 seconds user
-       0.002000000 seconds sys
+       2.388142000 seconds user
+       0.003000000 seconds sys
 
 

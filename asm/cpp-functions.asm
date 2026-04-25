@@ -150,7 +150,7 @@ _Z4fiboi:                               # @_Z4fiboi
 	test	al, al
 	je	.LBB5_2
 # %bb.1:
-	mov	eax, 1
+	mov	eax, ebx
 	add	rsp, 8
 	.cfi_def_cfa_offset 24
 	pop	rbx

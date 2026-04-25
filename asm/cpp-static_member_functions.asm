@@ -105,24 +105,26 @@ _ZN4Fibo5SolveEi:                       # @_ZN4Fibo5SolveEi
 	.cfi_def_cfa_offset 32
 	.cfi_offset rbx, -24
 	.cfi_offset r14, -16
-	mov	ebx, 1
-	cmp	edi, 2
-	jl	.LBB2_4
-# %bb.1:
 	mov	r14d, edi
-	add	r14d, 2
+	xor	ebx, ebx
+	cmp	edi, 2
+	jge	.LBB2_2
+# %bb.1:
+	mov	ecx, r14d
+	jmp	.LBB2_4
+.LBB2_2:
 	xor	ebx, ebx
 	.p2align	4, 0x90
-.LBB2_2:                                # =>This Inner Loop Header: Depth=1
-	lea	edi, [r14 - 3]
+.LBB2_3:                                # =>This Inner Loop Header: Depth=1
+	lea	edi, [r14 - 1]
 	call	_ZN4Fibo5SolveEi
+	lea	ecx, [r14 - 2]
 	add	ebx, eax
-	add	r14d, -2
 	cmp	r14d, 3
-	ja	.LBB2_2
-# %bb.3:
-	inc	ebx
+	mov	r14d, ecx
+	ja	.LBB2_3
 .LBB2_4:
+	add	ebx, ecx
 	mov	eax, ebx
 	add	rsp, 8
 	.cfi_def_cfa_offset 24

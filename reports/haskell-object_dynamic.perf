@@ -1,20 +1,20 @@
-32-th Fibonacci number is 3524578
-Total is 7391575801856
+32-th Fibonacci number is 2178309
+Total is 4568245075968
 
  Performance counter stats for 'bin/haskell-object_dynamic.bin 32 2097152':
 
-           1024.59 msec task-clock                       #    0.996 CPUs utilized             
-               103      context-switches                 #  100.528 /sec                      
+           1023.67 msec task-clock                       #    0.996 CPUs utilized             
+               104      context-switches                 #  101.596 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-             86479      page-faults                      #   84.404 K/sec                     
-        3965707062      cycles                           #    3.871 GHz                       
-        9688805056      instructions                     #    2.44  insn per cycle            
-        1735758306      branches                         #    1.694 G/sec                     
-           4584401      branch-misses                    #    0.26% of all branches           
+             86479      page-faults                      #   84.480 K/sec                     
+        3946811003      cycles                           #    3.856 GHz                       
+        9684206729      instructions                     #    2.45  insn per cycle            
+        1735091255      branches                         #    1.695 G/sec                     
+           4539204      branch-misses                    #    0.26% of all branches           
 
-       1.028929960 seconds time elapsed
+       1.027313926 seconds time elapsed
 
-       0.862735000 seconds user
-       0.162138000 seconds sys
+       0.851971000 seconds user
+       0.172398000 seconds sys
 
 

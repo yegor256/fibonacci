@@ -1,20 +1,20 @@
-32-th Fibonacci number is 3524578
-Total is 902291968
+32-th Fibonacci number is 2178309
+Total is 557647104
 
  Performance counter stats for 'bin/cpp-classes.bin 32 256':
 
-           2861.20 msec task-clock                       #    1.000 CPUs utilized             
-                 4      context-switches                 #    1.398 /sec                      
+           3075.99 msec task-clock                       #    1.000 CPUs utilized             
+                 6      context-switches                 #    1.951 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               128      page-faults                      #   44.736 /sec                      
-       11125376936      cycles                           #    3.888 GHz                       
-       34307362748      instructions                     #    3.08  insn per cycle            
-        5417001826      branches                         #    1.893 G/sec                     
-            733255      branch-misses                    #    0.01% of all branches           
+               127      page-faults                      #   41.288 /sec                      
+       11962922697      cycles                           #    3.889 GHz                       
+       34308484565      instructions                     #    2.87  insn per cycle            
+        5417179683      branches                         #    1.761 G/sec                     
+            733154      branch-misses                    #    0.01% of all branches           
 
-       2.861768902 seconds time elapsed
+       3.076587111 seconds time elapsed
 
-       2.860731000 seconds user
-       0.000999000 seconds sys
+       3.074259000 seconds user
+       0.001999000 seconds sys
 
 

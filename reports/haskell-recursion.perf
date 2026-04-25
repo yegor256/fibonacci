@@ -1,20 +1,20 @@
-32-th Fibonacci number is 3524578
-Total is 902291968
+32-th Fibonacci number is 2178309
+Total is 557647104
 
  Performance counter stats for 'bin/haskell-recursion.bin 32 256':
 
-           3908.94 msec task-clock                       #    1.001 CPUs utilized             
-               396      context-switches                 #  101.306 /sec                      
+           3709.16 msec task-clock                       #    1.002 CPUs utilized             
+               376      context-switches                 #  101.371 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               891      page-faults                      #  227.939 /sec                      
-       15189651795      cycles                           #    3.886 GHz                       
-       30028143511      instructions                     #    1.98  insn per cycle            
-        8684984257      branches                         #    2.222 G/sec                     
-         113768997      branch-misses                    #    1.31% of all branches           
+               893      page-faults                      #  240.755 /sec                      
+       14396280416      cycles                           #    3.881 GHz                       
+       30026598613      instructions                     #    2.09  insn per cycle            
+        8684746240      branches                         #    2.341 G/sec                     
+          82862592      branch-misses                    #    0.95% of all branches           
 
-       3.903809596 seconds time elapsed
+       3.703164509 seconds time elapsed
 
-       3.905759000 seconds user
-       0.004007000 seconds sys
+       3.706048000 seconds user
+       0.004009000 seconds sys
 
 

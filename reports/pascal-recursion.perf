@@ -1,20 +1,20 @@
-32-th Fibonacci number is 3524578
-Total is 902292224
+32-th Fibonacci number is 2178309
+Total is 557647360
 
  Performance counter stats for 'bin/pascal-recursion.bin 32 256':
 
-           3875.86 msec task-clock                       #    1.000 CPUs utilized             
-                 3      context-switches                 #    0.774 /sec                      
+           4162.17 msec task-clock                       #    1.000 CPUs utilized             
+                 6      context-switches                 #    1.442 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-                35      page-faults                      #    9.030 /sec                      
-       15094032597      cycles                           #    3.894 GHz                       
-       32505574349      instructions                     #    2.15  insn per cycle            
-        7221953895      branches                         #    1.863 G/sec                     
-            733923      branch-misses                    #    0.01% of all branches           
+                35      page-faults                      #    8.409 /sec                      
+       16199012505      cycles                           #    3.892 GHz                       
+       33409286506      instructions                     #    2.06  insn per cycle            
+        7222178486      branches                         #    1.735 G/sec                     
+            744994      branch-misses                    #    0.01% of all branches           
 
-       3.876141826 seconds time elapsed
+       4.163190795 seconds time elapsed
 
-       3.876112000 seconds user
+       4.162539000 seconds user
        0.000000000 seconds sys
 
 

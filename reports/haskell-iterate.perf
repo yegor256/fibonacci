@@ -1,20 +1,20 @@
-32-th Fibonacci number is 3524578
-Total is 14783151603712
+32-th Fibonacci number is 2178309
+Total is 9136490151936
 
  Performance counter stats for 'bin/haskell-iterate.bin 32 4194304':
 
-           1428.04 msec task-clock                       #    0.996 CPUs utilized             
-               142      context-switches                 #   99.437 /sec                      
+           1447.14 msec task-clock                       #    0.996 CPUs utilized             
+               144      context-switches                 #   99.507 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-            177780      page-faults                      #  124.492 K/sec                     
-        5525228136      cycles                           #    3.869 GHz                       
-       12751432106      instructions                     #    2.31  insn per cycle            
-        2409378455      branches                         #    1.687 G/sec                     
-           2856767      branch-misses                    #    0.12% of all branches           
+            186802      page-faults                      #  129.084 K/sec                     
+        5587577022      cycles                           #    3.861 GHz                       
+       12774830072      instructions                     #    2.29  insn per cycle            
+        2413472160      branches                         #    1.668 G/sec                     
+           3048401      branch-misses                    #    0.13% of all branches           
 
-       1.433155399 seconds time elapsed
+       1.453659050 seconds time elapsed
 
-       1.112006000 seconds user
-       0.316571000 seconds sys
+       1.121659000 seconds user
+       0.326483000 seconds sys
 
 

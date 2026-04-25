@@ -202,7 +202,7 @@ _ZN5FirstD0Ev:                          # @_ZN5FirstD0Ev
 _ZN5First3getEv:                        # @_ZN5First3getEv
 	.cfi_startproc
 # %bb.0:
-	mov	eax, 1
+	xor	eax, eax
 	ret
 .Lfunc_end4:
 	.size	_ZN5First3getEv, .Lfunc_end4-_ZN5First3getEv
