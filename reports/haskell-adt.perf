@@ -3,18 +3,18 @@ Total is 557647104
 
  Performance counter stats for 'bin/haskell-adt.bin 32 256':
 
-          18086.17 msec task-clock                       #    1.002 CPUs utilized             
-              1858      context-switches                 #  102.730 /sec                      
+          17714.72 msec task-clock                       #    1.002 CPUs utilized             
+              1788      context-switches                 #  100.933 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-              9892      page-faults                      #  546.937 /sec                      
-       70214299024      cycles                           #    3.882 GHz                       
-      186444990463      instructions                     #    2.66  insn per cycle            
-       40075577426      branches                         #    2.216 G/sec                     
-         383856121      branch-misses                    #    0.96% of all branches           
+              9888      page-faults                      #  558.180 /sec                      
+       68921172877      cycles                           #    3.891 GHz                       
+      186444954853      instructions                     #    2.71  insn per cycle            
+       40075638035      branches                         #    2.262 G/sec                     
+         347492504      branch-misses                    #    0.87% of all branches           
 
-      18.053981274 seconds time elapsed
+      17.683951103 seconds time elapsed
 
-      18.076732000 seconds user
-       0.013028000 seconds sys
+      17.708824000 seconds user
+       0.011025000 seconds sys
 
 
