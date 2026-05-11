@@ -3,18 +3,18 @@ Total is 557647104
 
  Performance counter stats for 'bin/cpp-static_member_functions.bin 32 256':
 
-           1768.85 msec task-clock                       #    1.000 CPUs utilized             
-                 2      context-switches                 #    1.131 /sec                      
+           1766.38 msec task-clock                       #    1.000 CPUs utilized             
+                 1      context-switches                 #    0.566 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               129      page-faults                      #   72.929 /sec                      
-        6884807214      cycles                           #    3.892 GHz                       
-       19864347566      instructions                     #    2.89  insn per cycle            
-        3956075531      branches                         #    2.237 G/sec                     
-          24757737      branch-misses                    #    0.63% of all branches           
+               127      page-faults                      #   71.899 /sec                      
+        6878793511      cycles                           #    3.894 GHz                       
+       19864253133      instructions                     #    2.89  insn per cycle            
+        3956056900      branches                         #    2.240 G/sec                     
+          24722080      branch-misses                    #    0.62% of all branches           
 
-       1.769141965 seconds time elapsed
+       1.766654859 seconds time elapsed
 
-       1.769094000 seconds user
-       0.000000000 seconds sys
+       1.765632000 seconds user
+       0.000999000 seconds sys
 
 
