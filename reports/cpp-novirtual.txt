@@ -1,9 +1,9 @@
 bin/cpp-novirtual.bin:
-CPU ticks: 352839298713
-CPU ticks per cycle: 1378278510
+CPU ticks: 370573386187
+CPU ticks per cycle: 1447552289
 Instructions: 210
 Cycles: 256
-Total Time: 90.30
-Time per cycle: .3527343750000000
-Ticks: 352839298713
-Ticks per cycle: 1378278510
+Total Time: 94.20
+Time per cycle: .3679687500000000
+Ticks: 370573386187
+Ticks per cycle: 1447552289

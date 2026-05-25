@@ -3,18 +3,18 @@ Total is 1023737856
 
  Performance counter stats for 'bin/cpp-interpreter.bin 32 65536':
 
-           1169.62 msec task-clock                       #    1.000 CPUs utilized             
-                 1      context-switches                 #    0.855 /sec                      
+           1171.73 msec task-clock                       #    1.000 CPUs utilized             
+                 0      context-switches                 #    0.000 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               130      page-faults                      #  111.148 /sec                      
-        4558305851      cycles                           #    3.897 GHz                       
-       12513108383      instructions                     #    2.75  insn per cycle            
-        2810632577      branches                         #    2.403 G/sec                     
-           5996928      branch-misses                    #    0.21% of all branches           
+               129      page-faults                      #  110.094 /sec                      
+        4558139682      cycles                           #    3.890 GHz                       
+       12723270516      instructions                     #    2.79  insn per cycle            
+        2810611087      branches                         #    2.399 G/sec                     
+            396608      branch-misses                    #    0.01% of all branches           
 
-       1.170178102 seconds time elapsed
+       1.172085018 seconds time elapsed
 
-       1.169216000 seconds user
+       1.171049000 seconds user
        0.001000000 seconds sys
 
 

@@ -3,18 +3,18 @@ Total is 17426472
 
  Performance counter stats for 'bin/csharp-Objects.bin 32 8':
 
-          15261.47 msec task-clock                       #    1.001 CPUs utilized             
-                40      context-switches                 #    2.621 /sec                      
-                 1      cpu-migrations                   #    0.066 /sec                      
-             19295      page-faults                      #    1.264 K/sec                     
-       59488405192      cycles                           #    3.898 GHz                       
-       88046009101      instructions                     #    1.48  insn per cycle            
-       24220700127      branches                         #    1.587 G/sec                     
-         765667966      branch-misses                    #    3.16% of all branches           
+          15220.55 msec task-clock                       #    1.001 CPUs utilized             
+                45      context-switches                 #    2.957 /sec                      
+                 0      cpu-migrations                   #    0.000 /sec                      
+             19292      page-faults                      #    1.267 K/sec                     
+       59190412077      cycles                           #    3.889 GHz                       
+       88045955916      instructions                     #    1.49  insn per cycle            
+       24220551386      branches                         #    1.591 G/sec                     
+         765559400      branch-misses                    #    3.16% of all branches           
 
-      15.251983453 seconds time elapsed
+      15.211506974 seconds time elapsed
 
-      15.204884000 seconds user
-       0.056992000 seconds sys
+      15.190987000 seconds user
+       0.029998000 seconds sys
 
 

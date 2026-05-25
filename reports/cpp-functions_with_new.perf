@@ -1,20 +1,20 @@
 32-th Fibonacci number is 2178309
-Total is 557647104
+Total is 34852944
 
- Performance counter stats for 'bin/cpp-functions_with_new.bin 32 256':
+ Performance counter stats for 'bin/cpp-functions_with_new.bin 32 16':
 
-         239531.91 msec task-clock                       #    1.000 CPUs utilized             
-               246      context-switches                 #    1.027 /sec                      
-                23      cpu-migrations                   #    0.096 /sec                      
-               162      page-faults                      #    0.676 /sec                      
-      933037843486      cycles                           #    3.895 GHz                       
-     2624063543801      instructions                     #    2.81  insn per cycle            
-      574110385143      branches                         #    2.397 G/sec                     
-        1119815033      branch-misses                    #    0.20% of all branches           
+          15587.28 msec task-clock                       #    1.000 CPUs utilized             
+                32      context-switches                 #    2.053 /sec                      
+                 0      cpu-migrations                   #    0.000 /sec                      
+               128      page-faults                      #    8.212 /sec                      
+       60571618327      cycles                           #    3.886 GHz                       
+      167620104747      instructions                     #    2.77  insn per cycle            
+       35883051198      branches                         #    2.302 G/sec                     
+          70130942      branch-misses                    #    0.20% of all branches           
 
-     239.543725375 seconds time elapsed
+      15.588015690 seconds time elapsed
 
-     239.530158000 seconds user
-       0.001999000 seconds sys
+      15.587538000 seconds user
+       0.000000000 seconds sys
 
 
