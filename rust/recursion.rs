@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Copyright (c) 2022-2026 Yegor Bugayenko
 // SPDX-License-Identifier: MIT
 
-use std::env;
+use std::{env, hint};
 
 pub fn fibonacci(input: u32) -> u32 {
 	match input {
@@ -18,7 +18,7 @@ pub fn main() {
 	let mut total = 0;
 	let mut f = 0;
 	for _ in 0..cycles {
-		f = fibonacci(input);
+		f = fibonacci(hint::black_box(input));
 		total += f;
 	}
   	println!("{}-th Fibonacci number is {}\nTotal is {}\n", input, f, total);
