@@ -430,30 +430,30 @@ _ZN9recursion4main17heaee8733d68a0817E:
 	.cfi_def_cfa_offset 48
 	pushq	%rbx
 	.cfi_def_cfa_offset 56
-	subq	$216, %rsp
-	.cfi_def_cfa_offset 272
+	subq	$232, %rsp
+	.cfi_def_cfa_offset 288
 	.cfi_offset %rbx, -56
 	.cfi_offset %r12, -48
 	.cfi_offset %r13, -40
 	.cfi_offset %r14, -32
 	.cfi_offset %r15, -24
 	.cfi_offset %rbp, -16
-	leaq	136(%rsp), %rbx
+	leaq	152(%rsp), %rbx
 	movq	%rbx, %rdi
 	callq	*_ZN3std3env4args17ha68d7b7f3b38dd11E@GOTPCREL(%rip)
 .Ltmp0:
-	leaq	168(%rsp), %rdi
+	leaq	184(%rsp), %rdi
 	movq	%rbx, %rsi
 	callq	*_ZN73_$LT$std..env..Args$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4next17h6132073fbf698433E@GOTPCREL(%rip)
 .Ltmp1:
-	movq	168(%rsp), %r14
+	movq	184(%rsp), %r14
 	testq	%r14, %r14
 	je	.LBB12_2
-	movdqu	176(%rsp), %xmm0
-	movdqa	%xmm0, 112(%rsp)
+	movdqu	192(%rsp), %xmm0
+	movdqa	%xmm0, 128(%rsp)
 .Ltmp3:
 	leaq	32(%rsp), %rdi
-	leaq	136(%rsp), %rsi
+	leaq	152(%rsp), %rsi
 	callq	*_ZN73_$LT$std..env..Args$u20$as$u20$core..iter..traits..iterator..Iterator$GT$9size_hint17h9417c19765810b59E@GOTPCREL(%rip)
 .Ltmp4:
 	movq	32(%rsp), %rax
@@ -488,54 +488,54 @@ _ZN9recursion4main17heaee8733d68a0817E:
 	movl	$8, %ebp
 .LBB12_18:
 	movq	%r14, (%rbp)
-	movaps	112(%rsp), %xmm0
+	movaps	128(%rsp), %xmm0
 	movups	%xmm0, 8(%rbp)
-	movq	%rbp, (%rsp)
-	movq	%r15, 8(%rsp)
-	movq	$1, 16(%rsp)
-	movdqu	136(%rsp), %xmm0
-	movups	152(%rsp), %xmm1
+	movq	%rbp, 8(%rsp)
+	movq	%r15, 16(%rsp)
+	movq	$1, 24(%rsp)
+	movdqu	152(%rsp), %xmm0
+	movups	168(%rsp), %xmm1
 	movaps	%xmm1, 48(%rsp)
 	movdqa	%xmm0, 32(%rsp)
 	movl	$1, %r15d
-	movl	$32, %r13d
-	leaq	32(%rsp), %rbx
+	movl	$32, %ebx
+	leaq	32(%rsp), %r14
 	movq	_ZN73_$LT$std..env..Args$u20$as$u20$core..iter..traits..iterator..Iterator$GT$4next17h6132073fbf698433E@GOTPCREL(%rip), %r12
 	jmp	.LBB12_19
 	.p2align	4, 0x90
 .LBB12_24:
-	movq	(%rsp), %rbp
+	movq	8(%rsp), %rbp
 .LBB12_25:
-	movq	%r14, -8(%rbp,%r13)
-	movdqa	112(%rsp), %xmm0
-	movdqu	%xmm0, (%rbp,%r13)
+	movq	%r13, -8(%rbp,%rbx)
+	movdqa	128(%rsp), %xmm0
+	movdqu	%xmm0, (%rbp,%rbx)
 	incq	%r15
-	movq	%r15, 16(%rsp)
-	addq	$24, %r13
+	movq	%r15, 24(%rsp)
+	addq	$24, %rbx
 .LBB12_19:
 .Ltmp7:
-	leaq	80(%rsp), %rdi
-	movq	%rbx, %rsi
+	leaq	96(%rsp), %rdi
+	movq	%r14, %rsi
 	callq	*%r12
 .Ltmp8:
-	movq	80(%rsp), %r14
-	testq	%r14, %r14
+	movq	96(%rsp), %r13
+	testq	%r13, %r13
 	je	.LBB12_46
-	movups	88(%rsp), %xmm0
-	movaps	%xmm0, 112(%rsp)
-	cmpq	8(%rsp), %r15
+	movups	104(%rsp), %xmm0
+	movaps	%xmm0, 128(%rsp)
+	cmpq	16(%rsp), %r15
 	jne	.LBB12_25
 .Ltmp10:
-	leaq	168(%rsp), %rdi
-	movq	%rbx, %rsi
+	leaq	184(%rsp), %rdi
+	movq	%r14, %rsi
 	callq	*_ZN73_$LT$std..env..Args$u20$as$u20$core..iter..traits..iterator..Iterator$GT$9size_hint17h9417c19765810b59E@GOTPCREL(%rip)
 .Ltmp11:
-	movq	168(%rsp), %rdx
+	movq	184(%rsp), %rdx
 	incq	%rdx
 	movq	$-1, %rax
 	cmoveq	%rax, %rdx
 .Ltmp12:
-	movq	%rsp, %rdi
+	leaq	8(%rsp), %rdi
 	movq	%r15, %rsi
 	callq	_ZN5alloc7raw_vec19RawVec$LT$T$C$A$GT$7reserve21do_reserve_and_handle17h31db93f285f8b4fbE
 .Ltmp13:
@@ -549,15 +549,15 @@ _ZN9recursion4main17heaee8733d68a0817E:
 	mulq	%rdx
 	cmpq	%r15, %rcx
 	je	.LBB12_51
-	movq	%rdx, %r14
-	shrq	$4, %r14
+	movq	%rdx, %rbx
+	shrq	$4, %rbx
 	addq	$8, %r15
 	movq	__rust_dealloc@GOTPCREL(%rip), %r12
 	jmp	.LBB12_48
 	.p2align	4, 0x90
 .LBB12_50:
 	addq	$24, %r15
-	decq	%r14
+	decq	%rbx
 	je	.LBB12_51
 .LBB12_48:
 	movq	(%r15), %rsi
@@ -577,13 +577,13 @@ _ZN9recursion4main17heaee8733d68a0817E:
 	movl	$8, %edx
 	callq	*__rust_dealloc@GOTPCREL(%rip)
 .LBB12_53:
-	movdqu	(%rsp), %xmm0
-	movdqa	%xmm0, 80(%rsp)
-	movq	16(%rsp), %r15
-	movq	%r15, 96(%rsp)
+	movdqu	8(%rsp), %xmm0
+	movdqa	%xmm0, 96(%rsp)
+	movq	24(%rsp), %r15
+	movq	%r15, 112(%rsp)
 	cmpq	$1, %r15
 	jbe	.LBB12_54
-	movq	80(%rsp), %r12
+	movq	96(%rsp), %r12
 	movq	24(%r12), %rdi
 	movq	40(%r12), %rsi
 .Ltmp15:
@@ -592,50 +592,58 @@ _ZN9recursion4main17heaee8733d68a0817E:
 	testb	$1, %al
 	jne	.LBB12_67
 	shrq	$32, %rax
-	movl	%eax, 24(%rsp)
+	movl	%eax, 92(%rsp)
 	cmpq	$2, %r15
 	jbe	.LBB12_69
 	movq	48(%r12), %rdi
 	movq	64(%r12), %rsi
 .Ltmp17:
-	movq	%rax, %r14
+	movq	%rax, %r13
 	callq	*_ZN4core3num60_$LT$impl$u20$core..str..traits..FromStr$u20$for$u20$u32$GT$8from_str17hd856ace511491328E@GOTPCREL(%rip)
-.Ltmp18:
-	testb	$1, %al
-	jne	.LBB12_73
-	shrq	$32, %rax
-	je	.LBB12_76
-	movq	%r14, %rdi
 	movq	%rax, %rbx
+	movq	%r13, %rax
+.Ltmp18:
+	testb	$1, %bl
+	jne	.LBB12_73
+	shrq	$32, %rbx
+	movl	$0, 4(%rsp)
+	movl	$0, 8(%rsp)
+	je	.LBB12_78
+	xorl	%ebp, %ebp
+	leaq	32(%rsp), %r14
+	.p2align	4, 0x90
+.LBB12_77:
+	movl	%eax, 32(%rsp)
+	#APP
+	#NO_APP
+	movl	32(%rsp), %edi
 	callq	_ZN9recursion9fibonacci17ha4c305a10412eff3E
-	movq	%rbx, %rcx
-	imull	%eax, %ecx
-	jmp	.LBB12_78
-.LBB12_76:
-	xorl	%ecx, %ecx
-	xorl	%eax, %eax
+	movl	%eax, 8(%rsp)
+	addl	%eax, %ebp
+	movq	%r13, %rax
+	movl	%ebp, 4(%rsp)
+	decl	%ebx
+	jne	.LBB12_77
 .LBB12_78:
-	movl	%eax, (%rsp)
-	movl	%ecx, 28(%rsp)
-	leaq	24(%rsp), %rax
+	leaq	92(%rsp), %rax
 	movq	%rax, 32(%rsp)
 	movq	_ZN4core3fmt3num3imp52_$LT$impl$u20$core..fmt..Display$u20$for$u20$u32$GT$3fmt17h8483afe4900e6922E@GOTPCREL(%rip), %rax
 	movq	%rax, 40(%rsp)
-	movq	%rsp, %rcx
+	leaq	8(%rsp), %rcx
 	movq	%rcx, 48(%rsp)
 	movq	%rax, 56(%rsp)
-	leaq	28(%rsp), %rcx
+	leaq	4(%rsp), %rcx
 	movq	%rcx, 64(%rsp)
 	movq	%rax, 72(%rsp)
 	leaq	.L__unnamed_5(%rip), %rax
-	movq	%rax, 168(%rsp)
-	movq	$4, 176(%rsp)
-	movq	$0, 200(%rsp)
-	leaq	32(%rsp), %rax
 	movq	%rax, 184(%rsp)
-	movq	$3, 192(%rsp)
+	movq	$4, 192(%rsp)
+	movq	$0, 216(%rsp)
+	leaq	32(%rsp), %rax
+	movq	%rax, 200(%rsp)
+	movq	$3, 208(%rsp)
 .Ltmp21:
-	leaq	168(%rsp), %rdi
+	leaq	184(%rsp), %rdi
 	callq	*_ZN3std2io5stdio6_print17hfdc14195f94a0b4fE@GOTPCREL(%rip)
 .Ltmp22:
 	leaq	8(%r12), %rbx
@@ -655,7 +663,7 @@ _ZN9recursion4main17heaee8733d68a0817E:
 	callq	*%r14
 	jmp	.LBB12_82
 .LBB12_83:
-	movq	88(%rsp), %rax
+	movq	104(%rsp), %rax
 	testq	%rax, %rax
 	je	.LBB12_85
 	shlq	$3, %rax
@@ -664,7 +672,7 @@ _ZN9recursion4main17heaee8733d68a0817E:
 	movq	%r12, %rdi
 	callq	*__rust_dealloc@GOTPCREL(%rip)
 .LBB12_85:
-	addq	$216, %rsp
+	addq	$232, %rsp
 	.cfi_def_cfa_offset 56
 	popq	%rbx
 	.cfi_def_cfa_offset 48
@@ -680,7 +688,7 @@ _ZN9recursion4main17heaee8733d68a0817E:
 	.cfi_def_cfa_offset 8
 	retq
 .LBB12_69:
-	.cfi_def_cfa_offset 272
+	.cfi_def_cfa_offset 288
 	leaq	.L__unnamed_6(%rip), %rdx
 	movl	$2, %edi
 .LBB12_70:
@@ -690,22 +698,22 @@ _ZN9recursion4main17heaee8733d68a0817E:
 .Ltmp27:
 	jmp	.LBB12_15
 .LBB12_2:
-	movq	152(%rsp), %r14
-	movq	160(%rsp), %rcx
+	movq	168(%rsp), %r14
+	movq	176(%rsp), %rcx
 	movq	%rcx, %rax
 	subq	%r14, %rax
 	movabsq	$-6148914691236517205, %rdx
 	mulq	%rdx
-	movq	$8, 80(%rsp)
+	movq	$8, 96(%rsp)
 	pxor	%xmm0, %xmm0
-	movdqu	%xmm0, 88(%rsp)
+	movdqu	%xmm0, 104(%rsp)
 	cmpq	%r14, %rcx
 	jne	.LBB12_3
 .LBB12_7:
-	movq	144(%rsp), %rax
+	movq	160(%rsp), %rax
 	testq	%rax, %rax
 	je	.LBB12_9
-	movq	136(%rsp), %rdi
+	movq	152(%rsp), %rdi
 	shlq	$3, %rax
 	leaq	(%rax,%rax,2), %rsi
 	movl	$8, %edx
@@ -725,14 +733,14 @@ _ZN9recursion4main17heaee8733d68a0817E:
 	leaq	.L__unnamed_8(%rip), %r8
 	jmp	.LBB12_74
 .LBB12_73:
-	movb	%ah, 32(%rsp)
+	movb	%bh, 32(%rsp)
 	leaq	.L__unnamed_9(%rip), %r8
 .LBB12_74:
 .Ltmp19:
 	leaq	.L__unnamed_10(%rip), %rdi
 	leaq	.L__unnamed_11(%rip), %rcx
 	movl	$43, %esi
-	movq	%rbx, %rdx
+	movq	%r14, %rdx
 	callq	*_ZN4core6result13unwrap_failed17h8393ef8d489acb45E@GOTPCREL(%rip)
 .Ltmp20:
 .LBB12_15:
@@ -767,7 +775,7 @@ _ZN9recursion4main17heaee8733d68a0817E:
 .LBB12_10:
 .Ltmp25:
 	movq	%rax, %rbx
-	movdqa	112(%rsp), %xmm0
+	movdqa	128(%rsp), %xmm0
 	movq	%xmm0, %rsi
 	testq	%rsi, %rsi
 	je	.LBB12_56
@@ -775,8 +783,8 @@ _ZN9recursion4main17heaee8733d68a0817E:
 	movq	%r14, %rdi
 	callq	*__rust_dealloc@GOTPCREL(%rip)
 .LBB12_56:
-	movq	152(%rsp), %r15
-	movq	160(%rsp), %rcx
+	movq	168(%rsp), %r15
+	movq	176(%rsp), %rcx
 	movq	%rcx, %rax
 	subq	%r15, %rax
 	movabsq	$-6148914691236517205, %rdx
@@ -784,10 +792,10 @@ _ZN9recursion4main17heaee8733d68a0817E:
 	cmpq	%r15, %rcx
 	jne	.LBB12_57
 .LBB12_61:
-	movq	144(%rsp), %rax
+	movq	160(%rsp), %rax
 	testq	%rax, %rax
 	je	.LBB12_64
-	movq	136(%rsp), %rdi
+	movq	152(%rsp), %rdi
 	shlq	$3, %rax
 	leaq	(%rax,%rax,2), %rsi
 	movl	$8, %edx
@@ -817,12 +825,12 @@ _ZN9recursion4main17heaee8733d68a0817E:
 .LBB12_44:
 .Ltmp14:
 	movq	%rax, %rbx
-	movdqa	112(%rsp), %xmm0
+	movdqa	128(%rsp), %xmm0
 	movq	%xmm0, %rsi
 	testq	%rsi, %rsi
 	je	.LBB12_29
 	movl	$1, %edx
-	movq	%r14, %rdi
+	movq	%r13, %rdi
 	callq	*__rust_dealloc@GOTPCREL(%rip)
 	jmp	.LBB12_29
 .LBB12_28:
@@ -847,12 +855,12 @@ _ZN9recursion4main17heaee8733d68a0817E:
 	movl	$8, %edx
 	callq	*__rust_dealloc@GOTPCREL(%rip)
 .LBB12_36:
-	movq	(%rsp), %r14
-	movq	16(%rsp), %r15
+	movq	8(%rsp), %r14
+	movq	24(%rsp), %r15
 	testq	%r15, %r15
 	jne	.LBB12_37
 .LBB12_41:
-	movq	8(%rsp), %rax
+	movq	16(%rsp), %rax
 	testq	%rax, %rax
 	je	.LBB12_64
 	shlq	$3, %rax
@@ -902,7 +910,7 @@ _ZN9recursion4main17heaee8733d68a0817E:
 .LBB12_63:
 .Ltmp28:
 	movq	%rax, %rbx
-	leaq	80(%rsp), %rdi
+	leaq	96(%rsp), %rdi
 	callq	_ZN4core3ptr65drop_in_place$LT$alloc..vec..Vec$LT$alloc..string..String$GT$$GT$17h15d6d7c978a8d8d7E
 .LBB12_64:
 	movq	%rbx, %rdi

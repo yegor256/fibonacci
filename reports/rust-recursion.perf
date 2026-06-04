@@ -1,21 +1,21 @@
 32-th Fibonacci number is 2178309
-Total is 2147483648
+Total is 557647104
 
 
- Performance counter stats for 'bin/rust-recursion.bin 32 2147483648':
+ Performance counter stats for 'bin/rust-recursion.bin 32 256':
 
-              6.47 msec task-clock                       #    0.966 CPUs utilized             
-                 0      context-switches                 #    0.000 /sec                      
+           1432.09 msec task-clock                       #    1.000 CPUs utilized             
+                 2      context-switches                 #    1.397 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-                76      page-faults                      #   11.754 K/sec                     
-          23229590      cycles                           #    3.593 GHz                       
-          71352134      instructions                     #    3.07  insn per cycle            
-          14407485      branches                         #    2.228 G/sec                     
-             95132      branch-misses                    #    0.66% of all branches           
+                74      page-faults                      #   51.673 /sec                      
+        5562395763      cycles                           #    3.884 GHz                       
+       17842894292      instructions                     #    3.21  insn per cycle            
+        3610792614      branches                         #    2.521 G/sec                     
+          22024048      branch-misses                    #    0.61% of all branches           
 
-       0.006694227 seconds time elapsed
+       1.432484625 seconds time elapsed
 
-       0.006730000 seconds user
-       0.000000000 seconds sys
+       1.431455000 seconds user
+       0.001000000 seconds sys
 
 

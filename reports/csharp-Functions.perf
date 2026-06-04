@@ -3,18 +3,18 @@ Total is 557647104
 
  Performance counter stats for 'bin/csharp-Functions.bin 32 256':
 
-           2391.69 msec task-clock                       #    1.004 CPUs utilized             
-                 7      context-switches                 #    2.927 /sec                      
+           2395.35 msec task-clock                       #    1.004 CPUs utilized             
+                 8      context-switches                 #    3.340 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               542      page-faults                      #  226.618 /sec                      
-        9299547305      cycles                           #    3.888 GHz                       
-       26196838413      instructions                     #    2.82  insn per cycle            
-        5419414342      branches                         #    2.266 G/sec                     
-            768026      branch-misses                    #    0.01% of all branches           
+               542      page-faults                      #  226.272 /sec                      
+        9311014936      cycles                           #    3.887 GHz                       
+       26197044918      instructions                     #    2.81  insn per cycle            
+        5419438820      branches                         #    2.262 G/sec                     
+            764816      branch-misses                    #    0.01% of all branches           
 
-       2.382144664 seconds time elapsed
+       2.385803634 seconds time elapsed
 
-       2.389237000 seconds user
-       0.003000000 seconds sys
+       2.390790000 seconds user
+       0.004995000 seconds sys
 
 
