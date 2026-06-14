@@ -3,18 +3,18 @@ Total is 292367684861952
 
  Performance counter stats for 'bin/java-LowLatency.bin 32 134217728':
 
-           1113.84 msec task-clock                       #    1.000 CPUs utilized             
-                 4      context-switches                 #    3.591 /sec                      
+           1104.19 msec task-clock                       #    1.000 CPUs utilized             
+                 4      context-switches                 #    3.623 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               565      page-faults                      #  507.254 /sec                      
-        4333365529      cycles                           #    3.890 GHz                       
-       15987094781      instructions                     #    3.69  insn per cycle            
-        3894944169      branches                         #    3.497 G/sec                     
-             36898      branch-misses                    #    0.00% of all branches           
+               568      page-faults                      #  514.403 /sec                      
+        4296634304      cycles                           #    3.891 GHz                       
+       15987071670      instructions                     #    3.72  insn per cycle            
+        3894944358      branches                         #    3.527 G/sec                     
+             37912      branch-misses                    #    0.00% of all branches           
 
-       1.114323513 seconds time elapsed
+       1.104537015 seconds time elapsed
 
-       1.113154000 seconds user
-       0.001000000 seconds sys
+       1.101642000 seconds user
+       0.002999000 seconds sys
 
 
