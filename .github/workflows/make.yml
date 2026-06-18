@@ -38,7 +38,7 @@ jobs:
     runs-on: ${{ needs.start-instance.outputs.label }}
     timeout-minutes: 120
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - run: sudo make install
       - run: make env
       - run: mkdir www
