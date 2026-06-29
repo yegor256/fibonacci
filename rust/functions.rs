@@ -36,7 +36,7 @@ fn add(a: i32, b: i32) -> i32 {
 #[inline(never)]
 fn fibo(x: i32) -> i32 {
     if less(x, 2) {
-        1
+        x
     } else {
         add(fibo(sub(x, 1)), fibo(sub(x, 2)))
     }
