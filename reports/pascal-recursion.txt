@@ -1,9 +1,9 @@
 bin/pascal-recursion.bin:
-CPU ticks: 16209180907
-CPU ticks per cycle: 63317112
+CPU ticks: 16214160333
+CPU ticks per cycle: 63336563
 Instructions: 1
 Cycles: 256
 Total Time: 4.16
 Time per cycle: .0162500000000000
-Ticks: 16209180907
-Ticks per cycle: 63317112
+Ticks: 16214160333
+Ticks per cycle: 63336563

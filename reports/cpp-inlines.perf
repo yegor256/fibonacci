@@ -3,18 +3,18 @@ Total is 557647104
 
  Performance counter stats for 'bin/cpp-inlines.bin 32 256':
 
-           2023.42 msec task-clock                       #    1.000 CPUs utilized             
-                 4      context-switches                 #    1.977 /sec                      
+           1966.98 msec task-clock                       #    1.000 CPUs utilized             
+                 2      context-switches                 #    1.017 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               127      page-faults                      #   62.765 /sec                      
-        7653512406      cycles                           #    3.782 GHz                       
-       19867288571      instructions                     #    2.60  insn per cycle            
-        3956546712      branches                         #    1.955 G/sec                     
-          38551629      branch-misses                    #    0.97% of all branches           
+               131      page-faults                      #   66.600 /sec                      
+        7657886772      cycles                           #    3.893 GHz                       
+       19865541976      instructions                     #    2.59  insn per cycle            
+        3956264240      branches                         #    2.011 G/sec                     
+          39522231      branch-misses                    #    1.00% of all branches           
 
-       2.023816308 seconds time elapsed
+       1.967506735 seconds time elapsed
 
-       2.021677000 seconds user
+       1.965471000 seconds user
        0.001999000 seconds sys
 
 

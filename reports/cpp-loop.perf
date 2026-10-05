@@ -3,18 +3,18 @@ Total is 1342177280
 
  Performance counter stats for 'bin/cpp-loop.bin 32 268435456':
 
-           1121.80 msec task-clock                       #    1.000 CPUs utilized             
-                 1      context-switches                 #    0.891 /sec                      
+           1098.49 msec task-clock                       #    1.000 CPUs utilized             
+                 0      context-switches                 #    0.000 /sec                      
                  0      cpu-migrations                   #    0.000 /sec                      
-               128      page-faults                      #  114.102 /sec                      
-        4285539785      cycles                           #    3.820 GHz                       
-       16116505470      instructions                     #    3.76  insn per cycle            
-        2149199209      branches                         #    1.916 G/sec                     
-             32261      branch-misses                    #    0.00% of all branches           
+               129      page-faults                      #  117.434 /sec                      
+        4279085650      cycles                           #    3.895 GHz                       
+       16116408618      instructions                     #    3.77  insn per cycle            
+        2149193870      branches                         #    1.956 G/sec                     
+             27708      branch-misses                    #    0.00% of all branches           
 
-       1.122239516 seconds time elapsed
+       1.098838319 seconds time elapsed
 
-       1.121243000 seconds user
-       0.001000000 seconds sys
+       1.096885000 seconds user
+       0.001997000 seconds sys
 
 
